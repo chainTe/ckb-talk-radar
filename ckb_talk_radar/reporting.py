@@ -214,11 +214,19 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult 
 
 
 def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
+    openrouter_api_key = os.getenv("OPENROUTER_API_KEY")
+    openrouter_base_url = os.getenv("OPENROUTER_BASE_URL")
     moonshot_api_key = os.getenv("MOONSHOT_API_KEY")
     moonshot_base_url = os.getenv("MOONSHOT_BASE_URL")
     openai_api_key = os.getenv("OPENAI_API_KEY")
     openai_base_url = os.getenv("OPENAI_BASE_URL")
 
+    if openrouter_api_key:
+        return (
+            openrouter_api_key,
+            openrouter_base_url or "https://openrouter.ai/api/v1",
+            "openrouter",
+        )
     if moonshot_api_key:
         return (
             moonshot_api_key,

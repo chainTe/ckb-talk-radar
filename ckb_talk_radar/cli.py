@@ -14,6 +14,8 @@ def default_model() -> str:
     env_model = os.getenv("CKB_TALK_RADAR_MODEL")
     if env_model:
         return env_model
+    if os.getenv("OPENROUTER_API_KEY"):
+        return "moonshotai/kimi-k2.6"
     if os.getenv("MOONSHOT_API_KEY"):
         return "kimi-for-coding"
     return "gpt-4.1-mini"

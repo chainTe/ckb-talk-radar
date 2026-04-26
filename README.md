@@ -22,7 +22,7 @@
 - 支持本地静态服务和 RSS
 - 支持 GitHub Actions 每日构建并部署到 GitHub Pages
 - 支持 AI 总结和本地规则回退
-- 支持 OpenAI 和 Kimi Code OpenAI-compatible 接口
+- 支持 OpenAI、OpenRouter 和 Kimi Code OpenAI-compatible 接口
 
 ## Quick Start
 
@@ -45,6 +45,14 @@ pip3 install -e .
 cp .env.example .env
 export OPENAI_API_KEY=your_key
 python3 -m ckb_talk_radar --hours 24 --model gpt-4.1-mini
+```
+
+如果要使用 OpenRouter（例如 Kimi K2.6）：
+
+```bash
+pip3 install -e .
+export OPENROUTER_API_KEY=your_openrouter_key
+python3 -m ckb_talk_radar --hours 24 --model moonshotai/kimi-k2.6
 ```
 
 如果要使用 Kimi：
@@ -101,13 +109,13 @@ python3 -m ckb_talk_radar --serve-only --output-dir outputs --port 8000
 - 每天 `Asia/Shanghai 01:00` 定时更新
 - 支持手动触发 `workflow_dispatch`
 - 自动将 `outputs/latest/` 发布为 Pages 根目录
-- 有 `OPENAI_API_KEY` 或 `MOONSHOT_API_KEY` 时使用 AI 总结，没有则回退到本地总结
+- 有 `OPENAI_API_KEY`、`OPENROUTER_API_KEY` 或 `MOONSHOT_API_KEY` 时使用 AI 总结，没有则回退到本地总结
 
 启用步骤：
 
 1. 把项目推到 GitHub。
 2. 在 `Settings -> Pages` 中把 `Source` 设置为 `GitHub Actions`。
-3. 可选：在 `Settings -> Secrets and variables -> Actions` 中添加 `OPENAI_API_KEY` 或 `MOONSHOT_API_KEY`。
+3. 可选：在 `Settings -> Secrets and variables -> Actions` 中添加 `OPENAI_API_KEY`、`OPENROUTER_API_KEY` 或 `MOONSHOT_API_KEY`。
 4. 可选：在 `Settings -> Secrets and variables -> Actions -> Variables` 中添加：
 
 ```text
@@ -131,6 +139,7 @@ PAGES_CUSTOM_DOMAIN=radar.example.com
 - `--timezone`: 展示时区，默认 `Asia/Shanghai`
 - `--max-pages`: 扫描 `latest.json` 的最大分页数，默认 `5`
 - `--model`: 模型名，默认 `gpt-4.1-mini`
+  如果设置了 `OPENROUTER_API_KEY`，默认模型会自动切到 `moonshotai/kimi-k2.6`
   如果设置了 `MOONSHOT_API_KEY`，默认模型会自动切到 `kimi-for-coding`
 - `--skip-ai`: 强制禁用 AI 总结
 - `--site-url`: 公开站点地址，用于 RSS 和 canonical

@@ -171,6 +171,21 @@ class SummaryTests(unittest.TestCase):
             self.assertTrue((latest_dir / "history" / "index.html").exists())
             self.assertTrue((latest_dir / "archive" / "20260426-090000" / "index.html").exists())
 
+    def test_resolve_llm_credentials_prefers_openrouter(self) -> None:
+        with mock.patch.dict(
+            "os.environ",
+            {
+                "OPENROUTER_API_KEY": "openrouter-key",
+                "MOONSHOT_API_KEY": "moonshot-key",
+                "OPENAI_API_KEY": "openai-key",
+            },
+            clear=False,
+        ):
+            api_key, base_url, provider_name = resolve_llm_credentials()
+        self.assertEqual(api_key, "openrouter-key")
+        self.assertEqual(base_url, "https://openrouter.ai/api/v1")
+        self.assertEqual(provider_name, "openrouter")
+
     def test_resolve_llm_credentials_prefers_moonshot(self) -> None:
         with mock.patch.dict(
             "os.environ",
