@@ -269,13 +269,20 @@ def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
 
     return "\n\n".join(
         [
-            f"请总结 Nervos Talk 最近 {snapshot.window_hours} 小时的社区动态。",
-            "请按以下结构输出：",
-            "1. 核心结论",
-            "2. 重点讨论主题",
-            "3. 社区情绪与趋势判断",
-            "4. 值得跟进的话题或风险",
-            "要求使用简洁中文，优先归纳而不是逐条复述。",
+            f"请总结 Nervos Talk 最近 {snapshot.window_hours} 小时发生了什么。",
+            "请把结果写成面向读者的一份中文日报，不要写成学术分析。",
+            "请按下面结构输出，并尽量像人在写社区晨报：",
+            "## 今日发生了什么",
+            "用 2 到 4 句话先讲清楚今天论坛最主要的事情。",
+            "## 重点话题",
+            "用 3 到 5 条 bullet 概括今天最值得关注的话题，每条都说明发生了什么。",
+            "## 值得继续跟进",
+            "列出 2 到 3 条值得后续观察的方向或风险。",
+            "要求：",
+            "- 使用简洁中文",
+            "- 优先总结“发生了什么”，不要只是罗列关键词",
+            "- 不要编造帖子里没有出现的信息",
+            "- 如果今天内容很少，要明确说社区今天整体较平静",
             "",
             "原始材料：",
             *topic_blocks,
@@ -292,47 +299,47 @@ def build_heuristic_summary(snapshot: CrawlSnapshot) -> str:
     active_topics = sorted(topics, key=lambda item: len(item.recent_posts), reverse=True)[:5]
 
     lines: list[str] = [
-        "### 核心结论",
-        (
-            f"- 最近 {snapshot.window_hours} 小时共抓到 {len(topics)} 个活跃话题、"
-            f"{len(posts)} 条帖子、{len(unique_authors)} 位参与作者。"
-        ),
+        "### 今日发生了什么",
     ]
 
-    if active_topics:
-        lines.append(
-            "- 讨论最集中的话题是："
-            + "；".join(
-                f"{topic.title}（{len(topic.recent_posts)} 条）" for topic in active_topics[:3]
+    if not topics:
+        lines.append("- 最近 24 小时论坛整体比较平静，没有抓到新的活跃讨论。")
+    else:
+        overview = (
+            f"- 最近 {snapshot.window_hours} 小时论坛里共有 {len(topics)} 个活跃话题、"
+            f"{len(posts)} 条帖子、{len(unique_authors)} 位参与作者。"
+        )
+        lines.append(overview)
+        if active_topics:
+            top_topic = active_topics[0]
+            lines.append(
+                f"- 今天最集中的讨论围绕“{top_topic.title}”展开，共有 {len(top_topic.recent_posts)} 条近窗帖子。"
             )
-            + "。"
-        )
 
-    if keyword_counts:
-        lines.append(
-            "- 高频关键词集中在："
-            + "、".join(word for word, _ in keyword_counts[:10])
-            + "。"
-        )
+    lines.extend(["", "### 重点话题"])
 
+    if active_topics:
+        for topic in active_topics[:5]:
+            excerpt = shorten(
+                " ".join(post.content_text.replace("\n", " ") for post in topic.recent_posts[:2]),
+                width=140,
+                placeholder="...",
+            )
+            lines.append(
+                f"- {topic.title}：近 24 小时有 {len(topic.recent_posts)} 条新帖/回复。"
+                f" 讨论主要围绕 {excerpt or '该话题暂无更多可提取内容'}"
+            )
+    else:
+        lines.append("- 今天没有形成明显的重点讨论话题。")
+
+    lines.extend(["", "### 值得继续跟进"])
     if theme_counts:
         dominant = "、".join(f"{theme}（{count}）" for theme, count in theme_counts.most_common(3))
-        lines.extend(
-            [
-                "",
-                "### 主题判断",
-                f"- 近 24 小时内容更偏向：{dominant}。",
-            ]
-        )
+        lines.append(f"- 当前讨论重心主要落在：{dominant}。")
+    if keyword_counts:
+        lines.append("- 可以继续跟踪这些高频线索：" + "、".join(word for word, _ in keyword_counts[:8]) + "。")
 
-    lines.extend(
-        [
-            "",
-            "### 值得跟进",
-            "- 优先查看高回复话题中的最新回复，它们通常代表当前社区最真实的关注点。",
-            "- 如果需要更稳定的结论，建议把连续 7 天的数据都抓下来，再观察主题变化和作者活跃度。",
-        ]
-    )
+    lines.append("- 优先查看高回复话题中的最新回复，它们通常最能代表社区当下真实关注点。")
     return "\n".join(lines)
 
 

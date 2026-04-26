@@ -508,8 +508,8 @@ def render_html_report(
     <section class="main-grid">
       <article class="section">
         <div class="section-header">
-          <h2>Community Summary</h2>
-          <span>AI / heuristic digest</span>
+          <h2>今天发生了什么</h2>
+          <span>{escape(summary.mode)}</span>
         </div>
         <div class="summary-panel">
           {summary_html}
