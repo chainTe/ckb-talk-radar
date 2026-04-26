@@ -168,7 +168,7 @@ def build_summary(snapshot: CrawlSnapshot, *, model: str, skip_ai: bool) -> Summ
 
 
 def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult | None:
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key, base_url, provider_name = resolve_llm_credentials()
     if not api_key:
         return None
 
@@ -181,34 +181,69 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult 
             note="检测到 OPENAI_API_KEY，但当前环境未安装 `openai` 包，已回退到本地规则总结。",
         )
 
-    client = OpenAI(api_key=api_key)
+    client_kwargs = {"api_key": api_key}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+    client = OpenAI(**client_kwargs)
     prompt = build_ai_prompt(snapshot)
-    response = client.responses.create(
+    response = client.chat.completions.create(
         model=model,
-        input=[
+        messages=[
             {
                 "role": "system",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": (
-                            "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
-                            "不要编造未出现的信息；如果信息不足，要明确指出。"
-                        ),
-                    }
-                ],
+                "content": (
+                    "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
+                    "不要编造未出现的信息；如果信息不足，要明确指出。"
+                ),
             },
-            {
-                "role": "user",
-                "content": [{"type": "input_text", "text": prompt}],
-            },
+            {"role": "user", "content": prompt},
         ],
-        max_output_tokens=1400,
+        max_tokens=1400,
     )
-    text = getattr(response, "output_text", "").strip()
+    text = extract_chat_completion_text(response)
     if not text:
         return None
-    return SummaryResult(mode="ai", body=text)
+    return SummaryResult(mode=f"ai:{provider_name}", body=text)
+
+
+def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
+    moonshot_api_key = os.getenv("MOONSHOT_API_KEY")
+    moonshot_base_url = os.getenv("MOONSHOT_BASE_URL")
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    openai_base_url = os.getenv("OPENAI_BASE_URL")
+
+    if moonshot_api_key:
+        return (
+            moonshot_api_key,
+            moonshot_base_url or "https://api.moonshot.cn/v1",
+            "kimi",
+        )
+    if openai_api_key:
+        provider_name = "openai-compatible" if openai_base_url else "openai"
+        return (openai_api_key, openai_base_url, provider_name)
+    return (None, openai_base_url, "openai")
+
+
+def extract_chat_completion_text(response: object) -> str:
+    choices = getattr(response, "choices", None) or []
+    if not choices:
+        return ""
+    message = getattr(choices[0], "message", None)
+    if message is None:
+        return ""
+    content = getattr(message, "content", "")
+    if isinstance(content, str):
+        return content.strip()
+    if isinstance(content, list):
+        parts: list[str] = []
+        for item in content:
+            text = getattr(item, "text", None)
+            if text:
+                parts.append(str(text))
+            elif isinstance(item, dict) and item.get("text"):
+                parts.append(str(item["text"]))
+        return "\n".join(part.strip() for part in parts if part.strip()).strip()
+    return str(content).strip()
 
 
 def build_ai_prompt(snapshot: CrawlSnapshot) -> str:

@@ -10,7 +10,7 @@ on:
       timezone: "Asia/Shanghai"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -37,18 +37,50 @@ jobs:
       - name: Install project
         run: pip install -e ".[ai]"
 
+      - name: Prepare archive history
+        run: |
+          rm -rf .site-history
+          if git ls-remote --exit-code --heads origin site-history; then
+            git fetch origin site-history
+            git worktree add .site-history origin/site-history
+          else
+            mkdir -p .site-history/archive
+          fi
+
       - name: Generate daily brief
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
+          MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
+          MOONSHOT_BASE_URL: ${{ vars.MOONSHOT_BASE_URL }}
+          CKB_TALK_RADAR_MODEL: ${{ vars.CKB_TALK_RADAR_MODEL }}
           CKB_TALK_RADAR_SITE_URL: ${{ vars.PAGES_SITE_URL }}
           CKB_TALK_RADAR_SITE_TITLE: ${{ vars.PAGES_SITE_TITLE }}
           CKB_TALK_RADAR_CUSTOM_DOMAIN: ${{ vars.PAGES_CUSTOM_DOMAIN }}
+          CKB_TALK_RADAR_HISTORY_SOURCE: .site-history
         run: |
           python -m ckb_talk_radar \
             --hours 24 \
             --timezone Asia/Shanghai \
             --output-dir outputs \
             --max-pages 5
+
+      - name: Persist archive history
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -e .site-history/.git ]; then
+            git init .site-history
+            git -C .site-history checkout --orphan site-history
+          fi
+          rsync -a --delete --exclude '.git' outputs/latest/ .site-history/
+          git -C .site-history config user.name "github-actions[bot]"
+          git -C .site-history config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C .site-history add .
+          if ! git -C .site-history diff --cached --quiet; then
+            git -C .site-history commit -m "Archive site update"
+            git -C .site-history push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:site-history
+          fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

@@ -10,6 +10,15 @@ from .reporting import build_summary, ensure_output_dir, render_report, save_sna
 from .server import serve_output_dir
 
 
+def default_model() -> str:
+    env_model = os.getenv("CKB_TALK_RADAR_MODEL")
+    if env_model:
+        return env_model
+    if os.getenv("MOONSHOT_API_KEY"):
+        return "kimi-k2.6"
+    return "gpt-4.1-mini"
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Crawl recent Nervos Talk activity and generate a summary report."
@@ -20,7 +29,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timezone", default="Asia/Shanghai")
     parser.add_argument("--max-pages", type=int, default=5)
     parser.add_argument("--timeout", type=int, default=20)
-    parser.add_argument("--model", default="gpt-4.1-mini")
+    parser.add_argument("--model", default=default_model())
     parser.add_argument("--skip-ai", action="store_true")
     parser.add_argument("--site-url", default=os.getenv("CKB_TALK_RADAR_SITE_URL") or None)
     parser.add_argument(
@@ -30,6 +39,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--custom-domain",
         default=os.getenv("CKB_TALK_RADAR_CUSTOM_DOMAIN") or None,
+    )
+    parser.add_argument(
+        "--history-source",
+        default=os.getenv("CKB_TALK_RADAR_HISTORY_SOURCE") or None,
     )
     parser.add_argument("--serve", action="store_true")
     parser.add_argument("--serve-only", action="store_true")
@@ -90,6 +103,10 @@ def main() -> int:
         output_dir,
         args.output_dir,
         custom_domain=args.custom_domain,
+        timezone_name=args.timezone,
+        site_url=args.site_url,
+        site_title=args.site_title,
+        history_source=args.history_source,
     )
 
     print(f"Snapshot saved to {snapshot_path}")

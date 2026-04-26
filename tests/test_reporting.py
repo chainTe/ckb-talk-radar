@@ -1,12 +1,25 @@
 from __future__ import annotations
 
+import tempfile
 import unittest
 from datetime import datetime, timezone
+from pathlib import Path
+from unittest import mock
 
 from ckb_talk_radar.discourse import clean_cooked_html
 from ckb_talk_radar.models import CrawlSnapshot, ForumPost, TopicActivity
-from ckb_talk_radar.publishing import render_html_report, render_rss_feed
-from ckb_talk_radar.reporting import build_heuristic_summary, extract_keywords
+from ckb_talk_radar.publishing import (
+    publish_latest_artifacts,
+    render_history_index,
+    render_html_report,
+    render_rss_feed,
+)
+from ckb_talk_radar.reporting import (
+    build_heuristic_summary,
+    extract_chat_completion_text,
+    extract_keywords,
+    resolve_llm_credentials,
+)
 
 
 class CleaningTests(unittest.TestCase):
@@ -105,6 +118,83 @@ class SummaryTests(unittest.TestCase):
         self.assertIn("Fiber update", rss)
         self.assertIn("CKB Talk Radar", rss)
         self.assertIn("atom:link", rss)
+
+    def test_render_history_index(self) -> None:
+        snapshot = make_snapshot()
+        html = render_history_index(
+            entries=[
+                type(
+                    "Entry",
+                    (),
+                    {
+                        "run_id": "20260426-090000",
+                        "generated_at": snapshot.generated_at,
+                        "topics": 1,
+                        "posts": 1,
+                        "window_hours": 24,
+                        "title": "20260426-090000 Daily Brief",
+                        "href": "../archive/20260426-090000/",
+                    },
+                )()
+            ],
+            timezone_name="Asia/Shanghai",
+            site_url="https://example.github.io/ckb-talk-radar",
+        )
+        self.assertIn("Archive", html)
+        self.assertIn("../archive/20260426-090000/", html)
+
+    def test_publish_latest_artifacts_includes_archive(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            run_dir = root / "20260426-090000"
+            run_dir.mkdir()
+            (run_dir / "snapshot.json").write_text(
+                (
+                    '{"generated_at":"2026-04-26T09:00:00+00:00","window_hours":24,'
+                    '"topics":[{"recent_posts":[{"author":"alice"}]}]}'
+                ),
+                encoding="utf-8",
+            )
+            (run_dir / "report.md").write_text("# report", encoding="utf-8")
+            (run_dir / "index.html").write_text("<html></html>", encoding="utf-8")
+            (run_dir / "rss.xml").write_text("<rss></rss>", encoding="utf-8")
+
+            latest_dir = publish_latest_artifacts(
+                run_dir,
+                root,
+                timezone_name="Asia/Shanghai",
+                site_url="https://example.github.io/ckb-talk-radar",
+            )
+
+            self.assertTrue((latest_dir / "history" / "index.html").exists())
+            self.assertTrue((latest_dir / "archive" / "20260426-090000" / "index.html").exists())
+
+    def test_resolve_llm_credentials_prefers_moonshot(self) -> None:
+        with mock.patch.dict(
+            "os.environ",
+            {"MOONSHOT_API_KEY": "moonshot-key", "OPENAI_API_KEY": "openai-key"},
+            clear=False,
+        ):
+            api_key, base_url, provider_name = resolve_llm_credentials()
+        self.assertEqual(api_key, "moonshot-key")
+        self.assertEqual(base_url, "https://api.moonshot.cn/v1")
+        self.assertEqual(provider_name, "kimi")
+
+    def test_extract_chat_completion_text(self) -> None:
+        response = type(
+            "Resp",
+            (),
+            {
+                "choices": [
+                    type(
+                        "Choice",
+                        (),
+                        {"message": type("Msg", (), {"content": "hello"})()},
+                    )()
+                ]
+            },
+        )()
+        self.assertEqual(extract_chat_completion_text(response), "hello")
 
 
 def make_snapshot() -> CrawlSnapshot:

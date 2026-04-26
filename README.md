@@ -8,6 +8,7 @@
 - `report.md`: Markdown 版日报
 - `index.html`: 前端日报页
 - `rss.xml`: RSS 订阅源
+- `history/index.html`: 历史归档页
 - 可选的 OpenAI 中文分析总结
 
 ## What It Does
@@ -17,9 +18,11 @@
 - 清洗 HTML 正文，生成可读文本
 - 汇总活跃话题、作者、关键词、主题分布
 - 生成稳定的 `outputs/latest/` 发布目录
+- 生成历史归档页和每日归档目录
 - 支持本地静态服务和 RSS
 - 支持 GitHub Actions 每日构建并部署到 GitHub Pages
 - 支持 AI 总结和本地规则回退
+- 支持 OpenAI 和 Kimi / Moonshot OpenAI-compatible 接口
 
 ## Quick Start
 
@@ -42,6 +45,22 @@ pip3 install -e '.[ai]'
 cp .env.example .env
 export OPENAI_API_KEY=your_key
 python3 -m ckb_talk_radar --hours 24 --model gpt-4.1-mini
+```
+
+如果要使用 Kimi：
+
+```bash
+pip3 install -e '.[ai]'
+export MOONSHOT_API_KEY=your_kimi_key
+python3 -m ckb_talk_radar --hours 24 --model kimi-k2.6
+```
+
+如果你希望统一继续使用 `OPENAI_API_KEY` 变量，也支持 Kimi 的兼容接法：
+
+```bash
+export OPENAI_API_KEY=your_kimi_key
+export OPENAI_BASE_URL=https://api.moonshot.cn/v1
+python3 -m ckb_talk_radar --hours 24 --model kimi-k2.6
 ```
 
 也可以直接用快捷命令：
@@ -100,7 +119,9 @@ PAGES_CUSTOM_DOMAIN=radar.example.com
 
 - 首页是日报页 `/`
 - RSS 是 `/rss.xml`
+- 历史归档页是 `/history/`
 - 如果设置了 `PAGES_CUSTOM_DOMAIN`，会自动生成 `CNAME`
+- 工作流会额外维护一个 `site-history` 分支，用来保留旧日报文件
 
 ## CLI Options
 
@@ -109,10 +130,12 @@ PAGES_CUSTOM_DOMAIN=radar.example.com
 - `--timezone`: 展示时区，默认 `Asia/Shanghai`
 - `--max-pages`: 扫描 `latest.json` 的最大分页数，默认 `5`
 - `--model`: OpenAI 模型名，默认 `gpt-4.1-mini`
+  如果设置了 `MOONSHOT_API_KEY`，默认模型会自动切到 `kimi-k2.6`
 - `--skip-ai`: 强制禁用 AI 总结
 - `--site-url`: 公开站点地址，用于 RSS 和 canonical
 - `--site-title`: 页面和 RSS 标题
 - `--custom-domain`: 生成 GitHub Pages `CNAME`
+- `--history-source`: 从已有归档目录恢复历史，用于 CI 持久化
 - `--serve`: 生成后立即启动本地服务
 - `--serve-only`: 不抓取，只服务 `outputs/latest/`
 - `--host`: 服务监听地址，默认 `127.0.0.1`
@@ -147,6 +170,14 @@ outputs/20260426-173000/
   report.md
   rss.xml
 outputs/latest/
+  archive/
+    20260426-173000/
+      index.html
+      report.md
+      rss.xml
+      snapshot.json
+  history/
+    index.html
   index.html
   snapshot.json
   report.md

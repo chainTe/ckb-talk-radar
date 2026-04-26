@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import json
+import re
 import shutil
 from collections import Counter
+from dataclasses import dataclass
 from datetime import datetime
 from email.utils import format_datetime
 from html import escape
@@ -13,6 +16,20 @@ from zoneinfo import ZoneInfo
 
 from .models import CrawlSnapshot, ForumPost, TopicActivity
 from .reporting import SummaryResult, extract_keywords, extract_themes, format_dt
+
+
+RUN_DIR_PATTERN = re.compile(r"^\d{8}-\d{6}$")
+
+
+@dataclass(slots=True)
+class ArchiveEntry:
+    run_id: str
+    generated_at: datetime
+    topics: int
+    posts: int
+    window_hours: int
+    title: str
+    href: str
 
 
 def render_html_report(
@@ -480,6 +497,7 @@ def render_html_report(
           <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
           <div class="feed-links">
             <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
             <a href="./report.md">查看 Markdown</a>
             <a href="./snapshot.json">查看 JSON</a>
           </div>
@@ -601,6 +619,132 @@ def render_rss_feed(
     )
 
 
+def render_history_index(
+    entries: list[ArchiveEntry],
+    *,
+    timezone_name: str,
+    site_url: str | None = None,
+    site_title: str = "CKB Talk Radar Daily Brief",
+) -> str:
+    zone = ZoneInfo(timezone_name)
+    canonical = ""
+    if site_url:
+        canonical = f'  <link rel="canonical" href="{escape(site_url.rstrip("/") + "/history/")}">\n'
+
+    cards = "\n".join(
+        (
+            "<article class=\"archive-card\">"
+            f"<time>{escape(format_dt(entry.generated_at, zone))}</time>"
+            f"<h2><a href=\"{escape(entry.href)}\">{escape(entry.title)}</a></h2>"
+            f"<p>{entry.topics} 个话题 · {entry.posts} 条帖子 · {entry.window_hours}h 窗口</p>"
+            f"<a class=\"open-link\" href=\"{escape(entry.href)}\">查看日报</a>"
+            "</article>"
+        )
+        for entry in entries
+    ) or "<article class=\"archive-card\"><p>暂无历史归档。</p></article>"
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{escape(site_title)} Archive</title>
+{canonical}  <style>
+    :root {{
+      --bg: #f7f1e8;
+      --ink: #1f1810;
+      --muted: #6d604f;
+      --card: rgba(255, 252, 247, 0.84);
+      --line: rgba(31, 24, 16, 0.1);
+      --accent: #235a4d;
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(35, 90, 77, 0.16), transparent 24%),
+        radial-gradient(circle at 10% 10%, rgba(184, 77, 26, 0.12), transparent 22%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }}
+    .wrap {{
+      width: min(1100px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }}
+    .hero {{
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 252, 247, 0.82);
+      border: 1px solid rgba(255,255,255,0.56);
+      box-shadow: 0 26px 48px rgba(58, 40, 19, 0.1);
+    }}
+    .hero h1 {{
+      margin: 10px 0 8px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -0.05em;
+    }}
+    .hero p {{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 60ch;
+    }}
+    .hero a {{
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent);
+    }}
+    .grid {{
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }}
+    .archive-card {{
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 32px rgba(58, 40, 19, 0.08);
+    }}
+    .archive-card time {{
+      color: var(--muted);
+      font-size: 13px;
+    }}
+    .archive-card h2 {{
+      margin: 6px 0 8px;
+      font-size: 24px;
+      line-height: 1.15;
+    }}
+    .archive-card p {{
+      margin: 0 0 12px;
+      color: var(--muted);
+    }}
+    .open-link {{
+      color: var(--accent);
+      text-decoration: none;
+    }}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <p>CKB Talk Radar</p>
+      <h1>Archive</h1>
+      <p>这里保留每天生成的社区简报历史版本。首页始终展示最新结果，这里则用来回看过去几天的话题脉络。</p>
+      <a href="../">返回最新日报</a>
+    </section>
+    <section class="grid">
+      {cards}
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
 def render_rss_item(
     *,
     title: str,
@@ -715,6 +859,10 @@ def publish_latest_artifacts(
     output_root: str | Path,
     *,
     custom_domain: str | None = None,
+    timezone_name: str = "Asia/Shanghai",
+    site_url: str | None = None,
+    site_title: str = "CKB Talk Radar Daily Brief",
+    history_source: str | Path | None = None,
 ) -> Path:
     latest_dir = Path(output_root) / "latest"
     latest_dir.mkdir(parents=True, exist_ok=True)
@@ -722,7 +870,88 @@ def publish_latest_artifacts(
         source = Path(run_dir) / filename
         if source.exists():
             shutil.copy2(source, latest_dir / filename)
+    archive_dir = latest_dir / "archive"
+    history_dir = latest_dir / "history"
+    shutil.rmtree(archive_dir, ignore_errors=True)
+    shutil.rmtree(history_dir, ignore_errors=True)
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    history_dir.mkdir(parents=True, exist_ok=True)
+
+    entries = collect_archive_entries(output_root, archive_dir, history_source)
+    history_html = render_history_index(
+        entries,
+        timezone_name=timezone_name,
+        site_url=site_url,
+        site_title=site_title,
+    )
+    (history_dir / "index.html").write_text(history_html, encoding="utf-8")
     (latest_dir / ".nojekyll").write_text("", encoding="utf-8")
     if custom_domain:
         (latest_dir / "CNAME").write_text(f"{custom_domain.strip()}\n", encoding="utf-8")
     return latest_dir
+
+
+def collect_archive_entries(
+    output_root: str | Path,
+    archive_dir: Path,
+    history_source: str | Path | None,
+) -> list[ArchiveEntry]:
+    entries: dict[str, ArchiveEntry] = {}
+
+    if history_source:
+        seed_archive_dir = Path(history_source) / "archive"
+        if seed_archive_dir.exists():
+            for source_dir in sorted(seed_archive_dir.iterdir()):
+                if not source_dir.is_dir():
+                    continue
+                target_dir = archive_dir / source_dir.name
+                shutil.copytree(source_dir, target_dir, dirs_exist_ok=True)
+                entry = build_archive_entry(target_dir, source_dir.name)
+                if entry is not None:
+                    entries[entry.run_id] = entry
+
+    for source_dir in iter_local_run_dirs(output_root):
+        target_dir = archive_dir / source_dir.name
+        target_dir.mkdir(parents=True, exist_ok=True)
+        for filename in ("snapshot.json", "report.md", "index.html", "rss.xml"):
+            source = source_dir / filename
+            if source.exists():
+                shutil.copy2(source, target_dir / filename)
+        entry = build_archive_entry(target_dir, source_dir.name)
+        if entry is not None:
+            entries[entry.run_id] = entry
+
+    return sorted(entries.values(), key=lambda item: item.run_id, reverse=True)
+
+
+def iter_local_run_dirs(output_root: str | Path) -> list[Path]:
+    root = Path(output_root)
+    dirs: list[Path] = []
+    for item in root.iterdir():
+        if not item.is_dir():
+            continue
+        if item.name in {"latest", ".site-history"}:
+            continue
+        if RUN_DIR_PATTERN.match(item.name) and (item / "snapshot.json").exists():
+            dirs.append(item)
+    return sorted(dirs)
+
+
+def build_archive_entry(run_dir: Path, run_id: str) -> ArchiveEntry | None:
+    snapshot_path = run_dir / "snapshot.json"
+    index_path = run_dir / "index.html"
+    if not snapshot_path.exists() or not index_path.exists():
+        return None
+    data = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    topics = data.get("topics", [])
+    posts = sum(len(topic.get("recent_posts", [])) for topic in topics)
+    title = f"{run_id} Daily Brief"
+    return ArchiveEntry(
+        run_id=run_id,
+        generated_at=datetime.fromisoformat(data["generated_at"]),
+        topics=len(topics),
+        posts=posts,
+        window_hours=int(data.get("window_hours", 24)),
+        title=title,
+        href=f"../archive/{run_id}/",
+    )
