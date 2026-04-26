@@ -1,0 +1,406 @@
+from __future__ import annotations
+
+import json
+import os
+import re
+from collections import Counter
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from textwrap import shorten
+from typing import Iterable
+from zoneinfo import ZoneInfo
+
+from .models import CrawlSnapshot, ForumPost, TopicActivity
+
+
+STOPWORDS = {
+    "the",
+    "and",
+    "that",
+    "with",
+    "this",
+    "have",
+    "from",
+    "your",
+    "about",
+    "there",
+    "their",
+    "they",
+    "will",
+    "would",
+    "what",
+    "when",
+    "where",
+    "which",
+    "while",
+    "into",
+    "just",
+    "also",
+    "than",
+    "then",
+    "them",
+    "been",
+    "being",
+    "more",
+    "some",
+    "could",
+    "should",
+    "because",
+    "very",
+    "much",
+    "make",
+    "made",
+    "here",
+    "only",
+    "over",
+    "after",
+    "before",
+    "these",
+    "those",
+    "using",
+    "used",
+    "like",
+    "still",
+    "even",
+    "for",
+    "not",
+    "local",
+    "week",
+    "weeks",
+    "status",
+    "report",
+    "update",
+    "notes",
+    "thanks",
+    "thank",
+    "hello",
+    "please",
+    "into",
+    "from",
+    "community",
+    "nervos",
+    "talk",
+    "https",
+    "http",
+    "com",
+    "org",
+}
+
+THEME_KEYWORDS = {
+    "技术开发": {
+        "sdk",
+        "fiber",
+        "ckb",
+        "script",
+        "contract",
+        "protocol",
+        "transaction",
+        "node",
+        "rpc",
+        "testnet",
+        "mainnet",
+        "wallet",
+        "integration",
+    },
+    "生态进展": {
+        "launch",
+        "product",
+        "project",
+        "tool",
+        "platform",
+        "app",
+        "release",
+        "partnership",
+        "grant",
+        "ecosystem",
+    },
+    "社区互动": {
+        "ama",
+        "event",
+        "meetup",
+        "discussion",
+        "feedback",
+        "question",
+        "tutorial",
+        "guide",
+        "share",
+        "community",
+    },
+    "市场与传播": {
+        "market",
+        "trading",
+        "listing",
+        "price",
+        "campaign",
+        "media",
+        "twitter",
+        "x.com",
+        "growth",
+    },
+}
+
+
+@dataclass(slots=True)
+class SummaryResult:
+    mode: str
+    body: str
+    note: str | None = None
+
+
+def ensure_output_dir(base_dir: str | Path, run_at: datetime) -> Path:
+    run_dir = Path(base_dir) / run_at.strftime("%Y%m%d-%H%M%S")
+    run_dir.mkdir(parents=True, exist_ok=True)
+    return run_dir
+
+
+def save_snapshot(snapshot: CrawlSnapshot, path: str | Path) -> None:
+    with Path(path).open("w", encoding="utf-8") as handle:
+        json.dump(snapshot.to_dict(), handle, ensure_ascii=False, indent=2)
+
+
+def build_summary(snapshot: CrawlSnapshot, *, model: str, skip_ai: bool) -> SummaryResult:
+    if not skip_ai:
+        ai_summary = try_openai_summary(snapshot=snapshot, model=model)
+        if ai_summary is not None:
+            return ai_summary
+    return SummaryResult(mode="heuristic", body=build_heuristic_summary(snapshot))
+
+
+def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult | None:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+
+    try:
+        from openai import OpenAI
+    except ImportError:
+        return SummaryResult(
+            mode="heuristic",
+            body=build_heuristic_summary(snapshot),
+            note="检测到 OPENAI_API_KEY，但当前环境未安装 `openai` 包，已回退到本地规则总结。",
+        )
+
+    client = OpenAI(api_key=api_key)
+    prompt = build_ai_prompt(snapshot)
+    response = client.responses.create(
+        model=model,
+        input=[
+            {
+                "role": "system",
+                "content": [
+                    {
+                        "type": "input_text",
+                        "text": (
+                            "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
+                            "不要编造未出现的信息；如果信息不足，要明确指出。"
+                        ),
+                    }
+                ],
+            },
+            {
+                "role": "user",
+                "content": [{"type": "input_text", "text": prompt}],
+            },
+        ],
+        max_output_tokens=1400,
+    )
+    text = getattr(response, "output_text", "").strip()
+    if not text:
+        return None
+    return SummaryResult(mode="ai", body=text)
+
+
+def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
+    topic_blocks: list[str] = []
+    for topic in snapshot.topics[:30]:
+        header = (
+            f"话题: {topic.title}\n"
+            f"链接: {topic.url}\n"
+            f"最近24小时帖子数: {len(topic.recent_posts)}\n"
+        )
+        post_blocks: list[str] = []
+        for post in topic.recent_posts[:10]:
+            post_blocks.append(
+                "\n".join(
+                    [
+                        f"- 作者: {post.author}",
+                        f"  时间: {post.created_at.isoformat()}",
+                        f"  内容: {shorten(post.content_text, width=500, placeholder='...')}",
+                    ]
+                )
+            )
+        topic_blocks.append(f"{header}\n" + "\n".join(post_blocks))
+
+    return "\n\n".join(
+        [
+            f"请总结 Nervos Talk 最近 {snapshot.window_hours} 小时的社区动态。",
+            "请按以下结构输出：",
+            "1. 核心结论",
+            "2. 重点讨论主题",
+            "3. 社区情绪与趋势判断",
+            "4. 值得跟进的话题或风险",
+            "要求使用简洁中文，优先归纳而不是逐条复述。",
+            "",
+            "原始材料：",
+            *topic_blocks,
+        ]
+    )
+
+
+def build_heuristic_summary(snapshot: CrawlSnapshot) -> str:
+    posts = snapshot.posts
+    topics = snapshot.topics
+    unique_authors = sorted({post.author for post in posts})
+    keyword_counts = extract_keywords(posts)
+    theme_counts = extract_themes(posts)
+    active_topics = sorted(topics, key=lambda item: len(item.recent_posts), reverse=True)[:5]
+
+    lines: list[str] = [
+        "### 核心结论",
+        (
+            f"- 最近 {snapshot.window_hours} 小时共抓到 {len(topics)} 个活跃话题、"
+            f"{len(posts)} 条帖子、{len(unique_authors)} 位参与作者。"
+        ),
+    ]
+
+    if active_topics:
+        lines.append(
+            "- 讨论最集中的话题是："
+            + "；".join(
+                f"{topic.title}（{len(topic.recent_posts)} 条）" for topic in active_topics[:3]
+            )
+            + "。"
+        )
+
+    if keyword_counts:
+        lines.append(
+            "- 高频关键词集中在："
+            + "、".join(word for word, _ in keyword_counts[:10])
+            + "。"
+        )
+
+    if theme_counts:
+        dominant = "、".join(f"{theme}（{count}）" for theme, count in theme_counts.most_common(3))
+        lines.extend(
+            [
+                "",
+                "### 主题判断",
+                f"- 近 24 小时内容更偏向：{dominant}。",
+            ]
+        )
+
+    lines.extend(
+        [
+            "",
+            "### 值得跟进",
+            "- 优先查看高回复话题中的最新回复，它们通常代表当前社区最真实的关注点。",
+            "- 如果需要更稳定的结论，建议把连续 7 天的数据都抓下来，再观察主题变化和作者活跃度。",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def render_report(
+    snapshot: CrawlSnapshot,
+    summary: SummaryResult,
+    *,
+    timezone_name: str,
+) -> str:
+    zone = ZoneInfo(timezone_name)
+    posts = snapshot.posts
+    authors = sorted({post.author for post in posts})
+    topic_lines = render_topic_lines(snapshot.topics, zone)
+    recent_post_lines = render_recent_post_lines(posts, zone)
+
+    lines: list[str] = [
+        "# Nervos Talk 社区简报",
+        "",
+        f"- 统计窗口: {format_dt(snapshot.since, zone)} 到 {format_dt(snapshot.until, zone)}",
+        f"- 生成时间: {format_dt(snapshot.generated_at, zone)}",
+        f"- 话题数: {len(snapshot.topics)}",
+        f"- 帖子数: {len(posts)}",
+        f"- 作者数: {len(authors)}",
+        f"- 总结模式: {summary.mode}",
+    ]
+
+    if summary.note:
+        lines.append(f"- 备注: {summary.note}")
+
+    lines.extend(
+        [
+            "",
+            "## 社区总结",
+            "",
+            summary.body.strip(),
+            "",
+            "## 活跃话题",
+            "",
+            *topic_lines,
+            "",
+            "## 最近帖子摘录",
+            "",
+            *recent_post_lines,
+        ]
+    )
+    return "\n".join(lines).strip() + "\n"
+
+
+def render_topic_lines(topics: Iterable[TopicActivity], zone: ZoneInfo) -> list[str]:
+    lines: list[str] = []
+    for index, topic in enumerate(topics, start=1):
+        latest = format_dt(topic.last_posted_at or topic.created_at, zone)
+        tags = f" | tags: {', '.join(topic.tags)}" if topic.tags else ""
+        lines.append(
+            f"{index}. [{topic.title}]({topic.url}) | {len(topic.recent_posts)} 条近窗帖子 | 最新活动 {latest}{tags}"
+        )
+    if not lines:
+        return ["暂无最近 24 小时内容。"]
+    return lines
+
+
+def render_recent_post_lines(posts: list[ForumPost], zone: ZoneInfo) -> list[str]:
+    lines: list[str] = []
+    for post in sorted(posts, key=lambda item: item.created_at, reverse=True)[:20]:
+        preview = shorten(post.content_text.replace("\n", " "), width=180, placeholder="...")
+        lines.append(
+            f"- {format_dt(post.created_at, zone)} | {post.author} | [{post.topic_title}]({post.url}) | {preview}"
+        )
+    if not lines:
+        return ["暂无帖子。"]
+    return lines
+
+
+def format_dt(value: datetime, zone: ZoneInfo) -> str:
+    return value.astimezone(zone).strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def extract_keywords(posts: Iterable[ForumPost], limit: int = 15) -> list[tuple[str, int]]:
+    counter: Counter[str] = Counter()
+    for post in posts:
+        tokens = re.findall(r"[a-zA-Z][a-zA-Z0-9_.-]{2,}", post.content_text.lower())
+        for token in tokens:
+            if token in STOPWORDS:
+                continue
+            if token.startswith("www."):
+                continue
+            counter[token] += 1
+    return counter.most_common(limit)
+
+
+def extract_themes(posts: Iterable[ForumPost]) -> Counter[str]:
+    counter: Counter[str] = Counter()
+    for post in posts:
+        lowered = post.content_text.lower()
+        best_theme: str | None = None
+        best_score = 0
+        for theme, keywords in THEME_KEYWORDS.items():
+            score = sum(1 for keyword in keywords if keyword in lowered)
+            if score > best_score:
+                best_theme = theme
+                best_score = score
+        if best_theme is None:
+            counter["其他"] += 1
+        else:
+            counter[best_theme] += 1
+    return counter
