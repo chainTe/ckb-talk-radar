@@ -35,7 +35,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install project
-        run: pip install -e ".[ai]"
+        run: pip install -e .
 
       - name: Prepare archive history
         run: |

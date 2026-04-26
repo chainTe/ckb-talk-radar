@@ -8,10 +8,7 @@ version = "0.1.0"
 description = "Crawl recent Nervos Talk activity and generate AI-assisted community summaries."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
-
-[project.optional-dependencies]
-ai = ["openai>=1.40.0"]
+dependencies = ["openai>=1.40.0"]
 
 [tool.setuptools]
 packages = ["ckb_talk_radar"]

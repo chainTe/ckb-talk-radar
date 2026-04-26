@@ -41,7 +41,7 @@ python3 -m ckb_talk_radar --hours 24 --skip-ai
 如果要启用 AI 总结：
 
 ```bash
-pip3 install -e '.[ai]'
+pip3 install -e .
 cp .env.example .env
 export OPENAI_API_KEY=your_key
 python3 -m ckb_talk_radar --hours 24 --model gpt-4.1-mini
@@ -50,7 +50,7 @@ python3 -m ckb_talk_radar --hours 24 --model gpt-4.1-mini
 如果要使用 Kimi：
 
 ```bash
-pip3 install -e '.[ai]'
+pip3 install -e .
 export MOONSHOT_API_KEY=your_kimi_key
 export MOONSHOT_BASE_URL=https://api.kimi.com/coding/v1
 python3 -m ckb_talk_radar --hours 24 --model kimi-for-coding
