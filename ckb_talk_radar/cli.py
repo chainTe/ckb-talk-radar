@@ -15,7 +15,7 @@ def default_model() -> str:
     if env_model:
         return env_model
     if os.getenv("MOONSHOT_API_KEY"):
-        return "kimi-k2.6"
+        return "kimi-for-coding"
     return "gpt-4.1-mini"
 
 

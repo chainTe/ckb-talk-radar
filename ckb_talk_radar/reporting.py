@@ -186,24 +186,31 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult 
         client_kwargs["base_url"] = base_url
     client = OpenAI(**client_kwargs)
     prompt = build_ai_prompt(snapshot)
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
-                    "不要编造未出现的信息；如果信息不足，要明确指出。"
-                ),
-            },
-            {"role": "user", "content": prompt},
-        ],
-        max_tokens=1400,
-    )
-    text = extract_chat_completion_text(response)
-    if not text:
-        return None
-    return SummaryResult(mode=f"ai:{provider_name}", body=text)
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
+                        "不要编造未出现的信息；如果信息不足，要明确指出。"
+                    ),
+                },
+                {"role": "user", "content": prompt},
+            ],
+            max_tokens=1400,
+        )
+        text = extract_chat_completion_text(response)
+        if not text:
+            return None
+        return SummaryResult(mode=f"ai:{provider_name}", body=text)
+    except Exception as exc:
+        return SummaryResult(
+            mode="heuristic",
+            body=build_heuristic_summary(snapshot),
+            note=f"AI 总结调用失败，已回退到本地规则总结：{exc}",
+        )
 
 
 def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
@@ -215,7 +222,7 @@ def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
     if moonshot_api_key:
         return (
             moonshot_api_key,
-            moonshot_base_url or "https://api.moonshot.cn/v1",
+            moonshot_base_url or "https://api.kimi.com/coding/v1",
             "kimi",
         )
     if openai_api_key:

@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 from ckb_talk_radar.discourse import clean_cooked_html
@@ -19,6 +20,7 @@ from ckb_talk_radar.reporting import (
     extract_chat_completion_text,
     extract_keywords,
     resolve_llm_credentials,
+    try_openai_summary,
 )
 
 
@@ -177,7 +179,7 @@ class SummaryTests(unittest.TestCase):
         ):
             api_key, base_url, provider_name = resolve_llm_credentials()
         self.assertEqual(api_key, "moonshot-key")
-        self.assertEqual(base_url, "https://api.moonshot.cn/v1")
+        self.assertEqual(base_url, "https://api.kimi.com/coding/v1")
         self.assertEqual(provider_name, "kimi")
 
     def test_extract_chat_completion_text(self) -> None:
@@ -195,6 +197,19 @@ class SummaryTests(unittest.TestCase):
             },
         )()
         self.assertEqual(extract_chat_completion_text(response), "hello")
+
+    def test_try_openai_summary_falls_back_on_provider_error(self) -> None:
+        snapshot = make_snapshot()
+        fake_client = mock.Mock()
+        fake_client.chat.completions.create.side_effect = RuntimeError("Invalid Authentication")
+        fake_openai_module = SimpleNamespace(OpenAI=mock.Mock(return_value=fake_client))
+        with mock.patch.dict("os.environ", {"MOONSHOT_API_KEY": "moonshot-key"}, clear=False):
+            with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
+                summary = try_openai_summary(snapshot=snapshot, model="kimi-for-coding")
+        self.assertIsNotNone(summary)
+        assert summary is not None
+        self.assertEqual(summary.mode, "heuristic")
+        self.assertIn("调用失败", summary.note or "")
 
 
 def make_snapshot() -> CrawlSnapshot:
