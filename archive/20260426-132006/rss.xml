@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://talk.nervos.org/latest</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sun, 26 Apr 2026 12:23:13 +0000</lastBuildDate>
+  <item>
+    <title>CKB Talk Daily Brief - 2026-04-26</title>
+    <link>https://talk.nervos.org/latest</link>
+    <guid>tag:ckb-talk-radar,2026-04-26:daily-brief</guid>
+    <pubDate>Sun, 26 Apr 2026 13:20:09 +0000</pubDate>
+    <description>### 核心结论 最近 24 小时共抓到 3 个活跃话题、7 条帖子、5 位参与作者。 讨论最集中的话题是：CellScript - A DSL for Cell-Based Contracts（4 条）；Spark Program | CKB-UGMP —— A Universal Spore/DOB Seamless Minting Infrastructure Prototype on CKB —— 基于 CKB 的通用 Spore/DOB 无感铸造基础设施原型（2 条）；Spark Program | CKB Developer Onboarding Guide（1 条）。 高频关键词集中在：milestone、ckb、rpc、validation、setup、cellscript、node、was、you、sections。 ### 主题判断 近 24 小时内容更偏向：技术开发（6）、其他（1）。 ### 值得跟进 优先查看高回复话题中的最新回复，它们通常代表当前社区最真实的关注点。 如果需要更稳定的结论，建议把连续 7 天的数据都抓下来，再观察主题变化和作者活跃度。</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB-UGMP —— A Universal Spore/DOB Seamless Minting Infrastructure Prototype on CKB —— 基于 CKB 的通用 Spore/DOB 无感铸造基础设施原型 (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-ugmp-a-universal-spore-dob-seamless-minting-infrastructure-prototype-on-ckb-ckb-spore-dob/10098</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-ugmp-a-universal-spore-dob-seamless-minting-infrastructure-prototype-on-ckb-ckb-spore-dob/10098#recent-2</guid>
+    <pubDate>Sun, 26 Apr 2026 12:23:13 +0000</pubDate>
+    <description>各位好，向各位汇报本周的工作 1. 前端工程初始化完成 已完成基于 Next.js 14 + TypeScript + Tailwind CSS 的前端项目初始化，并整理为后续可扩展的仓库结构。 2. CCC Provider 与钱包连接层已接入 已完成 @ckb-ccc/connector-react 的接入，并在全局布局中注入 Provider，作为后续所有链上交互的基础。 3. Mint 主流程 UI 骨架已建立 当前 Mint 工作台已包含： 本地图片选择入口 已选文件名与体积状态展示 Storage Selector 下拉菜单 预留的 Mint Pipeline Preview 区块 后续 Mint DOB 按钮的禁用态占位 九、下周计划 第 2 周计划进入“上传层与请求状态管理”阶段，优先推进以下事项： 接入 Pinata / IPFS 上传逻辑，完成本地图片到 CID 的基础链路。 增加上传相关状态管理，包括上传中、成功、失败和错误提示。 Hi there, Weekly Progress Report 1. Frontend Project Initialization Successfully initialized the frontend project using Next.js 14 + TypeScript + Tailwind CSS. The repository structure has been organized to ensure scalability for future development. 2. Integration...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB Developer Onboarding Guide (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-developer-onboarding-guide/10131</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-developer-onboarding-guide/10131#recent-1</guid>
+    <pubDate>Sun, 26 Apr 2026 06:34:24 +0000</pubDate>
+    <description>Hi @xingtianchunyan, below you can find the progress report for Milestone 1, week 2 Week 2 Milestone 1 Progress Report Status Milestone 1 has been completed. This phase focused on finishing the remaining Milestone 1 onboarding documents, replacing placeholder-only setup sections with validated guidance, and extending the validation evidence behind the local CKB node and RPC flow. The work completed during this period strengthens the project goal of reducing beginner ambiguity and making the path to first successful RPC interaction more explicit and repeatable. Repository And Publication Status The repository structure established in Week 1 remains in place, and the Week 2 work was...</description>
+  </item>
+  <item>
+    <title>CellScript - A DSL for Cell-Based Contracts (4 posts)</title>
+    <link>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193</link>
+    <guid>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193#recent-4</guid>
+    <pubDate>Sun, 26 Apr 2026 02:48:14 +0000</pubDate>
+    <description>Hey Arthur, thank you!! I appreciate you introducing CellScript publicly! From what I understand, it gives CKB and other cell-based systems a higher-level language without abstracting away the cell model. Gotta love the honesty about what already works and what is still maturing! Looking at the repo, CellScript compiles to ckb-vm-compatible RISC-V assembly or ELF. It also makes resources, shared state, receipts, and explicit Cell effects, plus typed metadata, explicit. That keeps the language tied to the same execution target and cell effects. As you put it: ArthurZhang: This is an early test release. The compiler works. The type checker catches real mistakes. The codegen produces valid...</description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief Archive</title>
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --ink: #1f1810;
+      --muted: #6d604f;
+      --card: rgba(255, 252, 247, 0.84);
+      --line: rgba(31, 24, 16, 0.1);
+      --accent: #235a4d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(35, 90, 77, 0.16), transparent 24%),
+        radial-gradient(circle at 10% 10%, rgba(184, 77, 26, 0.12), transparent 22%),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    .wrap {
+      width: min(1100px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+    .hero {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 252, 247, 0.82);
+      border: 1px solid rgba(255,255,255,0.56);
+      box-shadow: 0 26px 48px rgba(58, 40, 19, 0.1);
+    }
+    .hero h1 {
+      margin: 10px 0 8px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -0.05em;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+    .hero a {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent);
+    }
+    .grid {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+    .archive-card {
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 32px rgba(58, 40, 19, 0.08);
+    }
+    .archive-card time {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .archive-card h2 {
+      margin: 6px 0 8px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+    .archive-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .open-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <p>CKB Talk Radar</p>
+      <h1>Archive</h1>
+      <p>这里保留每天生成的社区简报历史版本。首页始终展示最新结果，这里则用来回看过去几天的话题脉络。</p>
+      <a href="../">返回最新日报</a>
+    </section>
+    <section class="grid">
+      <article class="archive-card"><time>2026-04-26 21:20:09 CST</time><h2><a href="../archive/20260426-132006/">20260426-132006 Daily Brief</a></h2><p>3 个话题 · 7 条帖子 · 24h 窗口</p><a class="open-link" href="../archive/20260426-132006/">查看日报</a></article>
+    </section>
+  </main>
+</body>
+</html>
