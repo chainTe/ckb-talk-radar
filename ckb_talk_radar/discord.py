@@ -9,11 +9,13 @@ from textwrap import shorten
 from typing import Any
 from urllib import error, request
 
+from . import __version__
 from .models import CrawlSnapshot, TopicActivity
 from .reporting import SummaryResult, extract_keywords, extract_themes
 
 
 DISCORD_MESSAGE_LIMIT = 2000
+DEFAULT_DISCORD_USER_AGENT = f"ckb-talk-radar/{__version__} (+https://chainte.github.io/ckb-talk-radar)"
 SECTION_TITLES = ("今日发生了什么", "重点话题", "值得继续跟进")
 SECTION_HEADING_RE = re.compile(r"^\s*#{2,6}\s*(.+?)\s*$")
 
@@ -229,12 +231,7 @@ def publish_to_discord(
 
 def send_webhook_message(webhook_url: str, payload: DiscordPayload, *, timeout: int = 20) -> None:
     body = json.dumps(payload.to_dict(), ensure_ascii=False).encode("utf-8")
-    http_request = request.Request(
-        webhook_url,
-        data=body,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
+    http_request = build_discord_request(webhook_url, body)
 
     for attempt in range(2):
         try:
@@ -249,11 +246,30 @@ def send_webhook_message(webhook_url: str, payload: DiscordPayload, *, timeout: 
                 time.sleep(retry_after)
                 continue
             detail = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 403 and "1010" in detail:
+                raise DiscordPublishError(
+                    "Discord webhook request was blocked by Cloudflare (error 1010). "
+                    "This usually means the request fingerprint or network was denied before "
+                    "it reached the webhook endpoint."
+                ) from exc
             raise DiscordPublishError(
                 f"Discord webhook request failed with status {exc.code}: {detail}"
             ) from exc
         except error.URLError as exc:
             raise DiscordPublishError(f"Discord webhook request failed: {exc}") from exc
+
+
+def build_discord_request(webhook_url: str, body: bytes) -> request.Request:
+    return request.Request(
+        webhook_url,
+        data=body,
+        headers={
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": DEFAULT_DISCORD_USER_AGENT,
+        },
+        method="POST",
+    )
 
 
 def read_retry_after_seconds(exc: error.HTTPError) -> float:

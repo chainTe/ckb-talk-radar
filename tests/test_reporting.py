@@ -10,7 +10,9 @@ from unittest import mock
 from urllib import error
 
 from ckb_talk_radar.discord import (
+    DEFAULT_DISCORD_USER_AGENT,
     DiscordPayload,
+    build_discord_request,
     compose_discord_brief,
     parse_summary_sections,
     read_retry_after_seconds,
@@ -318,6 +320,13 @@ class SummaryTests(unittest.TestCase):
                 "avatar_url": "https://example.com/avatar.png",
             },
         )
+
+    def test_build_discord_request_sets_expected_headers(self) -> None:
+        http_request = build_discord_request("https://discord.example/webhook", b"{}")
+        self.assertEqual(http_request.get_method(), "POST")
+        self.assertEqual(http_request.headers["Content-type"], "application/json")
+        self.assertEqual(http_request.headers["Accept"], "application/json")
+        self.assertEqual(http_request.headers["User-agent"], DEFAULT_DISCORD_USER_AGENT)
 
 
 def make_snapshot() -> CrawlSnapshot:
