@@ -4,6 +4,7 @@ import argparse
 import os
 from datetime import datetime, timedelta, timezone
 
+from .discord import DiscordPublishError, compose_discord_brief, publish_to_discord
 from .discourse import CrawlError, DiscourseClient
 from .publishing import publish_latest_artifacts, render_html_report, render_rss_feed
 from .reporting import build_summary, ensure_output_dir, render_report, save_snapshot
@@ -45,6 +46,20 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--history-source",
         default=os.getenv("CKB_TALK_RADAR_HISTORY_SOURCE") or None,
+    )
+    parser.add_argument(
+        "--discord-webhook-url",
+        default=os.getenv("CKB_TALK_RADAR_DISCORD_WEBHOOK_URL")
+        or os.getenv("DISCORD_WEBHOOK_URL")
+        or None,
+    )
+    parser.add_argument(
+        "--discord-username",
+        default=os.getenv("CKB_TALK_RADAR_DISCORD_USERNAME") or "CKB Talk Radar",
+    )
+    parser.add_argument(
+        "--discord-avatar-url",
+        default=os.getenv("CKB_TALK_RADAR_DISCORD_AVATAR_URL") or None,
     )
     parser.add_argument("--serve", action="store_true")
     parser.add_argument("--serve-only", action="store_true")
@@ -116,6 +131,20 @@ def main() -> int:
     print(f"Dashboard saved to {html_path}")
     print(f"RSS saved to {rss_path}")
     print(f"Latest artifacts published to {latest_dir}")
+
+    if args.discord_webhook_url:
+        discord_messages = compose_discord_brief(snapshot, summary, site_url=args.site_url)
+        try:
+            publish_to_discord(
+                args.discord_webhook_url,
+                discord_messages,
+                username=args.discord_username,
+                avatar_url=args.discord_avatar_url,
+                timeout=args.timeout,
+            )
+        except DiscordPublishError as exc:
+            parser.exit(1, f"Discord publish failed: {exc}\n")
+        print(f"Discord brief sent in {len(discord_messages)} message(s)")
 
     if args.serve:
         serve_output_dir(args.output_dir, host=args.host, port=args.port)

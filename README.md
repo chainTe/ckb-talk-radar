@@ -9,6 +9,7 @@
 - `index.html`: 前端日报页
 - `rss.xml`: RSS 订阅源
 - `history/index.html`: 历史归档页
+- 可选 Discord 频道推送
 - 可选的 OpenAI 中文分析总结
 
 ## What It Does
@@ -21,6 +22,7 @@
 - 生成历史归档页和每日归档目录
 - 支持本地静态服务和 RSS
 - 支持 GitHub Actions 每日构建并部署到 GitHub Pages
+- 支持 Discord Webhook 每日推送社区简报
 - 支持 AI 总结和本地规则回退
 - 支持 OpenAI、OpenRouter 和 Kimi Code OpenAI-compatible 接口
 
@@ -70,6 +72,30 @@ python3 -m ckb_talk_radar --hours 24 --model kimi-for-coding
 export OPENAI_API_KEY=your_kimi_key
 export OPENAI_BASE_URL=https://api.kimi.com/coding/v1
 python3 -m ckb_talk_radar --hours 24 --model kimi-for-coding
+```
+
+如果要把日报同步推送到 Discord 频道：
+
+```bash
+export CKB_TALK_RADAR_SITE_URL=https://chainte.github.io/ckb-talk-radar
+export CKB_TALK_RADAR_DISCORD_WEBHOOK_URL=your_discord_webhook
+python3 -m ckb_talk_radar --hours 24 --skip-ai
+```
+
+推送内容会按下面结构发送，并在末尾附上站点链接：
+
+```md
+# Nervos Talk 社区简报
+
+## 社区总结
+
+## 今日发生了什么
+
+## 重点话题
+
+## 值得继续跟进
+
+link: https://chainte.github.io/ckb-talk-radar
 ```
 
 也可以直接用快捷命令：
@@ -124,6 +150,19 @@ PAGES_SITE_TITLE=CKB Talk Radar Daily Brief
 PAGES_CUSTOM_DOMAIN=radar.example.com
 ```
 
+5. 如果要每日自动推送到 Discord，在 `Settings -> Secrets and variables -> Actions -> Secrets` 中添加：
+
+```text
+CKB_TALK_RADAR_DISCORD_WEBHOOK_URL=your_discord_webhook
+```
+
+可选 Variables：
+
+```text
+CKB_TALK_RADAR_DISCORD_USERNAME=CKB Talk Radar
+CKB_TALK_RADAR_DISCORD_AVATAR_URL=https://example.com/avatar.png
+```
+
 发布后：
 
 - 首页是日报页 `/`
@@ -146,6 +185,9 @@ PAGES_CUSTOM_DOMAIN=radar.example.com
 - `--site-title`: 页面和 RSS 标题
 - `--custom-domain`: 生成 GitHub Pages `CNAME`
 - `--history-source`: 从已有归档目录恢复历史，用于 CI 持久化
+- `--discord-webhook-url`: Discord Webhook 地址；设置后会自动推送日报
+- `--discord-username`: Discord 发送用户名，默认 `CKB Talk Radar`
+- `--discord-avatar-url`: Discord 发送头像 URL
 - `--serve`: 生成后立即启动本地服务
 - `--serve-only`: 不抓取，只服务 `outputs/latest/`
 - `--host`: 服务监听地址，默认 `127.0.0.1`

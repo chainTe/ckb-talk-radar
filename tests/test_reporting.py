@@ -1,12 +1,21 @@
 from __future__ import annotations
 
+import io
 import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
 from types import SimpleNamespace
 from unittest import mock
+from urllib import error
 
+from ckb_talk_radar.discord import (
+    DiscordPayload,
+    compose_discord_brief,
+    parse_summary_sections,
+    read_retry_after_seconds,
+    split_discord_message,
+)
 from ckb_talk_radar.discourse import clean_cooked_html
 from ckb_talk_radar.models import CrawlSnapshot, ForumPost, TopicActivity
 from ckb_talk_radar.publishing import (
@@ -225,6 +234,90 @@ class SummaryTests(unittest.TestCase):
         assert summary is not None
         self.assertEqual(summary.mode, "heuristic")
         self.assertIn("调用失败", summary.note or "")
+
+    def test_parse_summary_sections_supports_markdown_headings(self) -> None:
+        sections = parse_summary_sections(
+            "\n".join(
+                [
+                    "## 今日发生了什么",
+                    "- 社区今天比较热闹",
+                    "",
+                    "### 重点话题",
+                    "- Fiber SDK",
+                    "",
+                    "## 值得继续跟进：",
+                    "- 继续看后续集成进展",
+                ]
+            )
+        )
+        self.assertEqual(sections["今日发生了什么"], "- 社区今天比较热闹")
+        self.assertEqual(sections["重点话题"], "- Fiber SDK")
+        self.assertEqual(sections["值得继续跟进"], "- 继续看后续集成进展")
+
+    def test_compose_discord_brief_includes_expected_sections(self) -> None:
+        snapshot = make_snapshot()
+        summary = type(
+            "Summary",
+            (),
+            {
+                "mode": "heuristic",
+                "body": "\n".join(
+                    [
+                        "## 今日发生了什么",
+                        "- 今天主要在聊 Fiber 更新。",
+                        "",
+                        "## 重点话题",
+                        "- Fiber update：有新的 SDK 进展。",
+                        "",
+                        "## 值得继续跟进",
+                        "- 继续看 wallet integration 的落地节奏。",
+                    ]
+                ),
+                "note": None,
+            },
+        )()
+        messages = compose_discord_brief(
+            snapshot,
+            summary,
+            site_url="https://chainte.github.io/ckb-talk-radar",
+            message_limit=2000,
+        )
+        self.assertEqual(len(messages), 1)
+        self.assertIn("# Nervos Talk 社区简报", messages[0])
+        self.assertIn("## 社区总结", messages[0])
+        self.assertIn("## 今日发生了什么", messages[0])
+        self.assertIn("link: https://chainte.github.io/ckb-talk-radar", messages[0])
+
+    def test_split_discord_message_respects_limit(self) -> None:
+        chunks = split_discord_message(("A" * 1500) + "\n" + ("B" * 1500), limit=1800)
+        self.assertGreater(len(chunks), 1)
+        self.assertTrue(all(len(chunk) <= 1800 for chunk in chunks))
+
+    def test_read_retry_after_seconds_defaults_when_payload_is_invalid(self) -> None:
+        http_error = error.HTTPError(
+            url="https://discord.example/webhook",
+            code=429,
+            msg="Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(b"not-json"),
+        )
+        self.assertEqual(read_retry_after_seconds(http_error), 1.0)
+        http_error.close()
+
+    def test_discord_payload_includes_optional_fields(self) -> None:
+        payload = DiscordPayload(
+            content="hello",
+            username="CKB Talk Radar",
+            avatar_url="https://example.com/avatar.png",
+        )
+        self.assertEqual(
+            payload.to_dict(),
+            {
+                "content": "hello",
+                "username": "CKB Talk Radar",
+                "avatar_url": "https://example.com/avatar.png",
+            },
+        )
 
 
 def make_snapshot() -> CrawlSnapshot:
