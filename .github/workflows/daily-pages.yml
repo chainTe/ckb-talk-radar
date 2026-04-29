@@ -68,7 +68,8 @@ jobs:
             --hours 24 \
             --timezone Asia/Shanghai \
             --output-dir outputs \
-            --max-pages 5
+            --max-pages 5 \
+            --ai-timeout 360
 
       - name: Persist archive history
         env:
