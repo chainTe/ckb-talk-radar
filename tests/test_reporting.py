@@ -29,6 +29,7 @@ from ckb_talk_radar.publishing import (
 from ckb_talk_radar.reporting import (
     SummaryGenerationError,
     build_summary,
+    describe_empty_chat_completion,
     extract_chat_completion_text,
     extract_keywords,
     resolve_llm_credentials,
@@ -199,6 +200,31 @@ class SummaryTests(unittest.TestCase):
         )()
         self.assertEqual(extract_chat_completion_text(response), "")
 
+    def test_describe_empty_chat_completion_includes_finish_reason_and_reasoning(self) -> None:
+        response = type(
+            "Resp",
+            (),
+            {
+                "choices": [
+                    type(
+                        "Choice",
+                        (),
+                        {
+                            "finish_reason": "length",
+                            "message": type(
+                                "Msg",
+                                (),
+                                {"content": None, "reasoning": "hidden chain", "tool_calls": None},
+                            )(),
+                        },
+                    )()
+                ]
+            },
+        )()
+        message = describe_empty_chat_completion(response)
+        self.assertIn("finish_reason=length", message)
+        self.assertIn("reasoning_present=true", message)
+
     def test_try_openai_summary_raises_on_provider_error(self) -> None:
         snapshot = make_snapshot()
         fake_client = mock.Mock()
@@ -233,6 +259,11 @@ class SummaryTests(unittest.TestCase):
                 with self.assertRaises(SummaryGenerationError) as ctx:
                     build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6")
         self.assertIn("empty content", str(ctx.exception))
+        fake_client.chat.completions.create.assert_called_once()
+        self.assertEqual(
+            fake_client.chat.completions.create.call_args.kwargs["extra_body"],
+            {"reasoning": {"exclude": True}},
+        )
 
     def test_parse_summary_sections_supports_markdown_headings(self) -> None:
         sections = parse_summary_sections(

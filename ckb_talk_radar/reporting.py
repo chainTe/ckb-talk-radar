@@ -187,24 +187,28 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
         client_kwargs["base_url"] = base_url
     client = OpenAI(**client_kwargs)
     prompt = build_ai_prompt(snapshot)
+    request_kwargs: dict[str, object] = {
+        "model": model,
+        "messages": [
+            {
+                "role": "system",
+                "content": (
+                    "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
+                    "不要编造未出现的信息；如果信息不足，要明确指出。"
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ],
+        "max_tokens": 1400,
+    }
+    if provider_name == "openrouter":
+        # Keep provider-side reasoning from displacing the visible answer body.
+        request_kwargs["extra_body"] = {"reasoning": {"exclude": True}}
     try:
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
-                        "不要编造未出现的信息；如果信息不足，要明确指出。"
-                    ),
-                },
-                {"role": "user", "content": prompt},
-            ],
-            max_tokens=1400,
-        )
+        response = client.chat.completions.create(**request_kwargs)
         text = extract_chat_completion_text(response)
         if not text:
-            raise SummaryGenerationError("AI summary returned empty content.")
+            raise SummaryGenerationError(describe_empty_chat_completion(response))
         return SummaryResult(mode=f"ai:{provider_name}", body=text)
     except Exception as exc:
         if isinstance(exc, SummaryGenerationError):
@@ -260,6 +264,31 @@ def extract_chat_completion_text(response: object) -> str:
                 parts.append(str(item["text"]))
         return "\n".join(part.strip() for part in parts if part.strip()).strip()
     return str(content).strip()
+
+
+def describe_empty_chat_completion(response: object) -> str:
+    choices = getattr(response, "choices", None) or []
+    if not choices:
+        return "AI summary returned no choices."
+    choice = choices[0]
+    message = getattr(choice, "message", None)
+    finish_reason = getattr(choice, "finish_reason", None)
+    details: list[str] = []
+    if finish_reason:
+        details.append(f"finish_reason={finish_reason}")
+    if message is not None:
+        refusal = getattr(message, "refusal", None)
+        reasoning = getattr(message, "reasoning", None)
+        tool_calls = getattr(message, "tool_calls", None)
+        if refusal:
+            details.append(f"refusal={str(refusal).strip()[:160]}")
+        if reasoning:
+            details.append("reasoning_present=true")
+        if tool_calls:
+            details.append("tool_calls_present=true")
+    if details:
+        return "AI summary returned empty content. " + "; ".join(details)
+    return "AI summary returned empty content."
 
 
 def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
