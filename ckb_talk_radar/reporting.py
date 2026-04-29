@@ -209,7 +209,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
     if provider_name == "openrouter":
         # Reasoning tokens count toward output budget on OpenRouter, so keep them
         # out of the visible response and request no extra reasoning budget.
-        request_kwargs["reasoning"] = {"exclude": True, "effort": "none"}
+        request_kwargs["extra_body"] = {"reasoning": {"exclude": True, "effort": "none"}}
     try:
         response = client.chat.completions.create(**request_kwargs)
         text = extract_chat_completion_text(response)

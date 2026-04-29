@@ -261,8 +261,8 @@ class SummaryTests(unittest.TestCase):
         self.assertIn("empty content", str(ctx.exception))
         fake_client.chat.completions.create.assert_called_once()
         self.assertEqual(
-            fake_client.chat.completions.create.call_args.kwargs["reasoning"],
-            {"exclude": True, "effort": "none"},
+            fake_client.chat.completions.create.call_args.kwargs["extra_body"],
+            {"reasoning": {"exclude": True, "effort": "none"}},
         )
         self.assertEqual(
             fake_client.chat.completions.create.call_args.kwargs["max_completion_tokens"],
