@@ -30,12 +30,16 @@ from ckb_talk_radar.publishing import (
 from ckb_talk_radar.reporting import (
     SummaryGenerationError,
     build_summary,
+    build_chat_request_kwargs,
     build_summary_sources,
+    build_citation_repair_prompt,
     describe_empty_chat_completion,
     extract_citation_ids,
     extract_chat_completion_text,
     extract_keywords,
+    repair_summary_citations,
     render_report,
+    request_summary_text,
     resolve_llm_credentials,
     split_summary_sentences,
     try_openai_summary,
@@ -243,6 +247,17 @@ class SummaryTests(unittest.TestCase):
         with self.assertRaises(SummaryGenerationError):
             validate_summary_citations("## 今日发生了什么\n- Fiber 很活跃。", sources)
 
+    def test_build_citation_repair_prompt_mentions_validation_error(self) -> None:
+        snapshot = make_snapshot()
+        sources = build_summary_sources(snapshot)
+        prompt = build_citation_repair_prompt(
+            summary_text="## 今日发生了什么\n- Fiber 很活跃。",
+            sources=sources,
+            validation_error="missing citation",
+        )
+        self.assertIn("missing citation", prompt)
+        self.assertIn("[S01]", prompt)
+
     def test_split_summary_sentences_and_extract_citation_ids(self) -> None:
         sentences = split_summary_sentences("一句话。[S01] 第二句话。[S02, S03]")
         self.assertEqual(len(sentences), 2)
@@ -294,6 +309,27 @@ class SummaryTests(unittest.TestCase):
                     try_openai_summary(snapshot=snapshot, model="kimi-for-coding")
         self.assertIn("AI summary request failed", str(ctx.exception))
 
+    def test_build_summary_repairs_missing_citations_once(self) -> None:
+        snapshot = make_snapshot()
+        first_response = type(
+            "Resp",
+            (),
+            {"choices": [type("Choice", (), {"message": type("Msg", (), {"content": "## 今日发生了什么\n- Fiber 很活跃。"})(), "finish_reason": "stop"})()]},
+        )()
+        second_response = type(
+            "Resp",
+            (),
+            {"choices": [type("Choice", (), {"message": type("Msg", (), {"content": "## 今日发生了什么\n- Fiber 很活跃。[S01]"})(), "finish_reason": "stop"})()]},
+        )()
+        fake_client = mock.Mock()
+        fake_client.chat.completions.create.side_effect = [first_response, second_response]
+        fake_openai_module = SimpleNamespace(OpenAI=mock.Mock(return_value=fake_client))
+        with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": "openrouter-key"}, clear=False):
+            with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
+                summary = build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6")
+        self.assertEqual(summary.body, "## 今日发生了什么\n- Fiber 很活跃。[S01]")
+        self.assertEqual(fake_client.chat.completions.create.call_count, 2)
+
     def test_build_summary_raises_when_ai_returns_empty_content(self) -> None:
         snapshot = make_snapshot()
         fake_response = type(
@@ -325,6 +361,17 @@ class SummaryTests(unittest.TestCase):
         self.assertEqual(
             fake_client.chat.completions.create.call_args.kwargs["max_completion_tokens"],
             6400,
+        )
+
+    def test_build_chat_request_kwargs_keeps_openrouter_extra_body(self) -> None:
+        kwargs = build_chat_request_kwargs(
+            model="moonshotai/kimi-k2.6",
+            provider_name="openrouter",
+            user_prompt="hello",
+        )
+        self.assertEqual(
+            kwargs["extra_body"],
+            {"reasoning": {"exclude": True, "effort": "none"}},
         )
 
     def test_parse_summary_sections_supports_markdown_headings(self) -> None:

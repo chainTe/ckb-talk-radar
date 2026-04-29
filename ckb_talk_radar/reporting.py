@@ -203,7 +203,33 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
         client_kwargs["base_url"] = base_url
     client = OpenAI(**client_kwargs)
     sources = build_summary_sources(snapshot)
-    prompt = build_ai_prompt(snapshot, sources=sources)
+    request_kwargs = build_chat_request_kwargs(
+        model=model,
+        provider_name=provider_name,
+        user_prompt=build_ai_prompt(snapshot, sources=sources),
+    )
+    try:
+        text = request_summary_text(client, request_kwargs)
+        try:
+            validate_summary_citations(text, sources)
+        except SummaryGenerationError as exc:
+            text = repair_summary_citations(
+                client,
+                model=model,
+                provider_name=provider_name,
+                summary_text=text,
+                sources=sources,
+                validation_error=str(exc),
+            )
+            validate_summary_citations(text, sources)
+        return SummaryResult(mode=f"ai:{provider_name}", body=text)
+    except Exception as exc:
+        if isinstance(exc, SummaryGenerationError):
+            raise
+        raise SummaryGenerationError(f"AI summary request failed: {exc}") from exc
+
+
+def build_chat_request_kwargs(*, model: str, provider_name: str, user_prompt: str) -> dict[str, object]:
     request_kwargs: dict[str, object] = {
         "model": model,
         "messages": [
@@ -215,7 +241,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
                     "每一句实质性陈述后面都必须紧跟来源编号，例如：[S01] 或 [S01, S02]。"
                 ),
             },
-            {"role": "user", "content": prompt},
+            {"role": "user", "content": user_prompt},
         ],
         "max_completion_tokens": AI_MAX_COMPLETION_TOKENS,
     }
@@ -223,17 +249,37 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
         # Reasoning tokens count toward output budget on OpenRouter, so keep them
         # out of the visible response and request no extra reasoning budget.
         request_kwargs["extra_body"] = {"reasoning": {"exclude": True, "effort": "none"}}
-    try:
-        response = client.chat.completions.create(**request_kwargs)
-        text = extract_chat_completion_text(response)
-        if not text:
-            raise SummaryGenerationError(describe_empty_chat_completion(response))
-        validate_summary_citations(text, sources)
-        return SummaryResult(mode=f"ai:{provider_name}", body=text)
-    except Exception as exc:
-        if isinstance(exc, SummaryGenerationError):
-            raise
-        raise SummaryGenerationError(f"AI summary request failed: {exc}") from exc
+    return request_kwargs
+
+
+def request_summary_text(client: object, request_kwargs: dict[str, object]) -> str:
+    response = client.chat.completions.create(**request_kwargs)
+    text = extract_chat_completion_text(response)
+    if not text:
+        raise SummaryGenerationError(describe_empty_chat_completion(response))
+    return text
+
+
+def repair_summary_citations(
+    client: object,
+    *,
+    model: str,
+    provider_name: str,
+    summary_text: str,
+    sources: list[SummarySource],
+    validation_error: str,
+) -> str:
+    repair_prompt = build_citation_repair_prompt(
+        summary_text=summary_text,
+        sources=sources,
+        validation_error=validation_error,
+    )
+    request_kwargs = build_chat_request_kwargs(
+        model=model,
+        provider_name=provider_name,
+        user_prompt=repair_prompt,
+    )
+    return request_summary_text(client, request_kwargs)
 
 
 def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
@@ -365,6 +411,44 @@ def build_ai_prompt(snapshot: CrawlSnapshot, *, sources: list[SummarySource]) ->
             "- 不要输出“来源索引”或额外附录，只输出上面的三个章节",
             "",
             "可引用的原始材料如下，每条材料都有唯一来源编号：",
+            *source_blocks,
+        ]
+    )
+
+
+def build_citation_repair_prompt(
+    *,
+    summary_text: str,
+    sources: list[SummarySource],
+    validation_error: str,
+) -> str:
+    source_blocks = [
+        "\n".join(
+            [
+                f"[{source.citation_id}]",
+                f"话题: {source.topic_title}",
+                f"作者: {source.author}",
+                f"时间: {source.created_at.isoformat()}",
+                f"链接: {source.url}",
+                f"内容: {source.excerpt}",
+            ]
+        )
+        for source in sources
+    ]
+    return "\n\n".join(
+        [
+            "下面这份社区总结缺少或错误使用了来源编号，请只修正来源编号。",
+            "要求：",
+            "- 保持原有章节结构和大部分措辞不变",
+            "- 每一句实质性陈述后面都必须紧跟来源编号，例如：[S01] 或 [S01, S02]",
+            "- 只能使用提供的来源编号",
+            "- 不要新增“来源索引”或解释文字",
+            f"校验错误：{validation_error}",
+            "",
+            "待修复总结：",
+            summary_text,
+            "",
+            "可引用来源：",
             *source_blocks,
         ]
     )
