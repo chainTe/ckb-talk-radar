@@ -21,6 +21,7 @@ from ckb_talk_radar.discord import (
 from ckb_talk_radar.discourse import clean_cooked_html
 from ckb_talk_radar.models import CrawlSnapshot, ForumPost, TopicActivity
 from ckb_talk_radar.publishing import (
+    markdownish_to_html,
     publish_latest_artifacts,
     render_history_index,
     render_html_report,
@@ -29,11 +30,16 @@ from ckb_talk_radar.publishing import (
 from ckb_talk_radar.reporting import (
     SummaryGenerationError,
     build_summary,
+    build_summary_sources,
     describe_empty_chat_completion,
+    extract_citation_ids,
     extract_chat_completion_text,
     extract_keywords,
+    render_report,
     resolve_llm_credentials,
+    split_summary_sentences,
     try_openai_summary,
+    validate_summary_citations,
 )
 
 
@@ -70,7 +76,7 @@ class SummaryTests(unittest.TestCase):
         snapshot = make_snapshot()
         html = render_html_report(
             snapshot,
-            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
+            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃。[S01]", "note": None})(),
             timezone_name="Asia/Shanghai",
             site_url="https://example.github.io/ckb-talk-radar",
         )
@@ -78,12 +84,31 @@ class SummaryTests(unittest.TestCase):
         self.assertIn("./rss.xml", html)
         self.assertIn("Fiber update", html)
         self.assertIn("canonical", html)
+        self.assertIn("来源索引", html)
+        self.assertIn("#source-s01", html)
+
+    def test_markdownish_to_html_supports_inline_markdown(self) -> None:
+        html = markdownish_to_html(
+            "\n".join(
+                [
+                    "## 重点话题",
+                    "- **Bold** with `code` and [link](https://example.com) [S01]",
+                    "1. *Italic* item [S02]",
+                ]
+            )
+        )
+        self.assertIn("<strong>Bold</strong>", html)
+        self.assertIn("<code>code</code>", html)
+        self.assertIn('href="https://example.com"', html)
+        self.assertIn('href="#source-s01"', html)
+        self.assertIn("<ol>", html)
+        self.assertIn("<em>Italic</em>", html)
 
     def test_render_rss_feed(self) -> None:
         snapshot = make_snapshot()
         rss = render_rss_feed(
             snapshot,
-            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
+            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃。[S01]", "note": None})(),
             timezone_name="Asia/Shanghai",
             site_url="https://example.github.io/ckb-talk-radar",
         )
@@ -199,6 +224,39 @@ class SummaryTests(unittest.TestCase):
             },
         )()
         self.assertEqual(extract_chat_completion_text(response), "")
+
+    def test_build_summary_sources_creates_stable_ids(self) -> None:
+        snapshot = make_snapshot()
+        sources = build_summary_sources(snapshot)
+        self.assertTrue(sources)
+        self.assertEqual(sources[0].citation_id, "S01")
+        self.assertIn("Fiber update", sources[0].topic_title)
+
+    def test_validate_summary_citations_accepts_known_ids(self) -> None:
+        snapshot = make_snapshot()
+        sources = build_summary_sources(snapshot)
+        validate_summary_citations("## 今日发生了什么\n- Fiber 很活跃。[S01]", sources)
+
+    def test_validate_summary_citations_rejects_missing_id(self) -> None:
+        snapshot = make_snapshot()
+        sources = build_summary_sources(snapshot)
+        with self.assertRaises(SummaryGenerationError):
+            validate_summary_citations("## 今日发生了什么\n- Fiber 很活跃。", sources)
+
+    def test_split_summary_sentences_and_extract_citation_ids(self) -> None:
+        sentences = split_summary_sentences("一句话。[S01] 第二句话。[S02, S03]")
+        self.assertEqual(len(sentences), 2)
+        self.assertEqual(extract_citation_ids(sentences[1]), ["S02", "S03"])
+
+    def test_render_report_includes_source_index(self) -> None:
+        snapshot = make_snapshot()
+        report = render_report(
+            snapshot,
+            type("Summary", (), {"mode": "ai:openrouter", "body": "## 今日发生了什么\n- Fiber 很活跃。[S01]", "note": None})(),
+            timezone_name="Asia/Shanghai",
+        )
+        self.assertIn("## 来源索引", report)
+        self.assertIn("`S01`", report)
 
     def test_describe_empty_chat_completion_includes_finish_reason_and_reasoning(self) -> None:
         response = type(

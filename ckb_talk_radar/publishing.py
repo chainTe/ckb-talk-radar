@@ -15,7 +15,7 @@ from xml.sax.saxutils import escape as xml_escape
 from zoneinfo import ZoneInfo
 
 from .models import CrawlSnapshot, ForumPost, TopicActivity
-from .reporting import SummaryResult, extract_keywords, extract_themes, format_dt
+from .reporting import SummaryResult, build_summary_sources, extract_keywords, extract_themes, format_dt
 
 
 RUN_DIR_PATTERN = re.compile(r"^\d{8}-\d{6}$")
@@ -46,6 +46,7 @@ def render_html_report(
     keywords = extract_keywords(posts, limit=8)
     themes = extract_themes(posts)
     authors = Counter(post.author for post in posts).most_common(6)
+    summary_sources = build_summary_sources(snapshot)
     stats = [
         ("Active Topics", str(len(topics))),
         ("Posts", str(len(posts))),
@@ -54,6 +55,7 @@ def render_html_report(
     ]
 
     summary_html = markdownish_to_html(summary.body)
+    source_rows = render_summary_source_rows(summary_sources, zone)
     stat_cards = "\n".join(
         (
             "<article class=\"stat-card\">"
@@ -310,8 +312,59 @@ def render_html_report(
       margin: 0;
       padding-left: 18px;
     }}
+    .summary-panel ol {{
+      margin: 0;
+      padding-left: 18px;
+    }}
     .summary-panel p {{
       margin: 0 0 10px;
+    }}
+    .summary-panel code {{
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }}
+    .summary-panel .citations {{
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }}
+    .summary-panel .citations a {{
+      color: var(--accent);
+      text-decoration: none;
+    }}
+    .source-index {{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }}
+    .source-index h3 {{
+      margin: 0 0 10px;
+      font-size: 16px;
+    }}
+    .source-list {{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }}
+    .source-list li {{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }}
+    .source-list code {{
+      font-size: 12px;
+      margin-right: 6px;
+    }}
+    .source-meta {{
+      color: var(--muted);
+      font-size: 12px;
     }}
     .topic-list {{
       display: grid;
@@ -513,6 +566,10 @@ def render_html_report(
         </div>
         <div class="summary-panel">
           {summary_html}
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list">{source_rows}</ul>
+          </div>
         </div>
       </article>
 
@@ -817,41 +874,115 @@ def render_post_row(post: ForumPost, zone: ZoneInfo) -> str:
     )
 
 
+def render_summary_source_rows(sources: list[object], zone: ZoneInfo) -> str:
+    rows = []
+    for source in sources:
+        rows.append(
+            (
+                f'<li id="source-{escape(str(source.citation_id).lower())}">'
+                f"<div><code>{escape(str(source.citation_id))}</code>"
+                f'<a href="{escape(str(source.url))}">{escape(str(source.topic_title))}</a></div>'
+                f'<div class="source-meta">{escape(str(source.author))} · {escape(format_dt(source.created_at, zone))}</div>'
+                f"<div>{escape(str(source.excerpt))}</div>"
+                "</li>"
+            )
+        )
+    return "".join(rows) or "<li>暂无来源索引。</li>"
+
+
 def markdownish_to_html(markdown_text: str) -> str:
     blocks: list[str] = []
-    in_list = False
+    list_type: str | None = None
     for raw_line in markdown_text.splitlines():
         line = raw_line.strip()
         if not line:
-            if in_list:
-                blocks.append("</ul>")
-                in_list = False
+            if list_type is not None:
+                blocks.append(f"</{list_type}>")
+                list_type = None
             continue
         if line.startswith("### "):
-            if in_list:
-                blocks.append("</ul>")
-                in_list = False
-            blocks.append(f"<h3>{escape(line[4:])}</h3>")
+            if list_type is not None:
+                blocks.append(f"</{list_type}>")
+                list_type = None
+            blocks.append(f"<h3>{render_inline_markdown(line[4:])}</h3>")
             continue
         if line.startswith("## "):
-            if in_list:
-                blocks.append("</ul>")
-                in_list = False
-            blocks.append(f"<h2>{escape(line[3:])}</h2>")
+            if list_type is not None:
+                blocks.append(f"</{list_type}>")
+                list_type = None
+            blocks.append(f"<h2>{render_inline_markdown(line[3:])}</h2>")
             continue
         if line.startswith("- "):
-            if not in_list:
+            if list_type != "ul":
+                if list_type is not None:
+                    blocks.append(f"</{list_type}>")
                 blocks.append("<ul>")
-                in_list = True
-            blocks.append(f"<li>{escape(line[2:])}</li>")
+                list_type = "ul"
+            blocks.append(f"<li>{render_inline_markdown(line[2:])}</li>")
             continue
-        if in_list:
-            blocks.append("</ul>")
-            in_list = False
-        blocks.append(f"<p>{escape(line)}</p>")
-    if in_list:
-        blocks.append("</ul>")
+        ordered_match = re.match(r"^\d+\.\s+(.*)$", line)
+        if ordered_match:
+            if list_type != "ol":
+                if list_type is not None:
+                    blocks.append(f"</{list_type}>")
+                blocks.append("<ol>")
+                list_type = "ol"
+            blocks.append(f"<li>{render_inline_markdown(ordered_match.group(1))}</li>")
+            continue
+        if list_type is not None:
+            blocks.append(f"</{list_type}>")
+            list_type = None
+        blocks.append(f"<p>{render_inline_markdown(line)}</p>")
+    if list_type is not None:
+        blocks.append(f"</{list_type}>")
     return "\n".join(blocks)
+
+
+def render_inline_markdown(text: str) -> str:
+    parts = re.split(r"(`[^`]+`)", text)
+    rendered: list[str] = []
+    for part in parts:
+        if not part:
+            continue
+        if part.startswith("`") and part.endswith("`") and len(part) >= 2:
+            rendered.append(f"<code>{escape(part[1:-1])}</code>")
+            continue
+        rendered.append(render_inline_markdown_without_code(part))
+    return "".join(rendered)
+
+
+def render_inline_markdown_without_code(text: str) -> str:
+    pattern = re.compile(r"\[(S\d+(?:\s*,\s*S\d+)*)\]|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+?)\*\*|\*([^*]+?)\*")
+    pieces: list[str] = []
+    cursor = 0
+    for match in pattern.finditer(text):
+        pieces.append(escape(text[cursor:match.start()]))
+        citation_group, link_text, link_url, bold_text, italic_text = match.groups()
+        if citation_group is not None:
+            citation_links = ", ".join(
+                f'<a href="#source-{escape(citation_id.lower())}">{escape(citation_id)}</a>'
+                for citation_id in (item.strip() for item in citation_group.split(","))
+            )
+            pieces.append(f'<span class="citations">[{citation_links}]</span>')
+        elif link_text is not None and link_url is not None:
+            safe_url = sanitize_href(link_url)
+            pieces.append(
+                f'<a href="{escape(safe_url)}" target="_blank" rel="noreferrer">{escape(link_text)}</a>'
+            )
+        elif bold_text is not None:
+            pieces.append(f"<strong>{escape(bold_text)}</strong>")
+        elif italic_text is not None:
+            pieces.append(f"<em>{escape(italic_text)}</em>")
+        cursor = match.end()
+    pieces.append(escape(text[cursor:]))
+    return "".join(pieces)
+
+
+def sanitize_href(url: str) -> str:
+    candidate = url.strip()
+    if candidate.startswith(("http://", "https://", "mailto:")):
+        return candidate
+    return "#"
 
 
 def publish_latest_artifacts(

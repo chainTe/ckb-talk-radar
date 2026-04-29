@@ -91,6 +91,7 @@ AI_TOPIC_LIMIT = 12
 AI_POSTS_PER_TOPIC = 6
 AI_POST_EXCERPT_WIDTH = 280
 AI_MAX_COMPLETION_TOKENS = 6400
+CITATION_PATTERN = re.compile(r"\[S\d+(?:\s*,\s*S\d+)*\]")
 
 THEME_KEYWORDS = {
     "技术开发": {
@@ -153,6 +154,16 @@ class SummaryResult:
     note: str | None = None
 
 
+@dataclass(slots=True)
+class SummarySource:
+    citation_id: str
+    topic_title: str
+    author: str
+    created_at: datetime
+    url: str
+    excerpt: str
+
+
 class SummaryGenerationError(RuntimeError):
     """Raised when AI summary generation is requested but does not succeed."""
 
@@ -191,7 +202,8 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
     if base_url:
         client_kwargs["base_url"] = base_url
     client = OpenAI(**client_kwargs)
-    prompt = build_ai_prompt(snapshot)
+    sources = build_summary_sources(snapshot)
+    prompt = build_ai_prompt(snapshot, sources=sources)
     request_kwargs: dict[str, object] = {
         "model": model,
         "messages": [
@@ -200,6 +212,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
                 "content": (
                     "你是 Nervos 社区研究员。请基于提供的最近社区帖子，输出中文分析。"
                     "不要编造未出现的信息；如果信息不足，要明确指出。"
+                    "每一句实质性陈述后面都必须紧跟来源编号，例如：[S01] 或 [S01, S02]。"
                 ),
             },
             {"role": "user", "content": prompt},
@@ -215,6 +228,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
         text = extract_chat_completion_text(response)
         if not text:
             raise SummaryGenerationError(describe_empty_chat_completion(response))
+        validate_summary_citations(text, sources)
         return SummaryResult(mode=f"ai:{provider_name}", body=text)
     except Exception as exc:
         if isinstance(exc, SummaryGenerationError):
@@ -297,26 +311,39 @@ def describe_empty_chat_completion(response: object) -> str:
     return "AI summary returned empty content."
 
 
-def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
-    topic_blocks: list[str] = []
+def build_summary_sources(snapshot: CrawlSnapshot) -> list[SummarySource]:
+    sources: list[SummarySource] = []
+    index = 1
     for topic in snapshot.topics[:AI_TOPIC_LIMIT]:
-        header = (
-            f"话题: {topic.title}\n"
-            f"链接: {topic.url}\n"
-            f"最近24小时帖子数: {len(topic.recent_posts)}\n"
-        )
-        post_blocks: list[str] = []
         for post in topic.recent_posts[:AI_POSTS_PER_TOPIC]:
-            post_blocks.append(
-                "\n".join(
-                    [
-                        f"- 作者: {post.author}",
-                        f"  时间: {post.created_at.isoformat()}",
-                        f"  内容: {shorten(post.content_text, width=AI_POST_EXCERPT_WIDTH, placeholder='...')}",
-                    ]
+            sources.append(
+                SummarySource(
+                    citation_id=f"S{index:02d}",
+                    topic_title=topic.title,
+                    author=post.author,
+                    created_at=post.created_at,
+                    url=post.url,
+                    excerpt=shorten(post.content_text, width=AI_POST_EXCERPT_WIDTH, placeholder="..."),
                 )
             )
-        topic_blocks.append(f"{header}\n" + "\n".join(post_blocks))
+            index += 1
+    return sources
+
+
+def build_ai_prompt(snapshot: CrawlSnapshot, *, sources: list[SummarySource]) -> str:
+    source_blocks = [
+        "\n".join(
+            [
+                f"[{source.citation_id}]",
+                f"话题: {source.topic_title}",
+                f"作者: {source.author}",
+                f"时间: {source.created_at.isoformat()}",
+                f"链接: {source.url}",
+                f"内容: {source.excerpt}",
+            ]
+        )
+        for source in sources
+    ]
 
     return "\n\n".join(
         [
@@ -334,11 +361,71 @@ def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
             "- 优先总结“发生了什么”，不要只是罗列关键词",
             "- 不要编造帖子里没有出现的信息",
             "- 如果今天内容很少，要明确说社区今天整体较平静",
+            "- 每一句实质性陈述后面都必须紧跟来源编号，例如：[S01] 或 [S01, S02]",
+            "- 不要输出“来源索引”或额外附录，只输出上面的三个章节",
             "",
-            "原始材料：",
-            *topic_blocks,
+            "可引用的原始材料如下，每条材料都有唯一来源编号：",
+            *source_blocks,
         ]
     )
+
+
+def validate_summary_citations(summary_text: str, sources: list[SummarySource]) -> None:
+    valid_ids = {source.citation_id for source in sources}
+    if not valid_ids:
+        raise SummaryGenerationError("AI summary citation validation failed: no source material was prepared.")
+
+    for raw_line in summary_text.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        content = re.sub(r"^[-*]\s+", "", line)
+        content = re.sub(r"^\d+\.\s+", "", content)
+        for sentence in split_summary_sentences(content):
+            cited_ids = extract_citation_ids(sentence)
+            if not cited_ids:
+                raise SummaryGenerationError(
+                    f"AI summary citation validation failed: missing citation in sentence: {sentence}"
+                )
+            unknown_ids = [citation_id for citation_id in cited_ids if citation_id not in valid_ids]
+            if unknown_ids:
+                raise SummaryGenerationError(
+                    "AI summary citation validation failed: unknown citation ids "
+                    + ", ".join(unknown_ids)
+                )
+
+
+def split_summary_sentences(text: str) -> list[str]:
+    stripped = text.strip()
+    if not stripped:
+        return []
+    sentence_pattern = re.compile(rf"[^。！？!?]+(?:[。！？!?]+)?(?:\s*{CITATION_PATTERN.pattern})*")
+    sentences = [
+        chunk.strip()
+        for chunk in sentence_pattern.findall(stripped)
+        if chunk.strip()
+    ]
+    return sentences or [stripped]
+
+
+def extract_citation_ids(text: str) -> list[str]:
+    ids: list[str] = []
+    for match in CITATION_PATTERN.finditer(text):
+        body = match.group(0).strip("[]")
+        ids.extend(part.strip() for part in body.split(",") if part.strip())
+    return ids
+
+
+def render_summary_source_lines(sources: list[SummarySource], zone: ZoneInfo) -> list[str]:
+    lines = []
+    for source in sources:
+        lines.append(
+            f"- `{source.citation_id}` [{source.topic_title}]({source.url}) | {source.author} | "
+            f"{format_dt(source.created_at, zone)} | {source.excerpt}"
+        )
+    return lines or ["暂无来源索引。"]
+
+
 def render_report(
     snapshot: CrawlSnapshot,
     summary: SummaryResult,
@@ -350,6 +437,7 @@ def render_report(
     authors = sorted({post.author for post in posts})
     topic_lines = render_topic_lines(snapshot.topics, zone)
     recent_post_lines = render_recent_post_lines(posts, zone)
+    source_lines = render_summary_source_lines(build_summary_sources(snapshot), zone)
 
     lines: list[str] = [
         "# Nervos Talk 社区简报",
@@ -371,6 +459,10 @@ def render_report(
             "## 社区总结",
             "",
             summary.body.strip(),
+            "",
+            "## 来源索引",
+            "",
+            *source_lines,
             "",
             "## 活跃话题",
             "",
