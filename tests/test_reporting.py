@@ -17,6 +17,7 @@ from ckb_talk_radar.discord import (
     parse_summary_sections,
     read_retry_after_seconds,
     split_discord_message,
+    strip_summary_citations,
 )
 from ckb_talk_radar.discourse import clean_cooked_html
 from ckb_talk_radar.models import CrawlSnapshot, ForumPost, TopicActivity
@@ -403,13 +404,13 @@ class SummaryTests(unittest.TestCase):
                 "body": "\n".join(
                     [
                         "## 今日发生了什么",
-                        "- 今天主要在聊 Fiber 更新。",
+                        "- 今天主要在聊 Fiber 更新。[S01]",
                         "",
                         "## 重点话题",
-                        "- Fiber update：有新的 SDK 进展。",
+                        "- Fiber update：有新的 SDK 进展。[S01]",
                         "",
                         "## 值得继续跟进",
-                        "- 继续看 wallet integration 的落地节奏。",
+                        "- 继续看 wallet integration 的落地节奏。[S01]",
                     ]
                 ),
                 "note": None,
@@ -426,6 +427,11 @@ class SummaryTests(unittest.TestCase):
         self.assertIn("## 社区总结", messages[0])
         self.assertIn("## 今日发生了什么", messages[0])
         self.assertIn("link: https://chainte.github.io/ckb-talk-radar", messages[0])
+        self.assertNotIn("[S01]", messages[0])
+
+    def test_strip_summary_citations_removes_source_markers(self) -> None:
+        cleaned = strip_summary_citations("- Fiber 很活跃。[S01, S02]\n- 继续观察。[S03]")
+        self.assertEqual(cleaned, "- Fiber 很活跃。\n- 继续观察。")
 
     def test_split_discord_message_respects_limit(self) -> None:
         chunks = split_discord_message(("A" * 1500) + "\n" + ("B" * 1500), limit=1800)

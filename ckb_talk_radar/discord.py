@@ -18,6 +18,7 @@ DISCORD_MESSAGE_LIMIT = 2000
 DEFAULT_DISCORD_USER_AGENT = f"ckb-talk-radar/{__version__} (+https://chainte.github.io/ckb-talk-radar)"
 SECTION_TITLES = ("今日发生了什么", "重点话题", "值得继续跟进")
 SECTION_HEADING_RE = re.compile(r"^\s*#{2,6}\s*(.+?)\s*$")
+SUMMARY_CITATION_RE = re.compile(r"\s*\[S\d+(?:\s*,\s*S\d+)*\]")
 
 
 class DiscordPublishError(RuntimeError):
@@ -54,13 +55,13 @@ def compose_discord_brief(
         build_community_summary(snapshot),
         "",
         "## 今日发生了什么",
-        sections.get("今日发生了什么") or build_today_section(snapshot),
+        strip_summary_citations(sections.get("今日发生了什么") or build_today_section(snapshot)),
         "",
         "## 重点话题",
-        sections.get("重点话题") or build_topic_section(snapshot),
+        strip_summary_citations(sections.get("重点话题") or build_topic_section(snapshot)),
         "",
         "## 值得继续跟进",
-        sections.get("值得继续跟进") or build_followup_section(snapshot),
+        strip_summary_citations(sections.get("值得继续跟进") or build_followup_section(snapshot)),
     ]
 
     if site_url:
@@ -105,6 +106,15 @@ def trim_empty_lines(lines: Iterable[str]) -> list[str]:
     while items and not items[-1].strip():
         items.pop()
     return items
+
+
+def strip_summary_citations(text: str) -> str:
+    cleaned_lines: list[str] = []
+    for raw_line in text.splitlines():
+        line = SUMMARY_CITATION_RE.sub("", raw_line)
+        line = re.sub(r"\s{2,}", " ", line).strip()
+        cleaned_lines.append(line)
+    return "\n".join(cleaned_lines).strip()
 
 
 def build_community_summary(snapshot: CrawlSnapshot) -> str:
