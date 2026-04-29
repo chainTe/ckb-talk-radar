@@ -32,6 +32,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timezone", default="Asia/Shanghai")
     parser.add_argument("--max-pages", type=int, default=5)
     parser.add_argument("--timeout", type=int, default=20)
+    parser.add_argument(
+        "--ai-timeout",
+        type=int,
+        default=int(os.getenv("CKB_TALK_RADAR_AI_TIMEOUT", "120")),
+    )
     parser.add_argument("--model", default=default_model())
     parser.add_argument("--site-url", default=os.getenv("CKB_TALK_RADAR_SITE_URL") or None)
     parser.add_argument(
@@ -97,7 +102,7 @@ def main() -> int:
 
     save_snapshot(snapshot, snapshot_path)
     try:
-        summary = build_summary(snapshot, model=args.model)
+        summary = build_summary(snapshot, model=args.model, timeout=args.ai_timeout)
     except SummaryGenerationError as exc:
         parser.exit(1, f"Summary generation failed: {exc}\n")
     report = render_report(snapshot, summary, timezone_name=args.timezone)

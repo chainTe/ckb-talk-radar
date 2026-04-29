@@ -179,11 +179,11 @@ def save_snapshot(snapshot: CrawlSnapshot, path: str | Path) -> None:
         json.dump(snapshot.to_dict(), handle, ensure_ascii=False, indent=2)
 
 
-def build_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
-    return try_openai_summary(snapshot=snapshot, model=model)
+def build_summary(snapshot: CrawlSnapshot, *, model: str, timeout: int | float = 120) -> SummaryResult:
+    return try_openai_summary(snapshot=snapshot, model=model, timeout=timeout)
 
 
-def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
+def try_openai_summary(snapshot: CrawlSnapshot, *, model: str, timeout: int | float = 120) -> SummaryResult:
     api_key, base_url, provider_name = resolve_llm_credentials()
     if not api_key:
         raise SummaryGenerationError(
@@ -198,7 +198,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
             "AI summary requested but the `openai` package is not installed."
         )
 
-    client_kwargs = {"api_key": api_key}
+    client_kwargs = {"api_key": api_key, "timeout": timeout}
     if base_url:
         client_kwargs["base_url"] = base_url
     client = OpenAI(**client_kwargs)
@@ -220,6 +220,7 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
                 summary_text=text,
                 sources=sources,
                 validation_error=str(exc),
+                timeout=timeout,
             )
             validate_summary_citations(text, sources)
         return SummaryResult(mode=f"ai:{provider_name}", body=text)
@@ -268,6 +269,7 @@ def repair_summary_citations(
     summary_text: str,
     sources: list[SummarySource],
     validation_error: str,
+    timeout: int | float,
 ) -> str:
     repair_prompt = build_citation_repair_prompt(
         summary_text=summary_text,

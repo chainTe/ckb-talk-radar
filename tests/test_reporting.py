@@ -307,8 +307,10 @@ class SummaryTests(unittest.TestCase):
         with mock.patch.dict("os.environ", {"MOONSHOT_API_KEY": "moonshot-key"}, clear=False):
             with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
                 with self.assertRaises(SummaryGenerationError) as ctx:
-                    try_openai_summary(snapshot=snapshot, model="kimi-for-coding")
+                    try_openai_summary(snapshot=snapshot, model="kimi-for-coding", timeout=45)
         self.assertIn("AI summary request failed", str(ctx.exception))
+        fake_openai_module.OpenAI.assert_called_once()
+        self.assertEqual(fake_openai_module.OpenAI.call_args.kwargs["timeout"], 45)
 
     def test_build_summary_repairs_missing_citations_once(self) -> None:
         snapshot = make_snapshot()
@@ -327,9 +329,10 @@ class SummaryTests(unittest.TestCase):
         fake_openai_module = SimpleNamespace(OpenAI=mock.Mock(return_value=fake_client))
         with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": "openrouter-key"}, clear=False):
             with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
-                summary = build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6")
+                summary = build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6", timeout=90)
         self.assertEqual(summary.body, "## 今日发生了什么\n- Fiber 很活跃。[S01]")
         self.assertEqual(fake_client.chat.completions.create.call_count, 2)
+        self.assertEqual(fake_openai_module.OpenAI.call_args.kwargs["timeout"], 90)
 
     def test_build_summary_raises_when_ai_returns_empty_content(self) -> None:
         snapshot = make_snapshot()
@@ -352,9 +355,10 @@ class SummaryTests(unittest.TestCase):
         with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": "openrouter-key"}, clear=False):
             with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
                 with self.assertRaises(SummaryGenerationError) as ctx:
-                    build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6")
+                    build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6", timeout=30)
         self.assertIn("empty content", str(ctx.exception))
         fake_client.chat.completions.create.assert_called_once()
+        self.assertEqual(fake_openai_module.OpenAI.call_args.kwargs["timeout"], 30)
         self.assertEqual(
             fake_client.chat.completions.create.call_args.kwargs["extra_body"],
             {"reasoning": {"exclude": True, "effort": "none"}},
