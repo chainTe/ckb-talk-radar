@@ -87,6 +87,11 @@ STOPWORDS = {
     "org",
 }
 
+AI_TOPIC_LIMIT = 12
+AI_POSTS_PER_TOPIC = 6
+AI_POST_EXCERPT_WIDTH = 280
+AI_MAX_COMPLETION_TOKENS = 6400
+
 THEME_KEYWORDS = {
     "技术开发": {
         "sdk",
@@ -199,11 +204,12 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
             },
             {"role": "user", "content": prompt},
         ],
-        "max_tokens": 1400,
+        "max_completion_tokens": AI_MAX_COMPLETION_TOKENS,
     }
     if provider_name == "openrouter":
-        # Keep provider-side reasoning from displacing the visible answer body.
-        request_kwargs["extra_body"] = {"reasoning": {"exclude": True}}
+        # Reasoning tokens count toward output budget on OpenRouter, so keep them
+        # out of the visible response and request no extra reasoning budget.
+        request_kwargs["reasoning"] = {"exclude": True, "effort": "none"}
     try:
         response = client.chat.completions.create(**request_kwargs)
         text = extract_chat_completion_text(response)
@@ -293,20 +299,20 @@ def describe_empty_chat_completion(response: object) -> str:
 
 def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
     topic_blocks: list[str] = []
-    for topic in snapshot.topics[:30]:
+    for topic in snapshot.topics[:AI_TOPIC_LIMIT]:
         header = (
             f"话题: {topic.title}\n"
             f"链接: {topic.url}\n"
             f"最近24小时帖子数: {len(topic.recent_posts)}\n"
         )
         post_blocks: list[str] = []
-        for post in topic.recent_posts[:10]:
+        for post in topic.recent_posts[:AI_POSTS_PER_TOPIC]:
             post_blocks.append(
                 "\n".join(
                     [
                         f"- 作者: {post.author}",
                         f"  时间: {post.created_at.isoformat()}",
-                        f"  内容: {shorten(post.content_text, width=500, placeholder='...')}",
+                        f"  内容: {shorten(post.content_text, width=AI_POST_EXCERPT_WIDTH, placeholder='...')}",
                     ]
                 )
             )
