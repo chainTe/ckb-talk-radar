@@ -23,7 +23,7 @@
 - 支持本地静态服务和 RSS
 - 支持 GitHub Actions 每日构建并部署到 GitHub Pages
 - 支持 Discord Webhook 每日推送社区简报
-- 支持 AI 总结和本地规则回退
+- 支持 AI 总结
 - 支持 OpenAI、OpenRouter 和 Kimi Code OpenAI-compatible 接口
 
 ## Quick Start
@@ -37,7 +37,7 @@ pip3 install -e .
 本地生成一份最近 24 小时日报：
 
 ```bash
-python3 -m ckb_talk_radar --hours 24 --skip-ai
+python3 -m ckb_talk_radar --hours 24
 ```
 
 如果要启用 AI 总结：
@@ -79,7 +79,7 @@ python3 -m ckb_talk_radar --hours 24 --model kimi-for-coding
 ```bash
 export CKB_TALK_RADAR_SITE_URL=https://chainte.github.io/ckb-talk-radar
 export CKB_TALK_RADAR_DISCORD_WEBHOOK_URL=your_discord_webhook
-python3 -m ckb_talk_radar --hours 24 --skip-ai
+python3 -m ckb_talk_radar --hours 24
 ```
 
 推送内容会按下面结构发送，并在末尾附上站点链接：
@@ -111,7 +111,7 @@ make serve
 生成后直接启动本地服务：
 
 ```bash
-python3 -m ckb_talk_radar --hours 24 --skip-ai --serve
+python3 -m ckb_talk_radar --hours 24 --serve
 ```
 
 如果只想服务已经生成的最新结果：
@@ -135,7 +135,7 @@ python3 -m ckb_talk_radar --serve-only --output-dir outputs --port 8000
 - 每天 `Asia/Shanghai 01:00` 定时更新
 - 支持手动触发 `workflow_dispatch`
 - 自动将 `outputs/latest/` 发布为 Pages 根目录
-- 有 `OPENAI_API_KEY`、`OPENROUTER_API_KEY` 或 `MOONSHOT_API_KEY` 时使用 AI 总结，没有则回退到本地总结
+- 需要配置 `OPENAI_API_KEY`、`OPENROUTER_API_KEY` 或 `MOONSHOT_API_KEY` 才能生成 AI 总结；失败会直接报错退出
 
 启用步骤：
 
@@ -180,7 +180,6 @@ CKB_TALK_RADAR_DISCORD_AVATAR_URL=https://example.com/avatar.png
 - `--model`: 模型名，默认 `gpt-4.1-mini`
   如果设置了 `OPENROUTER_API_KEY`，默认模型会自动切到 `moonshotai/kimi-k2.6`
   如果设置了 `MOONSHOT_API_KEY`，默认模型会自动切到 `kimi-for-coding`
-- `--skip-ai`: 强制禁用 AI 总结
 - `--site-url`: 公开站点地址，用于 RSS 和 canonical
 - `--site-title`: 页面和 RSS 标题
 - `--custom-domain`: 生成 GitHub Pages `CNAME`

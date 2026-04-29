@@ -148,6 +148,10 @@ class SummaryResult:
     note: str | None = None
 
 
+class SummaryGenerationError(RuntimeError):
+    """Raised when AI summary generation is requested but does not succeed."""
+
+
 def ensure_output_dir(base_dir: str | Path, run_at: datetime) -> Path:
     run_dir = Path(base_dir) / run_at.strftime("%Y%m%d-%H%M%S")
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -159,26 +163,23 @@ def save_snapshot(snapshot: CrawlSnapshot, path: str | Path) -> None:
         json.dump(snapshot.to_dict(), handle, ensure_ascii=False, indent=2)
 
 
-def build_summary(snapshot: CrawlSnapshot, *, model: str, skip_ai: bool) -> SummaryResult:
-    if not skip_ai:
-        ai_summary = try_openai_summary(snapshot=snapshot, model=model)
-        if ai_summary is not None:
-            return ai_summary
-    return SummaryResult(mode="heuristic", body=build_heuristic_summary(snapshot))
+def build_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
+    return try_openai_summary(snapshot=snapshot, model=model)
 
 
-def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult | None:
+def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult:
     api_key, base_url, provider_name = resolve_llm_credentials()
     if not api_key:
-        return None
+        raise SummaryGenerationError(
+            "AI summary requested but no API key is configured. "
+            "Set OPENROUTER_API_KEY / MOONSHOT_API_KEY / OPENAI_API_KEY."
+        )
 
     try:
         from openai import OpenAI
     except ImportError:
-        return SummaryResult(
-            mode="heuristic",
-            body=build_heuristic_summary(snapshot),
-            note="检测到 OPENAI_API_KEY，但当前环境未安装 `openai` 包，已回退到本地规则总结。",
+        raise SummaryGenerationError(
+            "AI summary requested but the `openai` package is not installed."
         )
 
     client_kwargs = {"api_key": api_key}
@@ -203,14 +204,12 @@ def try_openai_summary(snapshot: CrawlSnapshot, *, model: str) -> SummaryResult 
         )
         text = extract_chat_completion_text(response)
         if not text:
-            return None
+            raise SummaryGenerationError("AI summary returned empty content.")
         return SummaryResult(mode=f"ai:{provider_name}", body=text)
     except Exception as exc:
-        return SummaryResult(
-            mode="heuristic",
-            body=build_heuristic_summary(snapshot),
-            note=f"AI 总结调用失败，已回退到本地规则总结：{exc}",
-        )
+        if isinstance(exc, SummaryGenerationError):
+            raise
+        raise SummaryGenerationError(f"AI summary request failed: {exc}") from exc
 
 
 def resolve_llm_credentials() -> tuple[str | None, str | None, str]:
@@ -247,6 +246,8 @@ def extract_chat_completion_text(response: object) -> str:
     if message is None:
         return ""
     content = getattr(message, "content", "")
+    if content is None:
+        return ""
     if isinstance(content, str):
         return content.strip()
     if isinstance(content, list):
@@ -303,61 +304,6 @@ def build_ai_prompt(snapshot: CrawlSnapshot) -> str:
             *topic_blocks,
         ]
     )
-
-
-def build_heuristic_summary(snapshot: CrawlSnapshot) -> str:
-    posts = snapshot.posts
-    topics = snapshot.topics
-    unique_authors = sorted({post.author for post in posts})
-    keyword_counts = extract_keywords(posts)
-    theme_counts = extract_themes(posts)
-    active_topics = sorted(topics, key=lambda item: len(item.recent_posts), reverse=True)[:5]
-
-    lines: list[str] = [
-        "### 今日发生了什么",
-    ]
-
-    if not topics:
-        lines.append("- 最近 24 小时论坛整体比较平静，没有抓到新的活跃讨论。")
-    else:
-        overview = (
-            f"- 最近 {snapshot.window_hours} 小时论坛里共有 {len(topics)} 个活跃话题、"
-            f"{len(posts)} 条帖子、{len(unique_authors)} 位参与作者。"
-        )
-        lines.append(overview)
-        if active_topics:
-            top_topic = active_topics[0]
-            lines.append(
-                f"- 今天最集中的讨论围绕“{top_topic.title}”展开，共有 {len(top_topic.recent_posts)} 条近窗帖子。"
-            )
-
-    lines.extend(["", "### 重点话题"])
-
-    if active_topics:
-        for topic in active_topics[:5]:
-            excerpt = shorten(
-                " ".join(post.content_text.replace("\n", " ") for post in topic.recent_posts[:2]),
-                width=140,
-                placeholder="...",
-            )
-            lines.append(
-                f"- {topic.title}：近 24 小时有 {len(topic.recent_posts)} 条新帖/回复。"
-                f" 讨论主要围绕 {excerpt or '该话题暂无更多可提取内容'}"
-            )
-    else:
-        lines.append("- 今天没有形成明显的重点讨论话题。")
-
-    lines.extend(["", "### 值得继续跟进"])
-    if theme_counts:
-        dominant = "、".join(f"{theme}（{count}）" for theme, count in theme_counts.most_common(3))
-        lines.append(f"- 当前讨论重心主要落在：{dominant}。")
-    if keyword_counts:
-        lines.append("- 可以继续跟踪这些高频线索：" + "、".join(word for word, _ in keyword_counts[:8]) + "。")
-
-    lines.append("- 优先查看高回复话题中的最新回复，它们通常最能代表社区当下真实关注点。")
-    return "\n".join(lines)
-
-
 def render_report(
     snapshot: CrawlSnapshot,
     summary: SummaryResult,

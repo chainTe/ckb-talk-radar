@@ -3,7 +3,7 @@ PYTHON ?= python3
 .PHONY: run run-ai serve test
 
 run:
-	$(PYTHON) -m ckb_talk_radar --hours 24 --skip-ai
+	$(PYTHON) -m ckb_talk_radar --hours 24
 
 run-ai:
 	$(PYTHON) -m ckb_talk_radar --hours 24

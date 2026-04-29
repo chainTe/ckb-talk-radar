@@ -27,7 +27,8 @@ from ckb_talk_radar.publishing import (
     render_rss_feed,
 )
 from ckb_talk_radar.reporting import (
-    build_heuristic_summary,
+    SummaryGenerationError,
+    build_summary,
     extract_chat_completion_text,
     extract_keywords,
     resolve_llm_credentials,
@@ -64,53 +65,11 @@ class SummaryTests(unittest.TestCase):
         self.assertIn("fiber", keywords)
         self.assertIn("sdk", keywords)
 
-    def test_build_heuristic_summary(self) -> None:
-        post = ForumPost(
-            post_id=1,
-            post_number=1,
-            topic_id=10,
-            topic_title="Fiber update",
-            topic_slug="fiber-update",
-            author="alice",
-            created_at=datetime(2026, 4, 26, 8, 0, tzinfo=timezone.utc),
-            updated_at=None,
-            reply_to_post_number=None,
-            url="https://example.com/t/fiber-update/10/1",
-            content_text="Fiber SDK release for CKB wallet integration",
-            content_html="",
-            like_count=1,
-            quote_count=0,
-        )
-        topic = TopicActivity(
-            topic_id=10,
-            title="Fiber update",
-            slug="fiber-update",
-            url="https://example.com/t/fiber-update/10",
-            created_at=datetime(2026, 4, 26, 7, 0, tzinfo=timezone.utc),
-            last_posted_at=datetime(2026, 4, 26, 8, 0, tzinfo=timezone.utc),
-            category_id=None,
-            tags=["fiber"],
-            posters=["alice"],
-            recent_posts=[post],
-        )
-        snapshot = CrawlSnapshot(
-            base_url="https://example.com",
-            generated_at=datetime(2026, 4, 26, 9, 0, tzinfo=timezone.utc),
-            since=datetime(2026, 4, 25, 9, 0, tzinfo=timezone.utc),
-            until=datetime(2026, 4, 26, 9, 0, tzinfo=timezone.utc),
-            window_hours=24,
-            topics=[topic],
-        )
-
-        summary = build_heuristic_summary(snapshot)
-        self.assertIn("1 个活跃话题", summary)
-        self.assertIn("Fiber update", summary)
-
     def test_render_html_report(self) -> None:
         snapshot = make_snapshot()
         html = render_html_report(
             snapshot,
-            type("Summary", (), {"mode": "heuristic", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
+            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
             timezone_name="Asia/Shanghai",
             site_url="https://example.github.io/ckb-talk-radar",
         )
@@ -123,7 +82,7 @@ class SummaryTests(unittest.TestCase):
         snapshot = make_snapshot()
         rss = render_rss_feed(
             snapshot,
-            type("Summary", (), {"mode": "heuristic", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
+            type("Summary", (), {"mode": "ai:openrouter", "body": "### 核心结论\n- Fiber 很活跃", "note": None})(),
             timezone_name="Asia/Shanghai",
             site_url="https://example.github.io/ckb-talk-radar",
         )
@@ -224,18 +183,56 @@ class SummaryTests(unittest.TestCase):
         )()
         self.assertEqual(extract_chat_completion_text(response), "hello")
 
-    def test_try_openai_summary_falls_back_on_provider_error(self) -> None:
+    def test_extract_chat_completion_text_returns_empty_when_content_is_none(self) -> None:
+        response = type(
+            "Resp",
+            (),
+            {
+                "choices": [
+                    type(
+                        "Choice",
+                        (),
+                        {"message": type("Msg", (), {"content": None})()},
+                    )()
+                ]
+            },
+        )()
+        self.assertEqual(extract_chat_completion_text(response), "")
+
+    def test_try_openai_summary_raises_on_provider_error(self) -> None:
         snapshot = make_snapshot()
         fake_client = mock.Mock()
         fake_client.chat.completions.create.side_effect = RuntimeError("Invalid Authentication")
         fake_openai_module = SimpleNamespace(OpenAI=mock.Mock(return_value=fake_client))
         with mock.patch.dict("os.environ", {"MOONSHOT_API_KEY": "moonshot-key"}, clear=False):
             with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
-                summary = try_openai_summary(snapshot=snapshot, model="kimi-for-coding")
-        self.assertIsNotNone(summary)
-        assert summary is not None
-        self.assertEqual(summary.mode, "heuristic")
-        self.assertIn("调用失败", summary.note or "")
+                with self.assertRaises(SummaryGenerationError) as ctx:
+                    try_openai_summary(snapshot=snapshot, model="kimi-for-coding")
+        self.assertIn("AI summary request failed", str(ctx.exception))
+
+    def test_build_summary_raises_when_ai_returns_empty_content(self) -> None:
+        snapshot = make_snapshot()
+        fake_response = type(
+            "Resp",
+            (),
+            {
+                "choices": [
+                    type(
+                        "Choice",
+                        (),
+                        {"message": type("Msg", (), {"content": None})()},
+                    )()
+                ]
+            },
+        )()
+        fake_client = mock.Mock()
+        fake_client.chat.completions.create.return_value = fake_response
+        fake_openai_module = SimpleNamespace(OpenAI=mock.Mock(return_value=fake_client))
+        with mock.patch.dict("os.environ", {"OPENROUTER_API_KEY": "openrouter-key"}, clear=False):
+            with mock.patch.dict("sys.modules", {"openai": fake_openai_module}):
+                with self.assertRaises(SummaryGenerationError) as ctx:
+                    build_summary(snapshot=snapshot, model="moonshotai/kimi-k2.6")
+        self.assertIn("empty content", str(ctx.exception))
 
     def test_parse_summary_sections_supports_markdown_headings(self) -> None:
         sections = parse_summary_sections(
@@ -262,7 +259,7 @@ class SummaryTests(unittest.TestCase):
             "Summary",
             (),
             {
-                "mode": "heuristic",
+                "mode": "ai:openrouter",
                 "body": "\n".join(
                     [
                         "## 今日发生了什么",

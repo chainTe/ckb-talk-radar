@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 from .discord import DiscordPublishError, compose_discord_brief, publish_to_discord
 from .discourse import CrawlError, DiscourseClient
 from .publishing import publish_latest_artifacts, render_html_report, render_rss_feed
-from .reporting import build_summary, ensure_output_dir, render_report, save_snapshot
+from .reporting import SummaryGenerationError, build_summary, ensure_output_dir, render_report, save_snapshot
 from .server import serve_output_dir
 
 
@@ -33,7 +33,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-pages", type=int, default=5)
     parser.add_argument("--timeout", type=int, default=20)
     parser.add_argument("--model", default=default_model())
-    parser.add_argument("--skip-ai", action="store_true")
     parser.add_argument("--site-url", default=os.getenv("CKB_TALK_RADAR_SITE_URL") or None)
     parser.add_argument(
         "--site-title",
@@ -97,7 +96,10 @@ def main() -> int:
     rss_path = output_dir / "rss.xml"
 
     save_snapshot(snapshot, snapshot_path)
-    summary = build_summary(snapshot, model=args.model, skip_ai=args.skip_ai)
+    try:
+        summary = build_summary(snapshot, model=args.model)
+    except SummaryGenerationError as exc:
+        parser.exit(1, f"Summary generation failed: {exc}\n")
     report = render_report(snapshot, summary, timezone_name=args.timezone)
     report_path.write_text(report, encoding="utf-8")
     html_report = render_html_report(
