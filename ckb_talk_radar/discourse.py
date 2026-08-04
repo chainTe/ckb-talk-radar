@@ -108,7 +108,7 @@ class DiscourseClient:
                     created_at=created_at,
                     last_posted_at=last_posted_at,
                     category_id=raw_topic.get("category_id"),
-                    tags=list(raw_topic.get("tags", [])),
+                    tags=extract_tag_names(raw_topic.get("tags", [])),
                     posters=extract_poster_names(raw_topic.get("posters", [])),
                 )
 
@@ -218,6 +218,28 @@ def extract_poster_names(raw_posters: list[dict[str, Any]]) -> list[str]:
             names.append(description)
         elif user_id is not None:
             names.append(str(user_id))
+    return names
+
+
+def extract_tag_names(raw_tags: Any) -> list[str]:
+    """Normalize Discourse tag strings and tag objects to display names."""
+    if not isinstance(raw_tags, list):
+        return []
+
+    names: list[str] = []
+    for item in raw_tags:
+        if isinstance(item, str):
+            name = item
+        elif isinstance(item, dict):
+            name = item.get("name") or item.get("slug")
+        else:
+            continue
+
+        if not isinstance(name, str):
+            continue
+        name = name.strip()
+        if name and name not in names:
+            names.append(name)
     return names
 
 
