@@ -5,126 +5,98 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Fri, 09 Oct 2026 18:22:58 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 18:28:35 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-10</title>
+    <title>CKB Talk Daily Brief - 2026-10-11</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-09:daily-brief</guid>
-    <pubDate>Fri, 09 Oct 2026 21:28:15 +0000</pubDate>
-    <description>## 今日发生了什么 截至 2026 年 10 月 9 日，Nervos Talk 当天最显眼的新帖是 ArthurZhang 发布 Tactus O1，称其是 CKB 上实验性 EVM validity rollup，围绕 CKB PoW 共识设计，并强调没有特权 L2 sequencer [S03]。同时，CKB Off-Chain Hanoi 活动回顾获得社区正面回应，讨论越南 builder 社区成长 [S01, S02]。论坛其余活跃点集中在 Twine 安全模型更新、Waymark 代码审查交流、Spark Program 项目回复以及 CKB Kickstarter 资助提案预告 [S04, S06, S09, S10, S12, S13, S14]。从可见帖子看，今天更像多点项目推进和社区互动，而不是单一大型公告 [S03, S14]。 ## 重点话题 **Tactus O1 新帖发布**：ArthurZhang 宣布 Tactus O1，标题称其为 CKB 上首个 based EVM rollup，并强调“one canonical history”和“no privileged L2 sequencer” [S03]。帖子称这是此前 based EVM 架构讨论的独立项目推进 [S03]。 **CKB Off-Chain Hanoi 回顾与反馈**：帖子介绍 2026 年 10 月 8 日 Nervos Community Catalyst 与 BPSClub、TexLabs 在 Nguyen Trai University 举办 CKB Off-...</description>
+    <guid>tag:ckb-talk-radar,2026-10-10:daily-brief</guid>
+    <pubDate>Sat, 10 Oct 2026 20:27:59 +0000</pubDate>
+    <description>## 今日发生了什么 今天 Nervos Talk 的主要动态集中在 Spark Program 提案评审更新和 Fiber 生态推进上。[S02, S05, S06, S09, S14] Spark 这边，Corven IDE 被标记为 Pending 并获邀继续沟通，随后作者称已修订重交；LiquidLane 被拒，Spark Verify 仍 Pending 且被要求补视频演示。[S02, S03, S05, S06] Fiber 相关讨论继续，包括浏览器游戏 FiberSurvivors、FiberLatch 的真实测试网结算更新，以及 FiberNuts 对 LSP 和 UDT/RUSD 支持的追问。[S01, S09, S14] 另外，CKB Off Chain Aba 活动概览下有用户简短好评，CKB Pulse 上线展示 GitHub 公共进展，Kirea Finance 硬化范围也在继续澄清。[S04, S12, S10, S11] ## 重点话题 Spark Program 今天集中更新了多个提案状态。[S02, S05, S06, S07, S08] Corven cloud-native IDE 提案被委员会标记为 Pending，委员会称这不是拒绝，而是邀请继续推进。[S02] 作者随后表示已针对四点修订并重新提交，包括增加 9 个可衡量输出的交付表，每个有具体指标和发布位置。[S03] LiquidLane 的 Fiber 接收容量市场 resubmission 被委员会拒绝。[S05] Spark Verify 仍为...</description>
   </item>
   <item>
-    <title>CKB Off-Chain Hanoi Event Overview (2 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-off-chain-hanoi-event-overview/10860</link>
-    <guid>https://talk.nervos.org/t/ckb-off-chain-hanoi-event-overview/10860#recent-2</guid>
-    <pubDate>Fri, 09 Oct 2026 18:22:58 +0000</pubDate>
-    <description>CKB Off-Chain Hanoi Event Overview hanoi-updated22836×1595 168 KB On 8 October 2026, Nervos Community Catalyst, in collaboration with BPSClub and TexLabs, held CKB Off-Chain Hanoi at Nguyen Trai University’s Faculty of Information Technology &amp; Digital Transformation. The event brought together CKB developers, other software developers, faculty members and university students. It was an important milestone for the CKBuilders programme in Vietnam, giving local builders an opportunity to present their work, share their experiences and meet one another in person. Opening the Event The event was opened by Mr. Trinh Chung, a lecturer at the Faculty of Information Technology &amp; Digital...</description>
+    <title>FiberSurvivors: a browser survivors-like for Fiber (1 posts)</title>
+    <link>https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898</link>
+    <guid>https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 18:28:35 +0000</pubDate>
+    <description>Hi everyone! I’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber. So a run goes like this: You open the game and a Fiber node starts in your browser, with its own wallet You fund it from the testnet faucet Press Play, and the game opens a channel to the hub node (game’s reward liquidity) Clear a level, and the hub pays you CKB Buy upgrade cards mid-run by paying an invoice Cash out at the end, the channel closes and your CKB goes back on-chain All you need is a browser tab, no extension, no local node, no CLI. Everything runs on testnet. The Loop...</description>
   </item>
   <item>
-    <title>Tactus O1: First Based EVM Rollup on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861</link>
-    <guid>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 18:20:10 +0000</pubDate>
-    <description>One canonical history. No privileged L2 sequencer. Following my earlier discussion on based EVM architectures for CKB, I’ve taken this direction forward as an independent project: Tactus O1. Tactus O1 is an experimental EVM validity rollup designed around CKB’s PoW consensus and Cell model. The central idea is to allow independent builders to propose EVM batches, while CKB determines their canonical succession and eventually verifies the resulting execution through validity proofs. I’m developing this as a solo research and engineering project for now. The repository already contains working components and reproducible experiments, although the complete rollup and its security guarantees...</description>
+    <title>Spark Program Proposal: Corven cloud-native IDE (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-2</guid>
+    <pubDate>Sat, 10 Oct 2026 17:05:01 +0000</pubDate>
+    <description>Hi @lestonEth, Thank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal. After review by the Spark Program committee, your proposal has been assigned a status of Pending. This is not a rejection, but an invitation to revise and resubmit. The committee acknowledges the value of your work — a browser-based IDE that lowers the barrier for new developers to build on CKB is genuinely useful, and the progress you’ve made on the CKB foundation (workspace management, devnet provisioning, contract templates, transaction debugger) is impressive. Main Revision Recommendations: Deliverables clarification: Please explicitly state what the...</description>
   </item>
   <item>
-    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (3 posts)</title>
-    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
-    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-3</guid>
-    <pubDate>Fri, 09 Oct 2026 17:39:31 +0000</pubDate>
-    <description>Nice write-up. I cloned the repo and read it end to end; the state machine is tidy and the tests are honest. One line of yours has been sitting with me: The operator can still settle or drop the preimage while the trade is open. That is the trust left in the coordinator. I’d fix that before deploying anything, because it turns out to be fixable with the RPCs you are already calling. Today it sits a little past ‘trust’: the daemon mints S at take, keeps it in SQLite and registers it with the watchtower before the seller has even paid. ‘Release pays the buyer first’ is a property of your process, not of the construction, and the biscuit carries write("invoices") — the operator can settle...</description>
+    <title>CKB Off Chain Aba: Event Overview (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808</link>
+    <guid>https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 16:47:50 +0000</pubDate>
+    <description>It was an amazing outing</description>
   </item>
   <item>
-    <title>Spark Program | CKB Revocable Timelock (CRT) — Timelock Encryption You Can Cancel (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-revocable-timelock-crt-timelock-encryption-you-can-cancel/10698</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-revocable-timelock-crt-timelock-encryption-you-can-cancel/10698#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 17:17:43 +0000</pubDate>
-    <description>Hi @psawyerberlin , We’re glad to see you continuing to explore project that interest you. You’re welcome to submit a new proposal ! Best, xingtian</description>
+    <title>Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796</link>
+    <guid>https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 15:37:29 +0000</pubDate>
+    <description>Hi @Fidelcoder, Thank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the LiquidLane project at this time. We want to be transparent about the reasoning behind this decision: 1. **Security considerations were not adequately addressed**: As an infrastructure project handling channel funding and fee distribution, the proposal does not sufficiently address the security model — including fund custody, withdrawal paths, and what happens in the event of node downtime or malicious behavior from either party. The committee believes these risks should have...</description>
   </item>
   <item>
-    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
-    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 15:58:47 +0000</pubDate>
-    <description>Please if you are a DAO member please Vote for me https://dao.ckb.community/thread/vot-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb-80044</description>
+    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
+    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 15:35:27 +0000</pubDate>
+    <description>Hello @Akane, Following a review by the Spark Program Committee, your proposal remains Pending. The committee invites you to provide a video demonstration: Based on the written proposal alone, the committee is finding it difficult to accurately assess the tool’s purpose and how it is used. Please create a video (a screen recording is fine) demonstrating and explaining the complete workflow. We’d be happy to help if you need anything. If you have any questions about the committee’s video requirements, please feel free to contact us at any time. We look forward to receiving your demonstration video. Best regards, Xingtian On behalf of the Spark Program Committee</description>
   </item>
   <item>
-    <title>Waymark — Recovering useful wallet state without starting from zero (2 posts)</title>
-    <link>https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819</link>
-    <guid>https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819#recent-2</guid>
-    <pubDate>Fri, 09 Oct 2026 15:56:04 +0000</pubDate>
-    <description>Hi @Ticoworld this is a very helpful research and work you’ve done, i had this idea in mind for a while even @Xcodes-chain created an issue about it on github. I haven’t looked at the code, I’ll do that soon so we can catch any underlying issue or bugs. Then officially incorporate it into PN and other applications thats uses LC state Thanks bro, really appreciate this. Good to know this was already something you had in mind too. I’d like to hear what you find after you’ve gone through the code.</description>
+    <title>Spark Program | zk-Lock for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448</link>
+    <guid>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 15:34:53 +0000</pubDate>
+    <description>Hi @Mulandi_Cecilia: Thank you for sharing with the committee your interactions with other developers in the community about zk-Lock. The committee would like to align with you on two priorities for community engagement: Engaging non-developers in the community: The committee is glad to see you interacting with other developers in the community. However, when we suggested strengthening community engagement, we especially hoped you would explain to community members without a technical background—not just developers—what use cases zk-Lock enables, how they can use it, and what tangible outcomes they can achieve with it. We believe broader community outreach is essential for this...</description>
   </item>
   <item>
-    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 13:49:30 +0000</pubDate>
-    <description>Hi @TinyuengKwan , 希望经过半个月的修养你的手臂已经开始好转，我们希望听到你好转的好消息~~ 祝早日康复， 行天 谨代表星火计划委员会</description>
+    <title>Spark Program | CKB Wallet Behaviour Intelligence (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 15:33:50 +0000</pubDate>
+    <description>Hi @mulinya, The committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that needs further clarification is: Clarification of the feature definitions in Section 5.1 During our review, the committee was unable to determine the specific meaning of the feature fields defined in Section 5.1. If these definitions are already documented, please compile their meanings in plain language and post them on the Nervos Talk forum so that community members and committee members can accurately understand how these features are calculated and what they represent in...</description>
   </item>
   <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 13:32:53 +0000</pubDate>
-    <description>Hi @NNCBN, We have noted your sustained commitment to moving the project forward. After resolving the issues during the hardware preparation phase, you’ve delivered on time for two consecutive weeks and maintained a steady pace. Keep it up! Best, xingtian</description>
+    <title>[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414</link>
+    <guid>https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 15:03:15 +0000</pubDate>
+    <description>Post-grant update: FiberFlow integration and real Fiber testnet settlement Hi everyone, I’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber applications. One of the projects I tried was FiberFlow. The integration worked around a simple boundary: Fiber payment → FiberFlow invoice.paid → FiberLatch access → protected resource FiberFlow handles the payment. Once the application trusts the paid event, FiberLatch handles the access that comes after it. While testing this, I noticed I was repeating the same PostgreSQL logic in both the FiberFlow integration and a separate FiberLatch reference app, especially around limited-use...</description>
   </item>
   <item>
-    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
-    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 13:30:36 +0000</pubDate>
-    <description>Hi @SalmanDev ， Great to see Tranfr’s first-week update. Everything looks to be going smoothly so far—keep it up! Best， xingtian</description>
-  </item>
-  <item>
-    <title>Introducing CKB Kickstarter: Decentralized All-or-Nothing Crowdfunding on Nervos CKB (Testnet MVP Live) (1 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130</link>
-    <guid>https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 13:10:10 +0000</pubDate>
-    <description>Quick update: the grant proposal goes up this Monday, Oct 12, in the Community Fund DAO category. It’s a much smaller ask than last time, about $5k and testnet only: creator and backer dashboards, creator identity (.cell names and Vellum reputation), and a tip for whoever triggers settlement. No audit or mainnet in this one, those come back later as their own proposal. I’ll link it here once it’s posted. If you’ve tried the app at crowdcell.vercel.app and something felt off, tell me before then.</description>
-  </item>
-  <item>
-    <title>CKBA Dev Rel AMA (2 posts)</title>
-    <link>https://talk.nervos.org/t/ckba-dev-rel-ama/10794</link>
-    <guid>https://talk.nervos.org/t/ckba-dev-rel-ama/10794#recent-2</guid>
-    <pubDate>Fri, 09 Oct 2026 10:59:10 +0000</pubDate>
-    <description>image1001×246 34.2 KB My Reddit account was rate limited, so let me post in here first… Thanks again to everyone for the questions! Writing the answers gave me plenty of food for thought as well. Please feel free to keep sharing your questions, and if anything else comes up, you are welcome to ask me directly on Nervos Talk. Originally written in Chinese and translated into English by ChatGPT. How Can We Use AI? Q: CCC now ships Agent Skills for building with the SDK, and the maintenance notes say there is no eval suite for them yet. Where do you see DevRel’s AI resources going: will they cover on-chain scripts too, writing and reviewing them, and would you take community skills there?...</description>
-  </item>
-  <item>
-    <title>FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB? (2 posts)</title>
-    <link>https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688</link>
-    <guid>https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688#recent-2</guid>
-    <pubDate>Fri, 09 Oct 2026 10:53:22 +0000</pubDate>
-    <description>Great to see FiberNuts continuing to evolve after the hackathon, I think the community market direction is a great way to demonstrate the value of combining Cashu with Fiber. A few suggestions for the next steps: First, I’d encourage you to explore integration with our ongoing LSP support PR (#1623). This could significantly simplify onboarding by allowing users to deposit and withdraw without having to run their own Fiber nodes or manage payment channels. Second, I’d prioritize payment reliability and recovery, especially handling failed or pending payments, node restarts, and refunds. Since Cashu introduces custodial trust, making Mint liquidity, availability, and redemption risks...</description>
-  </item>
-  <item>
-    <title>[DIS] Hardening Kirea Finance (Native RWA Lending on CKB) (3 posts)</title>
+    <title>[DIS] Hardening Kirea Finance (Native RWA Lending on CKB) (2 posts)</title>
     <link>https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809</link>
-    <guid>https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809#recent-3</guid>
-    <pubDate>Fri, 09 Oct 2026 10:00:22 +0000</pubDate>
-    <description>A small clarification for anyone reviewing this proposal: Kirea is not asking the DAO to fund an unbuilt RWA concept. The complete core lifecycle — RWA asset issuance, KYC attestation, deposit, borrow, repayment and release — is already implemented and verified on CKB testnet. The $7,250 request is specifically to harden that working pattern: generalize the asset/attestation components, integrate live KYC via Sumsub, handle repayment/default edge cases, and provide a reproducible testnet UI/tooling. The precedent for RWA being built by the DAO is the Palmyra project which had to be refunded by them due to other priorities. Kirea is deliberately much narrower in scope to turn an already-...</description>
+    <guid>https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809#recent-2</guid>
+    <pubDate>Sat, 10 Oct 2026 09:08:28 +0000</pubDate>
+    <description>Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones. From the current code, the issuer appears able to spend the collateral without consuming the loan cell, bypassing the loan’s release checks. The borrow/repay checks also count output balances rather than net funds received. Could you include enforcing the loan rules on every collateral spend, and verifying actual net disbursement and repayment, with tests covering both? Thanks, Arthur. These are important points, and I agree both need to be explicitly covered in the hardening scope. Milestone 1 is now updated to cover both: Enforcing the loan’s validation...</description>
   </item>
   <item>
-    <title>[DIS] Pocket Node for iOS: a self-custody CKB light client for Apple and Identity/Signer for CCC web apps (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583</link>
-    <guid>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 09:29:24 +0000</pubDate>
-    <description>Pocket Node for iOS: Milestone 2 complete and signed off M2 (keys, security, onboarding, receive) is finished and has passed the Nervos testing team’s review. Thanks to yanli @Xcodes-chain for a thorough, two-round review: every finding below came from it. Round 1 review (4 findings, all fixed) P1: quitting during onboarding before the backup or PIN step could open the wallet without a PIN. It now resumes at the first unfinished step. (#546) P1: a device backup could restore the wallet file without its device-only keys. The app now detects this and restores from the recovery phrase, which must match the stored address. The app folder is also excluded from iCloud backup. (#547) P2: a...</description>
+    <title>CKB Pulse: who is building on CKB, live (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862</link>
+    <guid>https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862#recent-1</guid>
+    <pubDate>Sat, 10 Oct 2026 02:13:21 +0000</pubDate>
+    <description>CKB Pulse: who is building on CKB, live Hi everyone, We made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub. CKB Pulse CKB Pulse · Last 7 days 627 updates by 62 people in 58 projects, in the last 7 days. Every project is a block. When someone pushes code, proposes or reviews a change, reports a problem or publishes a release, a light flies from their face to the project and the block grows. Watch it live, or replay the last 24 hours or the last 7 days in a minute or two. Drag to turn the view, tap a block to open the project. It is written for people who never open GitHub too: plain words, in English, 中文 and Português. What you can see Highlights of the day,...</description>
   </item>
   <item>
-    <title>Towards a Based EVM Layer on CKB: Three Architectural Options (1 posts)</title>
-    <link>https://talk.nervos.org/t/towards-a-based-evm-layer-on-ckb-three-architectural-options/10815</link>
-    <guid>https://talk.nervos.org/t/towards-a-based-evm-layer-on-ckb-three-architectural-options/10815#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 02:40:27 +0000</pubDate>
-    <description>Re-scoping: this direction will proceed as a separate project After reviewing how much of Myelin these designs would actually use, I want to correct the framing rather than let it stand. Here is the honest accounting on 9th Oct: The three options above need an EVM execution backend, an Ethereum state model and a new CKB-based sequencing protocol, none of which Myelin provides today. Direct code reuse would be limited to generic infrastructure: hashing primitives, a storage shell, the CKB follower adapter and some evidence-handling patterns. What genuinely transfers is the research trajectory. The based EVM layer will therefore be treated as a separate protocol and project. I have edited...</description>
+    <title>Pre-RFC Discussion: Activating the Nervos DAO Treasury (1 posts)</title>
+    <link>https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143</link>
+    <guid>https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143#recent-1</guid>
+    <pubDate>Fri, 09 Oct 2026 23:40:23 +0000</pubDate>
+    <description>chenyukang: requirement that at least one input must have the same lock used with the DAO cell IMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure points. Kudos to @xjd!! If it creates troubles for RGB++ users (or generally those whose lock change at every tx), then I would suggest these users to use a compatible wallet just for using this protocol. If reusing a lock is a perceived security issue for Q-day, then Quantum Purse should give enough peace of mind. chenyukang: A large DAO holder, custodian, exchange, or colluding coalition may still create a permissionless Proposal paying itself and supply enough genuine...</description>
   </item>
   <item>
-    <title>Nervape Email Wallet (1 posts)</title>
-    <link>https://talk.nervos.org/t/nervape-email-wallet/10742</link>
-    <guid>https://talk.nervos.org/t/nervape-email-wallet/10742#recent-1</guid>
-    <pubDate>Fri, 09 Oct 2026 00:23:49 +0000</pubDate>
-    <description>目前和我们系统绑定比较深，不适合开源。</description>
+    <title>FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB? (1 posts)</title>
+    <link>https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688</link>
+    <guid>https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688#recent-1</guid>
+    <pubDate>Fri, 09 Oct 2026 23:40:08 +0000</pubDate>
+    <description>Thanks @quake I have a few questions to gain some more light on this. Which Fiber release is expected to contain the LSP work? Will there be a public testnet LSP, or must FiberNuts operate one? 3 . Is a complete UDT/RUSD remote-signer flow expected to be supported? Who funds and provisions the hosted tenant’s initial RUSD channel? Thank you.</description>
   </item>
 </channel>
 </rss>

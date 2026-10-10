@@ -1,0 +1,467 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-10-10T20:27:59.337277+00:00",
+  "since": "2026-10-09T20:27:48.428182+00:00",
+  "until": "2026-10-10T20:27:48.428182+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 10898,
+      "title": "FiberSurvivors: a browser survivors-like for Fiber",
+      "slug": "fibersurvivors-a-browser-survivors-like-for-fiber",
+      "url": "https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898",
+      "created_at": "2026-10-10T18:28:35.801000+00:00",
+      "last_posted_at": "2026-10-10T18:28:35.904000+00:00",
+      "category_id": 70,
+      "tags": [
+        "fiber",
+        "game",
+        "testnet"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26516,
+          "post_number": 1,
+          "topic_id": 10898,
+          "topic_title": "FiberSurvivors: a browser survivors-like for Fiber",
+          "topic_slug": "fibersurvivors-a-browser-survivors-like-for-fiber",
+          "author": "TranNhi27",
+          "created_at": "2026-10-10T18:28:35.904000+00:00",
+          "updated_at": "2026-10-10T18:28:35.904000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898/1",
+          "content_text": "Hi everyone!\nI’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber.\nSo a run goes like this:\nYou open the game and a Fiber node starts in your browser, with its own wallet\nYou fund it from the testnet faucet\nPress Play, and the game opens a channel to the hub node (game’s reward liquidity)\nClear a level, and the hub pays you CKB\nBuy upgrade cards mid-run by paying an invoice\nCash out at the end, the channel closes and your CKB goes back on-chain\nAll you need is a browser tab, no extension, no local node, no CLI. Everything runs on testnet.\nThe Loop Graph:\nfund a channel ──► fight through 10 levels ──► hub pays each level cleared\n▲ │\n│ ▼\nstronger build ◄──── spend earnings on upgrade cards\n│\n▼\ncash out ──► channel closes, CKB settles on-chain\nSo it’s more rewards vs more power. You earn more if you buy fewer cards, kite well and win, but if you lose a level, the run ends there. Right now there are 10 levels with a dragon boss at the end, more might come later.\nMotivation\nWhile learning Fiber and CKB, I felt like Fiber fits PvP games best, since two players can pay each other directly over a channel, so you don’t have to put all the trust on one server. But for UX, I wanted players to have a smooth experience without setting up a local node or finding someone to match with, and on a testnet demo it’s pretty hard to find another player online. So in the end it became a single-player game where you earn CKB by playing and spend it on upgrades, at least for now.\nimage735×1287 126 KB\nimage746×1293 167 KB\nimage748×1302 170 KB\nimage807×1280 113 KB\nTry it\nDemo: https://zesty-youtiao-8586ae.netlify.app\nSDK repo: Fiber WebGL SDK\nThe game source isn’t public since it uses some paid assets (Feel and the Vefects Effect Pack), and their licenses don’t allow sharing them. But all the Fiber parts are in the SDK, which is fully open.\nHow it works\nThe game is built in Unity (WebGL). For the Fiber part I use my own Fiber WebGL SDK, which runs Fiber’s WASM node (@nervosnetwork/fiber-js) inside the build.\nOn the other side there’s one fnn node (the hub) on a small cloud VM, plus a small Express server next to it. Every player opens one channel to the hub, and all rewards and card payments go through it.\nThe server is the one deciding money, not the client:\nRewards: The coins you pick up only count once you reach the exit. That’s when the client claims them, the server checks the claim, and the hub pays you. Die before the exit and those coins are gone. The full campaign is 10 levels and pays up to 216 CKB\nCards: When you buy a card, the client only sends the card id. The server makes an invoice with the price, then the client decodes it and checks the price matches what it showed you before paying. Cards are 5 to 45 CKB, so if you buy a lot you can actually end a run with less than you started with lol\nCash out: Cash out closes the channel and settles both sides on-chain\nEach player channel is 400 CKB, and the hub puts in 400 CKB on its side too.\nThe SDK\nWhile building this I ended up turning all the Fiber stuff into a Unity package, which I submitted to the Gone in 60ms Hackathon where my winning chances were also gone in 60ms\nAnyway, any Unity WebGL game can use it too:\nIPaymentGateway: start the node, connect, open/close channels, keysend\nIInvoicePaymentGateway: decode an invoice, check the amount, pay\nIUdtPaymentGateway: xUDT channels and payments, route dry-runs\nIFiberWallet: on-chain CKB balance\nIFiberDiagnostics: peers and channels\nThere’s a sample scene in the repo if you want to try it without the game.\nLimitations\nWell, to be honest this is a tech demo for “a Fiber node inside a Unity browser game”. The money side is protected: the client never decides an amount, rewards come from the server, and card prices come in server-made invoices. But the gameplay itself isn’t verified\nYou trust the server: The server can’t see the gameplay itself, but it rejects claims that are out of order, too fast, or have more coins than the level could drop. With one claim per level per session and a payout cap per player, that’s what stops reward spamming for now, but there’s no real anti-cheat.\nThe key lives in the browser: Like any Fiber node, it signs automatically, but here the key is kept in the browser’s localStorage for this site. If you clear your site data, the key and any CKB in it are gone. That’s okay for testnet, but letting players back up the key, or binding it to their own CKB wallet, would fix this.\nOpening a channel takes a few minutes on testnet since it waits for on-chain confirmation.\nHow to play\nThere’s a tutorial in the game, but here are the controls:\nControls: WASD to move, attacks are automatic, 1 to 4 to use a skill, left-click to aim, right-click to cancel.\nSome tips\nIf the channel open fails, wait a minute and try again, testnet can be slow sometimes\nDon’t forget to cash out at the end to get your CKB back on-chain\nCredits\nKudos to these free assets, they helped me build this a lot faster:\nKayKit’s Packs for my game including Characters, Skeleton Enemies, Environment, Animations\nMy cute Dragon Boss\nSpace Game GUI Kit\n500 Free Skill Icons\nThank you for reading till here, any feedback is welcome",
+          "content_html": "<p>Hi everyone!</p>\n<p>I’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber.</p>\n<p>So a run goes like this:</p>\n<ul>\n<li>You open the game and a Fiber node starts in your browser, with its own wallet</li>\n<li>You fund it from the testnet faucet</li>\n<li>Press Play, and the game opens a channel to the hub node (game’s reward liquidity)</li>\n<li>Clear a level, and the hub pays you CKB</li>\n<li>Buy upgrade cards mid-run by paying an invoice</li>\n<li>Cash out at the end, the channel closes and your CKB goes back on-chain</li>\n</ul>\n<p>All you need is a browser tab, no extension, no local node, no CLI. Everything runs on testnet.</p>\n<p>The Loop Graph:</p>\n<pre><code class=\"lang-auto\">fund a channel ──► fight through 10 levels ──► hub pays each level cleared\n                              ▲                             │\n                              │                             ▼\n                       stronger build ◄──── spend earnings on upgrade cards\n                              │\n                              ▼\n                   cash out ──► channel closes, CKB settles on-chain\n</code></pre>\n<p>So it’s more rewards vs more power. You earn more if you buy fewer cards, kite well and win, but if you lose a level, the run ends there. Right now there are 10 levels with a dragon boss at the end, more might come later.</p>\n<h2><a name=\"p-26516-motivation-1\" class=\"anchor\" href=\"#p-26516-motivation-1\" aria-label=\"Heading link\"></a>Motivation</h2>\n<p>While learning Fiber and CKB, I felt like Fiber fits PvP games best, since two players can pay each other directly over a channel, so you don’t have to put all the trust on one server. But for UX, I wanted players to have a smooth experience without setting up a local node or finding someone to match with, and on a testnet demo it’s pretty hard to find another player online. So in the end it became a single-player game where you earn CKB by playing and spend it on upgrades, at least for now.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/7/76cce6193a6300abd4b173bfe57e130572970bf5.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/76cce6193a6300abd4b173bfe57e130572970bf5\" title=\"image\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/7/76cce6193a6300abd4b173bfe57e130572970bf5_2_213x375.jpeg\" alt=\"image\" data-base62-sha1=\"gWXkMzepGoeHv3ntysxsTgAjhKB\" width=\"213\" height=\"375\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/7/76cce6193a6300abd4b173bfe57e130572970bf5_2_213x375.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/7/76cce6193a6300abd4b173bfe57e130572970bf5_2_319x562.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/7/76cce6193a6300abd4b173bfe57e130572970bf5_2_426x750.jpeg 2x\" data-dominant-color=\"7AA2C3\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image</span><span class=\"informations\">735×1287 126 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/2/2cfc2124c19b82041f79a3e0466e68690e797097.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/2cfc2124c19b82041f79a3e0466e68690e797097\" title=\"image\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/2/2cfc2124c19b82041f79a3e0466e68690e797097_2_216x375.jpeg\" alt=\"image\" data-base62-sha1=\"6pXc0akpFhVVqt2bgqbSFP8T1EX\" width=\"216\" height=\"375\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/2/2cfc2124c19b82041f79a3e0466e68690e797097_2_216x375.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/2/2cfc2124c19b82041f79a3e0466e68690e797097_2_324x562.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/2/2cfc2124c19b82041f79a3e0466e68690e797097_2_432x750.jpeg 2x\" data-dominant-color=\"7EACA5\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image</span><span class=\"informations\">746×1293 167 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div><br>\n<div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/4/47f88faf0fe81fc25c5330129a181204d2f5488f.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/47f88faf0fe81fc25c5330129a181204d2f5488f\" title=\"image\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/4/47f88faf0fe81fc25c5330129a181204d2f5488f_2_215x375.jpeg\" alt=\"image\" data-base62-sha1=\"agGrj70Qk0ugjbAWxeMG4JcsNav\" width=\"215\" height=\"375\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/4/47f88faf0fe81fc25c5330129a181204d2f5488f_2_215x375.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/4/47f88faf0fe81fc25c5330129a181204d2f5488f_2_322x562.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/4/47f88faf0fe81fc25c5330129a181204d2f5488f_2_430x750.jpeg 2x\" data-dominant-color=\"4F706F\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image</span><span class=\"informations\">748×1302 170 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div> <div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/a/ab269fcbaf99f94914bb2a657504a25fcf3478b3.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/ab269fcbaf99f94914bb2a657504a25fcf3478b3\" title=\"image\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/a/ab269fcbaf99f94914bb2a657504a25fcf3478b3_2_236x375.jpeg\" alt=\"image\" data-base62-sha1=\"oq4oLmlzLZnwmM7MzxUjVEUNQll\" width=\"236\" height=\"375\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/a/ab269fcbaf99f94914bb2a657504a25fcf3478b3_2_236x375.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/a/ab269fcbaf99f94914bb2a657504a25fcf3478b3_2_354x562.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/a/ab269fcbaf99f94914bb2a657504a25fcf3478b3_2_472x750.jpeg 2x\" data-dominant-color=\"819465\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image</span><span class=\"informations\">807×1280 113 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-26516-try-it-2\" class=\"anchor\" href=\"#p-26516-try-it-2\" aria-label=\"Heading link\"></a>Try it</h2>\n<p>Demo: <strong><a href=\"https://zesty-youtiao-8586ae.netlify.app\" rel=\"noopener nofollow ugc\">https://zesty-youtiao-8586ae.netlify.app</a></strong></p>\n<p>SDK repo: <a href=\"https://github.com/TranNhi27/FiberWebGLSDK\" rel=\"noopener nofollow ugc\">Fiber WebGL SDK</a></p>\n<p>The game source isn’t public since it uses some paid assets (Feel and the Vefects Effect Pack), and their licenses don’t allow sharing them. But all the Fiber parts are in the SDK, which is fully open.</p>\n<h2><a name=\"p-26516-how-it-works-3\" class=\"anchor\" href=\"#p-26516-how-it-works-3\" aria-label=\"Heading link\"></a>How it works</h2>\n<p>The game is built in Unity (WebGL). For the Fiber part I use my own Fiber WebGL SDK, which runs Fiber’s WASM node (<code>@nervosnetwork/fiber-js</code>) inside the build.</p>\n<p>On the other side there’s one <code>fnn</code> node (the hub) on a small cloud VM, plus a small Express server next to it. Every player opens one channel to the hub, and all rewards and card payments go through it.</p>\n<p>The server is the one deciding money, not the client:</p>\n<ul>\n<li><strong>Rewards:</strong> The coins you pick up only count once you reach the exit. That’s when the client claims them, the server checks the claim, and the hub pays you. Die before the exit and those coins are gone. The full campaign is 10 levels and pays up to 216 CKB</li>\n<li><strong>Cards:</strong> When you buy a card, the client only sends the card id. The server makes an invoice with the price, then the client decodes it and checks the price matches what it showed you before paying. Cards are 5 to 45 CKB, so if you buy a lot you can actually end a run with less than you started with lol</li>\n<li><strong>Cash out:</strong> Cash out closes the channel and settles both sides on-chain</li>\n</ul>\n<p>Each player channel is 400 CKB, and the hub puts in 400 CKB on its side too.</p>\n<h2><a name=\"p-26516-the-sdk-4\" class=\"anchor\" href=\"#p-26516-the-sdk-4\" aria-label=\"Heading link\"></a>The SDK</h2>\n<p>While building this I ended up turning all the Fiber stuff into a Unity package, which I submitted to the <a href=\"https://talk.nervos.org/t/gone-in-60ms-fiber-network-infrastructure-hackathon-announcement/10418\">Gone in 60ms</a> Hackathon where my winning chances were also gone in 60ms <img src=\"https://talk.nervos.org/images/emoji/apple/face_holding_back_tears.png?v=15\" title=\":face_holding_back_tears:\" class=\"emoji\" alt=\":face_holding_back_tears:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<p>Anyway, any Unity WebGL game can use it too:</p>\n<ul>\n<li><code>IPaymentGateway</code>: start the node, connect, open/close channels, keysend</li>\n<li><code>IInvoicePaymentGateway</code>: decode an invoice, check the amount, pay</li>\n<li><code>IUdtPaymentGateway</code>: xUDT channels and payments, route dry-runs</li>\n<li><code>IFiberWallet</code>: on-chain CKB balance</li>\n<li><code>IFiberDiagnostics</code>: peers and channels</li>\n</ul>\n<p>There’s a sample scene in the repo if you want to try it without the game.</p>\n<h2><a name=\"p-26516-limitations-5\" class=\"anchor\" href=\"#p-26516-limitations-5\" aria-label=\"Heading link\"></a>Limitations</h2>\n<p>Well, to be honest this is a tech demo for “a Fiber node inside a Unity browser game”. The money side is protected: the client never decides an amount, rewards come from the server, and card prices come in server-made invoices. But the gameplay itself isn’t verified <img src=\"https://talk.nervos.org/images/emoji/apple/sweat_smile.png?v=15\" title=\":sweat_smile:\" class=\"emoji\" alt=\":sweat_smile:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<ul>\n<li>\n<p><strong>You trust the server</strong>: The server can’t see the gameplay itself, but it rejects claims that are out of order, too fast, or have more coins than the level could drop. With one claim per level per session and a payout cap per player, that’s what stops reward spamming for now, but there’s no real anti-cheat.</p>\n</li>\n<li>\n<p><strong>The key lives in the browser</strong>: Like any Fiber node, it signs automatically, but here the key is kept in the browser’s <code>localStorage</code> for this site. If you clear your site data, the key and any CKB in it are gone. That’s okay for testnet, but letting players back up the key, or binding it to their own CKB wallet, would fix this.</p>\n</li>\n<li>\n<p><strong>Opening a channel takes a few minutes</strong> on testnet since it waits for on-chain confirmation.</p>\n</li>\n</ul>\n<h2><a name=\"p-26516-how-to-play-6\" class=\"anchor\" href=\"#p-26516-how-to-play-6\" aria-label=\"Heading link\"></a>How to play</h2>\n<p>There’s a tutorial in the game, but here are the controls:</p>\n<p><strong>Controls:</strong> WASD to move, attacks are automatic, 1 to 4 to use a skill, left-click to aim, right-click to cancel.</p>\n<h2><a name=\"p-26516-some-tips-7\" class=\"anchor\" href=\"#p-26516-some-tips-7\" aria-label=\"Heading link\"></a>Some tips</h2>\n<ul>\n<li>If the channel open fails, wait a minute and try again, testnet can be slow sometimes</li>\n<li>Don’t forget to cash out at the end to get your CKB back on-chain</li>\n</ul>\n<h2><a name=\"p-26516-credits-8\" class=\"anchor\" href=\"#p-26516-credits-8\" aria-label=\"Heading link\"></a>Credits</h2>\n<p>Kudos to these free assets, they helped me build this a lot faster:</p>\n<ul>\n<li><a href=\"https://kaylousberg.itch.io/\" rel=\"noopener nofollow ugc\">KayKit’s Packs</a> for my game including Characters, Skeleton Enemies, Environment, Animations</li>\n<li>My cute <a href=\"https://assetstore.unity.com/packages/3d/characters/creatures/dragon-for-boss-monster-pbr-78923\" rel=\"noopener nofollow ugc\">Dragon Boss</a></li>\n<li><a href=\"https://assetstore.unity.com/packages/2d/gui/icons/space-game-gui-kit-298577\" rel=\"noopener nofollow ugc\">Space Game GUI Kit</a></li>\n<li><a href=\"https://assetstore.unity.com/packages/2d/gui/icons/500-free-skill-icons-344112\" rel=\"noopener nofollow ugc\">500 Free Skill Icons</a></li>\n</ul>\n<p>Thank you for reading till here, any feedback is welcome <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10807,
+      "title": "Spark Program Proposal: Corven cloud-native IDE",
+      "slug": "spark-program-proposal-corven-cloud-native-ide",
+      "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807",
+      "created_at": "2026-10-06T06:37:49.619000+00:00",
+      "last_posted_at": "2026-10-10T17:05:01.174000+00:00",
+      "category_id": 77,
+      "tags": [
+        "CKB",
+        "Grant",
+        "Pending",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26510,
+          "post_number": 2,
+          "topic_id": 10807,
+          "topic_title": "Spark Program Proposal: Corven cloud-native IDE",
+          "topic_slug": "spark-program-proposal-corven-cloud-native-ide",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-10T15:36:34.854000+00:00",
+          "updated_at": "2026-10-10T15:36:34.854000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/2",
+          "content_text": "Hi @lestonEth,\nThank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal.\nAfter review by the Spark Program committee, your proposal has been assigned a status of Pending. This is not a rejection, but an invitation to revise and resubmit.\nThe committee acknowledges the value of your work — a browser-based IDE that lowers the barrier for new developers to build on CKB is genuinely useful, and the progress you’ve made on the CKB foundation (workspace management, devnet provisioning, contract templates, transaction debugger) is impressive.\nMain Revision Recommendations:\nDeliverables clarification: Please explicitly state what the expected deliverables and outputs of this phase are. The committee needs a clear, measurable list of what will be produced by the end of the 4-week period.\nWebsite accessibility: The committee was unable to access the provided website (corvan.space). This raises concerns about whether the project is actually operational and can support the proposed activities. Please confirm the website’s status and provide a working link, or explain the current situation.\nAcceptance criteria: The committee would like to be clear upfront that if the final report, test data, and community feedback do not meet the committee’s requirements, the project will not be approved for completion. Please ensure your proposal includes concrete — and verifiable — plans for how you will collect and present this evidence.\nTesting plan: Since this phase includes hands-on testing with Web3 developer clubs in Kenya, please clarify how the sessions will be conducted and what specific feedback you plan to collect from participants.\nRegarding the website being down — if there are hosting issues or recent changes, please let us know. Please revise and resubmit based on the feedback above. We will arrange a new round of review as soon as possible.\nBest regards,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/lestoneth\">@lestonEth</a>,</p>\n<p>Thank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal.</p>\n<p>After review by the Spark Program committee, your proposal has been assigned a status of <strong>Pending</strong>. This is not a rejection, but an invitation to revise and resubmit.</p>\n<p>The committee acknowledges the value of your work — a browser-based IDE that lowers the barrier for new developers to build on CKB is genuinely useful, and the progress you’ve made on the CKB foundation (workspace management, devnet provisioning, contract templates, transaction debugger) is impressive.</p>\n<p>Main Revision Recommendations:</p>\n<ol>\n<li>\n<p><strong>Deliverables clarification</strong>: Please explicitly state what the expected deliverables and outputs of this phase are. The committee needs a clear, measurable list of what will be produced by the end of the 4-week period.</p>\n</li>\n<li>\n<p><strong>Website accessibility</strong>: The committee was unable to access the provided website (corvan.space). This raises concerns about whether the project is actually operational and can support the proposed activities. Please confirm the website’s status and provide a working link, or explain the current situation.</p>\n</li>\n<li>\n<p><strong>Acceptance criteria</strong>: The committee would like to be clear upfront that if the final report, test data, and community feedback do not meet the committee’s requirements, the project will not be approved for completion. Please ensure your proposal includes concrete — and verifiable — plans for how you will collect and present this evidence.</p>\n</li>\n<li>\n<p><strong>Testing plan</strong>: Since this phase includes hands-on testing with Web3 developer clubs in Kenya, please clarify how the sessions will be conducted and what specific feedback you plan to collect from participants.</p>\n</li>\n</ol>\n<p>Regarding the website being down — if there are hosting issues or recent changes, please let us know. Please revise and resubmit based on the feedback above. We will arrange a new round of review as soon as possible.</p>\n<p>Best regards,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26515,
+          "post_number": 3,
+          "topic_id": 10807,
+          "topic_title": "Spark Program Proposal: Corven cloud-native IDE",
+          "topic_slug": "spark-program-proposal-corven-cloud-native-ide",
+          "author": "lestonEth",
+          "created_at": "2026-10-10T17:05:01.174000+00:00",
+          "updated_at": "2026-10-10T18:07:41.205000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/3",
+          "content_text": "[Proposal Update]\nHi @xingtianchunyan,thanks to you and the committee for the review.\nI’ve revised and resubmitted the proposal to address all four points:\nDeliverables — Added a measurable deliverables table (9 outputs, each with a specific metric and publication location), cross-referenced with the to-do list.\nWebsite — Old domain was taken offline to save hosting costs while pending; project moved to https://corvanide.space/.\nAcceptance criteria — Added 6 explicit commitments: raw evidence published, 30-day post-report uptime, unedited demo video, honest shortfall reporting. I accept that missing the committee’s requirements means no completion approval.\nTesting plan — Added a 3-hour session agenda, 5 feedback instruments, and targets (40+ participants, 70%/50% lab completion, 80% survey response).\nBest regards,\nlestonEth",
+          "content_html": "<p><strong>[Proposal Update]</strong></p>\n<p>Hi <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a>,thanks to you and the committee for the review.</p>\n<p>I’ve revised and resubmitted the proposal to address all four points:</p>\n<ol>\n<li>\n<p><strong>Deliverables</strong> — Added a measurable deliverables table (9 outputs, each with a specific metric and publication location), cross-referenced with the to-do list.</p>\n</li>\n<li>\n<p><strong>Website</strong> — Old domain was taken offline to save hosting costs while pending; project moved to <strong><a href=\"https://corvanide.space/\" rel=\"noopener nofollow ugc\">https://corvanide.space/</a></strong>.</p>\n</li>\n<li>\n<p><strong>Acceptance criteria</strong> — Added 6 explicit commitments: raw evidence published, 30-day post-report uptime, unedited demo video, honest shortfall reporting. I accept that missing the committee’s requirements means no completion approval.</p>\n</li>\n<li>\n<p><strong>Testing plan</strong> — Added a 3-hour session agenda, 5 feedback instruments, and targets (40+ participants, 70%/50% lab completion, 80% survey response).</p>\n</li>\n</ol>\n<p>Best regards,<br>\nlestonEth</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10808,
+      "title": "CKB Off Chain Aba: Event Overview",
+      "slug": "ckb-off-chain-aba-event-overview",
+      "url": "https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808",
+      "created_at": "2026-10-06T08:23:52.784000+00:00",
+      "last_posted_at": "2026-10-10T16:47:50.582000+00:00",
+      "category_id": 74,
+      "tags": [],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26513,
+          "post_number": 4,
+          "topic_id": 10808,
+          "topic_title": "CKB Off Chain Aba: Event Overview",
+          "topic_slug": "ckb-off-chain-aba-event-overview",
+          "author": "Chizzy",
+          "created_at": "2026-10-10T16:47:50.582000+00:00",
+          "updated_at": "2026-10-10T16:47:50.582000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808/4",
+          "content_text": "It was an amazing outing",
+          "content_html": "<p>It was an amazing outing</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10796,
+      "title": "Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION",
+      "slug": "spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission",
+      "url": "https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796",
+      "created_at": "2026-09-29T21:31:12.477000+00:00",
+      "last_posted_at": "2026-10-10T15:37:29.656000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26511,
+          "post_number": 2,
+          "topic_id": 10796,
+          "topic_title": "Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION",
+          "topic_slug": "spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-10T15:37:29.656000+00:00",
+          "updated_at": "2026-10-10T15:37:29.656000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796/2",
+          "content_text": "Hi @Fidelcoder,\nThank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the LiquidLane project at this time.\nWe want to be transparent about the reasoning behind this decision:\n1. **Security considerations were not adequately addressed**: As an infrastructure project handling channel funding and fee distribution, the proposal does not sufficiently address the security model — including fund custody, withdrawal paths, and what happens in the event of node downtime or malicious behavior from either party. The committee believes these risks should have been identified and mitigated at the design stage.\n2. **Technical implementation remains premature**: The current implementation shows signs of incompleteness — interfaces are not fully connected, and the wallet connector relies solely on JoyID without leveraging CCC (CKBers’ Codebase), which is the recommended SDK and provides a unified wallet connection layer. Given that CKB already has well-established tooling in this area, the committee expects new projects to build on the existing stack rather than reinventing or bypassing it.\n3. **Lack of demonstrated long-term operational commitment**: This is an infrastructure-level project, and the committee did not see evidence of a sustainable plan for ongoing maintenance, node coordination, and user support after the initial grant period. Infrastructure projects require continuous upkeep to remain viable, and the proposal does not adequately address this.\nWe appreciate the work your team has put into LiquidLane and acknowledge the effort behind the resubmission. However, the committee suggests that rather than targeting bottom-layer infrastructure — which demands significant experience and long-term commitment — you consider pivoting toward **application-layer development**. There is meaningful value to be created by building user-facing payment experiences, merchant tools, or wallets that integrate with existing infrastructure such as Fiber Network, rather than attempting to build the infrastructure itself.\nIf in the future you plan to develop a more scoped, application-focused project with a clear security model and demonstrated technical readiness, we would welcome a new application.\nThank you very much for all the hard work your team has put in. Keep building, and feel free to reach out anytime!\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/fidelcoder\">@Fidelcoder</a>,</p>\n<p>Thank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the LiquidLane project at this time.</p>\n<p>We want to be transparent about the reasoning behind this decision:</p>\n<p>1. **Security considerations were not adequately addressed**: As an infrastructure project handling channel funding and fee distribution, the proposal does not sufficiently address the security model — including fund custody, withdrawal paths, and what happens in the event of node downtime or malicious behavior from either party. The committee believes these risks should have been identified and mitigated at the design stage.</p>\n<p>2. **Technical implementation remains premature**: The current implementation shows signs of incompleteness — interfaces are not fully connected, and the wallet connector relies solely on JoyID without leveraging CCC (CKBers’ Codebase), which is the recommended SDK and provides a unified wallet connection layer. Given that CKB already has well-established tooling in this area, the committee expects new projects to build on the existing stack rather than reinventing or bypassing it.</p>\n<p>3. **Lack of demonstrated long-term operational commitment**: This is an infrastructure-level project, and the committee did not see evidence of a sustainable plan for ongoing maintenance, node coordination, and user support after the initial grant period. Infrastructure projects require continuous upkeep to remain viable, and the proposal does not adequately address this.</p>\n<p>We appreciate the work your team has put into LiquidLane and acknowledge the effort behind the resubmission. However, the committee suggests that rather than targeting bottom-layer infrastructure — which demands significant experience and long-term commitment — you consider pivoting toward **application-layer development**. There is meaningful value to be created by building user-facing payment experiences, merchant tools, or wallets that integrate with existing infrastructure such as Fiber Network, rather than attempting to build the infrastructure itself.</p>\n<p>If in the future you plan to develop a more scoped, application-focused project with a clear security model and demonstrated technical readiness, we would welcome a new application.</p>\n<p>Thank you very much for all the hard work your team has put in. Keep building, and feel free to reach out anytime!</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10598,
+      "title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+      "slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+      "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598",
+      "created_at": "2026-08-10T00:31:01.205000+00:00",
+      "last_posted_at": "2026-10-10T15:35:27.234000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Pending"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26509,
+          "post_number": 14,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-10T15:35:27.234000+00:00",
+          "updated_at": "2026-10-10T15:35:27.234000+00:00",
+          "reply_to_post_number": 12,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/14",
+          "content_text": "Hello @Akane,\nFollowing a review by the Spark Program Committee, your proposal remains Pending.\nThe committee invites you to provide a video demonstration: Based on the written proposal alone, the committee is finding it difficult to accurately assess the tool’s purpose and how it is used. Please create a video (a screen recording is fine) demonstrating and explaining the complete workflow.\nWe’d be happy to help if you need anything. If you have any questions about the committee’s video requirements, please feel free to contact us at any time. We look forward to receiving your demonstration video.\nBest regards,\nXingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hello <a class=\"mention\" href=\"/u/akane\">@Akane</a>,</p>\n<p>Following a review by the Spark Program Committee, your proposal remains <strong>Pending</strong>.</p>\n<p><strong>The committee invites you to provide a video demonstration</strong>: Based on the written proposal alone, the committee is finding it difficult to accurately assess the tool’s purpose and how it is used. Please create a video (a screen recording is fine) demonstrating and explaining the complete workflow.</p>\n<p>We’d be happy to help if you need anything. If you have any questions about the committee’s video requirements, please feel free to contact us at any time. We look forward to receiving your demonstration video.</p>\n<p>Best regards,<br>\nXingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10448,
+      "title": "Spark Program | zk-Lock for CKB",
+      "slug": "spark-program-zk-lock-for-ckb",
+      "url": "https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448",
+      "created_at": "2026-07-01T15:52:19.345000+00:00",
+      "last_posted_at": "2026-10-10T15:34:53.466000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26508,
+          "post_number": 22,
+          "topic_id": 10448,
+          "topic_title": "Spark Program | zk-Lock for CKB",
+          "topic_slug": "spark-program-zk-lock-for-ckb",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-10T15:34:53.466000+00:00",
+          "updated_at": "2026-10-10T15:34:53.466000+00:00",
+          "reply_to_post_number": 21,
+          "url": "https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/22",
+          "content_text": "Hi @Mulandi_Cecilia:\nThank you for sharing with the committee your interactions with other developers in the community about zk-Lock.\nThe committee would like to align with you on two priorities for community engagement:\nEngaging non-developers in the community: The committee is glad to see you interacting with other developers in the community. However, when we suggested strengthening community engagement, we especially hoped you would explain to community members without a technical background—not just developers—what use cases zk-Lock enables, how they can use it, and what tangible outcomes they can achieve with it. We believe broader community outreach is essential for this foundational component to become fully integrated into the ecosystem.\nInteractive frontend: The committee would like to see an interactive frontend that integrates the SDK and contracts, even if its functionality is very simple. The goal is to let community members with no development experience participate in the project and try it out firsthand. This would also demonstrate the project’s value proposition in a clear, tangible way and help the community understand what zk-Lock can do beyond its technical specifications.\nWe are not currently asking you to deliver a polished, production-ready product; a basic interface demonstrating the core functionality will suffice. If you need help implementing the frontend or would like to discuss how to build a community demo, please feel free to reach out. The committee would be happy to support you. We would also be glad to connect you with other grant recipients who have built similar interactive demos for reference.\nBest regards,\nxingtian\nOn behalf of the Spark Program Committee\ncc: @zz_tovarishch , @yixiu.ckbfans.bit , @Hanssen",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/mulandi_cecilia\">@Mulandi_Cecilia</a>:</p>\n<p>Thank you for sharing with the committee your interactions with other developers in the community about zk-Lock.</p>\n<p>The committee would like to align with you on two priorities for community engagement:</p>\n<p><strong>Engaging non-developers in the community</strong>: The committee is glad to see you interacting with other developers in the community. However, when we suggested strengthening community engagement, we especially hoped you would explain to community members without a technical background—not just developers—what use cases zk-Lock enables, how they can use it, and what tangible outcomes they can achieve with it. We believe broader community outreach is essential for this foundational component to become fully integrated into the ecosystem.</p>\n<p><strong>Interactive frontend</strong>: The committee would like to see an interactive frontend that integrates the SDK and contracts, even if its functionality is very simple. The goal is to let community members with no development experience participate in the project and try it out firsthand. This would also demonstrate the project’s value proposition in a clear, tangible way and help the community understand what zk-Lock can do beyond its technical specifications.</p>\n<p>We are not currently asking you to deliver a polished, production-ready product; a basic interface demonstrating the core functionality will suffice. If you need help implementing the frontend or would like to discuss how to build a community demo, please feel free to reach out. The committee would be happy to support you. We would also be glad to connect you with other grant recipients who have built similar interactive demos for reference.</p>\n<p>Best regards,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>\n<p>cc: <a class=\"mention\" href=\"/u/zz_tovarishch\">@zz_tovarishch</a> , <a class=\"mention\" href=\"/u/yixiu.ckbfans.bit\">@yixiu.ckbfans.bit</a> , <a class=\"mention\" href=\"/u/hanssen\">@Hanssen</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10338,
+      "title": "Spark Program | CKB Wallet Behaviour Intelligence",
+      "slug": "spark-program-ckb-wallet-behaviour-intelligence",
+      "url": "https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338",
+      "created_at": "2026-06-03T19:27:17.259000+00:00",
+      "last_posted_at": "2026-10-10T15:33:50.657000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26507,
+          "post_number": 29,
+          "topic_id": 10338,
+          "topic_title": "Spark Program | CKB Wallet Behaviour Intelligence",
+          "topic_slug": "spark-program-ckb-wallet-behaviour-intelligence",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-10T15:33:50.657000+00:00",
+          "updated_at": "2026-10-10T15:33:50.657000+00:00",
+          "reply_to_post_number": 28,
+          "url": "https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/29",
+          "content_text": "Hi @mulinya,\nThe committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that needs further clarification is:\nClarification of the feature definitions in Section 5.1\nDuring our review, the committee was unable to determine the specific meaning of the feature fields defined in Section 5.1. If these definitions are already documented, please compile their meanings in plain language and post them on the Nervos Talk forum so that community members and committee members can accurately understand how these features are calculated and what they represent in the project.\nIf you need help clarifying the feature definitions or aligning the evaluation methodology, feel free to reach out. The committee is happy to support you.\nBest,\nxingtian\nOn behalf of the Spark Program Committee\ncc: @zz_tovarishch , @yixiu.ckbfans.bit , @Hanssen",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/mulinya\">@mulinya</a>,</p>\n<p>The committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that needs further clarification is:</p>\n<p><strong>Clarification of the feature definitions in Section 5.1</strong></p>\n<p>During our review, the committee was unable to determine the specific meaning of the feature fields defined in Section 5.1. If these definitions are already documented, please compile their meanings in plain language and post them on the Nervos Talk forum so that community members and committee members can accurately understand how these features are calculated and what they represent in the project.</p>\n<p>If you need help clarifying the feature definitions or aligning the evaluation methodology, feel free to reach out. The committee is happy to support you.</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>\n<p>cc: <a class=\"mention\" href=\"/u/zz_tovarishch\">@zz_tovarishch</a> , <a class=\"mention\" href=\"/u/yixiu.ckbfans.bit\">@yixiu.ckbfans.bit</a> , <a class=\"mention\" href=\"/u/hanssen\">@Hanssen</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10414,
+      "title": "[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments",
+      "slug": "dis-fiberlatch-access-open-source-access-control-for-fiber-payments",
+      "url": "https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414",
+      "created_at": "2026-06-23T13:00:25.375000+00:00",
+      "last_posted_at": "2026-10-10T15:03:15.279000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "dapp",
+        "testnet"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26504,
+          "post_number": 8,
+          "topic_id": 10414,
+          "topic_title": "[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments",
+          "topic_slug": "dis-fiberlatch-access-open-source-access-control-for-fiber-payments",
+          "author": "Ticoworld",
+          "created_at": "2026-10-10T15:03:15.279000+00:00",
+          "updated_at": "2026-10-10T15:03:15.279000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414/8",
+          "content_text": "Post-grant update: FiberFlow integration and real Fiber testnet settlement\nHi everyone,\nI’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber applications.\nOne of the projects I tried was FiberFlow.\nThe integration worked around a simple boundary:\nFiber payment → FiberFlow invoice.paid → FiberLatch access → protected resource\nFiberFlow handles the payment. Once the application trusts the paid event, FiberLatch handles the access that comes after it.\nWhile testing this, I noticed I was repeating the same PostgreSQL logic in both the FiberFlow integration and a separate FiberLatch reference app, especially around limited-use receipts and safe concurrent redemption.\nSo I extracted that part into a small optional package:\n@fiberlatch/postgres-store@0.1.0\nThe main @fiberlatch/access package is still 0.1.1.\nReal settlement test\nThe first FiberFlow integration was tested around the webhook flow, but I still wanted to complete it with a real Fiber payment.\nSince the hosted FiberFlow service was unavailable, I ran FiberFlow locally on testnet and tested the whole flow with separate payer and merchant Fiber nodes.\nThe payment settled successfully.\nFrom the same payment:\nFiberFlow moved the invoice to Paid\nthe real signed invoice.paid webhook reached the store\nFiberLatch created one entitlement\nthe purchaser retrieved the signed receipt\nuses 1, 2 and 3 succeeded\nuse 4 was denied\nthe final redemption count stayed at 3/3\nThe first webhook delivery also timed out after it had already been processed, so FiberFlow retried it. The retry still left only one FiberLatch entitlement, which was a useful idempotency check.\nI also checked that another account could not retrieve or use the purchaser’s access.\nWhat I learned from this\nThis test made the FiberLatch boundary clearer.\nFiberLatch is not trying to replace Fiber payment tooling. The application still decides whether a payment or permission is valid.\nFiberLatch starts after that decision and turns it into a signed access receipt with things like subject binding, resource scope and limited uses.\nThe PostgreSQL package is just an optional reusable store for apps already using PostgreSQL.\nThis is currently tested in my FiberFlow fork and local setup, so this is not upstream FiberFlow adoption yet.\nIt was also testnet-only, so I’m not making any mainnet or production-readiness claim from this test.\nFull settlement evidence:\ngithub.com/Ticoworld/fiberflow\nuse-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\nchore\n# Real Fiber testnet settlement acceptance\nDate: October 10, 2026 (Africa/Lagos).\nBranch: `chore/use-published-fiberlatch-postgres-store`.\nSource commit: `2f4b28f5ff40e087580a7bc9dd619f0a2bed5e06`.\nThis proves a real Fiber TESTNET settlement through locally self-hosted FiberFlow\ntriggering the existing FiberLatch access integration. This report records the\ncompleted local acceptance run.\n## Runtime and package boundary\n| Component | Local runtime |\n| --- | --- |\n| FiberFlow API | `http://localhost:3000`; health HTTP 200 |\n| FiberFlow dashboard / checkout | `http://localhost:5175`; HTTP 200 |\n| FiberLatch-integrated example store | `http://localhost:3001`; HTTP 200 |\n| Merchant Fiber node | Docker `fiberflow`; internal RPC 8227, P2P 8228 |\n| Separate payer Fiber node | Docker `fiberflow-test-payer`; internal RPC 8227, P2P 8228; no host port mapping |\nThis file has been truncated. show original\nFiberLatch:\ngithub.com\nGitHub - Ticoworld/fiber-latch: Signed, scoped access receipts for applications...\nSigned, scoped access receipts for applications after trusted payment or permission decisions.\nPostgreSQL store:\nhttps://www.npmjs.com/package/@fiberlatch/postgres-store",
+          "content_html": "<h2><a name=\"p-26504-post-grant-update-fiberflow-integration-and-real-fiber-testnet-settlement-1\" class=\"anchor\" href=\"#p-26504-post-grant-update-fiberflow-integration-and-real-fiber-testnet-settlement-1\" aria-label=\"Heading link\"></a>Post-grant update: FiberFlow integration and real Fiber testnet settlement</h2>\n<p>Hi everyone,</p>\n<p>I’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber applications.</p>\n<p>One of the projects I tried was FiberFlow.</p>\n<p>The integration worked around a simple boundary:</p>\n<p><code>Fiber payment → FiberFlow invoice.paid → FiberLatch access → protected resource</code></p>\n<p>FiberFlow handles the payment. Once the application trusts the paid event, FiberLatch handles the access that comes after it.</p>\n<p>While testing this, I noticed I was repeating the same PostgreSQL logic in both the FiberFlow integration and a separate FiberLatch reference app, especially around limited-use receipts and safe concurrent redemption.</p>\n<p>So I extracted that part into a small optional package:</p>\n<p><code>@fiberlatch/postgres-store@0.1.0</code></p>\n<p>The main <code>@fiberlatch/access</code> package is still <code>0.1.1</code>.</p>\n<h3><a name=\"p-26504-real-settlement-test-2\" class=\"anchor\" href=\"#p-26504-real-settlement-test-2\" aria-label=\"Heading link\"></a>Real settlement test</h3>\n<p>The first FiberFlow integration was tested around the webhook flow, but I still wanted to complete it with a real Fiber payment.</p>\n<p>Since the hosted FiberFlow service was unavailable, I ran FiberFlow locally on testnet and tested the whole flow with separate payer and merchant Fiber nodes.</p>\n<p>The payment settled successfully.</p>\n<p>From the same payment:</p>\n<ul>\n<li>FiberFlow moved the invoice to <code>Paid</code></li>\n<li>the real signed <code>invoice.paid</code> webhook reached the store</li>\n<li>FiberLatch created one entitlement</li>\n<li>the purchaser retrieved the signed receipt</li>\n<li>uses 1, 2 and 3 succeeded</li>\n<li>use 4 was denied</li>\n<li>the final redemption count stayed at <code>3/3</code></li>\n</ul>\n<p>The first webhook delivery also timed out after it had already been processed, so FiberFlow retried it. The retry still left only one FiberLatch entitlement, which was a useful idempotency check.</p>\n<p>I also checked that another account could not retrieve or use the purchaser’s access.</p>\n<h3><a name=\"p-26504-what-i-learned-from-this-3\" class=\"anchor\" href=\"#p-26504-what-i-learned-from-this-3\" aria-label=\"Heading link\"></a>What I learned from this</h3>\n<p>This test made the FiberLatch boundary clearer.</p>\n<p>FiberLatch is not trying to replace Fiber payment tooling. The application still decides whether a payment or permission is valid.</p>\n<p>FiberLatch starts after that decision and turns it into a signed access receipt with things like subject binding, resource scope and limited uses.</p>\n<p>The PostgreSQL package is just an optional reusable store for apps already using PostgreSQL.</p>\n<p>This is currently tested in my FiberFlow fork and local setup, so this is <strong>not upstream FiberFlow adoption yet</strong>.</p>\n<p>It was also testnet-only, so I’m not making any mainnet or production-readiness claim from this test.</p>\n<p>Full settlement evidence:</p>\n<aside class=\"onebox githubblob\" data-onebox-src=\"https://github.com/Ticoworld/fiberflow/blob/chore/use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\">\n  <header class=\"source\">\n\n      <a href=\"https://github.com/Ticoworld/fiberflow/blob/chore/use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">github.com/Ticoworld/fiberflow</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <h4><a href=\"https://github.com/Ticoworld/fiberflow/blob/chore/use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md</a></h4>\n\n<div class=\"git-blob-info\">\n  <a href=\"https://github.com/Ticoworld/fiberflow/blob/chore/use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\" rel=\"noopener nofollow ugc\"><code>chore</code></a>\n</div>\n\n\n      <pre><code class=\"lang-md\"># Real Fiber testnet settlement acceptance\n\nDate: October 10, 2026 (Africa/Lagos).\n\nBranch: `chore/use-published-fiberlatch-postgres-store`.\nSource commit: `2f4b28f5ff40e087580a7bc9dd619f0a2bed5e06`.\n\nThis proves a real Fiber TESTNET settlement through locally self-hosted FiberFlow\ntriggering the existing FiberLatch access integration. This report records the\ncompleted local acceptance run.\n\n## Runtime and package boundary\n\n| Component | Local runtime |\n| --- | --- |\n| FiberFlow API | `http://localhost:3000`; health HTTP 200 |\n| FiberFlow dashboard / checkout | `http://localhost:5175`; HTTP 200 |\n| FiberLatch-integrated example store | `http://localhost:3001`; HTTP 200 |\n| Merchant Fiber node | Docker `fiberflow`; internal RPC 8227, P2P 8228 |\n| Separate payer Fiber node | Docker `fiberflow-test-payer`; internal RPC 8227, P2P 8228; no host port mapping |\n</code></pre>\n\n\n\n  This file has been truncated. <a href=\"https://github.com/Ticoworld/fiberflow/blob/chore/use-published-fiberlatch-postgres-store/examples/store/FIBER_SETTLEMENT_ACCEPTANCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">show original</a>\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>FiberLatch:</p>\n<aside class=\"onebox githubrepo\" data-onebox-src=\"https://github.com/Ticoworld/fiber-latch\">\n  <header class=\"source\">\n\n      <a href=\"https://github.com/Ticoworld/fiber-latch\" target=\"_blank\" rel=\"noopener nofollow ugc\">github.com</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <div class=\"github-row\" data-github-private-repo=\"false\">\n  <img width=\"690\" height=\"344\" src=\"https://talk.nervos.org/uploads/default/optimized/2X/2/2b15620ee3f13d11aee8f6869d87299c6adfa041_2_690x344.png\" class=\"thumbnail\" data-dominant-color=\"E9EAEB\">\n\n  <h3><a href=\"https://github.com/Ticoworld/fiber-latch\" target=\"_blank\" rel=\"noopener nofollow ugc\">GitHub - Ticoworld/fiber-latch: Signed, scoped access receipts for applications...</a></h3>\n\n    <p><span class=\"github-repo-description\">Signed, scoped access receipts for applications after trusted payment or permission decisions.</span></p>\n</div>\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>PostgreSQL store:</p>\n<p><a href=\"https://www.npmjs.com/package/@fiberlatch/postgres-store\" class=\"onebox\" target=\"_blank\" rel=\"noopener nofollow ugc\">https://www.npmjs.com/package/@fiberlatch/postgres-store</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10809,
+      "title": "[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)",
+      "slug": "dis-hardening-kirea-finance-native-rwa-lending-on-ckb",
+      "url": "https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809",
+      "created_at": "2026-10-06T16:14:27.711000+00:00",
+      "last_posted_at": "2026-10-10T09:08:28.293000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26475,
+          "post_number": 7,
+          "topic_id": 10809,
+          "topic_title": "[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)",
+          "topic_slug": "dis-hardening-kirea-finance-native-rwa-lending-on-ckb",
+          "author": "ArthurZhang",
+          "created_at": "2026-10-10T08:44:30.881000+00:00",
+          "updated_at": "2026-10-10T08:44:30.881000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/7",
+          "content_text": "Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones.\nFrom the current code, the issuer appears able to spend the collateral without consuming the loan cell, bypassing the loan’s release checks. The borrow/repay checks also count output balances rather than net funds received.\nCould you include enforcing the loan rules on every collateral spend, and verifying actual net disbursement and repayment, with tests covering both?",
+          "content_html": "<p>Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones.</p>\n<p>From the current code, the issuer appears able to spend the collateral without consuming the loan cell, bypassing the loan’s release checks. The borrow/repay checks also count output balances rather than net funds received.</p>\n<p>Could you include enforcing the loan rules on every collateral spend, and verifying actual net disbursement and repayment, with tests covering both?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26476,
+          "post_number": 8,
+          "topic_id": 10809,
+          "topic_title": "[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)",
+          "topic_slug": "dis-hardening-kirea-finance-native-rwa-lending-on-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-10-10T09:08:28.293000+00:00",
+          "updated_at": "2026-10-10T09:15:19.045000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/8",
+          "content_text": "Thanks, Arthur. These are important points, and I agree both need to be explicitly covered in the hardening scope. Milestone 1 is now updated to cover both:\nEnforcing the loan’s validation rules on every collateral spend, so the collateral cannot be moved in a way that bypasses the corresponding loan’s release conditions.\nVerifying the actual net disbursement and repayment amounts, with tests for both paths, including cases where output balances could give a misleading result.\nAppreciate you taking the time to review and flag these.",
+          "content_html": "<p>Thanks, Arthur. These are important points, and I agree both need to be explicitly covered in the hardening scope. Milestone 1 is now updated to cover both:</p>\n<ul>\n<li>Enforcing the loan’s validation rules on every collateral spend, so the collateral cannot be moved in a way that bypasses the corresponding loan’s release conditions.</li>\n<li>Verifying the actual net disbursement and repayment amounts, with tests for both paths, including cases where output balances could give a misleading result.</li>\n</ul>\n<p>Appreciate you taking the time to review and flag these.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10862,
+      "title": "CKB Pulse: who is building on CKB, live",
+      "slug": "ckb-pulse-who-is-building-on-ckb-live",
+      "url": "https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862",
+      "created_at": "2026-10-10T02:13:21.197000+00:00",
+      "last_posted_at": "2026-10-10T02:13:21.281000+00:00",
+      "category_id": 70,
+      "tags": [
+        "CKB"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26473,
+          "post_number": 1,
+          "topic_id": 10862,
+          "topic_title": "CKB Pulse: who is building on CKB, live",
+          "topic_slug": "ckb-pulse-who-is-building-on-ckb-live",
+          "author": "T_Silva",
+          "created_at": "2026-10-10T02:13:21.281000+00:00",
+          "updated_at": "2026-10-10T02:13:21.281000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862/1",
+          "content_text": "CKB Pulse: who is building on CKB, live\nHi everyone,\nWe made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub.\nCKB Pulse\nCKB Pulse · Last 7 days\n627 updates by 62 people in 58 projects, in the last 7 days.\nEvery project is a block. When someone pushes code, proposes or reviews a change, reports a problem or publishes a release, a light flies from their face to the project and the block grows. Watch it live, or replay the last 24 hours or the last 7 days in a minute or two. Drag to turn the view, tap a block to open the project.\nIt is written for people who never open GitHub too: plain words, in English, 中文 and Português.\nWhat you can see\nHighlights of the day, the week and the month: the most active projects, people and organisations, with medals.\nActive developers per month over the last two years, and how many committed for the first time.\nNew CKB projects from the last 14 days, flagged when they appear. Follow projects and people on your device and get a notice when they move.\nFor projects with contracts on mainnet: the CKB in cells that use them, transactions and last use, from the CKB explorer and the ckb-cli deployment files the project commits.\nA picture to share for the highlights, any project or any person.\nThe counters at the top open everything as plain lists, for keyboards and screen readers.\nHow it finds projects\nNobody keeps the list by hand. Every few hours it searches GitHub for repositories that use CKB libraries (CCC, Lumos, Spore, RGB++, JoyID, ckb-std, the Go and Java SDKs and more) or carry CKB topics. It also checks the other projects of the people working in them, and the repositories behind scripts registered on the CKB explorer. A new organisation appears on its own when it starts working, and leaves after 30 days without work by people.\nMissing a project? Add a topic such as ckb or nervos to its repository, or type the GitHub name in the “New” tab, under “Missing someone?”. It joins when GitHub shows public CKB work from the last 30 days.\nHow it counts\nOnly work by people. Bots, AI agents working on their own branches (claude/, codex/, copilot/ and others) and the same update pushed day after day by a script show as grey sparks and stay out of the numbers and medals. Merging an agent’s work still counts. For medals, one person counts at most 10 updates per project per hour.\nGitHub’s public events arrive 30 seconds to a few hours late, so live means as soon as GitHub tells us.\nThe code is open, MIT: GitHub - LusoCryptoLabs/ckb-pulse: Live GitHub activity of the CKB ecosystem, drawn in 3D · GitHub\nWhat would you like to see on it, and who is missing?",
+          "content_html": "<p><strong>CKB Pulse: who is building on CKB, live</strong></p>\n<p>Hi everyone,</p>\n<p>We made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub.</p>\n<aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://pulse-lab.lusocryptolabs.com\">\n  <header class=\"source\">\n      <img class=\"site-icon\" alt=\"\">\n\n      <a href=\"https://pulse-lab.lusocryptolabs.com\" target=\"_blank\" rel=\"noopener nofollow ugc\">CKB Pulse</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <div class=\"aspect-image\" style=\"--aspect-ratio:690/361;\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/0/0b115ace4434d4ac7dbb74ee46142db794f3b11f_2_690x362.png\" class=\"thumbnail\" alt=\"\" data-dominant-color=\"272E19\" width=\"690\" height=\"362\"></div>\n\n<h3><a href=\"https://pulse-lab.lusocryptolabs.com\" target=\"_blank\" rel=\"noopener nofollow ugc\">CKB Pulse · Last 7 days</a></h3>\n\n  <p>627 updates by 62 people in 58 projects, in the last 7 days.</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>Every project is a block. When someone pushes code, proposes or reviews a change, reports a problem or publishes a release, a light flies from their face to the project and the block grows. Watch it live, or replay the last 24 hours or the last 7 days in a minute or two. Drag to turn the view, tap a block to open the project.</p>\n<p>It is written for people who never open GitHub too: plain words, in English, 中文 and Português.</p>\n<p><strong>What you can see</strong></p>\n<ul>\n<li>Highlights of the day, the week and the month: the most active projects, people and organisations, with medals.</li>\n<li>Active developers per month over the last two years, and how many committed for the first time.</li>\n<li>New CKB projects from the last 14 days, flagged when they appear. Follow projects and people on your device and get a notice when they move.</li>\n<li>For projects with contracts on mainnet: the CKB in cells that use them, transactions and last use, from the CKB explorer and the ckb-cli deployment files the project commits.</li>\n<li>A picture to share for the highlights, any project or any person.</li>\n<li>The counters at the top open everything as plain lists, for keyboards and screen readers.</li>\n</ul>\n<p><strong>How it finds projects</strong></p>\n<p>Nobody keeps the list by hand. Every few hours it searches GitHub for repositories that use CKB libraries (CCC, Lumos, Spore, RGB++, JoyID, ckb-std, the Go and Java SDKs and more) or carry CKB topics. It also checks the other projects of the people working in them, and the repositories behind scripts registered on the CKB explorer. A new organisation appears on its own when it starts working, and leaves after 30 days without work by people.</p>\n<p>Missing a project? Add a topic such as <code>ckb</code> or <code>nervos</code> to its repository, or type the GitHub name in the “New” tab, under “Missing someone?”. It joins when GitHub shows public CKB work from the last 30 days.</p>\n<p><strong>How it counts</strong></p>\n<p>Only work by people. Bots, AI agents working on their own branches (<code>claude/</code>, <code>codex/</code>, <code>copilot/</code> and others) and the same update pushed day after day by a script show as grey sparks and stay out of the numbers and medals. Merging an agent’s work still counts. For medals, one person counts at most 10 updates per project per hour.</p>\n<p>GitHub’s public events arrive 30 seconds to a few hours late, so live means as soon as GitHub tells us.</p>\n<p>The code is open, MIT: <a href=\"https://github.com/LusoCryptoLabs/ckb-pulse\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - LusoCryptoLabs/ckb-pulse: Live GitHub activity of the CKB ecosystem, drawn in 3D · GitHub</a></p>\n<p>What would you like to see on it, and who is missing?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10143,
+      "title": "Pre-RFC Discussion: Activating the Nervos DAO Treasury",
+      "slug": "pre-rfc-discussion-activating-the-nervos-dao-treasury",
+      "url": "https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143",
+      "created_at": "2026-03-31T03:10:02.859000+00:00",
+      "last_posted_at": "2026-10-09T23:40:23.086000+00:00",
+      "category_id": 71,
+      "tags": [
+        "CKB",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26472,
+          "post_number": 24,
+          "topic_id": 10143,
+          "topic_title": "Pre-RFC Discussion: Activating the Nervos DAO Treasury",
+          "topic_slug": "pre-rfc-discussion-activating-the-nervos-dao-treasury",
+          "author": "phroi",
+          "created_at": "2026-10-09T23:40:23.086000+00:00",
+          "updated_at": "2026-10-09T23:40:23.086000+00:00",
+          "reply_to_post_number": 23,
+          "url": "https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143/24",
+          "content_text": "chenyukang:\nrequirement that at least one input must have the same lock used with the DAO cell\nIMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure points. Kudos to @xjd!!\nIf it creates troubles for RGB++ users (or generally those whose lock change at every tx), then I would suggest these users to use a compatible wallet just for using this protocol.\nIf reusing a lock is a perceived security issue for Q-day, then Quantum Purse should give enough peace of mind.\nchenyukang:\nA large DAO holder, custodian, exchange, or colluding coalition may still create a permissionless Proposal paying itself and supply enough genuine voting power to satisfy every configured condition\nThis is one of the original problems I raised on DAO v1.1 and I can’t see a clean solution.\nIndependently from reviewed projects, my feeling is that voting with money is short-sighted for the very reasons we both pointed out: it works until it doesn’t…\nI would personally try to see how a CKBA-based system could work rather than risking hostile takeovers from wealthy CKB holders.\nchenyukang:\nGenerally, how do you think about this solution?\nAll in all, promising and well put togheter, non sure I would deploy it. For the usual technical issues, I’ll keep using Github.\nPhroi\nPS: a few years ago Vitalik analyzed Decentralized Governance and … it’s messy: Moving beyond coin voting governance",
+          "content_html": "<aside class=\"quote no-group\" data-username=\"chenyukang\" data-post=\"23\" data-topic=\"10143\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/chenyukang/48/10087_2.png\" class=\"avatar\"> chenyukang:</div>\n<blockquote>\n<p>requirement that at least one input must have the same lock used with the DAO cell</p>\n</blockquote>\n</aside>\n<p>IMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure points. Kudos to <a class=\"mention\" href=\"/u/xjd\">@xjd</a>!! <img src=\"https://talk.nervos.org/images/emoji/apple/clap.png?v=15\" title=\":clap:\" class=\"emoji\" alt=\":clap:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<p>If it creates troubles for RGB++ users (or generally those whose lock change at every tx), then I would suggest these users to use a compatible wallet just for using this protocol.</p>\n<p>If reusing a lock is a perceived security issue for Q-day, then Quantum Purse should give enough peace of mind.</p>\n<aside class=\"quote no-group\" data-username=\"chenyukang\" data-post=\"23\" data-topic=\"10143\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/chenyukang/48/10087_2.png\" class=\"avatar\"> chenyukang:</div>\n<blockquote>\n<p>A large DAO holder, custodian, exchange, or colluding coalition may still create a permissionless Proposal paying itself and supply enough genuine voting power to satisfy every configured condition</p>\n</blockquote>\n</aside>\n<p><a href=\"https://talk.nervos.org/t/dis-community-fund-dao-v1-1-web5-community-fund-dao-v1-1-web5-optimization-proposal/8973/97\">This is one of the original problems I raised on DAO v1.1</a> and I can’t see a clean solution.</p>\n<p>Independently from reviewed projects, my feeling is that voting with money is short-sighted for the very reasons we both pointed out: it works until it doesn’t…</p>\n<p>I would personally try to see how a CKBA-based system could work rather than risking hostile takeovers from wealthy CKB holders.</p>\n<aside class=\"quote no-group\" data-username=\"chenyukang\" data-post=\"23\" data-topic=\"10143\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/chenyukang/48/10087_2.png\" class=\"avatar\"> chenyukang:</div>\n<blockquote>\n<p>Generally, how do you think about this solution?</p>\n</blockquote>\n</aside>\n<p>All in all, promising and well put togheter, non sure I would deploy it. <a href=\"https://github.com/nervosnetwork/ckb-treasury-lab/issues?q=involves%3Aphroi\">For the usual technical issues, I’ll keep using Github</a>.</p>\n<p>Phroi</p>\n<p><strong>PS</strong>: a few years ago Vitalik analyzed Decentralized Governance and … it’s messy: <a href=\"https://vitalik.eth.limo/general/2021/08/16/voting3.html#problems-with-coin-voting-even-in-the-absence-of-attackers\" class=\"inline-onebox\">Moving beyond coin voting governance</a></p>",
+          "like_count": 0,
+          "quote_count": 1
+        }
+      ]
+    },
+    {
+      "topic_id": 10688,
+      "title": "FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB?",
+      "slug": "fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb",
+      "url": "https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688",
+      "created_at": "2026-09-08T07:55:24.024000+00:00",
+      "last_posted_at": "2026-10-09T23:40:08.679000+00:00",
+      "category_id": 70,
+      "tags": [
+        "CKB",
+        "dapp",
+        "testnet"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26471,
+          "post_number": 9,
+          "topic_id": 10688,
+          "topic_title": "FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB?",
+          "topic_slug": "fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb",
+          "author": "Code3ks",
+          "created_at": "2026-10-09T23:40:08.679000+00:00",
+          "updated_at": "2026-10-10T05:51:31.556000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688/9",
+          "content_text": "Thanks @quake\nI have a few questions to gain some more light on this.\nWhich Fiber release is expected to contain the LSP work?\nWill there be a public testnet LSP, or must FiberNuts operate one?\n3 . Is a complete UDT/RUSD remote-signer flow expected to be supported?\nWho funds and provisions the hosted tenant’s initial RUSD channel?\nThank you.",
+          "content_html": "<p>Thanks <a class=\"mention\" href=\"/u/quake\">@quake</a></p>\n<p>I have a few questions to gain some more light on this.</p>\n<ol>\n<li>\n<p>Which Fiber release is expected to contain the LSP work?</p>\n</li>\n<li>\n<p>Will there be a public testnet LSP, or must FiberNuts operate one?</p>\n</li>\n</ol>\n<p>3 . Is a complete UDT/RUSD remote-signer flow expected to be supported?</p>\n<ol start=\"4\">\n<li>Who funds and provisions the hosted tenant’s initial RUSD channel?</li>\n</ol>\n<p>Thank you.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}

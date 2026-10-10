@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-10 04:27:48 CST - 2026-10-11 04:27:48 CST</span>
+          <span>生成时间 2026-10-11 04:27:59 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">14</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">10</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天 Nervos Talk 的主要动态集中在 Spark Program 提案评审更新和 Fiber 生态推进上。<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s09">S09</a>, <a href="#source-s14">S14</a>]</span> Spark 这边，Corven IDE 被标记为 Pending 并获邀继续沟通，随后作者称已修订重交；LiquidLane 被拒，Spark Verify 仍 Pending 且被要求补视频演示。<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span> Fiber 相关讨论继续，包括浏览器游戏 FiberSurvivors、FiberLatch 的真实测试网结算更新，以及 FiberNuts 对 LSP 和 UDT/RUSD 支持的追问。<span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s09">S09</a>, <a href="#source-s14">S14</a>]</span> 另外，CKB Off Chain Aba 活动概览下有用户简短好评，CKB Pulse 上线展示 GitHub 公共进展，Kirea Finance 硬化范围也在继续澄清。<span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s12">S12</a>, <a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>]</span></p>
+<h2>重点话题</h2>
+<ul>
+<li>Spark Program 今天集中更新了多个提案状态。<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span> Corven cloud-native IDE 提案被委员会标记为 Pending，委员会称这不是拒绝，而是邀请继续推进。<span class="citations">[<a href="#source-s02">S02</a>]</span> 作者随后表示已针对四点修订并重新提交，包括增加 9 个可衡量输出的交付表，每个有具体指标和发布位置。<span class="citations">[<a href="#source-s03">S03</a>]</span> LiquidLane 的 Fiber 接收容量市场 resubmission 被委员会拒绝。<span class="citations">[<a href="#source-s05">S05</a>]</span> Spark Verify 仍为 Pending，委员会要求视频演示，因为仅凭书面提案难以准确评估工具用途。<span class="citations">[<a href="#source-s06">S06</a>]</span> zk-Lock 方面，委员会希望与作者就社区参与的两项优先事项对齐，包括让非开发者参与。<span class="citations">[<a href="#source-s07">S07</a>]</span> CKB Wallet Behaviour Intelligence 的最新报告已解决大部分问题，只剩功能相关澄清。<span class="citations">[<a href="#source-s08">S08</a>]</span></li>
+</ul>
+<ul>
+<li>Fiber 生态项目与应用继续冒头。<span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s09">S09</a>, <a href="#source-s14">S14</a>]</span> FiberSurvivors 是一个浏览器里的 top-down survivors-like 游戏，像 Vampire Survivors，赚到的 CKB 和买的升级卡都通过 Fiber 支付。<span class="citations">[<a href="#source-s01">S01</a>]</span> FiberLatch 发布授权后更新，尝试集成 FiberFlow，并进行了真实 Fiber 测试网结算。<span class="citations">[<a href="#source-s09">S09</a>]</span> FiberNuts 继续追问哪个 Fiber 版本会包含 LSP、是否会有公共测试网 LSP、UDT/RUSD remote-signer 流程是否受支持，以及谁出资。<span class="citations">[<a href="#source-s14">S14</a>]</span></li>
+</ul>
+<ul>
+<li>Kirea Finance 硬化讨论聚焦抵押品安全。<span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>]</span> ArthurZhang 指出，从当前代码看，发行方似乎能在不消耗 loan cell 的情况下花费抵押品，从而绕过贷款的释放检查。<span class="citations">[<a href="#source-s10">S10</a>]</span> SalmanDev 同意这点，并称 Milestone 1 已更新，要求每次抵押品花费都执行贷款验证规则，使抵押品不能以绕过方式移动。<span class="citations">[<a href="#source-s11">S11</a>]</span></li>
+</ul>
+<ul>
+<li>CKB Pulse 发布。<span class="citations">[<a href="#source-s12">S12</a>]</span> 页面展示 GitHub 上 CKB 的公共工作，按材料所述，过去 7 天有 62 人、58 个项目、627 次更新，每个项目表现为一个 block。<span class="citations">[<a href="#source-s12">S12</a>]</span></li>
+</ul>
+<ul>
+<li>Nervos DAO Treasury pre-RFC 讨论继续。<span class="citations">[<a href="#source-s13">S13</a>]</span> 针对至少一个 input 必须与 DAO cell 使用相同 lock 的要求，phroi 认为公平，因为该协议不要求重新存入、不使用花哨技术并尽量减少失败点，还称赞了 xjd。<span class="citations">[<a href="#source-s13">S13</a>]</span> 同一回复还提到，如果这给 RGB++ 造成麻烦。<span class="citations">[<a href="#source-s13">S13</a>]</span></li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Spark Program 后续要观察 Corven 重新提交后是否通过、Spark Verify 是否补视频、zk-Lock 社区参与如何落地、Wallet Behaviour 功能澄清是否满足委员会，以及 LiquidLane 被拒后的反馈。<span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span></li>
+</ul>
+<ul>
+<li>Fiber 应用的关键基础设施问题包括 LSP 由哪个版本发布、是否有公共测试网 LSP、FiberNuts 是否必须自营 LSP、UDT/RUSD remote-signer 流程和资金方如何安排，同时观察 FiberLatch 的真实测试网结算和 FiberSurvivors 的 Fiber 支付体验。<span class="citations">[<a href="#source-s14">S14</a>, <a href="#source-s09">S09</a>, <a href="#source-s01">S01</a>]</span></li>
+</ul>
+<ul>
+<li>Kirea Finance 的 Milestone 1 更新是否真正覆盖“每次抵押品花费都验证贷款规则”，以及 Nervos DAO Treasury 的 lock 要求是否会影响 RGB++ 等生态项目。<span class="citations">[<a href="#source-s11">S11</a>, <a href="#source-s10">S10</a>, <a href="#source-s13">S13</a>]</span></li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898/1">FiberSurvivors: a browser survivors-like for Fiber</a></div><div class="source-meta">TranNhi27 · 2026-10-11 02:28:35 CST</div><div>Hi everyone! I’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber. So a run goes like this: You open the game and a Fiber node starts...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/2">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">xingtianchunyan · 2026-10-10 23:36:34 CST</div><div>Hi @lestonEth, Thank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal. After review by the Spark Program committee, your proposal has been assigned a status of Pending. This is not a rejection, but an invitation to...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/3">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-10-11 01:05:01 CST</div><div>[Proposal Update] Hi @xingtianchunyan,thanks to you and the committee for the review. I’ve revised and resubmitted the proposal to address all four points: Deliverables — Added a measurable deliverables table (9 outputs, each with a specific metric and publication location),...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808/4">CKB Off Chain Aba: Event Overview</a></div><div class="source-meta">Chizzy · 2026-10-11 00:47:50 CST</div><div>It was an amazing outing</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796/2">Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION</a></div><div class="source-meta">xingtianchunyan · 2026-10-10 23:37:29 CST</div><div>Hi @Fidelcoder, Thank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the LiquidLane project at this time. We want to be transparent...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/14">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></div><div class="source-meta">xingtianchunyan · 2026-10-10 23:35:27 CST</div><div>Hello @Akane, Following a review by the Spark Program Committee, your proposal remains Pending. The committee invites you to provide a video demonstration: Based on the written proposal alone, the committee is finding it difficult to accurately assess the tool’s purpose and...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/22">Spark Program | zk-Lock for CKB</a></div><div class="source-meta">xingtianchunyan · 2026-10-10 23:34:53 CST</div><div>Hi @Mulandi_Cecilia: Thank you for sharing with the committee your interactions with other developers in the community about zk-Lock. The committee would like to align with you on two priorities for community engagement: Engaging non-developers in the community: The committee...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/29">Spark Program | CKB Wallet Behaviour Intelligence</a></div><div class="source-meta">xingtianchunyan · 2026-10-10 23:33:50 CST</div><div>Hi @mulinya, The committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that needs further clarification is: Clarification of the feature...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414/8">[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments</a></div><div class="source-meta">Ticoworld · 2026-10-10 23:03:15 CST</div><div>Post-grant update: FiberFlow integration and real Fiber testnet settlement Hi everyone, I’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber applications. One of the projects I tried was FiberFlow. The...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/7">[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)</a></div><div class="source-meta">ArthurZhang · 2026-10-10 16:44:30 CST</div><div>Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones. From the current code, the issuer appears able to spend the collateral without consuming the loan cell, bypassing the loan’s release checks....</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/8">[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)</a></div><div class="source-meta">SalmanDev · 2026-10-10 17:08:28 CST</div><div>Thanks, Arthur. These are important points, and I agree both need to be explicitly covered in the hardening scope. Milestone 1 is now updated to cover both: Enforcing the loan’s validation rules on every collateral spend, so the collateral cannot be moved in a way that...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862/1">CKB Pulse: who is building on CKB, live</a></div><div class="source-meta">T_Silva · 2026-10-10 10:13:21 CST</div><div>CKB Pulse: who is building on CKB, live Hi everyone, We made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub. CKB Pulse CKB Pulse · Last 7 days 627 updates by 62 people in 58 projects, in the last 7 days. Every project is a block. When someone...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143/24">Pre-RFC Discussion: Activating the Nervos DAO Treasury</a></div><div class="source-meta">phroi · 2026-10-10 07:40:23 CST</div><div>chenyukang: requirement that at least one input must have the same lock used with the DAO cell IMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure points. Kudos to @xjd!! If it creates troubles for RGB++...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688/9">FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB?</a></div><div class="source-meta">Code3ks · 2026-10-10 07:40:08 CST</div><div>Thanks @quake I have a few questions to gain some more light on this. Which Fiber release is expected to contain the LSP work? Will there be a public testnet LSP, or must FiberNuts operate one? 3 . Is a complete UDT/RUSD remote-signer flow expected to be supported? Who funds...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>8</strong></li><li><span>生态进展</span><strong>5</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@xingtianchunyan</span><strong>5</strong></li><li><span>@TranNhi27</span><strong>1</strong></li><li><span>@lestonEth</span><strong>1</strong></li><li><span>@Chizzy</span><strong>1</strong></li><li><span>@Ticoworld</span><strong>1</strong></li><li><span>@SalmanDev</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>you<span>48</span></li><li>ckb<span>34</span></li><li>committee<span>31</span></li><li>fiber<span>23</span></li><li>fiberflow<span>16</span></li><li>are<span>15</span></li><li>project<span>15</span></li><li>fiberlatch<span>14</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-11 01:05:01 CST</span><span>lestonEth, xingtianchunyan</span></div><p class="excerpt">Hi @lestonEth, Thank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal. After review by the Spark Program committee, your proposal has been assigned a status of Pending. This is not a rejection, but...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809">[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 17:08:28 CST</span><span>ArthurZhang, SalmanDev</span></div><p class="excerpt">Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones. From the current code, the issuer appears able to spend the collateral without consuming the loan cell, bypassing the...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898">FiberSurvivors: a browser survivors-like for Fiber</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-11 02:28:35 CST</span><span>TranNhi27</span></div><p class="excerpt">Hi everyone! I’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber. So a run goes like this: You open the game and...</p><div class="tag-row"><span>fiber</span><span>game</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808">CKB Off Chain Aba: Event Overview</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-11 00:47:50 CST</span><span>Chizzy</span></div><p class="excerpt">It was an amazing outing</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796">Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 23:37:29 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Fidelcoder, Thank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the LiquidLane project at this time. We want...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 23:35:27 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello @Akane, Following a review by the Spark Program Committee, your proposal remains Pending. The committee invites you to provide a video demonstration: Based on the written proposal alone, the committee is finding it difficult to accurately assess the...</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448">Spark Program | zk-Lock for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 23:34:53 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Mulandi_Cecilia: Thank you for sharing with the committee your interactions with other developers in the community about zk-Lock. The committee would like to align with you on two priorities for community engagement: Engaging non-developers in the...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338">Spark Program | CKB Wallet Behaviour Intelligence</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 23:33:50 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @mulinya, The committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that needs further clarification is:...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414">[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 23:03:15 CST</span><span>Ticoworld</span></div><p class="excerpt">Post-grant update: FiberFlow integration and real Fiber testnet settlement Hi everyone, I’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber applications. One of the projects I tried was...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862">CKB Pulse: who is building on CKB, live</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 10:13:21 CST</span><span>T_Silva</span></div><p class="excerpt">CKB Pulse: who is building on CKB, live Hi everyone, We made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub. CKB Pulse CKB Pulse · Last 7 days 627 updates by 62 people in 58 projects, in the last 7 days. Every project is a...</p><div class="tag-row"><span>CKB</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143">Pre-RFC Discussion: Activating the Nervos DAO Treasury</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 07:40:23 CST</span><span>phroi</span></div><p class="excerpt">chenyukang: requirement that at least one input must have the same lock used with the DAO cell IMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure points. Kudos to @xjd!! If it creates...</p><div class="tag-row"><span>CKB</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688">FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB?</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-10 07:40:08 CST</span><span>Code3ks</span></div><p class="excerpt">Thanks @quake I have a few questions to gain some more light on this. Which Fiber release is expected to contain the LSP work? Will there be a public testnet LSP, or must FiberNuts operate one? 3 . Is a complete UDT/RUSD remote-signer flow expected to be...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>testnet</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-11 02:28:35 CST</time><strong><a href="https://talk.nervos.org/t/fibersurvivors-a-browser-survivors-like-for-fiber/10898/1">FiberSurvivors: a browser survivors-like for Fiber</a> · @TranNhi27</strong><p>Hi everyone! I’ve been working on FiberSurvivors, a top-down survivors-like (kinda like Vampire Survivors) that runs in the browser, where the CKB you earn and the upgrade cards you buy are all paid over Fiber. So a...</p></article>
+<article class="timeline-row"><time>2026-10-11 01:05:01 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/3">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>[Proposal Update] Hi @xingtianchunyan,thanks to you and the committee for the review. I’ve revised and resubmitted the proposal to address all four points: Deliverables — Added a measurable deliverables table (9...</p></article>
+<article class="timeline-row"><time>2026-10-11 00:47:50 CST</time><strong><a href="https://talk.nervos.org/t/ckb-off-chain-aba-event-overview/10808/4">CKB Off Chain Aba: Event Overview</a> · @Chizzy</strong><p>It was an amazing outing</p></article>
+<article class="timeline-row"><time>2026-10-10 23:37:29 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-liquidlane-fiber-receive-capacity-marketplace-resubmission/10796/2">Spark Program | LiquidLane: Fiber Receive Capacity Marketplace | RESUBMISSION</a> · @xingtianchunyan</strong><p>Hi @Fidelcoder, Thank you for taking the time to revise and resubmit the LiquidLane proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the...</p></article>
+<article class="timeline-row"><time>2026-10-10 23:36:34 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/2">Spark Program Proposal: Corven cloud-native IDE</a> · @xingtianchunyan</strong><p>Hi @lestonEth, Thank you for your continued interest in the Spark Program and for submitting the Corven cloud-native IDE proposal. After review by the Spark Program committee, your proposal has been assigned a status...</p></article>
+<article class="timeline-row"><time>2026-10-10 23:35:27 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/14">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a> · @xingtianchunyan</strong><p>Hello @Akane, Following a review by the Spark Program Committee, your proposal remains Pending. The committee invites you to provide a video demonstration: Based on the written proposal alone, the committee is finding...</p></article>
+<article class="timeline-row"><time>2026-10-10 23:34:53 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/22">Spark Program | zk-Lock for CKB</a> · @xingtianchunyan</strong><p>Hi @Mulandi_Cecilia: Thank you for sharing with the committee your interactions with other developers in the community about zk-Lock. The committee would like to align with you on two priorities for community...</p></article>
+<article class="timeline-row"><time>2026-10-10 23:33:50 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/29">Spark Program | CKB Wallet Behaviour Intelligence</a> · @xingtianchunyan</strong><p>Hi @mulinya, The committee appreciates your and your team’s continued work on the CKB Wallet Behaviour Intelligence project. The latest report has addressed most of the questions we raised earlier. The only item that...</p></article>
+<article class="timeline-row"><time>2026-10-10 23:03:15 CST</time><strong><a href="https://talk.nervos.org/t/dis-fiberlatch-access-open-source-access-control-for-fiber-payments/10414/8">[DIS] FiberLatch Access - Open-Source Access Control for Fiber Payments</a> · @Ticoworld</strong><p>Post-grant update: FiberFlow integration and real Fiber testnet settlement Hi everyone, I’ve continued working on FiberLatch after the grant, mostly by testing where it can actually fit into existing Fiber...</p></article>
+<article class="timeline-row"><time>2026-10-10 17:08:28 CST</time><strong><a href="https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/8">[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)</a> · @SalmanDev</strong><p>Thanks, Arthur. These are important points, and I agree both need to be explicitly covered in the hardening scope. Milestone 1 is now updated to cover both: Enforcing the loan’s validation rules on every collateral...</p></article>
+<article class="timeline-row"><time>2026-10-10 16:44:30 CST</time><strong><a href="https://talk.nervos.org/t/dis-hardening-kirea-finance-native-rwa-lending-on-ckb/10809/7">[DIS] Hardening Kirea Finance (Native RWA Lending on CKB)</a> · @ArthurZhang</strong><p>Thanks for reaching out, Salman. I’d like to support you this, but I’d want two things explicitly covered in the hardening milestones. From the current code, the issuer appears able to spend the collateral without...</p></article>
+<article class="timeline-row"><time>2026-10-10 10:13:21 CST</time><strong><a href="https://talk.nervos.org/t/ckb-pulse-who-is-building-on-ckb-live/10862/1">CKB Pulse: who is building on CKB, live</a> · @T_Silva</strong><p>CKB Pulse: who is building on CKB, live Hi everyone, We made CKB Pulse, a page that shows the public work on CKB as it happens on GitHub. CKB Pulse CKB Pulse · Last 7 days 627 updates by 62 people in 58 projects, in...</p></article>
+<article class="timeline-row"><time>2026-10-10 07:40:23 CST</time><strong><a href="https://talk.nervos.org/t/pre-rfc-discussion-activating-the-nervos-dao-treasury/10143/24">Pre-RFC Discussion: Activating the Nervos DAO Treasury</a> · @phroi</strong><p>chenyukang: requirement that at least one input must have the same lock used with the DAO cell IMHO this fair: this protocol doesn’t require to re-deposit, it doesn’t use fancy tech and it tries to minimizes failure...</p></article>
+<article class="timeline-row"><time>2026-10-10 07:40:08 CST</time><strong><a href="https://talk.nervos.org/t/fibernuts-after-the-hackathon-what-could-cashu-fiber-enable-on-ckb/10688/9">FiberNuts After the Hackathon: What Could Cashu + Fiber Enable on CKB?</a> · @Code3ks</strong><p>Thanks @quake I have a few questions to gain some more light on this. Which Fiber release is expected to contain the LSP work? Will there be a public testnet LSP, or must FiberNuts operate one? 3 . Is a complete...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
