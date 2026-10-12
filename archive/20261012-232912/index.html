@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-12 07:29:12 CST - 2026-10-13 07:29:12 CST</span>
+          <span>生成时间 2026-10-13 07:29:20 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">10</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天 Nervos Talk 的主要动态是几条项目更新同时出现：Noir-CKB 作者在方向检查后发帖，回应 proof 放在 Lock 还是 Type，以及 Noir→Groth16 路线的问题 <span class="citations">[<a href="#source-s01">S01</a>]</span>。Tactus O1 的 Based EVM Rollup 跟进帖承认最新实验有两个问题：ZK proof 生成约 78 分钟，CKB 验证约 3.985 billion cycles，超过主网 3.5 billion 限制 <span class="citations">[<a href="#source-s02">S02</a>]</span>。CrowdCell 则改成一个 5,000 美元级别的测试网版本，并追加分类搜索、创作者更新、中文界面等功能 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>。整体看，今天论坛不是完全平静，测试网游戏、内容活动和节点收入层等方向也有更新 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>, <a href="#source-s06">S06</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Noir-CKB 更新：作者提到一个月前做过方向检查，收到主要围绕“proof 应该放在 Lock 还是 Type”和“Noir→Groth16 是否合适”的回复 <span class="citations">[<a href="#source-s01">S01</a>]</span>；今天帖子说明方向检查后的决定、可以尝试的内容和后续走向，但材料没有展开具体决定 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+<li>Tactus O1 性能瓶颈：最新实验显示，在作者笔记本上生成一个 ZK proof 大约耗时 78 分钟 <span class="citations">[<a href="#source-s02">S02</a>]</span>；CKB 上验证消耗约 3.985 billion cycles，超过主网 3.5 billion 的限制，作者表示这是需要解决的两个问题 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>CrowdCell/CKB Kickstarter 推进：CrowdCell 重新缩小范围，审计、费用模型和主网启动都被移出，之后作为单独提案回来 <span class="citations">[<a href="#source-s07">S07</a>]</span>；作者随后在同样 5,000 美元和同样日期下追加分类搜索、campaign 页面创作者更新、中文界面和达标后提前 finalization <span class="citations">[<a href="#source-s08">S08</a>]</span>；CKB Kickstarter 帖则确认提案已上线，是 5,000 美元的测试网版本，包含 dashboards、用 .cell names 和 Vellum 的创作者身份、创作者工具和 keeper tip <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li>POI 测试网游戏发布技术说明：POI 是 CKB testnet 上的平台游戏，目标是让玩家通过使用来学习 .cell names <span class="citations">[<a href="#source-s04">S04</a>]</span>；帖子作为 Scryve 介绍后的技术补充，讲每层楼在链上做什么、游戏如何构建、城镇如何运作，以及如何加入 first wave <span class="citations">[<a href="#source-s04">S04</a>]</span>；游戏入口是 poi.cellula.id，在 CKB testnet 上免费，支持手机或电脑 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>其他社区动态：Rypto 发布 CKB Content &amp; Advocacy Campaign 第二个月报告，报告期为 2026-09-01 到 2026-10-07，称产出和范围较第一个月明显提升，并引入长文 threads <span class="citations">[<a href="#source-s06">S06</a>]</span>；节点收入层帖下有人支持，称创建了测试 campaign、应用顺畅且没遇到 bug，并认为这个概念适合 CKB cell 模型，campaign 和每笔 pledge 都可以是 cell <span class="citations">[<a href="#source-s03">S03</a>]</span>；中文区有人提出 Tinder 版预测市场想法，讨论用类似微博问答和 meme 发射的流动性设计来激励高质量预测 <span class="citations">[<a href="#source-s10">S10</a>]</span>；另外，Kirea Finance 相关帖子被作者删除 <span class="citations">[<a href="#source-s05">S05</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Tactus O1 的性能问题是否解决：如果 ZK proof 生成时间和 CKB 验证 cycles 不能降下来，主网 3.5 billion cycle 限制会继续是硬门槛 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>CrowdCell/CKB Kickstarter 的社区支持与交付节奏：提案刚从完整版缩为 5,000 美元测试网版，又追加了多项功能，后续是否按计划推进值得观察 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>；CKB Kickstarter 帖提到需要 30 likes，但材料未展示完整条件 <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li>Noir-CKB 的技术路线选择：proof 放 Lock 还是 Type、Noir→Groth16 是否继续，是作者公开征询后仍未在材料中披露细节的关键点 <span class="citations">[<a href="#source-s01">S01</a>]</span>；POI first wave 和中文预测市场想法能否形成实际提案或用户反馈，也值得留意 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s10">S10</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968/1">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a></div><div class="source-meta">xiaomao · 2026-10-13 06:27:25 CST</div><div>About a month ago I shared a direction check here for noir-ckb, asking for feedback on what I was building. I got really thoughtful replies, mostly around two questions: Where should a proof live in a CKB transaction (Lock or Type?), and is Noir → Groth16 even the right...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861/2">Tactus O1: First Based EVM Rollup on CKB</a></div><div class="source-meta">ArthurZhang · 2026-10-13 06:02:27 CST</div><div>A follow-up on Tactus O1. The latest experiments exposed two problems I need to address. Generating a ZK proof took roughly 78 minutes on my laptop, while verification on CKB consumed about 3.985 billion cycles, exceeding mainnet’s 3.5 billion limit. The prototype works on a...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/23">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">psawyerberlin · 2026-10-13 05:37:07 CST</div><div>Hi @Ayoub_Lesfer, Happy to support this. I created a test campaign on the current version and the app is nice to use. It worked smoothly and I didn’t hit any bugs. The concept is a very good fit for the CKB cell model: a campaign is a cell, each pledge is its own cell, and the...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/1">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-12 23:41:20 CST</div><div>cover1920×1080 137 KB A follow-up to the introduction on Scryve, with the technical side: what each floor does on chain, how the game is built, how the town works, and how to join its first wave. Play: poi.cellula.id (CKB testnet, free, phone or computer) What it is, in one...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/9">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></div><div class="source-meta">SalmanDev · 2026-10-12 22:15:13 CST</div><div>(post deleted by author)</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364/8">[DIS] Rypto — CKB Content &amp; Advocacy Campaign</a></div><div class="source-meta">Rypto · 2026-10-12 19:10:52 CST</div><div>Rypto — CKB Content Campaign: Month 2 Report Reporting Period: September 1 – October 7, 2026 Overview Month 2 saw a significant step up from Month 1 in both output and scope. Alongside the continued short-form video schedule, this month introduced long-form written threads...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/1">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-12 16:26:15 CST</div><div>This is a smaller, rescoped version of the first CrowdCell proposal. The audit, the fee model and the mainnet launch are out of this one and will come back as a separate proposal later. Edited 2026-10-12. Added at no change to the ask: categories and search (M1), creator...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/2">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-12 18:02:57 CST</div><div>I added four things to the proposal at the same $5k and the same dates. Categories and search on the campaign list, creator updates on campaign pages, a Chinese interface, and early finalization once a campaign reaches its goal. They’re marked “added” in sections 8 and 9.</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130/16">Introducing CKB Kickstarter: Decentralized All-or-Nothing Crowdfunding on Nervos CKB (Testnet MVP Live)</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-12 16:42:17 CST</div><div>The proposal is up: [DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 It’s the $5k testnet version: dashboards, creator identity with .cell names and Vellum, creator tooling and a keeper tip. It needs 30 likes on the first...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/tinder/10407/4">分享一个 Tinder 版预测市场应用的想法</a></div><div class="source-meta">Fisher · 2026-10-12 13:17:42 CST</div><div>关于初始流动性，不知道可不可以类比早年的微博问答模式，粉丝花费100元向大V提问题，大V回答后赚到100，之后有人如果对这个问题感兴趣需要付费查看，然后最开始提出问题的粉丝就可以从中赚钱了。回到这个长尾/利基预测市场平台，提交预测题干就相当于提问题，也可以类比成发射meme币，需要提供比如100刀流动性，后续只要参与的人多起来Ta就能从中盈利，这样也能激励所提预测的质量。</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>7</strong></li><li><span>其他</span><strong>2</strong></li><li><span>市场与传播</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@Ayoub_Lesfer</span><strong>3</strong></li><li><span>@xiaomao</span><strong>1</strong></li><li><span>@ArthurZhang</span><strong>1</strong></li><li><span>@psawyerberlin</span><strong>1</strong></li><li><span>@LusoCryptoLabs</span><strong>1</strong></li><li><span>@SalmanDev</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>84</span></li><li>testnet<span>53</span></li><li>campaign<span>50</span></li><li>are<span>47</span></li><li>one<span>45</span></li><li>cell<span>45</span></li><li>can<span>41</span></li><li>name<span>41</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 18:02:57 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">This is a smaller, rescoped version of the first CrowdCell proposal. The audit, the fee model and the mainnet launch are out of this one and will come back as a separate proposal later. Edited 2026-10-12. Added at no change to the ask: categories and search...</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-13 06:27:25 CST</span><span>xiaomao</span></div><p class="excerpt">About a month ago I shared a direction check here for noir-ckb, asking for feedback on what I was building. I got really thoughtful replies, mostly around two questions: Where should a proof live in a CKB transaction (Lock or Type?), and is Noir → Groth16...</p><div class="tag-row"><span>CKB</span><span>zkp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861">Tactus O1: First Based EVM Rollup on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-13 06:02:27 CST</span><span>ArthurZhang</span></div><p class="excerpt">A follow-up on Tactus O1. The latest experiments exposed two problems I need to address. Generating a ZK proof took roughly 78 minutes on my laptop, while verification on CKB consumed about 3.985 billion cycles, exceeding mainnet’s 3.5 billion limit. The...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734">A Revenue Layer for CKB Nodes</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-13 05:37:07 CST</span><span>psawyerberlin</span></div><p class="excerpt">Hi @Ayoub_Lesfer, Happy to support this. I created a test campaign on the current version and the app is nice to use. It worked smoothly and I didn’t hit any bugs. The concept is a very good fit for the CKB cell model: a campaign is a cell, each pledge is...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 23:41:20 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">cover1920×1080 137 KB A follow-up to the introduction on Scryve, with the technical side: what each floor does on chain, how the game is built, how the town works, and how to join its first wave. Play: poi.cellula.id (CKB testnet, free, phone or computer)...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 22:15:13 CST</span><span>SalmanDev</span></div><p class="excerpt">(post deleted by author)</p><div class="tag-row"><span>CKB</span><span>DeFi</span><span>defi挖矿</span><span>lang-es</span><span>lang-zh</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364">[DIS] Rypto — CKB Content &amp; Advocacy Campaign</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 19:10:52 CST</span><span>Rypto</span></div><p class="excerpt">Rypto — CKB Content Campaign: Month 2 Report Reporting Period: September 1 – October 7, 2026 Overview Month 2 saw a significant step up from Month 1 in both output and scope. Alongside the continued short-form video schedule, this month introduced long-form...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130">Introducing CKB Kickstarter: Decentralized All-or-Nothing Crowdfunding on Nervos CKB (Testnet MVP Live)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 16:42:17 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">The proposal is up: [DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 It’s the $5k testnet version: dashboards, creator identity with .cell names and Vellum, creator tooling and a keeper tip. It needs 30...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tinder/10407">分享一个 Tinder 版预测市场应用的想法</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-12 13:17:42 CST</span><span>Fisher</span></div><p class="excerpt">关于初始流动性，不知道可不可以类比早年的微博问答模式，粉丝花费100元向大V提问题，大V回答后赚到100，之后有人如果对这个问题感兴趣需要付费查看，然后最开始提出问题的粉丝就可以从中赚钱了。回到这个长尾/利基预测市场平台，提交预测题干就相当于提问题，也可以类比成发射meme币，需要提供比如100刀流动性，后续只要参与的人多起来Ta就能从中盈利，这样也能激励所提预测的质量。</p><div class="tag-row"><span>lang-zh</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-13 06:27:25 CST</time><strong><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968/1">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a> · @xiaomao</strong><p>About a month ago I shared a direction check here for noir-ckb, asking for feedback on what I was building. I got really thoughtful replies, mostly around two questions: Where should a proof live in a CKB transaction...</p></article>
+<article class="timeline-row"><time>2026-10-13 06:02:27 CST</time><strong><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861/2">Tactus O1: First Based EVM Rollup on CKB</a> · @ArthurZhang</strong><p>A follow-up on Tactus O1. The latest experiments exposed two problems I need to address. Generating a ZK proof took roughly 78 minutes on my laptop, while verification on CKB consumed about 3.985 billion cycles,...</p></article>
+<article class="timeline-row"><time>2026-10-13 05:37:07 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/23">A Revenue Layer for CKB Nodes</a> · @psawyerberlin</strong><p>Hi @Ayoub_Lesfer, Happy to support this. I created a test campaign on the current version and the app is nice to use. It worked smoothly and I didn’t hit any bugs. The concept is a very good fit for the CKB cell...</p></article>
+<article class="timeline-row"><time>2026-10-12 23:41:20 CST</time><strong><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/1">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a> · @LusoCryptoLabs</strong><p>cover1920×1080 137 KB A follow-up to the introduction on Scryve, with the technical side: what each floor does on chain, how the game is built, how the town works, and how to join its first wave. Play: poi.cellula.id...</p></article>
+<article class="timeline-row"><time>2026-10-12 22:15:13 CST</time><strong><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/9">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a> · @SalmanDev</strong><p>(post deleted by author)</p></article>
+<article class="timeline-row"><time>2026-10-12 19:10:52 CST</time><strong><a href="https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364/8">[DIS] Rypto — CKB Content &amp; Advocacy Campaign</a> · @Rypto</strong><p>Rypto — CKB Content Campaign: Month 2 Report Reporting Period: September 1 – October 7, 2026 Overview Month 2 saw a significant step up from Month 1 in both output and scope. Alongside the continued short-form video...</p></article>
+<article class="timeline-row"><time>2026-10-12 18:02:57 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/2">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>I added four things to the proposal at the same $5k and the same dates. Categories and search on the campaign list, creator updates on campaign pages, a Chinese interface, and early finalization once a campaign...</p></article>
+<article class="timeline-row"><time>2026-10-12 16:42:17 CST</time><strong><a href="https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130/16">Introducing CKB Kickstarter: Decentralized All-or-Nothing Crowdfunding on Nervos CKB (Testnet MVP Live)</a> · @Ayoub_Lesfer</strong><p>The proposal is up: [DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 It’s the $5k testnet version: dashboards, creator identity with .cell names and Vellum, creator...</p></article>
+<article class="timeline-row"><time>2026-10-12 16:26:15 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/1">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>This is a smaller, rescoped version of the first CrowdCell proposal. The audit, the fee model and the mainnet launch are out of this one and will come back as a separate proposal later. Edited 2026-10-12. Added at no...</p></article>
+<article class="timeline-row"><time>2026-10-12 13:17:42 CST</time><strong><a href="https://talk.nervos.org/t/tinder/10407/4">分享一个 Tinder 版预测市场应用的想法</a> · @Fisher</strong><p>关于初始流动性，不知道可不可以类比早年的微博问答模式，粉丝花费100元向大V提问题，大V回答后赚到100，之后有人如果对这个问题感兴趣需要付费查看，然后最开始提出问题的粉丝就可以从中赚钱了。回到这个长尾/利基预测市场平台，提交预测题干就相当于提问题，也可以类比成发射meme币，需要提供比如100刀流动性，后续只要参与的人多起来Ta就能从中盈利，这样也能激励所提预测的质量。</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
