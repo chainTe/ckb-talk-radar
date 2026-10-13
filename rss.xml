@@ -5,14 +5,63 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Mon, 12 Oct 2026 22:27:25 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 21:15:45 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-13</title>
+    <title>CKB Talk Daily Brief - 2026-10-14</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-12:daily-brief</guid>
-    <pubDate>Mon, 12 Oct 2026 23:29:20 +0000</pubDate>
-    <description>## 今日发生了什么 今天 Nervos Talk 的主要动态是几条项目更新同时出现：Noir-CKB 作者在方向检查后发帖，回应 proof 放在 Lock 还是 Type，以及 Noir→Groth16 路线的问题 [S01]。Tactus O1 的 Based EVM Rollup 跟进帖承认最新实验有两个问题：ZK proof 生成约 78 分钟，CKB 验证约 3.985 billion cycles，超过主网 3.5 billion 限制 [S02]。CrowdCell 则改成一个 5,000 美元级别的测试网版本，并追加分类搜索、创作者更新、中文界面等功能 [S07, S08, S09]。整体看，今天论坛不是完全平静，测试网游戏、内容活动和节点收入层等方向也有更新 [S03, S04, S06]。 ## 重点话题 Noir-CKB 更新：作者提到一个月前做过方向检查，收到主要围绕“proof 应该放在 Lock 还是 Type”和“Noir→Groth16 是否合适”的回复 [S01]；今天帖子说明方向检查后的决定、可以尝试的内容和后续走向，但材料没有展开具体决定 [S01]。 Tactus O1 性能瓶颈：最新实验显示，在作者笔记本上生成一个 ZK proof 大约耗时 78 分钟 [S02]；CKB 上验证消耗约 3.985 billion cycles，超过主网 3.5 billion 的限制，作者表示这是需要解决的两个问题 [S02]。 CrowdCell/CKB Kickstarter 推进：CrowdCell...</description>
+    <guid>tag:ckb-talk-radar,2026-10-13:daily-brief</guid>
+    <pubDate>Tue, 13 Oct 2026 21:43:00 +0000</pubDate>
+    <description>## 今日发生了什么 从给定材料看，最近 24 小时 Nervos Talk 不算平静，最集中的讨论是 ArthurZhang 提出的 Project Matchmaker 生态协作网络想法，并有多位社区成员回应 [S01, S03, S04]。多个项目同步更新进展：Tranfr 把 recovery lock 合约部署到 CKB testnet [S06]，CKB-VM Sail Validation Sprint 发布 week6-0.2.0 并报告差分工具测试结果 [S09]。同时，Tactus O1 暴露出 ZK 证明生成和 CKB 验证成本过高的问题 [S14]，Fiber L402 付费墙博客也继续有轻松讨论 [S10, S11, S12]。整体看，今天主要围绕生态协作、基础设施验证和实验项目推进展开 [S01, S06, S09, S14]。 ## 重点话题 **Project Matchmaker 头脑风暴**：ArthurZhang 提出一个面向 CKB 生态的 Agent-Assisted Collaboration Network，认为这个方向值得探索 [S01]。他后续补充，和 Retric、Guopeng 聊过后，认为也许可以扩展到 living cells，帮助发现有用但被忽视或休眠的 cells [S02]。kevtam515 表示喜欢这个想法，并认为当前 Fiber 开发中就有不少开发者在做相似事情，这类机制可能帮助建立协同 [S03]。truthixify 也简短表示“Love the idea” [S04]。 **CKB-VM Sail...</description>
+  </item>
+  <item>
+    <title>[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem (4 posts)</title>
+    <link>https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992</link>
+    <guid>https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992#recent-4</guid>
+    <pubDate>Tue, 13 Oct 2026 21:15:45 +0000</pubDate>
+    <description>During a brainstorming session with Matt, Shawn, Leigh, Yukun and a few others, I brought up an idea that I think could be worth exploring. We have quite a few promising projects and talented developers across the CKB ecosystem, but many of them are working in relative isolation. Sometimes two teams are solving closely related problems without knowing it. Other times, a project needs precisely the expertise that somebody elsewhere in the community already has. What if we built a platform that continuously looks for these connections? Let’s call it Project Matchmaker for now. This is just a brainstorming proposal, not an agreed roadmap. The product Imagine a shared directory of developers,...</description>
+  </item>
+  <item>
+    <title>A Revenue Layer for CKB Nodes (1 posts)</title>
+    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
+    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-1</guid>
+    <pubDate>Tue, 13 Oct 2026 15:40:31 +0000</pubDate>
+    <description>Thanks, and thanks for running a campaign through it. I like the early finalization idea, a flag set at creation that can’t be changed after, shown on the campaign page so backers know before they pledge. There are spare bytes in the campaign cell for it so it’s cheap to do, I’ll build it that way in M4. And yes on the keeper script, I’ll ping you when the tip is on testnet.</description>
+  </item>
+  <item>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Tue, 13 Oct 2026 13:13:48 +0000</pubDate>
+    <description>Tranfr — Progress Update The recovery lock contract has now been deployed to CKB testnet, and the build and deployment steps are documented so anyone can reproduce the deployment independently. Completed so far Deployed the recovery lock contract to CKB testnet. Documented the build and deployment process for reproducibility. Built most of the TypeScript developer toolkit on top of the contract, including: Recovery eligibility checks. Lock status and time-remaining queries. Creation of new protected locks. Lock renewal and recovery-recipient updates. Added automated tests covering these implemented operations. This establishes the deployed contract and most of the developer-facing...</description>
+  </item>
+  <item>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
+    <pubDate>Tue, 13 Oct 2026 11:19:55 +0000</pubDate>
+    <description>2026 October 13, Third Weekly Report The device has now arrived and is already running Qubes OS. The CPU usage in idle mode is less than 1%! This device is already an integral part of my journey, and I very much hope it will continue to operate in 2027 and well into the future to support the Nervos Network. Decision against the blanket recommendation of unpartitioned storage space for overprovisioning. SSD manufacturers¹ distinguish between read-intensive and write-intensive applications when it comes to over-provisioning. The initial synchronization of the blockchain places a particularly heavy load on the SSD, but this lasts only until the node is fully synchronized. During subsequent...</description>
+  </item>
+  <item>
+    <title>POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them (1 posts)</title>
+    <link>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967</link>
+    <guid>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967#recent-1</guid>
+    <pubDate>Tue, 13 Oct 2026 10:57:47 +0000</pubDate>
+    <description>I really enjoyed this app , the game, the town, etc. Great work! image507×141 10.8 KB</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
+    <pubDate>Tue, 13 Oct 2026 05:16:58 +0000</pubDate>
+    <description>跟社区同步一下 CKB-VM Sail Validation Sprint 的交付进展。week6-0.2.0 已经发布，代码、证据和复现说明都在公开仓库。先说清楚范围：这是重新申请时约定的六周 MVP，不是整个 CKB-VM 的正确性证明。 1. 差分工具：33 个案例逐步一致 在固定的 CKB-VM VERSION2 Rust 解释器和 Sail RISC-V 模型之间，对同一条注入指令流逐步比较提交效果。ADD 13、ADDI 10、BEQ 10，共 33 个案例、398 步全部一致，每个案例都能单独重放。比较器本身也测过：往轨迹里注入 6 类错误共 194 次，全部被检出并定位到字段。 对维护者来说，它能告诉你两边从哪一步、哪个字段开始分歧，并保留可重放的输入；但它不保证语料之外没有缺陷。 想自己跑一下（需要已装好 Rust、OPAM 和常规构建依赖；第一次要从源码构建 Sail，耗时看机器和网络）： git clone --recursive https://github.com/TinyuengKwan/ckb-vm-sail-verify &amp;&amp; cd ckb-vm-sail-verify git checkout week6-0.2.0 &amp;&amp; git submodule update --init --recursive make ckb-baseline-apply make sail-compiler &amp;&amp; export PATH="$HOME/.local/share/sail-src/bin:$PATH" make verify-env &amp;&amp;...</description>
+  </item>
+  <item>
+    <title>It is 2026 and let's run a blog with paywall built on top of fiber l402 (3 posts)</title>
+    <link>https://talk.nervos.org/t/it-is-2026-and-lets-run-a-blog-with-paywall-built-on-top-of-fiber-l402/10140</link>
+    <guid>https://talk.nervos.org/t/it-is-2026-and-lets-run-a-blog-with-paywall-built-on-top-of-fiber-l402/10140#recent-3</guid>
+    <pubDate>Tue, 13 Oct 2026 03:43:05 +0000</pubDate>
+    <description>yeah I think most of the work is done since this is a demo. For similar ideas, I know Scryve Reads: A DEMO on Pay-As-You-Read with Fiber this might helps we need onlyfans with L402 Call it Lonly Fans</description>
   </item>
   <item>
     <title>Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going (1 posts)</title>
@@ -27,55 +76,6 @@
     <guid>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861#recent-1</guid>
     <pubDate>Mon, 12 Oct 2026 22:02:27 +0000</pubDate>
     <description>A follow-up on Tactus O1. The latest experiments exposed two problems I need to address. Generating a ZK proof took roughly 78 minutes on my laptop, while verification on CKB consumed about 3.985 billion cycles, exceeding mainnet’s 3.5 billion limit. The prototype works on a devnet with a higher limit, but is not mainnet-ready. The prover also replays execution history from genesis, so the cost grows as the chain gets longer. The other concern is settlement lag. CKB can keep accepting EVM transaction batches while their proofs are still pending. That means transaction ordering can move ahead of verified settlement, potentially delaying withdrawals indefinitely if proving cannot keep up....</description>
-  </item>
-  <item>
-    <title>A Revenue Layer for CKB Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
-    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 21:37:07 +0000</pubDate>
-    <description>Hi @Ayoub_Lesfer, Happy to support this. I created a test campaign on the current version and the app is nice to use. It worked smoothly and I didn’t hit any bugs. The concept is a very good fit for the CKB cell model: a campaign is a cell, each pledge is its own cell, and the lock only allows two exits. Nobody holds the money in between, and anyone can check the rules on-chain. Making it a product on testnet first and coming back for the audit and mainnet once there’s usage is the right order. I also appreciate how openly the v1.2 review findings are handled, including the ones that are still open. A few thoughts: Keeper tip. Glad it made it in as its own milestone. Whoever submits the...</description>
-  </item>
-  <item>
-    <title>POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them (1 posts)</title>
-    <link>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967</link>
-    <guid>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 15:41:20 +0000</pubDate>
-    <description>cover1920×1080 137 KB A follow-up to the introduction on Scryve, with the technical side: what each floor does on chain, how the game is built, how the town works, and how to join its first wave. Play: poi.cellula.id (CKB testnet, free, phone or computer) What it is, in one paragraph POI is a short browser platformer built to teach identity on CKB to people who will never read documentation. The player wakes up as a number in the Registry’s tower and climbs to the top to win back a name. Along the way they get a wallet, receive testnet CKB, read a real .cell name, pay by name, verify signed words against the chain, meet post-quantum ownership, register a .cell name of their own with...</description>
-  </item>
-  <item>
-    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
-    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 14:15:13 +0000</pubDate>
-    <description>(post deleted by author)</description>
-  </item>
-  <item>
-    <title>[DIS] Rypto — CKB Content &amp; Advocacy Campaign (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364</link>
-    <guid>https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 11:10:52 +0000</pubDate>
-    <description>Rypto — CKB Content Campaign: Month 2 Report Reporting Period: September 1 – October 7, 2026 Overview Month 2 saw a significant step up from Month 1 in both output and scope. Alongside the continued short-form video schedule, this month introduced long-form written threads breaking down CKB’s architecture in depth, amplification of community-created content, ecosystem project spotlights, and a recorded presentation for CKCon in Kuala Lumpur. Content output totalled 12 posts plus a conference speech. Content Delivered 12 posts published on X (@RyptoCrypto), all featuring $CKB and tagging @NervosNetwork: # Date Topic Format Link Impressions Likes Reposts Video Views 1 Sep 2 66 Fiber Builds...</description>
-  </item>
-  <item>
-    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (2 posts)</title>
-    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
-    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-2</guid>
-    <pubDate>Mon, 12 Oct 2026 10:02:57 +0000</pubDate>
-    <description>This is a smaller, rescoped version of the first CrowdCell proposal. The audit, the fee model and the mainnet launch are out of this one and will come back as a separate proposal later. Edited 2026-10-12. Added at no change to the ask: categories and search (M1), creator updates and a Chinese interface (M3), early finalization once the goal is met (M4). The additions are marked “added” in §8 and §9. 2. Summary CrowdCell is all-or-nothing crowdfunding on CKB where scripts, not a platform, decide where every pledge goes. It is live on testnet at https://crowdcell.vercel.app. This proposal requests $5,000 USD (payable in CKB) to turn the testnet app into a product people can actually run a...</description>
-  </item>
-  <item>
-    <title>Introducing CKB Kickstarter: Decentralized All-or-Nothing Crowdfunding on Nervos CKB (Testnet MVP Live) (1 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130</link>
-    <guid>https://talk.nervos.org/t/introducing-ckb-kickstarter-decentralized-all-or-nothing-crowdfunding-on-nervos-ckb-testnet-mvp-live/10130#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 08:42:17 +0000</pubDate>
-    <description>The proposal is up: [DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 It’s the $5k testnet version: dashboards, creator identity with .cell names and Vellum, creator tooling and a keeper tip. It needs 30 likes on the first post within a week to go to a vote, so if you’ve followed along here and think it’s worth it, that’s where it helps. Questions and pushback welcome there.</description>
-  </item>
-  <item>
-    <title>分享一个 Tinder 版预测市场应用的想法 (1 posts)</title>
-    <link>https://talk.nervos.org/t/tinder/10407</link>
-    <guid>https://talk.nervos.org/t/tinder/10407#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 05:17:42 +0000</pubDate>
-    <description>关于初始流动性，不知道可不可以类比早年的微博问答模式，粉丝花费100元向大V提问题，大V回答后赚到100，之后有人如果对这个问题感兴趣需要付费查看，然后最开始提出问题的粉丝就可以从中赚钱了。回到这个长尾/利基预测市场平台，提交预测题干就相当于提问题，也可以类比成发射meme币，需要提供比如100刀流动性，后续只要参与的人多起来Ta就能从中盈利，这样也能激励所提预测的质量。</description>
   </item>
 </channel>
 </rss>
