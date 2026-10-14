@@ -5,77 +5,70 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Tue, 13 Oct 2026 21:15:45 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 15:44:22 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-14</title>
+    <title>CKB Talk Daily Brief - 2026-10-15</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-13:daily-brief</guid>
-    <pubDate>Tue, 13 Oct 2026 21:43:00 +0000</pubDate>
-    <description>## 今日发生了什么 从给定材料看，最近 24 小时 Nervos Talk 不算平静，最集中的讨论是 ArthurZhang 提出的 Project Matchmaker 生态协作网络想法，并有多位社区成员回应 [S01, S03, S04]。多个项目同步更新进展：Tranfr 把 recovery lock 合约部署到 CKB testnet [S06]，CKB-VM Sail Validation Sprint 发布 week6-0.2.0 并报告差分工具测试结果 [S09]。同时，Tactus O1 暴露出 ZK 证明生成和 CKB 验证成本过高的问题 [S14]，Fiber L402 付费墙博客也继续有轻松讨论 [S10, S11, S12]。整体看，今天主要围绕生态协作、基础设施验证和实验项目推进展开 [S01, S06, S09, S14]。 ## 重点话题 **Project Matchmaker 头脑风暴**：ArthurZhang 提出一个面向 CKB 生态的 Agent-Assisted Collaboration Network，认为这个方向值得探索 [S01]。他后续补充，和 Retric、Guopeng 聊过后，认为也许可以扩展到 living cells，帮助发现有用但被忽视或休眠的 cells [S02]。kevtam515 表示喜欢这个想法，并认为当前 Fiber 开发中就有不少开发者在做相似事情，这类机制可能帮助建立协同 [S03]。truthixify 也简短表示“Love the idea” [S04]。 **CKB-VM Sail...</description>
+    <guid>tag:ckb-talk-radar,2026-10-14:daily-brief</guid>
+    <pubDate>Wed, 14 Oct 2026 20:26:35 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要动态集中在几个既有讨论串的回复和一条新 Spark 提案上 [S02, S12, S13]；Project Matchmaker 获得多位社区成员支持 [S03, S04, S05, S06]，Kirea Finance 在讨论期达到 34 likes 并获得进入 Metaforo 投票阶段的资格 [S12]，CrowdCell 讨论转向 keeper 并发测试 [S01, S02]。此外，Spark Program 下出现新提案 Fiber Mystery Shopper [S13]，POI 与 RIVET 也有简短互动 [S08, S11]。 ## 重点话题 Project Matchmaker 脑暴继续获得支持 [S03, S04, S05, S06]：有用户回复“Love the idea!” [S03]。Mulandi_Cecilia 认为知识图谱既然会跟踪项目、依赖和开放问题，也可兼作实时生态路线图，展示各团队/项目现状和生态方向 [S04]。Code3ks 认为它能帮开发者发现重叠项目、分享已有方案并找到合适合作者 [S05]。yuqi 指出社区在了解彼此构建内容上过于“去中心化”，很难在一个地方找到社区项目和内部团队工具 [S06]。ArthurZhang 回应称“开发者开始构建前”的用例引起共鸣，并设想开发者提交想法或提案后获得相关项目、可复用组件和过往讨论的审查 [S07]。 Kirea Finance 达到进入 Metaforo 投票阶段的门槛 [S12]：该提案在 7 天讨论窗口内获得 34...</description>
   </item>
   <item>
-    <title>[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem (4 posts)</title>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-2</guid>
+    <pubDate>Wed, 14 Oct 2026 15:44:22 +0000</pubDate>
+    <description>Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper incentives, and creator tooling. I’d love to see more testing of independent keeper settlement, especially under concurrent transactions and failure scenarios. Overall, a promising direction for the CKB ecosystem. Looking forward to the next milestones! Thanks Dang. Agree on the keeper testing. Once there’s a tip in M4, several keepers racing for the same pledges is the normal case. Right now the bot skips a pledge it already has a tx in flight for and retries on the next cycle, but...</description>
+  </item>
+  <item>
+    <title>[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem (5 posts)</title>
     <link>https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992</link>
-    <guid>https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992#recent-4</guid>
-    <pubDate>Tue, 13 Oct 2026 21:15:45 +0000</pubDate>
-    <description>During a brainstorming session with Matt, Shawn, Leigh, Yukun and a few others, I brought up an idea that I think could be worth exploring. We have quite a few promising projects and talented developers across the CKB ecosystem, but many of them are working in relative isolation. Sometimes two teams are solving closely related problems without knowing it. Other times, a project needs precisely the expertise that somebody elsewhere in the community already has. What if we built a platform that continuously looks for these connections? Let’s call it Project Matchmaker for now. This is just a brainstorming proposal, not an agreed roadmap. The product Imagine a shared directory of developers,...</description>
-  </item>
-  <item>
-    <title>A Revenue Layer for CKB Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
-    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-1</guid>
-    <pubDate>Tue, 13 Oct 2026 15:40:31 +0000</pubDate>
-    <description>Thanks, and thanks for running a campaign through it. I like the early finalization idea, a flag set at creation that can’t be changed after, shown on the campaign page so backers know before they pledge. There are spare bytes in the campaign cell for it so it’s cheap to do, I’ll build it that way in M4. And yes on the keeper script, I’ll ping you when the tip is on testnet.</description>
-  </item>
-  <item>
-    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
-    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
-    <pubDate>Tue, 13 Oct 2026 13:13:48 +0000</pubDate>
-    <description>Tranfr — Progress Update The recovery lock contract has now been deployed to CKB testnet, and the build and deployment steps are documented so anyone can reproduce the deployment independently. Completed so far Deployed the recovery lock contract to CKB testnet. Documented the build and deployment process for reproducibility. Built most of the TypeScript developer toolkit on top of the contract, including: Recovery eligibility checks. Lock status and time-remaining queries. Creation of new protected locks. Lock renewal and recovery-recipient updates. Added automated tests covering these implemented operations. This establishes the deployed contract and most of the developer-facing...</description>
-  </item>
-  <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Tue, 13 Oct 2026 11:19:55 +0000</pubDate>
-    <description>2026 October 13, Third Weekly Report The device has now arrived and is already running Qubes OS. The CPU usage in idle mode is less than 1%! This device is already an integral part of my journey, and I very much hope it will continue to operate in 2027 and well into the future to support the Nervos Network. Decision against the blanket recommendation of unpartitioned storage space for overprovisioning. SSD manufacturers¹ distinguish between read-intensive and write-intensive applications when it comes to over-provisioning. The initial synchronization of the blockchain places a particularly heavy load on the SSD, but this lasts only until the node is fully synchronized. During subsequent...</description>
+    <guid>https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992#recent-5</guid>
+    <pubDate>Wed, 14 Oct 2026 15:34:17 +0000</pubDate>
+    <description>Love the idea! Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and where the ecosystem as a whole is headed…that alone would help contributors stay in the loop and spot where they can plug in. This could be really valuable for the CKB ecosystem. Helping developers discover overlapping projects, share existing solutions, and find the right collaborators could save time and accelerate development across the community. I think this would be really useful for the CKB community. We’re probably a little too “decentralized” when it...</description>
   </item>
   <item>
     <title>POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them (1 posts)</title>
     <link>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967</link>
     <guid>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967#recent-1</guid>
-    <pubDate>Tue, 13 Oct 2026 10:57:47 +0000</pubDate>
-    <description>I really enjoyed this app , the game, the town, etc. Great work! image507×141 10.8 KB</description>
+    <pubDate>Wed, 14 Oct 2026 15:07:42 +0000</pubDate>
+    <description>Congratulations on being the first one achieving the podium</description>
   </item>
   <item>
-    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
-    <pubDate>Tue, 13 Oct 2026 05:16:58 +0000</pubDate>
-    <description>跟社区同步一下 CKB-VM Sail Validation Sprint 的交付进展。week6-0.2.0 已经发布，代码、证据和复现说明都在公开仓库。先说清楚范围：这是重新申请时约定的六周 MVP，不是整个 CKB-VM 的正确性证明。 1. 差分工具：33 个案例逐步一致 在固定的 CKB-VM VERSION2 Rust 解释器和 Sail RISC-V 模型之间，对同一条注入指令流逐步比较提交效果。ADD 13、ADDI 10、BEQ 10，共 33 个案例、398 步全部一致，每个案例都能单独重放。比较器本身也测过：往轨迹里注入 6 类错误共 194 次，全部被检出并定位到字段。 对维护者来说，它能告诉你两边从哪一步、哪个字段开始分歧，并保留可重放的输入；但它不保证语料之外没有缺陷。 想自己跑一下（需要已装好 Rust、OPAM 和常规构建依赖；第一次要从源码构建 Sail，耗时看机器和网络）： git clone --recursive https://github.com/TinyuengKwan/ckb-vm-sail-verify &amp;&amp; cd ckb-vm-sail-verify git checkout week6-0.2.0 &amp;&amp; git submodule update --init --recursive make ckb-baseline-apply make sail-compiler &amp;&amp; export PATH="$HOME/.local/share/sail-src/bin:$PATH" make verify-env &amp;&amp;...</description>
+    <title>CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276</link>
+    <guid>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276#recent-1</guid>
+    <pubDate>Wed, 14 Oct 2026 13:12:07 +0000</pubDate>
+    <description>Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet: Mainnet CKBadge Testnet CKBadge You can try CKBadger here before setting it up yourself. We’ll do our best to keep them running, but uptime isn’t guaranteed. Feedback is always welcome!</description>
   </item>
   <item>
-    <title>It is 2026 and let's run a blog with paywall built on top of fiber l402 (3 posts)</title>
-    <link>https://talk.nervos.org/t/it-is-2026-and-lets-run-a-blog-with-paywall-built-on-top-of-fiber-l402/10140</link>
-    <guid>https://talk.nervos.org/t/it-is-2026-and-lets-run-a-blog-with-paywall-built-on-top-of-fiber-l402/10140#recent-3</guid>
-    <pubDate>Tue, 13 Oct 2026 03:43:05 +0000</pubDate>
-    <description>yeah I think most of the work is done since this is a demo. For similar ideas, I know Scryve Reads: A DEMO on Pay-As-You-Read with Fiber this might helps we need onlyfans with L402 Call it Lonly Fans</description>
+    <title>Waymark — Recovering useful wallet state without starting from zero (1 posts)</title>
+    <link>https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819</link>
+    <guid>https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819#recent-1</guid>
+    <pubDate>Wed, 14 Oct 2026 11:30:44 +0000</pubDate>
+    <description>Waymark Lite is now in Pocket Node’s main branch on both Android and iOS. When I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from zero? @Jnr6 took the Lite path from that work and built it into Pocket as a restore-hint flow. The Android side landed in #561, the iOS side followed in #566, and #559 is now complete. Really nice seeing the experiment turn into something concrete in the wallet this quickly. The Full recovery direction is still open in #560, so there’s still more to understand around what is worth carrying forward beyond Lite.</description>
   </item>
   <item>
-    <title>Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going (1 posts)</title>
-    <link>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968</link>
-    <guid>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 22:27:25 +0000</pubDate>
-    <description>About a month ago I shared a direction check here for noir-ckb, asking for feedback on what I was building. I got really thoughtful replies, mostly around two questions: Where should a proof live in a CKB transaction (Lock or Type?), and is Noir → Groth16 even the right backend, given its per-circuit trusted setup. This post is the follow-up: what I decided, what exists now that you can actually run (including on testnet), and the longer-term picture of where I want this to go. It’s a long one, sorry in advance Quick recap, if you’re new to this noir-ckb lets you write a rule in Noir, prove it off-chain, and have a CKB script verify the proof. The sentence that has driven the whole...</description>
+    <title>RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC (1 posts)</title>
+    <link>https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722</link>
+    <guid>https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722#recent-1</guid>
+    <pubDate>Wed, 14 Oct 2026 08:02:53 +0000</pubDate>
+    <description>I believe that in certain scenarios, irrevocability is the most significant aspect.</description>
   </item>
   <item>
-    <title>Tactus O1: First Based EVM Rollup on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861</link>
-    <guid>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861#recent-1</guid>
-    <pubDate>Mon, 12 Oct 2026 22:02:27 +0000</pubDate>
-    <description>A follow-up on Tactus O1. The latest experiments exposed two problems I need to address. Generating a ZK proof took roughly 78 minutes on my laptop, while verification on CKB consumed about 3.985 billion cycles, exceeding mainnet’s 3.5 billion limit. The prototype works on a devnet with a higher limit, but is not mainnet-ready. The prover also replays execution history from genesis, so the cost grows as the chain gets longer. The other concern is settlement lag. CKB can keep accepting EVM transaction batches while their proofs are still pending. That means transaction ordering can move ahead of verified settlement, potentially delaying withdrawals indefinitely if proving cannot keep up....</description>
+    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
+    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-1</guid>
+    <pubDate>Wed, 14 Oct 2026 07:59:19 +0000</pubDate>
+    <description>DAO Proposal Sync (Discussion Phase) Project: Kirea Finance reached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.</description>
+  </item>
+  <item>
+    <title>Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994</link>
+    <guid>https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994#recent-1</guid>
+    <pubDate>Wed, 14 Oct 2026 07:56:27 +0000</pubDate>
+    <description>Repository (proposal stage, code will land here weekly): GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub 1. Project Overview Project name: Fiber Mystery Shopper One-sentence summary: An outside buyer pays live Fiber services on testnet the way a stranger would, repeats the payment, breaks the session on purpose, and publishes what happened, with the payment preimages and a signed log as evidence. Type: Developer tool (test harness, npm package) plus a public evidence report. 2. Team Profile Artur Baranouski (GitHub: ttimesai-star), solo, all roles. Background: former lawyer, now a company director in...</description>
   </item>
 </channel>
 </rss>

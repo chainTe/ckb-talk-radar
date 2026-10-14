@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-14 04:26:30 CST - 2026-10-15 04:26:30 CST</span>
+          <span>生成时间 2026-10-15 04:26:35 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">13</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">13</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的主要动态集中在几个既有讨论串的回复和一条新 Spark 提案上 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s12">S12</a>, <a href="#source-s13">S13</a>]</span>；Project Matchmaker 获得多位社区成员支持 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>，Kirea Finance 在讨论期达到 34 likes 并获得进入 Metaforo 投票阶段的资格 <span class="citations">[<a href="#source-s12">S12</a>]</span>，CrowdCell 讨论转向 keeper 并发测试 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。此外，Spark Program 下出现新提案 Fiber Mystery Shopper <span class="citations">[<a href="#source-s13">S13</a>]</span>，POI 与 RIVET 也有简短互动 <span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s11">S11</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Project Matchmaker 脑暴继续获得支持 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>：有用户回复“Love the idea!” <span class="citations">[<a href="#source-s03">S03</a>]</span>。Mulandi_Cecilia 认为知识图谱既然会跟踪项目、依赖和开放问题，也可兼作实时生态路线图，展示各团队/项目现状和生态方向 <span class="citations">[<a href="#source-s04">S04</a>]</span>。Code3ks 认为它能帮开发者发现重叠项目、分享已有方案并找到合适合作者 <span class="citations">[<a href="#source-s05">S05</a>]</span>。yuqi 指出社区在了解彼此构建内容上过于“去中心化”，很难在一个地方找到社区项目和内部团队工具 <span class="citations">[<a href="#source-s06">S06</a>]</span>。ArthurZhang 回应称“开发者开始构建前”的用例引起共鸣，并设想开发者提交想法或提案后获得相关项目、可复用组件和过往讨论的审查 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+</ul>
+<ul>
+<li>Kirea Finance 达到进入 Metaforo 投票阶段的门槛 <span class="citations">[<a href="#source-s12">S12</a>]</span>：该提案在 7 天讨论窗口内获得 34 likes，现已具备资格推进到 Metaforo 投票阶段 <span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+</ul>
+<ul>
+<li>CrowdCell 讨论集中在 keeper 激励与测试 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>：有评论肯定其从测试网 demo 走向 CKB 实用众筹产品，认为 $5,000 范围合理，并关注免信任结算、keeper 激励和创作者工具 <span class="citations">[<a href="#source-s01">S01</a>]</span>。同帖回复中，Ayoub_Lesfer 同意 keeper 测试重要，并称 M4 有 tip 后多个 keeper 竞逐同一 pledge 会是正常情况；当前 bot 会跳过已有 in-flight 交易中的 pledge 并在下一周期重试，但尚未运行两个独立 keeper <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+</ul>
+<ul>
+<li>Waymark Lite 已进入 Pocket Node 在 Android 和 iOS 的主分支 <span class="citations">[<a href="#source-s10">S10</a>]</span>。相关讨论的出发点是：从 seed phrase 恢复后，钱包能否避免从零重建状态 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+</ul>
+<ul>
+<li>CKBadger 方面，DevRel 团队目前维护主网和测试网 v0.7 服务，用户可先试用 CKBadger，但团队不保证 uptime <span class="citations">[<a href="#source-s09">S09</a>]</span>。Spark Program 下出现新提案 Fiber Mystery Shopper，定位为对 live Fiber 服务进行独立付费使用测试，目前处于提案阶段 <span class="citations">[<a href="#source-s13">S13</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Project Matchmaker 是否会从脑暴走向具体方案，尤其是知识图谱兼作生态路线图、以及“构建前评审”如何落地 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>。</li>
+<li>CrowdCell 的 keeper 并发/竞争测试能否推进，因为同帖回复已指出尚未运行两个独立 keepers <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>Kirea Finance 进入 Metaforo 投票后的结果，以及 Fiber Mystery Shopper 的代码落地和测试范围 <span class="citations">[<a href="#source-s12">S12</a>, <a href="#source-s13">S13</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/3">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Dangbaty2004 · 2026-10-14 12:16:46 CST</div><div>Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper incentives, and creator tooling. I’d love to see more testing of...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/4">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-14 23:44:22 CST</div><div>Thanks Dang. Agree on the keeper testing. Once there’s a tip in M4, several keepers racing for the same pledges is the normal case. Right now the bot skips a pledge it already has a tx in flight for and retries on the next cycle, but I’ve never run two independent keepers...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/4">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></div><div class="source-meta">truthixify · 2026-10-14 05:15:45 CST</div><div>Love the idea!</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/5">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></div><div class="source-meta">Mulandi_Cecilia · 2026-10-14 07:49:23 CST</div><div>Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and where the ecosystem as a whole is headed…that alone would...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/6">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></div><div class="source-meta">Code3ks · 2026-10-14 14:24:07 CST</div><div>This could be really valuable for the CKB ecosystem. Helping developers discover overlapping projects, share existing solutions, and find the right collaborators could save time and accelerate development across the community.</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/7">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></div><div class="source-meta">yuqi · 2026-10-14 23:02:05 CST</div><div>I think this would be really useful for the CKB community. We’re probably a little too “decentralized” when it comes to knowing what everyone’s building. It’s hard to find community projects and tools from the internal teams in one place. Besides the project debut scenario you...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/8">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></div><div class="source-meta">ArthurZhang · 2026-10-14 23:34:17 CST</div><div>Thanks Yuqi, great input. The ‘before they start building’ use case really resonates with me. I was thinking about something similar today, as of a developer could submit an idea or proposal and get a review of related projects, reusable components, and previous discussions...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/3">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-14 23:07:42 CST</div><div>Congratulations on being the first one achieving the podium</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/9">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a></div><div class="source-meta">fgh · 2026-10-14 21:12:07 CST</div><div>Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet: Mainnet CKBadge Testnet CKBadge You can try CKBadger here before setting it up yourself. We’ll do our best to keep them running, but uptime isn’t guaranteed. Feedback is...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819/4">Waymark — Recovering useful wallet state without starting from zero</a></div><div class="source-meta">Ticoworld · 2026-10-14 19:30:44 CST</div><div>Waymark Lite is now in Pocket Node’s main branch on both Android and iOS. When I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from zero? @Jnr6 took the Lite path from that work and built it...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722/7">RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC</a></div><div class="source-meta">joii2020 · 2026-10-14 16:02:53 CST</div><div>I believe that in certain scenarios, irrevocability is the most significant aspect.</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/10">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></div><div class="source-meta">zz_tovarishch · 2026-10-14 15:59:19 CST</div><div>DAO Proposal Sync (Discussion Phase) Project: Kirea Finance reached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994/1">Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services</a></div><div class="source-meta">AI_Ttimes · 2026-10-14 15:56:27 CST</div><div>Repository (proposal stage, code will land here weekly): GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub 1. Project Overview Project name: Fiber Mystery Shopper One-sentence summary: An outside...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>5</strong></li><li><span>生态进展</span><strong>4</strong></li><li><span>其他</span><strong>3</strong></li><li><span>市场与传播</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@Ayoub_Lesfer</span><strong>1</strong></li><li><span>@ArthurZhang</span><strong>1</strong></li><li><span>@LusoCryptoLabs</span><strong>1</strong></li><li><span>@yuqi</span><strong>1</strong></li><li><span>@fgh</span><strong>1</strong></li><li><span>@Ticoworld</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>22</span></li><li>node<span>20</span></li><li>testnet<span>18</span></li><li>fiber<span>16</span></li><li>payment<span>16</span></li><li>public<span>15</span></li><li>github<span>14</span></li><li>evidence<span>13</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 23:34:17 CST</span><span>ArthurZhang, Code3ks, Mulandi_Cecilia, truthixify, yuqi</span></div><p class="excerpt">Love the idea! Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and where the ecosystem as a...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 23:44:22 CST</span><span>Ayoub_Lesfer, Dangbaty2004</span></div><p class="excerpt">Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper incentives, and creator tooling. I’d love to see...</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 23:07:42 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">Congratulations on being the first one achieving the podium</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 21:12:07 CST</span><span>fgh</span></div><p class="excerpt">Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet: Mainnet CKBadge Testnet CKBadge You can try CKBadger here before setting it up yourself. We’ll do our best to keep them running, but uptime isn’t...</p><div class="tag-row"><span>app</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819">Waymark — Recovering useful wallet state without starting from zero</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 19:30:44 CST</span><span>Ticoworld</span></div><p class="excerpt">Waymark Lite is now in Pocket Node’s main branch on both Android and iOS. When I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from zero? @Jnr6 took the Lite path from...</p><div class="tag-row"><span>CKB</span><span>Pocket-Node</span><span>lang-en</span><span>light-client</span><span>wallet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722">RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 16:02:53 CST</span><span>joii2020</span></div><p class="excerpt">I believe that in certain scenarios, irrevocability is the most significant aspect.</p><div class="tag-row"><span>CKB</span><span>RGB</span><span>appchain</span><span>dapp</span><span>ipfs</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 15:59:19 CST</span><span>zz_tovarishch</span></div><p class="excerpt">DAO Proposal Sync (Discussion Phase) Project: Kirea Finance reached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.</p><div class="tag-row"><span>CKB</span><span>DeFi</span><span>defi挖矿</span><span>lang-es</span><span>lang-zh</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994">Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-14 15:56:27 CST</span><span>AI_Ttimes</span></div><p class="excerpt">Repository (proposal stage, code will land here weekly): GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub 1. Project Overview Project name: Fiber Mystery Shopper One-sentence...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-14 23:44:22 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/4">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>Thanks Dang. Agree on the keeper testing. Once there’s a tip in M4, several keepers racing for the same pledges is the normal case. Right now the bot skips a pledge it already has a tx in flight for and retries on the...</p></article>
+<article class="timeline-row"><time>2026-10-14 23:34:17 CST</time><strong><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/8">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a> · @ArthurZhang</strong><p>Thanks Yuqi, great input. The ‘before they start building’ use case really resonates with me. I was thinking about something similar today, as of a developer could submit an idea or proposal and get a review of...</p></article>
+<article class="timeline-row"><time>2026-10-14 23:07:42 CST</time><strong><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/3">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a> · @LusoCryptoLabs</strong><p>Congratulations on being the first one achieving the podium</p></article>
+<article class="timeline-row"><time>2026-10-14 23:02:05 CST</time><strong><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/7">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a> · @yuqi</strong><p>I think this would be really useful for the CKB community. We’re probably a little too “decentralized” when it comes to knowing what everyone’s building. It’s hard to find community projects and tools from the...</p></article>
+<article class="timeline-row"><time>2026-10-14 21:12:07 CST</time><strong><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/9">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a> · @fgh</strong><p>Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet: Mainnet CKBadge Testnet CKBadge You can try CKBadger here before setting it up yourself. We’ll do our best to...</p></article>
+<article class="timeline-row"><time>2026-10-14 19:30:44 CST</time><strong><a href="https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819/4">Waymark — Recovering useful wallet state without starting from zero</a> · @Ticoworld</strong><p>Waymark Lite is now in Pocket Node’s main branch on both Android and iOS. When I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from...</p></article>
+<article class="timeline-row"><time>2026-10-14 16:02:53 CST</time><strong><a href="https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722/7">RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC</a> · @joii2020</strong><p>I believe that in certain scenarios, irrevocability is the most significant aspect.</p></article>
+<article class="timeline-row"><time>2026-10-14 15:59:19 CST</time><strong><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/10">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a> · @zz_tovarishch</strong><p>DAO Proposal Sync (Discussion Phase) Project: Kirea Finance reached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.</p></article>
+<article class="timeline-row"><time>2026-10-14 15:56:27 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994/1">Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services</a> · @AI_Ttimes</strong><p>Repository (proposal stage, code will land here weekly): GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub 1. Project Overview Project...</p></article>
+<article class="timeline-row"><time>2026-10-14 14:24:07 CST</time><strong><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/6">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a> · @Code3ks</strong><p>This could be really valuable for the CKB ecosystem. Helping developers discover overlapping projects, share existing solutions, and find the right collaborators could save time and accelerate development across the...</p></article>
+<article class="timeline-row"><time>2026-10-14 12:16:46 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/3">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Dangbaty2004</strong><p>Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper...</p></article>
+<article class="timeline-row"><time>2026-10-14 07:49:23 CST</time><strong><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/5">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a> · @Mulandi_Cecilia</strong><p>Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and...</p></article>
+<article class="timeline-row"><time>2026-10-14 05:15:45 CST</time><strong><a href="https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/4">[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem</a> · @truthixify</strong><p>Love the idea!</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

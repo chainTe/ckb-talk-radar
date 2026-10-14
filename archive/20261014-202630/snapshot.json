@@ -1,0 +1,378 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-10-14T20:26:35.603603+00:00",
+  "since": "2026-10-13T20:26:30.171723+00:00",
+  "until": "2026-10-14T20:26:30.171723+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 10937,
+      "title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+      "slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+      "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937",
+      "created_at": "2026-10-12T08:26:15.402000+00:00",
+      "last_posted_at": "2026-10-14T15:44:22.816000+00:00",
+      "category_id": 65,
+      "tags": [
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26638,
+          "post_number": 3,
+          "topic_id": 10937,
+          "topic_title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+          "topic_slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+          "author": "Dangbaty2004",
+          "created_at": "2026-10-14T04:16:46.328000+00:00",
+          "updated_at": "2026-10-14T04:16:46.328000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/3",
+          "content_text": "Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper incentives, and creator tooling.\nI’d love to see more testing of independent keeper settlement, especially under concurrent transactions and failure scenarios. Overall, a promising direction for the CKB ecosystem. Looking forward to the next milestones!",
+          "content_html": "<p>Great to see CrowdCell progressing from a testnet demo toward a practical crowdfunding product on CKB! The smaller $5,000 scope makes sense, and I particularly like the focus on trustless settlement, keeper incentives, and creator tooling.</p>\n<p>I’d love to see more testing of independent keeper settlement, especially under concurrent transactions and failure scenarios. Overall, a promising direction for the CKB ecosystem. Looking forward to the next milestones!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26650,
+          "post_number": 4,
+          "topic_id": 10937,
+          "topic_title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+          "topic_slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+          "author": "Ayoub_Lesfer",
+          "created_at": "2026-10-14T15:44:22.816000+00:00",
+          "updated_at": "2026-10-14T15:44:22.816000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/4",
+          "content_text": "Thanks Dang. Agree on the keeper testing. Once there’s a tip in M4, several keepers racing for the same pledges is the normal case. Right now the bot skips a pledge it already has a tx in flight for and retries on the next cycle, but I’ve never run two independent keepers against one campaign. I’ll add a two-keeper test and a kill-mid-cycle one to M4 and post the results here.",
+          "content_html": "<p>Thanks Dang. Agree on the keeper testing. Once there’s a tip in M4, several keepers racing for the same pledges is the normal case. Right now the bot skips a pledge it already has a tx in flight for and retries on the next cycle, but I’ve never run two independent keepers against one campaign. I’ll add a two-keeper test and a kill-mid-cycle one to M4 and post the results here.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10992,
+      "title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+      "slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+      "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992",
+      "created_at": "2026-10-13T15:03:10.525000+00:00",
+      "last_posted_at": "2026-10-14T15:34:17.012000+00:00",
+      "category_id": 70,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26636,
+          "post_number": 4,
+          "topic_id": 10992,
+          "topic_title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+          "topic_slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+          "author": "truthixify",
+          "created_at": "2026-10-13T21:15:45.682000+00:00",
+          "updated_at": "2026-10-13T21:15:45.682000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/4",
+          "content_text": "Love the idea!",
+          "content_html": "<p>Love the idea!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26637,
+          "post_number": 5,
+          "topic_id": 10992,
+          "topic_title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+          "topic_slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+          "author": "Mulandi_Cecilia",
+          "created_at": "2026-10-13T23:49:23.922000+00:00",
+          "updated_at": "2026-10-13T23:49:23.922000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/5",
+          "content_text": "Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and where the ecosystem as a whole is headed…that alone would help contributors stay in the loop and spot where they can plug in.",
+          "content_html": "<p>Yeah, love love this idea. I think since the knowledge graph would already track projects, dependencies and open problems, it could double as a live ecosystem roadmap: where each team and project currently stands, and where the ecosystem as a whole is headed…that alone would help contributors stay in the loop and spot where they can plug in.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26640,
+          "post_number": 6,
+          "topic_id": 10992,
+          "topic_title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+          "topic_slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+          "author": "Code3ks",
+          "created_at": "2026-10-14T06:24:07.679000+00:00",
+          "updated_at": "2026-10-14T06:24:07.679000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/6",
+          "content_text": "This could be really valuable for the CKB ecosystem. Helping developers discover overlapping projects, share existing solutions, and find the right collaborators could save time and accelerate development across the community.",
+          "content_html": "<p>This could be really valuable for the CKB ecosystem. Helping developers discover overlapping projects, share existing solutions, and find the right collaborators could save time and accelerate development across the community.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26647,
+          "post_number": 7,
+          "topic_id": 10992,
+          "topic_title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+          "topic_slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+          "author": "yuqi",
+          "created_at": "2026-10-14T15:02:05.378000+00:00",
+          "updated_at": "2026-10-14T15:02:05.378000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/7",
+          "content_text": "I think this would be really useful for the CKB community. We’re probably a little too “decentralized” when it comes to knowing what everyone’s building. It’s hard to find community projects and tools from the internal teams in one place.\nBesides the project debut scenario you described, I’d love to see this help developers before they start building, so they can discover related work or components they could reuse and avoid duplicating effort. When a project launches, developers might also have different goals. Some want collaborators, others need users or testers to give feedback, and some just want to get the word out about their work.\nWith those different needs, I wonder if generative UI patterns, something like OpenUI, would be worth exploring. The interface could adapt to what someone’s trying to do, instead of always showing the same layout or only responding with text.\nOne thing I’m curious about is how we’d keep developer profiles up to date. Would AI regularly pull from public GitHub and Nervos Talk activity, plus Telegram where people agree to it? Or would developers need to maintain another profile here and remember to update it manually?",
+          "content_html": "<p>I think this would be really useful for the CKB community. We’re probably a little too “decentralized” when it comes to knowing what everyone’s building. It’s hard to find community projects and tools from the internal teams <strong>in one place</strong>.</p>\n<p>Besides the project debut scenario you described, I’d love to see this help developers before they start building, so they can discover related work or components they could reuse and avoid duplicating effort. When a project launches, developers might also have different goals. Some want collaborators, others need users or testers to give feedback, and some just want to get the word out about their work.</p>\n<p>With those different needs, I wonder if <strong>generative UI patterns</strong>, something like <a href=\"https://www.openui.com/\" rel=\"noopener nofollow ugc\">OpenUI</a>, would be worth exploring. The interface could adapt to what someone’s trying to do, instead of always showing the same layout or only responding with text.</p>\n<p>One thing I’m curious about is how we’d keep developer profiles up to date. Would AI regularly pull from public GitHub and Nervos Talk activity, plus Telegram where people agree to it? Or would developers need to maintain another profile here and remember to update it manually?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26649,
+          "post_number": 8,
+          "topic_id": 10992,
+          "topic_title": "[Brainstorm] Project Matchmaker — An Agent-Assisted Collaboration Network for the CKB Ecosystem",
+          "topic_slug": "brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem",
+          "author": "ArthurZhang",
+          "created_at": "2026-10-14T15:34:17.012000+00:00",
+          "updated_at": "2026-10-14T15:34:17.012000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/brainstorm-project-matchmaker-an-agent-assisted-collaboration-network-for-the-ckb-ecosystem/10992/8",
+          "content_text": "Thanks Yuqi, great input.\nThe ‘before they start building’ use case really resonates with me. I was thinking about something similar today, as of a developer could submit an idea or proposal and get a review of related projects, reusable components, and previous discussions before writing any code. It could also be a skill under the same brand that a coding agent calls during planning.\nThe useful outcome would be understanding what already exists, how their idea differs, and what they could still build on, etc.\nYou’re also right that finding collaborators, users, and testers are different needs. I hadn’t thought through the feedback loop enough. My initial thinking was quite GitHub-centric, like the other project CKB-Pulse we mentioned. Maybe projects could specify what they’re looking for and where they need review and the agent then do the matching organically.This is also a good reminder that we could engage testing/acceptance roles in the picture too.\nI like the adaptive UI direction too. I don’t have a settled design yet, but the proposal workflow seems like a concrete place to explore it:\nshow comparisons when similar work exists,\nintegration options when components could be reused,\nor a testing brief when someone needs testers.\nThat would give us a useful starting point for experimenting with OpenUI.\nFor keeping profiles current, public GitHub and Nervos Talk activity seem like sensible starting points. I was thinking maybe developers would mostly claim and correct an automatically assembled profile, while explicitly controlling their availability and interests.",
+          "content_html": "<p>Thanks Yuqi, great input.</p>\n<p>The ‘before they start building’ use case really resonates with me. I was thinking about something similar today, as of a developer could submit an idea or proposal and get a review of related projects, reusable components, and previous discussions before writing any code. It could also be a skill under the same brand that a coding agent calls during planning.</p>\n<p>The useful outcome would be understanding what already exists, how their idea differs, and what they could still build on, etc.</p>\n<p>You’re also right that finding collaborators, users, and testers are different needs. I hadn’t thought through the feedback loop enough. My initial thinking was quite GitHub-centric, like the other project CKB-Pulse we mentioned. Maybe projects could specify what they’re looking for and where they need review and the agent then do the matching organically.This is also a good reminder that we could engage testing/acceptance roles in the picture too.</p>\n<p>I like the adaptive UI direction too. I don’t have a settled design yet, but the proposal workflow seems like a concrete place to explore it:</p>\n<ol>\n<li>show comparisons when similar work exists,</li>\n<li>integration options when components could be reused,</li>\n<li>or a testing brief when someone needs testers.</li>\n</ol>\n<p>That would give us a useful starting point for experimenting with OpenUI.</p>\n<p>For keeping profiles current, public GitHub and Nervos Talk activity seem like sensible starting points. I was thinking maybe developers would mostly claim and correct an automatically assembled profile, while explicitly controlling their availability and interests.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10967,
+      "title": "POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them",
+      "slug": "poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them",
+      "url": "https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967",
+      "created_at": "2026-10-12T15:41:20.744000+00:00",
+      "last_posted_at": "2026-10-14T15:07:42.377000+00:00",
+      "category_id": 70,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26648,
+          "post_number": 3,
+          "topic_id": 10967,
+          "topic_title": "POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them",
+          "topic_slug": "poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-10-14T15:07:42.377000+00:00",
+          "updated_at": "2026-10-14T15:07:42.377000+00:00",
+          "reply_to_post_number": 2,
+          "url": "https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/3",
+          "content_text": "Congratulations on being the first one achieving the podium",
+          "content_html": "<p>Congratulations on being the first one achieving the podium</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10276,
+      "title": "CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment",
+      "slug": "ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment",
+      "url": "https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276",
+      "created_at": "2026-05-15T02:36:09.074000+00:00",
+      "last_posted_at": "2026-10-14T13:12:07.595000+00:00",
+      "category_id": 70,
+      "tags": [
+        "app",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26646,
+          "post_number": 9,
+          "topic_id": 10276,
+          "topic_title": "CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment",
+          "topic_slug": "ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment",
+          "author": "fgh",
+          "created_at": "2026-10-14T13:12:07.595000+00:00",
+          "updated_at": "2026-10-14T13:12:07.595000+00:00",
+          "reply_to_post_number": 5,
+          "url": "https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/9",
+          "content_text": "Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet:\nMainnet CKBadge\nTestnet CKBadge\nYou can try CKBadger here before setting it up yourself. We’ll do our best to keep them running, but uptime isn’t guaranteed. Feedback is always welcome!",
+          "content_html": "<p>Thanks for the suggestion! The DevRel team currently maintains v0.7 services for both mainnet and testnet:</p>\n<ul>\n<li><a href=\"https://explorer.ckbccc.com/mainnet\" rel=\"noopener nofollow ugc\">Mainnet CKBadge</a></li>\n<li><a href=\"https://test-explorer.ckbccc.com/testnet\" rel=\"noopener nofollow ugc\">Testnet CKBadge</a></li>\n</ul>\n<p>You can try CKBadger here before setting it up yourself. We’ll do our best to keep them running, but uptime isn’t guaranteed. Feedback is always welcome!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10819,
+      "title": "Waymark — Recovering useful wallet state without starting from zero",
+      "slug": "waymark-recovering-useful-wallet-state-without-starting-from-zero",
+      "url": "https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819",
+      "created_at": "2026-10-08T11:45:31.429000+00:00",
+      "last_posted_at": "2026-10-14T11:30:44.588000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "Pocket-Node",
+        "lang-en",
+        "light-client",
+        "wallet"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26645,
+          "post_number": 4,
+          "topic_id": 10819,
+          "topic_title": "Waymark — Recovering useful wallet state without starting from zero",
+          "topic_slug": "waymark-recovering-useful-wallet-state-without-starting-from-zero",
+          "author": "Ticoworld",
+          "created_at": "2026-10-14T11:30:44.588000+00:00",
+          "updated_at": "2026-10-14T11:30:44.588000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/waymark-recovering-useful-wallet-state-without-starting-from-zero/10819/4",
+          "content_text": "Waymark Lite is now in Pocket Node’s main branch on both Android and iOS.\nWhen I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from zero?\n@Jnr6 took the Lite path from that work and built it into Pocket as a restore-hint flow. The Android side landed in #561, the iOS side followed in #566, and #559 is now complete.\nReally nice seeing the experiment turn into something concrete in the wallet this quickly.\nThe Full recovery direction is still open in #560, so there’s still more to understand around what is worth carrying forward beyond Lite.",
+          "content_html": "<p>Waymark Lite is now in Pocket Node’s main branch on both Android and iOS.</p>\n<p>When I first tested Waymark on Pocket, the idea was simple: after restoring from a seed phrase, can the wallet avoid rebuilding everything from zero?</p>\n<p><a class=\"mention\" href=\"/u/jnr6\">@Jnr6</a> took the Lite path from that work and built it into Pocket as a restore-hint flow. The Android side landed in <a href=\"https://github.com/RaheemJnr/pocket-node/pull/561\" rel=\"noopener nofollow ugc\">#561</a>, the iOS side followed in <a href=\"https://github.com/RaheemJnr/pocket-node/pull/566\" rel=\"noopener nofollow ugc\">#566</a>, and <a href=\"https://github.com/RaheemJnr/pocket-node/issues/559\" rel=\"noopener nofollow ugc\">#559</a> is now complete.</p>\n<p>Really nice seeing the experiment turn into something concrete in the wallet this quickly.</p>\n<p>The Full recovery direction is still open in <a href=\"https://github.com/RaheemJnr/pocket-node/issues/560\" rel=\"noopener nofollow ugc\">#560</a>, so there’s still more to understand around what is worth carrying forward beyond Lite.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10722,
+      "title": "RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC",
+      "slug": "rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc",
+      "url": "https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722",
+      "created_at": "2026-09-19T09:16:47+00:00",
+      "last_posted_at": "2026-10-14T08:02:53.721000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "RGB",
+        "appchain",
+        "dapp",
+        "ipfs",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26644,
+          "post_number": 7,
+          "topic_id": 10722,
+          "topic_title": "RIVET: CKB-native GitHub backup using IPFS, RGB++, and CCC",
+          "topic_slug": "rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc",
+          "author": "joii2020",
+          "created_at": "2026-10-14T08:02:53.721000+00:00",
+          "updated_at": "2026-10-14T08:02:53.721000+00:00",
+          "reply_to_post_number": 6,
+          "url": "https://talk.nervos.org/t/rivet-ckb-native-github-backup-using-ipfs-rgb-and-ccc/10722/7",
+          "content_text": "I believe that in certain scenarios, irrevocability is the most significant aspect.",
+          "content_html": "<p>I believe that in certain scenarios, irrevocability is the most significant aspect.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10809,
+      "title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+      "slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+      "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809",
+      "created_at": "2026-10-06T16:14:27.711000+00:00",
+      "last_posted_at": "2026-10-14T07:59:19.477000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "DeFi",
+        "defi挖矿",
+        "lang-es",
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26643,
+          "post_number": 10,
+          "topic_id": 10809,
+          "topic_title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+          "topic_slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-14T07:59:19.477000+00:00",
+          "updated_at": "2026-10-14T07:59:19.477000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/10",
+          "content_text": "DAO Proposal Sync (Discussion Phase)\nProject: Kirea Finance\nreached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.",
+          "content_html": "<p><img src=\"https://talk.nervos.org/images/emoji/apple/counterclockwise_arrows_button.png?v=15\" title=\":counterclockwise_arrows_button:\" class=\"emoji\" alt=\":counterclockwise_arrows_button:\" loading=\"lazy\" width=\"20\" height=\"20\"> DAO Proposal Sync (Discussion Phase)<br>\nProject: Kirea Finance<br>\nreached 34 likes within the 7-day discussion window and is now eligible to proceed to the Metaforo voting stage.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10994,
+      "title": "Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services",
+      "slug": "spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services",
+      "url": "https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994",
+      "created_at": "2026-10-14T07:56:27.351000+00:00",
+      "last_posted_at": "2026-10-14T07:56:27.444000+00:00",
+      "category_id": 77,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26641,
+          "post_number": 1,
+          "topic_id": 10994,
+          "topic_title": "Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services",
+          "topic_slug": "spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services",
+          "author": "AI_Ttimes",
+          "created_at": "2026-10-14T07:56:27.444000+00:00",
+          "updated_at": "2026-10-14T07:56:27.444000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994/1",
+          "content_text": "Repository (proposal stage, code will land here weekly): GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub\n1. Project Overview\nProject name: Fiber Mystery Shopper\nOne-sentence summary: An outside buyer pays live Fiber services on testnet the way a stranger would, repeats the payment, breaks the session on purpose, and publishes what happened, with the payment preimages and a signed log as evidence.\nType: Developer tool (test harness, npm package) plus a public evidence report.\n2. Team Profile\nArtur Baranouski (GitHub: ttimesai-star), solo, all roles.\nBackground: former lawyer, now a company director in Belarus. I build open-source tools for agent payments with AI coding assistants and test them hard. Relevant work:\nDelivery Score (GitHub - ttimesai-star/delivery-score: Check an x402 seller before your agent pays: unpaid probe of the 402 challenge, mystery-shopper purchases, transparent score; every record a signed AgentLog entry. · GitHub): a neutral pre-payment check of x402 sellers. On 10 October 2026 it probed 15,498 endpoints on 2,185 hosts of the public x402 catalogue without paying, and found 70 endpoints that served results without payment and 200 that asked to pay a different address than their listing. The paying part (mystery shopper) is written but has not spent anything yet.\nAgentLog (GitHub - ttimesai-star/agentlog: Tamper-evident audit trail for AI agents (TypeScript, MIT): hash-chained signed steps, offline verification, dispute replay, stores for SQLite, memory and Arkiv. · GitHub): a signed, hash-chained action log for agents; every Delivery Score probe is an AgentLog entry.\nAgentLeash (GitHub - ttimesai-star/agentleash-bch: Spending leash for AI agents on Bitcoin Cash: CashScript covenant enforces per-window limits, allow-listed payees and fee caps; owner can always withdraw. BCH BLAZE 2026. · GitHub): a spending-limit covenant for agents on Bitcoin Cash, chipnet only, 130 tests, unaudited.\nNo CKB or Fiber experience yet. That is said up front; week 1 is spent on it.\nContact: email ttimesai@gmail.com; Discord: aittimes; Nervos Talk: this account.\nWeekly sync: text updates in this thread, every Saturday at a fixed time (UTC). Demos are screen recordings with captions.\n3. Project Background\nThe committee’s August report on machine payments and Fiber lists a lot of working prototypes: paid AI calls, model serving, metered sessions, receipts, browser payments. For the most promising areas it also says what is missing: “Independent users, repeat payments, and recovery tests would add useful evidence”, and the full hypothesis “still lacks public evidence of recurring demand and independent users”.\nMost of these projects have been tested by their own authors, on their own nodes, along the happy path. Nobody outside has tried to pay them as a stranger, twice, then twenty times, then with the session cut in the middle.\nI did that exercise for x402 last week, on a much larger set, and the results were not what the catalogue suggested. Some sellers gave the resource away without payment, some asked to be paid to an address that did not match their listing. Neither of those shows up until someone outside actually calls the endpoint. I want to know the same thing about Fiber services before I or anyone else builds on top of them. Each one is a concrete question: if I open a channel to your service from a fresh node, pay your invoice, and pay it again 20 times, do I get what you advertise each time, and what happens to my money if my node restarts halfway?\n4. Solution\nCore: a test harness that runs a fresh Fiber node on public testnet and acts as a buyer against live Fiber services that publish a paid endpoint. For each target it runs a fixed set of scenarios:\nFirst purchase from a cold start: find the service, open a channel or route through a public node, pay, receive.\nRepeat purchases: 20 payments in a row, each checked for delivery.\nInterruptions: buyer node restarted between invoice and payment, and during a metered session; service unreachable after payment.\nExit: cooperative channel close, and a check on CKB testnet that the buyer’s funds came back.\nEvidence: for every payment the harness keeps the payment hash and the preimage. The preimage proves the payment completed (only the payee’s node could release it), so a “paid, nothing delivered” record carries its own proof without trusting us. Each step is an AgentLog entry, signed and hash-chained; channel open and close transactions are CKB testnet transactions anyone can look up.\nUser view:\nService authors get a report on their own service and a command to rerun it after a fix.\nBuilders choosing a component get a table of what worked for a stranger and what did not.\nThe committee gets the “independent users, repeat payments, recovery” evidence its report asks for.\nRules:\nFacts only, no labels: “paid invoice X at 12:03 UTC, preimage Y, no response in 30 s”, never “broken” or “scam”.\nEach author is told in their own thread before their results are published, and their reply is linked next to the result.\nDifference from existing tools:\nFiber Test Lab reproduces failures locally in Docker on nodes you control.\nFNN Safeguard checks a node operator’s own backups.\nSpark Verify runs a project author’s own acceptance flow on a devnet.\nThis project tests services someone else runs, from outside, on the public testnet, the way a first customer meets them.\n5. Technical Approach\nStack: TypeScript on Node 22. FNN (Fiber node) through its JSON-RPC, with the @nervosnetwork/fiber-js client where it fits. CCC for the CKB testnet side (funding the node, reading channel transactions). AgentLog for the signed evidence log. GitHub Actions for tests, GitHub Pages for the report.\nArchitecture:\ntargets.yaml: one entry per service (how to find it, how to request an invoice, what a delivered response looks like, price).\nrunner: drives the buyer node through the scenarios.\nevidence: writes every step to AgentLog, keeps preimages and responses, hashes them into the signed entries.\nreport: builds the public table and per-target pages from the log only, so the report cannot say anything the log does not.\nHard parts:\nServices differ in how they hand out invoices (an HTTP 402-style challenge, a hold invoice, keysend, a metered session). Each needs a small adapter, and the scenarios must stay identical across adapters.\nInterruption tests must be repeatable on a shared testnet, where routes and liquidity change. Each interruption is scripted at a fixed step and repeated 3 times, and the report shows all 3 results, not the best one.\nTelling “service failed” apart from “my node or the route failed”: every failed payment also records our node’s channel state and the route used, and failures we caused are marked as ours.\nLanguage: English.\n6. To-Do List (6 weeks)\nWeek 1:\nRun an FNN node on testnet, fund it, open a channel, make one payment to a public node. Record each step in AgentLog.\nMake the inventory of candidate targets from the projects in the committee’s report and in this forum (Infern, FiberLatch, fiber-pay, Trickle, Scryve Reads, fiber-checkout demos, Clasp, CKB KeyWay, FiberGuard Session and others found on the forum). List which ones expose a live paid endpoint on testnet.\nPost the list in this thread.\nWeek 2:\nHarness core: targets.yaml, scenario 1 (first purchase), evidence writer with preimage capture.\nAdapters for the first 2 targets.\nMilestone: first signed purchase report for 2 services.\nWeek 3:\nScenario 2 (20 repeat payments) and adapters for the remaining targets.\nNotify each author in their thread.\nWeek 4:\nScenario 3 (interruptions, 3 repetitions each) and scenario 4 (cooperative close and on-chain refund check).\nMilestone: all 4 scenarios run on at least 4 targets.\nWeek 5:\nFull run on all reachable targets.\nStatic report site generated only from the log.\nVerifier command that rechecks the log and the preimages.\nThe log’s final hash is written once into a CKB testnet cell so the report cannot be backdated.\nWeek 6:\nSecond full run to show which results repeat.\nAuthors’ replies linked next to their results.\nDocs, a captioned screen-recorded demo, completion report with funds usage.\nMilestone: final report.\n7. Required Funding & Funding Breakdown\nTotal: $800, paid in CKB (no USDI, since the committee’s own report notes it is being withdrawn).\nItem\nAmount\nWhat it pays for\nServer for the testnet FNN node and runner, 2 months\n$40\nA small VPS so the node stays online between runs and interruption tests are not affected by a home connection.\nDevelopment and test runs, about 70 hours over 6 weeks\n$760\nWeek 1 setup and inventory ~10 h; harness and adapters ~25 h; interruption and exit scenarios ~15 h; two full runs, report, verifier, docs and demo ~20 h.\nWhy this amount: the work splits into weeks and hours (above). It stays under $1,000 because the purchases themselves cost nothing on testnet.\nWhat it does not cover: mainnet purchases. If the committee wants a small mainnet comparison for 1–2 services, that would be a separate, explicitly budgeted line.\nDisbursement: 20% at start, the rest at completion.\n8. Deliverables + How to Verify\nA. Deliverables\nPublic repository ttimesai-star/fiber-mystery-shopper, MIT: harness, adapters, targets.yaml, tests in CI.\nDone when: CI is green, and the README shows how to run one target from a fresh clone.\nEvidence log (AgentLog SQLite, gzip) and per-run JSON exports, committed to the repo.\nDone when: the verifier reports every run intact.\nPublic report (GitHub Pages) with one table row per target and scenario: result, time, payment hash, preimage, CKB channel transactions.\nDone when: at least 4 services tested on all 4 scenarios, with the remaining reachable ones on as many scenarios as they support. If fewer than 4 services expose a live paid endpoint on testnet, the report says so and that count is the result. Reporting it is part of the evidence the committee asked for.\nVerifier command npx fiber-mystery-shopper verify.\nDone when: it rechecks signatures and chain, recomputes each payment hash from its preimage, and finds the anchoring transaction on CKB testnet.\nCaptioned screen-recorded demo (about 3 minutes) and a completion report with funds usage against this breakdown.\nB. How to Verify (no code review needed)\nClone the repo, npm ci, npx fiber-mystery-shopper verify. Expected output: every run listed as intact, every preimage matching its payment hash, the anchoring transaction hash printed with its block number. Needs Node 22 and internet only, no Fiber node. About 2 minutes.\nOpen the report page and pick any row. Look up its channel open and close transactions on a CKB testnet explorer and check that they match the amounts and times in the row.\nRerun one target yourself: npx fiber-mystery-shopper run --target <name> --scenario first-purchase. This needs a funded FNN testnet node; the README gives the exact setup. The output should be a new signed run comparable with ours.\nAsk any tested author whether their result matches what they see in their own logs. Their replies are linked in the report.\n9. Current State vs. Funded Work\nAlready exists:\nThe method and the evidence layer, built and used on x402: catalogue collection, unpaid probing, a mystery-shopper buyer with hard spend limits, scoring, a signed hash-chained log and its verifier (Delivery Score and AgentLog, both public, MIT). The x402 run covered 15,498 endpoints.\nNothing for CKB or Fiber yet. The new repository holds only this proposal.\nFunded work (new):\nThe Fiber buyer node and runner, the adapters, the four scenarios, preimage-based evidence, the report and verifier for Fiber.\nTwo full runs against live testnet services.\nAgentLog is reused as a library; no Delivery Score code is counted as Spark work.\n10. CKB Alignment\nFiber Network: the whole project is about it.\nThe tests exercise what makes Fiber different from a one-way API payment: channels funded on CKB, routing through public nodes, invoices settled by preimage, sessions that can be interrupted, and funds returning to CKB on close.\nThe preimage as proof of payment is what lets a third party verify our records without trusting us.\nCKB L1: channel funding and closing transactions are the on-chain part of the evidence. One CKB testnet cell stores the final log hash, built with CCC. That part is small and similar to what HashThis does; it is not the point of the project.\nHonest statement:\nThis is not a new payment component and not a new protocol.\nIts value to CKB is that the Fiber services already built get their first outside buyer, and the ecosystem gets public evidence on whether they hold up under repeat use and interruption, which the committee’s report names as missing.\nIt does not use Spore, DOB or JoyID.",
+          "content_html": "<p>Repository (proposal stage, code will land here weekly): <a href=\"http://github.com/ttimesai-star/fiber-mystery-shopper\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - ttimesai-star/fiber-mystery-shopper: Independent paid-use tests of live Fiber services (CKB Spark proposal stage) · GitHub</a></p>\n<h3><a name=\"p-26641-h-1-project-overview-1\" class=\"anchor\" href=\"#p-26641-h-1-project-overview-1\" aria-label=\"Heading link\"></a>1. Project Overview</h3>\n<ul>\n<li><strong>Project name:</strong> Fiber Mystery Shopper</li>\n<li><strong>One-sentence summary:</strong> An outside buyer pays live Fiber services on testnet the way a stranger would, repeats the payment, breaks the session on purpose, and publishes what happened, with the payment preimages and a signed log as evidence.</li>\n<li><strong>Type:</strong> Developer tool (test harness, npm package) plus a public evidence report.</li>\n</ul>\n<h3><a name=\"p-26641-h-2-team-profile-2\" class=\"anchor\" href=\"#p-26641-h-2-team-profile-2\" aria-label=\"Heading link\"></a>2. Team Profile</h3>\n<ul>\n<li><strong>Artur Baranouski</strong> (GitHub: ttimesai-star), solo, all roles.</li>\n<li><strong>Background:</strong> former lawyer, now a company director in Belarus. I build open-source tools for agent payments with AI coding assistants and test them hard. Relevant work:\n<ul>\n<li>Delivery Score (<a href=\"http://github.com/ttimesai-star/delivery-score\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - ttimesai-star/delivery-score: Check an x402 seller before your agent pays: unpaid probe of the 402 challenge, mystery-shopper purchases, transparent score; every record a signed AgentLog entry. · GitHub</a>): a neutral pre-payment check of x402 sellers. On 10 October 2026 it probed 15,498 endpoints on 2,185 hosts of the public x402 catalogue without paying, and found 70 endpoints that served results without payment and 200 that asked to pay a different address than their listing. The paying part (mystery shopper) is written but has not spent anything yet.</li>\n<li>AgentLog (<a href=\"http://github.com/ttimesai-star/agentlog\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - ttimesai-star/agentlog: Tamper-evident audit trail for AI agents (TypeScript, MIT): hash-chained signed steps, offline verification, dispute replay, stores for SQLite, memory and Arkiv. · GitHub</a>): a signed, hash-chained action log for agents; every Delivery Score probe is an AgentLog entry.</li>\n<li>AgentLeash (<a href=\"http://github.com/ttimesai-star/agentleash-bch\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - ttimesai-star/agentleash-bch: Spending leash for AI agents on Bitcoin Cash: CashScript covenant enforces per-window limits, allow-listed payees and fee caps; owner can always withdraw. BCH BLAZE 2026. · GitHub</a>): a spending-limit covenant for agents on Bitcoin Cash, chipnet only, 130 tests, unaudited.</li>\n<li>No CKB or Fiber experience yet. That is said up front; week 1 is spent on it.</li>\n</ul>\n</li>\n<li><strong>Contact:</strong> email <a href=\"mailto:ttimesai@gmail.com\">ttimesai@gmail.com</a>; Discord: aittimes; Nervos Talk: this account.</li>\n<li><strong>Weekly sync:</strong> text updates in this thread, every Saturday at a fixed time (UTC). Demos are screen recordings with captions.</li>\n</ul>\n<h3><a name=\"p-26641-h-3-project-background-3\" class=\"anchor\" href=\"#p-26641-h-3-project-background-3\" aria-label=\"Heading link\"></a>3. Project Background</h3>\n<p>The committee’s August report on machine payments and Fiber lists a lot of working prototypes: paid AI calls, model serving, metered sessions, receipts, browser payments. For the most promising areas it also says what is missing: “Independent users, repeat payments, and recovery tests would add useful evidence”, and the full hypothesis “still lacks public evidence of recurring demand and independent users”.</p>\n<p>Most of these projects have been tested by their own authors, on their own nodes, along the happy path. Nobody outside has tried to pay them as a stranger, twice, then twenty times, then with the session cut in the middle.</p>\n<p>I did that exercise for x402 last week, on a much larger set, and the results were not what the catalogue suggested. Some sellers gave the resource away without payment, some asked to be paid to an address that did not match their listing. Neither of those shows up until someone outside actually calls the endpoint. I want to know the same thing about Fiber services before I or anyone else builds on top of them. Each one is a concrete question: if I open a channel to your service from a fresh node, pay your invoice, and pay it again 20 times, do I get what you advertise each time, and what happens to my money if my node restarts halfway?</p>\n<h3><a name=\"p-26641-h-4-solution-4\" class=\"anchor\" href=\"#p-26641-h-4-solution-4\" aria-label=\"Heading link\"></a>4. Solution</h3>\n<ul>\n<li><strong>Core:</strong> a test harness that runs a fresh Fiber node on public testnet and acts as a buyer against live Fiber services that publish a paid endpoint. For each target it runs a fixed set of scenarios:\n<ol>\n<li>First purchase from a cold start: find the service, open a channel or route through a public node, pay, receive.</li>\n<li>Repeat purchases: 20 payments in a row, each checked for delivery.</li>\n<li>Interruptions: buyer node restarted between invoice and payment, and during a metered session; service unreachable after payment.</li>\n<li>Exit: cooperative channel close, and a check on CKB testnet that the buyer’s funds came back.</li>\n</ol>\n</li>\n<li><strong>Evidence:</strong> for every payment the harness keeps the payment hash and the preimage. The preimage proves the payment completed (only the payee’s node could release it), so a “paid, nothing delivered” record carries its own proof without trusting us. Each step is an AgentLog entry, signed and hash-chained; channel open and close transactions are CKB testnet transactions anyone can look up.</li>\n<li><strong>User view:</strong>\n<ul>\n<li>Service authors get a report on their own service and a command to rerun it after a fix.</li>\n<li>Builders choosing a component get a table of what worked for a stranger and what did not.</li>\n<li>The committee gets the “independent users, repeat payments, recovery” evidence its report asks for.</li>\n</ul>\n</li>\n<li><strong>Rules:</strong>\n<ul>\n<li>Facts only, no labels: “paid invoice X at 12:03 UTC, preimage Y, no response in 30 s”, never “broken” or “scam”.</li>\n<li>Each author is told in their own thread before their results are published, and their reply is linked next to the result.</li>\n</ul>\n</li>\n<li><strong>Difference from existing tools:</strong>\n<ul>\n<li>Fiber Test Lab reproduces failures locally in Docker on nodes you control.</li>\n<li>FNN Safeguard checks a node operator’s own backups.</li>\n<li>Spark Verify runs a project author’s own acceptance flow on a devnet.</li>\n<li>This project tests services someone else runs, from outside, on the public testnet, the way a first customer meets them.</li>\n</ul>\n</li>\n</ul>\n<h3><a name=\"p-26641-h-5-technical-approach-5\" class=\"anchor\" href=\"#p-26641-h-5-technical-approach-5\" aria-label=\"Heading link\"></a>5. Technical Approach</h3>\n<ul>\n<li><strong>Stack:</strong> TypeScript on Node 22. FNN (Fiber node) through its JSON-RPC, with the <a class=\"mention\" href=\"/u/nervosnetwork\">@nervosnetwork</a>/fiber-js client where it fits. CCC for the CKB testnet side (funding the node, reading channel transactions). AgentLog for the signed evidence log. GitHub Actions for tests, GitHub Pages for the report.</li>\n<li><strong>Architecture:</strong>\n<ul>\n<li><code>targets.yaml</code>: one entry per service (how to find it, how to request an invoice, what a delivered response looks like, price).</li>\n<li><code>runner</code>: drives the buyer node through the scenarios.</li>\n<li><code>evidence</code>: writes every step to AgentLog, keeps preimages and responses, hashes them into the signed entries.</li>\n<li><code>report</code>: builds the public table and per-target pages from the log only, so the report cannot say anything the log does not.</li>\n</ul>\n</li>\n<li><strong>Hard parts:</strong>\n<ul>\n<li>Services differ in how they hand out invoices (an HTTP 402-style challenge, a hold invoice, keysend, a metered session). Each needs a small adapter, and the scenarios must stay identical across adapters.</li>\n<li>Interruption tests must be repeatable on a shared testnet, where routes and liquidity change. Each interruption is scripted at a fixed step and repeated 3 times, and the report shows all 3 results, not the best one.</li>\n<li>Telling “service failed” apart from “my node or the route failed”: every failed payment also records our node’s channel state and the route used, and failures we caused are marked as ours.</li>\n</ul>\n</li>\n<li><strong>Language:</strong> English.</li>\n</ul>\n<h3><a name=\"p-26641-h-6-to-do-list-6-weeks-6\" class=\"anchor\" href=\"#p-26641-h-6-to-do-list-6-weeks-6\" aria-label=\"Heading link\"></a>6. To-Do List (6 weeks)</h3>\n<ul>\n<li><strong>Week 1:</strong>\n<ul>\n<li>Run an FNN node on testnet, fund it, open a channel, make one payment to a public node. Record each step in AgentLog.</li>\n<li>Make the inventory of candidate targets from the projects in the committee’s report and in this forum (Infern, FiberLatch, fiber-pay, Trickle, Scryve Reads, fiber-checkout demos, Clasp, CKB KeyWay, FiberGuard Session and others found on the forum). List which ones expose a live paid endpoint on testnet.</li>\n<li>Post the list in this thread.</li>\n</ul>\n</li>\n<li><strong>Week 2:</strong>\n<ul>\n<li>Harness core: <code>targets.yaml</code>, scenario 1 (first purchase), evidence writer with preimage capture.</li>\n<li>Adapters for the first 2 targets.</li>\n<li><strong>Milestone: first signed purchase report for 2 services.</strong></li>\n</ul>\n</li>\n<li><strong>Week 3:</strong>\n<ul>\n<li>Scenario 2 (20 repeat payments) and adapters for the remaining targets.</li>\n<li>Notify each author in their thread.</li>\n</ul>\n</li>\n<li><strong>Week 4:</strong>\n<ul>\n<li>Scenario 3 (interruptions, 3 repetitions each) and scenario 4 (cooperative close and on-chain refund check).</li>\n<li><strong>Milestone: all 4 scenarios run on at least 4 targets.</strong></li>\n</ul>\n</li>\n<li><strong>Week 5:</strong>\n<ul>\n<li>Full run on all reachable targets.</li>\n<li>Static report site generated only from the log.</li>\n<li>Verifier command that rechecks the log and the preimages.</li>\n<li>The log’s final hash is written once into a CKB testnet cell so the report cannot be backdated.</li>\n</ul>\n</li>\n<li><strong>Week 6:</strong>\n<ul>\n<li>Second full run to show which results repeat.</li>\n<li>Authors’ replies linked next to their results.</li>\n<li>Docs, a captioned screen-recorded demo, completion report with funds usage.</li>\n<li><strong>Milestone: final report.</strong></li>\n</ul>\n</li>\n</ul>\n<h3><a name=\"p-26641-h-7-required-funding-funding-breakdown-7\" class=\"anchor\" href=\"#p-26641-h-7-required-funding-funding-breakdown-7\" aria-label=\"Heading link\"></a>7. Required Funding &amp; Funding Breakdown</h3>\n<p><strong>Total: $800, paid in CKB</strong> (no USDI, since the committee’s own report notes it is being withdrawn).</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Item</th>\n<th>Amount</th>\n<th>What it pays for</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Server for the testnet FNN node and runner, 2 months</td>\n<td>$40</td>\n<td>A small VPS so the node stays online between runs and interruption tests are not affected by a home connection.</td>\n</tr>\n<tr>\n<td>Development and test runs, about 70 hours over 6 weeks</td>\n<td>$760</td>\n<td>Week 1 setup and inventory ~10 h; harness and adapters ~25 h; interruption and exit scenarios ~15 h; two full runs, report, verifier, docs and demo ~20 h.</td>\n</tr>\n</tbody>\n</table>\n</div><ul>\n<li><strong>Why this amount:</strong> the work splits into weeks and hours (above). It stays under $1,000 because the purchases themselves cost nothing on testnet.</li>\n<li><strong>What it does not cover:</strong> mainnet purchases. If the committee wants a small mainnet comparison for 1–2 services, that would be a separate, explicitly budgeted line.</li>\n<li><strong>Disbursement:</strong> 20% at start, the rest at completion.</li>\n</ul>\n<h3><a name=\"p-26641-h-8-deliverables-how-to-verify-8\" class=\"anchor\" href=\"#p-26641-h-8-deliverables-how-to-verify-8\" aria-label=\"Heading link\"></a>8. Deliverables + How to Verify</h3>\n<p><strong>A. Deliverables</strong></p>\n<ol>\n<li><strong>Public repository</strong> <code>ttimesai-star/fiber-mystery-shopper</code>, MIT: harness, adapters, <code>targets.yaml</code>, tests in CI.\n<ul>\n<li>Done when: CI is green, and the README shows how to run one target from a fresh clone.</li>\n</ul>\n</li>\n<li><strong>Evidence log</strong> (AgentLog SQLite, gzip) and per-run JSON exports, committed to the repo.\n<ul>\n<li>Done when: the verifier reports every run <code>intact</code>.</li>\n</ul>\n</li>\n<li><strong>Public report</strong> (GitHub Pages) with one table row per target and scenario: result, time, payment hash, preimage, CKB channel transactions.\n<ul>\n<li>Done when: at least 4 services tested on all 4 scenarios, with the remaining reachable ones on as many scenarios as they support. If fewer than 4 services expose a live paid endpoint on testnet, the report says so and that count is the result. Reporting it is part of the evidence the committee asked for.</li>\n</ul>\n</li>\n<li><strong>Verifier command</strong> <code>npx fiber-mystery-shopper verify</code>.\n<ul>\n<li>Done when: it rechecks signatures and chain, recomputes each payment hash from its preimage, and finds the anchoring transaction on CKB testnet.</li>\n</ul>\n</li>\n<li><strong>Captioned screen-recorded demo</strong> (about 3 minutes) and a <strong>completion report</strong> with funds usage against this breakdown.</li>\n</ol>\n<p><strong>B. How to Verify (no code review needed)</strong></p>\n<ol>\n<li>Clone the repo, <code>npm ci</code>, <code>npx fiber-mystery-shopper verify</code>. Expected output: every run listed as <code>intact</code>, every preimage matching its payment hash, the anchoring transaction hash printed with its block number. Needs Node 22 and internet only, no Fiber node. About 2 minutes.</li>\n<li>Open the report page and pick any row. Look up its channel open and close transactions on a CKB testnet explorer and check that they match the amounts and times in the row.</li>\n<li>Rerun one target yourself: <code>npx fiber-mystery-shopper run --target &lt;name&gt; --scenario first-purchase</code>. This needs a funded FNN testnet node; the README gives the exact setup. The output should be a new signed run comparable with ours.</li>\n<li>Ask any tested author whether their result matches what they see in their own logs. Their replies are linked in the report.</li>\n</ol>\n<h3><a name=\"p-26641-h-9-current-state-vs-funded-work-9\" class=\"anchor\" href=\"#p-26641-h-9-current-state-vs-funded-work-9\" aria-label=\"Heading link\"></a>9. Current State vs. Funded Work</h3>\n<ul>\n<li><strong>Already exists:</strong>\n<ul>\n<li>The method and the evidence layer, built and used on x402: catalogue collection, unpaid probing, a mystery-shopper buyer with hard spend limits, scoring, a signed hash-chained log and its verifier (Delivery Score and AgentLog, both public, MIT). The x402 run covered 15,498 endpoints.</li>\n<li>Nothing for CKB or Fiber yet. The new repository holds only this proposal.</li>\n</ul>\n</li>\n<li><strong>Funded work (new):</strong>\n<ul>\n<li>The Fiber buyer node and runner, the adapters, the four scenarios, preimage-based evidence, the report and verifier for Fiber.</li>\n<li>Two full runs against live testnet services.</li>\n<li>AgentLog is reused as a library; no Delivery Score code is counted as Spark work.</li>\n</ul>\n</li>\n</ul>\n<h3><a name=\"p-26641-h-10-ckb-alignment-10\" class=\"anchor\" href=\"#p-26641-h-10-ckb-alignment-10\" aria-label=\"Heading link\"></a>10. CKB Alignment</h3>\n<ul>\n<li><strong>Fiber Network:</strong> the whole project is about it.\n<ul>\n<li>The tests exercise what makes Fiber different from a one-way API payment: channels funded on CKB, routing through public nodes, invoices settled by preimage, sessions that can be interrupted, and funds returning to CKB on close.</li>\n<li>The preimage as proof of payment is what lets a third party verify our records without trusting us.</li>\n</ul>\n</li>\n<li><strong>CKB L1:</strong> channel funding and closing transactions are the on-chain part of the evidence. One CKB testnet cell stores the final log hash, built with CCC. That part is small and similar to what HashThis does; it is not the point of the project.</li>\n<li><strong>Honest statement:</strong>\n<ul>\n<li>This is not a new payment component and not a new protocol.</li>\n<li>Its value to CKB is that the Fiber services already built get their first outside buyer, and the ecosystem gets public evidence on whether they hold up under repeat use and interruption, which the committee’s report names as missing.</li>\n<li>It does not use Spore, DOB or JoyID.</li>\n</ul>\n</li>\n</ul>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
