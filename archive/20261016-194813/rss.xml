@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Fri, 16 Oct 2026 18:58:32 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-17</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-16:daily-brief</guid>
+    <pubDate>Fri, 16 Oct 2026 19:48:18 +0000</pubDate>
+    <description>## 今日发生了什么 今天 Nervos Talk 的主要活动是多个 CKB 生态项目更新：Corven 发布第 1 周进展报告 [S02]，QuotaCell 与 CellRoute / FiberPay 分别发出新帖 [S03, S04]。测试与讨论方面，CrowdCell 在推进 keeper 拆分计划 [S05]，RIVET 围绕 GitHub 备份的删除场景和恢复模式继续技术讨论 [S06, S07]。POI 游戏也有合作任务说明 [S01]。整体看，今天不是单一热点爆发，而是开发工具、众筹测试、备份工具和游戏帖子分散更新 [S01, S02, S03, S04, S05, S06, S07, S08]。 ## 重点话题 **Corven 第 1 周进展**：Corven 在 Spark Program 下发布 Week 1 进展报告，报告期为 2026 年 10 月 12–16 日 [S02]。项目定位是为 CKB 和 Fiber Network 构建的浏览器 IDE，并给出项目网站和 GitHub [S02]。 **QuotaCell 与 CellRoute / FiberPay 新帖**：QuotaCell 提出让团队无需交出 treasury 也能支出的方案，开场以小型团队需要付款但无法逐笔审批、又不想开放全部 treasury 权限为场景 [S03]。CellRoute / FiberPay 则介绍一个把 CKB 开发实验室和支付实验整合到同一门户的应用，作者分享当前进展并邀请开发者反馈 [S04]。 **CrowdCell...</description>
+  </item>
+  <item>
+    <title>POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them (1 posts)</title>
+    <link>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967</link>
+    <guid>https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 18:58:32 +0000</pubDate>
+    <description>This is a co-op mission, so it can’t be completed solo. You’ll need to team up with another player in the game to finish it. Looks like you’re really liking the game, that’s great, thanks for participating</description>
+  </item>
+  <item>
+    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 18:10:26 +0000</pubDate>
+    <description>Corven Spark Program — Week 1 Progress Report Project: Corven: A Browser-Based IDE for Building on CKB and Fiber Network Reporting Period: 12–16 October 2026 Status: Week 1 activities underway Project Website: https://corvanide.space/ GitHub: GitHub - corvenide/corven-fronted: Corven – Cloud Development Infrastructure for CKB · GitHub 1. Overview During Week 1, I conducted a live Google Meet session to demonstrate the Corven IDE platform to participants associated with the Kisumu developer outreach event. The session lasted approximately one hour and focused on introducing the platform, demonstrating its existing capabilities, and gathering initial feedback on areas that need improvement....</description>
+  </item>
+  <item>
+    <title>QuotaCell: Let your team spend without handing over the treasury (1 posts)</title>
+    <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 16:07:20 +0000</pubDate>
+    <description>Imagine you’re running a project with a small team. There are expenses to handle, suppliers to pay, and people who need to get things done. You can’t be available to approve every single payment. But you also don’t want to give everyone unrestricted access to the treasury. So how do you let people spend independently while keeping control of the funds? That’s the problem I’ve been working on with QuotaCell. Here’s how it works Say your project treasury holds 200 tokens. You want Alice and Ben to handle payments, but you’ve only approved 100 tokens for them to spend altogether. Alice has a personal limit of 70 tokens, and Ben has a limit of 50. Each can only pay their approved recipient....</description>
+  </item>
+  <item>
+    <title>CellRoute / FiberPay — CKB development tools with live asset inspection (1 posts)</title>
+    <link>https://talk.nervos.org/t/cellroute-fiberpay-ckb-development-tools-with-live-asset-inspection/11000</link>
+    <guid>https://talk.nervos.org/t/cellroute-fiberpay-ckb-development-tools-with-live-asset-inspection/11000#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 15:46:12 +0000</pubDate>
+    <description>Hi Nervos community, I am building CellRoute / FiberPay, a CKB application that brings development labs and payment experiments into one portal. I would like to share the current progress and get feedback from developers in the ecosystem. Live app: https://cellroute.vercel.app/ Source: GitHub - ntudatit/cell-route · GitHub What the project includes Simple Lock: deployment manifest checks, lock-address derivation, live capacity lookup, and funding/unlocking transaction preparation. Token Lab: sUDT/xUDT transaction workflows with wallet review and live-input checks. Spore/DOB: asset reading and transaction review, with a bounded local DOB/0 reference preview. SSRI Inspector: configurable...</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 15:34:01 +0000</pubDate>
+    <description>Thanks for testing it and for reposting here. Having you run the second keeper from your own node is exactly what that test needs, an operator I don’t control. Right now the keeper runs inside the indexer, so I’ll split it out with a short readme before the tip lands so it’s easy to set up on your side. Will ping you then.</description>
+  </item>
+  <item>
+    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
+    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-3</guid>
+    <pubDate>Thu, 15 Oct 2026 22:49:36 +0000</pubDate>
+    <description>Nice work getting a working demo on testnet. Backup with a restore path is a real gap, and splitting restore into Exact and Attribution modes is the right call. Two technical points: 1. Anchoring for the deletion case. If GitHub deletes the repo, the anchor is the only independent reference left. What matters then is: does the restored copy match what was backed up? Anchoring a hash of the sorted refs and their tip commits answers that directly. After restore, anyone can recompute it from the bundle with plain git and compare it to the cell, with no GitHub and no Rivet server involved. Most repos are still SHA-1, so I’d also anchor a SHA-256 of the bundle itself. That lets the copy...</description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-16 03:48:13 CST - 2026-10-17 03:48:13 CST</span>
+          <span>生成时间 2026-10-17 03:48:18 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">6</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">7</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天 Nervos Talk 的主要活动是多个 CKB 生态项目更新：Corven 发布第 1 周进展报告 <span class="citations">[<a href="#source-s02">S02</a>]</span>，QuotaCell 与 CellRoute / FiberPay 分别发出新帖 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>]</span>。测试与讨论方面，CrowdCell 在推进 keeper 拆分计划 <span class="citations">[<a href="#source-s05">S05</a>]</span>，RIVET 围绕 GitHub 备份的删除场景和恢复模式继续技术讨论 <span class="citations">[<a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>。POI 游戏也有合作任务说明 <span class="citations">[<a href="#source-s01">S01</a>]</span>。整体看，今天不是单一热点爆发，而是开发工具、众筹测试、备份工具和游戏帖子分散更新 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li><strong>Corven 第 1 周进展</strong>：Corven 在 Spark Program 下发布 Week 1 进展报告，报告期为 2026 年 10 月 12–16 日 <span class="citations">[<a href="#source-s02">S02</a>]</span>。项目定位是为 CKB 和 Fiber Network 构建的浏览器 IDE，并给出项目网站和 GitHub <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li><strong>QuotaCell 与 CellRoute / FiberPay 新帖</strong>：QuotaCell 提出让团队无需交出 treasury 也能支出的方案，开场以小型团队需要付款但无法逐笔审批、又不想开放全部 treasury 权限为场景 <span class="citations">[<a href="#source-s03">S03</a>]</span>。CellRoute / FiberPay 则介绍一个把 CKB 开发实验室和支付实验整合到同一门户的应用，作者分享当前进展并邀请开发者反馈 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li><strong>CrowdCell 测试推进</strong>：作者回应测试称，让用户从自己的节点运行第二个 keeper 正是测试需要的“不由项目方控制”的运营者 <span class="citations">[<a href="#source-s05">S05</a>]</span>。目前 keeper 运行在 indexer 内，计划在 tip 落地前拆分出来并补一个简短 readme <span class="citations">[<a href="#source-s05">S05</a>]</span>。</li>
+<li><strong>RIVET 技术讨论</strong>：评论者认可 RIVET 测试网 demo 与恢复路径，认为把恢复拆成 Exact 和 Attribution 模式是正确的，并提出 GitHub 删除仓库时锚定是关键问题 <span class="citations">[<a href="#source-s06">S06</a>]</span>。作者回应称当前用 Merkle tree 记录所有 commit hashes，但同意 refs 和 tip commits 需要补充，并会加入排序后的 refs 哈希和 bundle 本身的 SHA-256 <span class="citations">[<a href="#source-s07">S07</a>]</span>。另有回复表达对 VeriCell 产品概念的喜欢 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li><strong>POI 合作任务</strong>：POI 作者说明该任务为 co-op mission，不能单人完成，需要与另一名玩家组队 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Corven 第 1 周报告目前只称活动正在进行中，后续是否披露具体完成项和里程碑值得观察 <span class="citations">[<a href="#source-s02">S02</a>]</span>。QuotaCell 与 CellRoute / FiberPay 刚发帖，社区反馈和机制细节也尚待展开 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>]</span>。</li>
+<li>CrowdCell 计划把 keeper 从 indexer 拆出并补 readme，能否在 tip 落地前完成、外部运营者测试如何进行，值得继续跟进 <span class="citations">[<a href="#source-s05">S05</a>]</span>。</li>
+<li>RIVET 对删除仓库场景的锚定改进，包括 sorted refs hash 和 bundle SHA-256，以及 Exact / Attribution 恢复模式的实际效果，需要后续观察 <span class="citations">[<a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/5">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-17 02:58:32 CST</div><div>This is a co-op mission, so it can’t be completed solo. You’ll need to team up with another player in the game to finish it. Looks like you’re really liking the game, that’s great, thanks for participating</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/4">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-10-17 02:10:26 CST</div><div>Corven Spark Program — Week 1 Progress Report Project: Corven: A Browser-Based IDE for Building on CKB and Fiber Network Reporting Period: 12–16 October 2026 Status: Week 1 activities underway Project Website: https://corvanide.space/ GitHub: GitHub - corvenide/corven-fronted:...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/1">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-10-17 00:07:20 CST</div><div>Imagine you’re running a project with a small team. There are expenses to handle, suppliers to pay, and people who need to get things done. You can’t be available to approve every single payment. But you also don’t want to give everyone unrestricted access to the treasury. So...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/cellroute-fiberpay-ckb-development-tools-with-live-asset-inspection/11000/1">CellRoute / FiberPay — CKB development tools with live asset inspection</a></div><div class="source-meta">Dat_Nguyen_Tu · 2026-10-16 23:46:12 CST</div><div>Hi Nervos community, I am building CellRoute / FiberPay, a CKB application that brings development labs and payment experiments into one portal. I would like to share the current progress and get feedback from developers in the ecosystem. Live app:...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/6">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-16 23:34:01 CST</div><div>Thanks for testing it and for reposting here. Having you run the second keeper from your own node is exactly what that test needs, an operator I don’t control. Right now the keeper runs inside the indexer, so I’ll split it out with a short readme before the tip lands so it’s...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/10">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">psawyerberlin · 2026-10-16 04:09:18 CST</div><div>Nice work getting a working demo on testnet. Backup with a restore path is a real gap, and splitting restore into Exact and Attribution modes is the right call. Two technical points: 1. Anchoring for the deletion case. If GitHub deletes the repo, the anchor is the only...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/11">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">Jedi_dtechmaker · 2026-10-16 06:45:03 CST</div><div>Thanks for the feedback and the vote! To answer your questions. Anchoring &amp; deletion case: Great point. Right now we Merkle-tree all commit hashes (git log --all), but you’re spot on about refs and tip commits. Adding the sorted refs hash + a SHA-256 of the bundle itself makes...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/12">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">Jedi_dtechmaker · 2026-10-16 06:49:36 CST</div><div>And i really love the idea and concept behind your product VeriCell.</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>5</strong></li><li><span>其他</span><strong>1</strong></li><li><span>社区互动</span><strong>1</strong></li><li><span>生态进展</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@Jedi_dtechmaker</span><strong>2</strong></li><li><span>@LusoCryptoLabs</span><strong>1</strong></li><li><span>@lestonEth</span><strong>1</strong></li><li><span>@Ticoworld</span><strong>1</strong></li><li><span>@Dat_Nguyen_Tu</span><strong>1</strong></li><li><span>@Ayoub_Lesfer</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>feedback<span>29</span></li><li>ckb<span>24</span></li><li>project<span>22</span></li><li>can<span>15</span></li><li>corven<span>15</span></li><li>testing<span>14</span></li><li>transaction<span>14</span></li><li>cell<span>14</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-10-16 06:49:36 CST</span><span>Jedi_dtechmaker, psawyerberlin</span></div><p class="excerpt">Nice work getting a working demo on testnet. Backup with a restore path is a real gap, and splitting restore into Exact and Attribution modes is the right call. Two technical points: 1. Anchoring for the deletion case. If GitHub deletes the repo, the anchor...</p><div class="tag-row"><span>CKB</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-17 02:58:32 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">This is a co-op mission, so it can’t be completed solo. You’ll need to team up with another player in the game to finish it. Looks like you’re really liking the game, that’s great, thanks for participating</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-17 02:10:26 CST</span><span>lestonEth</span></div><p class="excerpt">Corven Spark Program — Week 1 Progress Report Project: Corven: A Browser-Based IDE for Building on CKB and Fiber Network Reporting Period: 12–16 October 2026 Status: Week 1 activities underway Project Website: https://corvanide.space/ GitHub: GitHub -...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-17 00:07:20 CST</span><span>Ticoworld</span></div><p class="excerpt">Imagine you’re running a project with a small team. There are expenses to handle, suppliers to pay, and people who need to get things done. You can’t be available to approve every single payment. But you also don’t want to give everyone unrestricted access...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/cellroute-fiberpay-ckb-development-tools-with-live-asset-inspection/11000">CellRoute / FiberPay — CKB development tools with live asset inspection</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-16 23:46:12 CST</span><span>Dat_Nguyen_Tu</span></div><p class="excerpt">Hi Nervos community, I am building CellRoute / FiberPay, a CKB application that brings development labs and payment experiments into one portal. I would like to share the current progress and get feedback from developers in the ecosystem. Live app:...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-16 23:34:01 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Thanks for testing it and for reposting here. Having you run the second keeper from your own node is exactly what that test needs, an operator I don’t control. Right now the keeper runs inside the indexer, so I’ll split it out with a short readme before the...</p><div class="tag-row"><span>lang-en</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-17 02:58:32 CST</time><strong><a href="https://talk.nervos.org/t/poi-proof-of-identity-a-platformer-on-ckb-testnet-that-teaches-cell-names-by-using-them/10967/5">POI: Proof of Identity, a platformer on CKB testnet that teaches .cell names by using them</a> · @LusoCryptoLabs</strong><p>This is a co-op mission, so it can’t be completed solo. You’ll need to team up with another player in the game to finish it. Looks like you’re really liking the game, that’s great, thanks for participating</p></article>
+<article class="timeline-row"><time>2026-10-17 02:10:26 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/4">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>Corven Spark Program — Week 1 Progress Report Project: Corven: A Browser-Based IDE for Building on CKB and Fiber Network Reporting Period: 12–16 October 2026 Status: Week 1 activities underway Project Website:...</p></article>
+<article class="timeline-row"><time>2026-10-17 00:07:20 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/1">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>Imagine you’re running a project with a small team. There are expenses to handle, suppliers to pay, and people who need to get things done. You can’t be available to approve every single payment. But you also don’t...</p></article>
+<article class="timeline-row"><time>2026-10-16 23:46:12 CST</time><strong><a href="https://talk.nervos.org/t/cellroute-fiberpay-ckb-development-tools-with-live-asset-inspection/11000/1">CellRoute / FiberPay — CKB development tools with live asset inspection</a> · @Dat_Nguyen_Tu</strong><p>Hi Nervos community, I am building CellRoute / FiberPay, a CKB application that brings development labs and payment experiments into one portal. I would like to share the current progress and get feedback from...</p></article>
+<article class="timeline-row"><time>2026-10-16 23:34:01 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/6">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>Thanks for testing it and for reposting here. Having you run the second keeper from your own node is exactly what that test needs, an operator I don’t control. Right now the keeper runs inside the indexer, so I’ll...</p></article>
+<article class="timeline-row"><time>2026-10-16 06:49:36 CST</time><strong><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/12">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a> · @Jedi_dtechmaker</strong><p>And i really love the idea and concept behind your product VeriCell.</p></article>
+<article class="timeline-row"><time>2026-10-16 06:45:03 CST</time><strong><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/11">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a> · @Jedi_dtechmaker</strong><p>Thanks for the feedback and the vote! To answer your questions. Anchoring &amp; deletion case: Great point. Right now we Merkle-tree all commit hashes (git log --all), but you’re spot on about refs and tip commits. Adding...</p></article>
+<article class="timeline-row"><time>2026-10-16 04:09:18 CST</time><strong><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/10">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a> · @psawyerberlin</strong><p>Nice work getting a working demo on testnet. Backup with a restore path is a real gap, and splitting restore into Exact and Attribution modes is the right call. Two technical points: 1. Anchoring for the deletion...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
