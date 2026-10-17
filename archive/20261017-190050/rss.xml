@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sat, 17 Oct 2026 15:57:12 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-18</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-17:daily-brief</guid>
+    <pubDate>Sat, 17 Oct 2026 19:00:55 +0000</pubDate>
+    <description>## 今日发生了什么 过去一天论坛最集中的讨论是 Metaforo 投票快照绑定问题：有用户称自己在 Nervos DAO 存入超过 10 万 CKB、Neuron 地址也已绑定 Metaforo，但投票/点赞活跃提案时仍报错 [S01]。随后有社区成员判断可能是绑定交易选错，或误用了 inputs 而不是 outputs，并表示可提供分步指导 [S02]；提问者回应会私信联系 [S03]。RIVET 提案线程公布投票已通过，批准率 52.82%，总投票权重 244,888,704 CKB，并称已用 CKB DAO Watchdog 完成投票后核验 [S04]。Spark Program 下新增 MatchLock 提案 [S05]，Corven cloud-native IDE 线程则补充了 CKB Kisumu Workshop 2026 的照片和视频材料 [S06]。 ## 重点话题 Metaforo 投票绑定求助：用户有 10 万以上 CKB 在 Nervos DAO，但无法对活跃提案投票/点赞 [S01]；社区初步把原因指向绑定交易或 inputs/outputs 选择问题 [S02]，双方已转私信继续沟通 [S03]。 RIVET 投票结果：线程公布提案以 52.82% 批准率、244,888,704 CKB 总投票权重通过，并称投票后核验已完成 [S04]。 MatchLock 新提案：Spark Program 下出现一个可复用的 CKB lock/type script 库提案，目标是让项目加入 private-until-match/reveal...</description>
+  </item>
+  <item>
+    <title>Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo (3 posts)</title>
+    <link>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004</link>
+    <guid>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004#recent-3</guid>
+    <pubDate>Sat, 17 Oct 2026 15:57:12 +0000</pubDate>
+    <description>Hi everyone, I have a technical question regarding Metaforo voting snapshot rules: I currently have over 100,000 CKB deposited into the Nervos DAO via my Neuron wallet. My Neuron wallet address is bound to my Metaforo account. However, I receive an error when attempting to vote or like the proposal (“At least 100,000 CKB are required to perform this action” / “No Neuron address or the binded address do not have CKB”). Does anyone know the reason why this is happening and how to troubleshoot? Thanks for clarifying! GM chief, I think you might have binded the wrong transaction. Or you used inputs for sign in, instead of outputs. I experienced similar issues too when I was trying to bind my...</description>
+  </item>
+  <item>
+    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
+    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
+    <pubDate>Sat, 17 Oct 2026 06:01:31 +0000</pubDate>
+    <description>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 52.82% with total voting weight 244,888,704 CKB. Post-close verification has been completed using CKB DAO Watchdog (GitHub - CKBFansDAO/ckb-dao-watchdog: Community-driven tools for auditing and verifying CKB DAO governance voting results. · GitHub), together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, 21 of 22 entries match. One Yes entry is flagged in the log because the voter’s current on-chain deposit is 300,000 CKB higher than the weight Metaforo recorded. The difference comes from a single new deposit made...</description>
+  </item>
+  <item>
+    <title>Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005</link>
+    <guid>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005#recent-1</guid>
+    <pubDate>Sat, 17 Oct 2026 04:38:40 +0000</pubDate>
+    <description>1. Overview Project name: MatchLock One-sentence summary: A permissively licensed CKB lock/type script library, with an SDK and documentation, that lets any CKB project add private-until-match/reveal bilateral commitments and atomic conditional settlement to its own application. License: MIT OR Apache-2.0 for all scripts, SDK, docs, and demo code Repository: GitHub - Fizan324926/MatchLock: Project repository for MatchLock · GitHub Team and maintainer: Fizan 2. Problem In bilateral transactions such as OTC trades and private asset sales, parties typically have to reveal order parameters (asset, size, price) before the counterparty’s commitment is assured. On CKB, this creates information...</description>
+  </item>
+  <item>
+    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
+    <pubDate>Fri, 16 Oct 2026 20:24:49 +0000</pubDate>
+    <description>GM @xingtianchunyan, Here is the media evidence from the CKB Kisumu Workshop 2026, documenting the event and community engagement activities. Workshop photo gallery: Pixieset CKB Kisumu Workshop Photo collection by aten studios ke Workshop video: The video highlights Corven IDE’s community engagement and efforts to make development on Nervos CKB more accessible. I’ll also share the attendance records and structured feedback collected through the Google Form once they are available. Thank you.</description>
+  </item>
+</channel>
+</rss>
