@@ -1,0 +1,166 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-10-18T19:13:16.385500+00:00",
+  "since": "2026-10-17T19:13:12.678006+00:00",
+  "until": "2026-10-18T19:13:12.678006+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 11002,
+      "title": "QuotaCell: Let your team spend without handing over the treasury",
+      "slug": "quotacell-let-your-team-spend-without-handing-over-the-treasury",
+      "url": "https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002",
+      "created_at": "2026-10-16T16:07:20.856000+00:00",
+      "last_posted_at": "2026-10-18T17:00:05+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "CKB-VM",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26695,
+          "post_number": 2,
+          "topic_id": 11002,
+          "topic_title": "QuotaCell: Let your team spend without handing over the treasury",
+          "topic_slug": "quotacell-let-your-team-spend-without-handing-over-the-treasury",
+          "author": "Ayoub_Lesfer",
+          "created_at": "2026-10-18T16:26:52.996000+00:00",
+          "updated_at": "2026-10-18T16:26:52.996000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/2",
+          "content_text": "Nice one. The shared allowance is the part I’d poke at: if Alice and Ben both spend from the same 100, I’m guessing the remaining allowance sits in one cell that every payment consumes and recreates? If so, two payments built at the same time will race for it and one gets rejected with a dead cell. I hit the same thing in CrowdCell once pledges started updating the campaign’s on-chain total, since every pledge spends the same campaign cell. What I ended up doing is catching that error in the tx builder, waiting for the cell to move and rebuilding on the fresh one, up to 4 tries. Fine at low volume, but worth planning for if agents are firing payments on their own. Did you go with one shared cell or split it somehow?",
+          "content_html": "<p>Nice one. The shared allowance is the part I’d poke at: if Alice and Ben both spend from the same 100, I’m guessing the remaining allowance sits in one cell that every payment consumes and recreates? If so, two payments built at the same time will race for it and one gets rejected with a dead cell. I hit the same thing in CrowdCell once pledges started updating the campaign’s on-chain total, since every pledge spends the same campaign cell. What I ended up doing is catching that error in the tx builder, waiting for the cell to move and rebuilding on the fresh one, up to 4 tries. Fine at low volume, but worth planning for if agents are firing payments on their own. Did you go with one shared cell or split it somehow?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26696,
+          "post_number": 3,
+          "topic_id": 11002,
+          "topic_title": "QuotaCell: Let your team spend without handing over the treasury",
+          "topic_slug": "quotacell-let-your-team-spend-without-handing-over-the-treasury",
+          "author": "Ticoworld",
+          "created_at": "2026-10-18T17:00:05+00:00",
+          "updated_at": "2026-10-18T17:00:05+00:00",
+          "reply_to_post_number": 2,
+          "url": "https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/3",
+          "content_text": "Yeah, that’s exactly how we’ve structured it for now. One shared Cell that gets consumed and recreated whenever the allowance changes.\nWe’ve considered the concurrency issue too, although we haven’t tested the full retry flow against a running node yet. Your CrowdCell experience is helpful here. Fetching the latest Cell and rebuilding the transaction is the approach we’re considering, with the allowance checked again against the new state.\nFor now, I’d rather keep the shared Cell and see how it performs in practice before considering a different structure.\nAppreciate you sharing how you handled it.",
+          "content_html": "<p>Yeah, that’s exactly how we’ve structured it for now. One shared Cell that gets consumed and recreated whenever the allowance changes.</p>\n<p>We’ve considered the concurrency issue too, although we haven’t tested the full retry flow against a running node yet. Your CrowdCell experience is helpful here. Fetching the latest Cell and rebuilding the transaction is the approach we’re considering, with the allowance checked again against the new state.</p>\n<p>For now, I’d rather keep the shared Cell and see how it performs in practice before considering a different structure.<br>\nAppreciate you sharing how you handled it.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 9752,
+      "title": "Proof of Buy，一种专为Layer1设计的Layer2共识",
+      "slug": "proof-of-buy-layer1-layer2",
+      "url": "https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752",
+      "created_at": "2025-12-21T17:04:44.744000+00:00",
+      "last_posted_at": "2026-10-18T16:22:26.477000+00:00",
+      "category_id": 71,
+      "tags": [
+        "lang-zh",
+        "共识协议"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26694,
+          "post_number": 34,
+          "topic_id": 9752,
+          "topic_title": "Proof of Buy，一种专为Layer1设计的Layer2共识",
+          "topic_slug": "proof-of-buy-layer1-layer2",
+          "author": "Lawliet_Chan",
+          "created_at": "2026-10-18T16:22:26.477000+00:00",
+          "updated_at": "2026-10-18T16:22:26.477000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752/34",
+          "content_text": "关于L1抗审查问题的补充\n上条帖子有提到过，L1 Miner可能会对L2 上传上来的fork进行审查。 为了抵抗来自L1的审查，我们上条帖子做了一些手段，但是这个做法首先会带来更大的复杂度，其次按照这个做法，那么上传L1便没有意义了，因为一类长程攻击成为新的可能，而我们本身上传L1就是为了要防止长程攻击。\n此长程攻击表现为： 如果L2攻击者先提交 block 的 Commitment到L1，随后不在L2揭示， 等到未来某一刻它发掘出一条更高分数的fork时候，它可能才会因此揭示早期的这条fork 从而完成长程攻击。\nL1的chain quality\n在L1的安全属性中，我们知道， L1的链质量保证了在L1连续的 k 个区块内一定会有诚实区块。 那么，对于proof of buy来说，只要我在k个L1区块内不停上传L2 block，那么就 一定会在某个L1 block内被打包上链。\n新的安全范围\n鉴于此，我们只要假设， 在连续K个L1 block之内， L2 block一定可以成功提交到L1 上， 那么对于L2的攻击者而言，他不仅要支付长程攻击的攻击成本， 还必须在连续k个L1 block这个时间窗口内发起并成功上传到L1上才能完成攻击。\n至此，我们可以规定， 在k个L1区块内，我们选用goal最高的 fork作为 L2的main fork。",
+          "content_html": "<h3><a name=\"p-26694-l1-1\" class=\"anchor\" href=\"#p-26694-l1-1\" aria-label=\"Heading link\"></a>关于L1抗审查问题的补充</h3>\n<p>上条帖子有提到过，L1 Miner可能会对L2 上传上来的fork进行审查。 为了抵抗来自L1的审查，我们上条帖子做了一些手段，但是这个做法首先会带来更大的复杂度，其次按照这个做法，那么上传L1便没有意义了，因为一类长程攻击成为新的可能，而我们本身上传L1就是为了要防止长程攻击。</p>\n<p>此长程攻击表现为： 如果L2攻击者先提交 block 的 Commitment到L1，随后不在L2揭示， 等到未来某一刻它发掘出一条更高分数的fork时候，它可能才会因此揭示早期的这条fork 从而完成长程攻击。</p>\n<h3><a name=\"p-26694-l1chain-quality-2\" class=\"anchor\" href=\"#p-26694-l1chain-quality-2\" aria-label=\"Heading link\"></a>L1的chain quality</h3>\n<p>在L1的安全属性中，我们知道， L1的链质量保证了在L1连续的 k 个区块内一定会有诚实区块。 那么，对于proof of buy来说，只要我在k个L1区块内不停上传L2 block，那么就 一定会在某个L1 block内被打包上链。</p>\n<h3><a name=\"p-26694-h-3\" class=\"anchor\" href=\"#p-26694-h-3\" aria-label=\"Heading link\"></a>新的安全范围</h3>\n<p>鉴于此，我们只要假设， 在连续K个L1 block之内， L2 block一定可以成功提交到L1 上， 那么对于L2的攻击者而言，他不仅要支付长程攻击的攻击成本， 还必须在连续k个L1 block这个时间窗口内发起并成功上传到L1上才能完成攻击。</p>\n<p>至此，我们可以规定， 在k个L1区块内，我们选用goal最高的 fork作为 L2的main fork。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10712,
+      "title": "[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes",
+      "slug": "dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes",
+      "url": "https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712",
+      "created_at": "2026-09-15T14:01:10.166000+00:00",
+      "last_posted_at": "2026-10-18T11:47:50.447000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26691,
+          "post_number": 10,
+          "topic_id": 10712,
+          "topic_title": "[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes",
+          "topic_slug": "dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes",
+          "author": "Dappsoverapps",
+          "created_at": "2026-10-17T22:28:26.732000+00:00",
+          "updated_at": "2026-10-17T22:28:26.732000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/10",
+          "content_text": "@ArthurZhang @Ayoub_Lesfer @quake, thank you for reviewing the proposal. We have updated the MVP and published the recovery evidence, safety specification, and implementation.\nThe forum is restricting links, so I have included the repository name and file paths below.\nGitHub repository: intelliDean/fnn_safeguard\nRevision: 89badd585a2cea7de71664aa8f06f01cba23a698\nThe concrete recovery case\nOn two distinct nodes in our local Fiber devnet, the native FNN backup RPC completed and created backups, but the subsequent FNN v0.9.0 restore attempts failed with missing SST-file errors.\nA separately recorded checkpoint-copy recovery then passed fnn --check-validate. The recovered nodes matched their respective source inventories on node identity, channel counts, channel-ID digests, payment counts, and payment-hash digests.\nNode 1: 7 channels and 6 successful payments.\nNative restore log:\nevidence/devnet-node1/restore-output.log\nRecovery report:\nevidence/devnet-node1/final-report.json\nNode 2: 7 channels and 5 successful payments.\nNative restore log:\nevidence/devnet-node2/restore-output.log\nRecovery report:\nevidence/devnet-node2/final-report.json\nThe native restore failure and subsequent recovery are recorded separately, so the reports show which operation failed and which recovery path worked.\nSafety model and implementation\nTo address the design questions, we have added a safety specification covering the failure model, recovery requirements, result definitions, and upgrade/rollback boundaries:\ndocs/SAFETY_MODEL.md\nThe comparison implementation checks:\nRecovery-point integrity: file checksums and whether the backup directory changed during the restore operation.\nIdentity and inventory matching: node identity, channel counts and identifier digests, channel-state distributions, payment counts and hash digests, and payment-status distributions.\nRecovery outcomes: separate native and fallback results, database validation, and explicit isolation status.\nComparison implementation:\nsrc/commands/drill.rs\nDecision engine:\nsrc/core/invariants.rs\nThe decision engine derives the recovery verdict from these checks. The tests cover decision logic for identity and inventory mismatches, database-validation failure, recovery-point mutation, detected secret leakage, and isolation failure.\nTests:\ntests/test_invariants.rs\nCI for this revision passed formatting, Clippy, and the test suite. The run is available under the repository’s Actions tab, run ID 38831337194.\nThis is the FNN-specific contribution: checking recovery outcomes against defined requirements, rather than treating a successful backup operation as evidence that recovery will work. The proposed pre-upgrade work extends that approach to testing a target FNN release against a cloned recovery point before changing the live node.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/arthurzhang\">@ArthurZhang</a> <a class=\"mention\" href=\"/u/ayoub_lesfer\">@Ayoub_Lesfer</a> <a class=\"mention\" href=\"/u/quake\">@quake</a>, thank you for reviewing the proposal. We have updated the MVP and published the recovery evidence, safety specification, and implementation.</p>\n<p>The forum is restricting links, so I have included the repository name and file paths below.</p>\n<p><strong>GitHub repository:</strong> <code>intelliDean/fnn_safeguard</code><br>\n<strong>Revision:</strong> <code>89badd585a2cea7de71664aa8f06f01cba23a698</code></p>\n<h3><a name=\"p-26691-the-concrete-recovery-case-1\" class=\"anchor\" href=\"#p-26691-the-concrete-recovery-case-1\" aria-label=\"Heading link\"></a>The concrete recovery case</h3>\n<p>On two distinct nodes in our <strong>local Fiber devnet</strong>, the native FNN backup RPC completed and created backups, but the subsequent <strong>FNN v0.9.0 restore attempts failed with missing SST-file errors</strong>.</p>\n<p>A separately recorded checkpoint-copy recovery then passed <code>fnn --check-validate</code>. The recovered nodes matched their respective source inventories on node identity, channel counts, channel-ID digests, payment counts, and payment-hash digests.</p>\n<p><strong>Node 1: 7 channels and 6 successful payments.</strong></p>\n<p>Native restore log:<br>\n<code>evidence/devnet-node1/restore-output.log</code></p>\n<p>Recovery report:<br>\n<code>evidence/devnet-node1/final-report.json</code></p>\n<p><strong>Node 2: 7 channels and 5 successful payments.</strong></p>\n<p>Native restore log:<br>\n<code>evidence/devnet-node2/restore-output.log</code></p>\n<p>Recovery report:<br>\n<code>evidence/devnet-node2/final-report.json</code></p>\n<p>The native restore failure and subsequent recovery are recorded separately, so the reports show which operation failed and which recovery path worked.</p>\n<h3><a name=\"p-26691-safety-model-and-implementation-2\" class=\"anchor\" href=\"#p-26691-safety-model-and-implementation-2\" aria-label=\"Heading link\"></a>Safety model and implementation</h3>\n<p>To address the design questions, we have added a safety specification covering the failure model, recovery requirements, result definitions, and upgrade/rollback boundaries:</p>\n<p><code>docs/SAFETY_MODEL.md</code></p>\n<p>The comparison implementation checks:</p>\n<ul>\n<li><strong>Recovery-point integrity:</strong> file checksums and whether the backup directory changed during the restore operation.</li>\n<li><strong>Identity and inventory matching:</strong> node identity, channel counts and identifier digests, channel-state distributions, payment counts and hash digests, and payment-status distributions.</li>\n<li><strong>Recovery outcomes:</strong> separate native and fallback results, database validation, and explicit isolation status.</li>\n</ul>\n<p>Comparison implementation:<br>\n<code>src/commands/drill.rs</code></p>\n<p>Decision engine:<br>\n<code>src/core/invariants.rs</code></p>\n<p>The decision engine derives the recovery verdict from these checks. The tests cover decision logic for identity and inventory mismatches, database-validation failure, recovery-point mutation, detected secret leakage, and isolation failure.</p>\n<p>Tests:<br>\n<code>tests/test_invariants.rs</code></p>\n<p>CI for this revision passed formatting, Clippy, and the test suite. The run is available under the repository’s <strong>Actions</strong> tab, run ID <code>38831337194</code>.</p>\n<p>This is the FNN-specific contribution: <strong>checking recovery outcomes against defined requirements, rather than treating a successful backup operation as evidence that recovery will work.</strong> The proposed pre-upgrade work extends that approach to testing a target FNN release against a cloned recovery point before changing the live node.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26692,
+          "post_number": 11,
+          "topic_id": 10712,
+          "topic_title": "[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes",
+          "topic_slug": "dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes",
+          "author": "Dappsoverapps",
+          "created_at": "2026-10-18T03:30:59.711000+00:00",
+          "updated_at": "2026-10-18T03:30:59.711000+00:00",
+          "reply_to_post_number": 10,
+          "url": "https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/11",
+          "content_text": "@psawyerberlin @Hanssen @ebubedev, we have updated FNN Safeguard following the earlier feedback. Would you be willing to look at the recovery evidence and safety model above and share your thoughts? Your experience with verification and node tooling would be valuable here.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/psawyerberlin\">@psawyerberlin</a> <a class=\"mention\" href=\"/u/hanssen\">@Hanssen</a> <a class=\"mention\" href=\"/u/ebubedev\">@ebubedev</a>, we have updated FNN Safeguard following the earlier feedback. Would you be willing to look at the recovery evidence and safety model above and share your thoughts? Your experience with verification and node tooling would be valuable here.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26693,
+          "post_number": 12,
+          "topic_id": 10712,
+          "topic_title": "[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes",
+          "topic_slug": "dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes",
+          "author": "psawyerberlin",
+          "created_at": "2026-10-18T11:47:50.447000+00:00",
+          "updated_at": "2026-10-18T11:47:50.447000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/12",
+          "content_text": "Hi @Dappsoverapps, thanks for the tag. Just to clarify: I hadn’t commented on this proposal before, so the earlier feedback isn’t mine.\nTo be honest, I’m still discovering Fiber. I run a mainnet and a testnet node (Linux, systemd) with a few channels, but I’m not deep enough into FNN internals to judge your safety model properly. So I’ll leave the technical review to people like @quake.\nFrom an operator’s point of view, the topic is relevant. Reading your post made me realize I had never tested a restore myself, and that’s probably true for most node runners. Being able to test a new FNN release against a copy of my own node before upgrading is something I would find useful.\nOne small question: your restore failure was on v0.9.0. My nodes run v0.9.1. Have you checked whether the issue still occurs there, and has it been reported upstream on the Fiber repo? That would help everyone, whatever happens with the proposal.\nI plan to go deeper into Fiber in the coming months, and I’ll follow the thread. Good luck with it!",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/dappsoverapps\">@Dappsoverapps</a>, thanks for the tag. Just to clarify: I hadn’t commented on this proposal before, so the earlier feedback isn’t mine.</p>\n<p>To be honest, I’m still discovering Fiber. I run a mainnet and a testnet node (Linux, systemd) with a few channels, but I’m not deep enough into FNN internals to judge your safety model properly. So I’ll leave the technical review to people like <a class=\"mention\" href=\"/u/quake\">@quake</a>.</p>\n<p>From an operator’s point of view, the topic is relevant. Reading your post made me realize I had never tested a restore myself, and that’s probably true for most node runners. Being able to test a new FNN release against a copy of my own node before upgrading is something I would find useful.</p>\n<p>One small question: your restore failure was on v0.9.0. My nodes run v0.9.1. Have you checked whether the issue still occurs there, and has it been reported upstream on the Fiber repo? That would help everyone, whatever happens with the proposal.</p>\n<p>I plan to go deeper into Fiber in the coming months, and I’ll follow the thread. Good luck with it!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}

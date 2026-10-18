@@ -5,42 +5,35 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sat, 17 Oct 2026 15:57:12 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 18 Oct 2026 17:00:05 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-18</title>
+    <title>CKB Talk Daily Brief - 2026-10-19</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-17:daily-brief</guid>
-    <pubDate>Sat, 17 Oct 2026 19:00:55 +0000</pubDate>
-    <description>## 今日发生了什么 过去一天论坛最集中的讨论是 Metaforo 投票快照绑定问题：有用户称自己在 Nervos DAO 存入超过 10 万 CKB、Neuron 地址也已绑定 Metaforo，但投票/点赞活跃提案时仍报错 [S01]。随后有社区成员判断可能是绑定交易选错，或误用了 inputs 而不是 outputs，并表示可提供分步指导 [S02]；提问者回应会私信联系 [S03]。RIVET 提案线程公布投票已通过，批准率 52.82%，总投票权重 244,888,704 CKB，并称已用 CKB DAO Watchdog 完成投票后核验 [S04]。Spark Program 下新增 MatchLock 提案 [S05]，Corven cloud-native IDE 线程则补充了 CKB Kisumu Workshop 2026 的照片和视频材料 [S06]。 ## 重点话题 Metaforo 投票绑定求助：用户有 10 万以上 CKB 在 Nervos DAO，但无法对活跃提案投票/点赞 [S01]；社区初步把原因指向绑定交易或 inputs/outputs 选择问题 [S02]，双方已转私信继续沟通 [S03]。 RIVET 投票结果：线程公布提案以 52.82% 批准率、244,888,704 CKB 总投票权重通过，并称投票后核验已完成 [S04]。 MatchLock 新提案：Spark Program 下出现一个可复用的 CKB lock/type script 库提案，目标是让项目加入 private-until-match/reveal...</description>
+    <guid>tag:ckb-talk-radar,2026-10-18:daily-brief</guid>
+    <pubDate>Sun, 18 Oct 2026 19:13:16 +0000</pubDate>
+    <description>## 今日发生了什么 按提供的帖子时间看，最近 24 小时论坛整体较平静，更新集中在 QuotaCell、Proof of Buy 和 FNN Safeguard 三个话题 [S01, S02, S03, S04, S05, S06]。QuotaCell 里围绕共享额度 Cell 的并发竞争展开了问答 [S01, S02]。FNN Safeguard 发布了更新材料并继续邀请社区审阅 [S04, S05, S06]。Proof of Buy 则补充讨论了 L1 抗审查与长程攻击风险 [S03]。 ## 重点话题 QuotaCell 讨论集中在共享额度设计：Ayoub_Lesfer 质疑 Alice 和 Ben 同时从同一 100 额度花费时会争用同一个 Cell，导致其中一笔交易失败 [S01]；作者 Ticoworld 确认目前确实是一个共享 Cell 在额度变化时被消费并重建，并称已考虑并发问题，但完整重试流程尚未在运行节点上测试 [S02]。 Proof of Buy 帖子补充了 L1 抗审查问题：作者称 L1 矿工可能审查 L2 上传的 fork [S03]。作者还指出，为抵抗 L1 审查采取的手段会带来更大复杂度，并使上传 L1 失去意义，因为可能引入长程攻击 [S03]。 FNN Safeguard 发帖人表示已更新 MVP，并发布恢复证据、安全规范和实现，还因论坛限制链接改列仓库名和文件路径 [S04]。 随后发帖人点名邀请几位社区成员查看恢复证据和安全模型 [S05]；被点名的 psawyerberlin 澄清自己此前没有评论过该提案，仍在了解...</description>
   </item>
   <item>
-    <title>Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo (3 posts)</title>
-    <link>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004</link>
-    <guid>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004#recent-3</guid>
-    <pubDate>Sat, 17 Oct 2026 15:57:12 +0000</pubDate>
-    <description>Hi everyone, I have a technical question regarding Metaforo voting snapshot rules: I currently have over 100,000 CKB deposited into the Nervos DAO via my Neuron wallet. My Neuron wallet address is bound to my Metaforo account. However, I receive an error when attempting to vote or like the proposal (“At least 100,000 CKB are required to perform this action” / “No Neuron address or the binded address do not have CKB”). Does anyone know the reason why this is happening and how to troubleshoot? Thanks for clarifying! GM chief, I think you might have binded the wrong transaction. Or you used inputs for sign in, instead of outputs. I experienced similar issues too when I was trying to bind my...</description>
+    <title>QuotaCell: Let your team spend without handing over the treasury (2 posts)</title>
+    <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-2</guid>
+    <pubDate>Sun, 18 Oct 2026 17:00:05 +0000</pubDate>
+    <description>Nice one. The shared allowance is the part I’d poke at: if Alice and Ben both spend from the same 100, I’m guessing the remaining allowance sits in one cell that every payment consumes and recreates? If so, two payments built at the same time will race for it and one gets rejected with a dead cell. I hit the same thing in CrowdCell once pledges started updating the campaign’s on-chain total, since every pledge spends the same campaign cell. What I ended up doing is catching that error in the tx builder, waiting for the cell to move and rebuilding on the fresh one, up to 4 tries. Fine at low volume, but worth planning for if agents are firing payments on their own. Did you go with one...</description>
   </item>
   <item>
-    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
-    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
-    <pubDate>Sat, 17 Oct 2026 06:01:31 +0000</pubDate>
-    <description>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 52.82% with total voting weight 244,888,704 CKB. Post-close verification has been completed using CKB DAO Watchdog (GitHub - CKBFansDAO/ckb-dao-watchdog: Community-driven tools for auditing and verifying CKB DAO governance voting results. · GitHub), together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, 21 of 22 entries match. One Yes entry is flagged in the log because the voter’s current on-chain deposit is 300,000 CKB higher than the weight Metaforo recorded. The difference comes from a single new deposit made...</description>
+    <title>Proof of Buy，一种专为Layer1设计的Layer2共识 (1 posts)</title>
+    <link>https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752</link>
+    <guid>https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752#recent-1</guid>
+    <pubDate>Sun, 18 Oct 2026 16:22:26 +0000</pubDate>
+    <description>关于L1抗审查问题的补充 上条帖子有提到过，L1 Miner可能会对L2 上传上来的fork进行审查。 为了抵抗来自L1的审查，我们上条帖子做了一些手段，但是这个做法首先会带来更大的复杂度，其次按照这个做法，那么上传L1便没有意义了，因为一类长程攻击成为新的可能，而我们本身上传L1就是为了要防止长程攻击。 此长程攻击表现为： 如果L2攻击者先提交 block 的 Commitment到L1，随后不在L2揭示， 等到未来某一刻它发掘出一条更高分数的fork时候，它可能才会因此揭示早期的这条fork 从而完成长程攻击。 L1的chain quality 在L1的安全属性中，我们知道， L1的链质量保证了在L1连续的 k 个区块内一定会有诚实区块。 那么，对于proof of buy来说，只要我在k个L1区块内不停上传L2 block，那么就 一定会在某个L1 block内被打包上链。 新的安全范围 鉴于此，我们只要假设， 在连续K个L1 block之内， L2 block一定可以成功提交到L1 上， 那么对于L2的攻击者而言，他不仅要支付长程攻击的攻击成本， 还必须在连续k个L1 block这个时间窗口内发起并成功上传到L1上才能完成攻击。 至此，我们可以规定， 在k个L1区块内，我们选用goal最高的 fork作为 L2的main fork。</description>
   </item>
   <item>
-    <title>Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005</link>
-    <guid>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005#recent-1</guid>
-    <pubDate>Sat, 17 Oct 2026 04:38:40 +0000</pubDate>
-    <description>1. Overview Project name: MatchLock One-sentence summary: A permissively licensed CKB lock/type script library, with an SDK and documentation, that lets any CKB project add private-until-match/reveal bilateral commitments and atomic conditional settlement to its own application. License: MIT OR Apache-2.0 for all scripts, SDK, docs, and demo code Repository: GitHub - Fizan324926/MatchLock: Project repository for MatchLock · GitHub Team and maintainer: Fizan 2. Problem In bilateral transactions such as OTC trades and private asset sales, parties typically have to reveal order parameters (asset, size, price) before the counterparty’s commitment is assured. On CKB, this creates information...</description>
-  </item>
-  <item>
-    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
-    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
-    <pubDate>Fri, 16 Oct 2026 20:24:49 +0000</pubDate>
-    <description>GM @xingtianchunyan, Here is the media evidence from the CKB Kisumu Workshop 2026, documenting the event and community engagement activities. Workshop photo gallery: Pixieset CKB Kisumu Workshop Photo collection by aten studios ke Workshop video: The video highlights Corven IDE’s community engagement and efforts to make development on Nervos CKB more accessible. I’ll also share the attendance records and structured feedback collected through the Google Form once they are available. Thank you.</description>
+    <title>[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712</link>
+    <guid>https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712#recent-3</guid>
+    <pubDate>Sun, 18 Oct 2026 11:47:50 +0000</pubDate>
+    <description>@ArthurZhang @Ayoub_Lesfer @quake, thank you for reviewing the proposal. We have updated the MVP and published the recovery evidence, safety specification, and implementation. The forum is restricting links, so I have included the repository name and file paths below. GitHub repository: intelliDean/fnn_safeguard Revision: 89badd585a2cea7de71664aa8f06f01cba23a698 The concrete recovery case On two distinct nodes in our local Fiber devnet, the native FNN backup RPC completed and created backups, but the subsequent FNN v0.9.0 restore attempts failed with missing SST-file errors. A separately recorded checkpoint-copy recovery then passed fnn --check-validate. The recovered nodes matched their...</description>
   </item>
 </channel>
 </rss>

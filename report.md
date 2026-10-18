@@ -1,8 +1,8 @@
 # Nervos Talk 社区简报
 
-- 统计窗口: 2026-10-17 03:00:50 CST 到 2026-10-18 03:00:50 CST
-- 生成时间: 2026-10-18 03:00:55 CST
-- 话题数: 4
+- 统计窗口: 2026-10-18 03:13:12 CST 到 2026-10-19 03:13:12 CST
+- 生成时间: 2026-10-19 03:13:16 CST
+- 话题数: 3
 - 帖子数: 6
 - 作者数: 5
 - 总结模式: ai:openai-compatible
@@ -11,42 +11,41 @@
 
 ## 今日发生了什么
 
-过去一天论坛最集中的讨论是 Metaforo 投票快照绑定问题：有用户称自己在 Nervos DAO 存入超过 10 万 CKB、Neuron 地址也已绑定 Metaforo，但投票/点赞活跃提案时仍报错 [S01]。随后有社区成员判断可能是绑定交易选错，或误用了 inputs 而不是 outputs，并表示可提供分步指导 [S02]；提问者回应会私信联系 [S03]。RIVET 提案线程公布投票已通过，批准率 52.82%，总投票权重 244,888,704 CKB，并称已用 CKB DAO Watchdog 完成投票后核验 [S04]。Spark Program 下新增 MatchLock 提案 [S05]，Corven cloud-native IDE 线程则补充了 CKB Kisumu Workshop 2026 的照片和视频材料 [S06]。
+按提供的帖子时间看，最近 24 小时论坛整体较平静，更新集中在 QuotaCell、Proof of Buy 和 FNN Safeguard 三个话题 [S01, S02, S03, S04, S05, S06]。QuotaCell 里围绕共享额度 Cell 的并发竞争展开了问答 [S01, S02]。FNN Safeguard 发布了更新材料并继续邀请社区审阅 [S04, S05, S06]。Proof of Buy 则补充讨论了 L1 抗审查与长程攻击风险 [S03]。
 
 ## 重点话题
 
-- Metaforo 投票绑定求助：用户有 10 万以上 CKB 在 Nervos DAO，但无法对活跃提案投票/点赞 [S01]；社区初步把原因指向绑定交易或 inputs/outputs 选择问题 [S02]，双方已转私信继续沟通 [S03]。
-- RIVET 投票结果：线程公布提案以 52.82% 批准率、244,888,704 CKB 总投票权重通过，并称投票后核验已完成 [S04]。
-- MatchLock 新提案：Spark Program 下出现一个可复用的 CKB lock/type script 库提案，目标是让项目加入 private-until-match/reveal 双边承诺与原子条件结算 [S05]。
-- Corven IDE 补充材料：Corven cloud-native IDE 提案线程里，作者提供了 CKB Kisumu Workshop 2026 的照片画廊和视频，用于记录活动与社区参与 [S06]。
+- QuotaCell 讨论集中在共享额度设计：Ayoub_Lesfer 质疑 Alice 和 Ben 同时从同一 100 额度花费时会争用同一个 Cell，导致其中一笔交易失败 [S01]；作者 Ticoworld 确认目前确实是一个共享 Cell 在额度变化时被消费并重建，并称已考虑并发问题，但完整重试流程尚未在运行节点上测试 [S02]。
+- Proof of Buy 帖子补充了 L1 抗审查问题：作者称 L1 矿工可能审查 L2 上传的 fork [S03]。作者还指出，为抵抗 L1 审查采取的手段会带来更大复杂度，并使上传 L1 失去意义，因为可能引入长程攻击 [S03]。
+- FNN Safeguard 发帖人表示已更新 MVP，并发布恢复证据、安全规范和实现，还因论坛限制链接改列仓库名和文件路径 [S04]。
+- 随后发帖人点名邀请几位社区成员查看恢复证据和安全模型 [S05]；被点名的 psawyerberlin 澄清自己此前没有评论过该提案，仍在了解 Fiber，虽然运行主网和测试网节点但自认不够深入 [S06]。
 
 ## 值得继续跟进
 
-- Metaforo 快照绑定失败的具体原因尚未在帖中确认，后续私信沟通结果以及是否影响 DAO 投票/点赞体验值得观察 [S01, S02, S03]。
-- RIVET 已公布通过和核验完成，后续可关注该结果是否获得进一步社区确认，以及线程是否更新后续进展 [S04]。
-- MatchLock 与 Corven IDE 都处在 Spark Program 提案/材料补充阶段，后续讨论、评审反馈和是否推进值得跟进 [S05, S06]。
+- QuotaCell 的共享 Cell 并发方案是否能在真实节点上跑通完整重试流程，是后续需要验证的点 [S01, S02]。
+- FNN Safeguard 的恢复证据和安全模型能否得到有验证、节点工具经验者的实质审阅，目前被邀请者之一表示自己仍在了解 Fiber [S05, S06]。
+- Proof of Buy 的 L1 抗审查手段如何避免带来更大复杂度并削弱上传 L1 的意义，仍需继续观察 [S03]。
 
 ## 来源索引
 
-- `S01` [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/1) | SalmanDev | 2026-10-17 04:03:41 CST | Hi everyone, I have a technical question regarding Metaforo voting snapshot rules: I currently have over 100,000 CKB deposited into the Nervos DAO via my Neuron wallet. My Neuron wallet address is bound to my Metaforo account. However, I receive an error when attempting to...
-- `S02` [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/2) | Jedi_dtechmaker | 2026-10-17 07:24:05 CST | GM chief, I think you might have binded the wrong transaction. Or you used inputs for sign in, instead of outputs. I experienced similar issues too when I was trying to bind my wallet. Happy to help out if you need a step by step guide on that chief​
-- `S03` [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/3) | SalmanDev | 2026-10-17 23:57:12 CST | Thanks, I will dm you.
-- `S04` [[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB](https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/13) | zz_tovarishch | 2026-10-17 14:01:31 CST | Based on the Metaforo tally at close, the outcome is PASSED. Approval is 52.82% with total voting weight 244,888,704 CKB. Post-close verification has been completed using CKB DAO Watchdog (GitHub - CKBFansDAO/ckb-dao-watchdog: Community-driven tools for auditing and verifying...
-- `S05` [Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB](https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005/1) | Chaichamp | 2026-10-17 12:38:40 CST | 1. Overview Project name: MatchLock One-sentence summary: A permissively licensed CKB lock/type script library, with an SDK and documentation, that lets any CKB project add private-until-match/reveal bilateral commitments and atomic conditional settlement to its own...
-- `S06` [Spark Program Proposal: Corven cloud-native IDE](https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/5) | lestonEth | 2026-10-17 04:24:49 CST | GM @xingtianchunyan, Here is the media evidence from the CKB Kisumu Workshop 2026, documenting the event and community engagement activities. Workshop photo gallery: Pixieset CKB Kisumu Workshop Photo collection by aten studios ke Workshop video: The video highlights Corven...
+- `S01` [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/2) | Ayoub_Lesfer | 2026-10-19 00:26:52 CST | Nice one. The shared allowance is the part I’d poke at: if Alice and Ben both spend from the same 100, I’m guessing the remaining allowance sits in one cell that every payment consumes and recreates? If so, two payments built at the same time will race for it and one gets...
+- `S02` [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/3) | Ticoworld | 2026-10-19 01:00:05 CST | Yeah, that’s exactly how we’ve structured it for now. One shared Cell that gets consumed and recreated whenever the allowance changes. We’ve considered the concurrency issue too, although we haven’t tested the full retry flow against a running node yet. Your CrowdCell...
+- `S03` [Proof of Buy，一种专为Layer1设计的Layer2共识](https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752/34) | Lawliet_Chan | 2026-10-19 00:22:26 CST | 关于L1抗审查问题的补充 上条帖子有提到过，L1 Miner可能会对L2 上传上来的fork进行审查。 为了抵抗来自L1的审查，我们上条帖子做了一些手段，但是这个做法首先会带来更大的复杂度，其次按照这个做法，那么上传L1便没有意义了，因为一类长程攻击成为新的可能，而我们本身上传L1就是为了要防止长程攻击。 此长程攻击表现为： 如果L2攻击者先提交 block 的 Commitment到L1，随后不在L2揭示， 等到未来某一刻它发掘出一条更高分数的fork时候，它可能才会因此揭示早期的这条fork 从而完成长程攻击。 L1的chain quality...
+- `S04` [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/10) | Dappsoverapps | 2026-10-18 06:28:26 CST | @ArthurZhang @Ayoub_Lesfer @quake, thank you for reviewing the proposal. We have updated the MVP and published the recovery evidence, safety specification, and implementation. The forum is restricting links, so I have included the repository name and file paths below. GitHub...
+- `S05` [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/11) | Dappsoverapps | 2026-10-18 11:30:59 CST | @psawyerberlin @Hanssen @ebubedev, we have updated FNN Safeguard following the earlier feedback. Would you be willing to look at the recovery evidence and safety model above and share your thoughts? Your experience with verification and node tooling would be valuable here.
+- `S06` [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/12) | psawyerberlin | 2026-10-18 19:47:50 CST | Hi @Dappsoverapps, thanks for the tag. Just to clarify: I hadn’t commented on this proposal before, so the earlier feedback isn’t mine. To be honest, I’m still discovering Fiber. I run a mainnet and a testnet node (Linux, systemd) with a few channels, but I’m not deep enough...
 
 ## 活跃话题
 
-1. [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004) | 3 条近窗帖子 | 最新活动 2026-10-17 23:57:12 CST
-2. [[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB](https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739) | 1 条近窗帖子 | 最新活动 2026-10-17 14:01:31 CST | tags: CKB
-3. [Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB](https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005) | 1 条近窗帖子 | 最新活动 2026-10-17 12:38:40 CST | tags: appchain
-4. [Spark Program Proposal: Corven cloud-native IDE](https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807) | 1 条近窗帖子 | 最新活动 2026-10-17 04:24:49 CST | tags: CKB, Grant, Pending, Spark-Program
+1. [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002) | 2 条近窗帖子 | 最新活动 2026-10-19 01:00:05 CST | tags: CKB, CKB-VM, lang-en
+2. [Proof of Buy，一种专为Layer1设计的Layer2共识](https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752) | 1 条近窗帖子 | 最新活动 2026-10-19 00:22:26 CST | tags: lang-zh, 共识协议
+3. [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712) | 3 条近窗帖子 | 最新活动 2026-10-18 19:47:50 CST
 
 ## 最近帖子摘录
 
-- 2026-10-17 23:57:12 CST | SalmanDev | [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/3) | Thanks, I will dm you.
-- 2026-10-17 14:01:31 CST | zz_tovarishch | [[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB](https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/13) | Based on the Metaforo tally at close, the outcome is PASSED. Approval is 52.82% with total voting weight 244,888,704 CKB. Post-close verification has been completed using CKB...
-- 2026-10-17 12:38:40 CST | Chaichamp | [Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB](https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005/1) | 1. Overview Project name: MatchLock One-sentence summary: A permissively licensed CKB lock/type script library, with an SDK and documentation, that lets any CKB project add...
-- 2026-10-17 07:24:05 CST | Jedi_dtechmaker | [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/2) | GM chief, I think you might have binded the wrong transaction. Or you used inputs for sign in, instead of outputs. I experienced similar issues too when I was trying to bind my...
-- 2026-10-17 04:24:49 CST | lestonEth | [Spark Program Proposal: Corven cloud-native IDE](https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/5) | GM @xingtianchunyan, Here is the media evidence from the CKB Kisumu Workshop 2026, documenting the event and community engagement activities. Workshop photo gallery: Pixieset...
-- 2026-10-17 04:03:41 CST | SalmanDev | [Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo](https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/1) | Hi everyone, I have a technical question regarding Metaforo voting snapshot rules: I currently have over 100,000 CKB deposited into the Nervos DAO via my Neuron wallet. My...
+- 2026-10-19 01:00:05 CST | Ticoworld | [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/3) | Yeah, that’s exactly how we’ve structured it for now. One shared Cell that gets consumed and recreated whenever the allowance changes. We’ve considered the concurrency issue...
+- 2026-10-19 00:26:52 CST | Ayoub_Lesfer | [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/2) | Nice one. The shared allowance is the part I’d poke at: if Alice and Ben both spend from the same 100, I’m guessing the remaining allowance sits in one cell that every payment...
+- 2026-10-19 00:22:26 CST | Lawliet_Chan | [Proof of Buy，一种专为Layer1设计的Layer2共识](https://talk.nervos.org/t/proof-of-buy-layer1-layer2/9752/34) | 关于L1抗审查问题的补充 上条帖子有提到过，L1 Miner可能会对L2 上传上来的fork进行审查。 为了抵抗来自L1的审查，我们上条帖子做了一些手段，但是这个做法首先会带来更大的复杂度，其次按照这个做法，那么上传L1便没有意义了，因为一类长程攻击成为新的可能，而我们本身上传L1就是为了要防止长程攻击。 此长程攻击表现为： 如果L2攻击者先提交...
+- 2026-10-18 19:47:50 CST | psawyerberlin | [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/12) | Hi @Dappsoverapps, thanks for the tag. Just to clarify: I hadn’t commented on this proposal before, so the earlier feedback isn’t mine. To be honest, I’m still discovering...
+- 2026-10-18 11:30:59 CST | Dappsoverapps | [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/11) | @psawyerberlin @Hanssen @ebubedev, we have updated FNN Safeguard following the earlier feedback. Would you be willing to look at the recovery evidence and safety model above and...
+- 2026-10-18 06:28:26 CST | Dappsoverapps | [[DIS] FNN Safeguard — Recovery Verification and Pre-Upgrade Qualification for Fiber Nodes](https://talk.nervos.org/t/dis-fnn-safeguard-recovery-verification-and-pre-upgrade-qualification-for-fiber-nodes/10712/10) | @ArthurZhang @Ayoub_Lesfer @quake, thank you for reviewing the proposal. We have updated the MVP and published the recovery evidence, safety specification, and implementation....
