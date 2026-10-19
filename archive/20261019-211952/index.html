@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-19 05:19:52 CST - 2026-10-20 05:19:52 CST</span>
+          <span>生成时间 2026-10-20 05:19:58 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">6</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">6</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">5</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛整体较平静，更新主要是项目进展帖和几条技术讨论回复 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>。一条新帖在解释 CKB 的 “Since” 机制及集成方式 <span class="citations">[<a href="#source-s01">S01</a>]</span>；社区催化项目发布 Q3 2026 报告 <span class="citations">[<a href="#source-s02">S02</a>]</span>；另有开发者宣布 CKB 钱包连接 UI 包上 npm 并支持 did:ckb <span class="citations">[<a href="#source-s03">S03</a>]</span>。讨论区里，资产价格预言机和 Fiber 机器支付会话都收到设计追问 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s06">S06</a>]</span>，Metaforo 投票问题也有版主回复 <span class="citations">[<a href="#source-s05">S05</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>CKB “Since” 科普帖：Mannychino 发帖说明它解决什么问题、如何工作以及如何集成到 CKB 应用，并举了资产未来才能花费、代币归属/金库等场景 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+<li>社区催化季度报告：neon.bit 更新 Q3 2026 报告，称 CKBuilders 已接近 100 名活跃 builder 和校友，Build on CKB 活动继续推动开发者 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>钱包 UI 包发布：Victor_Okenwa 宣布 ckb-connect-wallet-kit 已上 npm，是建立在 CCC 上的复合 React 钱包 UI 组件，并加入 did:ckb <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li>预言机设计追问：it44 在资产价格预言机帖中问 price_feed_type 的 publish_time_ms 除了要比旧值大，是否还要相对交易设置上界 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>治理与支付讨论：Metaforo 投票问题获回复，版主将帖子移到 community fund DAO 分区，并判断大概率是 Neuron 存入 CKB 后在 Metaforo 绑定了错误地址 <span class="citations">[<a href="#source-s05">S05</a>]</span>；Fiber 帖中有人追问 createPaymentSession({ budget }) 的预算在哪执行，担心 SDK 内计数器会被 agent 进程或提示注入绕过/重置 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>“Since” 帖后续是否引发具体集成问答，值得看开发者会不会分享实现案例 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+<li>预言机 publish_time_ms 上界问题是否会得到作者回应，这是价格更新规则需要澄清的点 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>Fiber 支付会话的预算执行位置是关键风险，若只在 SDK 计数器里，agent 进程或工具调用可能绕过 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010/1">Understanding &#x27;Since&#x27; on Nervos CKB</a></div><div class="source-meta">Mannychino · 2026-10-20 01:33:07 CST</div><div>What it solves, how it works, and how to integrate it into a CKB application Imagine building an application on Nervos CKB where a user deposits an asset today but should not be able to spend it until a future date. The same requirement might arise in token vesting, a treasury...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822/7">Nervos Community Catalyst: Quarterly Reports</a></div><div class="source-meta">neon.bit · 2026-10-19 21:31:58 CST</div><div>Q3 2026 Report Executive summary Q3 brought further growth across Nervos Community Catalyst’s developer programmes and community activity. CKBuilders grew to close to 100 active builders and alumni, while Build on CKB campaigns continued to challenge developers to advance...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009/1">Ckb-connect-wallet-kit is on npm: compound React wallet UI for CCC, now with did:ckb</a></div><div class="source-meta">Victor_Okenwa · 2026-10-19 21:31:08 CST</div><div>Hi everyone, Back in April I posted a revamp of the CKB wallet connection UI as a compound React component on top of CCC. The feedback from CKB builders was consistent: this should be installable as a package, not something you copy out of a demo. That package is now live as...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/3">Asset Price Oracle on Nervos Network</a></div><div class="source-meta">it44 · 2026-10-19 15:14:22 CST</div><div>Thanks for the very explicit design write-up, and for stating the limits plainly. One question on price_feed_type: the update rule is new.publish_time_ms &gt; old.publish_time_ms. Is there also an upper bound on publish_time_ms relative to the transaction, for example against a...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/4">Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo</a></div><div class="source-meta">zz_tovarishch · 2026-10-19 14:08:50 CST</div><div>Hi Salman, 感谢您提出这个问题，首先因为这个问题更适合的分区是 community fund DAO, 所以我把帖子移到对应分区 另外您遇到的问题大概率是在使用Neuron存入CKB后，在Metaforo上绑定了错误的地址，可以参看 https://dao.ckb.community/thread/how-to-bind-your-nervos-dao-address-on-metaforo-and-vote-on-proposals-41913 这个帖子进行问题排除 Best,</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694/2">Routed Machine Payment Sessions on Fiber — Looking for Community Feedback</a></div><div class="source-meta">it44 · 2026-10-19 10:59:46 CST</div><div>Thanks for asking before building. One design question on createPaymentSession({ budget }): where is the budget enforced? If it is a counter inside the SDK, the agent process (or a prompt-injected tool call) can bypass or reset it, so the cap is only as strong as that process....</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>6</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@it44</span><strong>2</strong></li><li><span>@Mannychino</span><strong>1</strong></li><li><span>@neon.bit</span><strong>1</strong></li><li><span>@Victor_Okenwa</span><strong>1</strong></li><li><span>@zz_tovarishch</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>82</span></li><li>default<span>36</span></li><li>did<span>25</span></li><li>transaction<span>20</span></li><li>new<span>20</span></li><li>since<span>19</span></li><li>wallet<span>19</span></li><li>cell<span>18</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010">Understanding &#x27;Since&#x27; on Nervos CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-20 01:33:07 CST</span><span>Mannychino</span></div><p class="excerpt">What it solves, how it works, and how to integrate it into a CKB application Imagine building an application on Nervos CKB where a user deposits an asset today but should not be able to spend it until a future date. The same requirement might arise in token...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822">Nervos Community Catalyst: Quarterly Reports</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-19 21:31:58 CST</span><span>neon.bit</span></div><p class="excerpt">Q3 2026 Report Executive summary Q3 brought further growth across Nervos Community Catalyst’s developer programmes and community activity. CKBuilders grew to close to 100 active builders and alumni, while Build on CKB campaigns continued to challenge...</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009">Ckb-connect-wallet-kit is on npm: compound React wallet UI for CCC, now with did:ckb</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-19 21:31:08 CST</span><span>Victor_Okenwa</span></div><p class="excerpt">Hi everyone, Back in April I posted a revamp of the CKB wallet connection UI as a compound React component on top of CCC. The feedback from CKB builders was consistent: this should be installable as a package, not something you copy out of a demo. That...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>lang-en</span><span>wallet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800">Asset Price Oracle on Nervos Network</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-19 15:14:22 CST</span><span>it44</span></div><p class="excerpt">Thanks for the very explicit design write-up, and for stating the limits plainly. One question on price_feed_type: the update rule is new.publish_time_ms &gt; old.publish_time_ms. Is there also an upper bound on publish_time_ms relative to the transaction, for...</p><div class="tag-row"><span>CKB</span><span>DeFi</span><span>Oracle</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004">Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-19 14:08:50 CST</span><span>zz_tovarishch</span></div><p class="excerpt">Hi Salman, 感谢您提出这个问题，首先因为这个问题更适合的分区是 community fund DAO, 所以我把帖子移到对应分区 另外您遇到的问题大概率是在使用Neuron存入CKB后，在Metaforo上绑定了错误的地址，可以参看 https://dao.ckb.community/thread/how-to-bind-your-nervos-dao-address-on-metaforo-and-vote-on-proposals-41913 这个帖子进行问题排除 Best,</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694">Routed Machine Payment Sessions on Fiber — Looking for Community Feedback</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-19 10:59:46 CST</span><span>it44</span></div><p class="excerpt">Thanks for asking before building. One design question on createPaymentSession({ budget }): where is the budget enforced? If it is a counter inside the SDK, the agent process (or a prompt-injected tool call) can bypass or reset it, so the cap is only as...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-20 01:33:07 CST</time><strong><a href="https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010/1">Understanding &#x27;Since&#x27; on Nervos CKB</a> · @Mannychino</strong><p>What it solves, how it works, and how to integrate it into a CKB application Imagine building an application on Nervos CKB where a user deposits an asset today but should not be able to spend it until a future date....</p></article>
+<article class="timeline-row"><time>2026-10-19 21:31:58 CST</time><strong><a href="https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822/7">Nervos Community Catalyst: Quarterly Reports</a> · @neon.bit</strong><p>Q3 2026 Report Executive summary Q3 brought further growth across Nervos Community Catalyst’s developer programmes and community activity. CKBuilders grew to close to 100 active builders and alumni, while Build on CKB...</p></article>
+<article class="timeline-row"><time>2026-10-19 21:31:08 CST</time><strong><a href="https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009/1">Ckb-connect-wallet-kit is on npm: compound React wallet UI for CCC, now with did:ckb</a> · @Victor_Okenwa</strong><p>Hi everyone, Back in April I posted a revamp of the CKB wallet connection UI as a compound React component on top of CCC. The feedback from CKB builders was consistent: this should be installable as a package, not...</p></article>
+<article class="timeline-row"><time>2026-10-19 15:14:22 CST</time><strong><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/3">Asset Price Oracle on Nervos Network</a> · @it44</strong><p>Thanks for the very explicit design write-up, and for stating the limits plainly. One question on price_feed_type: the update rule is new.publish_time_ms &gt; old.publish_time_ms. Is there also an upper bound on...</p></article>
+<article class="timeline-row"><time>2026-10-19 14:08:50 CST</time><strong><a href="https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004/4">Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo</a> · @zz_tovarishch</strong><p>Hi Salman, 感谢您提出这个问题，首先因为这个问题更适合的分区是 community fund DAO, 所以我把帖子移到对应分区 另外您遇到的问题大概率是在使用Neuron存入CKB后，在Metaforo上绑定了错误的地址，可以参看 https://dao.ckb.community/thread/how-to-bind-your-nervos-dao-address-on-metaforo-and-vote-on-...</p></article>
+<article class="timeline-row"><time>2026-10-19 10:59:46 CST</time><strong><a href="https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694/2">Routed Machine Payment Sessions on Fiber — Looking for Community Feedback</a> · @it44</strong><p>Thanks for asking before building. One design question on createPaymentSession({ budget }): where is the budget enforced? If it is a counter inside the SDK, the agent process (or a prompt-injected tool call) can...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

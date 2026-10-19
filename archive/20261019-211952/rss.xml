@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Mon, 19 Oct 2026 17:33:07 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-20</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-19:daily-brief</guid>
+    <pubDate>Mon, 19 Oct 2026 21:19:58 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛整体较平静，更新主要是项目进展帖和几条技术讨论回复 [S01, S02, S03, S04, S05, S06]。一条新帖在解释 CKB 的 “Since” 机制及集成方式 [S01]；社区催化项目发布 Q3 2026 报告 [S02]；另有开发者宣布 CKB 钱包连接 UI 包上 npm 并支持 did:ckb [S03]。讨论区里，资产价格预言机和 Fiber 机器支付会话都收到设计追问 [S04, S06]，Metaforo 投票问题也有版主回复 [S05]。 ## 重点话题 CKB “Since” 科普帖：Mannychino 发帖说明它解决什么问题、如何工作以及如何集成到 CKB 应用，并举了资产未来才能花费、代币归属/金库等场景 [S01]。 社区催化季度报告：neon.bit 更新 Q3 2026 报告，称 CKBuilders 已接近 100 名活跃 builder 和校友，Build on CKB 活动继续推动开发者 [S02]。 钱包 UI 包发布：Victor_Okenwa 宣布 ckb-connect-wallet-kit 已上 npm，是建立在 CCC 上的复合 React 钱包 UI 组件，并加入 did:ckb [S03]。 预言机设计追问：it44 在资产价格预言机帖中问 price_feed_type 的 publish_time_ms 除了要比旧值大，是否还要相对交易设置上界 [S04]。 治理与支付讨论：Metaforo 投票问题获回复，版主将帖子移到 community fund DAO...</description>
+  </item>
+  <item>
+    <title>Understanding 'Since' on Nervos CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010</link>
+    <guid>https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 17:33:07 +0000</pubDate>
+    <description>What it solves, how it works, and how to integrate it into a CKB application Imagine building an application on Nervos CKB where a user deposits an asset today but should not be able to spend it until a future date. The same requirement might arise in token vesting, a treasury release, or a payment-channel dispute period. The Cell exists, and someone may already be authorized to spend it. The missing piece is time: the transaction should not be valid yet. CKB addresses this need through `since`, a small transaction-input field with an important purpose: expressing when an input is eligible to be committed. Once you understand that role, since becomes useful well beyond a simple timelock....</description>
+  </item>
+  <item>
+    <title>Nervos Community Catalyst: Quarterly Reports (1 posts)</title>
+    <link>https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822</link>
+    <guid>https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 13:31:58 +0000</pubDate>
+    <description>Q3 2026 Report Executive summary Q3 brought further growth across Nervos Community Catalyst’s developer programmes and community activity. CKBuilders grew to close to 100 active builders and alumni, while Build on CKB campaigns continued to challenge developers to advance their CKB skills. The project tracker expanded from 45 projects at the end of Q2 to 59 by the beginning of October, and 18 projects were submitted for review during the quarter. The Gone in 60ms Fiber Network Infrastructure Hackathon brought together roughly 100 participants and received 66 submissions. Alongside supporting individual developers and projects, NCC saw interest from teams outside the CKB ecosystem and...</description>
+  </item>
+  <item>
+    <title>Ckb-connect-wallet-kit is on npm: compound React wallet UI for CCC, now with did:ckb (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009</link>
+    <guid>https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 13:31:08 +0000</pubDate>
+    <description>Hi everyone, Back in April I posted a revamp of the CKB wallet connection UI as a compound React component on top of CCC. The feedback from CKB builders was consistent: this should be installable as a package, not something you copy out of a demo. That package is now live as ckb-connect-wallet-kit. You wrap your own ccc.Provider, compose the button / icon / balance / address yourself, and optionally show the connected lock’s did:ckb avatar, display name, and identifier. The kit never mounts CCC. Current version is 0.2.1. Links npm: https://www.npmjs.com/package/ckb-connect-wallet-kit Homepage / demo: https://ckb-connect-wallet-kit.vercel.app/ GitHub repo: GitHub - Victor-Okenwa/revamp-...</description>
+  </item>
+  <item>
+    <title>Asset Price Oracle on Nervos Network (1 posts)</title>
+    <link>https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800</link>
+    <guid>https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 07:14:22 +0000</pubDate>
+    <description>Thanks for the very explicit design write-up, and for stating the limits plainly. One question on price_feed_type: the update rule is new.publish_time_ms &gt; old.publish_time_ms. Is there also an upper bound on publish_time_ms relative to the transaction, for example against a header dep timestamp plus a small skew? If not, a single quorum-signed tick with a timestamp far in the future, from a publisher clock bug or a bad leader proposal that signers do not reject, would make every later honest update fail the strictly-newer check and freeze that feed cell until the committee is replaced and consumers re-pin. A consumer that compares publish_time_ms with a header timestamp could also read...</description>
+  </item>
+  <item>
+    <title>Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo (1 posts)</title>
+    <link>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004</link>
+    <guid>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 06:08:50 +0000</pubDate>
+    <description>Hi Salman, 感谢您提出这个问题，首先因为这个问题更适合的分区是 community fund DAO, 所以我把帖子移到对应分区 另外您遇到的问题大概率是在使用Neuron存入CKB后，在Metaforo上绑定了错误的地址，可以参看 https://dao.ckb.community/thread/how-to-bind-your-nervos-dao-address-on-metaforo-and-vote-on-proposals-41913 这个帖子进行问题排除 Best,</description>
+  </item>
+  <item>
+    <title>Routed Machine Payment Sessions on Fiber — Looking for Community Feedback (1 posts)</title>
+    <link>https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694</link>
+    <guid>https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694#recent-1</guid>
+    <pubDate>Mon, 19 Oct 2026 02:59:46 +0000</pubDate>
+    <description>Thanks for asking before building. One design question on createPaymentSession({ budget }): where is the budget enforced? If it is a counter inside the SDK, the agent process (or a prompt-injected tool call) can bypass or reset it, so the cap is only as strong as that process. A harder bound is to make the budget the funded amount itself: one dedicated channel per session, funded with exactly `budget`, so the worst-case loss is the funding rather than the policy code. Related: with several providers paid in parallel, which component decides that two concurrent requests would together exceed the remaining budget, and if the counter cannot be read, does it deny or allow?</description>
+  </item>
+</channel>
+</rss>
