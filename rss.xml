@@ -5,56 +5,147 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Mon, 19 Oct 2026 17:33:07 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 20 Oct 2026 19:37:56 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-20</title>
+    <title>CKB Talk Daily Brief - 2026-10-21</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-19:daily-brief</guid>
-    <pubDate>Mon, 19 Oct 2026 21:19:58 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛整体较平静，更新主要是项目进展帖和几条技术讨论回复 [S01, S02, S03, S04, S05, S06]。一条新帖在解释 CKB 的 “Since” 机制及集成方式 [S01]；社区催化项目发布 Q3 2026 报告 [S02]；另有开发者宣布 CKB 钱包连接 UI 包上 npm 并支持 did:ckb [S03]。讨论区里，资产价格预言机和 Fiber 机器支付会话都收到设计追问 [S04, S06]，Metaforo 投票问题也有版主回复 [S05]。 ## 重点话题 CKB “Since” 科普帖：Mannychino 发帖说明它解决什么问题、如何工作以及如何集成到 CKB 应用，并举了资产未来才能花费、代币归属/金库等场景 [S01]。 社区催化季度报告：neon.bit 更新 Q3 2026 报告，称 CKBuilders 已接近 100 名活跃 builder 和校友，Build on CKB 活动继续推动开发者 [S02]。 钱包 UI 包发布：Victor_Okenwa 宣布 ckb-connect-wallet-kit 已上 npm，是建立在 CCC 上的复合 React 钱包 UI 组件，并加入 did:ckb [S03]。 预言机设计追问：it44 在资产价格预言机帖中问 price_feed_type 的 publish_time_ms 除了要比旧值大，是否还要相对交易设置上界 [S04]。 治理与支付讨论：Metaforo 投票问题获回复，版主将帖子移到 community fund DAO...</description>
+    <guid>tag:ckb-talk-radar,2026-10-20:daily-brief</guid>
+    <pubDate>Tue, 20 Oct 2026 20:17:21 +0000</pubDate>
+    <description>## 今日发生了什么 根据提供的帖子，今天论坛的主要动静集中在 Spark Program：多个提案在同一天收到批准、待定或拒绝结果 [S05,S10,S15,S18,S19]。Seedsong 获批 1,000 美元等值 679,348 CKB，并已支付 20% 首期 135,870 CKB [S15,S17]。Corven 仍为 Pending 并要求补充说明，MatchLock、Fiber Mystery Shopper 和 RGB++ Resume 则均未获批准 [S05,S10,S18,S19]。社区侧还有 Twine 的 P2P 交易更新、Noir-CKB 的仪式开放，以及 Kisumu 工作坊回顾 [S02,S14,S13]。 ## 重点话题 Spark Program 今天集中出结果 [S15,S05,S18,S19]。Seedsong 获批 1,000 美元等值 679,348 CKB，并已支付 20% 首期 135,870 CKB [S15,S17]。Corven 仍为 Pending 并要求补充说明 [S05]。Fiber Mystery Shopper 和 RGB++ Resume 被拒 [S18,S19]。Fiber RGB++ Swap 另有复核更正帖 [S01]。 MatchLock 被拒后出现沟通争议：委员会通知称提案基于先前反馈修订，但申请人表示没有早前反馈轮次记录 [S10,S11]。委员会成员随后道歉，称用模板编辑回复时未正确保存，并把另一个问题转交委员会、承诺稍后回复 [S12]。 Twine 更新为 sell-only...</description>
   </item>
   <item>
-    <title>Understanding 'Since' on Nervos CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010</link>
-    <guid>https://talk.nervos.org/t/understanding-since-on-nervos-ckb/11010#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 17:33:07 +0000</pubDate>
-    <description>What it solves, how it works, and how to integrate it into a CKB application Imagine building an application on Nervos CKB where a user deposits an asset today but should not be able to spend it until a future date. The same requirement might arise in token vesting, a treasury release, or a payment-channel dispute period. The Cell exists, and someone may already be authorized to spend it. The missing piece is time: the transaction should not be valid yet. CKB addresses this need through `since`, a small transaction-input field with an important purpose: expressing when an input is eligible to be committed. Once you understand that role, since becomes useful well beyond a simple timelock....</description>
+    <title>Spark Program | Fiber RGB++ Swap (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487</link>
+    <guid>https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 19:37:56 +0000</pubDate>
+    <description>Hi @xingtianchunyan and thanks to the committee for the detailed notice. I want to correct two things in the review, because I think they changed the outcome, and then report what has changed since the close. The first is the baseline. The notice cites $1,000 and requires the swap component. That was the original proposal. On 13 August the committee revised the scope: RGB++ integration was removed and the grant set to $500 over four weeks (Spark Program | Fiber RGB++ Swap - #18 by zz_tovarishch). I accepted in Spark Program | Fiber RGB++ Swap - #19 by Carl, the plan I was paid against is Spark Program | Fiber RGB++ Swap - #20 by Carl, and 609,757 CKB was approved on that basis (Spark...</description>
   </item>
   <item>
-    <title>Nervos Community Catalyst: Quarterly Reports (1 posts)</title>
-    <link>https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822</link>
-    <guid>https://talk.nervos.org/t/nervos-community-catalyst-quarterly-reports/8822#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 13:31:58 +0000</pubDate>
-    <description>Q3 2026 Report Executive summary Q3 brought further growth across Nervos Community Catalyst’s developer programmes and community activity. CKBuilders grew to close to 100 active builders and alumni, while Build on CKB campaigns continued to challenge developers to advance their CKB skills. The project tracker expanded from 45 projects at the end of Q2 to 59 by the beginning of October, and 18 projects were submitted for review during the quarter. The Gone in 60ms Fiber Network Infrastructure Hackathon brought together roughly 100 participants and received 66 submissions. Alongside supporting individual developers and projects, NCC saw interest from teams outside the CKB ecosystem and...</description>
-  </item>
-  <item>
-    <title>Ckb-connect-wallet-kit is on npm: compound React wallet UI for CCC, now with did:ckb (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009</link>
-    <guid>https://talk.nervos.org/t/ckb-connect-wallet-kit-is-on-npm-compound-react-wallet-ui-for-ccc-now-with-did-ckb/11009#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 13:31:08 +0000</pubDate>
-    <description>Hi everyone, Back in April I posted a revamp of the CKB wallet connection UI as a compound React component on top of CCC. The feedback from CKB builders was consistent: this should be installable as a package, not something you copy out of a demo. That package is now live as ckb-connect-wallet-kit. You wrap your own ccc.Provider, compose the button / icon / balance / address yourself, and optionally show the connected lock’s did:ckb avatar, display name, and identifier. The kit never mounts CCC. Current version is 0.2.1. Links npm: https://www.npmjs.com/package/ckb-connect-wallet-kit Homepage / demo: https://ckb-connect-wallet-kit.vercel.app/ GitHub repo: GitHub - Victor-Okenwa/revamp-...</description>
-  </item>
-  <item>
-    <title>Asset Price Oracle on Nervos Network (1 posts)</title>
-    <link>https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800</link>
-    <guid>https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 07:14:22 +0000</pubDate>
-    <description>Thanks for the very explicit design write-up, and for stating the limits plainly. One question on price_feed_type: the update rule is new.publish_time_ms &gt; old.publish_time_ms. Is there also an upper bound on publish_time_ms relative to the transaction, for example against a header dep timestamp plus a small skew? If not, a single quorum-signed tick with a timestamp far in the future, from a publisher clock bug or a bad leader proposal that signers do not reject, would make every later honest update fail the strictly-newer check and freeze that feed cell until the committee is replaced and consumers re-pin. A consumer that compares publish_time_ms with a header timestamp could also read...</description>
+    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (1 posts)</title>
+    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
+    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 19:18:54 +0000</pubDate>
+    <description>Update: sell-only book, and JIT inbound at release 1. The book is sell-only A post offers CKB. The poster is the seller. The taker is the buyer. There is no buy post. The last build had both sides: sell (offering CKB) and buy (bidding for CKB). A buy post made the taker the seller. take had no invoice. Both sides got need-invoice, and the buyer sent payout-invoice before any hold existed. That path is gone. new-order with side other than sell is refused. Taking a leftover buy post is refused. take always carries the buyer’s payout invoice. The hold is created there. No need-invoice round trip on take. The app no longer has Buy / Sell tabs. Posts is one list of sell offers. A buy post on...</description>
   </item>
   <item>
     <title>Unable to vote/like active proposal — Nervos DAO snapshot behavior on Metaforo (1 posts)</title>
     <link>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004</link>
     <guid>https://talk.nervos.org/t/unable-to-vote-like-active-proposal-nervos-dao-snapshot-behavior-on-metaforo/11004#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 06:08:50 +0000</pubDate>
-    <description>Hi Salman, 感谢您提出这个问题，首先因为这个问题更适合的分区是 community fund DAO, 所以我把帖子移到对应分区 另外您遇到的问题大概率是在使用Neuron存入CKB后，在Metaforo上绑定了错误的地址，可以参看 https://dao.ckb.community/thread/how-to-bind-your-nervos-dao-address-on-metaforo-and-vote-on-proposals-41913 这个帖子进行问题排除 Best,</description>
+    <pubDate>Tue, 20 Oct 2026 19:15:56 +0000</pubDate>
+    <description>Hi zz_tovarishch, thank you for the link, I will try out the instructions and reach out if I need anything else.</description>
   </item>
   <item>
-    <title>Routed Machine Payment Sessions on Fiber — Looking for Community Feedback (1 posts)</title>
-    <link>https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694</link>
-    <guid>https://talk.nervos.org/t/routed-machine-payment-sessions-on-fiber-looking-for-community-feedback/10694#recent-1</guid>
-    <pubDate>Mon, 19 Oct 2026 02:59:46 +0000</pubDate>
-    <description>Thanks for asking before building. One design question on createPaymentSession({ budget }): where is the budget enforced? If it is a counter inside the SDK, the agent process (or a prompt-injected tool call) can bypass or reset it, so the cap is only as strong as that process. A harder bound is to make the budget the funded amount itself: one dedicated channel per session, funded with exactly `budget`, so the worst-case loss is the funding rather than the policy code. Related: with several providers paid in parallel, which component decides that two concurrent requests would together exceed the remaining budget, and if the counter cannot be read, does it deny or allow?</description>
+    <title>Ever wanted to customize your connect wallet? (1 posts)</title>
+    <link>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013</link>
+    <guid>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 18:53:37 +0000</pubDate>
+    <description>Ever wanted to customize your connect wallet and found it hard, or you just don’t know how? Now you have the answer you’ve been looking for. You already own the CCC provider. What you have been missing is a connect flow you can shape: which wallets appear, how a single row looks, and what the person sees after they connect. Icon, name, address, balance, or a did:ckb profile. Your layout. Your classes. image579×784 28 KB What you get A connect button that disappears once a wallet is connected, so your own layout can take its place A dialog you fill yourself: wallet list, chain choice, connecting state, then the account A wallet list you can narrow to the names you support, or leave open to...</description>
+  </item>
+  <item>
+    <title>Spark Program Proposal: Corven cloud-native IDE (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-3</guid>
+    <pubDate>Tue, 20 Oct 2026 15:56:06 +0000</pubDate>
+    <description>Hello @lestonEth, Thank you for continuing to follow the Spark Program and for keeping us updated on the latest progress of the Corven proposal. After review by the Spark Program committee, your proposal’s status will remain Pending, and they would like you to provide explanations regarding the following two issues. Scope of coverage for costs related to remote meetings: Your proposal initially included expenses for travel and mobile data charges related to the offline meeting of Kenya’s Web3 Developers Club. Given that the first meeting is now planned to be held remotely, please confirm whether these travel and mobile data costs are still covered by the budget request, and explain how...</description>
+  </item>
+  <item>
+    <title>Spark Program | zk-Lock for CKB (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448</link>
+    <guid>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448#recent-2</guid>
+    <pubDate>Tue, 20 Oct 2026 15:48:53 +0000</pubDate>
+    <description>Hi @Mulandi_Cecilia, I heard you’ll be attending CKCon 2026. Wishing you a pleasant trip and a rewarding experience. Look forward to seeing your reply. Best, xingtian On behalf of the Spark Program Committee Hey @xingtianchunyan, Thank you! CKCon 2026 was an amazing experience, and I got home safely. I’m nursing a cold now, but I’ve started working on the committee’s feedback: the non-developer outreach and a simple interactive frontend. I’ll post a substantial update here soon. Thank you again! Kind regards, Cecilia Mulandi</description>
+  </item>
+  <item>
+    <title>Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005</link>
+    <guid>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005#recent-3</guid>
+    <pubDate>Tue, 20 Oct 2026 15:21:20 +0000</pubDate>
+    <description>Hi @Chaichamp, Thank you for taking the time to revise the proposal based on our previous feedback, and for your continued efforts to refine the MatchLock concept. The committee has completed its review. After careful discussion, we regret to inform you that we have decided not to approve the MatchLock project at this time. We’d like to be candid about the reasons behind this decision: Existing ecosystem infrastructure already adequately supports this primitive: Commit-reveal is a fundamental cryptographic primitive already used by nearly every project on CKB—and across the broader blockchain ecosystem. The core code for a hash commitment scheme is only a few lines, and existing libraries...</description>
+  </item>
+  <item>
+    <title>CKB Builders Workshop in Kisumu: 37 people showed up ready to learn and build (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-builders-workshop-in-kisumu-37-people-showed-up-ready-to-learn-and-build/11012</link>
+    <guid>https://talk.nervos.org/t/ckb-builders-workshop-in-kisumu-37-people-showed-up-ready-to-learn-and-build/11012#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 14:19:09 +0000</pubDate>
+    <description>From a CKB Transfer to a Fiber Payment By FidelCoder | 16 October 2026 · 10:00 AM–3:30 PM EAT · Zone01 Kisumu Campus, Kenya 21920×1092 547 KB Event announcements and coverage Venue preview (posted one day before): Umojaverse on X: "Kisumu, take a look at tomorrow’s playground Today, it’s a venue. Tomorrow, it’s YOU, laptops open, questions flying, and builders meeting builders. @NervosNetwork @Zone01Kisumu who’s pulling up? Get in the room https://t.co/khDmxipeRR" / X Event-day announcement: Umojaverse on X: "Kisumu @NervosNetwork is here, let's build on CKB! CKB Builders Workshop: CKB fundamentals + Fiber payments + live demos. Fri 16 Oct 2026, 10AM-3:30PM EAT 📍 Happening at...</description>
+  </item>
+  <item>
+    <title>Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going (1 posts)</title>
+    <link>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968</link>
+    <guid>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 13:35:40 +0000</pubDate>
+    <description>Update: the setup ceremony for the private tally is open. The circuit is frozen at tag private-tally-v2-circuit-freeze and the first contribution is in (mine, as Xiaomao). The beacon will be the hash of CKB mainnet block 20,870,000, so contributions need to land before then, roughly by 30 October. Why it matters: the private tally won’t go to testnet with a single-party key. With a ceremony, the key is safe as long as one contributor throws away their randomness. How to contribute: You need a laptop with Node.js 18+. It’s a relay, one person at a time, because each key builds on the previous one. Reply here or open a “Turn request: ” issue on the repo, and I’ll tag you when it’s your...</description>
+  </item>
+  <item>
+    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
+    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-3</guid>
+    <pubDate>Tue, 20 Oct 2026 13:27:57 +0000</pubDate>
+    <description>Hi @Officeyutong, We are pleased to inform you that the Spark Project Committee has approved Seedsong’s application, with a funding amount of $1,000 (paid entirely in CKB, at an exchange rate of 0.001471 USD per CKB, which is equivalent to 679,348 CKB). The committee recognizes the unique value of this project in extending the Spore DOB technology to the audio domain. We particularly appreciate its clever architectural design – storing the WASM decoder on the chain while using a lightweight client-side WASM to implement front-end functions without any external dependencies, which is fully in line with CKB’s core principles. This approach of combining “DNA technology with on-chain...</description>
+  </item>
+  <item>
+    <title>Spark Program | Fiber Mystery Shopper: independent paid-use tests of live Fiber services (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994</link>
+    <guid>https://talk.nervos.org/t/spark-program-fiber-mystery-shopper-independent-paid-use-tests-of-live-fiber-services/10994#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 12:41:16 +0000</pubDate>
+    <description>Hi @AI_Ttimes, Thank you for taking the time to prepare and submit the Fiber Mystery Shopper proposal. The committee has completed its review, and after careful consideration, it has regrettably decided not to approve Fiber Mystery Shopper at this stage. We would like to explain frankly the reasons behind this decision: The actual needs have not been clearly established: Although the August report did mention that “individual users, duplicate payments, and recovery tests can provide useful evidence,” the committee believes that the proposal merely focuses on “collecting more data,” without specifying which specific and recurring problem this tool will help solve within the Fiber...</description>
+  </item>
+  <item>
+    <title>Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998</link>
+    <guid>https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 12:40:45 +0000</pubDate>
+    <description>Hi @Ticoworld, Thank you for taking the time to submit the proposal, and for sharing the detailed project overview, GitHub repository, and clear technical reasoning behind RGB++ Resume. The committee has completed its review and, after careful discussion, regrets to reject the RGB++ Resume project at this time. We want to be transparent about the reasoning behind this decision: The demand is real, but third-party involvement in transfer stability is risky: The committee acknowledges that interrupted RGB++ transfers are a genuine pain point, and we appreciate your thoughtful analysis of the problem space—particularly the flowchart demonstrating how an app can lose state across wallet...</description>
+  </item>
+  <item>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-2</guid>
+    <pubDate>Tue, 20 Oct 2026 12:30:40 +0000</pubDate>
+    <description>Hi @NNCBN, We’re glad to see that your software is ready. The committee would like to confirm the status of the current milestone with you and determine when to start the one-month trial period. Best regards, xingtian On behalf of the Spark Program Committee 2026 October 20, Fourth Weekly Report Introduction to Qubes-OS and how to handle the forwarding of network traffic between SystemApp-Qubes: We need IP of: destination Qube sys-firewall sys-net forward/NAT Port in sys-net and sys-firewall allow Port in destination Qube allow Router TCP Port to LAN-IP of sys-net Note: To have the rules persistant, even after system-restart, it must be configured in the Disposable-Template of NetQubes. I...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB Wallet Behaviour Intelligence (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 12:14:34 +0000</pubDate>
+    <description>Hi @mulinya ， 很高兴地与你分享， 委员会已经通过了 Wallet Behaviour Intelligence 项目的结项评估。 在最后，委员会邀请你将最终的特征定义文档同步更新到 Github 仓库中，以保证 GitHub 仓库与 Nervos Talk 论坛两个平台的交付内容一致。一旦委员会确认你已经将文档发送至仓库，便会尽快启动剩余项目资助的发放。 祝好， xingtian 谨代表Spark计划委员会</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 12:10:02 +0000</pubDate>
+    <description>Hi @TinyuengKwan ， 很高兴看到你已经发布 week6-0.2.0，正式进入结项阶段。对于当前的结项交付物，委员会希望能邀请你补充面向非技术社区成员的文档，用以提升社区整体的参与程度。 如有任何想法，欢迎与我们联系。 祝好， 行天 谨代表Spark计划委员会</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 10:54:15 +0000</pubDate>
+    <description>Vote is open: https://dao.ckb.community/thread/vot-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb-80561 Closes Oct 27. Thanks to everyone who liked and commented here. If you have a Nervos DAO deposit bound through Neuron, your vote is what counts now.</description>
+  </item>
+  <item>
+    <title>From CKB transactions to wallet connections: three design lessons from CCC (1 posts)</title>
+    <link>https://talk.nervos.org/t/from-ckb-transactions-to-wallet-connections-three-design-lessons-from-ccc/11011</link>
+    <guid>https://talk.nervos.org/t/from-ckb-transactions-to-wallet-connections-three-design-lessons-from-ccc/11011#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 06:06:26 +0000</pubDate>
+    <description>Sending 100 CKB sounds simple: choose a recipient, enter the amount, and sign. For a DApp developer, that means deciding which cells to spend, creating the recipient’s output and any change, calculating a fee, and getting the transaction signed through the user’s wallet. Those pieces depend on one another. Adding inputs changes the transaction’s size, and the size changes the fee. Different wallets can also require different signing steps. CKBers’ Codebase (CCC) is a TypeScript SDK that helps applications handle these details. Our work, When EVM Defaults Break: Three SDK Patterns for UTXO-Family Wallets, draws three design lessons from the work already done in CCC. It is a collaboration...</description>
+  </item>
+  <item>
+    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
+    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 04:14:49 +0000</pubDate>
+    <description>M3 Payment 24000*20% @0.0015 = 3,200,000 CKB https://explorer.nervos.org/transaction/0xd66bd20ca645b604ef0bf60d40693d7dda05dba463c2cb63214f0f2948f00d07</description>
+  </item>
+  <item>
+    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
+    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 04:08:56 +0000</pubDate>
+    <description>The upfront payment 2500/0.0015 = 1,666,667 CKB https://explorer.nervos.org/transaction/0xc167f79c0ffc6148d9e74f06cc5040ccf9a886c7b0fdd5d240451941e59608a7</description>
   </item>
 </channel>
 </rss>
