@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Wed, 21 Oct 2026 18:08:24 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-22</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-21:daily-brief</guid>
+    <pubDate>Wed, 21 Oct 2026 20:26:53 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛最受关注的是 dCKB 的 post-post-mortem：有人取走了 dCKB 背后的 NervosDAO 存款，11.71M CKB 流出，仅销毁 600 dCKB，dCKB 目前已无背书 [S01]。讨论中有人称资金进入了 Binance [S02]，随后社区围绕能否借 KYC 追查责任人继续讨论 [S03, S05]。与此同时，开发侧并不冷清：FiberNuts 社区市场开放 CKB Testnet 公共测试 [S09]，CKB Contract Flow 发布合约 Cell 流转可视化工具 [S11]，CKB-VM Sail 项目也更新了 week6-0.2.0 的非技术说明 [S08]。社区内容方面，Dev Rel Reddit AMA recap with Team Lead Hanssen 也已发布 [S13]。 ## 重点话题 dCKB 资金被取走且已无背书，11.71M CKB 流出、仅 600 dCKB 被销毁是今天最受关注的事件 [S01]；有成员称资金进入 Binance [S02]，phroi 对该说法表示感谢确认，并讨论即时兑换服务 KYC 能提供的信息边界 [S05]。围绕兑换问题的讨论串再次转引了该事件，但材料中没有展开“三种方案”的具体内容 [S14]。 FiberNuts Community Market 已在 CKB Testnet 开放公共测试，参与者可从项目运营的 faucet 领取 10 test RUSD [S09]；有社区成员反馈用户体验顺畅，并认为适合用在 CKB 社区活动中 [S10]。...</description>
+  </item>
+  <item>
+    <title>dCKB post-post-mortem: now the funds are gone (5 posts)</title>
+    <link>https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016</link>
+    <guid>https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016#recent-5</guid>
+    <pubDate>Wed, 21 Oct 2026 18:08:24 +0000</pubDate>
+    <description>Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline 2021: NexisDAO launched dCKB. You deposit in NervosDAO through their scripts. You get dCKB plus a receipt. By design, only the original depositor can unlock the deposit. This doomed dCKB. January 2023: the NexisDAO site closed. The code was orphaned. Depositors were locked out. August 2023: I built dCKB Rescuer, a front-end so those depositors could withdraw. It uses the NexisDAO scripts as deployed on-chain. I did not write, change or redeploy them. September 2023 to May 2024: 10...</description>
+  </item>
+  <item>
+    <title>Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005</link>
+    <guid>https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 16:54:37 +0000</pubDate>
+    <description>Hi @xingtianchunyan, Thanks for confirming, no problem at all, and thank you for passing my question to the committee. In case it helps while they discuss it, here is MatchLock in plain terms. Imagine two people who want to make a private deal, one selling something and one buying it. Neither wants to name a price first, because the other side could use it against them. So each seals their terms in an envelope and puts their money into escrow. Once both envelopes are in, they are opened together. If the terms fit, the swap happens in a single step. If they don’t fit, or someone never opens their envelope, the escrow returns the money automatically after a deadline. The sealed envelope is...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-2</guid>
+    <pubDate>Wed, 21 Oct 2026 16:33:48 +0000</pubDate>
+    <description>好的谢谢 @xingtianchunyan 的祝贺与关心。我稍后会在论坛内把非技术性的文档贴在评论区。 非技术成员应该怎样参与、理解本项目？ 你可能关心 CKB 的基础设施是否可靠，却不想先学会编程才能加入讨论。这篇文章介绍一个具体项目：我们怎样检查 CKB 运行合约的底层程序，以及社区怎样帮助别人理解、检查这些结果。 你不需要安装软件。读完后，指出一句看不懂的话、提出一个希望弄清的问题，就已经是有用的参与。 本文介绍 week6-0.2.0 的交付成果。截至 2026 年 10 月 21 日查阅到的公开记录，独立第三方复现仍未完成；后续进展以项目状态页为准。 它在检查什么，为什么与社区有关？ CKB-VM 是 CKB 执行合约脚本的底层程序。可以把它想成一台计算器：合约给出计算步骤，它负责执行。即使题目写对了，计算器如何处理每一步仍然值得检查。 这项 Spark 项目把固定版本的 CKB-VM 与 RISC-V 的 Sail 模型进行对照。Sail 模型可以理解为一份能运行的指令说明书：给它同样的指令和约定的起始状态，也能观察它怎样计算。 检查的价值在于，把“结果应该一样”变成别人可以查看、重做和质疑的证据。如果两边不一致，工具会保留输入与执行记录，帮助开发者定位原因。原因可能在被测程序、模型配置或检查工具里，需要进一步分析。 对社区而言，这也提供了一种讨论资助成果的方式：除了看项目是否发布，还可以追问“检查了什么”“证据在哪里”“别人能否重做”。 已经交出了什么？ 第一件：逐步对答案的工具。 这次选择了加法、加常数和条件跳转三类基础操作，技术名称分别是...</description>
+  </item>
+  <item>
+    <title>FiberNuts Community Market: A Testnet App for Cashu + Fiber (2 posts)</title>
+    <link>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792</link>
+    <guid>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792#recent-2</guid>
+    <pubDate>Wed, 21 Oct 2026 16:01:42 +0000</pubDate>
+    <description>Gm CKB community, The FiberNuts Community Market is now open for public testing on CKB Testnet: https://market.fibernuts.xyz The aim is to make Cashu + Fiber easy to experience as an application. An attendee can claim 10 test RUSD from a bounded, project-operated faucet directly into the browser, without running a Fiber node. A vendor can prepare a RUSD charge for something simple such as a coffee, the attendee can scan or paste the request, and the vendor’s balance changes only after the received Cashu token has been checked and swapped for fresh proofs at the mint. I ran that complete flow against the public deployment. The screenshots below are from the same live CKB testnet payment....</description>
+  </item>
+  <item>
+    <title>CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts (2 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014</link>
+    <guid>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014#recent-2</guid>
+    <pubDate>Wed, 21 Oct 2026 15:44:06 +0000</pubDate>
+    <description>Hi everyone, I built a small open-source tool that turns the cell transition rules of CKB contracts into visual, one-page explanations, so you can understand a contract quickly. Site: CKB 合约 Cell 流转约束 / CKB Contract Cell-Flow Constraints Repo: GitHub - gpBlockchain/ckb-contract-flow-html: https://gpblockchain.github.io/ckb-contract-flow-html/ · GitHub 1-index1280×1000 89.5 KB Contract pages One card per state transition (e.g. 0→1, 1→1, 1→0), showing the input and output cell structure (type codeHash/args, data) with the restricted fields highlighted and every field explained. Composite fields like args, witness and since are broken down byte by byte with hex examples. Each constraint maps...</description>
+  </item>
+  <item>
+    <title>CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017</link>
+    <guid>https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 14:35:28 +0000</pubDate>
+    <description>CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen image1920×1080 859 KB Cheers everyone! Thanks to everyone who joined our Reddit AMA with @Hanssen (Nervos Talk link: CKBA Dev Rel AMA), who leads CKBA’s Dev Rel team. As part of our series introducing CKBA’s team leaders, the discussion covered the technical aspects of CKB. Hanssen has been part of the Nervos CKB ecosystem for more than five years. Hanssen originally joined the Nervos Foundation as a core developer and stepped into the DevRel team lead role when CKBA was formed. Hanssen created and maintains CCC (CKBer’s Codebase / Common Chains Connector), a major JavaScript/TypeScript SDK and toolchain for building on CKB, alongside...</description>
+  </item>
+  <item>
+    <title>讨论：解决 dCKB 兑换问题的三种方案 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dckb/6833</link>
+    <guid>https://talk.nervos.org/t/dckb/6833#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 13:27:35 +0000</pubDate>
+    <description>dCKB post-post-mortem: now the funds are gone Applications &amp; Ecosystem Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline 2021: NexisDAO launched dCKB. You deposit in NervosDAO through their scripts. You get dCKB plus a receipt. By design, only the original depositor can unlock the deposit. This doomed dCKB. January 2023: the NexisDAO site closed. The code was orphaned. Depositors were locked out. August 2023: …</description>
+  </item>
+  <item>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 13:10:24 +0000</pubDate>
+    <description>Tranfr — Progress Update Fixed developer toolkit’s network-related bugs have been fixed, and a working testnet demo now supports funding, renewing, and reclaiming protected wallets, with a live deadline countdown. Completed so far Fixed network-related bugs in the developer toolkit. Built a working testnet demo supporting funding, renewal, and owner reclaim, with a live deadline countdown. Completed the technical specification and security review, identifying contract-admin controls that must be secured before launch. Complete work on safeguards to prevent invalid account configurations and preserve tokens during transfers. Next steps Finalize the additional contract safeguards. Finlize...</description>
+  </item>
+  <item>
+    <title>Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015</link>
+    <guid>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015#recent-2</guid>
+    <pubDate>Wed, 21 Oct 2026 11:07:25 +0000</pubDate>
+    <description>1. Project Overview Project name: Bees Network One-line summary: A desktop “bee” node that lets anyone contribute real-world observations (HTTP, DNS, TLS) to AI agents and get paid on-chain for verified work. Positioning: end-user desktop application + on-chain reward protocol (a working MVP already deployed on CKB Pudge testnet). Bees Network turns ordinary computers into a distributed observation layer for AI agents. Each node runs a small desktop app, receives observation tasks from an orchestrator, executes them, reports results, and is paid per epoch. 2. Team Profile Applicant / core developer: North Bear — full-stack + Rust, protocol and contract development. Email:...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB Wallet Behaviour Intelligence (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 09:26:14 +0000</pubDate>
+    <description>Hi xingtianchunyan, I sincerely appreciate the committee’s final approval and the thoughtful feedback provided throughout the project’s development and review. I’ve now added the feature definitions to GitHub, consistent with what was shared here on the forum. The document is available here: github.com/FadhilMulinya/ckb-intel FEATURE_DEFINITIONS.md main # CKB Wallet Behaviour Intelligence - Feature Definitions ## Overview The CKB Wallet Behaviour Intelligence project analyzes observable on-chain wallet activity on Nervos CKB using features extracted from transactions and Cells. These features measure capacity usage, Cell relationships, and type-script characteristics to help identify...</description>
+  </item>
+  <item>
+    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (1 posts)</title>
+    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
+    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-1</guid>
+    <pubDate>Wed, 21 Oct 2026 00:02:53 +0000</pubDate>
+    <description>I can see some very good design decisions here, but also a few potential pitfalls worth looking into. I’ll go through it more carefully and give you a detailed response on Friday evening.</description>
+  </item>
+  <item>
+    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
+    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
+    <pubDate>Tue, 20 Oct 2026 21:09:21 +0000</pubDate>
+    <description>Thank you I have begun working on it. And will be dropping updates ..</description>
+  </item>
+</channel>
+</rss>

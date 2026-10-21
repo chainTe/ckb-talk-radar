@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-21 04:26:39 CST - 2026-10-22 04:26:39 CST</span>
+          <span>生成时间 2026-10-22 04:26:53 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">20</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">15</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最受关注的是 dCKB 的 post-post-mortem：有人取走了 dCKB 背后的 NervosDAO 存款，11.71M CKB 流出，仅销毁 600 dCKB，dCKB 目前已无背书 <span class="citations">[<a href="#source-s01">S01</a>]</span>。讨论中有人称资金进入了 Binance <span class="citations">[<a href="#source-s02">S02</a>]</span>，随后社区围绕能否借 KYC 追查责任人继续讨论 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>]</span>。与此同时，开发侧并不冷清：FiberNuts 社区市场开放 CKB Testnet 公共测试 <span class="citations">[<a href="#source-s09">S09</a>]</span>，CKB Contract Flow 发布合约 Cell 流转可视化工具 <span class="citations">[<a href="#source-s11">S11</a>]</span>，CKB-VM Sail 项目也更新了 week6-0.2.0 的非技术说明 <span class="citations">[<a href="#source-s08">S08</a>]</span>。社区内容方面，Dev Rel Reddit AMA recap with Team Lead Hanssen 也已发布 <span class="citations">[<a href="#source-s13">S13</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>dCKB 资金被取走且已无背书，11.71M CKB 流出、仅 600 dCKB 被销毁是今天最受关注的事件 <span class="citations">[<a href="#source-s01">S01</a>]</span>；有成员称资金进入 Binance <span class="citations">[<a href="#source-s02">S02</a>]</span>，phroi 对该说法表示感谢确认，并讨论即时兑换服务 KYC 能提供的信息边界 <span class="citations">[<a href="#source-s05">S05</a>]</span>。围绕兑换问题的讨论串再次转引了该事件，但材料中没有展开“三种方案”的具体内容 <span class="citations">[<a href="#source-s14">S14</a>]</span>。</li>
+<li>FiberNuts Community Market 已在 CKB Testnet 开放公共测试，参与者可从项目运营的 faucet 领取 10 test RUSD <span class="citations">[<a href="#source-s09">S09</a>]</span>；有社区成员反馈用户体验顺畅，并认为适合用在 CKB 社区活动中 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+<li>CKB Contract Flow 发布了一个开源工具，把 CKB 合约的 cell transition 规则做成可视化单页解释，主题覆盖 46 个 CKB 合约 <span class="citations">[<a href="#source-s11">S11</a>]</span>；社区反馈 byte-by-byte args 和 since breakdown 很有用，并有人询问是否接受 testnet-only 社区合约、愿意贡献 CrowdCell 的 transition 说明 <span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>CKB-VM Sail Validation Sprint 发布了面向非技术成员的项目说明，介绍 week6-0.2.0 交付成果，并明确截至 2026 年 10 月 21 日独立第三方复现仍未完成 <span class="citations">[<a href="#source-s08">S08</a>]</span>；作者同时表示稍后会把非技术性文档贴到论坛评论区 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>Spark 项目线也有多条更新：Bees Network 新提案介绍一个桌面“bee”节点，让任何人贡献 HTTP、DNS、TLS 观察给 AI agents 并在链上获得验证工作的报酬 <span class="citations">[<a href="#source-s16">S16</a>]</span>；CKB Wallet Behaviour Intelligence 获得委员会最终批准并补充了 GitHub 功能定义 <span class="citations">[<a href="#source-s18">S18</a>]</span>；Tranfr 修复开发者工具网络问题，testnet demo 已支持 protected wallets 的 funding、renewing 和 reclaiming <span class="citations">[<a href="#source-s15">S15</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>dCKB 的资金追查和兑换善后仍是首要观察点：资金进入 Binance 的说法已被讨论，但后续能否推进追责、以及兑换方案是否会从转引事件走向具体提案，材料中还没有答案 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s05">S05</a>, <a href="#source-s14">S14</a>]</span>。</li>
+<li>CKB-VM Sail 的独立第三方复现尚未完成，后续进展需要看项目状态页 <span class="citations">[<a href="#source-s08">S08</a>]</span>；非技术文档贴出后，也可能影响社区成员参与理解的门槛 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>Twine 的 P2P PoC 收到“设计不错但存在潜在陷阱”的反馈，对方表示周五晚给详细回复，值得看后续是否落到具体问题 <span class="citations">[<a href="#source-s19">S19</a>]</span>；FiberNuts 公共测试的社区反馈是否转化为活动使用，也值得观察 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/1">dCKB post-post-mortem: now the funds are gone</a></div><div class="source-meta">phroi · 2026-10-21 21:18:01 CST</div><div>Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline 2021: NexisDAO launched dCKB. You deposit in NervosDAO through their...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/2">dCKB post-post-mortem: now the funds are gone</a></div><div class="source-meta">yixiu.ckbfans.bit · 2026-10-21 21:53:36 CST</div><div>phroi: Exchange hot wallet that swept it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0w7teyh77d48krwz2837wwejrppzw905cm588n0 资金进入了Binance。</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/3">dCKB post-post-mortem: now the funds are gone</a></div><div class="source-meta">SalmanDev · 2026-10-21 22:00:12 CST</div><div>Good work. Binance requires KYC to move such amount, there might a way to catch the culprit</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/4">dCKB post-post-mortem: now the funds are gone</a></div><div class="source-meta">knmo · 2026-10-22 00:54:36 CST</div><div>Services can automate the use of swap platforms, so that the user does not have to interact with the swap platform directly. crypto swap aggregator / instant swap aggregator / non-custodial exchange</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/5">dCKB post-post-mortem: now the funds are gone</a></div><div class="source-meta">phroi · 2026-10-22 02:08:24 CST</div><div>yixiu.ckbfans.bit: The funds went into Binance Thanks for confirming!! That was my suspicion too! SalmanDev: Binance requires KYC to move such amount You would only get the identity of the ones operating the instant swap service. A similar information can be achieved by just...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005/5">Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB</a></div><div class="source-meta">Chaichamp · 2026-10-22 00:54:37 CST</div><div>Hi @xingtianchunyan, Thanks for confirming, no problem at all, and thank you for passing my question to the committee. In case it helps while they discuss it, here is MatchLock in plain terms. Imagine two people who want to make a private deal, one selling something and one...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/28">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></div><div class="source-meta">TinyuengKwan · 2026-10-22 00:29:48 CST</div><div>好的谢谢 @xingtianchunyan 的祝贺与关心。我稍后会在论坛内把非技术性的文档贴在评论区。</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/29">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></div><div class="source-meta">TinyuengKwan · 2026-10-22 00:33:48 CST</div><div>非技术成员应该怎样参与、理解本项目？ 你可能关心 CKB 的基础设施是否可靠，却不想先学会编程才能加入讨论。这篇文章介绍一个具体项目：我们怎样检查 CKB 运行合约的底层程序，以及社区怎样帮助别人理解、检查这些结果。 你不需要安装软件。读完后，指出一句看不懂的话、提出一个希望弄清的问题，就已经是有用的参与。 本文介绍 week6-0.2.0 的交付成果。截至 2026 年 10 月 21 日查阅到的公开记录，独立第三方复现仍未完成；后续进展以项目状态页为准。 它在检查什么，为什么与社区有关？ CKB-VM 是 CKB...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/2">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></div><div class="source-meta">Code3ks · 2026-10-21 15:14:44 CST</div><div>Gm CKB community, The FiberNuts Community Market is now open for public testing on CKB Testnet: https://market.fibernuts.xyz The aim is to make Cashu + Fiber easy to experience as an application. An attendee can claim 10 test RUSD from a bounded, project-operated faucet...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/3">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></div><div class="source-meta">Ajayi_Victor · 2026-10-22 00:01:42 CST</div><div>I think this would be nice to use in one of the ckb community event, user experience was seamless.</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/1">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a></div><div class="source-meta">guopeng_lin · 2026-10-21 11:52:24 CST</div><div>Hi everyone, I built a small open-source tool that turns the cell transition rules of CKB contracts into visual, one-page explanations, so you can understand a contract quickly. Site: CKB 合约 Cell 流转约束 / CKB Contract Cell-Flow Constraints Repo: GitHub - gpBlockchain/ckb-...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/2">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a></div><div class="source-meta">Ayoub_Lesfer · 2026-10-21 23:44:06 CST</div><div>really handy, the byte-by-byte args and since breakdowns are what I always end up re-deriving by hand. are you open to testnet-only community contracts? I’d be happy to write up the transitions for CrowdCell’s campaign type and pledge lock in whatever format you need</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/1">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a></div><div class="source-meta">zz_tovarishch · 2026-10-21 22:35:28 CST</div><div>CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen image1920×1080 859 KB Cheers everyone! Thanks to everyone who joined our Reddit AMA with @Hanssen (Nervos Talk link: CKBA Dev Rel AMA), who leads CKBA’s Dev Rel team. As part of our series introducing CKBA’s team leaders, the...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/dckb/6833/12">讨论：解决 dCKB 兑换问题的三种方案</a></div><div class="source-meta">phroi · 2026-10-21 21:27:35 CST</div><div>dCKB post-post-mortem: now the funds are gone Applications &amp; Ecosystem Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/19">Tranfr — Programmable Recovery for CKB</a></div><div class="source-meta">SalmanDev · 2026-10-21 21:10:24 CST</div><div>Tranfr — Progress Update Fixed developer toolkit’s network-related bugs have been fixed, and a working testnet demo now supports funding, renewing, and reclaiming protected wallets, with a live deadline countdown. Completed so far Fixed network-related bugs in the developer...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/1">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">NOrththebear · 2026-10-21 18:36:40 CST</div><div>1. Project Overview Project name: Bees Network One-line summary: A desktop “bee” node that lets anyone contribute real-world observations (HTTP, DNS, TLS) to AI agents and get paid on-chain for verified work. Positioning: end-user desktop application + on-chain reward protocol...</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/2">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">NOrththebear · 2026-10-21 19:07:25 CST</div><div>hello @xingtianchunyan , can’t include links in the proposal body , how should i navigate this?</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/32">Spark Program | CKB Wallet Behaviour Intelligence</a></div><div class="source-meta">mulinya · 2026-10-21 17:26:14 CST</div><div>Hi xingtianchunyan, I sincerely appreciate the committee’s final approval and the thoughtful feedback provided throughout the project’s development and review. I’ve now added the feature definitions to GitHub, consistent with what was shared here on the forum. The document is...</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/10">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a></div><div class="source-meta">ArthurZhang · 2026-10-21 08:02:53 CST</div><div>I can see some very good design decisions here, but also a few potential pitfalls worth looking into. I’ll go through it more carefully and give you a detailed response on Friday evening.</div></li><li id="source-s20"><div><code>S20</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/15">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">Jedi_dtechmaker · 2026-10-21 05:09:21 CST</div><div>Thank you I have begun working on it. And will be dropping updates ..</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>12</strong></li><li><span>其他</span><strong>5</strong></li><li><span>生态进展</span><strong>2</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@phroi</span><strong>3</strong></li><li><span>@TinyuengKwan</span><strong>2</strong></li><li><span>@SalmanDev</span><strong>2</strong></li><li><span>@NOrththebear</span><strong>2</strong></li><li><span>@Chaichamp</span><strong>1</strong></li><li><span>@knmo</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>109</span></li><li>you<span>72</span></li><li>can<span>70</span></li><li>are<span>66</span></li><li>has<span>34</span></li><li>one<span>33</span></li><li>on-chain<span>33</span></li><li>data<span>32</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016">dCKB post-post-mortem: now the funds are gone</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-10-22 02:08:24 CST</span><span>SalmanDev, knmo, phroi, yixiu.ckbfans.bit</span></div><p class="excerpt">Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline 2021: NexisDAO launched dCKB. You deposit in...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-22 00:33:48 CST</span><span>TinyuengKwan</span></div><p class="excerpt">好的谢谢 @xingtianchunyan 的祝贺与关心。我稍后会在论坛内把非技术性的文档贴在评论区。 非技术成员应该怎样参与、理解本项目？ 你可能关心 CKB 的基础设施是否可靠，却不想先学会编程才能加入讨论。这篇文章介绍一个具体项目：我们怎样检查 CKB 运行合约的底层程序，以及社区怎样帮助别人理解、检查这些结果。 你不需要安装软件。读完后，指出一句看不懂的话、提出一个希望弄清的问题，就已经是有用的参与。 本文介绍 week6-0.2.0 的交付成果。截至 2026 年 10 月 21...</p><div class="tag-row"><span>CKB-VM</span><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-22 00:01:42 CST</span><span>Ajayi_Victor, Code3ks</span></div><p class="excerpt">Gm CKB community, The FiberNuts Community Market is now open for public testing on CKB Testnet: https://market.fibernuts.xyz The aim is to make Cashu + Fiber easy to experience as an application. An attendee can claim 10 test RUSD from a bounded, project-...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 23:44:06 CST</span><span>Ayoub_Lesfer, guopeng_lin</span></div><p class="excerpt">Hi everyone, I built a small open-source tool that turns the cell transition rules of CKB contracts into visual, one-page explanations, so you can understand a contract quickly. Site: CKB 合约 Cell 流转约束 / CKB Contract Cell-Flow Constraints Repo: GitHub -...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 19:07:25 CST</span><span>NOrththebear</span></div><p class="excerpt">1. Project Overview Project name: Bees Network One-line summary: A desktop “bee” node that lets anyone contribute real-world observations (HTTP, DNS, TLS) to AI agents and get paid on-chain for verified work. Positioning: end-user desktop application + on-...</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005">Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-22 00:54:37 CST</span><span>Chaichamp</span></div><p class="excerpt">Hi @xingtianchunyan, Thanks for confirming, no problem at all, and thank you for passing my question to the committee. In case it helps while they discuss it, here is MatchLock in plain terms. Imagine two people who want to make a private deal, one selling...</p><div class="tag-row"><span>Rejection</span><span>appchain</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 22:35:28 CST</span><span>zz_tovarishch</span></div><p class="excerpt">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen image1920×1080 859 KB Cheers everyone! Thanks to everyone who joined our Reddit AMA with @Hanssen (Nervos Talk link: CKBA Dev Rel AMA), who leads CKBA’s Dev Rel team. As part of our series introducing...</p><div class="tag-row"><span>AMA</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dckb/6833">讨论：解决 dCKB 兑换问题的三种方案</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 21:27:35 CST</span><span>phroi</span></div><p class="excerpt">dCKB post-post-mortem: now the funds are gone Applications &amp; Ecosystem Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now...</p><div class="tag-row"><span>NexisDAO</span><span>lang-zh</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644">Tranfr — Programmable Recovery for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 21:10:24 CST</span><span>SalmanDev</span></div><p class="excerpt">Tranfr — Progress Update Fixed developer toolkit’s network-related bugs have been fixed, and a working testnet demo now supports funding, renewing, and reclaiming protected wallets, with a live deadline countdown. Completed so far Fixed network-related bugs...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338">Spark Program | CKB Wallet Behaviour Intelligence</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 17:26:14 CST</span><span>mulinya</span></div><p class="excerpt">Hi xingtianchunyan, I sincerely appreciate the committee’s final approval and the thoughtful feedback provided throughout the project’s development and review. I’ve now added the feature definitions to GitHub, consistent with what was shared here on the...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 08:02:53 CST</span><span>ArthurZhang</span></div><p class="excerpt">I can see some very good design decisions here, but also a few potential pitfalls worth looking into. I’ll go through it more carefully and give you a detailed response on Friday evening.</p><div class="tag-row"><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-21 05:09:21 CST</span><span>Jedi_dtechmaker</span></div><p class="excerpt">Thank you I have begun working on it. And will be dropping updates ..</p><div class="tag-row"><span>CKB</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-22 02:08:24 CST</time><strong><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/5">dCKB post-post-mortem: now the funds are gone</a> · @phroi</strong><p>yixiu.ckbfans.bit: The funds went into Binance Thanks for confirming!! That was my suspicion too! SalmanDev: Binance requires KYC to move such amount You would only get the identity of the ones operating the instant...</p></article>
+<article class="timeline-row"><time>2026-10-22 00:54:37 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-matchlock-a-reusable-script-primitive-for-private-until-match-bilateral-settlement-on-ckb/11005/5">Spark Program | MatchLock: A Reusable Script Primitive for Private-Until-Match Bilateral Settlement on CKB</a> · @Chaichamp</strong><p>Hi @xingtianchunyan, Thanks for confirming, no problem at all, and thank you for passing my question to the committee. In case it helps while they discuss it, here is MatchLock in plain terms. Imagine two people who...</p></article>
+<article class="timeline-row"><time>2026-10-22 00:54:36 CST</time><strong><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/4">dCKB post-post-mortem: now the funds are gone</a> · @knmo</strong><p>Services can automate the use of swap platforms, so that the user does not have to interact with the swap platform directly. crypto swap aggregator / instant swap aggregator / non-custodial exchange</p></article>
+<article class="timeline-row"><time>2026-10-22 00:33:48 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/29">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a> · @TinyuengKwan</strong><p>非技术成员应该怎样参与、理解本项目？ 你可能关心 CKB 的基础设施是否可靠，却不想先学会编程才能加入讨论。这篇文章介绍一个具体项目：我们怎样检查 CKB 运行合约的底层程序，以及社区怎样帮助别人理解、检查这些结果。 你不需要安装软件。读完后，指出一句看不懂的话、提出一个希望弄清的问题，就已经是有用的参与。 本文介绍 week6-0.2.0 的交付成果。截至 2026 年 10 月 21...</p></article>
+<article class="timeline-row"><time>2026-10-22 00:29:48 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/28">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a> · @TinyuengKwan</strong><p>好的谢谢 @xingtianchunyan 的祝贺与关心。我稍后会在论坛内把非技术性的文档贴在评论区。</p></article>
+<article class="timeline-row"><time>2026-10-22 00:01:42 CST</time><strong><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/3">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a> · @Ajayi_Victor</strong><p>I think this would be nice to use in one of the ckb community event, user experience was seamless.</p></article>
+<article class="timeline-row"><time>2026-10-21 23:44:06 CST</time><strong><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/2">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a> · @Ayoub_Lesfer</strong><p>really handy, the byte-by-byte args and since breakdowns are what I always end up re-deriving by hand. are you open to testnet-only community contracts? I’d be happy to write up the transitions for CrowdCell’s...</p></article>
+<article class="timeline-row"><time>2026-10-21 22:35:28 CST</time><strong><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/1">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a> · @zz_tovarishch</strong><p>CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen image1920×1080 859 KB Cheers everyone! Thanks to everyone who joined our Reddit AMA with @Hanssen (Nervos Talk link: CKBA Dev Rel AMA), who leads CKBA’s Dev Rel...</p></article>
+<article class="timeline-row"><time>2026-10-21 22:00:12 CST</time><strong><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/3">dCKB post-post-mortem: now the funds are gone</a> · @SalmanDev</strong><p>Good work. Binance requires KYC to move such amount, there might a way to catch the culprit</p></article>
+<article class="timeline-row"><time>2026-10-21 21:53:36 CST</time><strong><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/2">dCKB post-post-mortem: now the funds are gone</a> · @yixiu.ckbfans.bit</strong><p>phroi: Exchange hot wallet that swept it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0w7teyh77d48krwz2837wwejrppzw905cm588n0 资金进入了Binance。</p></article>
+<article class="timeline-row"><time>2026-10-21 21:27:35 CST</time><strong><a href="https://talk.nervos.org/t/dckb/6833/12">讨论：解决 dCKB 兑换问题的三种方案</a> · @phroi</strong><p>dCKB post-post-mortem: now the funds are gone Applications &amp; Ecosystem Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with...</p></article>
+<article class="timeline-row"><time>2026-10-21 21:18:01 CST</time><strong><a href="https://talk.nervos.org/t/dckb-post-post-mortem-now-the-funds-are-gone/11016/1">dCKB post-post-mortem: now the funds are gone</a> · @phroi</strong><p>Hey all, bad news for dCKB holders. Someone drained the NervosDAO deposits behind dCKB. 11.71M CKB out, only 600 dCKB burned. Then claimed it with interest and sold it. dCKB is now unbacked. dCKB timeline 2021:...</p></article>
+<article class="timeline-row"><time>2026-10-21 21:10:24 CST</time><strong><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/19">Tranfr — Programmable Recovery for CKB</a> · @SalmanDev</strong><p>Tranfr — Progress Update Fixed developer toolkit’s network-related bugs have been fixed, and a working testnet demo now supports funding, renewing, and reclaiming protected wallets, with a live deadline countdown....</p></article>
+<article class="timeline-row"><time>2026-10-21 19:07:25 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/2">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @NOrththebear</strong><p>hello @xingtianchunyan , can’t include links in the proposal body , how should i navigate this?</p></article>
+<article class="timeline-row"><time>2026-10-21 18:36:40 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/1">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @NOrththebear</strong><p>1. Project Overview Project name: Bees Network One-line summary: A desktop “bee” node that lets anyone contribute real-world observations (HTTP, DNS, TLS) to AI agents and get paid on-chain for verified work....</p></article>
+<article class="timeline-row"><time>2026-10-21 17:26:14 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/32">Spark Program | CKB Wallet Behaviour Intelligence</a> · @mulinya</strong><p>Hi xingtianchunyan, I sincerely appreciate the committee’s final approval and the thoughtful feedback provided throughout the project’s development and review. I’ve now added the feature definitions to GitHub,...</p></article>
+<article class="timeline-row"><time>2026-10-21 15:14:44 CST</time><strong><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/2">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a> · @Code3ks</strong><p>Gm CKB community, The FiberNuts Community Market is now open for public testing on CKB Testnet: https://market.fibernuts.xyz The aim is to make Cashu + Fiber easy to experience as an application. An attendee can claim...</p></article>
+<article class="timeline-row"><time>2026-10-21 11:52:24 CST</time><strong><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/1">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a> · @guopeng_lin</strong><p>Hi everyone, I built a small open-source tool that turns the cell transition rules of CKB contracts into visual, one-page explanations, so you can understand a contract quickly. Site: CKB 合约 Cell 流转约束 / CKB Contract...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
