@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-23 04:11:35 CST - 2026-10-24 04:11:35 CST</span>
+          <span>生成时间 2026-10-24 04:11:42 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">7</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>从这批帖子看，过去一天论坛的主要焦点是 CKB IDL 提案，社区反馈整体正面<span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>]</span>。治理方面，Kaze X CKB Unitour 延续提案公布了通过结果<span class="citations">[<a href="#source-s12">S12</a>]</span>。项目侧还有 QuotaCell 测试更新、FiberNuts 测试反馈与作者回应，以及 Omiga 对地址跟踪问题的回应<span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>]</span>。整体上论坛不算冷清，讨论集中在少数提案和项目进展上<span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s12">S12</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>OWK50GA 提出 CKB IDL 提案，请求 5,000 美元 grant，计划构建开源、testnet 优先的 Script Registry，用于发布、发现和独立验证 CKB 脚本接口，并推进 IDL 0.1.1<span class="citations">[<a href="#source-s01">S01</a>]</span>。社区成员正面回应，认为可发现、可验证的脚本接口有助 CKB 可组合性和交易构建，并提到 TypeScript 支持与共享脚本注册表整合<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>]</span>。</li>
+<li>Kaze X CKB Unitour 延续提案以 100% 赞成通过，总投票权重为 183,340,273 CKB、共 13 名投票者，满足通过门槛和最低参与要求，并于 2026 年 10 月 23 日完成投票后验证<span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>QuotaCell 作者更新称，已用发送到隔离 CKB 节点的签名交易测试共享支出额度，不再只依赖早先的合约测试；测试中 Alice 和 Ben 使用独立密钥<span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li>有用户用两个浏览器配置分别作为参与者和商家测试 FiberNuts 市场，首次即成功，领取约 1.5 秒、购买咖啡约 2 秒后商家拿到新 proofs，但也遇到水龙头最后一个 claim 等问题<span class="citations">[<a href="#source-s09">S09</a>]</span>。FiberNuts 作者回应称该项目目前是 demo，未来更新会硬化 FiberNuts 协议，并覆盖反馈中的各点<span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+<li>其他动态包括：有帖子介绍 ICDLT 2026，并提到 UTXO 家族钱包的三种 SDK 模式<span class="citations">[<a href="#source-s06">S06</a>]</span>；防诈骗讨论中，有回复建议怀疑欺诈时在消息里 @ 社区版主<span class="citations">[<a href="#source-s07">S07</a>]</span>；Omiga 团队回应称目前只跟踪所连接钱包的 Recommended CKB 地址，并提到其他 lock 下由 CCC 派生的资产问题<span class="citations">[<a href="#source-s11">S11</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>CKB IDL 提案的资助决定和落地节奏值得跟进，提案计划构建开源、testnet 优先的 Script Registry 并推进 IDL 0.1.1<span class="citations">[<a href="#source-s01">S01</a>]</span>；社区对 TypeScript 支持和共享脚本注册表整合有期待<span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>Kaze X CKB Unitour 延续提案已通过，后续可观察执行和验证相关更新；材料目前只给到投票通过与验证结果，执行安排尚未展开<span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>FiberNuts 测试暴露的水龙头 claim 等问题值得跟进，作者称未来更新会硬化协议并覆盖反馈<span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>]</span>；Omiga 对其他 lock 下资产跟踪的后续处理也可观察，当前材料只显示团队承认跟踪范围有限<span class="citations">[<a href="#source-s11">S11</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/1">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">OWK50GA · 2026-10-23 15:41:30 CST</div><div>Summary One-paragraph Overview: This proposal requests a grant of $5,000 to build the next phase of the CKB IDL lifecycle: an open-source, testnet-first Script Registry for publishing, discovering, and independently verifying CKB script interfaces, together with IDL 0.1.1...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/2">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">Jedi_dtechmaker · 2026-10-23 16:08:57 CST</div><div>Really love the direction of this. Making script interfaces discoverable and verifiable is a massive win for CKB composability. This solves a huge headache for transaction builders. Wishing you the best with this proposal!</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/3">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">OWK50GA · 2026-10-23 16:30:12 CST</div><div>Thank you, Jedi</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/4">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">Code3ks · 2026-10-23 17:34:08 CST</div><div>This is a valuable step toward improving CKB developer experience. A verifiable IDL could help wallets and transaction builders discover script interfaces and catch witness-format errors before submission. TypeScript support and integration with a shared script registry would...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/5">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">3m1n3nc3 · 2026-10-24 03:41:42 CST</div><div>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need before they can integrate with existing contracts or...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/ieee-international-conference-on-dlt-pt-2026/11035/1">IEEE International Conference on DLT - PT 2026</a></div><div class="source-meta">knmo · 2026-10-23 20:18:00 CST</div><div>IEEE International Conference on Distributed Ledger Technologies (ICDLT) 2026! Three SDK Patterns for UTXO-Family Wallets The conference brings together academia and industry, with organizers from Nova School of Business and Economics, NOVA Information Management School, and...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/topic/11022/4">这是诈骗邮件吧？</a></div><div class="source-meta">knmo · 2026-10-23 17:32:45 CST</div><div>You can tag moderators in messages like this here on the forum. If you’re unsure or suspect fraud, please tag a community moderator in the message. @zz_tovarishch</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/4">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-10-23 13:55:16 CST</div><div>A small update on QuotaCell since I introduced it here last week. I’ve now tested the shared spending allowance using signed transactions sent to an isolated CKB node, rather than relying only on the earlier contract tests. For the test, Alice and Ben had separate keys and...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/8">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-23 07:16:02 CST</div><div>Hi, I tried market.fibernuts.xyz last night with two browser profiles, one as attendee and one as vendor. Worked first time. The claim took about 1.5 s and a coffee about 2 s until the vendor had fresh proofs. Nice work. Some things I ran into: I got the last faucet claim of...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/9">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></div><div class="source-meta">Code3ks · 2026-10-23 12:29:15 CST</div><div>Thanks for the valuable feedback, this is a demo project at the moment, future updates includes hardening FiberNuts protocol, hence every point outlined here will be covered.</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/omiga-v1-2-0-release-enhanced-on-chain-asset-management-and-deeper-ccc-integration/10699/4">Omiga v1.2.0 Release: Enhanced On-Chain Asset Management and Deeper CCC Integration</a></div><div class="source-meta">Oliver · 2026-10-23 10:30:58 CST</div><div>Hi @phroi, thank you for the detailed write-up, and for taking the time to post it here even without an issue tracker to file it in. You’re right: Omiga currently only tracks the Recommended CKB address of the connected wallet, so assets held under other locks that CCC derives...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/5">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">zz_tovarishch · 2026-10-23 09:57:23 CST</div><div>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 183,340,273 CKB from 13 voters. Both the approval threshold and minimum participation requirement are met. Post-close verification was completed on 23 October 2026 using...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>10</strong></li><li><span>社区互动</span><strong>1</strong></li><li><span>其他</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@knmo</span><strong>2</strong></li><li><span>@Code3ks</span><strong>2</strong></li><li><span>@OWK50GA</span><strong>2</strong></li><li><span>@3m1n3nc3</span><strong>1</strong></li><li><span>@Jedi_dtechmaker</span><strong>1</strong></li><li><span>@Ticoworld</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>101</span></li><li>idl<span>97</span></li><li>script<span>61</span></li><li>registry<span>57</span></li><li>scripts<span>40</span></li><li>interface<span>38</span></li><li>verification<span>34</span></li><li>deployment<span>27</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 03:41:42 CST</span><span>3m1n3nc3, Code3ks, Jedi_dtechmaker, OWK50GA</span></div><p class="excerpt">Summary One-paragraph Overview: This proposal requests a grant of $5,000 to build the next phase of the CKB IDL lifecycle: an open-source, testnet-first Script Registry for publishing, discovering, and independently verifying CKB script interfaces, together...</p><div class="tag-row"><span>CKB-IDL</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 12:29:15 CST</span><span>Code3ks, LusoCryptoLabs</span></div><p class="excerpt">Hi, I tried market.fibernuts.xyz last night with two browser profiles, one as attendee and one as vendor. Worked first time. The claim took about 1.5 s and a coffee about 2 s until the vendor had fresh proofs. Nice work. Some things I ran into: I got the...</p><div class="tag-row"><span>CKB</span><span>dapp</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ieee-international-conference-on-dlt-pt-2026/11035">IEEE International Conference on DLT - PT 2026</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 20:18:00 CST</span><span>knmo</span></div><p class="excerpt">IEEE International Conference on Distributed Ledger Technologies (ICDLT) 2026! Three SDK Patterns for UTXO-Family Wallets The conference brings together academia and industry, with organizers from Nova School of Business and Economics, NOVA Information...</p><div class="tag-row"><span>Conference</span><span>ICDLT</span><span>IEEE</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/topic/11022">这是诈骗邮件吧？</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 17:32:45 CST</span><span>knmo</span></div><p class="excerpt">You can tag moderators in messages like this here on the forum. If you’re unsure or suspect fraud, please tag a community moderator in the message. @zz_tovarishch</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 13:55:16 CST</span><span>Ticoworld</span></div><p class="excerpt">A small update on QuotaCell since I introduced it here last week. I’ve now tested the shared spending allowance using signed transactions sent to an isolated CKB node, rather than relying only on the earlier contract tests. For the test, Alice and Ben had...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/omiga-v1-2-0-release-enhanced-on-chain-asset-management-and-deeper-ccc-integration/10699">Omiga v1.2.0 Release: Enhanced On-Chain Asset Management and Deeper CCC Integration</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 10:30:58 CST</span><span>Oliver</span></div><p class="excerpt">Hi @phroi, thank you for the detailed write-up, and for taking the time to post it here even without an issue tracker to file it in. You’re right: Omiga currently only tracks the Recommended CKB address of the connected wallet, so assets held under other...</p><div class="tag-row"><span>Nervos-项目动态</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736">[DIS] Kaze X CKB Unitour Continuation Proposal</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-23 09:57:23 CST</span><span>zz_tovarishch</span></div><p class="excerpt">Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 183,340,273 CKB from 13 voters. Both the approval threshold and minimum participation requirement are met. Post-close verification was completed on 23...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span><span>Nervos-项目动态</span><span>Spark-Program</span><span>appchain</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-24 03:41:42 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/5">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @3m1n3nc3</strong><p>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need...</p></article>
+<article class="timeline-row"><time>2026-10-23 20:18:00 CST</time><strong><a href="https://talk.nervos.org/t/ieee-international-conference-on-dlt-pt-2026/11035/1">IEEE International Conference on DLT - PT 2026</a> · @knmo</strong><p>IEEE International Conference on Distributed Ledger Technologies (ICDLT) 2026! Three SDK Patterns for UTXO-Family Wallets The conference brings together academia and industry, with organizers from Nova School of...</p></article>
+<article class="timeline-row"><time>2026-10-23 17:34:08 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/4">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @Code3ks</strong><p>This is a valuable step toward improving CKB developer experience. A verifiable IDL could help wallets and transaction builders discover script interfaces and catch witness-format errors before submission. TypeScript...</p></article>
+<article class="timeline-row"><time>2026-10-23 17:32:45 CST</time><strong><a href="https://talk.nervos.org/t/topic/11022/4">这是诈骗邮件吧？</a> · @knmo</strong><p>You can tag moderators in messages like this here on the forum. If you’re unsure or suspect fraud, please tag a community moderator in the message. @zz_tovarishch</p></article>
+<article class="timeline-row"><time>2026-10-23 16:30:12 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/3">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @OWK50GA</strong><p>Thank you, Jedi</p></article>
+<article class="timeline-row"><time>2026-10-23 16:08:57 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/2">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @Jedi_dtechmaker</strong><p>Really love the direction of this. Making script interfaces discoverable and verifiable is a massive win for CKB composability. This solves a huge headache for transaction builders. Wishing you the best with this...</p></article>
+<article class="timeline-row"><time>2026-10-23 15:41:30 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/1">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @OWK50GA</strong><p>Summary One-paragraph Overview: This proposal requests a grant of $5,000 to build the next phase of the CKB IDL lifecycle: an open-source, testnet-first Script Registry for publishing, discovering, and independently...</p></article>
+<article class="timeline-row"><time>2026-10-23 13:55:16 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/4">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>A small update on QuotaCell since I introduced it here last week. I’ve now tested the shared spending allowance using signed transactions sent to an isolated CKB node, rather than relying only on the earlier contract...</p></article>
+<article class="timeline-row"><time>2026-10-23 12:29:15 CST</time><strong><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/9">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a> · @Code3ks</strong><p>Thanks for the valuable feedback, this is a demo project at the moment, future updates includes hardening FiberNuts protocol, hence every point outlined here will be covered.</p></article>
+<article class="timeline-row"><time>2026-10-23 10:30:58 CST</time><strong><a href="https://talk.nervos.org/t/omiga-v1-2-0-release-enhanced-on-chain-asset-management-and-deeper-ccc-integration/10699/4">Omiga v1.2.0 Release: Enhanced On-Chain Asset Management and Deeper CCC Integration</a> · @Oliver</strong><p>Hi @phroi, thank you for the detailed write-up, and for taking the time to post it here even without an issue tracker to file it in. You’re right: Omiga currently only tracks the Recommended CKB address of the...</p></article>
+<article class="timeline-row"><time>2026-10-23 09:57:23 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/5">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @zz_tovarishch</strong><p>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 183,340,273 CKB from 13 voters. Both the approval threshold and minimum participation requirement are met....</p></article>
+<article class="timeline-row"><time>2026-10-23 07:16:02 CST</time><strong><a href="https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792/8">FiberNuts Community Market: A Testnet App for Cashu + Fiber</a> · @LusoCryptoLabs</strong><p>Hi, I tried market.fibernuts.xyz last night with two browser profiles, one as attendee and one as vendor. Worked first time. The claim took about 1.5 s and a coffee about 2 s until the vendor had fresh proofs. Nice...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

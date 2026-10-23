@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Fri, 23 Oct 2026 19:41:42 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-24</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-23:daily-brief</guid>
+    <pubDate>Fri, 23 Oct 2026 20:11:42 +0000</pubDate>
+    <description>## 今日发生了什么 从这批帖子看，过去一天论坛的主要焦点是 CKB IDL 提案，社区反馈整体正面[S01, S02, S04, S05]。治理方面，Kaze X CKB Unitour 延续提案公布了通过结果[S12]。项目侧还有 QuotaCell 测试更新、FiberNuts 测试反馈与作者回应，以及 Omiga 对地址跟踪问题的回应[S08, S09, S10, S11]。整体上论坛不算冷清，讨论集中在少数提案和项目进展上[S01, S12, S08, S09]。 ## 重点话题 OWK50GA 提出 CKB IDL 提案，请求 5,000 美元 grant，计划构建开源、testnet 优先的 Script Registry，用于发布、发现和独立验证 CKB 脚本接口，并推进 IDL 0.1.1[S01]。社区成员正面回应，认为可发现、可验证的脚本接口有助 CKB 可组合性和交易构建，并提到 TypeScript 支持与共享脚本注册表整合[S02, S04, S05]。 Kaze X CKB Unitour 延续提案以 100% 赞成通过，总投票权重为 183,340,273 CKB、共 13 名投票者，满足通过门槛和最低参与要求，并于 2026 年 10 月 23 日完成投票后验证[S12]。 QuotaCell 作者更新称，已用发送到隔离 CKB 节点的签名交易测试共享支出额度，不再只依赖早先的合约测试；测试中 Alice 和 Ben 使用独立密钥[S08]。 有用户用两个浏览器配置分别作为参与者和商家测试 FiberNuts 市场，首次即成功，领取约...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (5 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-5</guid>
+    <pubDate>Fri, 23 Oct 2026 19:41:42 +0000</pubDate>
+    <description>Summary One-paragraph Overview: This proposal requests a grant of $5,000 to build the next phase of the CKB IDL lifecycle: an open-source, testnet-first Script Registry for publishing, discovering, and independently verifying CKB script interfaces, together with IDL 0.1.1 empty-interface support, Molecule interoperability, and TypeScript support. It builds on the already released IDL 0.1.0 specification, Rust derive/export tooling, Rust client, binding CLI, and reference lock scripts. Deliverables include: Release CKB IDL 0.1.1, adding explicitly empty witness interfaces, with corresponding schema, specification, conformance vectors, canonicalization, commitment, and documentation...</description>
+  </item>
+  <item>
+    <title>IEEE International Conference on DLT - PT 2026 (1 posts)</title>
+    <link>https://talk.nervos.org/t/ieee-international-conference-on-dlt-pt-2026/11035</link>
+    <guid>https://talk.nervos.org/t/ieee-international-conference-on-dlt-pt-2026/11035#recent-1</guid>
+    <pubDate>Fri, 23 Oct 2026 12:18:00 +0000</pubDate>
+    <description>IEEE International Conference on Distributed Ledger Technologies (ICDLT) 2026! Three SDK Patterns for UTXO-Family Wallets The conference brings together academia and industry, with organizers from Nova School of Business and Economics, NOVA Information Management School, and the IEEE Portugal Section. It is part of BLOCKCHAIN.PT, a project funded through Portugal’s Recovery and Resilience Plan and the EU’s NextGenerationEU programme. on X.com @Hanssen</description>
+  </item>
+  <item>
+    <title>这是诈骗邮件吧？ (1 posts)</title>
+    <link>https://talk.nervos.org/t/topic/11022</link>
+    <guid>https://talk.nervos.org/t/topic/11022#recent-1</guid>
+    <pubDate>Fri, 23 Oct 2026 09:32:45 +0000</pubDate>
+    <description>You can tag moderators in messages like this here on the forum. If you’re unsure or suspect fraud, please tag a community moderator in the message. @zz_tovarishch</description>
+  </item>
+  <item>
+    <title>QuotaCell: Let your team spend without handing over the treasury (1 posts)</title>
+    <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-1</guid>
+    <pubDate>Fri, 23 Oct 2026 05:55:16 +0000</pubDate>
+    <description>A small update on QuotaCell since I introduced it here last week. I’ve now tested the shared spending allowance using signed transactions sent to an isolated CKB node, rather than relying only on the earlier contract tests. For the test, Alice and Ben had separate keys and spending limits, but shared an overall allowance of 100 tokens. Alice paid 60 successfully. Ben then tried to pay 50, but CKB rejected the transaction because only 40 remained in their shared allowance. When Ben tried 40 instead, it went through. The final result was 100 spent between them, with another 100 tokens still protected in the treasury. What I wanted to confirm was that the limit is enforced by CKB itself, not...</description>
+  </item>
+  <item>
+    <title>FiberNuts Community Market: A Testnet App for Cashu + Fiber (2 posts)</title>
+    <link>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792</link>
+    <guid>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792#recent-2</guid>
+    <pubDate>Fri, 23 Oct 2026 04:29:15 +0000</pubDate>
+    <description>Hi, I tried market.fibernuts.xyz last night with two browser profiles, one as attendee and one as vendor. Worked first time. The claim took about 1.5 s and a coffee about 2 s until the vendor had fresh proofs. Nice work. Some things I ran into: I got the last faucet claim of the day (remainingToday went to 0 after 5). With the per-network cap at 3 by default, an event on shared Wi-Fi would run dry fast. Maybe an event code? Once the faucet is empty, the only way in is paying a RUSD Fiber invoice, and cashing out needs an invoice from another node. Most people at a stall won’t have either. The proofs are only in localStorage and I couldn’t find a backup step, so clearing site data or...</description>
+  </item>
+  <item>
+    <title>Omiga v1.2.0 Release: Enhanced On-Chain Asset Management and Deeper CCC Integration (1 posts)</title>
+    <link>https://talk.nervos.org/t/omiga-v1-2-0-release-enhanced-on-chain-asset-management-and-deeper-ccc-integration/10699</link>
+    <guid>https://talk.nervos.org/t/omiga-v1-2-0-release-enhanced-on-chain-asset-management-and-deeper-ccc-integration/10699#recent-1</guid>
+    <pubDate>Fri, 23 Oct 2026 02:30:58 +0000</pubDate>
+    <description>Hi @phroi, thank you for the detailed write-up, and for taking the time to post it here even without an issue tracker to file it in. You’re right: Omiga currently only tracks the Recommended CKB address of the connected wallet, so assets held under other locks that CCC derives from the same key aren’t surfaced. This is especially relevant for users coming over from Mobit, and we’ve taken note of it. We’re now working on a plan to support moving assets from those older addresses to the new address smoothly, so that users don’t have to piece it together by hand. We expect to roll this out soon, and we’ll share an update in this thread once it’s available. Thanks again for the feedback, and...</description>
+  </item>
+  <item>
+    <title>[DIS] Kaze X CKB Unitour Continuation Proposal (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736</link>
+    <guid>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736#recent-1</guid>
+    <pubDate>Fri, 23 Oct 2026 01:57:23 +0000</pubDate>
+    <description>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 183,340,273 CKB from 13 voters. Both the approval threshold and minimum participation requirement are met. Post-close verification was completed on 23 October 2026 using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, 12 of 13 voters’ totals match exactly. One Yes entry is flagged because the voter’s current on-chain deposits are 300,000 CKB higher than the weight Metaforo recorded. The difference comes from a single new deposit made after the vote was...</description>
+  </item>
+</channel>
+</rss>
