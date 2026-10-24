@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-24 03:13:59 CST - 2026-10-25 03:13:59 CST</span>
+          <span>生成时间 2026-10-25 03:14:04 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">6</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最显眼的是 Twine 上线，它被描述为使用 Fiber 和 Nostr、无需交易所即可用法币买卖 CKB 的非托管交易台 <span class="citations">[<a href="#source-s01">S01</a>]</span>。该帖随即出现澄清问题，重点追问 GTBank 是配置标签还是真实集成与书面授权 <span class="citations">[<a href="#source-s02">S02</a>]</span>。同时，Spark Program 下多个项目有进展或申请更新：Seedsong 宣布 M1 完成 <span class="citations">[<a href="#source-s06">S06</a>]</span>，MeterNet 发布按 MB 计费 Wi-Fi 热点的项目申请 <span class="citations">[<a href="#source-s05">S05</a>]</span>，Spark Verify 也有流程跟进 <span class="citations">[<a href="#source-s04">S04</a>]</span>；CKB IDL 讨论继续获得社区正面反馈 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Twine 上线，支持订单、加密聊天和交易动作走 Nostr，CKB 在 Fiber 上于双方钱包间移动，法币通过 GTBank 或 Zelle 直接转账 <span class="citations">[<a href="#source-s01">S01</a>]</span>。社区成员随后追问 GTBank 是否只是可配置标签、是否有真实集成和书面授权，并询问若无关系会在哪里告知用户 GTBank 不验证也不保证相关交易 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>Spark Program 项目动态较多：Seedsong 表示 M1 里程碑已完成，预览网站支持随机或按向导生成 DNA、生成封面图和音乐并在线试听 <span class="citations">[<a href="#source-s06">S06</a>]</span>。MeterNet 则提出用开源热点盒子按 MB 出售 Wi-Fi，并用 Fiber 小额支付维持手机在线 <span class="citations">[<a href="#source-s05">S05</a>]</span>。Bees Network 帖下只有“Thanks, updated”的简短回复，信息量有限 <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li>Spark Verify 帖中，Akane 跟进 10 月 15 日分享的 workflow 视频和复现步骤，询问委员会是否已审阅 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>CKB IDL 讨论继续升温，有评论认为这是 CKB 生态急需的基础设施，能降低集成现有脚本所需的大量脚本特定知识门槛 <span class="citations">[<a href="#source-s07">S07</a>]</span>。ArthurZhang 也认为它解决了随着生态增长而更显著的实际问题，因为集成知识仍散落在源码、文档或定制客户端代码中 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Twine 的 GTBank 集成与授权说明是否会补充，以及用户告知问题如何回应，值得继续观察 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>Spark Verify 的 workflow 视频和复现步骤是否已进入委员会审阅流程，后续是否有明确反馈 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>MeterNet 的项目申请后续是否进入 Spark 流程，以及 Seedsong 在 M1 完成后的下一步里程碑，都值得跟进 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/1">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></div><div class="source-meta">ebubedev · 2026-10-24 20:36:15 CST</div><div>Twine is a non-custodial desk for buying and selling CKB with local fiat. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets you and the other person control. The naira or dollars move via GTBank or Zelle, directly from their...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/2">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></div><div class="source-meta">RobaireTH · 2026-10-24 23:41:09 CST</div><div>Gm ser, this is really great to have but I have a few clarifying questions. Is GTBank simply a configurable label, or do you have a real integration and written authorization? If there is no relationship, where do you tell users that GTBank neither verifies nor guarantees the...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/6">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">NOrththebear · 2026-10-24 21:24:01 CST</div><div>Thanks, updated</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/16">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></div><div class="source-meta">Akane · 2026-10-24 18:19:12 CST</div><div>Hi @xingtianchunyan, just following up on the workflow video and reproduction steps I shared on October 15: Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects - #15 by Akane Has the committee had a chance to review them? Please let me know if...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/1">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">Timilehin_Olowu · 2026-10-24 17:20:12 CST</div><div>English first, 中文版在下方. 1. Project Overview Project name: MeterNet One-sentence summary: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only while small Fiber payments keep arriving. Project type: working...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/5">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></div><div class="source-meta">Officeyutong · 2026-10-24 14:38:20 CST</div><div>M1 里程碑已经完成了。 这是部署在cloudflare pages上的预览网站：https://seedsong-ui.officeyutong.workers.dev/ 目前支持： 随机生成/按向导生成DNA 通过DNA生成封面图和音乐 在线试听 目前项目有两个仓库： GitHub - Officeyutong/seedsong-base · GitHub ：核心生成算法。解码DNA生成音乐，支持wasm和native。（native仅用于我自行进行测试，实际用户使用的是wasm版）。 GitHub -...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/5">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">3m1n3nc3 · 2026-10-24 03:41:42 CST</div><div>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need before they can integrate with existing contracts or...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/6">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></div><div class="source-meta">ArthurZhang · 2026-10-24 10:09:53 CST</div><div>Thanks for putting this together, Wilfrid. I think this addresses a practical issue that becomes more significant as the CKB ecosystem grows. A lot of the knowledge needed to integrate a script still lives in its source code, documentation or bespoke client code. Each new...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>5</strong></li><li><span>其他</span><strong>2</strong></li><li><span>生态进展</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@RobaireTH</span><strong>1</strong></li><li><span>@NOrththebear</span><strong>1</strong></li><li><span>@ebubedev</span><strong>1</strong></li><li><span>@Akane</span><strong>1</strong></li><li><span>@Timilehin_Olowu</span><strong>1</strong></li><li><span>@Officeyutong</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>fiber<span>50</span></li><li>ckb<span>34</span></li><li>can<span>26</span></li><li>meternet<span>26</span></li><li>you<span>23</span></li><li>fnn<span>23</span></li><li>channel<span>21</span></li><li>meterd<span>20</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 23:41:09 CST</span><span>RobaireTH, ebubedev</span></div><p class="excerpt">Twine is a non-custodial desk for buying and selling CKB with local fiat. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets you and the other person control. The naira or dollars move via GTBank or Zelle,...</p><div class="tag-row"><span>fiber</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 10:09:53 CST</span><span>3m1n3nc3, ArthurZhang</span></div><p class="excerpt">This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need before they can integrate with existing...</p><div class="tag-row"><span>CKB-IDL</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 21:24:01 CST</span><span>NOrththebear</span></div><p class="excerpt">Thanks, updated</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 18:19:12 CST</span><span>Akane</span></div><p class="excerpt">Hi @xingtianchunyan, just following up on the workflow video and reproduction steps I shared on October 15: Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects - #15 by Akane Has the committee had a chance to review them? Please...</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 17:20:12 CST</span><span>Timilehin_Olowu</span></div><p class="excerpt">English first, 中文版在下方. 1. Project Overview Project name: MeterNet One-sentence summary: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only while small Fiber payments keep arriving....</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-24 14:38:20 CST</span><span>Officeyutong</span></div><p class="excerpt">M1 里程碑已经完成了。 这是部署在cloudflare pages上的预览网站：https://seedsong-ui.officeyutong.workers.dev/ 目前支持： 随机生成/按向导生成DNA 通过DNA生成封面图和音乐 在线试听 目前项目有两个仓库： GitHub - Officeyutong/seedsong-base · GitHub ：核心生成算法。解码DNA生成音乐，支持wasm和native。（native仅用于我自行进行测试，实际用户使用的是wasm版）。 GitHub -...</p><div class="tag-row"><span>In-Progress</span><span>Spark-Program</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-24 23:41:09 CST</time><strong><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/2">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a> · @RobaireTH</strong><p>Gm ser, this is really great to have but I have a few clarifying questions. Is GTBank simply a configurable label, or do you have a real integration and written authorization? If there is no relationship, where do you...</p></article>
+<article class="timeline-row"><time>2026-10-24 21:24:01 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/6">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @NOrththebear</strong><p>Thanks, updated</p></article>
+<article class="timeline-row"><time>2026-10-24 20:36:15 CST</time><strong><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/1">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a> · @ebubedev</strong><p>Twine is a non-custodial desk for buying and selling CKB with local fiat. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets you and the other person control. The naira or...</p></article>
+<article class="timeline-row"><time>2026-10-24 18:19:12 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/16">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a> · @Akane</strong><p>Hi @xingtianchunyan, just following up on the workflow video and reproduction steps I shared on October 15: Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects - #15 by Akane Has the...</p></article>
+<article class="timeline-row"><time>2026-10-24 17:20:12 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/1">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a> · @Timilehin_Olowu</strong><p>English first, 中文版在下方. 1. Project Overview Project name: MeterNet One-sentence summary: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only...</p></article>
+<article class="timeline-row"><time>2026-10-24 14:38:20 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/5">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a> · @Officeyutong</strong><p>M1 里程碑已经完成了。 这是部署在cloudflare pages上的预览网站：https://seedsong-ui.officeyutong.workers.dev/ 目前支持： 随机生成/按向导生成DNA 通过DNA生成封面图和音乐 在线试听 目前项目有两个仓库： GitHub - Officeyutong/seedsong-base · GitHub...</p></article>
+<article class="timeline-row"><time>2026-10-24 10:09:53 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/6">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @ArthurZhang</strong><p>Thanks for putting this together, Wilfrid. I think this addresses a practical issue that becomes more significant as the CKB ecosystem grows. A lot of the knowledge needed to integrate a script still lives in its...</p></article>
+<article class="timeline-row"><time>2026-10-24 03:41:42 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/5">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a> · @3m1n3nc3</strong><p>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

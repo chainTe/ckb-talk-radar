@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sat, 24 Oct 2026 15:41:09 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-25</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-24:daily-brief</guid>
+    <pubDate>Sat, 24 Oct 2026 19:14:04 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛最显眼的是 Twine 上线，它被描述为使用 Fiber 和 Nostr、无需交易所即可用法币买卖 CKB 的非托管交易台 [S01]。该帖随即出现澄清问题，重点追问 GTBank 是配置标签还是真实集成与书面授权 [S02]。同时，Spark Program 下多个项目有进展或申请更新：Seedsong 宣布 M1 完成 [S06]，MeterNet 发布按 MB 计费 Wi-Fi 热点的项目申请 [S05]，Spark Verify 也有流程跟进 [S04]；CKB IDL 讨论继续获得社区正面反馈 [S07, S08]。 ## 重点话题 Twine 上线，支持订单、加密聊天和交易动作走 Nostr，CKB 在 Fiber 上于双方钱包间移动，法币通过 GTBank 或 Zelle 直接转账 [S01]。社区成员随后追问 GTBank 是否只是可配置标签、是否有真实集成和书面授权，并询问若无关系会在哪里告知用户 GTBank 不验证也不保证相关交易 [S02]。 Spark Program 项目动态较多：Seedsong 表示 M1 里程碑已完成，预览网站支持随机或按向导生成 DNA、生成封面图和音乐并在线试听 [S06]。MeterNet 则提出用开源热点盒子按 MB 出售 Wi-Fi，并用 Fiber 小额支付维持手机在线 [S05]。Bees Network 帖下只有“Thanks, updated”的简短回复，信息量有限 [S03]。 Spark Verify 帖中，Akane 跟进 10 月 15 日分享的 workflow...</description>
+  </item>
+  <item>
+    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (2 posts)</title>
+    <link>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043</link>
+    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-2</guid>
+    <pubDate>Sat, 24 Oct 2026 15:41:09 +0000</pubDate>
+    <description>Twine is a non-custodial desk for buying and selling CKB with local fiat. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets you and the other person control. The naira or dollars move via GTBank or Zelle, directly from their account to yours. Twine does not hold the fiat, and it does not hold a key that can spend the locked CKB. Why this exists Picture this: Exchanges that support CKB are not permitted to operate in your country. Or an exchange randomly restricts or bans your account, trapping your funds. Or maybe you simply refuse to hand over your passport and personal data for KYC just to trade some crypto. That is the gap Twine fills. All...</description>
+  </item>
+  <item>
+    <title>Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015</link>
+    <guid>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 13:24:01 +0000</pubDate>
+    <description>Thanks, updated</description>
+  </item>
+  <item>
+    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
+    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 10:19:12 +0000</pubDate>
+    <description>Hi @xingtianchunyan, just following up on the workflow video and reproduction steps I shared on October 15: Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects - #15 by Akane Has the committee had a chance to review them? Please let me know if anything is still unclear or missing, and when the proposal might next be reviewed. Thank you!</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 09:20:12 +0000</pubDate>
+    <description>English first, 中文版在下方. 1. Project Overview Project name: MeterNet One-sentence summary: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only while small Fiber payments keep arriving. Project type: working prototype + public field report (2 hotspots, ≥10 outside users, 14 days, testnet) Funding requested: $980, paid in CKB Duration: 6 weeks MeterNet is a consumption-side Fiber app, not another payment entry point. Fiber is the meter: access is opened 2 MB at a time and closed within seconds once payment stops. 2. Team Profile Timilehin Olowu (solo), full-stack and blockchain engineer, Lagos, Nigeria. I built ZecKit, an...</description>
+  </item>
+  <item>
+    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
+    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 06:38:20 +0000</pubDate>
+    <description>M1 里程碑已经完成了。 这是部署在cloudflare pages上的预览网站：https://seedsong-ui.officeyutong.workers.dev/ 目前支持： 随机生成/按向导生成DNA 通过DNA生成封面图和音乐 在线试听 目前项目有两个仓库： GitHub - Officeyutong/seedsong-base · GitHub ：核心生成算法。解码DNA生成音乐，支持wasm和native。（native仅用于我自行进行测试，实际用户使用的是wasm版）。 GitHub - Officeyutong/seedsong-ui · GitHub ：上面网站的前端代码 目前DOB/0，DOB/1，以及DNA的spec分别在seedsong-base/pattern.md at main · Officeyutong/seedsong-base · GitHub ，seedsong-base/spec.md at main · Officeyutong/seedsong-base · GitHub 一千份音乐的机器测评报告在 seedsong-base/reports/m1-v2 at main · Officeyutong/seedsong-base · GitHub 如果M1里程碑被批准后，我希望能将M1接下来的50USD发给我。接下来的事情暂时按照原计划进行，如果提前完成，我会在这篇帖子下回复。</description>
+  </item>
+  <item>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-2</guid>
+    <pubDate>Sat, 24 Oct 2026 02:09:53 +0000</pubDate>
+    <description>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need before they can integrate with existing contracts or scripts. A standard, verifiable interface combined with a public registry could significantly reduce that friction for wallets, SDKs, transaction builders, and application developers. I particularly like the distinction between cryptographically bound, manually attested, and unverified interfaces. Discoverability is useful, but discoverability with independently verifiable integrity is much more valuable. One area I think...</description>
+  </item>
+</channel>
+</rss>
