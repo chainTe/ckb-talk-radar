@@ -5,56 +5,63 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sat, 24 Oct 2026 15:41:09 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 25 Oct 2026 07:26:40 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-25</title>
+    <title>CKB Talk Daily Brief - 2026-10-26</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-24:daily-brief</guid>
-    <pubDate>Sat, 24 Oct 2026 19:14:04 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛最显眼的是 Twine 上线，它被描述为使用 Fiber 和 Nostr、无需交易所即可用法币买卖 CKB 的非托管交易台 [S01]。该帖随即出现澄清问题，重点追问 GTBank 是配置标签还是真实集成与书面授权 [S02]。同时，Spark Program 下多个项目有进展或申请更新：Seedsong 宣布 M1 完成 [S06]，MeterNet 发布按 MB 计费 Wi-Fi 热点的项目申请 [S05]，Spark Verify 也有流程跟进 [S04]；CKB IDL 讨论继续获得社区正面反馈 [S07, S08]。 ## 重点话题 Twine 上线，支持订单、加密聊天和交易动作走 Nostr，CKB 在 Fiber 上于双方钱包间移动，法币通过 GTBank 或 Zelle 直接转账 [S01]。社区成员随后追问 GTBank 是否只是可配置标签、是否有真实集成和书面授权，并询问若无关系会在哪里告知用户 GTBank 不验证也不保证相关交易 [S02]。 Spark Program 项目动态较多：Seedsong 表示 M1 里程碑已完成，预览网站支持随机或按向导生成 DNA、生成封面图和音乐并在线试听 [S06]。MeterNet 则提出用开源热点盒子按 MB 出售 Wi-Fi，并用 Fiber 小额支付维持手机在线 [S05]。Bees Network 帖下只有“Thanks, updated”的简短回复，信息量有限 [S03]。 Spark Verify 帖中，Akane 跟进 10 月 15 日分享的 workflow...</description>
+    <guid>tag:ckb-talk-radar,2026-10-25:daily-brief</guid>
+    <pubDate>Sun, 25 Oct 2026 19:26:26 +0000</pubDate>
+    <description>## 今日发生了什么 从这批帖子看，过去一天论坛有多条测试网产品和基础设施提案更新，整体不算完全安静[S01,S03,S05,S09,S10]。讨论主线之一是 Kirea Finance 的 RWA 借贷争议：有人质疑链上无法强制执行现实世界义务，项目方随后连续回应并补充链下与链上两层思路[S05,S06,S07]。另一条主线是开发者工具和测试网应用：CKB IDL 作者回应反馈，Nine Cells、Cellula Wallet、FiberNuts 等都在征集测试或迭代[S03,S04,S01,S09,S10]。此外，Twine 帖子有简短正面反馈，Nervlith 发布了品牌更名与平台介绍[S11,S12]。 ## 重点话题 Kirea Finance 继续围绕 RWA 强制执行展开讨论：社区成员指出 CKB 能约束链上合约，但不能直接约束现实世界义务[S05]；项目方回应称 RWA 需要链下与链上两层配合，并提到 Centrifuge、Goldfinch、Maple 等协议也不是仅靠智能合约执行现实义务[S06,S07]。项目方还把部分回答放到 metaforo 链接中，邀请继续提问[S08]。 CKB IDL 提案作者回应开发者体验关切：作者表示目标是让 IDL 生成和消费自然融入现有开发流程，而不是增加另一套复杂流程[S03]；同时认同应补充现有工具而非重复造轮子，并感谢此前对 CellScript registry 集成探索的帮助[S04]。 Nine Cells...</description>
   </item>
   <item>
-    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (2 posts)</title>
-    <link>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043</link>
-    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-2</guid>
-    <pubDate>Sat, 24 Oct 2026 15:41:09 +0000</pubDate>
-    <description>Twine is a non-custodial desk for buying and selling CKB with local fiat. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets you and the other person control. The naira or dollars move via GTBank or Zelle, directly from their account to yours. Twine does not hold the fiat, and it does not hold a key that can spend the locked CKB. Why this exists Picture this: Exchanges that support CKB are not permitted to operate in your country. Or an exchange randomly restricts or bans your account, trapping your funds. Or maybe you simply refuse to hand over your passport and personal data for KYC just to trade some crypto. That is the gap Twine fills. All...</description>
-  </item>
-  <item>
-    <title>Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015</link>
-    <guid>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 13:24:01 +0000</pubDate>
-    <description>Thanks, updated</description>
-  </item>
-  <item>
-    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
-    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 10:19:12 +0000</pubDate>
-    <description>Hi @xingtianchunyan, just following up on the workflow video and reproduction steps I shared on October 15: Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects - #15 by Akane Has the committee had a chance to review them? Please let me know if anything is still unclear or missing, and when the proposal might next be reviewed. Thank you!</description>
-  </item>
-  <item>
-    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
-    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 09:20:12 +0000</pubDate>
-    <description>English first, 中文版在下方. 1. Project Overview Project name: MeterNet One-sentence summary: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only while small Fiber payments keep arriving. Project type: working prototype + public field report (2 hotspots, ≥10 outside users, 14 days, testnet) Funding requested: $980, paid in CKB Duration: 6 weeks MeterNet is a consumption-side Fiber app, not another payment entry point. Fiber is the meter: access is opened 2 MB at a time and closed within seconds once payment stops. 2. Team Profile Timilehin Olowu (solo), full-stack and blockchain engineer, Lagos, Nigeria. I built ZecKit, an...</description>
-  </item>
-  <item>
-    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
-    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 06:38:20 +0000</pubDate>
-    <description>M1 里程碑已经完成了。 这是部署在cloudflare pages上的预览网站：https://seedsong-ui.officeyutong.workers.dev/ 目前支持： 随机生成/按向导生成DNA 通过DNA生成封面图和音乐 在线试听 目前项目有两个仓库： GitHub - Officeyutong/seedsong-base · GitHub ：核心生成算法。解码DNA生成音乐，支持wasm和native。（native仅用于我自行进行测试，实际用户使用的是wasm版）。 GitHub - Officeyutong/seedsong-ui · GitHub ：上面网站的前端代码 目前DOB/0，DOB/1，以及DNA的spec分别在seedsong-base/pattern.md at main · Officeyutong/seedsong-base · GitHub ，seedsong-base/spec.md at main · Officeyutong/seedsong-base · GitHub 一千份音乐的机器测评报告在 seedsong-base/reports/m1-v2 at main · Officeyutong/seedsong-base · GitHub 如果M1里程碑被批准后，我希望能将M1接下来的50USD发给我。接下来的事情暂时按照原计划进行，如果提前完成，我会在这篇帖子下回复。</description>
+    <title>Nine Cells: a merge tower defense game (testnet) (2 posts)</title>
+    <link>https://talk.nervos.org/t/nine-cells-a-merge-tower-defense-game-testnet/11046</link>
+    <guid>https://talk.nervos.org/t/nine-cells-a-merge-tower-defense-game-testnet/11046#recent-2</guid>
+    <pubDate>Sun, 25 Oct 2026 07:26:40 +0000</pubDate>
+    <description>Hi everyone, I’m Karas, a CKBuilder in the current cohort. I’ve been building Nine Cells, a browser tower defense game where you defend a wall by placing cats in lanes and merging two same-level cats into a stronger one. I’d like to share how it uses cells and get feedback, both on the game and on the script design. Play it: https://nine-cells.karasdev.com/ (CKB testnet) You can play the battles without a wallet. A CKB testnet wallet (JoyID or UTXO Global) is only needed to mint and keep cats on chain. Testnet CKB from the faucet covers the capacity and fees. Why cells fit this game The core action in the game is “two cats in, one stronger cat out”. That is exactly what a CKB transaction...</description>
   </item>
   <item>
     <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (2 posts)</title>
     <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
     <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-2</guid>
-    <pubDate>Sat, 24 Oct 2026 02:09:53 +0000</pubDate>
-    <description>This is a much-needed piece of infrastructure for the CKB ecosystem. One of the biggest barriers to building reusable applications on programmable blockchains is the amount of script-specific knowledge developers need before they can integrate with existing contracts or scripts. A standard, verifiable interface combined with a public registry could significantly reduce that friction for wallets, SDKs, transaction builders, and application developers. I particularly like the distinction between cryptographically bound, manually attested, and unverified interfaces. Discoverability is useful, but discoverability with independently verifiable integrity is much more valuable. One area I think...</description>
+    <pubDate>Sun, 25 Oct 2026 06:36:17 +0000</pubDate>
+    <description>Thanks for the thoughtful feedback, @3m1n3nc3 Developer experience is one of my biggest priorities here. The goal is to make IDL generation and consumption fit naturally into existing development workflows, rather than introduce another complicated process. That’s partly why I’m working on Molecule-to-IDL generation and TypeScript support. On discoverability and composability, I agree. The Registry is intended to be a discovery and verification layer, not a source of trust. Consumers should be able to independently verify cryptographically bound interfaces against deployed scripts, regardless of where they retrieved the IDL. Type Script support and richer transaction-level interfaces are...</description>
+  </item>
+  <item>
+    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (4 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
+    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-4</guid>
+    <pubDate>Sun, 25 Oct 2026 01:54:34 +0000</pubDate>
+    <description>Interesting concept, and I appreciate the considerable development effort already invested in Kirea Finance. However, I still see a fundamental challenge with real-world asset (RWA) enforcement. CKB can enforce on-chain contracts, but it cannot enforce real-world obligations. What happens if an invoice is never paid? What if the borrower receives payment but never reports it? How can the system verify that an invoice is genuine, unpaid, and hasn’t already been pledged elsewhere? Ultimately, this requires trusted third parties, external verification, and legal enforcement. Who takes responsibility for verifying and enforcing the underlying asset, and who bears the loss if the debtor...</description>
+  </item>
+  <item>
+    <title>Cellula Wallet beta on testnet: testers wanted until Monday 26 October (1 posts)</title>
+    <link>https://talk.nervos.org/t/cellula-wallet-beta-on-testnet-testers-wanted-until-monday-26-october/11048</link>
+    <guid>https://talk.nervos.org/t/cellula-wallet-beta-on-testnet-testers-wanted-until-monday-26-october/11048#recent-1</guid>
+    <pubDate>Sun, 25 Oct 2026 01:09:05 +0000</pubDate>
+    <description>image1920×1008 241 KB Hi everyone, Cellula is the name you can pay: cellula.id gives you one name, yourname.cell, that people can pay instead of a blockchain address. Now we are testing the Cellula Wallet, a wallet that lives in your passkey, and we are looking for more testers: on Android, where the app is, and on the web, where the same wallet runs in any browser that can save a passkey. The beta runs until Monday 26 October at midnight (23:59 UTC). What it is Your passkey is the wallet: you open it with your fingerprint, face or screen lock, and there is no seed phrase to write down. An Android app (Android 11 or later), and the same wallet on the web. .cell names right in the wallet:...</description>
+  </item>
+  <item>
+    <title>FiberNuts Community Market: A Testnet App for Cashu + Fiber (1 posts)</title>
+    <link>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792</link>
+    <guid>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 22:16:00 +0000</pubDate>
+    <description>Thanks for the detailed testing and feedback. I’ve now added a strict CSP, fixed the “1 claim” wording, improved security reporting, and added exact network/RUSD asset validation for cash-outs. Event-friendly faucet access, easier LSP-based funding, NUT-13 recovery, and NUT-11 refunds remain next-stage work.</description>
+  </item>
+  <item>
+    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (1 posts)</title>
+    <link>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043</link>
+    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 20:47:07 +0000</pubDate>
+    <description>Love the Idea.</description>
+  </item>
+  <item>
+    <title>Introducing Nervlith (formally Mint Gate): a CKB-native token gating and membership platform (1 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-nervlith-formally-mint-gate-a-ckb-native-token-gating-and-membership-platform/11045</link>
+    <guid>https://talk.nervos.org/t/introducing-nervlith-formally-mint-gate-a-ckb-native-token-gating-and-membership-platform/11045#recent-1</guid>
+    <pubDate>Sat, 24 Oct 2026 19:56:04 +0000</pubDate>
+    <description>GM NERVOS BUILDERS!!!, The product previously called Mint Gate is now Nervlith (formally Mint Gate). Nervlith is a CKB-native DAO launcher, token gating and membership platform. image1775×748 141 KB It is also translated to Mandarin for wider community scope image1375×677 103 KB How Does Nervlith work Nervlith works in a simple way: Own a DID passport, without an identity on Nervlith you can’t access or join communities. image1728×808 65.3 KB image752×811 47.2 KB Create a community, choose a governance model, add a gate fee, Membership Card design. image980×789 46.5 KB image1061×824 61.2 KB image1115×806 111 KB image832×746 72.3 KB Join a community created by someone by paying the gate...</description>
   </item>
 </channel>
 </rss>
