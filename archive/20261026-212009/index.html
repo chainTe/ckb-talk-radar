@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-26 05:20:09 CST - 2026-10-27 05:20:09 CST</span>
+          <span>生成时间 2026-10-27 05:20:21 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">10</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">15</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">11</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的主要热度集中在 Fiber/Cashu 支付与入金路径：FiberNuts 提出资助提案，ckb-on-ramp 发布 testnet demo 并引发讨论 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>]</span>。同时，CKB DEx 更新 README、UTXOPlay alpha 上线、Tactus 0.02 发文说明，几个项目都在推进 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s11">S11</a>, <a href="#source-s13">S13</a>]</span>。钱包与身份侧，Pocket Node 发布 v1.8.6，Vellum 提交 M2 交付报告 <span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s10">S10</a>]</span>。整体看，今天不是单帖刷屏，而是支付、游戏、钱包和基础设施几条线同时有更新 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s08">S08</a>, <a href="#source-s11">S11</a>, <a href="#source-s13">S13</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>FiberNuts 提案请求 6000 美元等值 CKB，计划用 12 周开发验证 Cashu-over-Fiber 结算适配器，并让标准 Cashu mint 发行和赎回 RUSD 计价的 ecash <span class="citations">[<a href="#source-s03">S03</a>]</span>。有回复称赞文档和 KPI，并提出一对一沟通 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>ckb-on-ramp 发布 testnet demo，目标是让只有 BTC 闪电钱包的新用户不装软件、打开网页就把 BTC 换成 Fiber 通道资产 <span class="citations">[<a href="#source-s05">S05</a>]</span>。讨论认为若路径跑通，Fiber 可能成为进入 CKB 生态的第一站，并提到 fiber-js WASM、Passkey 和 LSP 商业模式 <span class="citations">[<a href="#source-s06">S06</a>]</span>。还有回复指出 ckbolt 有类似 demo，并称自己的 ckbolt demo 可能当天或次日上线 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>CKB DEx 进度更新中，LucentLabs 表示已更新 README 来承载相关项目信息，并继续向社区同步 DEx dapp 开发进展 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+<li>UTXOPlay alpha 已上线，当前列出 13 款游戏，作者称仍处早期并希望用户体验后反馈 <span class="citations">[<a href="#source-s11">S11</a>]</span>。回复中讨论声誉机制应可检查和挑战，并提到可能使用 FiberNuts 的 ecash <span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>钱包与开发进展方面，Pocket Node v1.8.6 强调钱包口令保护以及更易理解的备份恢复 <span class="citations">[<a href="#source-s08">S08</a>]</span>。Vellum 完成第二个 grant milestone，称 M2 把 M1 的 Claim Cell 基础推进到公开 builder record 和真实合作集成 <span class="citations">[<a href="#source-s10">S10</a>]</span>。Tactus 0.02 聚焦让 rollup 生命周期各环节一致 <span class="citations">[<a href="#source-s13">S13</a>]</span>。隐私订单簿周报则更新了 proof of buy 的设计和功能开发 <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>ckb-on-ramp 是 testnet demo <span class="citations">[<a href="#source-s05">S05</a>]</span>，讨论提到 fiber-js WASM、Passkey 和 LSP 模式 <span class="citations">[<a href="#source-s06">S06</a>]</span>，同时 ckbolt 也有类似 demo 并可能很快上线 <span class="citations">[<a href="#source-s07">S07</a>]</span>；后续要看这些网页端入金路径能否稳定跑通并形成可持续模式 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>。</li>
+<li>FiberNuts 已有社区成员称赞文档和 KPI 并希望一对一沟通 <span class="citations">[<a href="#source-s04">S04</a>]</span>，后续要看 6000 美元等值 CKB、12 周交付和 RUSD 参考应用是否按 KPI 推进 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>]</span>。</li>
+<li>Twine 目前使用公共 Nostr relays，作者称这些 relays 受 Nostr 自身限制、用于测试而非生产，并计划在 VPS 上部署自己的 relays <span class="citations">[<a href="#source-s15">S15</a>]</span>；此前作者也说明 GTBank、Zelle 只是测试台支付方式标签，没有银行集成 <span class="citations">[<a href="#source-s14">S14</a>]</span>。后续要看测试交易和支付方式说明是否完善 <span class="citations">[<a href="#source-s14">S14</a>, <a href="#source-s15">S15</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/ckb-dex-progress-update/11055/1">CKB DEx Progress Update</a></div><div class="source-meta">LucentLabs · 2026-10-27 04:48:24 CST</div><div>Hi guys, here again to share update with the community about the progress so far with our ongoing CKB DEx dapp. As part of our ongoing effort to carry the community along in our journey of building the DEx, we have updated our README file to carry all relevant information and...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013/2">Ever wanted to customize your connect wallet?</a></div><div class="source-meta">Dangbaty2004 · 2026-10-26 23:49:55 CST</div><div>Great work, Victor! I’ve been building several projects in the CKB ecosystem, including SkillPass, CellFlow, and CellGuard, and I think having a more flexible wallet connection UI is really useful for improving the user experience. I especially like how this builds on the...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/1">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">Code3ks · 2026-10-26 22:46:54 CST</div><div>Summary This proposal requests $6,000 USD equivalent in CKB for a 12-week development and validation phase for FiberNuts, an open Cashu-over-Fiber settlement adapter with RUSD reference applications. FiberNuts lets a stock Cashu mint issue and redeem RUSD-denominated ecash...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/2">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">teslimbalogun664 · 2026-10-26 23:36:49 CST</div><div>Just went through this documentation and your KPIs. I have to commend you for a job well done The docs are comprehensive and highly informative. Would you be interested in hopping on a 1-on-1 call with me to discuss a few things @Code3ks</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/1">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a></div><div class="source-meta">RetricSu · 2026-10-26 14:56:53 CST</div><div>最近我做了一个小 demo，叫 ckb-on-ramp，线上测试版在 https://onramp.retric.uk （全部跑在 testnet）。它要回答的问题是：一个手里只有 BTC 闪电钱包、没有 CKB 的新用户，能不能不装任何软件，打开网页就把 BTC 换成 Fiber 通道里的资产？ 我觉得这个想法有意思，是想到如果有这样一个产品，不仅能解决入金问题，也能通过通道网络，让新用户从第一天开始就感受到CKB上二层网络的魅力。onboarding 不一定要 onboard 到 CKB...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/2">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a></div><div class="source-meta">ArthurZhang · 2026-10-26 16:30:33 CST</div><div>这个方向挺有意思的。如果这条路径能够跑通，Fiber 就有机会成为用户进入 CKB 生态的第一站，而不必再以 L1 作为必经入口。尤其是通过 fiber-js WASM 在浏览器中运行用户节点，并利用 Passkey 保护密钥，这对网页游戏、即时支付、小额打赏等场景都很有价值。 从长远来看，还可以探索一套可持续的 LSP 商业模式，运营商为新用户开通通道、提供资金和流动性，再通过手续费覆盖成本并获得收益，而不是让冷启动长期依赖无条件补贴。 另外，这对我正在做的 UTXOPlay Store 也有潜在的入口价值。比如未来可以在首页提供一个 Play...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/3">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a></div><div class="source-meta">longdevbf · 2026-10-26 17:48:57 CST</div><div>This project has a demo that is quite similar to ours: https://ckbolt.texlabs.org/. We are currently developing the ckbolt project as well, and a demo should be available either today or tomorrow. Your demo is excellent!</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879/75">[DIS] Mobile-Ready CKB Light Client (Pocket Node) for Android</a></div><div class="source-meta">Jnr6 · 2026-10-26 17:44:06 CST</div><div>Pocket Node v1.8.6 This update focuses on wallet protection and making backup and recovery easier to understand. Wallet passphrase protection Set up a separate wallet passphrase that gives you a fallback if Android device authentication becomes unavailable. Optional device...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015/50">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a></div><div class="source-meta">Lawliet_Chan · 2026-10-26 16:51:24 CST</div><div>周报 2026.10.26 更新proof of buy的设计和功能开发： Proof of Buy，一种专为Layer1设计的Layer2共识 - #34 by Lawliet_Chan define proof of buy by Lawliet-Chan · Pull Request #8 · invisibook-lab/invisibook · GitHub</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/15">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">truthixify · 2026-10-26 14:02:47 CST</div><div>Vellum Milestone 2 delivery report Implementation for Vellum’s second grant milestone is complete and ready for community review. M2 turns the Claim Cell foundation delivered in M1 into a public builder record and a real partner integration. Vellum now provides shareable...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049/1">UTXOPlay: A Community-Driven Gaming Platform for Nervos</a></div><div class="source-meta">ArthurZhang · 2026-10-26 11:56:58 CST</div><div>Hi everyone, I’ve been working on UTXOPlay over the weekend, and the alpha is now live at utxoplay.io. image1920×1111 494 KB There are currently 13 games listed. It’s still early, and there’s plenty to improve, but I’d love for people to try it and share what works, what...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049/2">UTXOPlay: A Community-Driven Gaming Platform for Nervos</a></div><div class="source-meta">truthixify · 2026-10-26 12:55:40 CST</div><div>Thank you for providing detailed answers to my questions here, regarding the reputation part you’re right. We should be able to inspect and challenge it. I saw the recent fibernuts post by @Code3ks and while reading this thread I think it might be possible to use the ecash for...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861/4">Tactus O1: First Based EVM Rollup on CKB</a></div><div class="source-meta">ArthurZhang · 2026-10-26 12:18:02 CST</div><div>Tactus 0.02 — making the rollup lifecycle explicit Tactus 0.01 explored whether an EVM rollup on CKB could work. In 0.02, the focus is making the different parts agree: how transactions enter the system, what order they follow, when their results can be trusted, and what users...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/4">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></div><div class="source-meta">ebubedev · 2026-10-26 06:24:33 CST</div><div>GTBank is only a payment method on this test desk, for NGN. There is no integration and no relationship with the bank. Zelle is the same kind of label for USD. A coordinator sets the methods on their own desk, for whatever currency they want to support. Twine never talks to...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/5">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></div><div class="source-meta">ebubedev · 2026-10-26 06:36:19 CST</div><div>the public relays the that twine uses to communicate with it each other has be restricted by nostr itself cause it meant for testing and not something you used for productions traffic will deploy my own nostr relays on a vps soon and share soon</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>11</strong></li><li><span>其他</span><strong>2</strong></li><li><span>社区互动</span><strong>1</strong></li><li><span>生态进展</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@ArthurZhang</span><strong>3</strong></li><li><span>@truthixify</span><strong>2</strong></li><li><span>@ebubedev</span><strong>2</strong></li><li><span>@LucentLabs</span><strong>1</strong></li><li><span>@Dangbaty2004</span><strong>1</strong></li><li><span>@teslimbalogun664</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>fiber<span>101</span></li><li>ckb<span>77</span></li><li>public<span>53</span></li><li>wallet<span>42</span></li><li>are<span>40</span></li><li>can<span>37</span></li><li>work<span>34</span></li><li>recovery<span>33</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 17:48:57 CST</span><span>ArthurZhang, RetricSu, longdevbf</span></div><p class="excerpt">最近我做了一个小 demo，叫 ckb-on-ramp，线上测试版在 https://onramp.retric.uk （全部跑在 testnet）。它要回答的问题是：一个手里只有 BTC 闪电钱包、没有 CKB 的新用户，能不能不装任何软件，打开网页就把 BTC 换成 Fiber 通道里的资产？ 我觉得这个想法有意思，是想到如果有这样一个产品，不仅能解决入金问题，也能通过通道网络，让新用户从第一天开始就感受到CKB上二层网络的魅力。onboarding 不一定要 onboard 到 CKB...</p><div class="tag-row"><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 23:36:49 CST</span><span>Code3ks, teslimbalogun664</span></div><p class="excerpt">Summary This proposal requests $6,000 USD equivalent in CKB for a 12-week development and validation phase for FiberNuts, an open Cashu-over-Fiber settlement adapter with RUSD reference applications. FiberNuts lets a stock Cashu mint issue and redeem RUSD-...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049">UTXOPlay: A Community-Driven Gaming Platform for Nervos</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 12:55:40 CST</span><span>ArthurZhang, truthixify</span></div><p class="excerpt">Hi everyone, I’ve been working on UTXOPlay over the weekend, and the alpha is now live at utxoplay.io. image1920×1111 494 KB There are currently 13 games listed. It’s still early, and there’s plenty to improve, but I’d love for people to try it and share...</p><div class="tag-row"><span>CKB</span><span>game</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 06:36:19 CST</span><span>ebubedev</span></div><p class="excerpt">GTBank is only a payment method on this test desk, for NGN. There is no integration and no relationship with the bank. Zelle is the same kind of label for USD. A coordinator sets the methods on their own desk, for whatever currency they want to support....</p><div class="tag-row"><span>fiber</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-dex-progress-update/11055">CKB DEx Progress Update</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-27 04:48:24 CST</span><span>LucentLabs</span></div><p class="excerpt">Hi guys, here again to share update with the community about the progress so far with our ongoing CKB DEx dapp. As part of our ongoing effort to carry the community along in our journey of building the DEx, we have updated our README file to carry all...</p><div class="tag-row"><span>CKB</span><span>appchain</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013">Ever wanted to customize your connect wallet?</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 23:49:55 CST</span><span>Dangbaty2004</span></div><p class="excerpt">Great work, Victor! I’ve been building several projects in the CKB ecosystem, including SkillPass, CellFlow, and CellGuard, and I think having a more flexible wallet connection UI is really useful for improving the user experience. I especially like how...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>dapp</span><span>lang-en</span><span>wallet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879">[DIS] Mobile-Ready CKB Light Client (Pocket Node) for Android</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 17:44:06 CST</span><span>Jnr6</span></div><p class="excerpt">Pocket Node v1.8.6 This update focuses on wallet protection and making backup and recovery easier to understand. Wallet passphrase protection Set up a separate wallet passphrase that gives you a fallback if Android device authentication becomes unavailable....</p><div class="tag-row"><span>CKB</span><span>light-client</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 16:51:24 CST</span><span>Lawliet_Chan</span></div><p class="excerpt">周报 2026.10.26 更新proof of buy的设计和功能开发： Proof of Buy，一种专为Layer1设计的Layer2共识 - #34 by Lawliet_Chan define proof of buy by Lawliet-Chan · Pull Request #8 · invisibook-lab/invisibook · GitHub</p><div class="tag-row"><span>appchain</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613">[DIS] Vellum: Reputation Extension on did:ckb</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 14:02:47 CST</span><span>truthixify</span></div><p class="excerpt">Vellum Milestone 2 delivery report Implementation for Vellum’s second grant milestone is complete and ready for community review. M2 turns the Claim Cell foundation delivered in M1 into a public builder record and a real partner integration. Vellum now...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861">Tactus O1: First Based EVM Rollup on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-26 12:18:02 CST</span><span>ArthurZhang</span></div><p class="excerpt">Tactus 0.02 — making the rollup lifecycle explicit Tactus 0.01 explored whether an EVM rollup on CKB could work. In 0.02, the focus is making the different parts agree: how transactions enter the system, what order they follow, when their results can be...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-27 04:48:24 CST</time><strong><a href="https://talk.nervos.org/t/ckb-dex-progress-update/11055/1">CKB DEx Progress Update</a> · @LucentLabs</strong><p>Hi guys, here again to share update with the community about the progress so far with our ongoing CKB DEx dapp. As part of our ongoing effort to carry the community along in our journey of building the DEx, we have...</p></article>
+<article class="timeline-row"><time>2026-10-26 23:49:55 CST</time><strong><a href="https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013/2">Ever wanted to customize your connect wallet?</a> · @Dangbaty2004</strong><p>Great work, Victor! I’ve been building several projects in the CKB ecosystem, including SkillPass, CellFlow, and CellGuard, and I think having a more flexible wallet connection UI is really useful for improving the...</p></article>
+<article class="timeline-row"><time>2026-10-26 23:36:49 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/2">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @teslimbalogun664</strong><p>Just went through this documentation and your KPIs. I have to commend you for a job well done The docs are comprehensive and highly informative. Would you be interested in hopping on a 1-on-1 call with me to discuss a...</p></article>
+<article class="timeline-row"><time>2026-10-26 22:46:54 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/1">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @Code3ks</strong><p>Summary This proposal requests $6,000 USD equivalent in CKB for a 12-week development and validation phase for FiberNuts, an open Cashu-over-Fiber settlement adapter with RUSD reference applications. FiberNuts lets a...</p></article>
+<article class="timeline-row"><time>2026-10-26 17:48:57 CST</time><strong><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/3">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a> · @longdevbf</strong><p>This project has a demo that is quite similar to ours: https://ckbolt.texlabs.org/. We are currently developing the ckbolt project as well, and a demo should be available either today or tomorrow. Your demo is excellent!</p></article>
+<article class="timeline-row"><time>2026-10-26 17:44:06 CST</time><strong><a href="https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879/75">[DIS] Mobile-Ready CKB Light Client (Pocket Node) for Android</a> · @Jnr6</strong><p>Pocket Node v1.8.6 This update focuses on wallet protection and making backup and recovery easier to understand. Wallet passphrase protection Set up a separate wallet passphrase that gives you a fallback if Android...</p></article>
+<article class="timeline-row"><time>2026-10-26 16:51:24 CST</time><strong><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015/50">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a> · @Lawliet_Chan</strong><p>周报 2026.10.26 更新proof of buy的设计和功能开发： Proof of Buy，一种专为Layer1设计的Layer2共识 - #34 by Lawliet_Chan define proof of buy by Lawliet-Chan · Pull Request #8 · invisibook-lab/invisibook · GitHub</p></article>
+<article class="timeline-row"><time>2026-10-26 16:30:33 CST</time><strong><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/2">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a> · @ArthurZhang</strong><p>这个方向挺有意思的。如果这条路径能够跑通，Fiber 就有机会成为用户进入 CKB 生态的第一站，而不必再以 L1 作为必经入口。尤其是通过 fiber-js WASM 在浏览器中运行用户节点，并利用 Passkey 保护密钥，这对网页游戏、即时支付、小额打赏等场景都很有价值。 从长远来看，还可以探索一套可持续的 LSP...</p></article>
+<article class="timeline-row"><time>2026-10-26 14:56:53 CST</time><strong><a href="https://talk.nervos.org/t/ckb-on-ramp-ckb/11050/1">Ckb-on-ramp：用闪电网络钱包入金 CKB 生态</a> · @RetricSu</strong><p>最近我做了一个小 demo，叫 ckb-on-ramp，线上测试版在 https://onramp.retric.uk （全部跑在 testnet）。它要回答的问题是：一个手里只有 BTC 闪电钱包、没有 CKB 的新用户，能不能不装任何软件，打开网页就把 BTC 换成 Fiber 通道里的资产？...</p></article>
+<article class="timeline-row"><time>2026-10-26 14:02:47 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/15">[DIS] Vellum: Reputation Extension on did:ckb</a> · @truthixify</strong><p>Vellum Milestone 2 delivery report Implementation for Vellum’s second grant milestone is complete and ready for community review. M2 turns the Claim Cell foundation delivered in M1 into a public builder record and a...</p></article>
+<article class="timeline-row"><time>2026-10-26 12:55:40 CST</time><strong><a href="https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049/2">UTXOPlay: A Community-Driven Gaming Platform for Nervos</a> · @truthixify</strong><p>Thank you for providing detailed answers to my questions here, regarding the reputation part you’re right. We should be able to inspect and challenge it. I saw the recent fibernuts post by @Code3ks and while reading...</p></article>
+<article class="timeline-row"><time>2026-10-26 12:18:02 CST</time><strong><a href="https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861/4">Tactus O1: First Based EVM Rollup on CKB</a> · @ArthurZhang</strong><p>Tactus 0.02 — making the rollup lifecycle explicit Tactus 0.01 explored whether an EVM rollup on CKB could work. In 0.02, the focus is making the different parts agree: how transactions enter the system, what order...</p></article>
+<article class="timeline-row"><time>2026-10-26 11:56:58 CST</time><strong><a href="https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049/1">UTXOPlay: A Community-Driven Gaming Platform for Nervos</a> · @ArthurZhang</strong><p>Hi everyone, I’ve been working on UTXOPlay over the weekend, and the alpha is now live at utxoplay.io. image1920×1111 494 KB There are currently 13 games listed. It’s still early, and there’s plenty to improve, but...</p></article>
+<article class="timeline-row"><time>2026-10-26 06:36:19 CST</time><strong><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/5">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a> · @ebubedev</strong><p>the public relays the that twine uses to communicate with it each other has be restricted by nostr itself cause it meant for testing and not something you used for productions traffic will deploy my own nostr relays...</p></article>
+<article class="timeline-row"><time>2026-10-26 06:24:33 CST</time><strong><a href="https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043/4">Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr</a> · @ebubedev</strong><p>GTBank is only a payment method on this test desk, for NGN. There is no integration and no relationship with the bank. Zelle is the same kind of label for USD. A coordinator sets the methods on their own desk, for...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

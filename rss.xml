@@ -5,63 +5,84 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sun, 25 Oct 2026 07:26:40 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 20:48:24 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-26</title>
+    <title>CKB Talk Daily Brief - 2026-10-27</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-25:daily-brief</guid>
-    <pubDate>Sun, 25 Oct 2026 19:26:26 +0000</pubDate>
-    <description>## 今日发生了什么 从这批帖子看，过去一天论坛有多条测试网产品和基础设施提案更新，整体不算完全安静[S01,S03,S05,S09,S10]。讨论主线之一是 Kirea Finance 的 RWA 借贷争议：有人质疑链上无法强制执行现实世界义务，项目方随后连续回应并补充链下与链上两层思路[S05,S06,S07]。另一条主线是开发者工具和测试网应用：CKB IDL 作者回应反馈，Nine Cells、Cellula Wallet、FiberNuts 等都在征集测试或迭代[S03,S04,S01,S09,S10]。此外，Twine 帖子有简短正面反馈，Nervlith 发布了品牌更名与平台介绍[S11,S12]。 ## 重点话题 Kirea Finance 继续围绕 RWA 强制执行展开讨论：社区成员指出 CKB 能约束链上合约，但不能直接约束现实世界义务[S05]；项目方回应称 RWA 需要链下与链上两层配合，并提到 Centrifuge、Goldfinch、Maple 等协议也不是仅靠智能合约执行现实义务[S06,S07]。项目方还把部分回答放到 metaforo 链接中，邀请继续提问[S08]。 CKB IDL 提案作者回应开发者体验关切：作者表示目标是让 IDL 生成和消费自然融入现有开发流程，而不是增加另一套复杂流程[S03]；同时认同应补充现有工具而非重复造轮子，并感谢此前对 CellScript registry 集成探索的帮助[S04]。 Nine Cells...</description>
+    <guid>tag:ckb-talk-radar,2026-10-26:daily-brief</guid>
+    <pubDate>Mon, 26 Oct 2026 21:20:21 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要热度集中在 Fiber/Cashu 支付与入金路径：FiberNuts 提出资助提案，ckb-on-ramp 发布 testnet demo 并引发讨论 [S03, S05]。同时，CKB DEx 更新 README、UTXOPlay alpha 上线、Tactus 0.02 发文说明，几个项目都在推进 [S01, S11, S13]。钱包与身份侧，Pocket Node 发布 v1.8.6，Vellum 提交 M2 交付报告 [S08, S10]。整体看，今天不是单帖刷屏，而是支付、游戏、钱包和基础设施几条线同时有更新 [S03, S08, S11, S13]。 ## 重点话题 FiberNuts 提案请求 6000 美元等值 CKB，计划用 12 周开发验证 Cashu-over-Fiber 结算适配器，并让标准 Cashu mint 发行和赎回 RUSD 计价的 ecash [S03]。有回复称赞文档和 KPI，并提出一对一沟通 [S04]。 ckb-on-ramp 发布 testnet demo，目标是让只有 BTC 闪电钱包的新用户不装软件、打开网页就把 BTC 换成 Fiber 通道资产 [S05]。讨论认为若路径跑通，Fiber 可能成为进入 CKB 生态的第一站，并提到 fiber-js WASM、Passkey 和 LSP 商业模式 [S06]。还有回复指出 ckbolt 有类似 demo，并称自己的 ckbolt demo 可能当天或次日上线 [S07]。 CKB DEx 进度更新中，LucentLabs 表示已更新...</description>
   </item>
   <item>
-    <title>Nine Cells: a merge tower defense game (testnet) (2 posts)</title>
-    <link>https://talk.nervos.org/t/nine-cells-a-merge-tower-defense-game-testnet/11046</link>
-    <guid>https://talk.nervos.org/t/nine-cells-a-merge-tower-defense-game-testnet/11046#recent-2</guid>
-    <pubDate>Sun, 25 Oct 2026 07:26:40 +0000</pubDate>
-    <description>Hi everyone, I’m Karas, a CKBuilder in the current cohort. I’ve been building Nine Cells, a browser tower defense game where you defend a wall by placing cats in lanes and merging two same-level cats into a stronger one. I’d like to share how it uses cells and get feedback, both on the game and on the script design. Play it: https://nine-cells.karasdev.com/ (CKB testnet) You can play the battles without a wallet. A CKB testnet wallet (JoyID or UTXO Global) is only needed to mint and keep cats on chain. Testnet CKB from the faucet covers the capacity and fees. Why cells fit this game The core action in the game is “two cats in, one stronger cat out”. That is exactly what a CKB transaction...</description>
+    <title>CKB DEx Progress Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-dex-progress-update/11055</link>
+    <guid>https://talk.nervos.org/t/ckb-dex-progress-update/11055#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 20:48:24 +0000</pubDate>
+    <description>Hi guys, here again to share update with the community about the progress so far with our ongoing CKB DEx dapp. As part of our ongoing effort to carry the community along in our journey of building the DEx, we have updated our README file to carry all relevant information and details of all key components within the dapp. We also added the architecture diagram of the current PoC. All can be found here: README.md. We believe this will aid developers in understanding the architecture and also suggest improvements where necessary. In the same stream of efforts, we submitted a issue for review of the DEx PoC to the Nervos community catalyst github issue link here and we received valuable...</description>
   </item>
   <item>
-    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (2 posts)</title>
-    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
-    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-2</guid>
-    <pubDate>Sun, 25 Oct 2026 06:36:17 +0000</pubDate>
-    <description>Thanks for the thoughtful feedback, @3m1n3nc3 Developer experience is one of my biggest priorities here. The goal is to make IDL generation and consumption fit naturally into existing development workflows, rather than introduce another complicated process. That’s partly why I’m working on Molecule-to-IDL generation and TypeScript support. On discoverability and composability, I agree. The Registry is intended to be a discovery and verification layer, not a source of trust. Consumers should be able to independently verify cryptographically bound interfaces against deployed scripts, regardless of where they retrieved the IDL. Type Script support and richer transaction-level interfaces are...</description>
+    <title>Ever wanted to customize your connect wallet? (1 posts)</title>
+    <link>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013</link>
+    <guid>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 15:49:55 +0000</pubDate>
+    <description>Great work, Victor! I’ve been building several projects in the CKB ecosystem, including SkillPass, CellFlow, and CellGuard, and I think having a more flexible wallet connection UI is really useful for improving the user experience. I especially like how this builds on the existing CCC provider while allowing developers to customize the wallet list, connection flow, and account layout without being locked into a predefined interface. The optional did integration is also a nice touch! This could be particularly useful for SkillPass, where I want the wallet connection experience to feel like a natural part of the application rather than a separate blockchain interaction. Thanks for sharing...</description>
   </item>
   <item>
-    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (4 posts)</title>
-    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
-    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-4</guid>
-    <pubDate>Sun, 25 Oct 2026 01:54:34 +0000</pubDate>
-    <description>Interesting concept, and I appreciate the considerable development effort already invested in Kirea Finance. However, I still see a fundamental challenge with real-world asset (RWA) enforcement. CKB can enforce on-chain contracts, but it cannot enforce real-world obligations. What happens if an invoice is never paid? What if the borrower receives payment but never reports it? How can the system verify that an invoice is genuine, unpaid, and hasn’t already been pledged elsewhere? Ultimately, this requires trusted third parties, external verification, and legal enforcement. Who takes responsibility for verifying and enforcing the underlying asset, and who bears the loss if the debtor...</description>
+    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
+    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-2</guid>
+    <pubDate>Mon, 26 Oct 2026 15:36:49 +0000</pubDate>
+    <description>Summary This proposal requests $6,000 USD equivalent in CKB for a 12-week development and validation phase for FiberNuts, an open Cashu-over-Fiber settlement adapter with RUSD reference applications. FiberNuts lets a stock Cashu mint issue and redeem RUSD-denominated ecash through Fiber Network. Users can add ecash by paying a Fiber invoice, transfer Cashu tokens directly, settle received tokens by swapping them for fresh proofs, and cash out through an external Fiber invoice. The mint remains custodial and controls issuance, swaps, and redemption. The protocol already works. The public repository contains the Rust cdk-fiber adapter, an out-of-process processor for an unmodified cdk-...</description>
   </item>
   <item>
-    <title>Cellula Wallet beta on testnet: testers wanted until Monday 26 October (1 posts)</title>
-    <link>https://talk.nervos.org/t/cellula-wallet-beta-on-testnet-testers-wanted-until-monday-26-october/11048</link>
-    <guid>https://talk.nervos.org/t/cellula-wallet-beta-on-testnet-testers-wanted-until-monday-26-october/11048#recent-1</guid>
-    <pubDate>Sun, 25 Oct 2026 01:09:05 +0000</pubDate>
-    <description>image1920×1008 241 KB Hi everyone, Cellula is the name you can pay: cellula.id gives you one name, yourname.cell, that people can pay instead of a blockchain address. Now we are testing the Cellula Wallet, a wallet that lives in your passkey, and we are looking for more testers: on Android, where the app is, and on the web, where the same wallet runs in any browser that can save a passkey. The beta runs until Monday 26 October at midnight (23:59 UTC). What it is Your passkey is the wallet: you open it with your fingerprint, face or screen lock, and there is no seed phrase to write down. An Android app (Android 11 or later), and the same wallet on the web. .cell names right in the wallet:...</description>
+    <title>Ckb-on-ramp：用闪电网络钱包入金 CKB 生态 (3 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-on-ramp-ckb/11050</link>
+    <guid>https://talk.nervos.org/t/ckb-on-ramp-ckb/11050#recent-3</guid>
+    <pubDate>Mon, 26 Oct 2026 09:48:57 +0000</pubDate>
+    <description>最近我做了一个小 demo，叫 ckb-on-ramp，线上测试版在 https://onramp.retric.uk （全部跑在 testnet）。它要回答的问题是：一个手里只有 BTC 闪电钱包、没有 CKB 的新用户，能不能不装任何软件，打开网页就把 BTC 换成 Fiber 通道里的资产？ 我觉得这个想法有意思，是想到如果有这样一个产品，不仅能解决入金问题，也能通过通道网络，让新用户从第一天开始就感受到CKB上二层网络的魅力。onboarding 不一定要 onboard 到 CKB 网络的一层里，二层也许是个更实用的选择。比如入金之后，用户可以直接就去做小额快速的支付，或是直接玩fiber上的游戏。这或许能打开不一样的应用场景。 image2880×1556 241 KB d82c8b602d0f7b745c8c36d18fa7006a2880×1556 210 KB c52a3d4cab2dc13d3b88ed4d9bcd6cb72880×1556 197 KB 7e1015b4b89d4c72c24fc89a6acc16021170×2532 77.7 KB 我自己尝试了下用了zeus 钱包来扫描 demo 里的二维码，换了一点 CKB testnet 上的 cWBTC 的token，体验还是挺有意思的。 这篇帖子简单写下这个 demo 是怎么实现的、我想验证什么、有哪些限制，以及我觉得 Fiber 可以在协议层补上的几项能力。 一、这个 demo 有趣在哪 我觉得有意思的地方有三点。 用户的 Fiber 节点跑在浏览器里。前端用 fiber-...</description>
   </item>
   <item>
-    <title>FiberNuts Community Market: A Testnet App for Cashu + Fiber (1 posts)</title>
-    <link>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792</link>
-    <guid>https://talk.nervos.org/t/fibernuts-community-market-a-testnet-app-for-cashu-fiber/10792#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 22:16:00 +0000</pubDate>
-    <description>Thanks for the detailed testing and feedback. I’ve now added a strict CSP, fixed the “1 claim” wording, improved security reporting, and added exact network/RUSD asset validation for cash-outs. Event-friendly faucet access, easier LSP-based funding, NUT-13 recovery, and NUT-11 refunds remain next-stage work.</description>
+    <title>[DIS] Mobile-Ready CKB Light Client (Pocket Node) for Android (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879</link>
+    <guid>https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 09:44:06 +0000</pubDate>
+    <description>Pocket Node v1.8.6 This update focuses on wallet protection and making backup and recovery easier to understand. Wallet passphrase protection Set up a separate wallet passphrase that gives you a fallback if Android device authentication becomes unavailable. Optional device authentication remains available for everyday use. Cleaner settings and backup screens Wallet protection settings are simpler to navigate, with clearer explanations and a redesigned backup verification flow. Recovery and reliability improvements Missing Android security keys now lead to recovery options instead of a crash. We also fixed backup verification, wallet restore, activity export and sync issues, and improved...</description>
   </item>
   <item>
-    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (1 posts)</title>
+    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
+    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 08:51:24 +0000</pubDate>
+    <description>周报 2026.10.26 更新proof of buy的设计和功能开发： Proof of Buy，一种专为Layer1设计的Layer2共识 - #34 by Lawliet_Chan define proof of buy by Lawliet-Chan · Pull Request #8 · invisibook-lab/invisibook · GitHub</description>
+  </item>
+  <item>
+    <title>[DIS] Vellum: Reputation Extension on did:ckb (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
+    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 06:02:47 +0000</pubDate>
+    <description>Vellum Milestone 2 delivery report Implementation for Vellum’s second grant milestone is complete and ready for community review. M2 turns the Claim Cell foundation delivered in M1 into a public builder record and a real partner integration. Vellum now provides shareable profiles for did:ckb identities, renders issuer-backed evidence, and applies a transparent reputation policy. CKBoost can issue portable quest-completion claims through its production Testnet flow, with one completion validated end to end from the reward transaction to the public profile and score. Repository: GitHub - truthixify/vellum: Portable identity and verifiable reputation for builders on Nervos CKB. · GitHub Live...</description>
+  </item>
+  <item>
+    <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (2 posts)</title>
+    <link>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049</link>
+    <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-2</guid>
+    <pubDate>Mon, 26 Oct 2026 04:55:40 +0000</pubDate>
+    <description>Hi everyone, I’ve been working on UTXOPlay over the weekend, and the alpha is now live at utxoplay.io. image1920×1111 494 KB There are currently 13 games listed. It’s still early, and there’s plenty to improve, but I’d love for people to try it and share what works, what breaks, and what feels missing. image1920×1111 477 KB image1920×1111 629 KB image1920×1111 417 KB image1920×1111 333 KB image1920×1111 340 KB I also wanted to put the broader idea in writing: how the platform is structured, how it could bring together technology from across the Nervos community, and how we could work toward community-driven development and DAO governance. The Nervos community has built a lot of useful...</description>
+  </item>
+  <item>
+    <title>Tactus O1: First Based EVM Rollup on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861</link>
+    <guid>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861#recent-1</guid>
+    <pubDate>Mon, 26 Oct 2026 04:18:02 +0000</pubDate>
+    <description>Tactus 0.02 — making the rollup lifecycle explicit Tactus 0.01 explored whether an EVM rollup on CKB could work. In 0.02, the focus is making the different parts agree: how transactions enter the system, what order they follow, when their results can be trusted, and what users can do if progress stops. The most important distinction is between being ordered and being settled. A transaction appearing in the rollup’s history does not, by itself, make its result available for withdrawals. flowchart LR A[Request accepted] --&gt; B[Order recorded on CKB] B --&gt; C[Execution checked] C -. Next proof milestone .-&gt; D[Proof accepted on CKB] D --&gt; E[Result settled] What changes Deposits and priority...</description>
+  </item>
+  <item>
+    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (2 posts)</title>
     <link>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043</link>
-    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 20:47:07 +0000</pubDate>
-    <description>Love the Idea.</description>
-  </item>
-  <item>
-    <title>Introducing Nervlith (formally Mint Gate): a CKB-native token gating and membership platform (1 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-nervlith-formally-mint-gate-a-ckb-native-token-gating-and-membership-platform/11045</link>
-    <guid>https://talk.nervos.org/t/introducing-nervlith-formally-mint-gate-a-ckb-native-token-gating-and-membership-platform/11045#recent-1</guid>
-    <pubDate>Sat, 24 Oct 2026 19:56:04 +0000</pubDate>
-    <description>GM NERVOS BUILDERS!!!, The product previously called Mint Gate is now Nervlith (formally Mint Gate). Nervlith is a CKB-native DAO launcher, token gating and membership platform. image1775×748 141 KB It is also translated to Mandarin for wider community scope image1375×677 103 KB How Does Nervlith work Nervlith works in a simple way: Own a DID passport, without an identity on Nervlith you can’t access or join communities. image1728×808 65.3 KB image752×811 47.2 KB Create a community, choose a governance model, add a gate fee, Membership Card design. image980×789 46.5 KB image1061×824 61.2 KB image1115×806 111 KB image832×746 72.3 KB Join a community created by someone by paying the gate...</description>
+    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-2</guid>
+    <pubDate>Sun, 25 Oct 2026 22:36:19 +0000</pubDate>
+    <description>GTBank is only a payment method on this test desk, for NGN. There is no integration and no relationship with the bank. Zelle is the same kind of label for USD. A coordinator sets the methods on their own desk, for whatever currency they want to support. Twine never talks to the bank. The buyer pays the account the seller types into that trade. Verifying that payment with the bank is not something this can do. The rules are different in every country, and many banks will not allow that kind of check. The name on the listing is the rail those two people agreed to use. GTBank(for NGN) does not see the trade, does not verify it, and does not guarantee that any CKB moves. The account name,...</description>
   </item>
 </channel>
 </rss>
