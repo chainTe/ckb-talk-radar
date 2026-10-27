@@ -5,84 +5,49 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Mon, 26 Oct 2026 20:48:24 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 27 Oct 2026 14:30:32 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-27</title>
+    <title>CKB Talk Daily Brief - 2026-10-28</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-26:daily-brief</guid>
-    <pubDate>Mon, 26 Oct 2026 21:20:21 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛的主要热度集中在 Fiber/Cashu 支付与入金路径：FiberNuts 提出资助提案，ckb-on-ramp 发布 testnet demo 并引发讨论 [S03, S05]。同时，CKB DEx 更新 README、UTXOPlay alpha 上线、Tactus 0.02 发文说明，几个项目都在推进 [S01, S11, S13]。钱包与身份侧，Pocket Node 发布 v1.8.6，Vellum 提交 M2 交付报告 [S08, S10]。整体看，今天不是单帖刷屏，而是支付、游戏、钱包和基础设施几条线同时有更新 [S03, S08, S11, S13]。 ## 重点话题 FiberNuts 提案请求 6000 美元等值 CKB，计划用 12 周开发验证 Cashu-over-Fiber 结算适配器，并让标准 Cashu mint 发行和赎回 RUSD 计价的 ecash [S03]。有回复称赞文档和 KPI，并提出一对一沟通 [S04]。 ckb-on-ramp 发布 testnet demo，目标是让只有 BTC 闪电钱包的新用户不装软件、打开网页就把 BTC 换成 Fiber 通道资产 [S05]。讨论认为若路径跑通，Fiber 可能成为进入 CKB 生态的第一站，并提到 fiber-js WASM、Passkey 和 LSP 商业模式 [S06]。还有回复指出 ckbolt 有类似 demo，并称自己的 ckbolt demo 可能当天或次日上线 [S07]。 CKB DEx 进度更新中，LucentLabs 表示已更新...</description>
+    <guid>tag:ckb-talk-radar,2026-10-27:daily-brief</guid>
+    <pubDate>Tue, 27 Oct 2026 21:06:54 +0000</pubDate>
+    <description>## 今日发生了什么 从这批更新看，今天 Nervos Talk 整体较平静，主要内容是项目介绍和例行进展 [S01,S05,S07,S08]。今天论坛的主要动静是 FoundationLab 发布 CKBSwap 介绍，社区随后围绕其协议原理和 UTXO 并发处理提问 [S01,S02,S04]。此外，NNCBN 发布节点运行周报，Spark Verify 和 CKB 生态双周报也有例行更新 [S05,S07,S08]。 ## 重点话题 FoundationLab 介绍 CKBSwap，称团队三人、目标是长期在 CKB 上构建有用产品 [S01]。项目采用恒定乘积 AMM、参考 Uniswap V2 定价思路，社区成员则追问 UTXO 架构下 pool 原理、hot cell 热更新和并发处理 [S02,S04]。 NNCBN 发布第五周周报，称节点已完成首次同步，经过约一周运行，系统仍需一些微调 [S05]。 Spark Verify 帖中，委员会成员表示项目还有一些细节需要沟通，本周会有其他委员会成员联系项目方 [S07]。 CKB 生态双周报 #27 发布，汇总过去两周开发与生态进展，并提到 CKB v0.211、CKB-VM 与 Tentacle 等准备工作 [S08]。 UTXOPlay 收到社区正面反馈，评论认可把不同游戏和开发工具集中在一起，并认为社区驱动和透明治理有助建立信任 [S06]。 ## 值得继续跟进 跟进 CKBSwap 后续协议说明，重点看它如何在 UTXO 架构上处理 pool、hot cell 热更新与并发交易 [S02,S04]。 观察...</description>
   </item>
   <item>
-    <title>CKB DEx Progress Update (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-dex-progress-update/11055</link>
-    <guid>https://talk.nervos.org/t/ckb-dex-progress-update/11055#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 20:48:24 +0000</pubDate>
-    <description>Hi guys, here again to share update with the community about the progress so far with our ongoing CKB DEx dapp. As part of our ongoing effort to carry the community along in our journey of building the DEx, we have updated our README file to carry all relevant information and details of all key components within the dapp. We also added the architecture diagram of the current PoC. All can be found here: README.md. We believe this will aid developers in understanding the architecture and also suggest improvements where necessary. In the same stream of efforts, we submitted a issue for review of the DEx PoC to the Nervos community catalyst github issue link here and we received valuable...</description>
+    <title>Introducing CKBSwap — Building on CKB for the Long Term (4 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060</link>
+    <guid>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060#recent-4</guid>
+    <pubDate>Tue, 27 Oct 2026 14:30:32 +0000</pubDate>
+    <description>Hello, CKB community! We are FoundationLab, a team of three developers who share a strong belief in CKB and a commitment to building within its ecosystem. Today, we’d like to introduce CKBSwap, the project we’re working on. Our goal is straightforward: build a useful, accessible swap and liquidity application that helps turn CKB’s technical potential into something people can use. What is CKBSwap? CKBSwap is an exchange and liquidity application built around CKB’s native asset model. It is currently on testnet. It supports native CKB/xUDT and xUDT/xUDT liquidity pools using constant-product pricing. Users can swap assets, provide liquidity, and withdraw their share of the underlying...</description>
   </item>
   <item>
-    <title>Ever wanted to customize your connect wallet? (1 posts)</title>
-    <link>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013</link>
-    <guid>https://talk.nervos.org/t/ever-wanted-to-customize-your-connect-wallet/11013#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 15:49:55 +0000</pubDate>
-    <description>Great work, Victor! I’ve been building several projects in the CKB ecosystem, including SkillPass, CellFlow, and CellGuard, and I think having a more flexible wallet connection UI is really useful for improving the user experience. I especially like how this builds on the existing CCC provider while allowing developers to customize the wallet list, connection flow, and account layout without being locked into a predefined interface. The optional did integration is also a nice touch! This could be particularly useful for SkillPass, where I want the wallet connection experience to feel like a natural part of the application rather than a separate blockchain interaction. Thanks for sharing...</description>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 14:26:09 +0000</pubDate>
+    <description>2026 October 27, Fifth Weekly Report We have been operating the node for the first synchronization since the last weekly report till today! Some fine-tuning is still needed, but the synchronization is already complete, and after about a week of operation, the system has already proven that it has sufficient performance reserves and is running stably. The next major step is to begin operations at the designated location. If all goes well, the next weekly report will announce that the node has been deployed and connected in the Atlantic Ocean off the coast of Africa, between Brazil and Portugal. We’re keeping our fingers crossed that everything goes smoothly. Initial LOG-Sort tests....</description>
   </item>
   <item>
-    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (2 posts)</title>
-    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
-    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-2</guid>
-    <pubDate>Mon, 26 Oct 2026 15:36:49 +0000</pubDate>
-    <description>Summary This proposal requests $6,000 USD equivalent in CKB for a 12-week development and validation phase for FiberNuts, an open Cashu-over-Fiber settlement adapter with RUSD reference applications. FiberNuts lets a stock Cashu mint issue and redeem RUSD-denominated ecash through Fiber Network. Users can add ecash by paying a Fiber invoice, transfer Cashu tokens directly, settle received tokens by swapping them for fresh proofs, and cash out through an external Fiber invoice. The mint remains custodial and controls issuance, swaps, and redemption. The protocol already works. The public repository contains the Rust cdk-fiber adapter, an out-of-process processor for an unmodified cdk-...</description>
-  </item>
-  <item>
-    <title>Ckb-on-ramp：用闪电网络钱包入金 CKB 生态 (3 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-on-ramp-ckb/11050</link>
-    <guid>https://talk.nervos.org/t/ckb-on-ramp-ckb/11050#recent-3</guid>
-    <pubDate>Mon, 26 Oct 2026 09:48:57 +0000</pubDate>
-    <description>最近我做了一个小 demo，叫 ckb-on-ramp，线上测试版在 https://onramp.retric.uk （全部跑在 testnet）。它要回答的问题是：一个手里只有 BTC 闪电钱包、没有 CKB 的新用户，能不能不装任何软件，打开网页就把 BTC 换成 Fiber 通道里的资产？ 我觉得这个想法有意思，是想到如果有这样一个产品，不仅能解决入金问题，也能通过通道网络，让新用户从第一天开始就感受到CKB上二层网络的魅力。onboarding 不一定要 onboard 到 CKB 网络的一层里，二层也许是个更实用的选择。比如入金之后，用户可以直接就去做小额快速的支付，或是直接玩fiber上的游戏。这或许能打开不一样的应用场景。 image2880×1556 241 KB d82c8b602d0f7b745c8c36d18fa7006a2880×1556 210 KB c52a3d4cab2dc13d3b88ed4d9bcd6cb72880×1556 197 KB 7e1015b4b89d4c72c24fc89a6acc16021170×2532 77.7 KB 我自己尝试了下用了zeus 钱包来扫描 demo 里的二维码，换了一点 CKB testnet 上的 cWBTC 的token，体验还是挺有意思的。 这篇帖子简单写下这个 demo 是怎么实现的、我想验证什么、有哪些限制，以及我觉得 Fiber 可以在协议层补上的几项能力。 一、这个 demo 有趣在哪 我觉得有意思的地方有三点。 用户的 Fiber 节点跑在浏览器里。前端用 fiber-...</description>
-  </item>
-  <item>
-    <title>[DIS] Mobile-Ready CKB Light Client (Pocket Node) for Android (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879</link>
-    <guid>https://talk.nervos.org/t/dis-mobile-ready-ckb-light-client-pocket-node-for-android/9879#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 09:44:06 +0000</pubDate>
-    <description>Pocket Node v1.8.6 This update focuses on wallet protection and making backup and recovery easier to understand. Wallet passphrase protection Set up a separate wallet passphrase that gives you a fallback if Android device authentication becomes unavailable. Optional device authentication remains available for everyday use. Cleaner settings and backup screens Wallet protection settings are simpler to navigate, with clearer explanations and a redesigned backup verification flow. Recovery and reliability improvements Missing Android security keys now lead to recovery options instead of a crash. We also fixed backup verification, wallet restore, activity export and sync issues, and improved...</description>
-  </item>
-  <item>
-    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
-    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 08:51:24 +0000</pubDate>
-    <description>周报 2026.10.26 更新proof of buy的设计和功能开发： Proof of Buy，一种专为Layer1设计的Layer2共识 - #34 by Lawliet_Chan define proof of buy by Lawliet-Chan · Pull Request #8 · invisibook-lab/invisibook · GitHub</description>
-  </item>
-  <item>
-    <title>[DIS] Vellum: Reputation Extension on did:ckb (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
-    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 06:02:47 +0000</pubDate>
-    <description>Vellum Milestone 2 delivery report Implementation for Vellum’s second grant milestone is complete and ready for community review. M2 turns the Claim Cell foundation delivered in M1 into a public builder record and a real partner integration. Vellum now provides shareable profiles for did:ckb identities, renders issuer-backed evidence, and applies a transparent reputation policy. CKBoost can issue portable quest-completion claims through its production Testnet flow, with one completion validated end to end from the reward transaction to the public profile and score. Repository: GitHub - truthixify/vellum: Portable identity and verifiable reputation for builders on Nervos CKB. · GitHub Live...</description>
-  </item>
-  <item>
-    <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (2 posts)</title>
+    <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (1 posts)</title>
     <link>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049</link>
-    <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-2</guid>
-    <pubDate>Mon, 26 Oct 2026 04:55:40 +0000</pubDate>
-    <description>Hi everyone, I’ve been working on UTXOPlay over the weekend, and the alpha is now live at utxoplay.io. image1920×1111 494 KB There are currently 13 games listed. It’s still early, and there’s plenty to improve, but I’d love for people to try it and share what works, what breaks, and what feels missing. image1920×1111 477 KB image1920×1111 629 KB image1920×1111 417 KB image1920×1111 333 KB image1920×1111 340 KB I also wanted to put the broader idea in writing: how the platform is structured, how it could bring together technology from across the Nervos community, and how we could work toward community-driven development and DAO governance. The Nervos community has built a lot of useful...</description>
+    <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 11:11:14 +0000</pubDate>
+    <description>UTXOPlay sounds like an interesting project for the Nervos community. I like the idea of bringing different games and developer tools together in one place. Community-driven development and transparent governance could also help build trust</description>
   </item>
   <item>
-    <title>Tactus O1: First Based EVM Rollup on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861</link>
-    <guid>https://talk.nervos.org/t/tactus-o1-first-based-evm-rollup-on-ckb/10861#recent-1</guid>
-    <pubDate>Mon, 26 Oct 2026 04:18:02 +0000</pubDate>
-    <description>Tactus 0.02 — making the rollup lifecycle explicit Tactus 0.01 explored whether an EVM rollup on CKB could work. In 0.02, the focus is making the different parts agree: how transactions enter the system, what order they follow, when their results can be trusted, and what users can do if progress stops. The most important distinction is between being ordered and being settled. A transaction appearing in the rollup’s history does not, by itself, make its result available for withdrawals. flowchart LR A[Request accepted] --&gt; B[Order recorded on CKB] B --&gt; C[Execution checked] C -. Next proof milestone .-&gt; D[Proof accepted on CKB] D --&gt; E[Result settled] What changes Deposits and priority...</description>
+    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
+    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 07:50:21 +0000</pubDate>
+    <description>Hi @Akane , 感谢你的耐心和坚持，Spark Verify 项目还有一些细节内容需要沟通，本周会有其他委员会成员在此与你联系。</description>
   </item>
   <item>
-    <title>Twine is up. Try buying and selling CKB without an exchange using Fiber and Nostr (2 posts)</title>
-    <link>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043</link>
-    <guid>https://talk.nervos.org/t/twine-is-up-try-buying-and-selling-ckb-without-an-exchange-using-fiber-and-nostr/11043#recent-2</guid>
-    <pubDate>Sun, 25 Oct 2026 22:36:19 +0000</pubDate>
-    <description>GTBank is only a payment method on this test desk, for NGN. There is no integration and no relationship with the bank. Zelle is the same kind of label for USD. A coordinator sets the methods on their own desk, for whatever currency they want to support. Twine never talks to the bank. The buyer pays the account the seller types into that trade. Verifying that payment with the bank is not something this can do. The rules are different in every country, and many banks will not allow that kind of check. The name on the listing is the rail those two people agreed to use. GTBank(for NGN) does not see the trade, does not verify it, and does not guarantee that any CKB moves. The account name,...</description>
+    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
+    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 02:47:07 +0000</pubDate>
+    <description>CKB Ecosystem Biweekly Update #27 image690×388 97.6 KB Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev continued preparing CKB v0.211. CKB-VM and Tentacle gained runtime and networking improvements, while ckb-cli added a terminal UI. Light-client verification proposals remain under review, and experimental DAO voting progressed on vote thresholds and proposal settlement. More: CKB Dev Log 2026-10-14 @CKBDevrel made ckb-cinnabar easier for AI agents to discover and use, continued CCC development, and maintained CKBadger v0.7 services for mainnet and testnet. @FiberDevs...</description>
   </item>
 </channel>
 </rss>

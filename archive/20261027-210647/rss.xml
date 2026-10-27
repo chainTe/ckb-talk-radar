@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Tue, 27 Oct 2026 14:30:32 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-28</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-27:daily-brief</guid>
+    <pubDate>Tue, 27 Oct 2026 21:06:54 +0000</pubDate>
+    <description>## 今日发生了什么 从这批更新看，今天 Nervos Talk 整体较平静，主要内容是项目介绍和例行进展 [S01,S05,S07,S08]。今天论坛的主要动静是 FoundationLab 发布 CKBSwap 介绍，社区随后围绕其协议原理和 UTXO 并发处理提问 [S01,S02,S04]。此外，NNCBN 发布节点运行周报，Spark Verify 和 CKB 生态双周报也有例行更新 [S05,S07,S08]。 ## 重点话题 FoundationLab 介绍 CKBSwap，称团队三人、目标是长期在 CKB 上构建有用产品 [S01]。项目采用恒定乘积 AMM、参考 Uniswap V2 定价思路，社区成员则追问 UTXO 架构下 pool 原理、hot cell 热更新和并发处理 [S02,S04]。 NNCBN 发布第五周周报，称节点已完成首次同步，经过约一周运行，系统仍需一些微调 [S05]。 Spark Verify 帖中，委员会成员表示项目还有一些细节需要沟通，本周会有其他委员会成员联系项目方 [S07]。 CKB 生态双周报 #27 发布，汇总过去两周开发与生态进展，并提到 CKB v0.211、CKB-VM 与 Tentacle 等准备工作 [S08]。 UTXOPlay 收到社区正面反馈，评论认可把不同游戏和开发工具集中在一起，并认为社区驱动和透明治理有助建立信任 [S06]。 ## 值得继续跟进 跟进 CKBSwap 后续协议说明，重点看它如何在 UTXO 架构上处理 pool、hot cell 热更新与并发交易 [S02,S04]。 观察...</description>
+  </item>
+  <item>
+    <title>Introducing CKBSwap — Building on CKB for the Long Term (4 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060</link>
+    <guid>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060#recent-4</guid>
+    <pubDate>Tue, 27 Oct 2026 14:30:32 +0000</pubDate>
+    <description>Hello, CKB community! We are FoundationLab, a team of three developers who share a strong belief in CKB and a commitment to building within its ecosystem. Today, we’d like to introduce CKBSwap, the project we’re working on. Our goal is straightforward: build a useful, accessible swap and liquidity application that helps turn CKB’s technical potential into something people can use. What is CKBSwap? CKBSwap is an exchange and liquidity application built around CKB’s native asset model. It is currently on testnet. It supports native CKB/xUDT and xUDT/xUDT liquidity pools using constant-product pricing. Users can swap assets, provide liquidity, and withdraw their share of the underlying...</description>
+  </item>
+  <item>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 14:26:09 +0000</pubDate>
+    <description>2026 October 27, Fifth Weekly Report We have been operating the node for the first synchronization since the last weekly report till today! Some fine-tuning is still needed, but the synchronization is already complete, and after about a week of operation, the system has already proven that it has sufficient performance reserves and is running stably. The next major step is to begin operations at the designated location. If all goes well, the next weekly report will announce that the node has been deployed and connected in the Atlantic Ocean off the coast of Africa, between Brazil and Portugal. We’re keeping our fingers crossed that everything goes smoothly. Initial LOG-Sort tests....</description>
+  </item>
+  <item>
+    <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (1 posts)</title>
+    <link>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049</link>
+    <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 11:11:14 +0000</pubDate>
+    <description>UTXOPlay sounds like an interesting project for the Nervos community. I like the idea of bringing different games and developer tools together in one place. Community-driven development and transparent governance could also help build trust</description>
+  </item>
+  <item>
+    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
+    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 07:50:21 +0000</pubDate>
+    <description>Hi @Akane , 感谢你的耐心和坚持，Spark Verify 项目还有一些细节内容需要沟通，本周会有其他委员会成员在此与你联系。</description>
+  </item>
+  <item>
+    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
+    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
+    <pubDate>Tue, 27 Oct 2026 02:47:07 +0000</pubDate>
+    <description>CKB Ecosystem Biweekly Update #27 image690×388 97.6 KB Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev continued preparing CKB v0.211. CKB-VM and Tentacle gained runtime and networking improvements, while ckb-cli added a terminal UI. Light-client verification proposals remain under review, and experimental DAO voting progressed on vote thresholds and proposal settlement. More: CKB Dev Log 2026-10-14 @CKBDevrel made ckb-cinnabar easier for AI agents to discover and use, continued CCC development, and maintained CKBadger v0.7 services for mainnet and testnet. @FiberDevs...</description>
+  </item>
+</channel>
+</rss>
