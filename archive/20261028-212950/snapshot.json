@@ -1,0 +1,335 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-10-28T21:30:01.948208+00:00",
+  "since": "2026-10-27T21:29:50.837253+00:00",
+  "until": "2026-10-28T21:29:50.837253+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 10498,
+      "title": "Introducing Myelin: a CKB-aligned off-chain Cell session runtime",
+      "slug": "introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime",
+      "url": "https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498",
+      "created_at": "2026-07-17T06:24:00.008000+00:00",
+      "last_posted_at": "2026-10-28T16:49:29.406000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB-VM",
+        "CellScript",
+        "Myelin",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26933,
+          "post_number": 13,
+          "topic_id": 10498,
+          "topic_title": "Introducing Myelin: a CKB-aligned off-chain Cell session runtime",
+          "topic_slug": "introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime",
+          "author": "Kaylah",
+          "created_at": "2026-10-28T12:24:35.209000+00:00",
+          "updated_at": "2026-10-28T12:24:35.209000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498/13",
+          "content_text": "Great work on this! so I’ve been reading this closely. One question about the court path, once the on-chain court verifier is live, could an application settle a single disputed chunk with a normal CKB transaction, without trusting the committee? I think that would make Myelin usable even for sessions where players have funds at stake.",
+          "content_html": "<p>Great work on this!  so I’ve been reading this closely. One question about the court path, once the on-chain court verifier is live, could an application settle a single disputed chunk with a normal CKB transaction, without trusting the committee? I think that would make Myelin usable even for sessions where players have funds at stake.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26939,
+          "post_number": 14,
+          "topic_id": 10498,
+          "topic_title": "Introducing Myelin: a CKB-aligned off-chain Cell session runtime",
+          "topic_slug": "introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime",
+          "author": "ArthurZhang",
+          "created_at": "2026-10-28T16:49:29.406000+00:00",
+          "updated_at": "2026-10-28T16:49:29.406000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498/14",
+          "content_text": "Hi @Kaylah, yes , that is the intended design: a normal CKB transaction would verify a bounded disputed chunk independently of the committee.\nFor players’ funds, the application also needs available evidence and escrow rules that enforce the verdict, allowing challenges and withdrawals without fresh committee approval. Myelin already produces the evidence bundles; the complete on-chain dispute and fund-recovery path still needs implementing and testing.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/kaylah\">@Kaylah</a>, yes , that is the intended design: a normal CKB transaction would verify a bounded disputed chunk independently of the committee.</p>\n<p>For players’ funds, the application also needs available evidence and escrow rules that enforce the verdict, allowing challenges and withdrawals without fresh committee approval. Myelin already produces the evidence bundles; the complete on-chain dispute and fund-recovery path still needs implementing and testing.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10937,
+      "title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+      "slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+      "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937",
+      "created_at": "2026-10-12T08:26:15.402000+00:00",
+      "last_posted_at": "2026-10-28T16:26:32.482000+00:00",
+      "category_id": 65,
+      "tags": [
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26928,
+          "post_number": 8,
+          "topic_id": 10937,
+          "topic_title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+          "topic_slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-28T09:29:55.949000+00:00",
+          "updated_at": "2026-10-28T09:29:55.949000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/8",
+          "content_text": "Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 184,132,635 CKB from 15 voters. Both the approval threshold and minimum participation requirement are met.\nPost-close verification was completed on 28 October 2026 using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all voters’ totals match exactly.\nThese checks support the PASSED result for the CrowdCell Proposal.\nVerfication log: ckb-dao-watchdog/Verification Logs - CrowdCell at main · kydchen/ckb-dao-watchdog · GitHub\nVote link: https://dao.ckb.community/thread/vot-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb-80561",
+          "content_html": "<p>Based on the Metaforo tally at close, the outcome is <strong>PASSED</strong>. Approval is <strong>100%</strong>, with total voting weight of <strong>184,132,635 CKB</strong> from 15 voters. Both the approval threshold and minimum participation requirement are met.</p>\n<p>Post-close verification was completed on 28 October 2026 using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, <strong>all voters’ totals match exactly</strong>.</p>\n<p>These checks support the <strong>PASSED</strong> result for the <strong>CrowdCell Proposal</strong>.</p>\n<p>Verfication log: <a href=\"https://github.com/kydchen/ckb-dao-watchdog/tree/main/Verification%20Logs%20-%20CrowdCell\" class=\"inline-onebox\">ckb-dao-watchdog/Verification Logs - CrowdCell at main · kydchen/ckb-dao-watchdog · GitHub</a><br>\nVote link: <a href=\"https://dao.ckb.community/thread/vot-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb-80561\">https://dao.ckb.community/thread/vot-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb-80561</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26936,
+          "post_number": 9,
+          "topic_id": 10937,
+          "topic_title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+          "topic_slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-28T15:46:47.830000+00:00",
+          "updated_at": "2026-10-28T15:46:47.830000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/9",
+          "content_text": "Initial Payout\n$1,500/0.00138=1,086,957 CKB\nhttps://explorer.nervos.org/transaction/0x3d12304de80fcf871c7a8cc7adf67821c86da301843654f91d16299977030dd4",
+          "content_html": "<p>Initial Payout</p>\n<p>$1,500/0.00138=1,086,957 CKB</p>\n<p><a href=\"https://explorer.nervos.org/transaction/0x3d12304de80fcf871c7a8cc7adf67821c86da301843654f91d16299977030dd4\" class=\"onebox\" target=\"_blank\" rel=\"noopener\">https://explorer.nervos.org/transaction/0x3d12304de80fcf871c7a8cc7adf67821c86da301843654f91d16299977030dd4</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26938,
+          "post_number": 10,
+          "topic_id": 10937,
+          "topic_title": "[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品",
+          "topic_slug": "dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb",
+          "author": "Ayoub_Lesfer",
+          "created_at": "2026-10-28T16:26:32.482000+00:00",
+          "updated_at": "2026-10-28T16:26:32.482000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/10",
+          "content_text": "Thanks everyone who voted, and @zz_tovarishch for the verification and for sending the first payout.\nAs promised in §6.5, the four small fixes from Officeyutong’s second review are in, each with an exploit test that was accepted by the old contracts and is rejected now, and the contracts are redeployed on testnet: fix(v1.2): Officeyutong's second review, findings 1, 2, 4 and 5 by alesfer001 · Pull Request #11 · alesfer001/CrowdCell · GitHub. The fifth (pledges after the deadline) needs a design change and comes with M4 as planned.\nStarting on M1 now. I’ll keep updates in this thread, with a [Status Update] post at each milestone.",
+          "content_html": "<p>Thanks everyone who voted, and <a class=\"mention\" href=\"/u/zz_tovarishch\">@zz_tovarishch</a> for the verification and for sending the first payout.</p>\n<p>As promised in §6.5, the four small fixes from Officeyutong’s second review are in, each with an exploit test that was accepted by the old contracts and is rejected now, and the contracts are redeployed on testnet: <a href=\"https://github.com/alesfer001/CrowdCell/pull/11\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">fix(v1.2): Officeyutong's second review, findings 1, 2, 4 and 5 by alesfer001 · Pull Request #11 · alesfer001/CrowdCell · GitHub</a>. The fifth (pledges after the deadline) needs a design change and comes with M4 as planned.</p>\n<p>Starting on M1 now. I’ll keep updates in this thread, with a [Status Update] post at each milestone.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10997,
+      "title": "[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐",
+      "slug": "spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm",
+      "url": "https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997",
+      "created_at": "2026-10-15T08:36:28.840000+00:00",
+      "last_posted_at": "2026-10-28T12:47:29.368000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26934,
+          "post_number": 6,
+          "topic_id": 10997,
+          "topic_title": "[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐",
+          "topic_slug": "spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-28T12:47:29.368000+00:00",
+          "updated_at": "2026-10-28T12:47:29.368000+00:00",
+          "reply_to_post_number": 5,
+          "url": "https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/6",
+          "content_text": "Hi @Officeyutong ,\nThe second installment (50 USD) : 33,968 CKB\n0xac98590ce7cc48aea9412a62360e45253ea7ed8ea69246e0ee64dc29983c106b\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/officeyutong\">@Officeyutong</a> ,</p>\n<p>The second installment (50 USD) : 33,968 CKB</p>\n<p><a href=\"https://explorer.nervos.org/en/transaction/0xac98590ce7cc48aea9412a62360e45253ea7ed8ea69246e0ee64dc29983c106b\">0xac98590ce7cc48aea9412a62360e45253ea7ed8ea69246e0ee64dc29983c106b</a></p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10809,
+      "title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+      "slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+      "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809",
+      "created_at": "2026-10-06T16:14:27.711000+00:00",
+      "last_posted_at": "2026-10-28T11:38:27.096000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "DeFi",
+        "defi挖矿",
+        "lang-es",
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26930,
+          "post_number": 31,
+          "topic_id": 10809,
+          "topic_title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+          "topic_slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+          "author": "SalmanDev",
+          "created_at": "2026-10-28T11:38:27.096000+00:00",
+          "updated_at": "2026-10-28T11:38:27.096000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/31",
+          "content_text": "Hey everyone, voting on Kirea Finance closes soon, and I still need more voting weight to reach quorum!\nKirea Finance is building open-source infrastructure for compliance-gated RWA lending directly on CKB, with no bridge and no custodian in the on-chain flow.\nThe full lending lifecycle (deposit → borrow → repay → release) is already implemented and tested on the CKB testnet.\nThis $7,250 grant will help harden the contracts, integrate live Sumsub KYC, and deliver reusable tooling for other CKB developers.\nIf you support real-world assets and the future of DeFi on CKB, please cast your vote now. It takes less than a minute, and voting weight comes from your Nervos DAO deposits.\nVote here:\nhttps://dao.ckb.community/thread/vot-kirea-finance-native-rwa-lending-infrastructure-for-ckb-80639\nAlready voted? Thank you! Please share this with another CKB holder.",
+          "content_html": "<p>Hey everyone, voting on Kirea Finance closes soon, and I still need more voting weight to reach quorum!</p>\n<p>Kirea Finance is building open-source infrastructure for compliance-gated RWA lending directly on CKB, with no bridge and no custodian in the on-chain flow.</p>\n<p>The full lending lifecycle (deposit → borrow → repay → release) is already implemented and tested on the CKB testnet.</p>\n<p>This $7,250 grant will help harden the contracts, integrate live Sumsub KYC, and deliver reusable tooling for other CKB developers.</p>\n<p>If you support real-world assets and the future of DeFi on CKB, please cast your vote now. It takes less than a minute, and voting weight comes from your Nervos DAO deposits.</p>\n<p>Vote here:<br>\n<a href=\"https://dao.ckb.community/thread/vot-kirea-finance-native-rwa-lending-infrastructure-for-ckb-80639\" class=\"onebox\" target=\"_blank\" rel=\"noopener nofollow ugc\">https://dao.ckb.community/thread/vot-kirea-finance-native-rwa-lending-infrastructure-for-ckb-80639</a></p>\n<p>Already voted? Thank you! <img src=\"https://talk.nervos.org/images/emoji/apple/heart.png?v=15\" title=\":heart:\" class=\"emoji\" alt=\":heart:\" loading=\"lazy\" width=\"20\" height=\"20\"> Please share this with another CKB holder.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11060,
+      "title": "Introducing CKBSwap — Building on CKB for the Long Term",
+      "slug": "introducing-ckbswap-building-on-ckb-for-the-long-term",
+      "url": "https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060",
+      "created_at": "2026-10-27T11:14:33.596000+00:00",
+      "last_posted_at": "2026-10-28T06:15:02.693000+00:00",
+      "category_id": 70,
+      "tags": [],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26924,
+          "post_number": 5,
+          "topic_id": 11060,
+          "topic_title": "Introducing CKBSwap — Building on CKB for the Long Term",
+          "topic_slug": "introducing-ckbswap-building-on-ckb-for-the-long-term",
+          "author": "longdevbf",
+          "created_at": "2026-10-28T00:35:13.151000+00:00",
+          "updated_at": "2026-10-28T00:35:13.151000+00:00",
+          "reply_to_post_number": 2,
+          "url": "https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060/5",
+          "content_text": "I think batcher is good. I seen the same model and dex on cardano. minswap.org",
+          "content_html": "<p>I think batcher is good. I seen the same model and dex on cardano. <a href=\"http://minswap.org\" rel=\"noopener nofollow ugc\">minswap.org</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26927,
+          "post_number": 6,
+          "topic_id": 11060,
+          "topic_title": "Introducing CKBSwap — Building on CKB for the Long Term",
+          "topic_slug": "introducing-ckbswap-building-on-ckb-for-the-long-term",
+          "author": "RetricSu",
+          "created_at": "2026-10-28T06:15:02.693000+00:00",
+          "updated_at": "2026-10-28T06:15:02.693000+00:00",
+          "reply_to_post_number": 4,
+          "url": "https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060/6",
+          "content_text": "great to know that. I think for the production launch, the hot cell issue is a must-fix problem. otherwise people won’t take it seriously. the cardano batcher solution seems practical. thanks @longdevbf\nI think DeFi might not be the killer app for CKB, but it definitely is something we need to have, as some sort of ecosystem primitive pieces.\nthe current UX/UI looks clean, keep the great work!",
+          "content_html": "<p>great to know that. I think for the production launch, the hot cell issue is a must-fix problem. otherwise people won’t take it seriously. the cardano batcher solution seems practical. thanks <a class=\"mention\" href=\"/u/longdevbf\">@longdevbf</a></p>\n<p>I think DeFi might not be the killer app for CKB, but it definitely is something we need to have, as some sort of ecosystem primitive pieces.</p>\n<p>the current UX/UI looks clean, keep the great work!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10193,
+      "title": "CellScript - A DSL for Cell-Based Contracts",
+      "slug": "cellscript-a-dsl-for-cell-based-contracts",
+      "url": "https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193",
+      "created_at": "2026-04-21T04:43:38.654000+00:00",
+      "last_posted_at": "2026-10-28T05:11:24.589000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB-VM",
+        "CellScript",
+        "DSL",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26926,
+          "post_number": 35,
+          "topic_id": 10193,
+          "topic_title": "CellScript - A DSL for Cell-Based Contracts",
+          "topic_slug": "cellscript-a-dsl-for-cell-based-contracts",
+          "author": "ArthurZhang",
+          "created_at": "2026-10-28T05:11:24.589000+00:00",
+          "updated_at": "2026-10-28T05:26:11.881000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193/35",
+          "content_text": "CellScript 0.33 Alpha: A Major Step Forward for CellScript Contracts\nCellScript 0.33.0-alpha.1 is out, and #47, #48, #49 are now closed.\nThis is one of the largest steps forward CellScript has taken. The release brings together the work since 0.31, including the intervening 0.32 development work. It opens up a much wider range of contracts we can write on CKB, and it needs more time in real applications.\nThat is why this is an alpha. The feature set is now frozen. The next stage is to test, simplify, repair and consolidate what we have.\nThe first roadmap section now has an initial implementation\nThe first section of the CellScript roadmap described the language and runtime foundations for more ambitious applications. It covered different kinds of Cells, richer data, temporary accounting and reusable contract components. All five workstreams in that section now have an initial implementation: #28, #29, #47, #48, #49.\nThat is a major milestone. It gives us a more complete set of building blocks for exploring the financial protocols in the rest of the roadmap. Custody, pricing, liquidity positions and settlement rules remain substantial application work ahead.\nHere is what the new design space looks like:\nBuilding block\nWhat 0.33 adds to the 0.31 foundations\nWhat a contract author can explore\nRelated work\nDifferent Cell roles\nName and select bounded groups with different Script identities, then match their inputs and outputs\nMixed-asset settlement and coordinated updates across several kinds of state\n#49\nRicher data\nDescribe bounded lists of messages or records with variable-length content\nBatch plans, document histories and state migrations with meaningful payloads\n#48\nTemporary collections\nUse bounded Vec, Map and Set workspaces with reusable read-only helpers\nTotals by asset, duplicate detection and transaction-local accounting\n#47\nReusable components\nSelect approved implementations and permitted configurations while retaining the chosen instance’s identity\nApplications with different issuers, owners or pool configurations\n#28, #29, #80\nZK applications\nBind proofs to actual state transitions, coordinate several state Cells and manage authorized verifier/key changes\nApplications whose proof, transaction builder and state lifecycle work together\n#22, #42, #44, #45, #46\nThese capabilities are already exercised by complete examples: multi-asset transfers, mixed settlement, byte-list migration and record-list migration.\nWhat this looks like in a contract\nConsider a transaction that moves several assets between several participants. We need to identify the relevant Cells, add up amounts for each asset, reject duplicate identifiers and check the final state. As the transaction grows, keeping those rules readable becomes a large part of the problem.\nThe following snippets are excerpts from the complete examples shipped with the alpha. Each source link includes the surrounding declarations and checks.\n1. Accounting by asset, with ordinary collections\nIn the transfer example, the contract declares one temporary workspace and gives names to its accounting tables:\ncollections Totals {\nlimits { bytes: 4096, allocations: 4 }\nincoming: OrderedMap<Hash, u128> { items: 32 }\noutgoing: OrderedMap<Hash, u128> { items: 32 }\ninput_serials: OrderedSet<u64> { items: 32 }\noutput_serials: OrderedSet<u64> { items: 32 }\n}\nfn conserved(totals: &Totals) -> bool {\nif totals.incoming.len() != totals.outgoing.len() { return false }\nfor (asset, amount) in totals.incoming {\nif !totals.outgoing.contains_key(asset) { return false }\nif totals.outgoing.get(asset) != amount { return false }\n}\nreturn true\n}\nThe two Maps answer “how much of this asset comes in?” and “how much goes out?” The Sets detect repeated note identifiers. The conserved helper can read the workspace and compare the totals without taking it away from the caller.\nSplitting one note into several, or merging several notes into one, can follow the same conservation rule. The spending contracts provide authorization, while this example checks the quantities recorded in its notes.\nThe full example reserves capacity using the actual input and output counts before filling these tables. That matters for how the workspace uses its budget.\n2. State with a useful history\nA contract can also describe a bounded history whose entries contain both an identity and variable-length content. The record migration example uses this declaration:\nstruct Message { revision: u64, payload: Vec<u8> }\ndata_shape Messages {\nelement: Message,\nlimits { items: 8, payload_bytes: 256, encoded_bytes: 2280 }\n}\nresource Document has store { messages: Messages, id: u64, revision: u64 }\nresource Registry has store { id: u64, revision: u64 }\nA document can carry up to eight messages, each with a revision and a bounded payload. The total encoding has its own limit. Ordinary field access and helpers can then express rules such as “preserve every existing message and append the new revision.”\nOnce the document and registry roles have been declared, the batch loop is short:\nfor i in 0..selected.documents.input_count() {\nrequire migrate_document(selected.documents.input(i), selected.documents.successor(i), release_note[0], revision)\n}\nHere migrate_document checks the identity, revision, history, new message and capacity of each document. The selected successor is its matched output. This gives us a concrete starting point for coordinated updates to records with richer content.\n3. Giving different participants clear roles\nThe settlement example describes orders and two asset roles. Its action starts with:\nlet selected = ckb::select_cell_roles<Settlement>()\nlet count = selected.orders.input_count()\nrequire selected.base.input_count() == count * 2\nrequire selected.quote.input_count() == count * 2\nThe code can talk about orders, base balances and quote balances directly. The role declarations identify which Cells belong to each role and how inputs correspond to outputs. The remaining logic checks each full fill and its payment legs.\nOn CKB, these participants validate the same candidate transaction. Each required contract must accept it:\nflowchart TD\nT[\"One candidate transaction\"] --> S[\"Settlement rules\"]\nT --> A[\"Asset A rules\"]\nT --> B[\"Asset B rules\"]\nT --> L[\"Spending authorization\"]\nS --> C{\"Every required Script accepts?\"}\nA --> C\nB --> C\nL --> C\nC -->|Yes| V[\"Transaction is valid\"]\nC -->|No| R[\"Transaction is rejected\"]\nThis is an important part of the design space: an application can organize several independently governed participants while keeping each participant’s responsibility visible. Reading another participant’s Cells does not give one contract authority over them.\nThe component-selection work in #28, #29, #80 extends this further. Applications can accept an implementation through a compatibility policy and allow specified configurations, while still binding the concrete instance used in the transaction. Two issuers or pools can share code and remain distinct participants.\nArena: a temporary workbench with a budget\nAn arena is a temporary workbench a contract opens while checking a transaction. Lists, accounting tables and sets can share its space. Their values share a lifetime, while persistent application state continues to live in Cells.\nDeclaration\nWhat it controls\nHow to think about it\nShared byte budget\nThe space charged to the whole workspace\nThe size of the workbench\nAllocation budget\nHow many allocation events the workspace can make, including growth\nHow often new storage can be claimed\nMember item limits\nThe maximum number of entries in each collection\nThe largest list or table that member may hold\nThese limits work together. An item limit does not, by itself, guarantee that every collection can reach its maximum within the shared budget.\nThe current arena uses a simple allocation policy: it moves forward through its available space. When a collection grows into a larger buffer, the old buffer remains charged for that arena lifetime.\nflowchart TD\nW[\"Temporary workspace with a declared budget\"] --> O[\"Collection uses a buffer for 4 items\"]\nO --> G[\"Collection needs more capacity\"]\nG --> N[\"Allocate a new buffer for 8 items\"]\nN --> M[\"Copy the existing values into the new buffer\"]\nM --> LIVE[\"Collection continues using the new buffer\"]\nM --> OLD[\"Old buffer is retired but still charged\"]\nLIVE --> BUDGET[\"Budget includes both allocations and bookkeeping\"]\nOLD --> BUDGET\nBUDGET --> END[\"Owner lifetime ends; its temporary values stop being usable\"]\nReserving the expected capacity up front avoids that growth history. The tools explain how the collections fit into their shared budget, including old buffers and allocation overhead. The arena is backed by reserved function-stack space, so its budget is also part of the contract’s stack use.\nThis gives us a straightforward resource model to inspect and test. More application experience will show where it is comfortable and where it needs improvement.\nThe wider journey from 0.31 to 0.33\nThe issue history helps show the breadth of this release. Some items add capabilities, some improve everyday writing, and others establish which implementation choices are actually worth adopting.\nArea\nClosed issues\nWhat the work contributed\nCompatible components\n#28, #29, #80\nApproved implementation selection, selected transaction participants and constrained configurations of distinct instances\nCollections and richer transactions\n#47, #48, #49\nTemporary accounting, bounded nested data and selection across different Cell roles\nZK applications and their lifecycle\n#22, #42, #44, #45, #46\nThe first application workflow, coordinated state updates, authorized key/verifier changes and measured proving and execution costs\nMeasuring and improving execution\n#36, #37, #38, #39, #40, #41\nActual stack measurements, code-size and cycle analysis, and comparisons of alternative implementations\nEveryday contract writing\n#50, #51\nCollection typing fixes and clearer bounded byte encoding, including lessons from updating AgoraSeal’s contracts\nThe cost work also helped us reject changes whose measurements did not justify adopting them. Keeping an existing design after testing alternatives gives us a firmer basis for future decisions.\nThis release includes a substantial round of runtime repairs too: stack layouts, read lengths, error handling and preserving temporary values across helper calls. The current compiler test coverage records 2,445 passes, with detailed records included in the release. Broader use and security review will bring another necessary kind of feedback.\nZK collaboration and the next research direction\nThe ZK application work is especially relevant to what we can build next. A proof must be connected to the actual state and transaction it authorizes. The application also needs to handle a competing transaction and an approved change of verifier or key. Those paths now have concrete examples and tests.\nThis work has also benefited from my collaboration and discussions with Cecilia Mulandi (@Mulandi_Cecilia). Her groth16-ckb verifier, zk-Lock work and ZK research notes gave us concrete starting points for discussing how proofs should fit into real CKB applications. Our exchange about CellScript’s ZK design helped sharpen #22, especially the connection between a valid proof and the particular Cell transition it is allowed to authorize.\nI will continue this collaboration, go deeper into the ZK design space, and share a more detailed exploration of Plonkish proof systems. I want to examine what they could make easier for application authors, how they compare with the current Groth16 path, and what proof creation and verification on CKB would cost in practice. This research will run alongside the consolidation of the frozen 0.33 feature set, with experiments and findings shared as the work develops.\nA feature freeze, and a long odyssey to 0.34\nAll features are now frozen for this release cycle. APIs and implementation can still change as we simplify, repair and consolidate them. Ecosystem integration will continue around that fixed feature set.\nI expect the journey from 0.33 to 0.34 to be a long odyssey. The first roadmap section now has its initial implementation; the next stage is to find out how well those capabilities hold up together.\nAlpha and beta priority\nWhat it should improve for developers\nFully retire the early hash-buffer interfaces\nGive ordinary bytes, exact slices and real hashes clear meanings\nRetire separate optimisation levels and unify the compilation path\nProvide one consistent path that we can test and explain thoroughly\nSecurity auditing and regression fixes\nRevisit older safety concerns with Guopeng and exercise combinations of the existing capabilities\nContinue ZK collaboration and publish Plonkish research\nWork further with Cecilia, explore the application tradeoffs of other proof systems, and share practical experiments alongside the frozen release work\nUpdate the application examples\nShow complete contracts using the current design, including the awkward cases\nUpdate the toolchain and documentation\nMake the language, builders, diagnostics and guides easier to use together\nCollaborate with SSRI, IDL and CCC, including the discussion around Script IPC\nConnect the current capabilities to the wider CKB ecosystem through clear interfaces and practical application workflows\n0.33 gives us much more to build with. I want to spend the next stage finding out how well it holds up: writing real contracts, making the examples easier to use, and working through the difficult cases that appear when these pieces meet. If you try the alpha, feedback on what is confusing, cumbersome or easy to misuse will be particularly valuable.",
+          "content_html": "<h1><a name=\"p-26926-cellscript-033-alpha-a-major-step-forward-for-cellscript-contracts-1\" class=\"anchor\" href=\"#p-26926-cellscript-033-alpha-a-major-step-forward-for-cellscript-contracts-1\" aria-label=\"Heading link\"></a>CellScript 0.33 Alpha: A Major Step Forward for CellScript Contracts</h1>\n<p><a href=\"https://github.com/CellScript-Labs/CellScript/releases/tag/v0.33.0-alpha.1\" rel=\"noopener nofollow ugc\">CellScript 0.33.0-alpha.1 is out</a>, and <a href=\"https://github.com/CellScript-Labs/CellScript/issues/47\" rel=\"noopener nofollow ugc\">#47</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/48\" rel=\"noopener nofollow ugc\">#48</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/49\" rel=\"noopener nofollow ugc\">#49</a> are now closed.</p>\n<p>This is one of the largest steps forward CellScript has taken. The release brings together the work since 0.31, including the intervening 0.32 development work. It opens up a much wider range of contracts we can write on CKB, and it needs more time in real applications.</p>\n<p>That is why this is an alpha. <strong>The feature set is now frozen.</strong> The next stage is to test, simplify, repair and consolidate what we have.</p>\n<h2><a name=\"p-26926-the-first-roadmap-section-now-has-an-initial-implementation-2\" class=\"anchor\" href=\"#p-26926-the-first-roadmap-section-now-has-an-initial-implementation-2\" aria-label=\"Heading link\"></a>The first roadmap section now has an initial implementation</h2>\n<p>The first section of the <a href=\"https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936\">CellScript roadmap</a> described the language and runtime foundations for more ambitious applications. It covered different kinds of Cells, richer data, temporary accounting and reusable contract components. All five workstreams in that section now have an initial implementation: <a href=\"https://github.com/CellScript-Labs/CellScript/issues/28\" rel=\"noopener nofollow ugc\">#28</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/29\" rel=\"noopener nofollow ugc\">#29</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/47\" rel=\"noopener nofollow ugc\">#47</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/48\" rel=\"noopener nofollow ugc\">#48</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/49\" rel=\"noopener nofollow ugc\">#49</a>.</p>\n<p>That is a major milestone. It gives us a more complete set of building blocks for exploring the financial protocols in the rest of the roadmap. Custody, pricing, liquidity positions and settlement rules remain substantial application work ahead.</p>\n<p>Here is what the new design space looks like:</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Building block</th>\n<th>What 0.33 adds to the 0.31 foundations</th>\n<th>What a contract author can explore</th>\n<th>Related work</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Different Cell roles</td>\n<td>Name and select bounded groups with different Script identities, then match their inputs and outputs</td>\n<td>Mixed-asset settlement and coordinated updates across several kinds of state</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/49\" rel=\"noopener nofollow ugc\">#49</a></td>\n</tr>\n<tr>\n<td>Richer data</td>\n<td>Describe bounded lists of messages or records with variable-length content</td>\n<td>Batch plans, document histories and state migrations with meaningful payloads</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/48\" rel=\"noopener nofollow ugc\">#48</a></td>\n</tr>\n<tr>\n<td>Temporary collections</td>\n<td>Use bounded Vec, Map and Set workspaces with reusable read-only helpers</td>\n<td>Totals by asset, duplicate detection and transaction-local accounting</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/47\" rel=\"noopener nofollow ugc\">#47</a></td>\n</tr>\n<tr>\n<td>Reusable components</td>\n<td>Select approved implementations and permitted configurations while retaining the chosen instance’s identity</td>\n<td>Applications with different issuers, owners or pool configurations</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/28\" rel=\"noopener nofollow ugc\">#28</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/29\" rel=\"noopener nofollow ugc\">#29</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/80\" rel=\"noopener nofollow ugc\">#80</a></td>\n</tr>\n<tr>\n<td>ZK applications</td>\n<td>Bind proofs to actual state transitions, coordinate several state Cells and manage authorized verifier/key changes</td>\n<td>Applications whose proof, transaction builder and state lifecycle work together</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/22\" rel=\"noopener nofollow ugc\">#22</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/42\" rel=\"noopener nofollow ugc\">#42</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/44\" rel=\"noopener nofollow ugc\">#44</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/45\" rel=\"noopener nofollow ugc\">#45</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/46\" rel=\"noopener nofollow ugc\">#46</a></td>\n</tr>\n</tbody>\n</table>\n</div><p>These capabilities are already exercised by complete examples: <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/multi_asset_transfer.cell\" rel=\"noopener nofollow ugc\">multi-asset transfers</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/mixed_settlement.cell\" rel=\"noopener nofollow ugc\">mixed settlement</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/nested_migration.cell\" rel=\"noopener nofollow ugc\">byte-list migration</a> and <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/record_migration.cell\" rel=\"noopener nofollow ugc\">record-list migration</a>.</p>\n<h2><a name=\"p-26926-what-this-looks-like-in-a-contract-3\" class=\"anchor\" href=\"#p-26926-what-this-looks-like-in-a-contract-3\" aria-label=\"Heading link\"></a>What this looks like in a contract</h2>\n<p>Consider a transaction that moves several assets between several participants. We need to identify the relevant Cells, add up amounts for each asset, reject duplicate identifiers and check the final state. As the transaction grows, keeping those rules readable becomes a large part of the problem.</p>\n<p>The following snippets are excerpts from the complete examples shipped with the alpha. Each source link includes the surrounding declarations and checks.</p>\n<h3><a name=\"p-26926-h-1-accounting-by-asset-with-ordinary-collections-4\" class=\"anchor\" href=\"#p-26926-h-1-accounting-by-asset-with-ordinary-collections-4\" aria-label=\"Heading link\"></a>1. Accounting by asset, with ordinary collections</h3>\n<p>In the <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/multi_asset_transfer.cell\" rel=\"noopener nofollow ugc\">transfer example</a>, the contract declares one temporary workspace and gives names to its accounting tables:</p>\n<pre data-code-wrap=\"cellscript\"><code class=\"lang-cellscript\">collections Totals {\n    limits { bytes: 4096, allocations: 4 }\n    incoming: OrderedMap&lt;Hash, u128&gt; { items: 32 }\n    outgoing: OrderedMap&lt;Hash, u128&gt; { items: 32 }\n    input_serials: OrderedSet&lt;u64&gt; { items: 32 }\n    output_serials: OrderedSet&lt;u64&gt; { items: 32 }\n}\n\nfn conserved(totals: &amp;Totals) -&gt; bool {\n    if totals.incoming.len() != totals.outgoing.len() { return false }\n    for (asset, amount) in totals.incoming {\n        if !totals.outgoing.contains_key(asset) { return false }\n        if totals.outgoing.get(asset) != amount { return false }\n    }\n    return true\n}\n</code></pre>\n<p>The two Maps answer “how much of this asset comes in?” and “how much goes out?” The Sets detect repeated note identifiers. The <code>conserved</code> helper can read the workspace and compare the totals without taking it away from the caller.</p>\n<p>Splitting one note into several, or merging several notes into one, can follow the same conservation rule. The spending contracts provide authorization, while this example checks the quantities recorded in its notes.</p>\n<p>The full example reserves capacity using the actual input and output counts before filling these tables. That matters for how the workspace uses its budget.</p>\n<h3><a name=\"p-26926-h-2-state-with-a-useful-history-5\" class=\"anchor\" href=\"#p-26926-h-2-state-with-a-useful-history-5\" aria-label=\"Heading link\"></a>2. State with a useful history</h3>\n<p>A contract can also describe a bounded history whose entries contain both an identity and variable-length content. The <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/record_migration.cell\" rel=\"noopener nofollow ugc\">record migration example</a> uses this declaration:</p>\n<pre data-code-wrap=\"cellscript\"><code class=\"lang-cellscript\">struct Message { revision: u64, payload: Vec&lt;u8&gt; }\n\ndata_shape Messages {\n    element: Message,\n    limits { items: 8, payload_bytes: 256, encoded_bytes: 2280 }\n}\nresource Document has store { messages: Messages, id: u64, revision: u64 }\nresource Registry has store { id: u64, revision: u64 }\n</code></pre>\n<p>A document can carry up to eight messages, each with a revision and a bounded payload. The total encoding has its own limit. Ordinary field access and helpers can then express rules such as “preserve every existing message and append the new revision.”</p>\n<p>Once the document and registry roles have been declared, the batch loop is short:</p>\n<pre data-code-wrap=\"cellscript\"><code class=\"lang-cellscript\">for i in 0..selected.documents.input_count() {\n    require migrate_document(selected.documents.input(i), selected.documents.successor(i), release_note[0], revision)\n}\n</code></pre>\n<p>Here <code>migrate_document</code> checks the identity, revision, history, new message and capacity of each document. The selected successor is its matched output. This gives us a concrete starting point for coordinated updates to records with richer content.</p>\n<h3><a name=\"p-26926-h-3-giving-different-participants-clear-roles-6\" class=\"anchor\" href=\"#p-26926-h-3-giving-different-participants-clear-roles-6\" aria-label=\"Heading link\"></a>3. Giving different participants clear roles</h3>\n<p>The <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/examples/language/batches/mixed_settlement.cell\" rel=\"noopener nofollow ugc\">settlement example</a> describes orders and two asset roles. Its action starts with:</p>\n<pre data-code-wrap=\"cellscript\"><code class=\"lang-cellscript\">let selected = ckb::select_cell_roles&lt;Settlement&gt;()\nlet count = selected.orders.input_count()\nrequire selected.base.input_count() == count * 2\nrequire selected.quote.input_count() == count * 2\n</code></pre>\n<p>The code can talk about orders, base balances and quote balances directly. The role declarations identify which Cells belong to each role and how inputs correspond to outputs. The remaining logic checks each full fill and its payment legs.</p>\n<p>On CKB, these participants validate the same candidate transaction. Each required contract must accept it:</p>\n<pre data-code-wrap=\"mermaid\"><code class=\"lang-mermaid\">flowchart TD\n    T[\"One candidate transaction\"] --&gt; S[\"Settlement rules\"]\n    T --&gt; A[\"Asset A rules\"]\n    T --&gt; B[\"Asset B rules\"]\n    T --&gt; L[\"Spending authorization\"]\n    S --&gt; C{\"Every required Script accepts?\"}\n    A --&gt; C\n    B --&gt; C\n    L --&gt; C\n    C --&gt;|Yes| V[\"Transaction is valid\"]\n    C --&gt;|No| R[\"Transaction is rejected\"]\n</code></pre>\n<p>This is an important part of the design space: an application can organize several independently governed participants while keeping each participant’s responsibility visible. Reading another participant’s Cells does not give one contract authority over them.</p>\n<p>The component-selection work in <a href=\"https://github.com/CellScript-Labs/CellScript/issues/28\" rel=\"noopener nofollow ugc\">#28</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/29\" rel=\"noopener nofollow ugc\">#29</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/80\" rel=\"noopener nofollow ugc\">#80</a> extends this further. Applications can accept an implementation through a compatibility policy and allow specified configurations, while still binding the concrete instance used in the transaction. Two issuers or pools can share code and remain distinct participants.</p>\n<h2><a name=\"p-26926-arena-a-temporary-workbench-with-a-budget-7\" class=\"anchor\" href=\"#p-26926-arena-a-temporary-workbench-with-a-budget-7\" aria-label=\"Heading link\"></a>Arena: a temporary workbench with a budget</h2>\n<p>An arena is a temporary workbench a contract opens while checking a transaction. Lists, accounting tables and sets can share its space. Their values share a lifetime, while persistent application state continues to live in Cells.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Declaration</th>\n<th>What it controls</th>\n<th>How to think about it</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Shared byte budget</td>\n<td>The space charged to the whole workspace</td>\n<td>The size of the workbench</td>\n</tr>\n<tr>\n<td>Allocation budget</td>\n<td>How many allocation events the workspace can make, including growth</td>\n<td>How often new storage can be claimed</td>\n</tr>\n<tr>\n<td>Member item limits</td>\n<td>The maximum number of entries in each collection</td>\n<td>The largest list or table that member may hold</td>\n</tr>\n</tbody>\n</table>\n</div><p>These limits work together. An item limit does not, by itself, guarantee that every collection can reach its maximum within the shared budget.</p>\n<p>The current arena uses a simple allocation policy: it moves forward through its available space. When a collection grows into a larger buffer, the old buffer remains charged for that arena lifetime.</p>\n<pre data-code-wrap=\"mermaid\"><code class=\"lang-mermaid\">flowchart TD\n    W[\"Temporary workspace with a declared budget\"] --&gt; O[\"Collection uses a buffer for 4 items\"]\n    O --&gt; G[\"Collection needs more capacity\"]\n    G --&gt; N[\"Allocate a new buffer for 8 items\"]\n    N --&gt; M[\"Copy the existing values into the new buffer\"]\n    M --&gt; LIVE[\"Collection continues using the new buffer\"]\n    M --&gt; OLD[\"Old buffer is retired but still charged\"]\n    LIVE --&gt; BUDGET[\"Budget includes both allocations and bookkeeping\"]\n    OLD --&gt; BUDGET\n    BUDGET --&gt; END[\"Owner lifetime ends; its temporary values stop being usable\"]\n</code></pre>\n<p>Reserving the expected capacity up front avoids that growth history. The tools explain how the collections fit into their shared budget, including old buffers and allocation overhead. The arena is backed by reserved function-stack space, so its budget is also part of the contract’s stack use.</p>\n<p>This gives us a straightforward resource model to inspect and test. More application experience will show where it is comfortable and where it needs improvement.</p>\n<h2><a name=\"p-26926-the-wider-journey-from-031-to-033-8\" class=\"anchor\" href=\"#p-26926-the-wider-journey-from-031-to-033-8\" aria-label=\"Heading link\"></a>The wider journey from 0.31 to 0.33</h2>\n<p>The issue history helps show the breadth of this release. Some items add capabilities, some improve everyday writing, and others establish which implementation choices are actually worth adopting.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Area</th>\n<th>Closed issues</th>\n<th>What the work contributed</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Compatible components</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/28\" rel=\"noopener nofollow ugc\">#28</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/29\" rel=\"noopener nofollow ugc\">#29</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/80\" rel=\"noopener nofollow ugc\">#80</a></td>\n<td>Approved implementation selection, selected transaction participants and constrained configurations of distinct instances</td>\n</tr>\n<tr>\n<td>Collections and richer transactions</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/47\" rel=\"noopener nofollow ugc\">#47</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/48\" rel=\"noopener nofollow ugc\">#48</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/49\" rel=\"noopener nofollow ugc\">#49</a></td>\n<td>Temporary accounting, bounded nested data and selection across different Cell roles</td>\n</tr>\n<tr>\n<td>ZK applications and their lifecycle</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/22\" rel=\"noopener nofollow ugc\">#22</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/42\" rel=\"noopener nofollow ugc\">#42</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/44\" rel=\"noopener nofollow ugc\">#44</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/45\" rel=\"noopener nofollow ugc\">#45</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/46\" rel=\"noopener nofollow ugc\">#46</a></td>\n<td>The first application workflow, coordinated state updates, authorized key/verifier changes and measured proving and execution costs</td>\n</tr>\n<tr>\n<td>Measuring and improving execution</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/36\" rel=\"noopener nofollow ugc\">#36</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/37\" rel=\"noopener nofollow ugc\">#37</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/38\" rel=\"noopener nofollow ugc\">#38</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/39\" rel=\"noopener nofollow ugc\">#39</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/40\" rel=\"noopener nofollow ugc\">#40</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/41\" rel=\"noopener nofollow ugc\">#41</a></td>\n<td>Actual stack measurements, code-size and cycle analysis, and comparisons of alternative implementations</td>\n</tr>\n<tr>\n<td>Everyday contract writing</td>\n<td><a href=\"https://github.com/CellScript-Labs/CellScript/issues/50\" rel=\"noopener nofollow ugc\">#50</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/issues/51\" rel=\"noopener nofollow ugc\">#51</a></td>\n<td>Collection typing fixes and clearer bounded byte encoding, including lessons from updating AgoraSeal’s contracts</td>\n</tr>\n</tbody>\n</table>\n</div><p>The cost work also helped us reject changes whose measurements did not justify adopting them. Keeping an existing design after testing alternatives gives us a firmer basis for future decisions.</p>\n<p>This release includes a substantial round of runtime repairs too: stack layouts, read lengths, error handling and preserving temporary values across helper calls. The current compiler test coverage records 2,445 passes, with detailed records included in the <a href=\"https://github.com/CellScript-Labs/CellScript/releases/tag/v0.33.0-alpha.1\" rel=\"noopener nofollow ugc\">release</a>. Broader use and security review will bring another necessary kind of feedback.</p>\n<h3><a name=\"p-26926-zk-collaboration-and-the-next-research-direction-9\" class=\"anchor\" href=\"#p-26926-zk-collaboration-and-the-next-research-direction-9\" aria-label=\"Heading link\"></a>ZK collaboration and the next research direction</h3>\n<p>The ZK application work is especially relevant to what we can build next. A proof must be connected to the actual state and transaction it authorizes. The application also needs to handle a competing transaction and an approved change of verifier or key. Those paths now have concrete examples and tests.</p>\n<p>This work has also benefited from my collaboration and discussions with <a href=\"https://talk.nervos.org/t/research-notes-what-zero-knowledge-proofs-enable-on-ckb/10368/5\">Cecilia Mulandi (@Mulandi_Cecilia)</a>. Her <a href=\"https://talk.nervos.org/t/groth16-ckb-an-on-chain-groth16-verifier-for-ckb-vm/10288\">groth16-ckb verifier</a>, <a href=\"https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/21\">zk-Lock work</a> and <a href=\"https://talk.nervos.org/t/research-notes-what-zero-knowledge-proofs-enable-on-ckb/10368\">ZK research notes</a> gave us concrete starting points for discussing how proofs should fit into real CKB applications. Our <a href=\"https://talk.nervos.org/t/research-notes-what-zero-knowledge-proofs-enable-on-ckb/10368/8\">exchange about CellScript’s ZK design</a> helped sharpen <a href=\"https://github.com/CellScript-Labs/CellScript/issues/22\" rel=\"noopener nofollow ugc\">#22</a>, especially the connection between a valid proof and the particular Cell transition it is allowed to authorize.</p>\n<p>I will continue this collaboration, go deeper into the ZK design space, and share a more detailed exploration of <strong>Plonkish proof systems</strong>. I want to examine what they could make easier for application authors, how they compare with the current Groth16 path, and what proof creation and verification on CKB would cost in practice. This research will run alongside the consolidation of the frozen 0.33 feature set, with experiments and findings shared as the work develops.</p>\n<h2><a name=\"p-26926-a-feature-freeze-and-a-long-odyssey-to-034-10\" class=\"anchor\" href=\"#p-26926-a-feature-freeze-and-a-long-odyssey-to-034-10\" aria-label=\"Heading link\"></a>A feature freeze, and a long odyssey to 0.34</h2>\n<p><strong>All features are now frozen for this release cycle.</strong> APIs and implementation can still change as we simplify, repair and consolidate them. Ecosystem integration will continue around that fixed feature set.</p>\n<p>I expect the journey from 0.33 to 0.34 to be a long odyssey. The first roadmap section now has its initial implementation; the next stage is to find out how well those capabilities hold up together.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Alpha and beta priority</th>\n<th>What it should improve for developers</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Fully retire the early hash-buffer interfaces</td>\n<td>Give ordinary bytes, exact slices and real hashes clear meanings</td>\n</tr>\n<tr>\n<td>Retire separate optimisation levels and unify the compilation path</td>\n<td>Provide one consistent path that we can test and explain thoroughly</td>\n</tr>\n<tr>\n<td>Security auditing and regression fixes</td>\n<td>Revisit older safety concerns with Guopeng and exercise combinations of the existing capabilities</td>\n</tr>\n<tr>\n<td>Continue ZK collaboration and publish Plonkish research</td>\n<td>Work further with Cecilia, explore the application tradeoffs of other proof systems, and share practical experiments alongside the frozen release work</td>\n</tr>\n<tr>\n<td>Update the application examples</td>\n<td>Show complete contracts using the current design, including the awkward cases</td>\n</tr>\n<tr>\n<td>Update the toolchain and documentation</td>\n<td>Make the language, builders, diagnostics and guides easier to use together</td>\n</tr>\n<tr>\n<td>Collaborate with <a href=\"https://github.com/ckb-devrel/ckb-ssri-std\" rel=\"noopener nofollow ugc\">SSRI</a>, <a href=\"https://github.com/CellScript-Labs/CellScript/blob/v0.33.0-alpha.1/docs/CELLSCRIPT_LS_IDL_REGISTRY_PROFILE.md\" rel=\"noopener nofollow ugc\">IDL</a> and <a href=\"https://github.com/ckb-devrel/ccc\" rel=\"noopener nofollow ugc\">CCC</a>, including the discussion around <a href=\"https://github.com/xujiandong/ckb-script-ipc\" rel=\"noopener nofollow ugc\">Script IPC</a></td>\n<td>Connect the current capabilities to the wider CKB ecosystem through clear interfaces and practical application workflows</td>\n</tr>\n</tbody>\n</table>\n</div><p>0.33 gives us much more to build with. I want to spend the next stage finding out how well it holds up: writing real contracts, making the examples easier to use, and working through the difficult cases that appear when these pieces meet. If you try the alpha, feedback on what is confusing, cumbersome or easy to misuse will be particularly valuable.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11049,
+      "title": "UTXOPlay: A Community-Driven Gaming Platform for Nervos",
+      "slug": "utxoplay-a-community-driven-gaming-platform-for-nervos",
+      "url": "https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049",
+      "created_at": "2026-10-26T03:56:57.968000+00:00",
+      "last_posted_at": "2026-10-28T00:49:00.073000+00:00",
+      "category_id": 70,
+      "tags": [
+        "CKB",
+        "game"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26925,
+          "post_number": 4,
+          "topic_id": 11049,
+          "topic_title": "UTXOPlay: A Community-Driven Gaming Platform for Nervos",
+          "topic_slug": "utxoplay-a-community-driven-gaming-platform-for-nervos",
+          "author": "longdevbf",
+          "created_at": "2026-10-28T00:49:00.073000+00:00",
+          "updated_at": "2026-10-28T00:49:00.073000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049/4",
+          "content_text": "Good stuffs",
+          "content_html": "<p>Good stuffs</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}

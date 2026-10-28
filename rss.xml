@@ -5,49 +5,63 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Tue, 27 Oct 2026 14:30:32 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 28 Oct 2026 16:49:29 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-28</title>
+    <title>CKB Talk Daily Brief - 2026-10-29</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-27:daily-brief</guid>
-    <pubDate>Tue, 27 Oct 2026 21:06:54 +0000</pubDate>
-    <description>## 今日发生了什么 从这批更新看，今天 Nervos Talk 整体较平静，主要内容是项目介绍和例行进展 [S01,S05,S07,S08]。今天论坛的主要动静是 FoundationLab 发布 CKBSwap 介绍，社区随后围绕其协议原理和 UTXO 并发处理提问 [S01,S02,S04]。此外，NNCBN 发布节点运行周报，Spark Verify 和 CKB 生态双周报也有例行更新 [S05,S07,S08]。 ## 重点话题 FoundationLab 介绍 CKBSwap，称团队三人、目标是长期在 CKB 上构建有用产品 [S01]。项目采用恒定乘积 AMM、参考 Uniswap V2 定价思路，社区成员则追问 UTXO 架构下 pool 原理、hot cell 热更新和并发处理 [S02,S04]。 NNCBN 发布第五周周报，称节点已完成首次同步，经过约一周运行，系统仍需一些微调 [S05]。 Spark Verify 帖中，委员会成员表示项目还有一些细节需要沟通，本周会有其他委员会成员联系项目方 [S07]。 CKB 生态双周报 #27 发布，汇总过去两周开发与生态进展，并提到 CKB v0.211、CKB-VM 与 Tentacle 等准备工作 [S08]。 UTXOPlay 收到社区正面反馈，评论认可把不同游戏和开发工具集中在一起，并认为社区驱动和透明治理有助建立信任 [S06]。 ## 值得继续跟进 跟进 CKBSwap 后续协议说明，重点看它如何在 UTXO 架构上处理 pool、hot cell 热更新与并发交易 [S02,S04]。 观察...</description>
+    <guid>tag:ckb-talk-radar,2026-10-28:daily-brief</guid>
+    <pubDate>Wed, 28 Oct 2026 21:30:01 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要动静集中在 Myelin 的争议结算问答、CrowdCell 资助投票落地与首笔付款，以及 CKBSwap、CellScript 等开发进展上 [S01, S02, S03, S04, S08, S09, S10]。CrowdCell 投票以 100% 通过，总投票权重为 184,132,635 CKB、共 15 名投票者，并完成首笔 1,086,957 CKB 付款 [S03, S04, S05]。同时，Seedsong 支付第二期 50 美元（33,968 CKB），Kirea Finance 仍在催票以达 quorum [S06, S07]。 ## 重点话题 Myelin 讨论到 court verifier 上线后的结算路径：有人问应用能否用普通 CKB 交易结算单个争议 chunk 而不信任委员会，回复称这是预期设计，普通交易可独立验证有界争议块，但玩家资金还需可用证据和 escrow 规则来执行裁决 [S01, S02]。 CrowdCell 投票结果为 PASSED，批准率 100%、总权重 184,132,635 CKB、15 名投票者，达到批准门槛和最低参与要求；随后公布首笔付款 1,086,957 CKB，并有成员确认第二次审查的四个小修复及对应 exploit 测试已加入 [S03, S04, S05]。 Kirea Finance 作者称投票即将结束，但仍需更多投票权重达到 quorum；项目定位为 CKB 上开源、合规门控的 RWA 借贷基础设施，链上流程无桥、无托管 [S07]。 CKBSwap...</description>
   </item>
   <item>
-    <title>Introducing CKBSwap — Building on CKB for the Long Term (4 posts)</title>
+    <title>Introducing Myelin: a CKB-aligned off-chain Cell session runtime (2 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498</link>
+    <guid>https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498#recent-2</guid>
+    <pubDate>Wed, 28 Oct 2026 16:49:29 +0000</pubDate>
+    <description>Great work on this! so I’ve been reading this closely. One question about the court path, once the on-chain court verifier is live, could an application settle a single disputed chunk with a normal CKB transaction, without trusting the committee? I think that would make Myelin usable even for sessions where players have funds at stake. Hi @Kaylah, yes , that is the intended design: a normal CKB transaction would verify a bounded disputed chunk independently of the committee. For players’ funds, the application also needs available evidence and escrow rules that enforce the verdict, allowing challenges and withdrawals without fresh committee approval. Myelin already produces the evidence...</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-3</guid>
+    <pubDate>Wed, 28 Oct 2026 16:26:32 +0000</pubDate>
+    <description>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 184,132,635 CKB from 15 voters. Both the approval threshold and minimum participation requirement are met. Post-close verification was completed on 28 October 2026 using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all voters’ totals match exactly. These checks support the PASSED result for the CrowdCell Proposal. Verfication log: ckb-dao-watchdog/Verification Logs - CrowdCell at main · kydchen/ckb-dao-watchdog · GitHub Vote link:...</description>
+  </item>
+  <item>
+    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
+    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
+    <pubDate>Wed, 28 Oct 2026 12:47:29 +0000</pubDate>
+    <description>Hi @Officeyutong , The second installment (50 USD) : 33,968 CKB 0xac98590ce7cc48aea9412a62360e45253ea7ed8ea69246e0ee64dc29983c106b Best, xingtian On behalf of the Spark Program Committee</description>
+  </item>
+  <item>
+    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
+    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-1</guid>
+    <pubDate>Wed, 28 Oct 2026 11:38:27 +0000</pubDate>
+    <description>Hey everyone, voting on Kirea Finance closes soon, and I still need more voting weight to reach quorum! Kirea Finance is building open-source infrastructure for compliance-gated RWA lending directly on CKB, with no bridge and no custodian in the on-chain flow. The full lending lifecycle (deposit → borrow → repay → release) is already implemented and tested on the CKB testnet. This $7,250 grant will help harden the contracts, integrate live Sumsub KYC, and deliver reusable tooling for other CKB developers. If you support real-world assets and the future of DeFi on CKB, please cast your vote now. It takes less than a minute, and voting weight comes from your Nervos DAO deposits. Vote here:...</description>
+  </item>
+  <item>
+    <title>Introducing CKBSwap — Building on CKB for the Long Term (2 posts)</title>
     <link>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060</link>
-    <guid>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060#recent-4</guid>
-    <pubDate>Tue, 27 Oct 2026 14:30:32 +0000</pubDate>
-    <description>Hello, CKB community! We are FoundationLab, a team of three developers who share a strong belief in CKB and a commitment to building within its ecosystem. Today, we’d like to introduce CKBSwap, the project we’re working on. Our goal is straightforward: build a useful, accessible swap and liquidity application that helps turn CKB’s technical potential into something people can use. What is CKBSwap? CKBSwap is an exchange and liquidity application built around CKB’s native asset model. It is currently on testnet. It supports native CKB/xUDT and xUDT/xUDT liquidity pools using constant-product pricing. Users can swap assets, provide liquidity, and withdraw their share of the underlying...</description>
+    <guid>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060#recent-2</guid>
+    <pubDate>Wed, 28 Oct 2026 06:15:02 +0000</pubDate>
+    <description>I think batcher is good. I seen the same model and dex on cardano. minswap.org great to know that. I think for the production launch, the hot cell issue is a must-fix problem. otherwise people won’t take it seriously. the cardano batcher solution seems practical. thanks @longdevbf I think DeFi might not be the killer app for CKB, but it definitely is something we need to have, as some sort of ecosystem primitive pieces. the current UX/UI looks clean, keep the great work!</description>
   </item>
   <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Tue, 27 Oct 2026 14:26:09 +0000</pubDate>
-    <description>2026 October 27, Fifth Weekly Report We have been operating the node for the first synchronization since the last weekly report till today! Some fine-tuning is still needed, but the synchronization is already complete, and after about a week of operation, the system has already proven that it has sufficient performance reserves and is running stably. The next major step is to begin operations at the designated location. If all goes well, the next weekly report will announce that the node has been deployed and connected in the Atlantic Ocean off the coast of Africa, between Brazil and Portugal. We’re keeping our fingers crossed that everything goes smoothly. Initial LOG-Sort tests....</description>
+    <title>CellScript - A DSL for Cell-Based Contracts (1 posts)</title>
+    <link>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193</link>
+    <guid>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193#recent-1</guid>
+    <pubDate>Wed, 28 Oct 2026 05:11:24 +0000</pubDate>
+    <description>CellScript 0.33 Alpha: A Major Step Forward for CellScript Contracts CellScript 0.33.0-alpha.1 is out, and #47, #48, #49 are now closed. This is one of the largest steps forward CellScript has taken. The release brings together the work since 0.31, including the intervening 0.32 development work. It opens up a much wider range of contracts we can write on CKB, and it needs more time in real applications. That is why this is an alpha. The feature set is now frozen. The next stage is to test, simplify, repair and consolidate what we have. The first roadmap section now has an initial implementation The first section of the CellScript roadmap described the language and runtime foundations for...</description>
   </item>
   <item>
     <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (1 posts)</title>
     <link>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049</link>
     <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-1</guid>
-    <pubDate>Tue, 27 Oct 2026 11:11:14 +0000</pubDate>
-    <description>UTXOPlay sounds like an interesting project for the Nervos community. I like the idea of bringing different games and developer tools together in one place. Community-driven development and transparent governance could also help build trust</description>
-  </item>
-  <item>
-    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
-    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
-    <pubDate>Tue, 27 Oct 2026 07:50:21 +0000</pubDate>
-    <description>Hi @Akane , 感谢你的耐心和坚持，Spark Verify 项目还有一些细节内容需要沟通，本周会有其他委员会成员在此与你联系。</description>
-  </item>
-  <item>
-    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
-    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
-    <pubDate>Tue, 27 Oct 2026 02:47:07 +0000</pubDate>
-    <description>CKB Ecosystem Biweekly Update #27 image690×388 97.6 KB Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev continued preparing CKB v0.211. CKB-VM and Tentacle gained runtime and networking improvements, while ckb-cli added a terminal UI. Light-client verification proposals remain under review, and experimental DAO voting progressed on vote thresholds and proposal settlement. More: CKB Dev Log 2026-10-14 @CKBDevrel made ckb-cinnabar easier for AI agents to discover and use, continued CCC development, and maintained CKBadger v0.7 services for mainnet and testnet. @FiberDevs...</description>
+    <pubDate>Wed, 28 Oct 2026 00:49:00 +0000</pubDate>
+    <description>Good stuffs</description>
   </item>
 </channel>
 </rss>
