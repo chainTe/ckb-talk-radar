@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Thu, 29 Oct 2026 21:20:25 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-10-30</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-10-29:daily-brief</guid>
+    <pubDate>Thu, 29 Oct 2026 21:30:42 +0000</pubDate>
+    <description>## 今日发生了什么 过去24小时，论坛讨论主要集中在 Fiber LSP 的容量压测、Kaze X CKB Unitour 的拨款支付节奏，以及 Spark Program 下的新申请上。[S02, S04, S10, S14] 有人把单个 Fiber LSP 在本地 CKB dev chain 上填到 11,496 个频道，但两个钱包之间的支付仍要 4 到 5 秒，和 350 个频道时一样。[S02] Kaze 团队与社区围绕“先拨款再执行”还是“完成 milestone 后付款”出现明显分歧。[S04, S05, S06, S08] 同时，CellFlow 申请 500 美元做 CCC 交易恢复 PoC，Light dApp Kit 申请 1,000 美元推进浏览器轻客户端的主网与 DAO 功能。[S10, S14] ## 重点话题 **Fiber LSP 容量压测**：LusoCryptoLabs 报告单个 Fiber LSP 填到 11,496 个频道，使用的是当天测试网 LSP（Cellula 钱包背后那个）的 build 和配置，在本地 CKB dev chain 上完成。[S02] 支付延迟没有随频道数增加而变化，两个钱包之间仍为 4 到 5 秒，与 350 个频道时相同。[S02] ArthurZhang 认为 11.5k 频道很鼓舞，并建议下一步做跨独立 LSP 的持续并发支付测试，以更好判断真实世界扩展性。[S03] **Kaze Unitour 拨款时点争议**：Dorex45 表示 Metaforo 阶段后双方已对齐进入执行阶段，并理解...</description>
+  </item>
+  <item>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Thu, 29 Oct 2026 21:20:25 +0000</pubDate>
+    <description>@Hanssen I have a question on the Time Lock + Cheque suggestion. Per RFC 0039 (rule 1.b.ii), when the receiver claims a Cheque cell, the cell’s capacity must go back to the sender, so for plain CKB the recipient would receive nothing. I also confirmed it with a test (error 8). Cheque looks designed for typed assets such as UDTs, where the receiver gets the token. How did you picture combining the two locks for native CKB?</description>
+  </item>
+  <item>
+    <title>One Fiber LSP, 11,496 channels (2 posts)</title>
+    <link>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068</link>
+    <guid>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068#recent-2</guid>
+    <pubDate>Thu, 29 Oct 2026 19:36:47 +0000</pubDate>
+    <description>We filled one Fiber LSP to 11,496 channels on a local CKB dev chain, with the build and config that our testnet LSP, the one behind the Cellula wallet, ran that day. A payment between two wallets still took 4 to 5 s, as it did with 350 channels. The channel count turned out not to be the limit. What sizes an LSP is how many wallets are awake at the same moment and how fast it can open channels. Below: how we tested, the numbers, what we changed on the way, and what we would run. Why we asked The Cellula wallet pays over Fiber from a browser or a phone, with no node to run. Each wallet’s channel is held at an LSP, a Fiber node that serves many wallets, while the channel keys stay on the...</description>
+  </item>
+  <item>
+    <title>[DIS] Kaze X CKB Unitour Continuation Proposal (8 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736</link>
+    <guid>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736#recent-8</guid>
+    <pubDate>Thu, 29 Oct 2026 19:25:30 +0000</pubDate>
+    <description>GM Team Following the Metaforo stage, we aligned on moving into the execution phase, with the understanding that grant funds would be disbursed within one week. Since we’ve now reached that timeline, I wanted to kindly check in on the expected release date. We’re actively preparing for our pilot, which we’re targeting for Early November - December, and timely disbursement would help us stay on track with execution. We had anticipated the funds would come through today, but we’re happy to align with the committee’s timeline. Any update would be greatly appreciated. Thank you! Hi @Dorex45, thanks for checking in. To clarify the payment schedule, the approved proposal lists three milestones...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067#recent-3</guid>
+    <pubDate>Thu, 29 Oct 2026 10:13:32 +0000</pubDate>
+    <description>Capture1906×878 147 KB Applicant: Dang Ba Ty Discord: tyforwork Email: dangbaty.work@gmail.com GitHub: tydeptrai21042004 (Dang Ba Ty) · GitHub Funding requested: $500 USD, payable in equivalent CKB Duration: 4 weeks Project type: CKB Developer Infrastructure / Proof of Concept Project links: Repository: GitHub - tydeptrai21042004/CellFlow · GitHub Live application: https://cellflow-brown.vercel.app/ Interactive demo: CellFlow Demo — Transaction Recovery Walkthrough CKBuilder technical review: CellFlow: durable CKB transaction operations and recovery for applications · Issue #38 · Nervos-Community-Catalyst/CKBuilder-projects · GitHub 1. Project Overview CellFlow explores whether a CKB...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11066</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11066#recent-1</guid>
+    <pubDate>Thu, 29 Oct 2026 04:23:59 +0000</pubDate>
+    <description>(topic deleted by author)</description>
+  </item>
+  <item>
+    <title>Spark Program | Light dApp Kit (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062</link>
+    <guid>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062#recent-1</guid>
+    <pubDate>Wed, 28 Oct 2026 21:36:42 +0000</pubDate>
+    <description>1. Project overview Purpose: Build on a browser light-client prototype that has completed a real testnet transfer to improve stability, implement mainnet transfers and full Nervos DAO deposits and withdrawals, and deliver a reusable kit for other dApps. Request: USD 1,000 equivalent in CKB over four weeks, delivered through two milestones under the MIT license. Scope: Desktop Chrome and Firefox, existing CCC wallet connections, mainnet and testnet. The application does not hold private keys; wallets approve and sign transactions. 2. Team profile Applicant and maintainer: Akane; GitHub: Akane-CN; Nervos Talk: Akane. Email: akane@random-walk.co.jp. Repository: GitHub - Akane-CN/light-dapp-...</description>
+  </item>
+</channel>
+</rss>

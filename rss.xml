@@ -5,63 +5,56 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Wed, 28 Oct 2026 16:49:29 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 29 Oct 2026 21:20:25 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-29</title>
+    <title>CKB Talk Daily Brief - 2026-10-30</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-28:daily-brief</guid>
-    <pubDate>Wed, 28 Oct 2026 21:30:01 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛的主要动静集中在 Myelin 的争议结算问答、CrowdCell 资助投票落地与首笔付款，以及 CKBSwap、CellScript 等开发进展上 [S01, S02, S03, S04, S08, S09, S10]。CrowdCell 投票以 100% 通过，总投票权重为 184,132,635 CKB、共 15 名投票者，并完成首笔 1,086,957 CKB 付款 [S03, S04, S05]。同时，Seedsong 支付第二期 50 美元（33,968 CKB），Kirea Finance 仍在催票以达 quorum [S06, S07]。 ## 重点话题 Myelin 讨论到 court verifier 上线后的结算路径：有人问应用能否用普通 CKB 交易结算单个争议 chunk 而不信任委员会，回复称这是预期设计，普通交易可独立验证有界争议块，但玩家资金还需可用证据和 escrow 规则来执行裁决 [S01, S02]。 CrowdCell 投票结果为 PASSED，批准率 100%、总权重 184,132,635 CKB、15 名投票者，达到批准门槛和最低参与要求；随后公布首笔付款 1,086,957 CKB，并有成员确认第二次审查的四个小修复及对应 exploit 测试已加入 [S03, S04, S05]。 Kirea Finance 作者称投票即将结束，但仍需更多投票权重达到 quorum；项目定位为 CKB 上开源、合规门控的 RWA 借贷基础设施，链上流程无桥、无托管 [S07]。 CKBSwap...</description>
+    <guid>tag:ckb-talk-radar,2026-10-29:daily-brief</guid>
+    <pubDate>Thu, 29 Oct 2026 21:30:42 +0000</pubDate>
+    <description>## 今日发生了什么 过去24小时，论坛讨论主要集中在 Fiber LSP 的容量压测、Kaze X CKB Unitour 的拨款支付节奏，以及 Spark Program 下的新申请上。[S02, S04, S10, S14] 有人把单个 Fiber LSP 在本地 CKB dev chain 上填到 11,496 个频道，但两个钱包之间的支付仍要 4 到 5 秒，和 350 个频道时一样。[S02] Kaze 团队与社区围绕“先拨款再执行”还是“完成 milestone 后付款”出现明显分歧。[S04, S05, S06, S08] 同时，CellFlow 申请 500 美元做 CCC 交易恢复 PoC，Light dApp Kit 申请 1,000 美元推进浏览器轻客户端的主网与 DAO 功能。[S10, S14] ## 重点话题 **Fiber LSP 容量压测**：LusoCryptoLabs 报告单个 Fiber LSP 填到 11,496 个频道，使用的是当天测试网 LSP（Cellula 钱包背后那个）的 build 和配置，在本地 CKB dev chain 上完成。[S02] 支付延迟没有随频道数增加而变化，两个钱包之间仍为 4 到 5 秒，与 350 个频道时相同。[S02] ArthurZhang 认为 11.5k 频道很鼓舞，并建议下一步做跨独立 LSP 的持续并发支付测试，以更好判断真实世界扩展性。[S03] **Kaze Unitour 拨款时点争议**：Dorex45 表示 Metaforo 阶段后双方已对齐进入执行阶段，并理解...</description>
   </item>
   <item>
-    <title>Introducing Myelin: a CKB-aligned off-chain Cell session runtime (2 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498</link>
-    <guid>https://talk.nervos.org/t/introducing-myelin-a-ckb-aligned-off-chain-cell-session-runtime/10498#recent-2</guid>
-    <pubDate>Wed, 28 Oct 2026 16:49:29 +0000</pubDate>
-    <description>Great work on this! so I’ve been reading this closely. One question about the court path, once the on-chain court verifier is live, could an application settle a single disputed chunk with a normal CKB transaction, without trusting the committee? I think that would make Myelin usable even for sessions where players have funds at stake. Hi @Kaylah, yes , that is the intended design: a normal CKB transaction would verify a bounded disputed chunk independently of the committee. For players’ funds, the application also needs available evidence and escrow rules that enforce the verdict, allowing challenges and withdrawals without fresh committee approval. Myelin already produces the evidence...</description>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Thu, 29 Oct 2026 21:20:25 +0000</pubDate>
+    <description>@Hanssen I have a question on the Time Lock + Cheque suggestion. Per RFC 0039 (rule 1.b.ii), when the receiver claims a Cheque cell, the cell’s capacity must go back to the sender, so for plain CKB the recipient would receive nothing. I also confirmed it with a test (error 8). Cheque looks designed for typed assets such as UDTs, where the receiver gets the token. How did you picture combining the two locks for native CKB?</description>
   </item>
   <item>
-    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (3 posts)</title>
-    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
-    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-3</guid>
-    <pubDate>Wed, 28 Oct 2026 16:26:32 +0000</pubDate>
-    <description>Based on the Metaforo tally at close, the outcome is PASSED. Approval is 100%, with total voting weight of 184,132,635 CKB from 15 voters. Both the approval threshold and minimum participation requirement are met. Post-close verification was completed on 28 October 2026 using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all voters’ totals match exactly. These checks support the PASSED result for the CrowdCell Proposal. Verfication log: ckb-dao-watchdog/Verification Logs - CrowdCell at main · kydchen/ckb-dao-watchdog · GitHub Vote link:...</description>
+    <title>One Fiber LSP, 11,496 channels (2 posts)</title>
+    <link>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068</link>
+    <guid>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068#recent-2</guid>
+    <pubDate>Thu, 29 Oct 2026 19:36:47 +0000</pubDate>
+    <description>We filled one Fiber LSP to 11,496 channels on a local CKB dev chain, with the build and config that our testnet LSP, the one behind the Cellula wallet, ran that day. A payment between two wallets still took 4 to 5 s, as it did with 350 channels. The channel count turned out not to be the limit. What sizes an LSP is how many wallets are awake at the same moment and how fast it can open channels. Below: how we tested, the numbers, what we changed on the way, and what we would run. Why we asked The Cellula wallet pays over Fiber from a browser or a phone, with no node to run. Each wallet’s channel is held at an LSP, a Fiber node that serves many wallets, while the channel keys stay on the...</description>
   </item>
   <item>
-    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
-    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
-    <pubDate>Wed, 28 Oct 2026 12:47:29 +0000</pubDate>
-    <description>Hi @Officeyutong , The second installment (50 USD) : 33,968 CKB 0xac98590ce7cc48aea9412a62360e45253ea7ed8ea69246e0ee64dc29983c106b Best, xingtian On behalf of the Spark Program Committee</description>
+    <title>[DIS] Kaze X CKB Unitour Continuation Proposal (8 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736</link>
+    <guid>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736#recent-8</guid>
+    <pubDate>Thu, 29 Oct 2026 19:25:30 +0000</pubDate>
+    <description>GM Team Following the Metaforo stage, we aligned on moving into the execution phase, with the understanding that grant funds would be disbursed within one week. Since we’ve now reached that timeline, I wanted to kindly check in on the expected release date. We’re actively preparing for our pilot, which we’re targeting for Early November - December, and timely disbursement would help us stay on track with execution. We had anticipated the funds would come through today, but we’re happy to align with the committee’s timeline. Any update would be greatly appreciated. Thank you! Hi @Dorex45, thanks for checking in. To clarify the payment schedule, the approved proposal lists three milestones...</description>
   </item>
   <item>
-    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
-    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-1</guid>
-    <pubDate>Wed, 28 Oct 2026 11:38:27 +0000</pubDate>
-    <description>Hey everyone, voting on Kirea Finance closes soon, and I still need more voting weight to reach quorum! Kirea Finance is building open-source infrastructure for compliance-gated RWA lending directly on CKB, with no bridge and no custodian in the on-chain flow. The full lending lifecycle (deposit → borrow → repay → release) is already implemented and tested on the CKB testnet. This $7,250 grant will help harden the contracts, integrate live Sumsub KYC, and deliver reusable tooling for other CKB developers. If you support real-world assets and the future of DeFi on CKB, please cast your vote now. It takes less than a minute, and voting weight comes from your Nervos DAO deposits. Vote here:...</description>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067#recent-3</guid>
+    <pubDate>Thu, 29 Oct 2026 10:13:32 +0000</pubDate>
+    <description>Capture1906×878 147 KB Applicant: Dang Ba Ty Discord: tyforwork Email: dangbaty.work@gmail.com GitHub: tydeptrai21042004 (Dang Ba Ty) · GitHub Funding requested: $500 USD, payable in equivalent CKB Duration: 4 weeks Project type: CKB Developer Infrastructure / Proof of Concept Project links: Repository: GitHub - tydeptrai21042004/CellFlow · GitHub Live application: https://cellflow-brown.vercel.app/ Interactive demo: CellFlow Demo — Transaction Recovery Walkthrough CKBuilder technical review: CellFlow: durable CKB transaction operations and recovery for applications · Issue #38 · Nervos-Community-Catalyst/CKBuilder-projects · GitHub 1. Project Overview CellFlow explores whether a CKB...</description>
   </item>
   <item>
-    <title>Introducing CKBSwap — Building on CKB for the Long Term (2 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060</link>
-    <guid>https://talk.nervos.org/t/introducing-ckbswap-building-on-ckb-for-the-long-term/11060#recent-2</guid>
-    <pubDate>Wed, 28 Oct 2026 06:15:02 +0000</pubDate>
-    <description>I think batcher is good. I seen the same model and dex on cardano. minswap.org great to know that. I think for the production launch, the hot cell issue is a must-fix problem. otherwise people won’t take it seriously. the cardano batcher solution seems practical. thanks @longdevbf I think DeFi might not be the killer app for CKB, but it definitely is something we need to have, as some sort of ecosystem primitive pieces. the current UX/UI looks clean, keep the great work!</description>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11066</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11066#recent-1</guid>
+    <pubDate>Thu, 29 Oct 2026 04:23:59 +0000</pubDate>
+    <description>(topic deleted by author)</description>
   </item>
   <item>
-    <title>CellScript - A DSL for Cell-Based Contracts (1 posts)</title>
-    <link>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193</link>
-    <guid>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193#recent-1</guid>
-    <pubDate>Wed, 28 Oct 2026 05:11:24 +0000</pubDate>
-    <description>CellScript 0.33 Alpha: A Major Step Forward for CellScript Contracts CellScript 0.33.0-alpha.1 is out, and #47, #48, #49 are now closed. This is one of the largest steps forward CellScript has taken. The release brings together the work since 0.31, including the intervening 0.32 development work. It opens up a much wider range of contracts we can write on CKB, and it needs more time in real applications. That is why this is an alpha. The feature set is now frozen. The next stage is to test, simplify, repair and consolidate what we have. The first roadmap section now has an initial implementation The first section of the CellScript roadmap described the language and runtime foundations for...</description>
-  </item>
-  <item>
-    <title>UTXOPlay: A Community-Driven Gaming Platform for Nervos (1 posts)</title>
-    <link>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049</link>
-    <guid>https://talk.nervos.org/t/utxoplay-a-community-driven-gaming-platform-for-nervos/11049#recent-1</guid>
-    <pubDate>Wed, 28 Oct 2026 00:49:00 +0000</pubDate>
-    <description>Good stuffs</description>
+    <title>Spark Program | Light dApp Kit (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062</link>
+    <guid>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062#recent-1</guid>
+    <pubDate>Wed, 28 Oct 2026 21:36:42 +0000</pubDate>
+    <description>1. Project overview Purpose: Build on a browser light-client prototype that has completed a real testnet transfer to improve stability, implement mainnet transfers and full Nervos DAO deposits and withdrawals, and deliver a reusable kit for other dApps. Request: USD 1,000 equivalent in CKB over four weeks, delivered through two milestones under the MIT license. Scope: Desktop Chrome and Firefox, existing CCC wallet connections, mainnet and testnet. The application does not hold private keys; wallets approve and sign transactions. 2. Team profile Applicant and maintainer: Akane; GitHub: Akane-CN; Nervos Talk: Akane. Email: akane@random-walk.co.jp. Repository: GitHub - Akane-CN/light-dapp-...</description>
   </item>
 </channel>
 </rss>
