@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-30 05:22:17 CST - 2026-10-31 05:22:17 CST</span>
+          <span>生成时间 2026-10-31 05:22:29 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">10</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">29</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">15</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>按这批 2026-10-30 的帖子看，今天论坛不算安静，主要动态集中在资助提案审核、付款执行和投票结果上 <span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>, <a href="#source-s12">S12</a>, <a href="#source-s14">S14</a>, <a href="#source-s20">S20</a>, <a href="#source-s23">S23</a>]</span>。Spark Program 方面，Bees Network 被列为 Pending 后作者补充经济模型与观察真实性章节并重新提交 <span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>]</span>；Corven IDE 仍为 pending，作者随后补上预算调整明细 <span class="citations">[<a href="#source-s11">S11</a>, <a href="#source-s12">S12</a>]</span>。DIS 资助方面，Kaze Unitour 的 $3,000 grant 付款时点引发讨论 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>，Vellum 因原 Binance 钱包出入金暂停而更换 M2 及后续收款地址 <span class="citations">[<a href="#source-s14">S14</a>, <a href="#source-s18">S18</a>]</span>。技术讨论里，QuotaCell 报告 owner revocation 与 treasury recovery 已在 CKB 上测试 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Spark Program 今天有多条审核与修订动态 <span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>, <a href="#source-s12">S12</a>, <a href="#source-s13">S13</a>, <a href="#source-s19">S19</a>]</span>。Bees Network 被委员会列为 Pending 并邀请修订 <span class="citations">[<a href="#source-s09">S09</a>]</span>，作者随后补充 §6 经济模型与 §7 观察真实性并重新提交 <span class="citations">[<a href="#source-s10">S10</a>]</span>。Corven IDE 仍为 pending，委员会指出预算调整不清楚 <span class="citations">[<a href="#source-s11">S11</a>]</span>，作者随后更新了逐项预算调整 <span class="citations">[<a href="#source-s12">S12</a>]</span>。Light dApp Kit 记录了 JoyID testnet 在无头 CI 测试中的接入阻塞，目标是覆盖 JoyID testnet connect flow 的自动化回归测试 <span class="citations">[<a href="#source-s13">S13</a>]</span>。zk-Lock 话题下委员会成员问候作者病情并表达期待更新 <span class="citations">[<a href="#source-s19">S19</a>]</span>。</li>
+<li>Kaze X CKB Unitour 的 $3,000 grant 讨论集中在“是否已获批”和付款安排上 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>]</span>。有评论认为提案摘要已包含资金用途拆解 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>]</span>。也有评论建议先支付 $1,000、后续再付余款 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s07">S07</a>]</span>。另有评论指出原提案没有明确资金释放时点 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li>Vellum 的作者请求将 M2 付款改到新钱包，因为原提案附带的 Binance 钱包出入金暂停 <span class="citations">[<a href="#source-s14">S14</a>]</span>。委员会成员同意更换并请作者提供新钱包地址 <span class="citations">[<a href="#source-s15">S15</a>]</span>，作者随后给出新地址 <span class="citations">[<a href="#source-s16">S16</a>]</span>。作者确认后续所有里程碑付款都使用新地址 <span class="citations">[<a href="#source-s17">S17</a>, <a href="#source-s18">S18</a>]</span>。</li>
+<li>Kirea Finance 投票结果显示 Not Passed，approval 为 21.08%/51%，总投票权重为 155,002,245/13,982,642 CKB <span class="citations">[<a href="#source-s23">S23</a>]</span>。Rypto 的 M2 付款 $1,125 已按 0.00138 折算为 815,218 CKB，并附上交易链接 <span class="citations">[<a href="#source-s20">S20</a>]</span>。</li>
+<li>QuotaCell 本周测试了 owner revocation 和 treasury recovery <span class="citations">[<a href="#source-s01">S01</a>]</span>。Fiber LSP 讨论涉及支付延迟，建议用 WebSocket 订阅接收签名请求以降低每笔支付延迟 <span class="citations">[<a href="#source-s21">S21</a>]</span>，同时提醒控制 CPU 配置和 store_sync_writes 等测试变量 <span class="citations">[<a href="#source-s22">S22</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Spark Program 的 Bees Network 修订版和 Corven 预算明细能否让委员会结束 pending 状态，值得看后续审核 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>]</span>；Light dApp Kit 的 JoyID testnet CI 阻塞是否解决也值得跟进 <span class="citations">[<a href="#source-s13">S13</a>]</span>。</li>
+<li>Kaze Unitour 的 $3,000 grant 是否获批，以及是否采用先付 $1,000 的折中付款安排，需要继续观察 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s05">S05</a>, <a href="#source-s07">S07</a>]</span>。</li>
+<li>Vellum 后续 milestone 是否确实打到新地址，需要看委员会打款记录 <span class="citations">[<a href="#source-s17">S17</a>, <a href="#source-s18">S18</a>]</span>；Kirea Finance 未通过后的下一步在可见材料中没有说明 <span class="citations">[<a href="#source-s23">S23</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/5">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-10-31 02:13:05 CST</div><div>QuotaCell progress: Owner revocation and treasury recovery now tested on CKB In my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts. This week, I focused on another important question: Can a treasury owner revoke delegated access and...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/14">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Dorex45 · 2026-10-30 12:24:19 CST</div><div>I think we’re going in circles around two different things. I’m specifically referring to the $3,000 grant request, while you’re referencing the milestones and execution. What I’d really like to establish is whether the $3,000 funding request has been approved and is...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/15">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Barsil_Nzola · 2026-10-30 12:51:48 CST</div><div>I don’t understand what’s going on here, the summary clearly says request for a grant of $3000 to run the unitours, the rest is just a breakdown of how the funds will be used.</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/16">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Barsil_Nzola · 2026-10-30 12:52:38 CST</div><div>Is this not a breakdown of how the money will be used???</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/17">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Yeti · 2026-10-30 14:57:29 CST</div><div>This is just a misunderstanding of the process, it makes sense that this sort of proposal might need upfront payment at least before each tour, not necessarily the full $3k at once. I think a good compromise is the first $1k should be paid upfront and then the following 2...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/18">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">neon.bit · 2026-10-30 15:37:39 CST</div><div>I agree, there is no clear specification in the original proposal about when the funds are released. The proposers are perfectly entitled to request funds upon commencing a milestone, upon its completion, or all at once at the beginning. This issue is that it hasn’t been...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/19">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Code3ks · 2026-10-30 15:38:23 CST</div><div>It’s actually a misunderstanding, a compromised $1k upfront payment like you have suggested would make this easier I think. Should have being clearly stated in the proposal, I guess it’s a lesson learnt on his end.</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/7">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">NOrththebear · 2026-10-30 15:52:59 CST</div><div>Hello @xingtianchunyan , haven’t received any communication regarding the proposal</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/8">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">xingtianchunyan · 2026-10-30 16:05:46 CST</div><div>Hi @NOrththebear, Thank you for your continued interest in the Spark Program and for submitting the Bees Network proposal. After review by the Spark Program Committee, your proposal is currently Pending. This is not a rejection; rather, we invite you to revise your proposal....</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/9">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">NOrththebear · 2026-10-30 23:00:48 CST</div><div>Hi @xingtianchunyan Thank you for the review and the clear feedback. We have revised the proposal with two new sections — §6 Economic Model (reward funding) and §7 Observation Authenticity — and resubmitted it. Short answers: 1) Who funds the rewards, and how is the pool...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/9">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">xingtianchunyan · 2026-10-30 17:17:44 CST</div><div>Hello @lestonEth, Thank you for your continued interest in the Spark Program and for revising the Corven proposal. Following a review by the Spark Program Committee, your proposal remains pending. The committee noted that your proposal mentions a budget adjustment, but we did...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/10">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-10-30 20:06:48 CST</div><div>Hello @xingtianchunyan, Thank you and the Spark Program Committee for the review. You’re right that the previous revision did not make the budget change clear. I have now updated the proposal post with an explicit, itemized adjustment. The details are below. Summary of the...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/2">Spark Program | Light dApp Kit</a></div><div class="source-meta">Akane · 2026-10-30 18:30:56 CST</div><div>JoyID testnet: a supported path for headless CI testing I’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable. The goal is to cover the JoyID testnet connect flow through @ckb-ccc/joy-id in automated regression tests. What...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/16">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">truthixify · 2026-10-30 09:23:08 CST</div><div>Would it be possible to send the payment for M2 to a different wallet from the one attached to the proposal when it is due? The attached address is a Binance wallet, and deposits and withdrawals are currently paused following the recent incident. I can provide another wallet...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/17">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">zz_tovarishch · 2026-10-30 09:41:15 CST</div><div>Hi Truthixify 当然可以，请提供您的新钱包地址，我会在后续通知委员会打款时请他们打到新的地址</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/18">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">truthixify · 2026-10-30 11:43:26 CST</div><div>This is it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0c6ka3d965vpl8kec48536fttpta346zsfcwrvx Thank you.</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/19">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">zz_tovarishch · 2026-10-30 11:54:01 CST</div><div>请问后续milestone都是以这个地址进行收款吗？</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/20">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">truthixify · 2026-10-30 18:17:00 CST</div><div>Yes, all subsequent payments should be sent to the new address.</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/25">Spark Program | zk-Lock for CKB</a></div><div class="source-meta">xingtianchunyan · 2026-10-30 16:31:41 CST</div><div>Hi @Mulandi_Cecilia ， 希望你的病情已经开始好转，健康始终最重要！ 我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。 祝健康， xingtian 谨代表Spark Program委员会</div></li><li id="source-s20"><div><code>S20</code><a href="https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364/9">[DIS] Rypto — CKB Content &amp; Advocacy Campaign</a></div><div class="source-meta">zz_tovarishch · 2026-10-30 13:59:55 CST</div><div>M2 payment $1,125/0.00138 = 815,218 CKB https://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb</div></li><li id="source-s21"><div><code>S21</code><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/3">One Fiber LSP, 11,496 channels</a></div><div class="source-meta">joii2020 · 2026-10-30 10:55:31 CST</div><div>You mentioned that a single payment took 3.8–4.8 seconds with 350 channels. Have you measured payment time with the smallest possible setup? Using WebSocket subscriptions on the client to receive signing requests could significantly reduce per-payment latency. In my own tests...</div></li><li id="source-s22"><div><code>S22</code><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/4">One Fiber LSP, 11,496 channels</a></div><div class="source-meta">ArthurZhang · 2026-10-30 12:15:31 CST</div><div>Also, I think we might need to control the test variables a bit more carefully, especially CPU configuration (4 vs 8 cores) and whether store_sync_writes is enabled. Otherwise, it’s hard to isolate the actual bottleneck.</div></li><li id="source-s23"><div><code>S23</code><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/32">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></div><div class="source-meta">zz_tovarishch · 2026-10-30 11:54:16 CST</div><div>Based on the Metaforo tally at close, the outcome is Not Passed. Approval is 21.08%/51% with total voting weight 155,002,245/13,982,642 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>其他</span><strong>10</strong></li><li><span>技术开发</span><strong>9</strong></li><li><span>生态进展</span><strong>9</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@zz_tovarishch</span><strong>6</strong></li><li><span>@Dorex45</span><strong>4</strong></li><li><span>@truthixify</span><strong>3</strong></li><li><span>@xingtianchunyan</span><strong>3</strong></li><li><span>@NOrththebear</span><strong>2</strong></li><li><span>@Barsil_Nzola</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>you<span>19</span></li><li>proposal<span>18</span></li><li>ckb<span>16</span></li><li>are<span>16</span></li><li>payment<span>14</span></li><li>committee<span>12</span></li><li>was<span>10</span></li><li>joyid<span>10</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736">[DIS] Kaze X CKB Unitour Continuation Proposal</a></h3><span class="count-pill">12 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 00:33:15 CST</span><span>Barsil_Nzola, Code3ks, Dorex45, Tact_To, Yeti, neon.bit, zz_tovarishch</span></div><p class="excerpt">I think we’re going in circles around two different things. I’m specifically referring to the $3,000 grant request, while you’re referencing the milestones and execution. What I’d really like to establish is whether the $3,000 funding request has been...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span><span>Nervos-项目动态</span><span>appchain</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613">[DIS] Vellum: Reputation Extension on did:ckb</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 18:17:00 CST</span><span>truthixify, zz_tovarishch</span></div><p class="excerpt">Would it be possible to send the payment for M2 to a different wallet from the one attached to the proposal when it is due? The attached address is a Binance wallet, and deposits and withdrawals are currently paused following the recent incident. I can...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 23:00:48 CST</span><span>NOrththebear, xingtianchunyan</span></div><p class="excerpt">Hello @xingtianchunyan , haven’t received any communication regarding the proposal Hi @NOrththebear, Thank you for your continued interest in the Spark Program and for submitting the Bees Network proposal. After review by the Spark Program Committee, your...</p><div class="tag-row"><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 20:06:48 CST</span><span>lestonEth, xingtianchunyan</span></div><p class="excerpt">Hello @lestonEth, Thank you for your continued interest in the Spark Program and for revising the Corven proposal. Following a review by the Spark Program Committee, your proposal remains pending. The committee noted that your proposal mentions a budget...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068">One Fiber LSP, 11,496 channels</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 12:15:31 CST</span><span>ArthurZhang, joii2020</span></div><p class="excerpt">You mentioned that a single payment took 3.8–4.8 seconds with 350 channels. Have you measured payment time with the smallest possible setup? Using WebSocket subscriptions on the client to receive signing requests could significantly reduce per-payment...</p><div class="tag-row"><span>CKB</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 02:13:05 CST</span><span>Ticoworld</span></div><p class="excerpt">QuotaCell progress: Owner revocation and treasury recovery now tested on CKB In my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts. This week, I focused on another important question: Can a treasury owner revoke...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062">Spark Program | Light dApp Kit</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 18:30:56 CST</span><span>Akane</span></div><p class="excerpt">JoyID testnet: a supported path for headless CI testing I’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable. The goal is to cover the JoyID testnet connect flow through @ckb-ccc/joy-id in automated...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448">Spark Program | zk-Lock for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 16:31:41 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Mulandi_Cecilia ， 希望你的病情已经开始好转，健康始终最重要！ 我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。 祝健康， xingtian 谨代表Spark Program委员会</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364">[DIS] Rypto — CKB Content &amp; Advocacy Campaign</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 13:59:55 CST</span><span>zz_tovarishch</span></div><p class="excerpt">M2 payment $1,125/0.00138 = 815,218 CKB https://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809">[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-30 11:54:16 CST</span><span>zz_tovarishch</span></div><p class="excerpt">Based on the Metaforo tally at close, the outcome is Not Passed. Approval is 21.08%/51% with total voting weight 155,002,245/13,982,642 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The...</p><div class="tag-row"><span>CKB</span><span>DeFi</span><span>defi挖矿</span><span>lang-es</span><span>lang-zh</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-10-31 02:13:05 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/5">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>QuotaCell progress: Owner revocation and treasury recovery now tested on CKB In my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts. This week, I focused on another important...</p></article>
+<article class="timeline-row"><time>2026-10-31 00:33:15 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/25">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Tact_To</strong><p>Excellent</p></article>
+<article class="timeline-row"><time>2026-10-30 23:19:12 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/24">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Dorex45</strong><p>Awesome sure no worries happy to align when all is ready.We will begin engaging community partners to lockin dates.</p></article>
+<article class="timeline-row"><time>2026-10-30 23:00:48 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/9">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @NOrththebear</strong><p>Hi @xingtianchunyan Thank you for the review and the clear feedback. We have revised the proposal with two new sections — §6 Economic Model (reward funding) and §7 Observation Authenticity — and resubmitted it. Short...</p></article>
+<article class="timeline-row"><time>2026-10-30 22:58:41 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/23">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @zz_tovarishch</strong><p>Hi @Dorex45, thanks for confirming. I’ve let Terry know you’re happy to proceed. With the weekend coming up, it may take until next week to arrange the advance. I’ll update you here.</p></article>
+<article class="timeline-row"><time>2026-10-30 20:57:20 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/22">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Dorex45</strong><p>What’s the best pathway to align with @terrytai ? Kaze is open for the arrangements &amp; happy to kickstart everything as soon as possible?</p></article>
+<article class="timeline-row"><time>2026-10-30 20:06:48 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/10">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>Hello @xingtianchunyan, Thank you and the Spark Program Committee for the review. You’re right that the previous revision did not make the budget change clear. I have now updated the proposal post with an explicit,...</p></article>
+<article class="timeline-row"><time>2026-10-30 18:30:56 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/2">Spark Program | Light dApp Kit</a> · @Akane</strong><p>JoyID testnet: a supported path for headless CI testing I’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable. The goal is to cover the JoyID testnet connect flow...</p></article>
+<article class="timeline-row"><time>2026-10-30 18:17:00 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/20">[DIS] Vellum: Reputation Extension on did:ckb</a> · @truthixify</strong><p>Yes, all subsequent payments should be sent to the new address.</p></article>
+<article class="timeline-row"><time>2026-10-30 17:51:40 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/21">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Dorex45</strong><p>Thank you for the clarification. We are happy to align with the proposed arrangement and appreciate @terrytai willingness to provide a private advance to facilitate the commencement of the events. We fully understand...</p></article>
+<article class="timeline-row"><time>2026-10-30 17:17:44 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/9">Spark Program Proposal: Corven cloud-native IDE</a> · @xingtianchunyan</strong><p>Hello @lestonEth, Thank you for your continued interest in the Spark Program and for revising the Corven proposal. Following a review by the Spark Program Committee, your proposal remains pending. The committee noted...</p></article>
+<article class="timeline-row"><time>2026-10-30 16:31:41 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/25">Spark Program | zk-Lock for CKB</a> · @xingtianchunyan</strong><p>Hi @Mulandi_Cecilia ， 希望你的病情已经开始好转，健康始终最重要！ 我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。 祝健康， xingtian 谨代表Spark Program委员会</p></article>
+<article class="timeline-row"><time>2026-10-30 16:26:38 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/20">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @zz_tovarishch</strong><p>Hi @Dorex45 and team, yes, the $3,000 grant remains approved. We understand that you need funding to get the events underway. The proposal did not clearly specify upfront payment terms, so DAO payments will follow the...</p></article>
+<article class="timeline-row"><time>2026-10-30 16:05:46 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/8">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @xingtianchunyan</strong><p>Hi @NOrththebear, Thank you for your continued interest in the Spark Program and for submitting the Bees Network proposal. After review by the Spark Program Committee, your proposal is currently Pending. This is not a...</p></article>
+<article class="timeline-row"><time>2026-10-30 15:52:59 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/7">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @NOrththebear</strong><p>Hello @xingtianchunyan , haven’t received any communication regarding the proposal</p></article>
+<article class="timeline-row"><time>2026-10-30 15:38:23 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/19">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Code3ks</strong><p>It’s actually a misunderstanding, a compromised $1k upfront payment like you have suggested would make this easier I think. Should have being clearly stated in the proposal, I guess it’s a lesson learnt on his end.</p></article>
+<article class="timeline-row"><time>2026-10-30 15:37:39 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/18">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @neon.bit</strong><p>I agree, there is no clear specification in the original proposal about when the funds are released. The proposers are perfectly entitled to request funds upon commencing a milestone, upon its completion, or all at...</p></article>
+<article class="timeline-row"><time>2026-10-30 14:57:29 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/17">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Yeti</strong><p>This is just a misunderstanding of the process, it makes sense that this sort of proposal might need upfront payment at least before each tour, not necessarily the full $3k at once. I think a good compromise is the...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

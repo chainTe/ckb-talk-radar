@@ -1,0 +1,676 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-10-30T21:22:29.615689+00:00",
+  "since": "2026-10-29T21:22:17.254900+00:00",
+  "until": "2026-10-30T21:22:17.254900+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 11002,
+      "title": "QuotaCell: Let your team spend without handing over the treasury",
+      "slug": "quotacell-let-your-team-spend-without-handing-over-the-treasury",
+      "url": "https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002",
+      "created_at": "2026-10-16T16:07:20.856000+00:00",
+      "last_posted_at": "2026-10-30T18:13:05.460000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "CKB-VM",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26996,
+          "post_number": 5,
+          "topic_id": 11002,
+          "topic_title": "QuotaCell: Let your team spend without handing over the treasury",
+          "topic_slug": "quotacell-let-your-team-spend-without-handing-over-the-treasury",
+          "author": "Ticoworld",
+          "created_at": "2026-10-30T18:13:05.460000+00:00",
+          "updated_at": "2026-10-30T18:13:05.460000+00:00",
+          "reply_to_post_number": 4,
+          "url": "https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/5",
+          "content_text": "QuotaCell progress: Owner revocation and treasury recovery now tested on CKB\nIn my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts.\nThis week, I focused on another important question: Can a treasury owner revoke delegated access and recover the protected funds without relying on the delegates?\nI’ve now tested the owner-control lifecycle using real signed transactions on a fresh isolated CKB node, without modifying the existing policy.\nThe results:\nRevocation: An owner-signed transaction revoked a delegate’s authority and committed successfully.\nEnforcement: A newly signed payment using the updated policy state reached the node and was rejected at Q17 because the delegate was disabled. This was not a stale-Cell rejection.\nTreasury recovery: The owner closed the policy and recovered all 200 protected synthetic tokens, along with the fund Cell’s 154 CKB capacity, into an owner-controlled token Cell. No delegate signature was required.\nRecovery after closure: I deposited 50 of those same tokens back into the protected treasury after closure. The policy remained CLOSED, and a separate owner-signed sweep successfully recovered the deposit.\nThe final owner balance remained 200 tokens, since the late deposit reused previously recovered funds.\nAn important limitation also became clear in the executed lifecycle.\nThe current policy retains all 600 CKB of its policy Cell after closure, with an occupied minimum of approximately 572 CKB. That capacity isn’t a transaction fee, but it remains unavailable for reuse under this experimental design.\nThe recovered fund capacity is also held in owner-controlled typed token Cells, not automatically converted into freely spendable CKB.\nThis is still an experimental implementation using synthetic xUDT on a local CKB node. It isn’t a public-testnet release, independent reproduction or a security audit.\nThe broader goal is to make shared spending authority practical for CKB teams and applications, with enforceable delegation, owner control, recovery and reusable integration components.\nThe new signed transaction evidence, capacity accounting, validation tools and reproduction instructions are now public:\ngithub.com\nQuotaCell/evidence/owner-control-2026-10-30 at main · Ticoworld/QuotaCell\nmain/evidence/owner-control-2026-10-30\nExperimental native CKB policy for shared delegated spending, with verifier and isolated-node evidence. - Ticoworld/QuotaCell\nReproduction instructions:\ngithub.com/Ticoworld/QuotaCell\nevidence/owner-control-2026-10-30/REPRODUCE.md\nmain\n# Reproduce owner revocation and recovery\nUse Windows and a **new disposable checkout**. Existing runners generate test\nkeys, a local chain and new results; do not run them in a preserved evidence\ncheckout. Prerequisites: Python 3, Node/npm and the WSL Ubuntu Clang 18 / Linux\nLLD 22.1.8 setup in [BUILD_AND_TEST.md](../../docs/BUILD_AND_TEST.md). The\nrecorded runtime is in [environment.json](environment.json). Cargo is needed\nfor the optional full 89-case verifier replay, not this owner node test.\n```powershell\ngit clone --config core.autocrlf=false https://github.com/Ticoworld/QuotaCell.git QuotaCell-owner-replay\nSet-Location QuotaCell-owner-replay\npython -B scripts/acquire_replay_dependencies.py --rpc-url https://testnet.ckb.dev/\nif ($LASTEXITCODE -ne 0) { throw 'Dependency acquisition failed' }\npython -B policy/build_q.py\nif ($LASTEXITCODE -ne 0) { throw 'Q build failed' }\nPush-Location examples/local-chain\nnpm.cmd ci --ignore-scripts --no-audit --no-fund\nif ($LASTEXITCODE -ne 0) { throw 'Locked npm install failed' }\nPop-Location\nThis file has been truncated. show original\nThe next challenges are making owner recovery independently usable, improving the policy’s capital efficiency and supporting practical native CKB payments.",
+          "content_html": "<h3><a name=\"p-26996-quotacell-progress-owner-revocation-and-treasury-recovery-now-tested-on-ckb-1\" class=\"anchor\" href=\"#p-26996-quotacell-progress-owner-revocation-and-treasury-recovery-now-tested-on-ckb-1\" aria-label=\"Heading link\"></a>QuotaCell progress: Owner revocation and treasury recovery now tested on CKB</h3>\n<p>In my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts.</p>\n<p>This week, I focused on another important question: <strong>Can a treasury owner revoke delegated access and recover the protected funds without relying on the delegates?</strong></p>\n<p>I’ve now tested the owner-control lifecycle using real signed transactions on a fresh isolated CKB node, without modifying the existing policy.</p>\n<p><strong>The results:</strong></p>\n<ul>\n<li>\n<p><strong>Revocation:</strong> An owner-signed transaction revoked a delegate’s authority and committed successfully.</p>\n</li>\n<li>\n<p><strong>Enforcement:</strong> A newly signed payment using the updated policy state reached the node and was rejected at Q17 because the delegate was disabled. This was not a stale-Cell rejection.</p>\n</li>\n<li>\n<p><strong>Treasury recovery:</strong> The owner closed the policy and recovered all 200 protected synthetic tokens, along with the fund Cell’s 154 CKB capacity, into an owner-controlled token Cell. No delegate signature was required.</p>\n</li>\n<li>\n<p><strong>Recovery after closure:</strong> I deposited 50 of those same tokens back into the protected treasury after closure. The policy remained CLOSED, and a separate owner-signed sweep successfully recovered the deposit.</p>\n</li>\n</ul>\n<p>The final owner balance remained 200 tokens, since the late deposit reused previously recovered funds.</p>\n<p><strong>An important limitation also became clear in the executed lifecycle.</strong></p>\n<p>The current policy retains all 600 CKB of its policy Cell after closure, with an occupied minimum of approximately 572 CKB. That capacity isn’t a transaction fee, but it remains unavailable for reuse under this experimental design.</p>\n<p>The recovered fund capacity is also held in owner-controlled typed token Cells, not automatically converted into freely spendable CKB.</p>\n<p>This is still an experimental implementation using synthetic xUDT on a local CKB node. It isn’t a public-testnet release, independent reproduction or a security audit.</p>\n<p>The broader goal is to make shared spending authority practical for CKB teams and applications, with enforceable delegation, owner control, recovery and reusable integration components.</p>\n<p><strong>The new signed transaction evidence, capacity accounting, validation tools and reproduction instructions are now public:</strong></p>\n<aside class=\"onebox githubfolder\" data-onebox-src=\"https://github.com/Ticoworld/QuotaCell/tree/main/evidence/owner-control-2026-10-30\">\n  <header class=\"source\">\n      <img src=\"https://talk.nervos.org/uploads/default/original/2X/b/bad3e5f9ad67c1ddf145107ce7032ac1d7b22563.svg\" class=\"site-icon\" alt=\"\" data-dominant-color=\"\" width=\"32\" height=\"32\">\n\n      <a href=\"https://github.com/Ticoworld/QuotaCell/tree/main/evidence/owner-control-2026-10-30\" target=\"_blank\" rel=\"noopener nofollow ugc\">github.com</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <h3><a href=\"https://github.com/Ticoworld/QuotaCell/tree/main/evidence/owner-control-2026-10-30\" target=\"_blank\" rel=\"noopener nofollow ugc\">QuotaCell/evidence/owner-control-2026-10-30 at main · Ticoworld/QuotaCell</a></h3>\n\n  <p><a href=\"https://github.com/Ticoworld/QuotaCell/tree/main/evidence/owner-control-2026-10-30\" target=\"_blank\" rel=\"noopener nofollow ugc\">main/evidence/owner-control-2026-10-30</a></p>\n\n  <p><span class=\"label1\">Experimental native CKB policy for shared delegated spending, with verifier and isolated-node evidence. - Ticoworld/QuotaCell</span></p>\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>Reproduction instructions:</p>\n<aside class=\"onebox githubblob\" data-onebox-src=\"https://github.com/Ticoworld/QuotaCell/blob/main/evidence/owner-control-2026-10-30/REPRODUCE.md\">\n  <header class=\"source\">\n\n      <a href=\"https://github.com/Ticoworld/QuotaCell/blob/main/evidence/owner-control-2026-10-30/REPRODUCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">github.com/Ticoworld/QuotaCell</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <h4><a href=\"https://github.com/Ticoworld/QuotaCell/blob/main/evidence/owner-control-2026-10-30/REPRODUCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">evidence/owner-control-2026-10-30/REPRODUCE.md</a></h4>\n\n<div class=\"git-blob-info\">\n  <a href=\"https://github.com/Ticoworld/QuotaCell/blob/main/evidence/owner-control-2026-10-30/REPRODUCE.md\" rel=\"noopener nofollow ugc\"><code>main</code></a>\n</div>\n\n\n      <pre><code class=\"lang-md\"># Reproduce owner revocation and recovery\n\nUse Windows and a **new disposable checkout**. Existing runners generate test\nkeys, a local chain and new results; do not run them in a preserved evidence\ncheckout. Prerequisites: Python 3, Node/npm and the WSL Ubuntu Clang 18 / Linux\nLLD 22.1.8 setup in [BUILD_AND_TEST.md](../../docs/BUILD_AND_TEST.md). The\nrecorded runtime is in [environment.json](environment.json). Cargo is needed\nfor the optional full 89-case verifier replay, not this owner node test.\n\n```powershell\ngit clone --config core.autocrlf=false https://github.com/Ticoworld/QuotaCell.git QuotaCell-owner-replay\nSet-Location QuotaCell-owner-replay\npython -B scripts/acquire_replay_dependencies.py --rpc-url https://testnet.ckb.dev/\nif ($LASTEXITCODE -ne 0) { throw 'Dependency acquisition failed' }\npython -B policy/build_q.py\nif ($LASTEXITCODE -ne 0) { throw 'Q build failed' }\nPush-Location examples/local-chain\nnpm.cmd ci --ignore-scripts --no-audit --no-fund\nif ($LASTEXITCODE -ne 0) { throw 'Locked npm install failed' }\nPop-Location\n</code></pre>\n\n\n\n  This file has been truncated. <a href=\"https://github.com/Ticoworld/QuotaCell/blob/main/evidence/owner-control-2026-10-30/REPRODUCE.md\" target=\"_blank\" rel=\"noopener nofollow ugc\">show original</a>\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>The next challenges are making owner recovery independently usable, improving the policy’s capital efficiency and supporting practical native CKB payments.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10736,
+      "title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+      "slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+      "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736",
+      "created_at": "2026-09-22T05:39:35.772000+00:00",
+      "last_posted_at": "2026-10-30T16:33:15.520000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "CKB-VM",
+        "Grant",
+        "Nervos-项目动态",
+        "appchain",
+        "dapp"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26969,
+          "post_number": 14,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Dorex45",
+          "created_at": "2026-10-30T04:24:19.344000+00:00",
+          "updated_at": "2026-10-30T04:24:19.344000+00:00",
+          "reply_to_post_number": 13,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/14",
+          "content_text": "I think we’re going in circles around two different things. I’m specifically referring to the $3,000 grant request, while you’re referencing the milestones and execution.\nWhat I’d really like to establish is whether the $3,000 funding request has been approved and is proceeding, and when we should expect the disbursement.\nFrom Kaze’s end, we cannot realistically move forward with the planned events and initiatives without the necessary funding and resource allocation. We need clarity on the funding so we can plan and execute accordingly.\nAre we moving forward with the grant or should we reconsider the execution plan?",
+          "content_html": "<p>I think we’re going in circles around two different things. I’m specifically referring to the $3,000 grant request, while you’re referencing the milestones and execution.</p>\n<p>What I’d really like to establish is whether the $3,000 funding request has been approved and is proceeding, and when we should expect the disbursement.</p>\n<p>From Kaze’s end, we cannot realistically move forward with the planned events and initiatives without the necessary funding and resource allocation. We need clarity on the funding so we can plan and execute accordingly.</p>\n<p>Are we moving forward with the grant or should we reconsider the execution plan?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26970,
+          "post_number": 15,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Barsil_Nzola",
+          "created_at": "2026-10-30T04:51:48.448000+00:00",
+          "updated_at": "2026-10-30T04:51:48.448000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/15",
+          "content_text": "I don’t understand what’s going on here, the summary clearly says request for a grant of $3000 to run the unitours, the rest is just a breakdown of how the funds will be used.",
+          "content_html": "<p>I don’t understand what’s going on here, the summary clearly says request for a grant of $3000 to run the unitours, the rest is just a breakdown of how the funds will be used.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26971,
+          "post_number": 16,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Barsil_Nzola",
+          "created_at": "2026-10-30T04:52:38.167000+00:00",
+          "updated_at": "2026-10-30T04:52:38.167000+00:00",
+          "reply_to_post_number": 13,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/16",
+          "content_text": "Is this not a breakdown of how the money will be used???",
+          "content_html": "<p>Is this not a breakdown of how the money will be used???</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26973,
+          "post_number": 17,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Yeti",
+          "created_at": "2026-10-30T06:57:29.888000+00:00",
+          "updated_at": "2026-10-30T06:57:29.888000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/17",
+          "content_text": "This is just a misunderstanding of the process, it makes sense that this sort of proposal might need upfront payment at least before each tour, not necessarily the full $3k at once.\nI think a good compromise is the first $1k should be paid upfront and then the following 2 payments can be assessed after proof the previous milestone was carried out.",
+          "content_html": "<p>This is just a misunderstanding of the process, it makes sense that this sort of proposal might need upfront payment at least before each tour, not necessarily the full $3k at once.</p>\n<p>I think a good compromise is the first $1k should be paid upfront and then the following 2 payments can be assessed after proof the previous milestone was carried out.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26974,
+          "post_number": 18,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "neon.bit",
+          "created_at": "2026-10-30T07:37:39.819000+00:00",
+          "updated_at": "2026-10-30T07:39:47.108000+00:00",
+          "reply_to_post_number": 17,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/18",
+          "content_text": "I agree, there is no clear specification in the original proposal about when the funds are released.\nThe proposers are perfectly entitled to request funds upon commencing a milestone, upon its completion, or all at once at the beginning. This issue is that it hasn’t been mentioned.\nHowever, it’s a reasonable expectation that for events there will be up front costs that the proposers may not be able to absorb. In this scenario it’s understandable that the proposers would assume, due to the nature of the activities, that they would receive an up front payment.\nTo avoid confusion in future, proposals should be advised to contain this specific information, and if it has been overlooked, the proposal should be treated as incomplete until that information is provided",
+          "content_html": "<p>I agree, there is no clear specification in the original proposal about when the funds are released.</p>\n<p>The proposers are perfectly entitled to request funds upon commencing a milestone, upon its completion, or all at once at the beginning. This issue is that it hasn’t been mentioned.</p>\n<p>However, it’s a reasonable expectation that for events there will be up front costs that the proposers may not be able to absorb. In this scenario it’s understandable that the proposers would assume, due to the nature of the activities, that they would receive an up front payment.</p>\n<p>To avoid confusion in future, proposals should be advised to contain this specific information, and if it has been overlooked, the proposal should be treated as incomplete until that information is provided</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26975,
+          "post_number": 19,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Code3ks",
+          "created_at": "2026-10-30T07:38:23.781000+00:00",
+          "updated_at": "2026-10-30T07:39:56.926000+00:00",
+          "reply_to_post_number": 17,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/19",
+          "content_text": "It’s actually a misunderstanding, a compromised $1k upfront payment like you have suggested would make this easier I think.\nShould have being clearly stated in the proposal, I guess it’s a lesson learnt on his end.",
+          "content_html": "<p>It’s actually a misunderstanding,  a compromised $1k upfront payment like you have suggested would make this easier I think.</p>\n<p>Should have being clearly stated in the proposal, I guess it’s a lesson learnt on his end.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26978,
+          "post_number": 20,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T08:26:38.135000+00:00",
+          "updated_at": "2026-10-30T08:32:37.128000+00:00",
+          "reply_to_post_number": 14,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/20",
+          "content_text": "Hi @Dorex45 and team, yes, the $3,000 grant remains approved. We understand that you need funding to get the events underway.\nThe proposal did not clearly specify upfront payment terms, so DAO payments will follow the milestone completion, reporting and two-week community review process already outlined.\nTo help you get started, a committee member, @terrytai, has offered to provide a private advance from personal funds. This would be separate from the DAO grant and would not change its payment process or establish a precedent for upfront DAO payments.\nPlease let me know if you’re open to this arrangement.\nIn Terry’s words:\nThis would be a purely private arrangement, not part of the DAO’s rules, an exception, or a precedent for future proposals. We’re simply offering help in this particular situation.\nGoing forward, teams, please clearly specify your payment schedules in your proposals to avoid similar issues. Thank you!",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/dorex45\">@Dorex45</a> and team, yes, the $3,000 grant remains approved. We understand that you need funding to get the events underway.</p>\n<p>The proposal did not clearly specify upfront payment terms, so DAO payments will follow the milestone completion, reporting and two-week community review process already outlined.</p>\n<p>To help you get started, a committee member, <a class=\"mention\" href=\"/u/terrytai\">@terrytai</a>, has offered to provide a private advance from personal funds. This would be separate from the DAO grant and would not change its payment process or establish a precedent for upfront DAO payments.</p>\n<p>Please let me know if you’re open to this arrangement.</p>\n<hr>\n<p>In Terry’s words:</p>\n<blockquote>\n<p>This would be a purely private arrangement, not part of the DAO’s rules, an exception, or a precedent for future proposals. We’re simply offering help in this particular situation.</p>\n</blockquote>\n<p>Going forward, teams, please clearly specify your payment schedules in your proposals to avoid similar issues. Thank you!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26982,
+          "post_number": 21,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Dorex45",
+          "created_at": "2026-10-30T09:51:40.965000+00:00",
+          "updated_at": "2026-10-30T09:51:40.965000+00:00",
+          "reply_to_post_number": 20,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/21",
+          "content_text": "Thank you for the clarification. We are happy to align with the proposed arrangement and appreciate @terrytai willingness to provide a private advance to facilitate the commencement of the events. We fully understand that this is a personal arrangement, separate from the DAO’s grant framework, and does not establish a precedent for future proposals.\nFor clarity, our understanding is that the approved $3,000 grant will be disbursed through milestone-based payments. Each payment will be processed by the DAO upon completion of the respective milestone, submission of the required report, and conclusion of the two-week community review and approval.\nWe appreciate the team’s flexibility and constructive approach in helping us find a way forward. Looking forward to moving ahead and delivering on the proposed objectives.",
+          "content_html": "<p>Thank you for the clarification. We are happy to align with the proposed arrangement and appreciate <a class=\"mention\" href=\"/u/terrytai\">@terrytai</a> willingness to provide a private advance to facilitate the commencement of the events. We fully understand that this is a personal arrangement, separate from the DAO’s grant framework, and does not establish a precedent for future proposals.</p>\n<p>For clarity, our understanding is that the approved $3,000 grant will be disbursed through milestone-based payments. Each payment will be processed by the DAO upon completion of the respective milestone, submission of the required report, and conclusion of the two-week community review and approval.</p>\n<p>We appreciate the team’s flexibility and constructive approach in helping us find a way forward. Looking forward to moving ahead and delivering on the proposed objectives.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26987,
+          "post_number": 22,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Dorex45",
+          "created_at": "2026-10-30T12:57:20.502000+00:00",
+          "updated_at": "2026-10-30T12:57:20.502000+00:00",
+          "reply_to_post_number": 20,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/22",
+          "content_text": "What’s the best pathway to align with @terrytai ?\nKaze is open for the arrangements & happy to kickstart everything as soon as possible?",
+          "content_html": "<p>What’s the best pathway to align with <a class=\"mention\" href=\"/u/terrytai\">@terrytai</a> ?<br>\nKaze is open for the arrangements &amp; happy to kickstart everything as soon as possible?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26988,
+          "post_number": 23,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T14:58:41.133000+00:00",
+          "updated_at": "2026-10-30T14:58:41.133000+00:00",
+          "reply_to_post_number": 21,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/23",
+          "content_text": "Hi @Dorex45, thanks for confirming. I’ve let Terry know you’re happy to proceed. With the weekend coming up, it may take until next week to arrange the advance. I’ll update you here.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/dorex45\">@Dorex45</a>, thanks for confirming. I’ve let Terry know you’re happy to proceed. With the weekend coming up, it may take until next week to arrange the advance. I’ll update you here.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26990,
+          "post_number": 24,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Dorex45",
+          "created_at": "2026-10-30T15:19:12.245000+00:00",
+          "updated_at": "2026-10-30T15:19:12.245000+00:00",
+          "reply_to_post_number": 23,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/24",
+          "content_text": "Awesome sure no worries happy to align when all is ready.We will begin engaging community partners to lockin dates.",
+          "content_html": "<p>Awesome sure no worries happy to align when all is ready.We will begin engaging community partners to lockin dates.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26992,
+          "post_number": 25,
+          "topic_id": 10736,
+          "topic_title": "[DIS] Kaze X CKB Unitour Continuation Proposal",
+          "topic_slug": "dis-kaze-x-ckb-unitour-continuation-proposal",
+          "author": "Tact_To",
+          "created_at": "2026-10-30T16:33:15.520000+00:00",
+          "updated_at": "2026-10-30T16:33:15.520000+00:00",
+          "reply_to_post_number": 24,
+          "url": "https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/25",
+          "content_text": "Excellent",
+          "content_html": "<p>Excellent</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11015,
+      "title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+      "slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+      "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015",
+      "created_at": "2026-10-21T10:36:40.209000+00:00",
+      "last_posted_at": "2026-10-30T15:00:48.292000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Pending",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26976,
+          "post_number": 7,
+          "topic_id": 11015,
+          "topic_title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+          "topic_slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+          "author": "NOrththebear",
+          "created_at": "2026-10-30T07:52:59.288000+00:00",
+          "updated_at": "2026-10-30T07:52:59.288000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/7",
+          "content_text": "Hello @xingtianchunyan , haven’t received any communication regarding the proposal",
+          "content_html": "<p>Hello <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a> , haven’t received any communication regarding the proposal</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26977,
+          "post_number": 8,
+          "topic_id": 11015,
+          "topic_title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+          "topic_slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-30T08:05:46.592000+00:00",
+          "updated_at": "2026-10-30T08:05:46.592000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/8",
+          "content_text": "Hi @NOrththebear,\nThank you for your continued interest in the Spark Program and for submitting the Bees Network proposal.\nAfter review by the Spark Program Committee, your proposal is currently Pending. This is not a rejection; rather, we invite you to revise your proposal.\nThe Committee has two main questions:\nReward pool funding and economic model: The Committee would like to understand where the reward pool’s funding comes from. Specifically, please explain how the economic model works: who funds the rewards, how the reward pool is replenished, and what sustainable source funds incentives for observation service providers.\nVerifying the authenticity of observations: The Committee has concerns about the reliability of the current verification mechanism. Wallet signatures, Merkle proofs, and on-chain claim transactions can prove that a task was claimed and its results submitted, but they cannot prove that the observation was actually conducted from the claimed network location. Please explain how you ensure that observations are authentic.\nPlease revise and resubmit your proposal based on this feedback. We will arrange another review as soon as possible.\nBest regards\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/norththebear\">@NOrththebear</a>,</p>\n<p>Thank you for your continued interest in the Spark Program and for submitting the Bees Network proposal.</p>\n<p>After review by the Spark Program Committee, your proposal is currently Pending. This is not a rejection; rather, we invite you to revise your proposal.</p>\n<p>The Committee has two main questions:</p>\n<ol>\n<li>\n<p><strong>Reward pool funding and economic model</strong>: The Committee would like to understand where the reward pool’s funding comes from. Specifically, please explain how the economic model works: who funds the rewards, how the reward pool is replenished, and what sustainable source funds incentives for observation service providers.</p>\n</li>\n<li>\n<p><strong>Verifying the authenticity of observations</strong>: The Committee has concerns about the reliability of the current verification mechanism. Wallet signatures, Merkle proofs, and on-chain claim transactions can prove that a task was claimed and its results submitted, but they cannot prove that the observation was actually conducted from the claimed network location. Please explain how you ensure that observations are authentic.</p>\n</li>\n</ol>\n<p>Please revise and resubmit your proposal based on this feedback. We will arrange another review as soon as possible.</p>\n<p>Best regards<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26989,
+          "post_number": 9,
+          "topic_id": 11015,
+          "topic_title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+          "topic_slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+          "author": "NOrththebear",
+          "created_at": "2026-10-30T15:00:48.292000+00:00",
+          "updated_at": "2026-10-30T15:00:48.292000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/9",
+          "content_text": "Hi @xingtianchunyan\nThank you for the review and the clear feedback. We have revised the proposal with two new sections — §6 Economic Model (reward funding) and §7 Observation Authenticity — and resubmitted it. Short answers:\n1) Who funds the rewards, and how is the pool replenished?\nThe testnet rewards today are bootstrapped from the project’s own operator treasury. That is a development subsidy, not the long-term model, and we say so plainly in the revised proposal.\nThe sustainable source is demand-side payment. AI-agent developers and data teams buy observations from the network (prepaid credits or per-call), paying in RUSD, a CKB-native stablecoin (sUDT), so prices are stable while settlement stays on CKB (testnet RUSD during beta; mainnet confirmed at launch. We use an x402-compatible 402 Payment Required handshake (quote, pay, retry with receipt) but settle in RUSD on CKB through our own verifier — x402’s published facilitators do not support CKB. Each payment is split into a provider reward pool (75%) and a protocol/operations fee (25%). The coordinator sizes each epoch’s budget from actual inflow — capped, with a reserve floor — and distributes it pro-rata to verified points. Rewards therefore come out of revenue, not inflation: there is no token sale and no fixed yield. If revenue is low, rewards scale down rather than being promised. Node stake is CKB or RUSD; no network token is required.\nDuring the beta, a capped treasury budget plus valueless testnet CKB funds the pilot. The $2,000 grant covers engineering and beta costs, not the reward pool itself. The dashboard will publish inflow, epoch budget, and payouts so the model is auditable.\n2) How do we know an observation was really made from the claimed location?\nWe are explicit that no scheme can cryptographically prove physical network location. Instead we add layered, probabilistic and economic assurance:\nReplication + quorum: every task is sent to k≥3 independent nodes; only quorum-agreed results are paid.\nHidden canaries: tasks with known ground truth continuously measure each node’s accuracy; low-accuracy nodes lose eligibility.\nDiversity: quorum members must differ in ASN / IP prefix / geography, with per-operator caps to resist Sybil clusters.\nSigned evidence bundles: nonce, response/header hashes, TLS certificate fingerprint, DNS answers and timing are checked for internal consistency and plausibility.\nStake + slashing: nodes stake CKB, with a dispute window before payout and slashing for proven fraud.\nConsumer-side confidence: each observation carries an explicit confidence score, and buyers can pay for more replicas or more diverse vantage points.\nThis mirrors how crowdsourced measurement networks (RIPE Atlas, Grass) establish trust — replication, canaries and reputation rather than a location proof — and the proposal states that limit openly rather than overclaiming.\nThe revised 8-week plan adds quorum verification, canaries, and staking to the scope, with accuracy and disagreement metrics published in the beta report.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a></p>\n<p>Thank you for the review and the clear feedback. We have revised the proposal with two new sections — §6 Economic Model (reward funding) and §7 Observation Authenticity — and resubmitted it. Short answers:</p>\n<p><strong>1) Who funds the rewards, and how is the pool replenished?</strong></p>\n<p>The testnet rewards today are bootstrapped from the project’s own operator treasury. That is a development subsidy, not the long-term model, and we say so plainly in the revised proposal.</p>\n<p>The sustainable source is demand-side payment. AI-agent developers and data teams buy observations from the network (prepaid credits or per-call), paying in <strong>RUSD</strong>, a CKB-native stablecoin (sUDT), so prices are stable while settlement stays on CKB (testnet RUSD during beta; mainnet confirmed at launch. We use an x402-compatible <code>402 Payment Required</code> handshake (quote, pay, retry with receipt) but settle in RUSD on CKB through our own verifier — x402’s published facilitators do not support CKB. Each payment is split into a <strong>provider reward pool (75%)</strong> and a <strong>protocol/operations fee (25%)</strong>. The coordinator sizes each epoch’s budget from actual inflow — capped, with a reserve floor — and distributes it pro-rata to verified points. Rewards therefore come out of revenue, not inflation: there is no token sale and no fixed yield. If revenue is low, rewards scale down rather than being promised. Node stake is CKB or RUSD; no network token is required.</p>\n<p>During the beta, a capped treasury budget plus valueless testnet CKB funds the pilot. The $2,000 grant covers engineering and beta costs, not the reward pool itself. The dashboard will publish inflow, epoch budget, and payouts so the model is auditable.</p>\n<p><strong>2) How do we know an observation was really made from the claimed location?</strong></p>\n<p>We are explicit that no scheme can cryptographically prove physical network location. Instead we add layered, probabilistic and economic assurance:</p>\n<ul>\n<li><strong>Replication + quorum:</strong> every task is sent to k≥3 independent nodes; only quorum-agreed results are paid.</li>\n<li><strong>Hidden canaries:</strong> tasks with known ground truth continuously measure each node’s accuracy; low-accuracy nodes lose eligibility.</li>\n<li><strong>Diversity:</strong> quorum members must differ in ASN / IP prefix / geography, with per-operator caps to resist Sybil clusters.</li>\n<li><strong>Signed evidence bundles:</strong> nonce, response/header hashes, TLS certificate fingerprint, DNS answers and timing are checked for internal consistency and plausibility.</li>\n<li><strong>Stake + slashing:</strong> nodes stake CKB, with a dispute window before payout and slashing for proven fraud.</li>\n<li><strong>Consumer-side confidence:</strong> each observation carries an explicit confidence score, and buyers can pay for more replicas or more diverse vantage points.</li>\n</ul>\n<p>This mirrors how crowdsourced measurement networks (RIPE Atlas, Grass) establish trust — replication, canaries and reputation rather than a location proof — and the proposal states that limit openly rather than overclaiming.</p>\n<p>The revised 8-week plan adds quorum verification, canaries, and staking to the scope, with accuracy and disagreement metrics published in the beta report.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10807,
+      "title": "Spark Program Proposal: Corven cloud-native IDE",
+      "slug": "spark-program-proposal-corven-cloud-native-ide",
+      "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807",
+      "created_at": "2026-10-06T06:37:49.619000+00:00",
+      "last_posted_at": "2026-10-30T12:06:48.745000+00:00",
+      "category_id": 77,
+      "tags": [
+        "CKB",
+        "Grant",
+        "Pending",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26980,
+          "post_number": 9,
+          "topic_id": 10807,
+          "topic_title": "Spark Program Proposal: Corven cloud-native IDE",
+          "topic_slug": "spark-program-proposal-corven-cloud-native-ide",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-30T09:17:44.417000+00:00",
+          "updated_at": "2026-10-30T09:17:44.417000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/9",
+          "content_text": "Hello @lestonEth,\nThank you for your continued interest in the Spark Program and for revising the Corven proposal.\nFollowing a review by the Spark Program Committee, your proposal remains pending.\nThe committee noted that your proposal mentions a budget adjustment, but we did not identify any clear changes in the recent revisions when reviewing the record. Before moving the proposal forward, we would therefore like you to confirm the specific details of the budget adjustment.\nPlease revise and resubmit your proposal based on this feedback. We’ll arrange another review as soon as possible.\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hello <a class=\"mention\" href=\"/u/lestoneth\">@lestonEth</a>,</p>\n<p>Thank you for your continued interest in the Spark Program and for revising the Corven proposal.</p>\n<p>Following a review by the Spark Program Committee, your proposal remains <strong>pending</strong>.</p>\n<p>The committee noted that your proposal mentions a budget adjustment, but we did not identify any clear changes in the recent revisions when reviewing the record. Before moving the proposal forward, we would therefore like you to confirm the specific details of the <strong>budget adjustment</strong>.</p>\n<p>Please revise and resubmit your proposal based on this feedback. We’ll arrange another review as soon as possible.</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26986,
+          "post_number": 10,
+          "topic_id": 10807,
+          "topic_title": "Spark Program Proposal: Corven cloud-native IDE",
+          "topic_slug": "spark-program-proposal-corven-cloud-native-ide",
+          "author": "lestonEth",
+          "created_at": "2026-10-30T12:06:48.745000+00:00",
+          "updated_at": "2026-10-30T12:06:48.745000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/10",
+          "content_text": "Hello @xingtianchunyan,\nThank you and the Spark Program Committee for the review. You’re right that the previous revision did not make the budget change clear. I have now updated the proposal post with an explicit, itemized adjustment. The details are below.\nSummary of the budget adjustment\nThe total request is reduced from $600 to $520, a reduction of $80.\nThe only line that changed is session logistics. Session 1 (Kisumu) was held remotely and incurred no travel or venue costs, so nothing is claimed for it. The logistics budget now covers only the two remaining in-person sessions in Nairobi and Thika, and has been trimmed to essentials.\nItem\nPrevious (USD)\nRevised (USD)\nChange\nCloud hosting and deployment\n$220\n$220\nNo change\nInfrastructure\n$140\n$140\nNo change\nSession logistics\n$240\n$160\n−$80\nTotal\n$600\n$520\n−$80\nSession logistics breakdown ($160)\nSession\nLine item\nAmount (USD)\nSession 1 (Kisumu, remote)\nNo costs incurred, none claimed\n$0\nSession 2 (Nairobi)\nLocal transport for facilitators and equipment\n$15\nMobile data support for participants (about 15 attendees)\n$30\nPrinted getting-started guides and lab handouts\n$20\nNairobi subtotal\n$65\nSession 3 (Thika, MKU)\nNairobi–Thika round-trip transport for two facilitators\n$40\nLocal transfers in Thika\n$5\nMobile data support for participants (about 15 attendees)\n$30\nPrinted getting-started guides and lab handouts\n$20\nThika subtotal\n$95\nTotal\n$160\nOther changes in the proposal to match the new budget\nThe opening summary now requests $520.\nDeliverable 9 (final completion report) now reports spending against the $520 budget.\nThe Required Funding section includes the per-session breakdown above.\nThe Week 1 entry for the Kisumu session states that no costs are claimed.\nAll spending will be reported line by line in the final completion report, with receipts where available. Any unspent funds will be reported as unspent and will not be reallocated without the committee’s approval.\nDeliverables, testing plan, targets and timeline are unchanged. Please let me know if the committee needs anything else before the next review.\nBest,\nJimleston (lestonEth)",
+          "content_html": "<p>Hello <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a>,</p>\n<p>Thank you and the Spark Program Committee for the review. You’re right that the previous revision did not make the budget change clear. I have now updated the proposal post with an explicit, itemized adjustment. The details are below.</p>\n<p><strong>Summary of the budget adjustment</strong></p>\n<p>The total request is reduced from <strong>$600 to $520</strong>, a reduction of <strong>$80</strong>.</p>\n<p>The only line that changed is session logistics. Session 1 (Kisumu) was held remotely and incurred no travel or venue costs, so nothing is claimed for it. The logistics budget now covers only the two remaining in-person sessions in Nairobi and Thika, and has been trimmed to essentials.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Item</th>\n<th>Previous (USD)</th>\n<th>Revised (USD)</th>\n<th>Change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Cloud hosting and deployment</td>\n<td>$220</td>\n<td>$220</td>\n<td>No change</td>\n</tr>\n<tr>\n<td>Infrastructure</td>\n<td>$140</td>\n<td>$140</td>\n<td>No change</td>\n</tr>\n<tr>\n<td>Session logistics</td>\n<td>$240</td>\n<td>$160</td>\n<td>−$80</td>\n</tr>\n<tr>\n<td><strong>Total</strong></td>\n<td><strong>$600</strong></td>\n<td><strong>$520</strong></td>\n<td><strong>−$80</strong></td>\n</tr>\n</tbody>\n</table>\n</div><p><strong>Session logistics breakdown ($160)</strong></p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Session</th>\n<th>Line item</th>\n<th>Amount (USD)</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Session 1 (Kisumu, remote)</td>\n<td>No costs incurred, none claimed</td>\n<td>$0</td>\n</tr>\n<tr>\n<td>Session 2 (Nairobi)</td>\n<td>Local transport for facilitators and equipment</td>\n<td>$15</td>\n</tr>\n<tr>\n<td></td>\n<td>Mobile data support for participants (about 15 attendees)</td>\n<td>$30</td>\n</tr>\n<tr>\n<td></td>\n<td>Printed getting-started guides and lab handouts</td>\n<td>$20</td>\n</tr>\n<tr>\n<td></td>\n<td><strong>Nairobi subtotal</strong></td>\n<td><strong>$65</strong></td>\n</tr>\n<tr>\n<td>Session 3 (Thika, MKU)</td>\n<td>Nairobi–Thika round-trip transport for two facilitators</td>\n<td>$40</td>\n</tr>\n<tr>\n<td></td>\n<td>Local transfers in Thika</td>\n<td>$5</td>\n</tr>\n<tr>\n<td></td>\n<td>Mobile data support for participants (about 15 attendees)</td>\n<td>$30</td>\n</tr>\n<tr>\n<td></td>\n<td>Printed getting-started guides and lab handouts</td>\n<td>$20</td>\n</tr>\n<tr>\n<td></td>\n<td><strong>Thika subtotal</strong></td>\n<td><strong>$95</strong></td>\n</tr>\n<tr>\n<td></td>\n<td><strong>Total</strong></td>\n<td><strong>$160</strong></td>\n</tr>\n</tbody>\n</table>\n</div><p><strong>Other changes in the proposal to match the new budget</strong></p>\n<ul>\n<li>The opening summary now requests $520.</li>\n<li>Deliverable 9 (final completion report) now reports spending against the $520 budget.</li>\n<li>The Required Funding section includes the per-session breakdown above.</li>\n<li>The Week 1 entry for the Kisumu session states that no costs are claimed.</li>\n</ul>\n<p>All spending will be reported line by line in the final completion report, with receipts where available. Any unspent funds will be reported as unspent and will not be reallocated without the committee’s approval.</p>\n<p>Deliverables, testing plan, targets and timeline are unchanged. Please let me know if the committee needs anything else before the next review.</p>\n<p>Best,<br>\nJimleston (lestonEth)</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11062,
+      "title": "Spark Program | Light dApp Kit",
+      "slug": "spark-program-light-dapp-kit",
+      "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062",
+      "created_at": "2026-10-28T21:36:42.394000+00:00",
+      "last_posted_at": "2026-10-30T10:30:56.374000+00:00",
+      "category_id": 77,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26984,
+          "post_number": 2,
+          "topic_id": 11062,
+          "topic_title": "Spark Program | Light dApp Kit",
+          "topic_slug": "spark-program-light-dapp-kit",
+          "author": "Akane",
+          "created_at": "2026-10-30T10:30:56.374000+00:00",
+          "updated_at": "2026-10-30T10:30:56.374000+00:00",
+          "reply_to_post_number": 1,
+          "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/2",
+          "content_text": "JoyID testnet: a supported path for headless CI testing\nI’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable.\nThe goal is to cover the JoyID testnet connect flow through @ckb-ccc/joy-id in automated regression tests.\nWhat the investigation found\nThe 2026-10-28 investigation used headless Chromium on Linux with a CDP virtual authenticator against https://testnet.joyid.dev/auth. The reported diagnostic sequence was:\nThe popup keeps window.opener when the dApp uses Document-Isolation-Policy: isolate-and-require-corp.\nWith the virtual authenticator attached, the platform-authenticator availability check returns true, and navigator.credentials.create() succeeds.\nJoyID then displays “JoyID is not supported in current environment”, asking for Chrome 130 or later with Google Account sync.\nThe investigation points to the client-side isSupportedPasskey() AAGUID allow-list check, rather than a failure to create a WebAuthn credential. Chrome’s virtual authenticator reports 01020304-0506-0708-0102-030405060708, which is not an accepted provider in this flow.\nThis blocks the current headless test setup even though passkey creation succeeds. Relying on a signed-in consumer password-manager account would also make CI provisioning and new-device verification considerably more involved.\nWhat would help\nPreferred: an explicit testnet-only flag that relaxes the AAGUID allow-list for automated testing, honored only on testnet.joyid.dev.\nAccept Chrome’s virtual-authenticator AAGUID on testnet.\nProvide a documented test harness or supported mock for JoyID connect/sign integration tests.\nThe request is strictly for testnet testing support, with production behavior unchanged.\nReproduction\nServe the dApp with the isolation header above, open JoyID through the CCC connector, attach a CDP virtual authenticator to the navigated JoyID popup, then choose Create New. Passkey creation succeeds, but JoyID rejects the environment before the connection completes.\nPlaywright test and CDP configuration\nCould a JoyID maintainer advise on a supported approach, or point me to the right place to track this request?",
+          "content_html": "<h3><a name=\"p-26984-joyid-testnet-a-supported-path-for-headless-ci-testing-1\" class=\"anchor\" href=\"#p-26984-joyid-testnet-a-supported-path-for-headless-ci-testing-1\" aria-label=\"Heading link\"></a>JoyID testnet: a supported path for headless CI testing</h3>\n<p>I’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable.</p>\n<p>The goal is to cover the JoyID testnet connect flow through <code>@ckb-ccc/joy-id</code> in automated regression tests.</p>\n<p><strong>What the investigation found</strong></p>\n<p>The 2026-10-28 investigation used headless Chromium on Linux with a CDP virtual authenticator against <code>https://testnet.joyid.dev/auth</code>. The reported diagnostic sequence was:</p>\n<ul>\n<li>The popup keeps <code>window.opener</code> when the dApp uses <code>Document-Isolation-Policy: isolate-and-require-corp</code>.</li>\n<li>With the virtual authenticator attached, the platform-authenticator availability check returns <code>true</code>, and <code>navigator.credentials.create()</code> succeeds.</li>\n<li>JoyID then displays <strong>“JoyID is not supported in current environment”</strong>, asking for Chrome 130 or later with Google Account sync.</li>\n</ul>\n<p>The investigation points to the client-side <code>isSupportedPasskey()</code> AAGUID allow-list check, rather than a failure to create a WebAuthn credential. Chrome’s virtual authenticator reports <code>01020304-0506-0708-0102-030405060708</code>, which is not an accepted provider in this flow.</p>\n<p>This blocks the current headless test setup even though passkey creation succeeds. Relying on a signed-in consumer password-manager account would also make CI provisioning and new-device verification considerably more involved.</p>\n<p><strong>What would help</strong></p>\n<ol>\n<li><strong>Preferred: an explicit testnet-only flag</strong> that relaxes the AAGUID allow-list for automated testing, honored only on <code>testnet.joyid.dev</code>.</li>\n<li>Accept Chrome’s virtual-authenticator AAGUID on testnet.</li>\n<li>Provide a documented test harness or supported mock for JoyID connect/sign integration tests.</li>\n</ol>\n<p>The request is strictly for <strong>testnet testing support</strong>, with production behavior unchanged.</p>\n<p><strong>Reproduction</strong></p>\n<p>Serve the dApp with the isolation header above, open JoyID through the CCC connector, attach a CDP virtual authenticator to the navigated JoyID popup, then choose <strong>Create New</strong>. Passkey creation succeeds, but JoyID rejects the environment before the connection completes.</p>\n<p><a href=\"https://github.com/Akane-CN/light-dapp-kit/blob/c6ae6e363e3cd6fd43338e9b971eddda797e8a31/e2e/joyid.spec.ts\" rel=\"noopener nofollow ugc\">Playwright test and CDP configuration</a></p>\n<p>Could a JoyID maintainer advise on a supported approach, or point me to the right place to track this request?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10613,
+      "title": "[DIS] Vellum: Reputation Extension on did:ckb",
+      "slug": "dis-vellum-reputation-extension-on-did-ckb",
+      "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613",
+      "created_at": "2026-08-13T09:49:17.933000+00:00",
+      "last_posted_at": "2026-10-30T10:17:00.025000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26962,
+          "post_number": 16,
+          "topic_id": 10613,
+          "topic_title": "[DIS] Vellum: Reputation Extension on did:ckb",
+          "topic_slug": "dis-vellum-reputation-extension-on-did-ckb",
+          "author": "truthixify",
+          "created_at": "2026-10-30T01:23:08.887000+00:00",
+          "updated_at": "2026-10-30T01:23:08.887000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/16",
+          "content_text": "Would it be possible to send the payment for M2 to a different wallet from the one attached to the proposal when it is due?\nThe attached address is a Binance wallet, and deposits and withdrawals are currently paused following the recent incident. I can provide another wallet address for the payment.\nCC @zz_tovarishch",
+          "content_html": "<p>Would it be possible to send the payment for M2 to a different wallet from the one attached to the proposal when it is due?</p>\n<p>The attached address is a Binance wallet, and deposits and withdrawals are currently paused following the recent incident. I can provide another wallet address for the payment.</p>\n<p>CC <a class=\"mention\" href=\"/u/zz_tovarishch\">@zz_tovarishch</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26963,
+          "post_number": 17,
+          "topic_id": 10613,
+          "topic_title": "[DIS] Vellum: Reputation Extension on did:ckb",
+          "topic_slug": "dis-vellum-reputation-extension-on-did-ckb",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T01:41:15.179000+00:00",
+          "updated_at": "2026-10-30T01:41:15.179000+00:00",
+          "reply_to_post_number": 16,
+          "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/17",
+          "content_text": "Hi Truthixify 当然可以，请提供您的新钱包地址，我会在后续通知委员会打款时请他们打到新的地址",
+          "content_html": "<p>Hi Truthixify 当然可以，请提供您的新钱包地址，我会在后续通知委员会打款时请他们打到新的地址</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26965,
+          "post_number": 18,
+          "topic_id": 10613,
+          "topic_title": "[DIS] Vellum: Reputation Extension on did:ckb",
+          "topic_slug": "dis-vellum-reputation-extension-on-did-ckb",
+          "author": "truthixify",
+          "created_at": "2026-10-30T03:43:26.021000+00:00",
+          "updated_at": "2026-10-30T03:43:26.021000+00:00",
+          "reply_to_post_number": 17,
+          "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/18",
+          "content_text": "This is it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0c6ka3d965vpl8kec48536fttpta346zsfcwrvx\nThank you.",
+          "content_html": "<p>This is it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0c6ka3d965vpl8kec48536fttpta346zsfcwrvx</p>\n<p>Thank you.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26966,
+          "post_number": 19,
+          "topic_id": 10613,
+          "topic_title": "[DIS] Vellum: Reputation Extension on did:ckb",
+          "topic_slug": "dis-vellum-reputation-extension-on-did-ckb",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T03:54:01.031000+00:00",
+          "updated_at": "2026-10-30T03:54:01.031000+00:00",
+          "reply_to_post_number": 18,
+          "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/19",
+          "content_text": "请问后续milestone都是以这个地址进行收款吗？",
+          "content_html": "<p>请问后续milestone都是以这个地址进行收款吗？</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26983,
+          "post_number": 20,
+          "topic_id": 10613,
+          "topic_title": "[DIS] Vellum: Reputation Extension on did:ckb",
+          "topic_slug": "dis-vellum-reputation-extension-on-did-ckb",
+          "author": "truthixify",
+          "created_at": "2026-10-30T10:17:00.025000+00:00",
+          "updated_at": "2026-10-30T10:17:00.025000+00:00",
+          "reply_to_post_number": 19,
+          "url": "https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/20",
+          "content_text": "Yes, all subsequent payments should be sent to the new address.",
+          "content_html": "<p>Yes, all subsequent payments should be sent to the new address.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10448,
+      "title": "Spark Program | zk-Lock for CKB",
+      "slug": "spark-program-zk-lock-for-ckb",
+      "url": "https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448",
+      "created_at": "2026-07-01T15:52:19.345000+00:00",
+      "last_posted_at": "2026-10-30T08:31:41.765000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26979,
+          "post_number": 25,
+          "topic_id": 10448,
+          "topic_title": "Spark Program | zk-Lock for CKB",
+          "topic_slug": "spark-program-zk-lock-for-ckb",
+          "author": "xingtianchunyan",
+          "created_at": "2026-10-30T08:31:41.765000+00:00",
+          "updated_at": "2026-10-30T08:31:41.765000+00:00",
+          "reply_to_post_number": 24,
+          "url": "https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/25",
+          "content_text": "Hi @Mulandi_Cecilia ，\n希望你的病情已经开始好转，健康始终最重要！\n我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。\n祝健康，\nxingtian\n谨代表Spark Program委员会",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/mulandi_cecilia\">@Mulandi_Cecilia</a> ，</p>\n<p>希望你的病情已经开始好转，健康始终最重要！</p>\n<p>我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。</p>\n<p>祝健康，<br>\nxingtian<br>\n谨代表Spark Program委员会</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10364,
+      "title": "[DIS] Rypto — CKB Content & Advocacy Campaign",
+      "slug": "dis-rypto-ckb-content-advocacy-campaign",
+      "url": "https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364",
+      "created_at": "2026-06-10T10:18:32.572000+00:00",
+      "last_posted_at": "2026-10-30T05:59:55.932000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26972,
+          "post_number": 9,
+          "topic_id": 10364,
+          "topic_title": "[DIS] Rypto — CKB Content & Advocacy Campaign",
+          "topic_slug": "dis-rypto-ckb-content-advocacy-campaign",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T05:59:55.932000+00:00",
+          "updated_at": "2026-10-30T05:59:55.932000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364/9",
+          "content_text": "M2 payment\n$1,125/0.00138 = 815,218 CKB\nhttps://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb",
+          "content_html": "<p>M2 payment</p>\n<p>$1,125/0.00138 = 815,218 CKB</p>\n<p><a href=\"https://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb\" class=\"onebox\" target=\"_blank\" rel=\"noopener\">https://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11068,
+      "title": "One Fiber LSP, 11,496 channels",
+      "slug": "one-fiber-lsp-11-496-channels",
+      "url": "https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068",
+      "created_at": "2026-10-29T14:08:16.165000+00:00",
+      "last_posted_at": "2026-10-30T04:15:31.403000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "fiber"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26964,
+          "post_number": 3,
+          "topic_id": 11068,
+          "topic_title": "One Fiber LSP, 11,496 channels",
+          "topic_slug": "one-fiber-lsp-11-496-channels",
+          "author": "joii2020",
+          "created_at": "2026-10-30T02:55:31.835000+00:00",
+          "updated_at": "2026-10-30T02:55:31.835000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/3",
+          "content_text": "You mentioned that a single payment took 3.8–4.8 seconds with 350 channels. Have you measured payment time with the smallest possible setup?\nUsing WebSocket subscriptions on the client to receive signing requests could significantly reduce per-payment latency. In my own tests with a minimal setup, I’m seeing around 500 ms per payment, although that’s under fairly ideal conditions.",
+          "content_html": "<p>You mentioned that a single payment took 3.8–4.8 seconds with 350 channels. Have you measured payment time with the smallest possible setup?</p>\n<p>Using WebSocket subscriptions on the client to receive signing requests could significantly reduce per-payment latency. In my own tests with a minimal setup, I’m seeing around 500 ms per payment, although that’s under fairly ideal conditions.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 26968,
+          "post_number": 4,
+          "topic_id": 11068,
+          "topic_title": "One Fiber LSP, 11,496 channels",
+          "topic_slug": "one-fiber-lsp-11-496-channels",
+          "author": "ArthurZhang",
+          "created_at": "2026-10-30T04:15:31.403000+00:00",
+          "updated_at": "2026-10-30T04:15:31.403000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/4",
+          "content_text": "Also, I think we might need to control the test variables a bit more carefully, especially CPU configuration (4 vs 8 cores) and whether store_sync_writes is enabled. Otherwise, it’s hard to isolate the actual bottleneck.",
+          "content_html": "<p>Also, I think we might need to control the test variables a bit more carefully, especially CPU configuration (4 vs 8 cores) and whether <code>store_sync_writes</code> is enabled. Otherwise, it’s hard to isolate the actual bottleneck.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10809,
+      "title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+      "slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+      "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809",
+      "created_at": "2026-10-06T16:14:27.711000+00:00",
+      "last_posted_at": "2026-10-30T03:54:16.175000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "DeFi",
+        "defi挖矿",
+        "lang-es",
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 26967,
+          "post_number": 32,
+          "topic_id": 10809,
+          "topic_title": "[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施",
+          "topic_slug": "dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa",
+          "author": "zz_tovarishch",
+          "created_at": "2026-10-30T03:54:16.175000+00:00",
+          "updated_at": "2026-10-30T03:54:16.175000+00:00",
+          "reply_to_post_number": 31,
+          "url": "https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809/32",
+          "content_text": "Based on the Metaforo tally at close, the outcome is Not Passed. Approval is 21.08%/51% with total voting weight 155,002,245/13,982,642 CKB.\nPost-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all entries match.\nThe Kirea Finance proposal is confirmed as NOT PASSED.\nVerification logs: ckb-dao-watchdog/Verification Logs - Kirea at main · kydchen/ckb-dao-watchdog · GitHub",
+          "content_html": "<p>Based on the Metaforo tally at close, the outcome is Not Passed. Approval is 21.08%/51% with total voting weight 155,002,245/13,982,642 CKB.</p>\n<p>Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all entries match.</p>\n<p>The Kirea Finance proposal is confirmed as <strong>NOT PASSED</strong>.</p>\n<p>Verification logs: <a href=\"https://github.com/kydchen/ckb-dao-watchdog/tree/main/Verification%20Logs%20-%20Kirea\" class=\"inline-onebox\">ckb-dao-watchdog/Verification Logs - Kirea at main · kydchen/ckb-dao-watchdog · GitHub</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
