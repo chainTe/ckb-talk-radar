@@ -5,84 +5,70 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Fri, 30 Oct 2026 18:13:05 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 31 Oct 2026 17:10:33 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-10-31</title>
+    <title>CKB Talk Daily Brief - 2026-11-01</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-10-30:daily-brief</guid>
-    <pubDate>Fri, 30 Oct 2026 21:22:29 +0000</pubDate>
-    <description>## 今日发生了什么 按这批 2026-10-30 的帖子看，今天论坛不算安静，主要动态集中在资助提案审核、付款执行和投票结果上 [S08, S09, S10, S11, S12, S14, S20, S23]。Spark Program 方面，Bees Network 被列为 Pending 后作者补充经济模型与观察真实性章节并重新提交 [S09, S10]；Corven IDE 仍为 pending，作者随后补上预算调整明细 [S11, S12]。DIS 资助方面，Kaze Unitour 的 $3,000 grant 付款时点引发讨论 [S02, S05, S06]，Vellum 因原 Binance 钱包出入金暂停而更换 M2 及后续收款地址 [S14, S18]。技术讨论里，QuotaCell 报告 owner revocation 与 treasury recovery 已在 CKB 上测试 [S01]。 ## 重点话题 Spark Program 今天有多条审核与修订动态 [S09, S10, S11, S12, S13, S19]。Bees Network 被委员会列为 Pending 并邀请修订 [S09]，作者随后补充 §6 经济模型与 §7 观察真实性并重新提交 [S10]。Corven IDE 仍为 pending，委员会指出预算调整不清楚 [S11]，作者随后更新了逐项预算调整 [S12]。Light dApp Kit 记录了 JoyID testnet 在无头 CI 测试中的接入阻塞，目标是覆盖 JoyID testnet connect...</description>
+    <guid>tag:ckb-talk-radar,2026-10-31:daily-brief</guid>
+    <pubDate>Sat, 31 Oct 2026 20:23:39 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要动静集中在 Spark Program 的项目审批与结项更新上：MeterNet 提案被列为待修订，create-ckb-passkey-app 被拒，CKB Wallet Behaviour Intelligence 发布结项报告[S03, S06, S07]。与此同时，Fiber LSP 性能测试和 QuotaCell 的并发/幂等讨论继续推进，官方 X 账号管理疑问也被再次提出[S01, S10, S12]。整体看，今天有多条项目进展和技术反馈，但没有看到单一大型公告[S03, S05, S10, S12]。 ## 重点话题 Spark Program 项目状态密集更新：MeterNet 被委员会列为 pending、邀请修订，而非直接拒绝[S03]；作者随后提交修订版，增加约 2 分钟可接入的公开 Web MVP，计划第 2 周上线，并保留 Lagos 热点试点[S04]。同一批更新中，create-ckb-passkey-app 经修订后仍被拒绝[S07]；CKB Wallet Behaviour Intelligence 则发布结项报告，交付主网数据行为分析流程、冻结数据集、特征框架和研究报告等[S06]。 Spark Program Q3 2026 概览帖梳理了季度结项情况，提到 Nervos Brain、CKB-UGMP、Dular 等第二季度延续项目已完成结项或交付[S05]。 Fiber LSP 性能讨论继续推进：团队在同一开发链上测试了 11,496 通道的 LSP A（8 核）和 4 核的 LSP...</description>
   </item>
   <item>
-    <title>QuotaCell: Let your team spend without handing over the treasury (1 posts)</title>
+    <title>CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen (2 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017</link>
+    <guid>https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017#recent-2</guid>
+    <pubDate>Sat, 31 Oct 2026 17:10:33 +0000</pubDate>
+    <description>我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: &gt;目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000 名粉丝——远超任何一个新账号。说实话，我现在几乎分不清哪个才是官方账号，现有的账号体系实在太混乱了。我仍然看到很多人在联系 CKB 团队时 @ u/NervosNetwork，但该账号长期处于基本停更的状态，定期更新大约在 2025 年 3 月就停止了。我理解团队架构会发生变化，但基金会或 CKB DevRel 难道不能接管这个账号并保持活跃吗？ 起因： 今天看到Vellum项目在X上展现了自己的媒体账号(恭喜Vellum走出社区 ,迈向大众)，并发出了自己推文 里面是提的CKB @NervosNetwork这官推账号； 包括 这区项目 cellula.id项目的 推文 ； 还有社区Twine项目 推文 都是在用@NervosNetwork这推特账号。 然后这个账户25年就停更，今年只用了几个表情引用就完成了今年的指标。 在Talk社区可能知道，CKB又其他不同途径及推特账号对外联系，但上面这些项目是面向大众，并不是每人都知道这些，他们看到是一个25年初几乎就停更没发声的公链。 想法： 1.社区项目共识一下，以后对外尽量不用@NervosNetwork到这个推特号（实在对项目也不利）；...</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-2</guid>
+    <pubDate>Sat, 31 Oct 2026 13:22:32 +0000</pubDate>
+    <description>Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your proposal is currently pending. This is not a rejection; rather, we invite you to revise your proposal. The committee agrees with the direction of the MeterNet proposal. However, it believes the deliverables should include an MVP that community members can easily join and verify. Please revise and resubmit your proposal based on the feedback above. We’ll arrange another review as soon as possible. Best regards xingtian On behalf of the Spark Project Committee Thanks @xingtianchunyan. I’ve revised the proposal: added...</description>
+  </item>
+  <item>
+    <title>Spark Program Q3 2026：不要用AI攻击自己 (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-q3-2026-ai/11077</link>
+    <guid>https://talk.nervos.org/t/spark-program-q3-2026-ai/11077#recent-1</guid>
+    <pubDate>Sat, 31 Oct 2026 07:43:57 +0000</pubDate>
+    <description>1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular 完成了面向非洲市场的移动支付与 Fiber 结算工作，其中包括集成 M-Pesa 的试点项目。CKB Builder Lab 本季度获批，交付了核心模拟器和挑战系统，但教育效果的用户验证不足，结项时按原资助额度的 65% 核定结算。Cell Sandbox 于 7 月 9 日获批，并在本季度内被叫停。其余延续项目中，Tiko Creator Commerce Validation Sprint 和 CellKit Actions 被拒绝（后者于 7 月 4 日被拒），CKB-Sweep 已被关闭，而截至本文撰写时，CKB Wallet Behaviour Intelligence 仍处于结项审查阶段。 第三季度新申请： 项目 方向 状态 资助金额 NNCBN — Nervos Network 社区引导节点（knmo） 社区引导节点网络；吸收了“Atlantic”全节点提案，将其作为首个节点 已批准 → 进行中 — 遵循“这不是拒绝，而是邀请你修改”的意见，调整后以更完善的方案重新提交；硬件（Zen 5 Ryzen、32 GB RAM）已于 9 月采购 $1,280（100% 以 CKB 支付），其中包括一次性硬件费用...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB Wallet Behaviour Intelligence (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338#recent-1</guid>
+    <pubDate>Sat, 31 Oct 2026 07:19:49 +0000</pubDate>
+    <description>CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB 原始链上记录转化为可复用的钱包行为分析工具。项目于2026年7月4日获批，经过数据来源、标签有效性和研究方法的多轮调整，最终交付了基于真实主网数据的行为分析流程、冻结数据集、特征框架、研究报告及公开 API。委员会于10月20日通过结项评估。 本次结项应以调整后的成果为准：项目建立了可复现的 CKB 原生行为分析方法，并对部分可重复观察到的结构作出了有限解释。原提案中的人类、机器人和交易所身份分类目标未获有效验证；历史上的95.24%准确率仅衡量模型与启发式代理标签的一致程度，不应作为识别钱包真实身份的准确率或最终验收指标。 1.2 主要成果 / Key Achievements 交付真实主网观察数据集与可复现流程。 冻结样本包含1,172个地址，其中939个采集完整、6个部分完成、224个重试耗尽、3个无效；有效观察记录为1,169条。观察窗口为2026年8月1日00:00 UTC至8月31日00:00 UTC，不包含结束时点。交付物提供数据契约、哈希和离线校验方法。 建立符合 CKB Cell 模型的特征框架。 分析围绕交易输入、前序 Cell、输出 Cell、容量、脚本及 Cell...</description>
+  </item>
+  <item>
+    <title>[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029</link>
+    <guid>https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029#recent-1</guid>
+    <pubDate>Sat, 31 Oct 2026 06:13:42 +0000</pubDate>
+    <description>Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful discussion, regrets to inform you that it has decided to reject the create-ckb-passkey-app proposal. We’d like to be candid about the reasons behind this decision: There is no unmet need: The CKB ecosystem already has a mature, standardized solution for Passkey login and signing: JoyID. JoyID fully handles WebAuthn/Passkey signature verification, transaction assembly, and account management, so neither users nor developers need to deal with the underlying implementation. In practice, integrating Passkey into an...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067#recent-2</guid>
+    <pubDate>Sat, 31 Oct 2026 05:48:13 +0000</pubDate>
+    <description>nice works Nice works Ty! Good luck with the grant.</description>
+  </item>
+  <item>
+    <title>QuotaCell: Let your team spend without handing over the treasury (2 posts)</title>
     <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
-    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-1</guid>
-    <pubDate>Fri, 30 Oct 2026 18:13:05 +0000</pubDate>
-    <description>QuotaCell progress: Owner revocation and treasury recovery now tested on CKB In my previous update, I shared how QuotaCell enforces shared spending limits through CKB scripts. This week, I focused on another important question: Can a treasury owner revoke delegated access and recover the protected funds without relying on the delegates? I’ve now tested the owner-control lifecycle using real signed transactions on a fresh isolated CKB node, without modifying the existing policy. The results: Revocation: An owner-signed transaction revoked a delegate’s authority and committed successfully. Enforcement: A newly signed payment using the updated policy state reached the node and was rejected...</description>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-2</guid>
+    <pubDate>Sat, 31 Oct 2026 02:42:16 +0000</pubDate>
+    <description>Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders spending simultaneously, including cases where a transaction is broadcast but its status is uncertain. Second, capital efficiency. The 600 CKB retained by the policy Cell seems a little expensive for smaller budgets. It might be worth exploring whether the policy state can be made more compact, or whether a closed policy can eventually be retired while still allowing recovery of late deposits. Longer term, I’d also think about how delegates and approved recipients can be rotated without resetting the spending history. I...</description>
   </item>
   <item>
-    <title>[DIS] Kaze X CKB Unitour Continuation Proposal (12 posts)</title>
-    <link>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736</link>
-    <guid>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736#recent-12</guid>
-    <pubDate>Fri, 30 Oct 2026 16:33:15 +0000</pubDate>
-    <description>I think we’re going in circles around two different things. I’m specifically referring to the $3,000 grant request, while you’re referencing the milestones and execution. What I’d really like to establish is whether the $3,000 funding request has been approved and is proceeding, and when we should expect the disbursement. From Kaze’s end, we cannot realistically move forward with the planned events and initiatives without the necessary funding and resource allocation. We need clarity on the funding so we can plan and execute accordingly. Are we moving forward with the grant or should we reconsider the execution plan? I don’t understand what’s going on here, the summary clearly says...</description>
-  </item>
-  <item>
-    <title>Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB (3 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015</link>
-    <guid>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015#recent-3</guid>
-    <pubDate>Fri, 30 Oct 2026 15:00:48 +0000</pubDate>
-    <description>Hello @xingtianchunyan , haven’t received any communication regarding the proposal Hi @NOrththebear, Thank you for your continued interest in the Spark Program and for submitting the Bees Network proposal. After review by the Spark Program Committee, your proposal is currently Pending. This is not a rejection; rather, we invite you to revise your proposal. The Committee has two main questions: Reward pool funding and economic model: The Committee would like to understand where the reward pool’s funding comes from. Specifically, please explain how the economic model works: who funds the rewards, how the reward pool is replenished, and what sustainable source funds incentives for...</description>
-  </item>
-  <item>
-    <title>Spark Program Proposal: Corven cloud-native IDE (2 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
-    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-2</guid>
-    <pubDate>Fri, 30 Oct 2026 12:06:48 +0000</pubDate>
-    <description>Hello @lestonEth, Thank you for your continued interest in the Spark Program and for revising the Corven proposal. Following a review by the Spark Program Committee, your proposal remains pending. The committee noted that your proposal mentions a budget adjustment, but we did not identify any clear changes in the recent revisions when reviewing the record. Before moving the proposal forward, we would therefore like you to confirm the specific details of the budget adjustment. Please revise and resubmit your proposal based on this feedback. We’ll arrange another review as soon as possible. Best, xingtian On behalf of the Spark Program Committee Hello @xingtianchunyan, Thank you and the...</description>
-  </item>
-  <item>
-    <title>Spark Program | Light dApp Kit (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062</link>
-    <guid>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062#recent-1</guid>
-    <pubDate>Fri, 30 Oct 2026 10:30:56 +0000</pubDate>
-    <description>JoyID testnet: a supported path for headless CI testing I’m documenting this Light dApp Kit integration blocker here because JoyID’s feedback link is unavailable. The goal is to cover the JoyID testnet connect flow through @ckb-ccc/joy-id in automated regression tests. What the investigation found The 2026-10-28 investigation used headless Chromium on Linux with a CDP virtual authenticator against https://testnet.joyid.dev/auth. The reported diagnostic sequence was: The popup keeps window.opener when the dApp uses Document-Isolation-Policy: isolate-and-require-corp. With the virtual authenticator attached, the platform-authenticator availability check returns true, and...</description>
-  </item>
-  <item>
-    <title>[DIS] Vellum: Reputation Extension on did:ckb (5 posts)</title>
-    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
-    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-5</guid>
-    <pubDate>Fri, 30 Oct 2026 10:17:00 +0000</pubDate>
-    <description>Would it be possible to send the payment for M2 to a different wallet from the one attached to the proposal when it is due? The attached address is a Binance wallet, and deposits and withdrawals are currently paused following the recent incident. I can provide another wallet address for the payment. CC @zz_tovarishch Hi Truthixify 当然可以，请提供您的新钱包地址，我会在后续通知委员会打款时请他们打到新的地址 This is it: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsq0c6ka3d965vpl8kec48536fttpta346zsfcwrvx Thank you. 请问后续milestone都是以这个地址进行收款吗？ Yes, all subsequent payments should be sent to the new address.</description>
-  </item>
-  <item>
-    <title>Spark Program | zk-Lock for CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448</link>
-    <guid>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448#recent-1</guid>
-    <pubDate>Fri, 30 Oct 2026 08:31:41 +0000</pubDate>
-    <description>Hi @Mulandi_Cecilia ， 希望你的病情已经开始好转，健康始终最重要！ 我们都为你在 CKcon 2026 有美好的体验而感到高兴。同时，我们也很期待你的更新，期待zk-lock能够在社区中被更多成员认可。 祝健康， xingtian 谨代表Spark Program委员会</description>
-  </item>
-  <item>
-    <title>[DIS] Rypto — CKB Content &amp; Advocacy Campaign (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364</link>
-    <guid>https://talk.nervos.org/t/dis-rypto-ckb-content-advocacy-campaign/10364#recent-1</guid>
-    <pubDate>Fri, 30 Oct 2026 05:59:55 +0000</pubDate>
-    <description>M2 payment $1,125/0.00138 = 815,218 CKB https://explorer.nervos.org/transaction/0x168c1ed8978d78b757c6a8e18b0bba8b91bc8b32f11fde53d87fed0c9b640cdb</description>
-  </item>
-  <item>
-    <title>One Fiber LSP, 11,496 channels (2 posts)</title>
+    <title>One Fiber LSP, 11,496 channels (3 posts)</title>
     <link>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068</link>
-    <guid>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068#recent-2</guid>
-    <pubDate>Fri, 30 Oct 2026 04:15:31 +0000</pubDate>
-    <description>You mentioned that a single payment took 3.8–4.8 seconds with 350 channels. Have you measured payment time with the smallest possible setup? Using WebSocket subscriptions on the client to receive signing requests could significantly reduce per-payment latency. In my own tests with a minimal setup, I’m seeing around 500 ms per payment, although that’s under fairly ideal conditions. Also, I think we might need to control the test variables a bit more carefully, especially CPU configuration (4 vs 8 cores) and whether store_sync_writes is enabled. Otherwise, it’s hard to isolate the actual bottleneck.</description>
-  </item>
-  <item>
-    <title>[DIS] Kirea Finance: Native RWA Lending Infrastructure for CKB |【DIS】Kirea Finance：面向 CKB 的原生 RWA 借贷基础设施 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809</link>
-    <guid>https://talk.nervos.org/t/dis-kirea-finance-native-rwa-lending-infrastructure-for-ckb-dis-kirea-finance-ckb-rwa/10809#recent-1</guid>
-    <pubDate>Fri, 30 Oct 2026 03:54:16 +0000</pubDate>
-    <description>Based on the Metaforo tally at close, the outcome is Not Passed. Approval is 21.08%/51% with total voting weight 155,002,245/13,982,642 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all entries match. The Kirea Finance proposal is confirmed as NOT PASSED. Verification logs: ckb-dao-watchdog/Verification Logs - Kirea at main · kydchen/ckb-dao-watchdog · GitHub</description>
+    <guid>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068#recent-3</guid>
+    <pubDate>Sat, 31 Oct 2026 02:02:41 +0000</pubDate>
+    <description>Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet at B pay each other 0.1 CKB in turn, the next payment as soon as the last one ends. At first our wallets could not pay across: “no path found”. Each LSP sees only its own wallets’ private channels, and our wallet sent every payment with its own LSP as the only trampoline. With both LSPs as trampolines (the invoice names the payee’s), it worked. That was our wallet, not Fiber. 50 lanes for 5 minutes, with 1, 5 or 10 channels enabled between the LSPs: A to B p50 69.6, 24.2 and 18.5 s; 230, 515 and 534 payments; none...</description>
   </item>
 </channel>
 </rss>

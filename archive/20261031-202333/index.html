@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-10-31 04:23:33 CST - 2026-11-01 04:23:33 CST</span>
+          <span>生成时间 2026-11-01 04:23:39 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">14</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的主要动静集中在 Spark Program 的项目审批与结项更新上：MeterNet 提案被列为待修订，create-ckb-passkey-app 被拒，CKB Wallet Behaviour Intelligence 发布结项报告<span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>。与此同时，Fiber LSP 性能测试和 QuotaCell 的并发/幂等讨论继续推进，官方 X 账号管理疑问也被再次提出<span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>]</span>。整体看，今天有多条项目进展和技术反馈，但没有看到单一大型公告<span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>, <a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Spark Program 项目状态密集更新：MeterNet 被委员会列为 pending、邀请修订，而非直接拒绝<span class="citations">[<a href="#source-s03">S03</a>]</span>；作者随后提交修订版，增加约 2 分钟可接入的公开 Web MVP，计划第 2 周上线，并保留 Lagos 热点试点<span class="citations">[<a href="#source-s04">S04</a>]</span>。同一批更新中，create-ckb-passkey-app 经修订后仍被拒绝<span class="citations">[<a href="#source-s07">S07</a>]</span>；CKB Wallet Behaviour Intelligence 则发布结项报告，交付主网数据行为分析流程、冻结数据集、特征框架和研究报告等<span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li>Spark Program Q3 2026 概览帖梳理了季度结项情况，提到 Nervos Brain、CKB-UGMP、Dular 等第二季度延续项目已完成结项或交付<span class="citations">[<a href="#source-s05">S05</a>]</span>。</li>
+<li>Fiber LSP 性能讨论继续推进：团队在同一开发链上测试了 11,496 通道的 LSP A（8 核）和 4 核的 LSP B，并让两边钱包交替支付 0.1 CKB<span class="citations">[<a href="#source-s12">S12</a>]</span>。追踪显示，一笔 6.1 秒支付中约 4.5 秒耗在钱包自身时钟，包括收款方每秒请求签名、每 3 秒读通道等<span class="citations">[<a href="#source-s13">S13</a>]</span>。团队还澄清，自 2026-10-12 起所有构建每次写入都同步，效果等同 develop 上 fiber.store_sync_writes: true，但默认是 false，且尚未测量关闭同步时的支付表现<span class="citations">[<a href="#source-s14">S14</a>]</span>。</li>
+<li>QuotaCell 的讨论集中在并发与支付幂等性：有评论建议下一轮测试两个独立交易构建器同时花费，以及交易已广播但状态不确定的场景<span class="citations">[<a href="#source-s10">S10</a>]</span>；作者回应共享 policy Cell 能防止同一状态被双花，但不解决支付幂等，难点是广播状态不确定时避免重复支付<span class="citations">[<a href="#source-s11">S11</a>]</span>。</li>
+<li>在 CKB Dev Rel Reddit AMA 回顾帖下，有用户提出疑惑，称 Reddit AMA 中已有人 @Hanssen 问过 Nervos.bit（@NervosNetwork）由谁运营、官方账号体系为何混乱，但没看到结果<span class="citations">[<a href="#source-s01">S01</a>]</span>；有回复称这是不可抗力因素<span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>MeterNet 修订版已提交，后续要看 Spark Program 委员会是否通过或要求继续修改<span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s04">S04</a>]</span>。</li>
+<li>Fiber LSP 的基准仍需补上关闭同步写入时的支付表现，以及不同核数、通道规模下的结果<span class="citations">[<a href="#source-s14">S14</a>]</span>。</li>
+<li>QuotaCell 的并发与支付幂等性仍是待验证点，尤其要观察广播状态不确定时如何避免重复支付<span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/2">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a></div><div class="source-meta">Thinker · 2026-11-01 00:02:29 CST</div><div>我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: &gt;目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000 名粉丝——远超任何一个新账号。说实话，我现在几乎分不清哪个才是官方账号，现有的账号体系实在太混乱了。我仍然看到很多人在联系 CKB 团队时 @...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/3">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a></div><div class="source-meta">silenceport · 2026-11-01 01:10:33 CST</div><div>显而易见是不可抗力因素啊,又不像cfx有关系有背景。</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/2">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">xingtianchunyan · 2026-10-31 14:06:01 CST</div><div>Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your proposal is currently pending. This is not a rejection; rather, we invite you to revise your...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/3">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">Timilehin_Olowu · 2026-10-31 21:22:32 CST</div><div>Thanks @xingtianchunyan. I’ve revised the proposal: added a public web MVP that anyone can join from a browser in ~2 minutes (testnet CKB, pay-per-MB, auto-cutoff, live payment log), live by week 2. The Lagos hotspot pilot stays as the field test. Changes are in sections 1, 4,...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/spark-program-q3-2026-ai/11077/1">Spark Program Q3 2026：不要用AI攻击自己</a></div><div class="source-meta">xingtianchunyan · 2026-10-31 15:43:57 CST</div><div>1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular 完成了面向非洲市场的移动支付与 Fiber 结算工作，其中包括集成 M-Pesa 的试点项目。CKB Builder Lab...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/33">Spark Program | CKB Wallet Behaviour Intelligence</a></div><div class="source-meta">xingtianchunyan · 2026-10-31 15:19:49 CST</div><div>CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB 原始链上记录转化为可复用的钱包行为分析工具。项目于2026年7月4日获批，经过数据来源、标签有效性和研究方法的多轮调整，最终交付了基于真实主网数据的行为分析流程、冻结数据集、特征框架、研究报告及公开...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029/2">[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB</a></div><div class="source-meta">xingtianchunyan · 2026-10-31 14:13:42 CST</div><div>Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful discussion, regrets to inform you that it has decided to reject the create-ckb-passkey-app proposal....</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/4">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></div><div class="source-meta">longdevbf · 2026-10-31 11:14:08 CST</div><div>nice works</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/5">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></div><div class="source-meta">tun_tunn03 · 2026-10-31 13:48:13 CST</div><div>Nice works Ty! Good luck with the grant.</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/6">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">ArthurZhang · 2026-10-31 08:19:28 CST</div><div>Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders spending simultaneously, including cases where a transaction is broadcast but its status is uncertain....</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/7">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-10-31 10:42:16 CST</div><div>Thanks, these are good points. On concurrency, the shared policy Cell prevents two transactions from spending the same state, but that doesn’t solve payment idempotency. The harder part is handling an uncertain broadcast without accidentally creating another payment during...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/5">One Fiber LSP, 11,496 channels</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-31 10:00:38 CST</div><div>Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet at B pay each other 0.1 CKB in turn, the next payment as soon as the last one ends. At first our...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/6">One Fiber LSP, 11,496 channels</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-31 10:01:33 CST</div><div>Thanks, Joii, you were right. We traced every call of a payment between two wallets at one LSP on a local dev chain (2026-10-30). Of a 6.1 s payment, about 4.5 s were our wallet’s own clocks: the payee asked for signatures every second, read its channel every 3 s and its...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/7">One Fiber LSP, 11,496 channels</a></div><div class="source-meta">LusoCryptoLabs · 2026-10-31 10:02:41 CST</div><div>Agreed, the table mixes them. What we can say: Writes were synced in every run. All our builds sync each write since 2026-10-12, the same effect as fiber.store_sync_writes: true on develop, where the default is false. We have not measured payments with sync off. Cores: in the...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>9</strong></li><li><span>其他</span><strong>2</strong></li><li><span>社区互动</span><strong>2</strong></li><li><span>生态进展</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@xingtianchunyan</span><strong>4</strong></li><li><span>@LusoCryptoLabs</span><strong>3</strong></li><li><span>@silenceport</span><strong>1</strong></li><li><span>@Thinker</span><strong>1</strong></li><li><span>@Timilehin_Olowu</span><strong>1</strong></li><li><span>@tun_tunn03</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>53</span></li><li>spark<span>20</span></li><li>wallet<span>20</span></li><li>our<span>15</span></li><li>payment<span>13</span></li><li>cell<span>12</span></li><li>lsp<span>12</span></li><li>committee<span>10</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068">One Fiber LSP, 11,496 channels</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 10:02:41 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet at B pay each other 0.1 CKB in turn, the next payment as soon as the last one...</p><div class="tag-row"><span>CKB</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 01:10:33 CST</span><span>Thinker, silenceport</span></div><p class="excerpt">我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: &gt;目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000 名粉丝——远超任何一个新账号。说实话，我现在几乎分不清哪个才是官方账号，现有的账号体系实在太混乱了。我仍然看到很多人在联系 CKB 团队时 @...</p><div class="tag-row"><span>AMA</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 21:22:32 CST</span><span>Timilehin_Olowu, xingtianchunyan</span></div><p class="excerpt">Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your proposal is currently pending. This is not a rejection; rather, we invite you to...</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 13:48:13 CST</span><span>longdevbf, tun_tunn03</span></div><p class="excerpt">nice works Nice works Ty! Good luck with the grant.</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 10:42:16 CST</span><span>ArthurZhang, Ticoworld</span></div><p class="excerpt">Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders spending simultaneously, including cases where a transaction is broadcast but its...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-q3-2026-ai/11077">Spark Program Q3 2026：不要用AI攻击自己</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 15:43:57 CST</span><span>xingtianchunyan</span></div><p class="excerpt">1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular 完成了面向非洲市场的移动支付与 Fiber 结算工作，其中包括集成 M-Pesa 的试点项目。CKB Builder Lab...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338">Spark Program | CKB Wallet Behaviour Intelligence</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 15:19:49 CST</span><span>xingtianchunyan</span></div><p class="excerpt">CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029">[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-10-31 14:13:42 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful discussion, regrets to inform you that it has decided to reject the create-ckb-...</p><div class="tag-row"><span>Rejection</span><span>Spark-Program</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-01 01:10:33 CST</time><strong><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/3">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a> · @silenceport</strong><p>显而易见是不可抗力因素啊,又不像cfx有关系有背景。</p></article>
+<article class="timeline-row"><time>2026-11-01 00:02:29 CST</time><strong><a href="https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/2">CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen</a> · @Thinker</strong><p>我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: &gt;目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000...</p></article>
+<article class="timeline-row"><time>2026-10-31 21:22:32 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/3">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a> · @Timilehin_Olowu</strong><p>Thanks @xingtianchunyan. I’ve revised the proposal: added a public web MVP that anyone can join from a browser in ~2 minutes (testnet CKB, pay-per-MB, auto-cutoff, live payment log), live by week 2. The Lagos hotspot...</p></article>
+<article class="timeline-row"><time>2026-10-31 15:43:57 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-q3-2026-ai/11077/1">Spark Program Q3 2026：不要用AI攻击自己</a> · @xingtianchunyan</strong><p>1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular 完成了面向非洲市场的移动支付与 Fiber 结算工作，其中包括集成 M-Pesa...</p></article>
+<article class="timeline-row"><time>2026-10-31 15:19:49 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/33">Spark Program | CKB Wallet Behaviour Intelligence</a> · @xingtianchunyan</strong><p>CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB...</p></article>
+<article class="timeline-row"><time>2026-10-31 14:13:42 CST</time><strong><a href="https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029/2">[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB</a> · @xingtianchunyan</strong><p>Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful discussion, regrets to inform you that it...</p></article>
+<article class="timeline-row"><time>2026-10-31 14:06:01 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/2">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a> · @xingtianchunyan</strong><p>Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your proposal is currently pending. This is...</p></article>
+<article class="timeline-row"><time>2026-10-31 13:48:13 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/5">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a> · @tun_tunn03</strong><p>Nice works Ty! Good luck with the grant.</p></article>
+<article class="timeline-row"><time>2026-10-31 11:14:08 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/4">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a> · @longdevbf</strong><p>nice works</p></article>
+<article class="timeline-row"><time>2026-10-31 10:42:16 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/7">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>Thanks, these are good points. On concurrency, the shared policy Cell prevents two transactions from spending the same state, but that doesn’t solve payment idempotency. The harder part is handling an uncertain...</p></article>
+<article class="timeline-row"><time>2026-10-31 10:02:41 CST</time><strong><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/7">One Fiber LSP, 11,496 channels</a> · @LusoCryptoLabs</strong><p>Agreed, the table mixes them. What we can say: Writes were synced in every run. All our builds sync each write since 2026-10-12, the same effect as fiber.store_sync_writes: true on develop, where the default is false....</p></article>
+<article class="timeline-row"><time>2026-10-31 10:01:33 CST</time><strong><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/6">One Fiber LSP, 11,496 channels</a> · @LusoCryptoLabs</strong><p>Thanks, Joii, you were right. We traced every call of a payment between two wallets at one LSP on a local dev chain (2026-10-30). Of a 6.1 s payment, about 4.5 s were our wallet’s own clocks: the payee asked for...</p></article>
+<article class="timeline-row"><time>2026-10-31 10:00:38 CST</time><strong><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/5">One Fiber LSP, 11,496 channels</a> · @LusoCryptoLabs</strong><p>Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet at B pay each other 0.1 CKB in turn,...</p></article>
+<article class="timeline-row"><time>2026-10-31 08:19:28 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/6">QuotaCell: Let your team spend without handing over the treasury</a> · @ArthurZhang</strong><p>Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders spending simultaneously, including cases where...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,73 @@
+# Nervos Talk 社区简报
+
+- 统计窗口: 2026-10-31 04:23:33 CST 到 2026-11-01 04:23:33 CST
+- 生成时间: 2026-11-01 04:23:39 CST
+- 话题数: 8
+- 帖子数: 14
+- 作者数: 9
+- 总结模式: ai:openai-compatible
+
+## 社区总结
+
+## 今日发生了什么
+
+今天论坛的主要动静集中在 Spark Program 的项目审批与结项更新上：MeterNet 提案被列为待修订，create-ckb-passkey-app 被拒，CKB Wallet Behaviour Intelligence 发布结项报告[S03, S06, S07]。与此同时，Fiber LSP 性能测试和 QuotaCell 的并发/幂等讨论继续推进，官方 X 账号管理疑问也被再次提出[S01, S10, S12]。整体看，今天有多条项目进展和技术反馈，但没有看到单一大型公告[S03, S05, S10, S12]。
+
+## 重点话题
+
+- Spark Program 项目状态密集更新：MeterNet 被委员会列为 pending、邀请修订，而非直接拒绝[S03]；作者随后提交修订版，增加约 2 分钟可接入的公开 Web MVP，计划第 2 周上线，并保留 Lagos 热点试点[S04]。同一批更新中，create-ckb-passkey-app 经修订后仍被拒绝[S07]；CKB Wallet Behaviour Intelligence 则发布结项报告，交付主网数据行为分析流程、冻结数据集、特征框架和研究报告等[S06]。
+- Spark Program Q3 2026 概览帖梳理了季度结项情况，提到 Nervos Brain、CKB-UGMP、Dular 等第二季度延续项目已完成结项或交付[S05]。
+- Fiber LSP 性能讨论继续推进：团队在同一开发链上测试了 11,496 通道的 LSP A（8 核）和 4 核的 LSP B，并让两边钱包交替支付 0.1 CKB[S12]。追踪显示，一笔 6.1 秒支付中约 4.5 秒耗在钱包自身时钟，包括收款方每秒请求签名、每 3 秒读通道等[S13]。团队还澄清，自 2026-10-12 起所有构建每次写入都同步，效果等同 develop 上 fiber.store_sync_writes: true，但默认是 false，且尚未测量关闭同步时的支付表现[S14]。
+- QuotaCell 的讨论集中在并发与支付幂等性：有评论建议下一轮测试两个独立交易构建器同时花费，以及交易已广播但状态不确定的场景[S10]；作者回应共享 policy Cell 能防止同一状态被双花，但不解决支付幂等，难点是广播状态不确定时避免重复支付[S11]。
+- 在 CKB Dev Rel Reddit AMA 回顾帖下，有用户提出疑惑，称 Reddit AMA 中已有人 @Hanssen 问过 Nervos.bit（@NervosNetwork）由谁运营、官方账号体系为何混乱，但没看到结果[S01]；有回复称这是不可抗力因素[S02]。
+
+## 值得继续跟进
+
+- MeterNet 修订版已提交，后续要看 Spark Program 委员会是否通过或要求继续修改[S03, S04]。
+- Fiber LSP 的基准仍需补上关闭同步写入时的支付表现，以及不同核数、通道规模下的结果[S14]。
+- QuotaCell 的并发与支付幂等性仍是待验证点，尤其要观察广播状态不确定时如何避免重复支付[S10, S11]。
+
+## 来源索引
+
+- `S01` [CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen](https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/2) | Thinker | 2026-11-01 00:02:29 CST | 我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: >目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000 名粉丝——远超任何一个新账号。说实话，我现在几乎分不清哪个才是官方账号，现有的账号体系实在太混乱了。我仍然看到很多人在联系 CKB 团队时 @...
+- `S02` [CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen](https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/3) | silenceport | 2026-11-01 01:10:33 CST | 显而易见是不可抗力因素啊,又不像cfx有关系有背景。
+- `S03` [Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments](https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/2) | xingtianchunyan | 2026-10-31 14:06:01 CST | Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your proposal is currently pending. This is not a rejection; rather, we invite you to revise your...
+- `S04` [Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments](https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/3) | Timilehin_Olowu | 2026-10-31 21:22:32 CST | Thanks @xingtianchunyan. I’ve revised the proposal: added a public web MVP that anyone can join from a browser in ~2 minutes (testnet CKB, pay-per-MB, auto-cutoff, live payment log), live by week 2. The Lagos hotspot pilot stays as the field test. Changes are in sections 1, 4,...
+- `S05` [Spark Program Q3 2026：不要用AI攻击自己](https://talk.nervos.org/t/spark-program-q3-2026-ai/11077/1) | xingtianchunyan | 2026-10-31 15:43:57 CST | 1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular 完成了面向非洲市场的移动支付与 Fiber 结算工作，其中包括集成 M-Pesa 的试点项目。CKB Builder Lab...
+- `S06` [Spark Program | CKB Wallet Behaviour Intelligence](https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/33) | xingtianchunyan | 2026-10-31 15:19:49 CST | CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB 原始链上记录转化为可复用的钱包行为分析工具。项目于2026年7月4日获批，经过数据来源、标签有效性和研究方法的多轮调整，最终交付了基于真实主网数据的行为分析流程、冻结数据集、特征框架、研究报告及公开...
+- `S07` [[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB](https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029/2) | xingtianchunyan | 2026-10-31 14:13:42 CST | Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful discussion, regrets to inform you that it has decided to reject the create-ckb-passkey-app proposal....
+- `S08` [Spark Program | CellFlow — Durable CCC Transaction Recovery PoC](https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/4) | longdevbf | 2026-10-31 11:14:08 CST | nice works
+- `S09` [Spark Program | CellFlow — Durable CCC Transaction Recovery PoC](https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/5) | tun_tunn03 | 2026-10-31 13:48:13 CST | Nice works Ty! Good luck with the grant.
+- `S10` [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/6) | ArthurZhang | 2026-10-31 08:19:28 CST | Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders spending simultaneously, including cases where a transaction is broadcast but its status is uncertain....
+- `S11` [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/7) | Ticoworld | 2026-10-31 10:42:16 CST | Thanks, these are good points. On concurrency, the shared policy Cell prevents two transactions from spending the same state, but that doesn’t solve payment idempotency. The harder part is handling an uncertain broadcast without accidentally creating another payment during...
+- `S12` [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/5) | LusoCryptoLabs | 2026-10-31 10:00:38 CST | Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet at B pay each other 0.1 CKB in turn, the next payment as soon as the last one ends. At first our...
+- `S13` [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/6) | LusoCryptoLabs | 2026-10-31 10:01:33 CST | Thanks, Joii, you were right. We traced every call of a payment between two wallets at one LSP on a local dev chain (2026-10-30). Of a 6.1 s payment, about 4.5 s were our wallet’s own clocks: the payee asked for signatures every second, read its channel every 3 s and its...
+- `S14` [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/7) | LusoCryptoLabs | 2026-10-31 10:02:41 CST | Agreed, the table mixes them. What we can say: Writes were synced in every run. All our builds sync each write since 2026-10-12, the same effect as fiber.store_sync_writes: true on develop, where the default is false. We have not measured payments with sync off. Cores: in the...
+
+## 活跃话题
+
+1. [CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen](https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017) | 2 条近窗帖子 | 最新活动 2026-11-01 01:10:33 CST | tags: AMA
+2. [Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments](https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041) | 2 条近窗帖子 | 最新活动 2026-10-31 21:22:32 CST | tags: Pending
+3. [Spark Program Q3 2026：不要用AI攻击自己](https://talk.nervos.org/t/spark-program-q3-2026-ai/11077) | 1 条近窗帖子 | 最新活动 2026-10-31 15:43:57 CST
+4. [Spark Program | CKB Wallet Behaviour Intelligence](https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338) | 1 条近窗帖子 | 最新活动 2026-10-31 15:19:49 CST | tags: In-Progress
+5. [[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB](https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029) | 1 条近窗帖子 | 最新活动 2026-10-31 14:13:42 CST | tags: Rejection, Spark-Program
+6. [Spark Program | CellFlow — Durable CCC Transaction Recovery PoC](https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067) | 2 条近窗帖子 | 最新活动 2026-10-31 13:48:13 CST
+7. [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002) | 2 条近窗帖子 | 最新活动 2026-10-31 10:42:16 CST | tags: CKB, CKB-VM, lang-en
+8. [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068) | 3 条近窗帖子 | 最新活动 2026-10-31 10:02:41 CST | tags: CKB, fiber
+
+## 最近帖子摘录
+
+- 2026-11-01 01:10:33 CST | silenceport | [CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen](https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/3) | 显而易见是不可抗力因素啊,又不像cfx有关系有背景。
+- 2026-11-01 00:02:29 CST | Thinker | [CKB Dev Rel Reddit AMA Recap with Team Lead Hanssen](https://talk.nervos.org/t/ckb-dev-rel-reddit-ama-recap-with-team-lead-hanssen/11017/2) | 我还是在这里提出我的疑惑，因为看到这个问题已经有人 @Hanssen 的Reddit AMA活动里已经有人提过，然而我没看到问题的结果，我今天觉得这确实是个问题。 问题如下： zz_tovarishch: >目前是谁在运营 X 上的 Nervos.bit（@NervosNetwork）账号？这是 CKB 最初的官方账号，拥有超过 118,000...
+- 2026-10-31 21:22:32 CST | Timilehin_Olowu | [Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments](https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/3) | Thanks @xingtianchunyan. I’ve revised the proposal: added a public web MVP that anyone can join from a browser in ~2 minutes (testnet CKB, pay-per-MB, auto-cutoff, live payment...
+- 2026-10-31 15:43:57 CST | xingtianchunyan | [Spark Program Q3 2026：不要用AI攻击自己](https://talk.nervos.org/t/spark-program-q3-2026-ai/11077/1) | 1. 第三季度概览 本季度结项的第二季度延续项目： Nervos Brain 于 7 月 14 日完成，是 Spark 今年首个全档位（2,000 美元）项目，为 CKB 开发者入门提供了可复现部署的 AI 知识基础设施。CKB-UGMP 发布结项报告并成功结项，交付了基于 JoyID 构建的改进版 Spore/DOB 铸造和数字对象体验。Dular...
+- 2026-10-31 15:19:49 CST | xingtianchunyan | [Spark Program | CKB Wallet Behaviour Intelligence](https://talk.nervos.org/t/spark-program-ckb-wallet-behaviour-intelligence/10338/33) | CKB Wallet Behaviour Intelligence 项目结项报告 1. 结项评价 / Final Evaluation 完成日期 / Completion Date：2026年10月20日 1.1 评价摘要 / Evaluation Summary CKB Wallet Behaviour Intelligence 旨在将 CKB...
+- 2026-10-31 14:13:42 CST | xingtianchunyan | [[Spark Proposal] create-ckb-passkey-app: Passkey Auth Starter Kit for CKB](https://talk.nervos.org/t/spark-proposal-create-ckb-passkey-app-passkey-auth-starter-kit-for-ckb/11029/2) | Hi @Owais, Thank you for taking the time to revise and resubmit your proposal in response to our previous feedback. The committee has completed its review and, after careful...
+- 2026-10-31 14:06:01 CST | xingtianchunyan | [Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments](https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/2) | Hello, @Timilehin_Olowu, Thank you for your continued interest in the Spark Program and for submitting the MeterNet proposal. After review by the Spark Program Committee, your...
+- 2026-10-31 13:48:13 CST | tun_tunn03 | [Spark Program | CellFlow — Durable CCC Transaction Recovery PoC](https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/5) | Nice works Ty! Good luck with the grant.
+- 2026-10-31 11:14:08 CST | longdevbf | [Spark Program | CellFlow — Durable CCC Transaction Recovery PoC](https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/4) | nice works
+- 2026-10-31 10:42:16 CST | Ticoworld | [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/7) | Thanks, these are good points. On concurrency, the shared policy Cell prevents two transactions from spending the same state, but that doesn’t solve payment idempotency. The...
+- 2026-10-31 10:02:41 CST | LusoCryptoLabs | [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/7) | Agreed, the table mixes them. What we can say: Writes were synced in every run. All our builds sync each write since 2026-10-12, the same effect as fiber.store_sync_writes: true...
+- 2026-10-31 10:01:33 CST | LusoCryptoLabs | [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/6) | Thanks, Joii, you were right. We traced every call of a payment between two wallets at one LSP on a local dev chain (2026-10-30). Of a 6.1 s payment, about 4.5 s were our...
+- 2026-10-31 10:00:38 CST | LusoCryptoLabs | [One Fiber LSP, 11,496 channels](https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/5) | Thanks, Arthur. We ran both on 2026-10-29 on the same dev chain: LSP A with the 11,496 channels on 8 cores, a second LSP B on 4 cores, and lanes where a wallet at A and a wallet...
+- 2026-10-31 08:19:28 CST | ArthurZhang | [QuotaCell: Let your team spend without handing over the treasury](https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/6) | Great progress! A couple of things I’d consider for the next iteration: First, concurrency and payment idempotency. I’d test probably two independent transaction builders...
