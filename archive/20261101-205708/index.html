@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-01 04:57:08 CST - 2026-11-02 04:57:08 CST</span>
+          <span>生成时间 2026-11-02 04:57:19 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">16</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>过去一天 Nervos Talk 的主要动态是多个开发项目集中更新：Streak 在 CKB 测试网发布，CKB Service Runner 上线可试用的节点仪表盘，CKB Devnet Explorer 和 CKBdapps 2.0 也对外亮相 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s05">S05</a>, <a href="#source-s09">S09</a>, <a href="#source-s11">S11</a>]</span>。讨论不只在发布，还包括钱包 UI 反馈后的快速修复、节点收入层的 job cell/CrowdCell keeper 设计问答，以及若干 Spark 与研究项目的里程碑更新 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s04">S04</a>, <a href="#source-s07">S07</a>, <a href="#source-s14">S14</a>, <a href="#source-s15">S15</a>]</span>。整体看，社区今天并不冷清，新工具和开发进展是主线 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s05">S05</a>, <a href="#source-s09">S09</a>, <a href="#source-s14">S14</a>, <a href="#source-s15">S15</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>0xTonraq 介绍 Streak，这是一个在 CKB testnet 上运行的体育预测平台，用户可选择比赛结果、投入资金、跟踪比赛并领取回报 <span class="citations">[<a href="#source-s01">S01</a>]</span>。truthixify 反馈连接钱包弹窗太透明 <span class="citations">[<a href="#source-s02">S02</a>]</span>；作者随后表示已修复并致谢 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>psawyerberlin 宣布 CKB Service Runner 可试用，称其为面向全节点的免费仪表盘，并表示线程反馈塑造了它 <span class="citations">[<a href="#source-s05">S05</a>]</span>。joshyates1980 认为游戏化或信息展示让运行全节点更有集体参与感 <span class="citations">[<a href="#source-s06">S06</a>]</span>。Ayoub_Lesfer 祝贺发布，认为门槛调整为 4 个月/20 个节点帮助很大，并讨论 job cell 与 CrowdCell keeper、AtBlock、cells_query 的配合 <span class="citations">[<a href="#source-s07">S07</a>]</span>；作者回应称每个 campaign 一个 job cell，由用户创建并在结算交易中消耗 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li>wildanrhmn 发布 CKB Devnet Explorer，这是其在 CKBuilders 三个月 capstone 中构建的区块浏览器，目标是探索本地 OffCKB devnet <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li>yixiu.ckbfans.bit 介绍 CKBdapps 完成彻底改版，原因是旧版项目信息分散、保持准确越来越困难 <span class="citations">[<a href="#source-s11">S11</a>]</span>。Crybaby 祝贺改版，称社区需要它 <span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>其他开发进展包括：Seedsong M2 完成，但 wasm 解码器无法压到 60KB 以内，测试网压缩包约 160KB，并更新了 DOB/0、DOB/1 解码与 wasm 拆分加载 <span class="citations">[<a href="#source-s14">S14</a>]</span>；Noir-CKB 的 private tally setup ceremony 完成，密钥用 CKB 主网区块 20,870,000 哈希封存，贡献已校验 <span class="citations">[<a href="#source-s15">S15</a>]</span>；TapFiber 发布项目概述，计划做开源 Fiber 支付意图工具包，把商户订单绑定到唯一 invoice、只接受一次结算并生成签名收据，NFC/QR 是首批物理交付方式 <span class="citations">[<a href="#source-s16">S16</a>]</span>。DIS 周报则提到修改被 NDSS reject 的 invisibook 论文 <span class="citations">[<a href="#source-s13">S13</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>Streak 已修复钱包弹窗透明度问题，后续测试网的可用性反馈和结算体验仍值得观察 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s04">S04</a>]</span>。</li>
+<li>CKB Service Runner 的 job cell 与 CrowdCell keeper 集成是节点收入层落地的关键，尤其是 AtBlock 和 cells_query 在实际释放/退款流程中的配合 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。</li>
+<li>Seedsong 的 wasm 解码器体积仍超过目标，测试网包约 160KB，体积限制是否影响后续部署和使用是需要继续跟的风险 <span class="citations">[<a href="#source-s14">S14</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/1">Introducing Streak: your matchday predictions, settled on CKB</a></div><div class="source-meta">0xTonraq · 2026-11-01 22:28:56 CST</div><div>Home win, a stubborn draw, or the upset everyone else dismissed? I’m building Streak to give your predictions a complete on-chain journey: choose an outcome, fund your position, follow the match and collect your return. Streak is a sports prediction platform on CKB testnet,...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/2">Introducing Streak: your matchday predictions, settled on CKB</a></div><div class="source-meta">truthixify · 2026-11-02 01:44:15 CST</div><div>IMG_37251320×2868 237 KB Please check the connect wallet modal, it’s too transparent.</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/3">Introducing Streak: your matchday predictions, settled on CKB</a></div><div class="source-meta">0xTonraq · 2026-11-02 02:05:38 CST</div><div>(post deleted by author)</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/4">Introducing Streak: your matchday predictions, settled on CKB</a></div><div class="source-meta">0xTonraq · 2026-11-02 02:35:46 CST</div><div>It’s fixed now, thanks alot for your feedback sir. image591×1280 58.1 KB</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/25">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-01 07:35:20 CST</div><div>CKB Service Runner is ready to try: a free dashboard for your full node Thanks to everyone in this thread: your feedback shaped what got built. The idea started as a “revenue layer”, and @janx, @joshyates1980, @LusoCryptoLabs, @Ayoub_Lesfer and @NightLantern turned it into...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/26">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">joshyates1980 · 2026-11-01 18:43:40 CST</div><div>Most excellent, the gamification aspect (or displaying information) brings to life a more collective Nervos engagement for running full nodes. From my perspective, this shines light on the full node operators in a way of expressing thanks for keeping the entire blockchain...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/27">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-01 23:36:39 CST</div><div>Congrats on shipping this, and moving the gate to 4 months / 20 nodes helps a lot. I read through the job cell spec with CrowdCell’s keeper in mind. AtBlock looks like a good fit for finalizing at the deadline, and cells_query could find the pledges to release or refund. The...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/28">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-02 01:47:46 CST</div><div>Ayoub_Lesfer: CrowdCell’s Thanks @Ayoub_Lesfer! Short answers to your two questions: A job cell per campaign? Yes, with today’s CSR the run needs a job cell. It’s a separate cell the user creates, and it’s consumed in the settling transaction. Everything except the tip and the...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085/1">CKB Devnet Explorer: a block explorer for your local OffCKB devnet</a></div><div class="source-meta">wildanrhmn · 2026-11-02 00:06:12 CST</div><div>Hi everyone, For the past three months I’ve been in the CKBuilders program, and for my capstone I built a block explorer for the chain you test on every day: your local OffCKB devnet. explorer-home1440×1180 207 KB Why Almost all of my time in the program was spent on a devnet...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/11">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a></div><div class="source-meta">0xTonraq · 2026-11-01 21:41:36 CST</div><div>janx: CKBadger Very nice idea man!</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/1">CKBdapps 2.0：为 CKB 生态重新搭建的项目目录</a></div><div class="source-meta">yixiu.ckbfans.bit · 2026-11-01 20:35:35 CST</div><div>大家好，也许有一部分小伙伴已经注意到了，CKBdapps（https://ckbdapps.com ）刚刚完成了一次彻底的改版。接下来这篇帖子我想和大家分享这次我们改了什么、为什么这样改，以及大家可以怎样参与。 为什么要重写 CKBdapps 从 2023 年初开始构建，并于同年 6 月正式上线，它的定位是 CKB 生态的项目目录，为用户在 CKB 这块土地上导航。然而，随着生态的发展，我们发现最难的不是写页面、写功能，而是让 CKBdapps 上的项目信息一直保持正确。旧版网站在这件事上越来越吃力： 数据分散。 一个项目的信息分散在好几个...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/2">CKBdapps 2.0：为 CKB 生态重新搭建的项目目录</a></div><div class="source-meta">Crybaby · 2026-11-01 21:41:15 CST</div><div>Congratulations for its renovation, I’m glad to see its new face, we community needs it. Well done, guys.</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015/51">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a></div><div class="source-meta">Lawliet_Chan · 2026-11-01 19:02:53 CST</div><div>周报 2026.11.1 修改NDSS reject的invisibook论文</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/7">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></div><div class="source-meta">Officeyutong · 2026-11-01 18:17:38 CST</div><div>M2 里程碑已完成。 目前存在一个问题，我尽力压缩wasm解码器的体积，但无法压缩到60KB以内。现在部署在测试网上的包含解码器的压缩包的大小大约是160KB。 主要更新： GitHub - Officeyutong/seedsong-base · GitHub 支持DOB/0, DOB/1解码。同时支持将Wasm模块拆出来单独加载以便从链上获取wasm程序并使用。 同样在seedsong-base仓库，更新了单元测试以将官方的DOB/0, DOB/1实现和本地wasm版进行对比。 在GitHub - Officeyutong/seedsong-...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968/3">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a></div><div class="source-meta">xiaomao · 2026-11-01 16:41:44 CST</div><div>The noir-ckb private tally setup ceremony is complete! Thank you to everyone who contributed: @menxui @alienate08 and @ceciliamulandi The key was sealed with the hash of CKB mainnet block 20,870,000, and every contribution was verified. You can find your contribution hash in...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079/1">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a></div><div class="source-meta">vida · 2026-11-01 07:49:28 CST</div><div>1. Project Overview Project name: TapFiber One-sentence summary: An open-source Fiber payment-intent kit that binds a merchant order to one exact invoice, accepts settlement once and produces a signed receipt; NFC and QR are the first physical delivery methods for the request....</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>12</strong></li><li><span>社区互动</span><strong>2</strong></li><li><span>其他</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@0xTonraq</span><strong>4</strong></li><li><span>@psawyerberlin</span><strong>2</strong></li><li><span>@truthixify</span><strong>1</strong></li><li><span>@wildanrhmn</span><strong>1</strong></li><li><span>@Ayoub_Lesfer</span><strong>1</strong></li><li><span>@Crybaby</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>41</span></li><li>payment<span>41</span></li><li>request<span>29</span></li><li>fiber<span>25</span></li><li>fnn<span>25</span></li><li>testnet<span>24</span></li><li>github<span>24</span></li><li>you<span>23</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084">Introducing Streak: your matchday predictions, settled on CKB</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-02 02:35:46 CST</span><span>0xTonraq, truthixify</span></div><p class="excerpt">Home win, a stubborn draw, or the upset everyone else dismissed? I’m building Streak to give your predictions a complete on-chain journey: choose an outcome, fund your position, follow the match and collect your return. Streak is a sports prediction...</p><div class="tag-row"><span>dapp</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734">A Revenue Layer for CKB Nodes</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-02 01:47:46 CST</span><span>Ayoub_Lesfer, joshyates1980, psawyerberlin</span></div><p class="excerpt">CKB Service Runner is ready to try: a free dashboard for your full node Thanks to everyone in this thread: your feedback shaped what got built. The idea started as a “revenue layer”, and @janx, @joshyates1980, @LusoCryptoLabs, @Ayoub_Lesfer and...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082">CKBdapps 2.0：为 CKB 生态重新搭建的项目目录</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 21:41:15 CST</span><span>Crybaby, yixiu.ckbfans.bit</span></div><p class="excerpt">大家好，也许有一部分小伙伴已经注意到了，CKBdapps（https://ckbdapps.com ）刚刚完成了一次彻底的改版。接下来这篇帖子我想和大家分享这次我们改了什么、为什么这样改，以及大家可以怎样参与。 为什么要重写 CKBdapps 从 2023 年初开始构建，并于同年 6 月正式上线，它的定位是 CKB 生态的项目目录，为用户在 CKB 这块土地上导航。然而，随着生态的发展，我们发现最难的不是写页面、写功能，而是让 CKBdapps 上的项目信息一直保持正确。旧版网站在这件事上越来越吃力：...</p><div class="tag-row"><span>Nervos-项目动态</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085">CKB Devnet Explorer: a block explorer for your local OffCKB devnet</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-02 00:06:12 CST</span><span>wildanrhmn</span></div><p class="excerpt">Hi everyone, For the past three months I’ve been in the CKBuilders program, and for my capstone I built a block explorer for the chain you test on every day: your local OffCKB devnet. explorer-home1440×1180 207 KB Why Almost all of my time in the program...</p><div class="tag-row"><span>CKB</span><span>dev-tool</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 21:41:36 CST</span><span>0xTonraq</span></div><p class="excerpt">janx: CKBadger Very nice idea man!</p><div class="tag-row"><span>app</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 19:02:53 CST</span><span>Lawliet_Chan</span></div><p class="excerpt">周报 2026.11.1 修改NDSS reject的invisibook论文</p><div class="tag-row"><span>appchain</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 18:17:38 CST</span><span>Officeyutong</span></div><p class="excerpt">M2 里程碑已完成。 目前存在一个问题，我尽力压缩wasm解码器的体积，但无法压缩到60KB以内。现在部署在测试网上的包含解码器的压缩包的大小大约是160KB。 主要更新： GitHub - Officeyutong/seedsong-base · GitHub 支持DOB/0, DOB/1解码。同时支持将Wasm模块拆出来单独加载以便从链上获取wasm程序并使用。 同样在seedsong-base仓库，更新了单元测试以将官方的DOB/0, DOB/1实现和本地wasm版进行对比。 在GitHub -...</p><div class="tag-row"><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 16:41:44 CST</span><span>xiaomao</span></div><p class="excerpt">The noir-ckb private tally setup ceremony is complete! Thank you to everyone who contributed: @menxui @alienate08 and @ceciliamulandi The key was sealed with the hash of CKB mainnet block 20,870,000, and every contribution was verified. You can find your...</p><div class="tag-row"><span>CKB</span><span>zkp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-01 07:49:28 CST</span><span>vida</span></div><p class="excerpt">1. Project Overview Project name: TapFiber One-sentence summary: An open-source Fiber payment-intent kit that binds a merchant order to one exact invoice, accepts settlement once and produces a signed receipt; NFC and QR are the first physical delivery...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-02 02:35:46 CST</time><strong><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/4">Introducing Streak: your matchday predictions, settled on CKB</a> · @0xTonraq</strong><p>It’s fixed now, thanks alot for your feedback sir. image591×1280 58.1 KB</p></article>
+<article class="timeline-row"><time>2026-11-02 02:05:38 CST</time><strong><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/3">Introducing Streak: your matchday predictions, settled on CKB</a> · @0xTonraq</strong><p>(post deleted by author)</p></article>
+<article class="timeline-row"><time>2026-11-02 01:47:46 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/28">A Revenue Layer for CKB Nodes</a> · @psawyerberlin</strong><p>Ayoub_Lesfer: CrowdCell’s Thanks @Ayoub_Lesfer! Short answers to your two questions: A job cell per campaign? Yes, with today’s CSR the run needs a job cell. It’s a separate cell the user creates, and it’s consumed in...</p></article>
+<article class="timeline-row"><time>2026-11-02 01:44:15 CST</time><strong><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/2">Introducing Streak: your matchday predictions, settled on CKB</a> · @truthixify</strong><p>IMG_37251320×2868 237 KB Please check the connect wallet modal, it’s too transparent.</p></article>
+<article class="timeline-row"><time>2026-11-02 00:06:12 CST</time><strong><a href="https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085/1">CKB Devnet Explorer: a block explorer for your local OffCKB devnet</a> · @wildanrhmn</strong><p>Hi everyone, For the past three months I’ve been in the CKBuilders program, and for my capstone I built a block explorer for the chain you test on every day: your local OffCKB devnet. explorer-home1440×1180 207 KB Why...</p></article>
+<article class="timeline-row"><time>2026-11-01 23:36:39 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/27">A Revenue Layer for CKB Nodes</a> · @Ayoub_Lesfer</strong><p>Congrats on shipping this, and moving the gate to 4 months / 20 nodes helps a lot. I read through the job cell spec with CrowdCell’s keeper in mind. AtBlock looks like a good fit for finalizing at the deadline, and...</p></article>
+<article class="timeline-row"><time>2026-11-01 22:28:56 CST</time><strong><a href="https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084/1">Introducing Streak: your matchday predictions, settled on CKB</a> · @0xTonraq</strong><p>Home win, a stubborn draw, or the upset everyone else dismissed? I’m building Streak to give your predictions a complete on-chain journey: choose an outcome, fund your position, follow the match and collect your...</p></article>
+<article class="timeline-row"><time>2026-11-01 21:41:36 CST</time><strong><a href="https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/11">CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment</a> · @0xTonraq</strong><p>janx: CKBadger Very nice idea man!</p></article>
+<article class="timeline-row"><time>2026-11-01 21:41:15 CST</time><strong><a href="https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/2">CKBdapps 2.0：为 CKB 生态重新搭建的项目目录</a> · @Crybaby</strong><p>Congratulations for its renovation, I’m glad to see its new face, we community needs it. Well done, guys.</p></article>
+<article class="timeline-row"><time>2026-11-01 20:35:35 CST</time><strong><a href="https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/1">CKBdapps 2.0：为 CKB 生态重新搭建的项目目录</a> · @yixiu.ckbfans.bit</strong><p>大家好，也许有一部分小伙伴已经注意到了，CKBdapps（https://ckbdapps.com ）刚刚完成了一次彻底的改版。接下来这篇帖子我想和大家分享这次我们改了什么、为什么这样改，以及大家可以怎样参与。 为什么要重写 CKBdapps 从 2023 年初开始构建，并于同年 6 月正式上线，它的定位是 CKB 生态的项目目录，为用户在 CKB 这块土地上导航。然而，随着生态的发展，我们发现最难的不是写页面、写功能，而是让...</p></article>
+<article class="timeline-row"><time>2026-11-01 19:02:53 CST</time><strong><a href="https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015/51">[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1</a> · @Lawliet_Chan</strong><p>周报 2026.11.1 修改NDSS reject的invisibook论文</p></article>
+<article class="timeline-row"><time>2026-11-01 18:43:40 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/26">A Revenue Layer for CKB Nodes</a> · @joshyates1980</strong><p>Most excellent, the gamification aspect (or displaying information) brings to life a more collective Nervos engagement for running full nodes. From my perspective, this shines light on the full node operators in a way...</p></article>
+<article class="timeline-row"><time>2026-11-01 18:17:38 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/7">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a> · @Officeyutong</strong><p>M2 里程碑已完成。 目前存在一个问题，我尽力压缩wasm解码器的体积，但无法压缩到60KB以内。现在部署在测试网上的包含解码器的压缩包的大小大约是160KB。 主要更新： GitHub - Officeyutong/seedsong-base · GitHub 支持DOB/0, DOB/1解码。同时支持将Wasm模块拆出来单独加载以便从链上获取wasm程序并使用。 同样在seedsong-...</p></article>
+<article class="timeline-row"><time>2026-11-01 16:41:44 CST</time><strong><a href="https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968/3">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a> · @xiaomao</strong><p>The noir-ckb private tally setup ceremony is complete! Thank you to everyone who contributed: @menxui @alienate08 and @ceciliamulandi The key was sealed with the hash of CKB mainnet block 20,870,000, and every...</p></article>
+<article class="timeline-row"><time>2026-11-01 07:49:28 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079/1">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a> · @vida</strong><p>1. Project Overview Project name: TapFiber One-sentence summary: An open-source Fiber payment-intent kit that binds a merchant order to one exact invoice, accepts settlement once and produces a signed receipt; NFC and...</p></article>
+<article class="timeline-row"><time>2026-11-01 07:35:20 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/25">A Revenue Layer for CKB Nodes</a> · @psawyerberlin</strong><p>CKB Service Runner is ready to try: a free dashboard for your full node Thanks to everyone in this thread: your feedback shaped what got built. The idea started as a “revenue layer”, and @janx, @joshyates1980,...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

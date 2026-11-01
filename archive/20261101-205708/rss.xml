@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sun, 01 Nov 2026 18:35:46 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-02</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-01:daily-brief</guid>
+    <pubDate>Sun, 01 Nov 2026 20:57:19 +0000</pubDate>
+    <description>## 今日发生了什么 过去一天 Nervos Talk 的主要动态是多个开发项目集中更新：Streak 在 CKB 测试网发布，CKB Service Runner 上线可试用的节点仪表盘，CKB Devnet Explorer 和 CKBdapps 2.0 也对外亮相 [S01, S05, S09, S11]。讨论不只在发布，还包括钱包 UI 反馈后的快速修复、节点收入层的 job cell/CrowdCell keeper 设计问答，以及若干 Spark 与研究项目的里程碑更新 [S02, S04, S07, S14, S15]。整体看，社区今天并不冷清，新工具和开发进展是主线 [S01, S05, S09, S14, S15]。 ## 重点话题 0xTonraq 介绍 Streak，这是一个在 CKB testnet 上运行的体育预测平台，用户可选择比赛结果、投入资金、跟踪比赛并领取回报 [S01]。truthixify 反馈连接钱包弹窗太透明 [S02]；作者随后表示已修复并致谢 [S04]。 psawyerberlin 宣布 CKB Service Runner 可试用，称其为面向全节点的免费仪表盘，并表示线程反馈塑造了它 [S05]。joshyates1980 认为游戏化或信息展示让运行全节点更有集体参与感 [S06]。Ayoub_Lesfer 祝贺发布，认为门槛调整为 4 个月/20 个节点帮助很大，并讨论 job cell 与 CrowdCell keeper、AtBlock、cells_query 的配合 [S07]；作者回应称每个 campaign...</description>
+  </item>
+  <item>
+    <title>Introducing Streak: your matchday predictions, settled on CKB (4 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084</link>
+    <guid>https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084#recent-4</guid>
+    <pubDate>Sun, 01 Nov 2026 18:35:46 +0000</pubDate>
+    <description>Home win, a stubborn draw, or the upset everyone else dismissed? I’m building Streak to give your predictions a complete on-chain journey: choose an outcome, fund your position, follow the match and collect your return. Streak is a sports prediction platform on CKB testnet, starting with football. Alongside prediction markets, there are free weekly fantasy and Survivor games. Payments and rewards currently use testnet tCKB, not real-money prizes. 01-markets1920×1380 232 KB Desktop and mobile views of the actual app, using synthetic local fixtures for this gallery. One slip for your matchday Browse by day or league, open a fixture and choose Home, Draw or Away. Pool information shows how...</description>
+  </item>
+  <item>
+    <title>A Revenue Layer for CKB Nodes (4 posts)</title>
+    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
+    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-4</guid>
+    <pubDate>Sun, 01 Nov 2026 17:47:46 +0000</pubDate>
+    <description>CKB Service Runner is ready to try: a free dashboard for your full node Thanks to everyone in this thread: your feedback shaped what got built. The idea started as a “revenue layer”, and @janx, @joshyates1980, @LusoCryptoLabs, @Ayoub_Lesfer and @NightLantern turned it into something better: trust before money. So the first release pays nobody. It’s a tool for node runners. What you get today (mainnet and testnet) A dashboard for your node: sync status, peers, node metrics, CPU/RAM/disk, all in one page. A public node ranking by availability, sync, age and network diversity (ASN and region, never your IP). It’s summarised weekly in a cell on mainnet, so anyone can verify it. It runs beside...</description>
+  </item>
+  <item>
+    <title>CKB Devnet Explorer: a block explorer for your local OffCKB devnet (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085</link>
+    <guid>https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085#recent-1</guid>
+    <pubDate>Sun, 01 Nov 2026 16:06:12 +0000</pubDate>
+    <description>Hi everyone, For the past three months I’ve been in the CKBuilders program, and for my capstone I built a block explorer for the chain you test on every day: your local OffCKB devnet. explorer-home1440×1180 207 KB Why Almost all of my time in the program was spent on a devnet started by offckb node. The official CKB Explorer can’t see that chain, and its backend (Rails, PostgreSQL, Redis and a block syncer) is far too heavy to run against a chain that offckb clean wipes all the time. So I read raw RPC JSON. My own scripts were 32-byte code hashes, cell data was hex, and when a transaction failed I dug through the node’s output. In September I asked @RetricSu whether something like this...</description>
+  </item>
+  <item>
+    <title>CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276</link>
+    <guid>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276#recent-1</guid>
+    <pubDate>Sun, 01 Nov 2026 13:41:36 +0000</pubDate>
+    <description>janx: CKBadger Very nice idea man!</description>
+  </item>
+  <item>
+    <title>CKBdapps 2.0：为 CKB 生态重新搭建的项目目录 (2 posts)</title>
+    <link>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082</link>
+    <guid>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082#recent-2</guid>
+    <pubDate>Sun, 01 Nov 2026 13:41:15 +0000</pubDate>
+    <description>大家好，也许有一部分小伙伴已经注意到了，CKBdapps（https://ckbdapps.com ）刚刚完成了一次彻底的改版。接下来这篇帖子我想和大家分享这次我们改了什么、为什么这样改，以及大家可以怎样参与。 为什么要重写 CKBdapps 从 2023 年初开始构建，并于同年 6 月正式上线，它的定位是 CKB 生态的项目目录，为用户在 CKB 这块土地上导航。然而，随着生态的发展，我们发现最难的不是写页面、写功能，而是让 CKBdapps 上的项目信息一直保持正确。旧版网站在这件事上越来越吃力： 数据分散。 一个项目的信息分散在好几个 JSON 文件里，列表、配置和详情各管一部分。加一个项目要改好几处，改漏了也看不出来。 手写的内容太多。 亮点、FAQ、透明度清单都靠人工撰写，写的时候是对的，过几个月就过时了，也没人知道哪里过时。 看不出项目是否还活着。 有的项目早已停更，有的网站已经打不开，但页面看起来和活跃的项目一模一样。 新项目靠人发现。 生态里不断有新项目上线，它们没有被收录，往往只是因为没有人注意到。 所以这次改版的核心目标有两个： 让维护变轻。 凡是能从数据推导出来的信息，都不再手写；凡是能自动检查的事，都交给机器。 让建设者的成果被发现。 哪怕只是一个很小的原型想法，只要在 CKB 测试网上验证通过，都可以提交 PR 列进来。 设计 既然是从零重写，我们就先从网站的样子说起。 CKBdapps 的 logo...</description>
+  </item>
+  <item>
+    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
+    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
+    <pubDate>Sun, 01 Nov 2026 11:02:53 +0000</pubDate>
+    <description>周报 2026.11.1 修改NDSS reject的invisibook论文</description>
+  </item>
+  <item>
+    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
+    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
+    <pubDate>Sun, 01 Nov 2026 10:17:38 +0000</pubDate>
+    <description>M2 里程碑已完成。 目前存在一个问题，我尽力压缩wasm解码器的体积，但无法压缩到60KB以内。现在部署在测试网上的包含解码器的压缩包的大小大约是160KB。 主要更新： GitHub - Officeyutong/seedsong-base · GitHub 支持DOB/0, DOB/1解码。同时支持将Wasm模块拆出来单独加载以便从链上获取wasm程序并使用。 同样在seedsong-base仓库，更新了单元测试以将官方的DOB/0, DOB/1实现和本地wasm版进行对比。 在GitHub - Officeyutong/seedsong-ui · GitHub 中，支持了唱片铸造和批量铸造。并且支持连接钱包来发布铸造后的唱片。同时支持从链上获取wasm解码器。另外，这个仓库中也增加了一个rust小工具，用来向链上发布wasm解码器等必要文件，它会通过ckb-cli来签名交易。 其他： 目前版本的链上解码器的tx hash是 0x4d54a43844847bd053b8cedf6bf70deb5cdb5904a43378f6db7c4426887a22ba:0 铸造的50张唱片在：https://testnet.explorer.nervos.org/transaction/0xce6324338e00e554ccb1b87cc9601b069a1a4b14279bdf166565456d0760b2c7 。其DNA数据见gist:229bd38e8d29282f01496fb7ad2358ce · GitHub...</description>
+  </item>
+  <item>
+    <title>Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going (1 posts)</title>
+    <link>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968</link>
+    <guid>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968#recent-1</guid>
+    <pubDate>Sun, 01 Nov 2026 08:41:44 +0000</pubDate>
+    <description>The noir-ckb private tally setup ceremony is complete! Thank you to everyone who contributed: @menxui @alienate08 and @ceciliamulandi The key was sealed with the hash of CKB mainnet block 20,870,000, and every contribution was verified. You can find your contribution hash in the final verification log: github.com/wamimi/noir-ckb-verifier ceremony/private-tally-v2/verify-final.log main [INFO] snarkJS: Reading r1cs [INFO] snarkJS: Reading tauG1 [INFO] snarkJS: Reading tauG2 [INFO] snarkJS: Reading alphatauG1 [INFO] snarkJS: Reading betatauG1 [INFO] snarkJS: Circuit hash: 19184497 8787c91a 55987794 af7668e1 e1d7e6a8 25c9e749 7329c294 c2bec1d6 5e6aa957 1dc45589 c5b07469 982298f2 d46c2877...</description>
+  </item>
+  <item>
+    <title>Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079</link>
+    <guid>https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079#recent-1</guid>
+    <pubDate>Sat, 31 Oct 2026 23:49:28 +0000</pubDate>
+    <description>1. Project Overview Project name: TapFiber One-sentence summary: An open-source Fiber payment-intent kit that binds a merchant order to one exact invoice, accepts settlement once and produces a signed receipt; NFC and QR are the first physical delivery methods for the request. Project type: Core library + testnet FNN integration + reference terminal + reproducible failure report. Funding requested: US$900 paid in CKB Duration: 5 weeks TapFiber is not another checkout page and it is not an NFC hardware project. Its core is the boundary between a Fiber invoice and a fulfilled real-world order: Payment request → exact Fiber settlement → one terminal state → verifiable receipt NFC is the...</description>
+  </item>
+</channel>
+</rss>
