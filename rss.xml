@@ -5,77 +5,140 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sun, 01 Nov 2026 18:35:46 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 02 Nov 2026 22:05:54 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-11-02</title>
+    <title>CKB Talk Daily Brief - 2026-11-03</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-11-01:daily-brief</guid>
-    <pubDate>Sun, 01 Nov 2026 20:57:19 +0000</pubDate>
-    <description>## 今日发生了什么 过去一天 Nervos Talk 的主要动态是多个开发项目集中更新：Streak 在 CKB 测试网发布，CKB Service Runner 上线可试用的节点仪表盘，CKB Devnet Explorer 和 CKBdapps 2.0 也对外亮相 [S01, S05, S09, S11]。讨论不只在发布，还包括钱包 UI 反馈后的快速修复、节点收入层的 job cell/CrowdCell keeper 设计问答，以及若干 Spark 与研究项目的里程碑更新 [S02, S04, S07, S14, S15]。整体看，社区今天并不冷清，新工具和开发进展是主线 [S01, S05, S09, S14, S15]。 ## 重点话题 0xTonraq 介绍 Streak，这是一个在 CKB testnet 上运行的体育预测平台，用户可选择比赛结果、投入资金、跟踪比赛并领取回报 [S01]。truthixify 反馈连接钱包弹窗太透明 [S02]；作者随后表示已修复并致谢 [S04]。 psawyerberlin 宣布 CKB Service Runner 可试用，称其为面向全节点的免费仪表盘，并表示线程反馈塑造了它 [S05]。joshyates1980 认为游戏化或信息展示让运行全节点更有集体参与感 [S06]。Ayoub_Lesfer 祝贺发布，认为门槛调整为 4 个月/20 个节点帮助很大，并讨论 job cell 与 CrowdCell keeper、AtBlock、cells_query 的配合 [S07]；作者回应称每个 campaign...</description>
+    <guid>tag:ckb-talk-radar,2026-11-02:daily-brief</guid>
+    <pubDate>Mon, 02 Nov 2026 23:47:05 +0000</pubDate>
+    <description>## 今日发生了什么 过去 24 小时的帖子主要围绕资助收尾、提案补充和开发工具发布展开 [S01, S09, S16]。iCKB 宣布资助结项并完成 CCC 迁移，Cellula on Fiber 在被质疑后补充发布 npm 包，Kaze Unitour 确认收到首场款项 [S01, S18, S09, S14]。技术侧有 CKB Cell Framework 发布和 Rust/TypeScript 锁脚本性能对比，社区也继续讨论 Tranfr 的恢复方案 [S16, S17, S04]。 ## 重点话题 iCKB 的资助已结项且款项全部花完，但项目继续运行 [S01]；同一作者还宣布 ickb.org 新 DApp、SDK 和 bot 全部切换到 CCC，替代 Lumos 版本 [S18]；此外作者表示因近期 LLM 事件重新检查了 iCKB 合约安全 [S19]。 Cellula on Fiber 提案称要给 Fiber 补上普通用户钱包、商户两行代码结账和 AI agent 支付入口 [S06]；有成员指出 npm 上 cellula-mcp 说明写着 agent 尚未发布、公开仓库也没有 pay-with-fiber [S07]；项目方随后称 cellula-agent 0.1.0 与 cellula-mcp 0.4.1 已上 npm 并更新提案 [S09]；也有人表达支持 [S08, S10]。 Kaze X CKB Unitour 方面，Machakos 大学 GDGoC 负责人确认 11 月 18—21 日可能举办，但仍待委员会成员私下支持后正式确认...</description>
   </item>
   <item>
-    <title>Introducing Streak: your matchday predictions, settled on CKB (4 posts)</title>
-    <link>https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084</link>
-    <guid>https://talk.nervos.org/t/introducing-streak-your-matchday-predictions-settled-on-ckb/11084#recent-4</guid>
-    <pubDate>Sun, 01 Nov 2026 18:35:46 +0000</pubDate>
-    <description>Home win, a stubborn draw, or the upset everyone else dismissed? I’m building Streak to give your predictions a complete on-chain journey: choose an outcome, fund your position, follow the match and collect your return. Streak is a sports prediction platform on CKB testnet, starting with football. Alongside prediction markets, there are free weekly fantasy and Survivor games. Payments and rewards currently use testnet tCKB, not real-money prizes. 01-markets1920×1380 232 KB Desktop and mobile views of the actual app, using synthetic local fixtures for this gallery. One slip for your matchday Browse by day or league, open a fixture and choose Home, Draw or Away. Pool information shows how...</description>
+    <title>[DIS] iCKB &amp; dCKB Rescuer Funding Proposal (Non-Coding Expenses) (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ickb-dckb-rescuer-funding-proposal-non-coding-expenses/8369</link>
+    <guid>https://talk.nervos.org/t/dis-ickb-dckb-rescuer-funding-proposal-non-coding-expenses/8369#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 22:05:54 +0000</pubDate>
+    <description>Hey all, time to close the books on this grant, with iCKB delivered!! Nothing else changes: iCKB keeps running, I keep working on it and this topic stays open for updates and questions. It’s only the grant that is fully spent. Here is where the grant went, in short: Grant: 673,400 CKB, about 10,000 USD at the time. Refund of the iCKB mainnet deployment and audit: 438,310 CKB. User and dev support: the other 235,090 CKB, sent to the bot as liquidity. It paid for 35 hours, many more in practice: user updates over the years, the dCKB depositors hunt and investigation, user support here and in Nervos Nation. As for the projects: iCKB: done!! The new CCC-based DApp, SDK and bot are live,...</description>
   </item>
   <item>
-    <title>A Revenue Layer for CKB Nodes (4 posts)</title>
-    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
-    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-4</guid>
-    <pubDate>Sun, 01 Nov 2026 17:47:46 +0000</pubDate>
-    <description>CKB Service Runner is ready to try: a free dashboard for your full node Thanks to everyone in this thread: your feedback shaped what got built. The idea started as a “revenue layer”, and @janx, @joshyates1980, @LusoCryptoLabs, @Ayoub_Lesfer and @NightLantern turned it into something better: trust before money. So the first release pays nobody. It’s a tool for node runners. What you get today (mainnet and testnet) A dashboard for your node: sync status, peers, node metrics, CPU/RAM/disk, all in one page. A public node ranking by availability, sync, age and network diversity (ASN and region, never your IP). It’s summarised weekly in a cell on mainnet, so anyone can verify it. It runs beside...</description>
+    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 18:54:47 +0000</pubDate>
+    <description>Hey @xingtianchunyan ， 面向非技术社区成员的文档已发在上方。想跟委员会确认一下结项还需要哪些步骤： 目前的交付物（week6-0.2.0 发布 + 非技术文档）是否已满足结项要求？还需要补充什么材料吗？ 原申请第 6 周的验收写了"第三方无需私下指导即可执行全部验收命令"。委员会是否需要完成独立复现后再结项？复现说明已公开，完整运行约 2.5 小时。如果委员会认为可以按当前状态结项，我会继续保持复现说明可用，复现结果出来后在这里同步。 结项后最后一期款项的发放流程和大致时间是怎样的？需要我提供哪些信息？ 谢谢委员会这段时间的关照！</description>
   </item>
   <item>
-    <title>CKB Devnet Explorer: a block explorer for your local OffCKB devnet (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085</link>
-    <guid>https://talk.nervos.org/t/ckb-devnet-explorer-a-block-explorer-for-your-local-offckb-devnet/11085#recent-1</guid>
-    <pubDate>Sun, 01 Nov 2026 16:06:12 +0000</pubDate>
-    <description>Hi everyone, For the past three months I’ve been in the CKBuilders program, and for my capstone I built a block explorer for the chain you test on every day: your local OffCKB devnet. explorer-home1440×1180 207 KB Why Almost all of my time in the program was spent on a devnet started by offckb node. The official CKB Explorer can’t see that chain, and its backend (Rails, PostgreSQL, Redis and a block syncer) is far too heavy to run against a chain that offckb clean wipes all the time. So I read raw RPC JSON. My own scripts were 32-byte code hashes, cell data was hex, and when a transaction failed I dug through the node’s output. In September I asked @RetricSu whether something like this...</description>
+    <title>Tranfr — Programmable Recovery for CKB (3 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-3</guid>
+    <pubDate>Mon, 02 Nov 2026 18:45:34 +0000</pubDate>
+    <description>This is indeed a missing part of the original cheque lock design, and I think it would be possible to add support for additional transfer methods using a fork lock from cheque. Looking forward to your thoughts on this! Thanks, a fork of the cheque lock sounds right. My proposal: (1) the recipient’s claim no longer forces capacity back to the sender, so plain CKB reaches the recipient; (2) the hardcoded 6-epoch delay becomes a per-cell deadline in the args, with the recipient’s claim valid only once an absolute since reaches it; (3) the owner path is always valid, and a heartbeat is the owner recreating the cell with a later deadline (90 days by default in the frontend, any duration...</description>
   </item>
   <item>
-    <title>CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276</link>
-    <guid>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276#recent-1</guid>
-    <pubDate>Sun, 01 Nov 2026 13:41:36 +0000</pubDate>
-    <description>janx: CKBadger Very nice idea man!</description>
+    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (5 posts)</title>
+    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
+    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-5</guid>
+    <pubDate>Mon, 02 Nov 2026 18:11:13 +0000</pubDate>
+    <description>Fiber works. What it lacks is a way in for people who will never run a node, and Fiber Link, funded by this DAO, says the same. Cellula gives it three: a wallet people open with their face or fingerprint, a checkout any shop adds with two lines, and an agent that lets AI pay for what it uses within limits a person sets. All three pay in seconds over Fiber, and all three already run on testnet. This proposal takes them to mainnet, on a public LSP (the node that opens payment channels for wallets, so they never need one of their own) that any Fiber wallet or app can use. LusoCryptoLabs asks for $22,258.48 (and up to $1,664 of contingency, paid only if used), in CKB over five payments, each...</description>
+  </item>
+  <item>
+    <title>[DIS] Kaze X CKB Unitour Continuation Proposal (4 posts)</title>
+    <link>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736</link>
+    <guid>https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736#recent-4</guid>
+    <pubDate>Mon, 02 Nov 2026 17:36:15 +0000</pubDate>
+    <description>GM Team, CC: @zz_tovarishch The GDGoC Club Lead at Machakos University has confirmed the possibility of hosting the Unitour between 18th and 21st November(This Month). While we are yet to give them an official confirmation pending the private committee Member support for Unitour allocation and anticipated grant support, it would be a great opportunity to start preliminary preparations. Considering that this is expected to be a major Unitour, having an early head start will allow us to plan effectively, coordinate with the university, and ensure we are ready to move forward once the initial funding support and allocations are processed. It would be great to begin putting the necessary...</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 16:33:41 +0000</pubDate>
+    <description>Good question, and agreed, once real money moves someone has to pay for keeping it running. The plan is in §6.4: a fee paid by the creator on funded campaigns only, enforced on-chain, nothing on failed ones, so the same shape as yours. It’s left out of this grant on purpose because it only makes sense on mainnet after the audit. The first proposal had 5%, which RetricSu pushed for as start higher and lower it later, but 1-2% like VeriCell is a fair point and I’ll look at it again for the mainnet proposal. The part I’m less sure about is who gets it, a treasury multisig or whoever runs the hosted site. And with CSR in the picture, part of it could go to whoever settles the campaign.</description>
+  </item>
+  <item>
+    <title>Introducing CKB Cell Framework: typed Cells and declarative validation in Rust (1 posts)</title>
+    <link>https://talk.nervos.org/t/introducing-ckb-cell-framework-typed-cells-and-declarative-validation-in-rust/11116</link>
+    <guid>https://talk.nervos.org/t/introducing-ckb-cell-framework-typed-cells-and-declarative-validation-in-rust/11116#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 15:56:49 +0000</pubDate>
+    <description>Hi everyone, We’d like to introduce CKB Cell Framework, a Rust framework for building CKB contracts, developed by FoundationLab. Our goal is to make CKB contracts easier to write, understand, and test. The framework brings together typed Cell loading, declarative constraints, automatic serialization, transaction construction, and local VM testing. The main building blocks are: CellCodec generates encoding, strict decoding, and wire-format schemas for application data. Cells declares the inputs, outputs, and dependencies an operation needs, with constraints for scripts, capacity, positions, and data. Context&lt;C&gt; gives handlers access to the loaded Cell collection and executing Script....</description>
+  </item>
+  <item>
+    <title>Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M (1 posts)</title>
+    <link>https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115</link>
+    <guid>https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 15:37:25 +0000</pubDate>
+    <description>I wrote the same CKB lock script twice, once in Rust and once in TypeScript for ckb-js-vm, and ran both through the same 58 scenarios in the real CKB-VM. They agree on every accept/reject decision. The cost is very different, and most of the difference is not where I expected. The script is the session lock from ckb-session-kit. It lets a browser-held session key spend a bounded amount (per-transaction limit, optional single recipient, optional rate limit, no splitting of session cells, no type scripts the key could use to freeze funds), while the owner can always sweep. It also has a token mode that bounds xUDT amounts the same way. It delegates signature checks to the standard locks, so...</description>
+  </item>
+  <item>
+    <title>iCKB is now fully on CCC: new DApp, SDK and Bot (1 posts)</title>
+    <link>https://talk.nervos.org/t/ickb-is-now-fully-on-ccc-new-dapp-sdk-and-bot/11092</link>
+    <guid>https://talk.nervos.org/t/ickb-is-now-fully-on-ccc-new-dapp-sdk-and-bot/11092#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 14:50:12 +0000</pubDate>
+    <description>Hey all Last month I promised good news on the iCKB side: here it is!! ickb.org now runs a brand new DApp, built together with a new SDK and a new bot, all on CCC They replace the Lumos versions that served iCKB since 2024: the old DApp, the old bot and their libraries @ickb/v1-core and @ickb/lumos-utils. Lumos is no longer actively maintained, so the move was overdue. Now it’s done!! In June I wrote about a setback with CCC UDT support. That setback is behind us: the SDK doesn’t need it at all, it reads iCKB cells with CCC core alone. Safety first The new code runs on the same contracts, so I went back to them too. They can’t be changed on chain, so I tried hard to make them accept...</description>
+  </item>
+  <item>
+    <title>iCKB Contracts Revisited: Old Code, New Audit (1 posts)</title>
+    <link>https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225</link>
+    <guid>https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 14:13:20 +0000</pubDate>
+    <description>Hey all~ @ArthurZhang, glad the scenario map helped! iCKB safety has always been my priority. With all the recent LLM incidents, I went back to the contracts. I was already pretty sure there was no issue (but you never know), so I threw at them every technique I could think of, fuzzing first and foremost!! Right now, the greater concern I have is over the continuous reporting of vulnerabilities and breaches: PHP, Node.js, Binance, even the Linux kernel itself, all in ten days of October. The time correlation is pretty telling: AI is what enables the speed of these developments, on both sides. So once again I put that same speed on our side: I just want to be sure we’re doing our best to...</description>
   </item>
   <item>
     <title>CKBdapps 2.0：为 CKB 生态重新搭建的项目目录 (2 posts)</title>
     <link>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082</link>
     <guid>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082#recent-2</guid>
-    <pubDate>Sun, 01 Nov 2026 13:41:15 +0000</pubDate>
-    <description>大家好，也许有一部分小伙伴已经注意到了，CKBdapps（https://ckbdapps.com ）刚刚完成了一次彻底的改版。接下来这篇帖子我想和大家分享这次我们改了什么、为什么这样改，以及大家可以怎样参与。 为什么要重写 CKBdapps 从 2023 年初开始构建，并于同年 6 月正式上线，它的定位是 CKB 生态的项目目录，为用户在 CKB 这块土地上导航。然而，随着生态的发展，我们发现最难的不是写页面、写功能，而是让 CKBdapps 上的项目信息一直保持正确。旧版网站在这件事上越来越吃力： 数据分散。 一个项目的信息分散在好几个 JSON 文件里，列表、配置和详情各管一部分。加一个项目要改好几处，改漏了也看不出来。 手写的内容太多。 亮点、FAQ、透明度清单都靠人工撰写，写的时候是对的，过几个月就过时了，也没人知道哪里过时。 看不出项目是否还活着。 有的项目早已停更，有的网站已经打不开，但页面看起来和活跃的项目一模一样。 新项目靠人发现。 生态里不断有新项目上线，它们没有被收录，往往只是因为没有人注意到。 所以这次改版的核心目标有两个： 让维护变轻。 凡是能从数据推导出来的信息，都不再手写；凡是能自动检查的事，都交给机器。 让建设者的成果被发现。 哪怕只是一个很小的原型想法，只要在 CKB 测试网上验证通过，都可以提交 PR 列进来。 设计 既然是从零重写，我们就先从网站的样子说起。 CKBdapps 的 logo...</description>
+    <pubDate>Mon, 02 Nov 2026 11:45:42 +0000</pubDate>
+    <description>这次改版帅多了。great work！ 等以后收录的项目越来越多，会不会考虑在现有的「相似项目」之外，加入一些更智能的 matching 建议？ 比如不只是推荐同类项目，还能根据技术栈、依赖关系和实际需求，发现哪些项目之间有潜在的集成机会、哪些组件可以复用，甚至哪些开发者值得互相认识、合作。 之前我们脑暴过一个 Project Matchmaker 的想法。感觉 CKBdapps 已经有了很好的结构化项目目录，未来或许可以成为这类生态协作推荐的自然入口。 ArthurZhang: 比如不只是推荐同类项目，还能根据技术栈、依赖关系和实际需求，发现哪些项目之间有潜在的集成机会、哪些组件可以复用，甚至哪些开发者值得互相认识、合作。 我觉得完全没有问题——只要项目的ReadMe里描述清楚相关内容，再把规则定下来，让AI跑一遍，就可以生成项目与项目之间的关联性关系。</description>
   </item>
   <item>
-    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
-    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
-    <pubDate>Sun, 01 Nov 2026 11:02:53 +0000</pubDate>
-    <description>周报 2026.11.1 修改NDSS reject的invisibook论文</description>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 10:49:29 +0000</pubDate>
+    <description>Link to vote: https://dao.ckb.community/thread/vot-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts-81389</description>
   </item>
   <item>
-    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
-    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
-    <pubDate>Sun, 01 Nov 2026 10:17:38 +0000</pubDate>
-    <description>M2 里程碑已完成。 目前存在一个问题，我尽力压缩wasm解码器的体积，但无法压缩到60KB以内。现在部署在测试网上的包含解码器的压缩包的大小大约是160KB。 主要更新： GitHub - Officeyutong/seedsong-base · GitHub 支持DOB/0, DOB/1解码。同时支持将Wasm模块拆出来单独加载以便从链上获取wasm程序并使用。 同样在seedsong-base仓库，更新了单元测试以将官方的DOB/0, DOB/1实现和本地wasm版进行对比。 在GitHub - Officeyutong/seedsong-ui · GitHub 中，支持了唱片铸造和批量铸造。并且支持连接钱包来发布铸造后的唱片。同时支持从链上获取wasm解码器。另外，这个仓库中也增加了一个rust小工具，用来向链上发布wasm解码器等必要文件，它会通过ckb-cli来签名交易。 其他： 目前版本的链上解码器的tx hash是 0x4d54a43844847bd053b8cedf6bf70deb5cdb5904a43378f6db7c4426887a22ba:0 铸造的50张唱片在：https://testnet.explorer.nervos.org/transaction/0xce6324338e00e554ccb1b87cc9601b069a1a4b14279bdf166565456d0760b2c7 。其DNA数据见gist:229bd38e8d29282f01496fb7ad2358ce · GitHub...</description>
+    <title>One Fiber LSP, 11,496 channels (2 posts)</title>
+    <link>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068</link>
+    <guid>https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068#recent-2</guid>
+    <pubDate>Mon, 02 Nov 2026 10:28:59 +0000</pubDate>
+    <description>Thank you very much for the thorough testing, detailed profiling, and PRs! We really appreciate the effort you’ve put into testing Fiber at this scale and tracking down specific bottlenecks. We’re working through your PRs and merging them, and some have already landed. Once we complete the LSP support and V2 message handling work, the Fiber team will also focus more on improving performance. Your findings and contributions are very helpful in identifying where we should focus those efforts. Working on fiber has been a worthy challenge, incredibly rewarding. Thanks you for your feedback and efforts.</description>
   </item>
   <item>
-    <title>Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going (1 posts)</title>
-    <link>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968</link>
-    <guid>https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968#recent-1</guid>
-    <pubDate>Sun, 01 Nov 2026 08:41:44 +0000</pubDate>
-    <description>The noir-ckb private tally setup ceremony is complete! Thank you to everyone who contributed: @menxui @alienate08 and @ceciliamulandi The key was sealed with the hash of CKB mainnet block 20,870,000, and every contribution was verified. You can find your contribution hash in the final verification log: github.com/wamimi/noir-ckb-verifier ceremony/private-tally-v2/verify-final.log main [INFO] snarkJS: Reading r1cs [INFO] snarkJS: Reading tauG1 [INFO] snarkJS: Reading tauG2 [INFO] snarkJS: Reading alphatauG1 [INFO] snarkJS: Reading betatauG1 [INFO] snarkJS: Circuit hash: 19184497 8787c91a 55987794 af7668e1 e1d7e6a8 25c9e749 7329c294 c2bec1d6 5e6aa957 1dc45589 c5b07469 982298f2 d46c2877...</description>
+    <title>Anything &amp; Everything CKB: Join Our Upcoming X Space (1 posts)</title>
+    <link>https://talk.nervos.org/t/anything-everything-ckb-join-our-upcoming-x-space/11091</link>
+    <guid>https://talk.nervos.org/t/anything-everything-ckb-join-our-upcoming-x-space/11091#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 08:10:16 +0000</pubDate>
+    <description>CKB Gateway_ Umojaverse 11254×1254 403 KB The CKB ecosystem is bigger than a ticker, and there’s a lot worth unpacking. On November 14, at 8:00 PM EAT, Umojaverse is hosting Anything &amp; Everything CKB, a one-hour X Space bringing together builders, developers, researchers, and ecosystem contributors for an open conversation about CKB. We’ll explore the technology, emerging innovations, ecosystem developments, real-world applications, challenges, and opportunities shaping CKB’s future. The goal is simple: go beyond the surface, exchange perspectives, spotlight what’s being built, and spark meaningful conversations across the ecosystem. Event Details Topic: Anything &amp; Everything CKB Date:...</description>
   </item>
   <item>
-    <title>Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079</link>
-    <guid>https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079#recent-1</guid>
-    <pubDate>Sat, 31 Oct 2026 23:49:28 +0000</pubDate>
-    <description>1. Project Overview Project name: TapFiber One-sentence summary: An open-source Fiber payment-intent kit that binds a merchant order to one exact invoice, accepts settlement once and produces a signed receipt; NFC and QR are the first physical delivery methods for the request. Project type: Core library + testnet FNN integration + reference terminal + reproducible failure report. Funding requested: US$900 paid in CKB Duration: 5 weeks TapFiber is not another checkout page and it is not an NFC hardware project. Its core is the boundary between a Fiber invoice and a fulfilled real-world order: Payment request → exact Fiber settlement → one terminal state → verifiable receipt NFC is the...</description>
+    <title>Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998</link>
+    <guid>https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 06:11:15 +0000</pubDate>
+    <description>Ticoworld: I’d appreciate the maintainers’ thoughts on this approach. Does this division of responsibility make sense for the current RGB++ architecture, and would a focused upstream PR be welcome? Thank you for your interest in RGB+±related infrastructure! I would agree that PRs are always a fairly welcome form of contribution. Feel free to share your code on GitHub!</description>
+  </item>
+  <item>
+    <title>Myelin Is in Production — Where Could It Take Us Next? (2 posts)</title>
+    <link>https://talk.nervos.org/t/myelin-is-in-production-where-could-it-take-us-next/11090</link>
+    <guid>https://talk.nervos.org/t/myelin-is-in-production-where-could-it-take-us-next/11090#recent-2</guid>
+    <pubDate>Mon, 02 Nov 2026 05:51:29 +0000</pubDate>
+    <description>For anyone new to the project, Myelin is an off-chain runtime I’m building around CKB’s Cell model. It handles application state changes and keeps a history that can be replayed and checked. A session might cover a match, a dungeon run or a stretch of activity in a persistent world. I started it to explore how applications could make use of CKB’s approach to state and verification without sending every interaction to the blockchain. Myelin is now running in production behind games on UTXOPlay. I’m rather pleased to finally be able to write that. The 26 October deployment succssfully separated the store from eight game services covering thirteen curated games. Each service now keeps its...</description>
+  </item>
+  <item>
+    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
+    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-2</guid>
+    <pubDate>Mon, 02 Nov 2026 05:41:15 +0000</pubDate>
+    <description>(post deleted by author) Thanks for the review, and especially for offering to open an RUSD channel to the testnet mint. That would be helpful for interoperability testing. 1. Hosted LSP: I will operate the hosted LSP as a grant deliverable, allowing users to open and manage Fiber channels without running their own FNN node. Users provide their own on-chain RUSD and required CKB capacity, while retaining the client signing role. Applicable mint, LSP and routing fees will be disclosed before approval. I’ll also test interoperability with Fiber’s hosted LSP when available. 2. Onboarding: Users connect a supported CKB wallet to the FiberNuts browser wallet, review and approve the RUSD...</description>
+  </item>
+  <item>
+    <title>CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276</link>
+    <guid>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276#recent-1</guid>
+    <pubDate>Mon, 02 Nov 2026 03:43:35 +0000</pubDate>
+    <description>突然有点好奇 @janx，CKBadger 为什么选了獾来命名? 有什么故事吗</description>
   </item>
 </channel>
 </rss>
