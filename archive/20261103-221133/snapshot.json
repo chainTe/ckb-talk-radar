@@ -1,0 +1,714 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-11-03T22:11:44.132758+00:00",
+  "since": "2026-11-02T22:11:33.194347+00:00",
+  "until": "2026-11-03T22:11:33.194347+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 11082,
+      "title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+      "slug": "ckbdapps-2-0-ckb",
+      "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082",
+      "created_at": "2026-11-01T12:35:35.722000+00:00",
+      "last_posted_at": "2026-11-03T17:01:32.846000+00:00",
+      "category_id": 70,
+      "tags": [
+        "Nervos-项目动态"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27120,
+          "post_number": 6,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "RetricSu",
+          "created_at": "2026-11-03T06:10:04.462000+00:00",
+          "updated_at": "2026-11-03T06:10:04.462000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/6",
+          "content_text": "提个想法，不一定靠谱：\n是否有可能在这个 repo 中提供某种极简模式类似 awesome list 一样的东西？目前独立的网站和UI很酷，但对一小部分人来说（比如我），其实更想要的是类似 GitHub - aljazceru/awesome-nostr: nostr.net - awesome-nostr is a collection of projects and resources built on nostr to help developers and users find new things · GitHub 这样简单的东西就可以，一目了然，也有它的好处。我们可以有很酷的独立网站，但是否也可以顺便提供这样简洁明了的 aswsome list，用户也很容易提个 PR 请求收录自己的应用？",
+          "content_html": "<p>提个想法，不一定靠谱：</p>\n<p>是否有可能在这个 repo 中提供某种极简模式类似 awesome list 一样的东西？目前独立的网站和UI很酷，但对一小部分人来说（比如我），其实更想要的是类似 <a href=\"https://github.com/aljazceru/awesome-nostr\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - aljazceru/awesome-nostr: nostr.net - awesome-nostr is a collection of projects and resources built on nostr to help developers and users find new things · GitHub</a> 这样简单的东西就可以，一目了然，也有它的好处。我们可以有很酷的独立网站，但是否也可以顺便提供这样简洁明了的 aswsome list，用户也很容易提个 PR 请求收录自己的应用？</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27131,
+          "post_number": 7,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "yixiu.ckbfans.bit",
+          "created_at": "2026-11-03T11:59:05.666000+00:00",
+          "updated_at": "2026-11-03T11:59:05.666000+00:00",
+          "reply_to_post_number": 6,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/7",
+          "content_text": "谢谢 Retric 你的反馈，我们评估一下，应该是可以实现的。",
+          "content_html": "<p>谢谢 Retric 你的反馈，我们评估一下，应该是可以实现的。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27139,
+          "post_number": 8,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "Ksa_1971",
+          "created_at": "2026-11-03T16:32:06.504000+00:00",
+          "updated_at": "2026-11-03T16:32:06.504000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/8",
+          "content_text": "Great work! The website looks fantastic. I just have one question: Is the partners list up to date, and are these partnerships still active today?",
+          "content_html": "<p>Great work! The website looks fantastic. I just have one question: Is the partners list up to date, and are these partnerships still active today?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27141,
+          "post_number": 9,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "yixiu.ckbfans.bit",
+          "created_at": "2026-11-03T16:48:50.966000+00:00",
+          "updated_at": "2026-11-03T16:48:50.966000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/9",
+          "content_text": "这些合作伙伴是3年前我们从多个公开的渠道收集的，这些渠道包括cmc、x、medium、以及旧版本的 Nervos 官方网站。\n另一方面，我们没有查到有公开的信息表达与其中的某些已经不再是合作伙伴关系，因此ckbdapps里不会擅自作主将他们从列表里删除。",
+          "content_html": "<p>这些合作伙伴是3年前我们从多个公开的渠道收集的，这些渠道包括cmc、x、medium、以及旧版本的 Nervos 官方网站。</p>\n<p>另一方面，我们没有查到有公开的信息表达与其中的某些已经不再是合作伙伴关系，因此ckbdapps里不会擅自作主将他们从列表里删除。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27146,
+          "post_number": 10,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "Ksa_1971",
+          "created_at": "2026-11-03T16:57:55.326000+00:00",
+          "updated_at": "2026-11-03T16:57:55.326000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/10",
+          "content_text": "Great work, and I truly appreciate your efforts!\nI have one suggestion: It would be helpful to contact the CKB Ecosystem Association (CKBA) to verify which partnerships are still active and which may have ended. Since the website has recently been updated, ensuring the accuracy of its information would make it more credible, valuable, and useful to the community.",
+          "content_html": "<p>Great work, and I truly appreciate your efforts!</p>\n<p>I have one suggestion: It would be helpful to contact the CKB Ecosystem Association (CKBA) to verify which partnerships are still active and which may have ended. Since the website has recently been updated, ensuring the accuracy of its information would make it more credible, valuable, and useful to the community.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27149,
+          "post_number": 11,
+          "topic_id": 11082,
+          "topic_title": "CKBdapps 2.0：为 CKB 生态重新搭建的项目目录",
+          "topic_slug": "ckbdapps-2-0-ckb",
+          "author": "yixiu.ckbfans.bit",
+          "created_at": "2026-11-03T17:01:32.846000+00:00",
+          "updated_at": "2026-11-03T17:01:32.846000+00:00",
+          "reply_to_post_number": 10,
+          "url": "https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082/11",
+          "content_text": "谢谢你，很好的建议，我觉得值得一试。",
+          "content_html": "<p>谢谢你，很好的建议，我觉得值得一试。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11051,
+      "title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
+      "slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
+      "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051",
+      "created_at": "2026-10-26T14:46:54.713000+00:00",
+      "last_posted_at": "2026-11-03T16:15:57.003000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27138,
+          "post_number": 6,
+          "topic_id": 11051,
+          "topic_title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
+          "topic_slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
+          "author": "Code3ks",
+          "created_at": "2026-11-03T16:15:57.003000+00:00",
+          "updated_at": "2026-11-03T16:15:57.003000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/6",
+          "content_text": "Thank you for the continued support, FiberNuts is now ready for voting, all members who have DAO deposit should kindly vote yes to help push the proposal forward.\nLINK TO VOTE: https://dao.ckb.community/thread/vot-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding-81525\nThank you",
+          "content_html": "<p>Thank you for the continued support, FiberNuts is now ready for voting, all members who have DAO deposit should kindly vote yes to help push the proposal forward.</p>\n<p>LINK TO VOTE: <a href=\"https://dao.ckb.community/thread/vot-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding-81525\" rel=\"noopener nofollow ugc\">https://dao.ckb.community/thread/vot-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding-81525</a></p>\n<p>Thank you <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10653,
+      "title": "Spark Program | NNCBN - Nervos Network Community Boot Nodes",
+      "slug": "spark-program-nncbn-nervos-network-community-boot-nodes",
+      "url": "https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653",
+      "created_at": "2026-08-23T11:57:53.677000+00:00",
+      "last_posted_at": "2026-11-03T15:48:29.729000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress",
+        "Node",
+        "Spark-Program",
+        "bootnode"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27137,
+          "post_number": 18,
+          "topic_id": 10653,
+          "topic_title": "Spark Program | NNCBN - Nervos Network Community Boot Nodes",
+          "topic_slug": "spark-program-nncbn-nervos-network-community-boot-nodes",
+          "author": "NNCBN",
+          "created_at": "2026-11-03T15:48:29.729000+00:00",
+          "updated_at": "2026-11-03T15:50:43.677000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/18",
+          "content_text": "2026 November 3, Sixth Weekly Report\nI’ve run into a problem. I still haven’t been able to set up the data connection. I was faced with an unexpectedly high one-time payment to establish the connection, which I hadn’t anticipated. I was asked to make a one-time payment of $430. A sales representative told me that if I were to get a fiber-optic connection, I could pay that amount in monthly installments. However, there is a waiting period—the length of which cannot be predicted at this time—before this connection is physically installed. I will find a solution, though it will, at least temporarily, result in lower bandwidth. Next, we will attempt to establish a connection that does not require this one-time payment and then monitor data usage to assess whether the system can operate under these conditions. The good news is that the network node is now already in place, exactly where it was intended to be during the initial operational phase of the first few months.",
+          "content_html": "<p>2026 November 3, Sixth Weekly Report</p>\n<p>I’ve run into a problem. I still haven’t been able to set up the data connection. I was faced with an unexpectedly high one-time payment to establish the connection, which I hadn’t anticipated. I was asked to make a one-time payment of $430. A sales representative told me that if I were to get a fiber-optic connection, I could pay that amount in monthly installments. However, there is a waiting period—the length of which cannot be predicted at this time—before this connection is physically installed. I will find a solution, though it will, at least temporarily, result in lower bandwidth. Next, we will attempt to establish a connection that does not require this one-time payment and then monitor data usage to assess whether the system can operate under these conditions. The good news is that the network node is now already in place, exactly where it was intended to be during the initial operational phase of the first few months.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11115,
+      "title": "Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M",
+      "slug": "same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m",
+      "url": "https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115",
+      "created_at": "2026-11-02T15:37:25.133000+00:00",
+      "last_posted_at": "2026-11-03T14:36:25.978000+00:00",
+      "category_id": 69,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27134,
+          "post_number": 2,
+          "topic_id": 11115,
+          "topic_title": "Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M",
+          "topic_slug": "same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m",
+          "author": "Dangbaty2004",
+          "created_at": "2026-11-03T13:28:12.694000+00:00",
+          "updated_at": "2026-11-03T13:28:12.694000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115/2",
+          "content_text": "Interesting benchmark, and the reproducible results are valuable. However, I think the main conclusion about startup overhead needs stronger experimental evidence.\nThe 14.3M-cycle early-rejection case does not necessarily isolate VM startup and bytecode loading. It may also include runtime initialization, argument parsing, bindings, and other execution costs. Consequently, subtracting this value from the accepted-spend cycles does not rigorously establish that application logic accounts for only 5% of the total, or that JavaScript logic is approximately 66× more expensive than Rust.\nSimilarly, attributing the additional 0.36M cycles entirely to 1.8 KB of extra bytecode is not justified without controlling for changes in initialization and executed instructions.\nI would suggest three additional experiments: (1) measure a minimal JS contract with no application logic, (2) vary bytecode size while keeping executed logic constant, and (3) compare equivalent execution stages in Rust and JavaScript.\nThe 58 matching scenarios provide useful evidence of functional agreement, but they do not establish general equivalence, particularly for a security-sensitive lock.\nThe roughly 1000× observed difference is compelling. My main concern is that the benchmark measures total execution costs, while the discussion presents an inferred decomposition of those costs as if it had been directly measured. Separating these two would make the conclusions substantially more convincing.",
+          "content_html": "<p>Interesting benchmark, and the reproducible results are valuable. However, I think the main conclusion about startup overhead needs stronger experimental evidence.</p>\n<p>The 14.3M-cycle early-rejection case does not necessarily isolate VM startup and bytecode loading. It may also include runtime initialization, argument parsing, bindings, and other execution costs. Consequently, subtracting this value from the accepted-spend cycles does not rigorously establish that application logic accounts for only 5% of the total, or that JavaScript logic is approximately 66× more expensive than Rust.</p>\n<p>Similarly, attributing the additional 0.36M cycles entirely to 1.8 KB of extra bytecode is not justified without controlling for changes in initialization and executed instructions.</p>\n<p>I would suggest three additional experiments: (1) measure a minimal JS contract with no application logic, (2) vary bytecode size while keeping executed logic constant, and (3) compare equivalent execution stages in Rust and JavaScript.</p>\n<p>The 58 matching scenarios provide useful evidence of functional agreement, but they do not establish general equivalence, particularly for a security-sensitive lock.</p>\n<p>The roughly 1000× observed difference is compelling. My main concern is that the benchmark measures total execution costs, while the discussion presents an inferred decomposition of those costs as if it had been directly measured. Separating these two would make the conclusions substantially more convincing.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27135,
+          "post_number": 3,
+          "topic_id": 11115,
+          "topic_title": "Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M",
+          "topic_slug": "same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m",
+          "author": "Dangbaty2004",
+          "created_at": "2026-11-03T13:32:35.788000+00:00",
+          "updated_at": "2026-11-03T13:32:35.788000+00:00",
+          "reply_to_post_number": 2,
+          "url": "https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115/3",
+          "content_text": "I want to raise a few additional issues beyond the startup-cost attribution I mentioned earlier.\nFirst, the benchmark does not establish how these results translate to actual transaction-level costs. You report cycles for the lock’s own script group, but then draw conclusions about the overhead of a typical spend. Those are different quantities. The comparison with a 1.6M-cycle secp256k1 lock is useful for scale, but it does not establish the total cost of a transaction using either session-lock implementation.\nIf startup overhead is really the dominant factor, why not benchmark complete transactions with 1, 2, 4, and 8 distinct script groups? That would directly test how the cost scales when multiple independent instances require verification. Without this experiment, the practical impact of the reported overhead remains unclear.\nSecond, I don’t think the benchmark adequately separates language-runtime overhead from implementation differences. The Rust and TypeScript versions may be functionally equivalent on the tested inputs, but that does not mean they perform equivalent operations internally. Differences in syscall frequency, data representations, memory allocation, argument decoding, and control flow could all influence the results.\nHave you compared syscall counts, execution paths, or instruction-level profiles between the two implementations? Without that information, attributing the gap primarily to the JavaScript VM is premature.\nThird, there is a problem with the generalization of your recommendations. You suggest that ckb-js-vm becomes a reasonable choice for larger scripts, yet no scaling experiment demonstrates that the relative overhead decreases as application complexity increases. A large script might perform significantly more interpreted operations, potentially preserving or even increasing the performance gap. A smaller proportion of fixed overhead does not automatically imply acceptable total execution cost.\nYou also state that startup cost cannot be reduced through better JavaScript. Where is the experiment supporting that? Reducing imports, bytecode size, initialization work, or dependencies could potentially change the measured overhead. That claim requires an optimization ablation, not just a comparison between two application versions.\nFourth, reproducibility should not be confused with experimental validity. Rebuilding both implementations in CI and obtaining identical cycles across debugger versions demonstrates repeatability. It does not show that the benchmark isolates the quantities it claims to measure. A systematically confounded benchmark can still be perfectly reproducible.\nSince ckb-cycle-tools reportedly identifies the costliest functions, it would be particularly useful to publish detailed execution profiles for the early-rejection and successful-spend paths. That could provide more concrete evidence for the proposed explanation than the current subtraction-based estimates.\nFinally, I would like to see the performance conclusions separated into three categories: directly measured results, estimates derived under explicit assumptions, and hypotheses requiring additional experiments.\nAt present, these categories are mixed together. The data convincingly show a large execution-cost difference for this particular contract, but they do not establish a general performance model for Rust versus ckb-js-vm.\nA 1000× result is not automatically a 1000× explanation. The magnitude of the difference makes rigorous attribution more important, not less. Before recommending architectural choices based on these numbers, the benchmark needs controlled profiling, workload scaling, and complete transaction-level measurements.",
+          "content_html": "<p>I want to raise a few additional issues beyond the startup-cost attribution I mentioned earlier.</p>\n<p><strong>First, the benchmark does not establish how these results translate to actual transaction-level costs.</strong> You report cycles for the lock’s own script group, but then draw conclusions about the overhead of a typical spend. Those are different quantities. The comparison with a 1.6M-cycle secp256k1 lock is useful for scale, but it does not establish the total cost of a transaction using either session-lock implementation.</p>\n<p>If startup overhead is really the dominant factor, why not benchmark complete transactions with 1, 2, 4, and 8 distinct script groups? That would directly test how the cost scales when multiple independent instances require verification. Without this experiment, the practical impact of the reported overhead remains unclear.</p>\n<p><strong>Second, I don’t think the benchmark adequately separates language-runtime overhead from implementation differences.</strong> The Rust and TypeScript versions may be functionally equivalent on the tested inputs, but that does not mean they perform equivalent operations internally. Differences in syscall frequency, data representations, memory allocation, argument decoding, and control flow could all influence the results.</p>\n<p>Have you compared syscall counts, execution paths, or instruction-level profiles between the two implementations? Without that information, attributing the gap primarily to the JavaScript VM is premature.</p>\n<p><strong>Third, there is a problem with the generalization of your recommendations.</strong> You suggest that ckb-js-vm becomes a reasonable choice for larger scripts, yet no scaling experiment demonstrates that the relative overhead decreases as application complexity increases. A large script might perform significantly more interpreted operations, potentially preserving or even increasing the performance gap. A smaller proportion of fixed overhead does not automatically imply acceptable total execution cost.</p>\n<p>You also state that startup cost cannot be reduced through better JavaScript. Where is the experiment supporting that? Reducing imports, bytecode size, initialization work, or dependencies could potentially change the measured overhead. That claim requires an optimization ablation, not just a comparison between two application versions.</p>\n<p><strong>Fourth, reproducibility should not be confused with experimental validity.</strong> Rebuilding both implementations in CI and obtaining identical cycles across debugger versions demonstrates repeatability. It does not show that the benchmark isolates the quantities it claims to measure. A systematically confounded benchmark can still be perfectly reproducible.</p>\n<p>Since ckb-cycle-tools reportedly identifies the costliest functions, it would be particularly useful to publish detailed execution profiles for the early-rejection and successful-spend paths. That could provide more concrete evidence for the proposed explanation than the current subtraction-based estimates.</p>\n<p>Finally, I would like to see the performance conclusions separated into three categories: directly measured results, estimates derived under explicit assumptions, and hypotheses requiring additional experiments.</p>\n<p>At present, these categories are mixed together. The data convincingly show a large execution-cost difference for this particular contract, but they do not establish a general performance model for Rust versus ckb-js-vm.</p>\n<p><strong>A 1000× result is not automatically a 1000× explanation.</strong> The magnitude of the difference makes rigorous attribution more important, not less. Before recommending architectural choices based on these numbers, the benchmark needs controlled profiling, workload scaling, and complete transaction-level measurements.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27136,
+          "post_number": 4,
+          "topic_id": 11115,
+          "topic_title": "Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M",
+          "topic_slug": "same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m",
+          "author": "tun_tunn03",
+          "created_at": "2026-11-03T14:36:25.978000+00:00",
+          "updated_at": "2026-11-03T14:36:25.978000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115/4",
+          "content_text": "thank you so much for your comments, they will help a lot!",
+          "content_html": "<p>thank you so much for your comments, they will help a lot!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11118,
+      "title": "An AMA with Drey, Clasp Creator and “Gone in 60ms” Hackathon Winner",
+      "slug": "an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner",
+      "url": "https://talk.nervos.org/t/an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner/11118",
+      "created_at": "2026-11-03T13:22:20.316000+00:00",
+      "last_posted_at": "2026-11-03T13:22:20.395000+00:00",
+      "category_id": 70,
+      "tags": [
+        "AMA"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27133,
+          "post_number": 1,
+          "topic_id": 11118,
+          "topic_title": "An AMA with Drey, Clasp Creator and “Gone in 60ms” Hackathon Winner",
+          "topic_slug": "an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner",
+          "author": "zz_tovarishch",
+          "created_at": "2026-11-03T13:22:20.395000+00:00",
+          "updated_at": "2026-11-03T13:22:20.395000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner/11118/1",
+          "content_text": "image1080×1320 175 KB\nCheers everyone!\nWe’re hosting another AMA! This time, we’ll be joined by Drey, a member of the Build on CKB Telegram group and the creator of Clasp, the overall winner of the “Gone in 60ms” Fiber Network Infrastructure Hackathon.\nDrey is a product and blockchain engineer who has been building in Web3 for three years. He joined the Nervos ecosystem around three months ago and has already made his mark with a project tackling wallet permissions and application access on Fiber.\nWhat is Clasp?\nClasp helps users connect applications and AI agents to Fiber wallets while retaining control over what they’re allowed to do.\nIt lets wallet owners:\nGrant specific permissions to an application or AI agent\nSet spending limits and session expiry times\nReview and reduce the permissions an application requests\nRevoke access at any time\nFor developers, Clasp provides an open-source SDK for integrating these controls into their applications.\nYou can explore the Clasp demo, browse the GitHub repository, or follow Drey on X.\nWhy did Clasp win?\nThe hackathon evaluated projects on completeness, technical reliability, reusability, user experience, practical value, and innovation.\nClasp stood out for addressing a concrete wallet-integration security gap and bringing permissions, payment sessions, revocation, attack prevention, and developer tooling together in a working, verifiable submission. It took first place in the Wallet & Payment UX Infrastructure category and was named the overall winner.\nWhat would you like to ask Drey?\nWhether you’re curious about what brought him to CKB, his experience building Clasp, the challenges of working with Fiber, wallet permissions for AI agents, or what he plans to build next, this is your chance to ask.\nDrop your questions in the comments below!\nReddit: https://www.reddit.com/r/NervosNetwork/comments/1xms28r/an_ama_with_drey_clasp_creator_and_gone_in_60ms/",
+          "content_html": "<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/6/656d0e521e5b1ed851901cb42f313663869adec5.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/656d0e521e5b1ed851901cb42f313663869adec5\" title=\"image\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/6/656d0e521e5b1ed851901cb42f313663869adec5_2_409x500.jpeg\" alt=\"image\" data-base62-sha1=\"etfSixmviyhCWAKBLFu6sGUqNvf\" width=\"409\" height=\"500\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/6/656d0e521e5b1ed851901cb42f313663869adec5_2_409x500.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/6/656d0e521e5b1ed851901cb42f313663869adec5_2_613x750.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/6/656d0e521e5b1ed851901cb42f313663869adec5_2_818x1000.jpeg 2x\" data-dominant-color=\"242424\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">image</span><span class=\"informations\">1080×1320 175 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>Cheers everyone!</p>\n<p>We’re hosting another AMA! This time, we’ll be joined by <strong>Drey</strong>, a member of the <strong>Build on CKB</strong> Telegram group and the creator of <strong>Clasp</strong>, the overall winner of the <a href=\"https://talk.nervos.org/t/gone-in-60ms-fiber-network-infrastructure-hackathon-results/10671\">“Gone in 60ms” Fiber Network Infrastructure Hackathon</a>.</p>\n<p>Drey is a product and blockchain engineer who has been building in Web3 for three years. He joined the Nervos ecosystem around three months ago and has already made his mark with a project tackling wallet permissions and application access on Fiber.</p>\n<h1><a name=\"p-27133-what-is-clasp-1\" class=\"anchor\" href=\"#p-27133-what-is-clasp-1\" aria-label=\"Heading link\"></a>What is Clasp?</h1>\n<p>Clasp helps users connect applications and AI agents to Fiber wallets while retaining control over what they’re allowed to do.</p>\n<p>It lets wallet owners:</p>\n<ul>\n<li>\n<p>Grant specific permissions to an application or AI agent</p>\n</li>\n<li>\n<p>Set spending limits and session expiry times</p>\n</li>\n<li>\n<p>Review and reduce the permissions an application requests</p>\n</li>\n<li>\n<p>Revoke access at any time</p>\n</li>\n</ul>\n<p>For developers, Clasp provides an open-source SDK for integrating these controls into their applications.</p>\n<p>You can explore the <a href=\"http://useclasp.xyz/\">Clasp demo</a>, browse the <a href=\"https://github.com/Enoch208/Clasp\">GitHub repository</a>, or follow <a href=\"https://x.com/dreyethh\">Drey on X</a>.</p>\n<h1><a name=\"p-27133-why-did-clasp-win-2\" class=\"anchor\" href=\"#p-27133-why-did-clasp-win-2\" aria-label=\"Heading link\"></a>Why did Clasp win?</h1>\n<p>The hackathon evaluated projects on completeness, technical reliability, reusability, user experience, practical value, and innovation.</p>\n<p>Clasp stood out for addressing a concrete wallet-integration security gap and bringing permissions, payment sessions, revocation, attack prevention, and developer tooling together in a working, verifiable submission. It took first place in the <strong>Wallet &amp; Payment UX Infrastructure</strong> category and was named the <strong>overall winner</strong>.</p>\n<h1><a name=\"p-27133-what-would-you-like-to-ask-drey-3\" class=\"anchor\" href=\"#p-27133-what-would-you-like-to-ask-drey-3\" aria-label=\"Heading link\"></a>What would you like to ask Drey?</h1>\n<p>Whether you’re curious about what brought him to CKB, his experience building Clasp, the challenges of working with Fiber, wallet permissions for AI agents, or what he plans to build next, this is your chance to ask.</p>\n<p><strong>Drop your questions in the comments below!</strong></p>\n<p>Reddit: <a href=\"https://www.reddit.com/r/NervosNetwork/comments/1xms28r/an_ama_with_drey_clasp_creator_and_gone_in_60ms/\">https://www.reddit.com/r/NervosNetwork/comments/1xms28r/an_ama_with_drey_clasp_creator_and_gone_in_60ms/</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10644,
+      "title": "Tranfr — Programmable Recovery for CKB",
+      "slug": "tranfr-programmable-recovery-for-ckb",
+      "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644",
+      "created_at": "2026-08-18T14:04:43.486000+00:00",
+      "last_posted_at": "2026-11-03T12:21:59.388000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27114,
+          "post_number": 24,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "Hanssen",
+          "created_at": "2026-11-03T01:39:13.946000+00:00",
+          "updated_at": "2026-11-03T01:39:13.946000+00:00",
+          "reply_to_post_number": 22,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/24",
+          "content_text": "I am particularly concerned about the flow of cell capacity. In your current design, the args field might contain a significant amount of cell deadline data, which increases the minimum capacity required for a cell. However, for transactions involving only UDTs, the recipient could potentially claim the entire capacity without any restrictions.\nI would suggest reconsidering this aspect of the design. Especially for scenarios where the operator intends to transfer only UDTs, without any plan to transfer CKB.",
+          "content_html": "<p>I am particularly concerned about the flow of cell capacity. In your current design, the <code>args</code> field might contain a significant amount of cell deadline data, which increases the minimum capacity required for a cell. However, for transactions involving only UDTs, the recipient could potentially claim the entire capacity without any restrictions.</p>\n<p>I would suggest reconsidering this aspect of the design. Especially for scenarios where the operator intends to transfer only UDTs, without any plan to transfer CKB.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27122,
+          "post_number": 25,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-11-03T09:52:59.040000+00:00",
+          "updated_at": "2026-11-03T09:52:59.040000+00:00",
+          "reply_to_post_number": 23,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/25",
+          "content_text": "Thank you, I appreciate it.",
+          "content_html": "<p>Thank you, I appreciate it. <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27123,
+          "post_number": 26,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-11-03T09:53:40.704000+00:00",
+          "updated_at": "2026-11-03T09:53:40.704000+00:00",
+          "reply_to_post_number": 24,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/26",
+          "content_text": "Good point on capacity. Right now the recipient takes the whole cell, so someone sending only UDTs would hand over the CKB deposit too. I see two fixes: (1) if the cell holds a UDT, the deposit returns to the owner when the recipient claims, like Cheque, and plain CKB cells let the recipient take it all; or (2) a switch in the cell chosen at creation. I can also make the cell info smaller to lower the deposit. Which do you prefer?",
+          "content_html": "<blockquote>\n<p>Good point on capacity. Right now the recipient takes the whole cell, so someone sending only UDTs would hand over the CKB deposit too. I see two fixes: (1) if the cell holds a UDT, the deposit returns to the owner when the recipient claims, like Cheque, and plain CKB cells let the recipient take it all; or (2) a switch in the cell chosen at creation. I can also make the cell info smaller to lower the deposit. Which do you prefer?</p>\n</blockquote>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27129,
+          "post_number": 27,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "Hanssen",
+          "created_at": "2026-11-03T11:25:55.100000+00:00",
+          "updated_at": "2026-11-03T11:25:55.100000+00:00",
+          "reply_to_post_number": 26,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/27",
+          "content_text": "In my view, both approaches are viable. The former may offer an advantage in terms of CKB occupation.",
+          "content_html": "<p>In my view, both approaches are viable. The former may offer an advantage in terms of CKB occupation.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27132,
+          "post_number": 28,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-11-03T12:21:59.388000+00:00",
+          "updated_at": "2026-11-03T12:21:59.388000+00:00",
+          "reply_to_post_number": 27,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/28",
+          "content_text": "Sounds good. I take “the former” to mean option 1 (branch on type script, no extra args), so I’ll proceed with that and also look at trimming the args. Please let me know if you meant otherwise.",
+          "content_html": "<p>Sounds good. I take “the former” to mean option 1 (branch on type script, no extra args), so I’ll proceed with that and also look at trimming the args. Please let me know if you meant otherwise.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11117,
+      "title": "Cellula Wallet: a tap, and it's paid!",
+      "slug": "cellula-wallet-a-tap-and-its-paid",
+      "url": "https://talk.nervos.org/t/cellula-wallet-a-tap-and-its-paid/11117",
+      "created_at": "2026-11-03T11:45:36.982000+00:00",
+      "last_posted_at": "2026-11-03T11:45:37.067000+00:00",
+      "category_id": 70,
+      "tags": [
+        "CKB",
+        "dapp",
+        "fiber",
+        "testnet"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27130,
+          "post_number": 1,
+          "topic_id": 11117,
+          "topic_title": "Cellula Wallet: a tap, and it's paid!",
+          "topic_slug": "cellula-wallet-a-tap-and-its-paid",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-03T11:45:37.067000+00:00",
+          "updated_at": "2026-11-03T11:45:37.067000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/cellula-wallet-a-tap-and-its-paid/11117/1",
+          "content_text": "01-hero1920×1080 190 KB\nTap. Paid. Two seconds. And it can only get better.\nThat is a 5 CKB tip leaving a Cellula Wallet and reaching a writer on the other side: 2.08 seconds from the tap to “Paid”. Nobody wrote down seed words to make that wallet. No node was running on that device. No block was waited for.\nCellula Wallet is a CKB wallet that lives in your passkey, with Fiber built in. Here is what it brings, and what it opens up.\nYour passkey is the wallet\nFace or fingerprint, and the wallet exists. No 12 words on paper, no password to forget.\nNew phone? Your passkey manager brings the same wallet back.\nLost every device? Guardians you choose bring it back, after a waiting period in which you can stop any recovery you did not start.\nUnderneath sits a smart account on CKB. Your passkey signs, and nothing that can spend sits on our servers.\nPayments in seconds, not blocks\nFiber lives inside the wallet. Top it up once, and every payment after that lands in two or three seconds.\nNo node to run. Cellula’s LSP, a Fiber node that serves many wallets, keeps your channel open. The channel keys stay on your device.\nCKB or tokens. Pay in either, with the same tap.\nMoney comes in too. Fiber nodes outside Cellula can pay your wallet.\n02-wallet1920×1080 204 KB\nPay a name, not an address\nSend to sofia.cell instead of a long ckb1 address. The wallet finds where it goes.\nOne button for shops\n03-shops1920×1080 175 KB\nCellula Checkout puts a “Pay with Fiber” button on any page with two lines of code. The buyer pays from their Fiber balance in one tap, without leaving the page, and the money lands on the shop’s own Fiber node. Scryve, a reading platform, already takes tips this way in its test app.\nAn allowance for your AI agent\n04-agents1920×1080 186 KB\nGive an AI agent its own Fiber balance and the limits you choose. It pays for what it uses on its own: an API answers “402 Payment Required”, the agent pays, the answer comes back. Claude Code paid 0.1 CKB this way in 1.7 seconds. Anything above your limit waits for one tap on your phone, signed by your wallet.\nOn npm: cellula-agent and cellula-mcp.\nPrivate when you want it\nPrivate payments. People who pay your name can send to a one-time address that the chain does not link to you. A view key shows what you received, without the power to spend it.\nHidden amounts. Send CKB inside a private pool, with the amounts hidden on chain.\nSavings behind a post-quantum key\nQuantum Vault keeps CKB and tokens behind a SPHINCS+ key, apart from what you spend every day. It opens with 24 words that only you keep, on any device.\nSee it before you sign\nCheck and sign shows, before every signature, what leaves the wallet, what comes in and the fee. Nothing is signed blind.\nAnd the rest, in one place\nCKB and tokens, RGB++ ones too. DOBs. Nervos DAO. A Bitcoin address with RGB++ leap. .cell names. Khie, to sign for a site open on another device. An Android app that checks the chain with its own light client and watches your Fiber balance while you are away. In English, Português, Español and 中文.\nWhat this opens up\nWriters paid per read, the second someone reads.\nShops paid in seconds, without cards and without waiting for blocks.\nApps that charge per use, a tenth of a CKB per call, paid by the agent that makes it.\nA wallet anyone can open, with the face or finger they already use to unlock their phone.\nBuilt to carry many\nOne Cellula LSP carried 11,496 wallet channels in our scale test (t/11068).\nThree fixes from this work are merged into Fiber itself (#1703, #1708, #1715).\nSites connect the wallet with cellula-sdk.\nNext: mainnet, come and be part of the journey!\nEverything above runs today on the CKB test network. To bring it to mainnet, with a public Fiber LSP that any wallet, shop or agent can use, we have put a proposal to the Community Fund DAO: Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP. Read it, and tell us there what you think.\nCellula Wallet. The wallet in your passkey.\ncellula.id · X @cellula_id",
+          "content_html": "<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/f/f7ed60faa2192a05beb4c4ce94705b78d83cce13.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/f7ed60faa2192a05beb4c4ce94705b78d83cce13\" title=\"01-hero\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f7ed60faa2192a05beb4c4ce94705b78d83cce13_2_690x388.jpeg\" alt=\"01-hero\" data-base62-sha1=\"zngw3imZoLaRzIOvSu0Zs3HgeDp\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f7ed60faa2192a05beb4c4ce94705b78d83cce13_2_690x388.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/f/f7ed60faa2192a05beb4c4ce94705b78d83cce13_2_1035x582.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/f/f7ed60faa2192a05beb4c4ce94705b78d83cce13_2_1380x776.jpeg 2x\" data-dominant-color=\"1D2115\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">01-hero</span><span class=\"informations\">1920×1080 190 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><strong>Tap. Paid. Two seconds. And it can only get better.</strong></p>\n<p>That is a 5 CKB tip leaving a Cellula Wallet and reaching a writer on the other side: 2.08 seconds from the tap to “Paid”. Nobody wrote down seed words to make that wallet. No node was running on that device. No block was waited for.</p>\n<p>Cellula Wallet is a CKB wallet that lives in your passkey, with Fiber built in. Here is what it brings, and what it opens up.</p>\n<h2><a name=\"p-27130-your-passkey-is-the-wallet-1\" class=\"anchor\" href=\"#p-27130-your-passkey-is-the-wallet-1\" aria-label=\"Heading link\"></a>Your passkey is the wallet</h2>\n<p>Face or fingerprint, and the wallet exists. No 12 words on paper, no password to forget.</p>\n<ul>\n<li><strong>New phone?</strong> Your passkey manager brings the same wallet back.</li>\n<li><strong>Lost every device?</strong> Guardians you choose bring it back, after a waiting period in which you can stop any recovery you did not start.</li>\n<li><strong>Underneath</strong> sits a smart account on CKB. Your passkey signs, and nothing that can spend sits on our servers.</li>\n</ul>\n<h2><a name=\"p-27130-payments-in-seconds-not-blocks-2\" class=\"anchor\" href=\"#p-27130-payments-in-seconds-not-blocks-2\" aria-label=\"Heading link\"></a>Payments in seconds, not blocks</h2>\n<p>Fiber lives inside the wallet. Top it up once, and every payment after that lands in two or three seconds.</p>\n<ul>\n<li><strong>No node to run.</strong> Cellula’s LSP, a Fiber node that serves many wallets, keeps your channel open. The channel keys stay on your device.</li>\n<li><strong>CKB or tokens.</strong> Pay in either, with the same tap.</li>\n<li><strong>Money comes in too.</strong> Fiber nodes outside Cellula can pay your wallet.</li>\n</ul>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/f/f77ca065a4548f07037439154084d395e344a01f.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/f77ca065a4548f07037439154084d395e344a01f\" title=\"02-wallet\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f77ca065a4548f07037439154084d395e344a01f_2_690x388.jpeg\" alt=\"02-wallet\" data-base62-sha1=\"zjmWFMRbSJbjUremHzqoUhhbcXd\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f77ca065a4548f07037439154084d395e344a01f_2_690x388.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/f/f77ca065a4548f07037439154084d395e344a01f_2_1035x582.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/f/f77ca065a4548f07037439154084d395e344a01f_2_1380x776.jpeg 2x\" data-dominant-color=\"1C1F15\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">02-wallet</span><span class=\"informations\">1920×1080 204 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-27130-pay-a-name-not-an-address-3\" class=\"anchor\" href=\"#p-27130-pay-a-name-not-an-address-3\" aria-label=\"Heading link\"></a>Pay a name, not an address</h2>\n<p>Send to <strong>sofia.cell</strong> instead of a long ckb1 address. The wallet finds where it goes.</p>\n<h2><a name=\"p-27130-one-button-for-shops-4\" class=\"anchor\" href=\"#p-27130-one-button-for-shops-4\" aria-label=\"Heading link\"></a>One button for shops</h2>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/f/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987\" title=\"03-shops\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987_2_690x388.jpeg\" alt=\"03-shops\" data-base62-sha1=\"z4lXYDOBXNcENjyCKFwJPWKY0v5\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/f/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987_2_690x388.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/f/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987_2_1035x582.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/f/f5ca1863e8ca5c461f292c2f2cc9a71d137ef987_2_1380x776.jpeg 2x\" data-dominant-color=\"585A51\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">03-shops</span><span class=\"informations\">1920×1080 175 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><strong>Cellula Checkout</strong> puts a “Pay with Fiber” button on any page with two lines of code. The buyer pays from their Fiber balance in one tap, without leaving the page, and the money lands on the shop’s own Fiber node. Scryve, a reading platform, already takes tips this way in its test app.</p>\n<h2><a name=\"p-27130-an-allowance-for-your-ai-agent-5\" class=\"anchor\" href=\"#p-27130-an-allowance-for-your-ai-agent-5\" aria-label=\"Heading link\"></a>An allowance for your AI agent</h2>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/f/fda3af5ca21e838ec4e9e23253870d2315ee6c34.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/fda3af5ca21e838ec4e9e23253870d2315ee6c34\" title=\"04-agents\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/f/fda3af5ca21e838ec4e9e23253870d2315ee6c34_2_690x388.jpeg\" alt=\"04-agents\" data-base62-sha1=\"AbNuB91bQiWonJqE1jxsCOwYgLO\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/f/fda3af5ca21e838ec4e9e23253870d2315ee6c34_2_690x388.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/f/fda3af5ca21e838ec4e9e23253870d2315ee6c34_2_1035x582.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/f/fda3af5ca21e838ec4e9e23253870d2315ee6c34_2_1380x776.jpeg 2x\" data-dominant-color=\"595B51\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">04-agents</span><span class=\"informations\">1920×1080 186 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>Give an AI agent its own Fiber balance and the limits you choose. It pays for what it uses on its own: an API answers “402 Payment Required”, the agent pays, the answer comes back. Claude Code paid 0.1 CKB this way in 1.7 seconds. Anything above your limit waits for one tap on your phone, signed by your wallet.</p>\n<p>On npm: <a href=\"https://www.npmjs.com/package/cellula-agent\" rel=\"noopener nofollow ugc\">cellula-agent</a> and <a href=\"https://www.npmjs.com/package/cellula-mcp\" rel=\"noopener nofollow ugc\">cellula-mcp</a>.</p>\n<h2><a name=\"p-27130-private-when-you-want-it-6\" class=\"anchor\" href=\"#p-27130-private-when-you-want-it-6\" aria-label=\"Heading link\"></a>Private when you want it</h2>\n<ul>\n<li><strong>Private payments.</strong> People who pay your name can send to a one-time address that the chain does not link to you. A view key shows what you received, without the power to spend it.</li>\n<li><strong>Hidden amounts.</strong> Send CKB inside a private pool, with the amounts hidden on chain.</li>\n</ul>\n<h2><a name=\"p-27130-savings-behind-a-post-quantum-key-7\" class=\"anchor\" href=\"#p-27130-savings-behind-a-post-quantum-key-7\" aria-label=\"Heading link\"></a>Savings behind a post-quantum key</h2>\n<p><strong>Quantum Vault</strong> keeps CKB and tokens behind a SPHINCS+ key, apart from what you spend every day. It opens with 24 words that only you keep, on any device.</p>\n<h2><a name=\"p-27130-see-it-before-you-sign-8\" class=\"anchor\" href=\"#p-27130-see-it-before-you-sign-8\" aria-label=\"Heading link\"></a>See it before you sign</h2>\n<p><strong>Check and sign</strong> shows, before every signature, what leaves the wallet, what comes in and the fee. Nothing is signed blind.</p>\n<h2><a name=\"p-27130-and-the-rest-in-one-place-9\" class=\"anchor\" href=\"#p-27130-and-the-rest-in-one-place-9\" aria-label=\"Heading link\"></a>And the rest, in one place</h2>\n<p>CKB and tokens, RGB++ ones too. DOBs. Nervos DAO. A Bitcoin address with RGB++ leap. .cell names. Khie, to sign for a site open on another device. An Android app that checks the chain with its own light client and watches your Fiber balance while you are away. In English, Português, Español and 中文.</p>\n<h2><a name=\"p-27130-what-this-opens-up-10\" class=\"anchor\" href=\"#p-27130-what-this-opens-up-10\" aria-label=\"Heading link\"></a>What this opens up</h2>\n<ul>\n<li><strong>Writers paid per read,</strong> the second someone reads.</li>\n<li><strong>Shops paid in seconds,</strong> without cards and without waiting for blocks.</li>\n<li><strong>Apps that charge per use,</strong> a tenth of a CKB per call, paid by the agent that makes it.</li>\n<li><strong>A wallet anyone can open,</strong> with the face or finger they already use to unlock their phone.</li>\n</ul>\n<h2><a name=\"p-27130-built-to-carry-many-11\" class=\"anchor\" href=\"#p-27130-built-to-carry-many-11\" aria-label=\"Heading link\"></a>Built to carry many</h2>\n<ul>\n<li>One Cellula LSP carried <strong>11,496 wallet channels</strong> in our scale test (<a href=\"https://talk.nervos.org/t/11068\">t/11068</a>).</li>\n<li><strong>Three fixes</strong> from this work are merged into Fiber itself (<a href=\"https://github.com/nervosnetwork/fiber/pull/1703\" rel=\"noopener nofollow ugc\">#1703</a>, <a href=\"https://github.com/nervosnetwork/fiber/pull/1708\" rel=\"noopener nofollow ugc\">#1708</a>, <a href=\"https://github.com/nervosnetwork/fiber/pull/1715\" rel=\"noopener nofollow ugc\">#1715</a>).</li>\n<li>Sites connect the wallet with <a href=\"https://www.npmjs.com/package/cellula-sdk\" rel=\"noopener nofollow ugc\">cellula-sdk</a>.</li>\n</ul>\n<h2><a name=\"p-27130-next-mainnet-come-and-be-part-of-the-journey-12\" class=\"anchor\" href=\"#p-27130-next-mainnet-come-and-be-part-of-the-journey-12\" aria-label=\"Heading link\"></a>Next: mainnet, come and be part of the journey!</h2>\n<p>Everything above runs today on the CKB test network. To bring it to mainnet, with a public Fiber LSP that any wallet, shop or agent can use, we have put a proposal to the Community Fund DAO: <a href=\"https://talk.nervos.org/t/11089\">Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a>. Read it, and tell us there what you think.</p>\n<p><strong>Cellula Wallet. The wallet in your passkey.</strong></p>\n<p><a href=\"https://cellula.id\" rel=\"noopener nofollow ugc\">cellula.id</a> · <a href=\"https://x.com/cellula_id\" rel=\"noopener nofollow ugc\">X @cellula_id</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10562,
+      "title": "Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike",
+      "slug": "spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike",
+      "url": "https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562",
+      "created_at": "2026-07-31T16:37:29.433000+00:00",
+      "last_posted_at": "2026-11-03T11:09:47.257000+00:00",
+      "category_id": 77,
+      "tags": [
+        "CKB-VM",
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27128,
+          "post_number": 31,
+          "topic_id": 10562,
+          "topic_title": "Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike",
+          "topic_slug": "spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-03T11:09:47.257000+00:00",
+          "updated_at": "2026-11-03T11:09:47.257000+00:00",
+          "reply_to_post_number": 30,
+          "url": "https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/31",
+          "content_text": "Hi @TinyuengKwan ,\n感谢你对委员会的认可，也很抱歉没有及时回复你！我相信社区中的朋友们都已看到你的努力，但结项评审仍在慎重进行中，还请你耐心等待。\n祝好，\n行天春彦",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/tinyuengkwan\">@TinyuengKwan</a> ,</p>\n<p>感谢你对委员会的认可，也很抱歉没有及时回复你！我相信社区中的朋友们都已看到你的努力，但结项评审仍在慎重进行中，还请你耐心等待。</p>\n<p>祝好，<br>\n行天春彦</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11089,
+      "title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+      "slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+      "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089",
+      "created_at": "2026-11-02T03:01:28.937000+00:00",
+      "last_posted_at": "2026-11-03T11:07:53.820000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "Grant",
+        "Nervos-项目动态",
+        "dapp",
+        "fiber",
+        "lang-en",
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27112,
+          "post_number": 6,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "janx",
+          "created_at": "2026-11-03T00:12:03.055000+00:00",
+          "updated_at": "2026-11-03T00:12:03.055000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/6",
+          "content_text": "Your past releases and activities show the significant effort poured into this mainnet-oriented product line. Best wishes!",
+          "content_html": "<p>Your past releases and activities show the significant effort poured into this mainnet-oriented product line. Best wishes!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27119,
+          "post_number": 7,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "Raja",
+          "created_at": "2026-11-03T04:56:05.206000+00:00",
+          "updated_at": "2026-11-03T04:56:05.206000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/7",
+          "content_text": "Honestly, this looks promising. Fiber needs more ways for regular users to actually use it, and having a wallet, merchant payments, and AI agent working together makes a lot of sense.\nWhat I like most is that the LSP isn’t limited to Cellula but can also help other projects build on Fiber. That’s a pretty important step for the ecosystem. Hope to see this go live on mainnet soon.",
+          "content_html": "<p>Honestly, this looks promising. Fiber needs more ways for regular users to actually use it, and having a wallet, merchant payments, and AI agent working together makes a lot of sense.</p>\n<p>What I like most is that the LSP isn’t limited to Cellula but can also help other projects build on Fiber. That’s a pretty important step for the ecosystem. Hope to see this go live on mainnet soon. <img src=\"https://talk.nervos.org/images/emoji/apple/handshake.png?v=15\" title=\":handshake:\" class=\"emoji\" alt=\":handshake:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27121,
+          "post_number": 8,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "Rustic_Art",
+          "created_at": "2026-11-03T09:38:25.653000+00:00",
+          "updated_at": "2026-11-03T09:38:25.653000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/8",
+          "content_text": "Compared to dumb projects launched in the past that just siphoned off DAO funds, this is an excellent initiative to finally bringing some hi tech innovation and get Nervous a notch above the rest. I am aware these guys have been working tirelessly on CKB for ages, high time they are given an opportunity. The project cost is peanuts for what it seeks to achieve! Let’s move forward.",
+          "content_html": "<p>Compared to dumb projects launched in the past that just siphoned off DAO funds, this is an excellent initiative to finally bringing some hi tech innovation and get Nervous a notch above the rest. I am aware these guys have been working tirelessly on CKB for ages, high time they are given an opportunity. The project cost is peanuts for what it seeks to achieve! Let’s move forward.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27124,
+          "post_number": 9,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-03T11:07:14.496000+00:00",
+          "updated_at": "2026-11-03T11:07:14.496000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/9",
+          "content_text": "@Yeti, thank you. We waited until everything in the post ran on testnet before asking, so it can be judged on what already works.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/yeti\">@Yeti</a>, thank you. We waited until everything in the post ran on testnet before asking, so it can be judged on what already works.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27125,
+          "post_number": 10,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-03T11:07:25.746000+00:00",
+          "updated_at": "2026-11-03T11:07:25.746000+00:00",
+          "reply_to_post_number": 5,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/10",
+          "content_text": "@Dbcryptocooper, thank you, much appreciated.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/dbcryptocooper\">@Dbcryptocooper</a>, thank you, much appreciated.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27126,
+          "post_number": 11,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-03T11:07:36.917000+00:00",
+          "updated_at": "2026-11-03T11:07:36.917000+00:00",
+          "reply_to_post_number": 6,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/11",
+          "content_text": "@janx, thank you, that means a lot.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/janx\">@janx</a>, thank you, that means a lot.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27127,
+          "post_number": 12,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-03T11:07:53.820000+00:00",
+          "updated_at": "2026-11-03T11:07:53.820000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/12",
+          "content_text": "@Raja, thank you. That is the part we care about most: the LSP’s interface will be documented, and time set aside to help other Fiber projects connect.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/raja\">@Raja</a>, thank you. That is the part we care about most: the LSP’s interface will be documented, and time set aside to help other Fiber projects connect.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10598,
+      "title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+      "slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+      "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598",
+      "created_at": "2026-08-10T00:31:01.205000+00:00",
+      "last_posted_at": "2026-11-03T04:24:17.634000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Pending"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27115,
+          "post_number": 18,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "Hanssen",
+          "created_at": "2026-11-03T01:40:24.208000+00:00",
+          "updated_at": "2026-11-03T01:40:24.208000+00:00",
+          "reply_to_post_number": 16,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/18",
+          "content_text": "Hi @Akane! Sorry for the late reply. The committee has reviewed your demonstration video. I have a few questions of my own about the project in its current form:\nWho are the intended users of Spark Verify? Specifically, who will be writing the configuration files, who will be reading them, and who will be running the checks?\nIs the project currently designed to support more complex or rigorous verification scenarios? If so, could you share some examples?\nRegarding the example shown in the video, I’m still trying to understand what the configuration file adds for a reviewer. If I understand it correctly, it specifies a single expected output, but the other transaction details do not appear to be checked. The configuration also does not seem easier to read than a visual representation of the transaction. In this example, I’m not yet clear on how using the configuration would reduce the workload for third-party reviewers.\nI would suggest making automated testing of CKB transactions a more central use case for the project. For instance, developers could create configuration files containing multiple test cases for their specific transaction flows, allowing CI pipelines to detect regressions introduced by future changes. It would be worth analysing which transaction properties existing contract integration tests already check, and exploring how this project could streamline those testing workflows.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/akane\">@Akane</a>! Sorry for the late reply. The committee has reviewed your demonstration video. I have a few questions of my own about the project in its current form:</p>\n<ol>\n<li>Who are the intended users of Spark Verify? Specifically, who will be writing the configuration files, who will be reading them, and who will be running the checks?</li>\n<li>Is the project currently designed to support more complex or rigorous verification scenarios? If so, could you share some examples?</li>\n</ol>\n<p>Regarding the example shown in the video, I’m still trying to understand what the configuration file adds for a reviewer. If I understand it correctly, it specifies a single expected output, but the other transaction details do not appear to be checked. The configuration also does not seem easier to read than a visual representation of the transaction. In this example, I’m not yet clear on how using the configuration would reduce the workload for third-party reviewers.</p>\n<p>I would suggest making automated testing of CKB transactions a more central use case for the project. For instance, developers could create configuration files containing multiple test cases for their specific transaction flows, allowing CI pipelines to detect regressions introduced by future changes. It would be worth analysing which transaction properties existing contract integration tests already check, and exploring how this project could streamline those testing workflows.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27118,
+          "post_number": 19,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "Akane",
+          "created_at": "2026-11-03T04:24:17.634000+00:00",
+          "updated_at": "2026-11-03T04:24:17.634000+00:00",
+          "reply_to_post_number": 18,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/19",
+          "content_text": "Hi @Hanssen, thanks for reviewing the demo.\n1. Purpose and users\nCKB Verify lets project authors express their claims as executable acceptance criteria that others can rerun. Authors write verify.toml and the transaction-building code; technical reviewers read the criteria and results, and both can run the checks.\n2. What the configuration adds\nThe video checks only the declared output condition, not every transaction detail. The config is not meant to replace transaction diagrams: its value is repeatable setup and execution, with expected-versus-observed reports instead of repeated manual RPC checks. Reviewers still need to judge whether the criteria are sufficient.\n3. More detailed examples\nThe current xUDT example mints tokens and transfers CKB in one transaction, checking output locks and types, token data, capacity, dependencies, balances and cycle limits. A separate rejection example requires a transaction with a tampered signature to fail with the expected script error code.\n4. Direction\nCI can reuse the checks, but I am not making automated testing of CKB transactions the project’s direction. The longer-term direction is to link acceptance evidence to the exact binary tested, and check whether recorded source and build inputs reproduce the deployed bytes. This is separate research beyond the current $1,000 scope; neither matching bytes nor passing declared checks constitutes a security audit.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/hanssen\">@Hanssen</a>, thanks for reviewing the demo.</p>\n<p><strong>1. Purpose and users</strong></p>\n<p>CKB Verify lets project authors express their claims as executable acceptance criteria that others can rerun. Authors write <code>verify.toml</code> and the transaction-building code; technical reviewers read the criteria and results, and both can run the checks.</p>\n<p><strong>2. What the configuration adds</strong></p>\n<p>The video checks only the declared output condition, not every transaction detail. The config is not meant to replace transaction diagrams: its value is repeatable setup and execution, with expected-versus-observed reports instead of repeated manual RPC checks. Reviewers still need to judge whether the criteria are sufficient.</p>\n<p><strong>3. More detailed examples</strong></p>\n<p>The current <a href=\"https://github.com/Akane-CN/spark-verify/blob/092dba19cefa24a1f787121823a74ec8cb69f9cf/showcases/vocabulary/verify.committed.toml\" rel=\"noopener nofollow ugc\">xUDT example</a> mints tokens and transfers CKB in one transaction, checking output locks and types, token data, capacity, dependencies, balances and cycle limits. A separate <a href=\"https://github.com/Akane-CN/spark-verify/blob/092dba19cefa24a1f787121823a74ec8cb69f9cf/showcases/secp-transfer/verify.rejected.toml\" rel=\"noopener nofollow ugc\">rejection example</a> requires a transaction with a tampered signature to fail with the expected script error code.</p>\n<p><strong>4. Direction</strong></p>\n<p>CI can reuse the checks, but I am not making automated testing of CKB transactions the project’s direction. The <a href=\"https://github.com/Akane-CN/spark-verify/issues/39\" rel=\"noopener nofollow ugc\">longer-term direction</a> is to link acceptance evidence to the exact binary tested, and check whether recorded source and build inputs reproduce the deployed bytes. This is separate research beyond the current $1,000 scope; neither matching bytes nor passing declared checks constitutes a security audit.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10276,
+      "title": "CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment",
+      "slug": "ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment",
+      "url": "https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276",
+      "created_at": "2026-05-15T02:36:09.074000+00:00",
+      "last_posted_at": "2026-11-03T01:44:43.556000+00:00",
+      "category_id": 70,
+      "tags": [
+        "app",
+        "lang-en"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27111,
+          "post_number": 13,
+          "topic_id": 10276,
+          "topic_title": "CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment",
+          "topic_slug": "ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment",
+          "author": "janx",
+          "created_at": "2026-11-03T00:02:44.561000+00:00",
+          "updated_at": "2026-11-03T00:20:50.793000+00:00",
+          "reply_to_post_number": 12,
+          "url": "https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/13",
+          "content_text": "They’re cute badass!",
+          "content_html": "<p>They’re <a href=\"https://www.youtube.com/watch?v=4r7wHMg5Yjg\">cute</a> <a href=\"https://www.youtube.com/watch?v=4r7wHMg5Yjg\">badass</a>!</p>\n<p><img src=\"https://talk.nervos.org/images/emoji/apple/badger.png?v=15\" title=\":badger:\" class=\"emoji only-emoji\" alt=\":badger:\" loading=\"lazy\" width=\"20\" height=\"20\"> <img src=\"https://talk.nervos.org/images/emoji/apple/badger.png?v=15\" title=\":badger:\" class=\"emoji only-emoji\" alt=\":badger:\" loading=\"lazy\" width=\"20\" height=\"20\"> <img src=\"https://talk.nervos.org/images/emoji/apple/badger.png?v=15\" title=\":badger:\" class=\"emoji only-emoji\" alt=\":badger:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27116,
+          "post_number": 14,
+          "topic_id": 10276,
+          "topic_title": "CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment",
+          "topic_slug": "ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment",
+          "author": "ArthurZhang",
+          "created_at": "2026-11-03T01:44:43.556000+00:00",
+          "updated_at": "2026-11-03T01:44:56.707000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276/14",
+          "content_text": "pretty cool animal. just realised there’s an actual badger emoji",
+          "content_html": "<p>pretty cool animal.  just realised there’s an actual badger emoji <img src=\"https://talk.nervos.org/images/emoji/apple/badger.png?v=15\" title=\":badger:\" class=\"emoji\" alt=\":badger:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
