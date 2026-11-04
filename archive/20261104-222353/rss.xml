@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Wed, 04 Nov 2026 19:32:53 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-05</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-04:daily-brief</guid>
+    <pubDate>Wed, 04 Nov 2026 22:23:58 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛较集中的讨论是“出售 Nervos DAO 提现/存款”的方案：发帖人想解决现有 DAO 存款提前取用 CKB 需等待的问题，同时不引入新脚本、不要求迁移到 iCKB [S01, S02]。讨论中进一步谈到了按每笔存款向多个买家询价、取消路径已测试，以及买家必须整笔接手存款等机制 [S03, S05]。论坛还出现了让任意钱包在 Metaforo 绑定 DAO 存款的长期提案说明，Corven 云原生 IDE 获得 Spark Program 520 美元资助，CKB Contract Flow 也更新了 5 张 CrowdCell 卡片 [S07, S08, S09]。整体看，今天论坛不算冷清，DAO 流动性、工具资助、社区管理和节点服务都有新动态 [S01, S08, S10, S15]。 ## 重点话题 DAO 提现出售方案继续细化：该方案希望让现有 DAO 存款人获得流动性，且不要求迁移到 iCKB [S01, S02]。讨论中，钱包会向多个买家询价并展示最优报价，发帖人还表示取消路径已测试 [S03]。买家需整笔接手存款、不能拆分，因此每个买家会设置可接受的最大存款额 [S05]。phroi 也参与讨论，提到自己曾认真考虑类似方案 [S04]。 Metaforo 绑定 DAO 存款被作为独立长期工作提出：发帖人说明这不要求在当前讨论阶段提案投票前或投票期间发生，无论该提案是否通过都会继续推进 [S07]。 Corven 云原生 IDE 获得 Spark Program Committee 批准的 520 美元资助，委员会认可其降低...</description>
+  </item>
+  <item>
+    <title>Selling a Nervos DAO withdrawal: CKB now, no new script (7 posts)</title>
+    <link>https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125</link>
+    <guid>https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125#recent-7</guid>
+    <pubDate>Wed, 04 Nov 2026 19:32:53 +0000</pubDate>
+    <description>A Nervos DAO deposit pays out at the end of the 180-epoch cycle in which its withdrawal request lands, with cycles counted from the deposit. Someone who needs their CKB early waits up to about 30 days. iCKB solves this for CKB deposited through iCKB, but an existing deposit cannot move into it. We want to build a third option in the Cellula wallet: sell the withdrawal. The depositor gets CKB now, and the buyer claims the deposit when it matures. Before we build it, we would like to hear where this breaks. How it works Withdrawal phase 1 turns a deposit cell into a withdrawing cell. The DAO script lets that withdrawing cell use any lock (dao.c v0.5.4 L332-L334). Since 2023, nodes require...</description>
+  </item>
+  <item>
+    <title>Let any wallet bind its Nervos DAO deposit on Metaforo (1 posts)</title>
+    <link>https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130</link>
+    <guid>https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 19:10:19 +0000</pubDate>
+    <description>A note first: we have a proposal in the discussion stage (t/11089). This post is separate and long term. Nothing here needs to happen before or during that vote, and it is fine to look at it afterwards. Whether our proposal passes or not, we will keep working on this. The problem To vote, Metaforo binds a Nervos DAO address through a Neuron-style message signature. In Metaforo’s web app the bind call sends only the message and the signature, and the server answers with a default single-key address. So only deposits under that lock can carry voting weight. What we found, read from the public Metaforo data and the explorer on 2026-11-04: Across the 176 voters of the 38 polls we read, all...</description>
+  </item>
+  <item>
+    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 18:58:10 +0000</pubDate>
+    <description>Hi @lestonEth (Jimleston), I’m glad to share that the Spark Program Committee has approved your Corven proposal for a grant of 520 USD. The committee recognizes the project’s value in lowering the barrier to entry for CKB and Fiber Network development. The revised budget and approval-dependent timeline are also noted, and the committee appreciates the effort to keep costs focused on the essential logistics for the two physical sessions. Here are the next steps: Funding &amp; Wallet Address Total grant: 520 USD (approx. 445,205 CKB; $520 * 100% @0.001168 = 445,205 CKB) First installment (20%, 104 USD, 89,041 CKB ): will be disbursed shortly Please provide a CKB wallet address Remaining 80%...</description>
+  </item>
+  <item>
+    <title>CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014</link>
+    <guid>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 10:45:19 +0000</pubDate>
+    <description>Updated the 5 CrowdCell cards to the redeployed contracts (Oct 31): Update CrowdCell cards to the 2026-10-31 testnet deployment by alesfer001 · Pull Request #9 · gpBlockchain/ckb-contract-flow-html · GitHub All five come out as binary verified now, a clean build reproduces the deployed hashes. Thanks for adding CrowdCell</description>
+  </item>
+  <item>
+    <title>How to appeal a ban from the Nervos Nation Telegram? (5 posts)</title>
+    <link>https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119</link>
+    <guid>https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119#recent-5</guid>
+    <pubDate>Wed, 04 Nov 2026 08:42:11 +0000</pubDate>
+    <description>Hi all, My account @PSBerlin can no longer access Telegram: View @NervosNation (“group is not accessible”), so I assume I was banned. I’ve been very active lately, so if that bothered someone, I apologize and I’m happy to tone it down. Could someone tell me who the group admins are, and whether there’s a way to ask for a review? Thanks, PSBerlin 也许 @neon.bit 可以给你提供帮助。 One of the bots banned based on falsely flagging your post. I have rescinded it Can you help me do thesame please?. Thanks !</description>
+  </item>
+  <item>
+    <title>A Revenue Layer for CKB Nodes (2 posts)</title>
+    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
+    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-2</guid>
+    <pubDate>Wed, 04 Nov 2026 02:58:53 +0000</pubDate>
+    <description>Update, November 2026: CKB Service Runner is live, and so is its new home When I started this thread, the question was: what if CKB nodes could become a revenue-generating opportunity? Six weeks later there is running code, a public monitor and the first nodes on mainnet. CSR Network Monitor What exists today CKB Service Runner (CSR) is an optional program that runs beside your CKB full node. It is not part of ckb and changes nothing in the protocol. A dashboard for your node. Sync state, tip, peers, CPU, RAM and disk on one page at 127.0.0.1, never exposed to the internet. Free, no CKB needed. Proof that it is a real full node. CSR proves the node’s identity with the node’s own P2P key....</description>
+  </item>
+</channel>
+</rss>

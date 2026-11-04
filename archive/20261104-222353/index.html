@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-04 06:23:53 CST - 2026-11-05 06:23:53 CST</span>
+          <span>生成时间 2026-11-05 06:23:58 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">6</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">17</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛较集中的讨论是“出售 Nervos DAO 提现/存款”的方案：发帖人想解决现有 DAO 存款提前取用 CKB 需等待的问题，同时不引入新脚本、不要求迁移到 iCKB <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。讨论中进一步谈到了按每笔存款向多个买家询价、取消路径已测试，以及买家必须整笔接手存款等机制 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>]</span>。论坛还出现了让任意钱包在 Metaforo 绑定 DAO 存款的长期提案说明，Corven 云原生 IDE 获得 Spark Program 520 美元资助，CKB Contract Flow 也更新了 5 张 CrowdCell 卡片 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>。整体看，今天论坛不算冷清，DAO 流动性、工具资助、社区管理和节点服务都有新动态 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s08">S08</a>, <a href="#source-s10">S10</a>, <a href="#source-s15">S15</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>DAO 提现出售方案继续细化：该方案希望让现有 DAO 存款人获得流动性，且不要求迁移到 iCKB <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。讨论中，钱包会向多个买家询价并展示最优报价，发帖人还表示取消路径已测试 <span class="citations">[<a href="#source-s03">S03</a>]</span>。买家需整笔接手存款、不能拆分，因此每个买家会设置可接受的最大存款额 <span class="citations">[<a href="#source-s05">S05</a>]</span>。phroi 也参与讨论，提到自己曾认真考虑类似方案 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>Metaforo 绑定 DAO 存款被作为独立长期工作提出：发帖人说明这不要求在当前讨论阶段提案投票前或投票期间发生，无论该提案是否通过都会继续推进 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>Corven 云原生 IDE 获得 Spark Program Committee 批准的 520 美元资助，委员会认可其降低 CKB 与 Fiber Network 开发门槛的价值 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li>CKB Contract Flow 将 5 张 CrowdCell 卡片更新到 2026 年 10 月 31 日重新部署的合约，五张卡片现在都通过二进制验证，干净构建可复现 <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li>社区运营方面，有用户反映无法访问 Nervos Nation Telegram 并询问申诉，随后 neon.bit 表示是机器人误判并已撤销封禁 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>]</span>。Code3ks 也请求同样的帮助 <span class="citations">[<a href="#source-s13">S13</a>]</span>。节点服务方面，CKB Service Runner 已上线，并有公开监控和首批主网节点 <span class="citations">[<a href="#source-s15">S15</a>]</span>；其 PR 被提交到 ckbdapps.com，介绍称后续计划让闲置节点算力带来收入 <span class="citations">[<a href="#source-s16">S16</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>DAO 提现出售方案的实际成交可行性值得观察：价格发现是逐笔存款向多个买家询价，且存款不能拆分、买家需整笔接手 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>]</span>。</li>
+<li>Metaforo 绑定 DAO 存款的后续推进值得观察：发帖人明确这是独立长期工作，不依赖当前讨论阶段提案的结果 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>CSR 的节点收入与生态目录接入值得观察：CSR 已有公开监控和主网节点，且被提交到 ckbdapps.com，后续计划让闲置节点算力带来收入 <span class="citations">[<a href="#source-s15">S15</a>, <a href="#source-s16">S16</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/1">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-04 21:16:37 CST</div><div>A Nervos DAO deposit pays out at the end of the 180-epoch cycle in which its withdrawal request lands, with cycles counted from the deposit. Someone who needs their CKB early waits up to about 30 days. iCKB solves this for CKB deposited through iCKB, but an existing deposit...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/2">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">Code3ks · 2026-11-04 21:31:42 CST</div><div>Interesting approach. I like that this creates an option for existing DAO depositors to access liquidity without introducing a new script or requiring them to migrate into iCKB. One question worth exploring is how the open-offer mechanism handles price discovery and buyer...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/3">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-04 21:49:41 CST</div><div>Thanks, that is the plan, and we tested the cancel path before answering. Price discovery. Quotes would be per deposit. The wallet would send the deposit’s out point to several buyers, each would answer with a price, and the wallet would show the best one next to the value at...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/4">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">phroi · 2026-11-04 22:19:15 CST</div><div>Great idea @T_Silva, saw this by chance, feel free to tag me next time! Once iCKB was rejected as mean for voting in both Community DAO and Treasury, I very seriously considered developing something similar. My idea started from that until I realized that users can buy/sell...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/5">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-04 22:43:41 CST</div><div>Thanks @phroi, Agreed on both. A sold claim is not composable, and a buyer has to take the whole deposit, since deposits cannot be split. That is why each buyer sets the largest deposit it will take, and why we called it a small feature. On buying and selling deposits without...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/6">Selling a Nervos DAO withdrawal: CKB now, no new script</a></div><div class="source-meta">phroi · 2026-11-05 03:19:22 CST</div><div>LusoCryptoLabs: That route also matters for voting, it lets a deposit’s weight change hands without a withdrawal Came to mind a couple times back then, completely forgot until this thread, way too busy with everything else!! By the way, there are even easier way to get liquid...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130/1">Let any wallet bind its Nervos DAO deposit on Metaforo</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-05 03:10:19 CST</div><div>A note first: we have a proposal in the discussion stage (t/11089). This post is separate and long term. Nothing here needs to happen before or during that vote, and it is fine to look at it afterwards. Whether our proposal passes or not, we will keep working on this. The...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/11">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">xingtianchunyan · 2026-11-05 02:58:10 CST</div><div>Hi @lestonEth (Jimleston), I’m glad to share that the Spark Program Committee has approved your Corven proposal for a grant of 520 USD. The committee recognizes the project’s value in lowering the barrier to entry for CKB and Fiber Network development. The revised budget and...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/5">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-04 18:45:19 CST</div><div>Updated the 5 CrowdCell cards to the redeployed contracts (Oct 31): Update CrowdCell cards to the 2026-10-31 testnet deployment by alesfer001 · Pull Request #9 · gpBlockchain/ckb-contract-flow-html · GitHub All five come out as binary verified now, a clean build reproduces the...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/1">How to appeal a ban from the Nervos Nation Telegram?</a></div><div class="source-meta">psawyerberlin · 2026-11-04 15:32:47 CST</div><div>Hi all, My account @PSBerlin can no longer access Telegram: View @NervosNation (“group is not accessible”), so I assume I was banned. I’ve been very active lately, so if that bothered someone, I apologize and I’m happy to tone it down. Could someone tell me who the group...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/2">How to appeal a ban from the Nervos Nation Telegram?</a></div><div class="source-meta">yixiu.ckbfans.bit · 2026-11-04 16:26:33 CST</div><div>也许 @neon.bit 可以给你提供帮助。</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/3">How to appeal a ban from the Nervos Nation Telegram?</a></div><div class="source-meta">neon.bit · 2026-11-04 16:27:33 CST</div><div>One of the bots banned based on falsely flagging your post. I have rescinded it</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/4">How to appeal a ban from the Nervos Nation Telegram?</a></div><div class="source-meta">Code3ks · 2026-11-04 16:32:41 CST</div><div>Can you help me do thesame please?.</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/5">How to appeal a ban from the Nervos Nation Telegram?</a></div><div class="source-meta">psawyerberlin · 2026-11-04 16:42:11 CST</div><div>Thanks !</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/30">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-04 06:43:03 CST</div><div>Update, November 2026: CKB Service Runner is live, and so is its new home When I started this thread, the question was: what if CKB nodes could become a revenue-generating opportunity? Six weeks later there is running code, a public monitor and the first nodes on mainnet. CSR...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/31">A Revenue Layer for CKB Nodes</a></div><div class="source-meta">yixiu.ckbfans.bit · 2026-11-04 10:58:53 CST</div><div>感谢 @psawyerberlin 提交 CKB Service Runner（CSR）的 PR 到 ckbdapps.com ！ 这正是我们希望 CKBdapps 成长的方式：建设者用一个小文件，把自己的项目放进目录。 CSR 让节点运营者能清楚看到节点的运行情况，后续还计划让闲置的节点算力带来收入，这对整个网络都是实实在在的贡献。谢谢你的建设和分享，也欢迎更多建设者把项目插进来：Add a project · CKBdapps</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>11</strong></li><li><span>其他</span><strong>4</strong></li><li><span>生态进展</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@LusoCryptoLabs</span><strong>5</strong></li><li><span>@psawyerberlin</span><strong>3</strong></li><li><span>@phroi</span><strong>2</strong></li><li><span>@Code3ks</span><strong>2</strong></li><li><span>@yixiu.ckbfans.bit</span><strong>2</strong></li><li><span>@xingtianchunyan</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>42</span></li><li>buyer<span>34</span></li><li>deposit<span>33</span></li><li>lock<span>30</span></li><li>can<span>22</span></li><li>wallet<span>21</span></li><li>one<span>17</span></li><li>deposits<span>16</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125">Selling a Nervos DAO withdrawal: CKB now, no new script</a></h3><span class="count-pill">7 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 03:32:53 CST</span><span>Code3ks, LusoCryptoLabs, phroi</span></div><p class="excerpt">A Nervos DAO deposit pays out at the end of the 180-epoch cycle in which its withdrawal request lands, with cycles counted from the deposit. Someone who needs their CKB early waits up to about 30 days. iCKB solves this for CKB deposited through iCKB, but an...</p><div class="tag-row"><span>CKB</span><span>lang-en</span><span>lang-zh</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119">How to appeal a ban from the Nervos Nation Telegram?</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-11-04 16:42:11 CST</span><span>Code3ks, neon.bit, psawyerberlin, yixiu.ckbfans.bit</span></div><p class="excerpt">Hi all, My account @PSBerlin can no longer access Telegram: View @NervosNation (“group is not accessible”), so I assume I was banned. I’ve been very active lately, so if that bothered someone, I apologize and I’m happy to tone it down. Could someone tell me...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734">A Revenue Layer for CKB Nodes</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-04 10:58:53 CST</span><span>psawyerberlin, yixiu.ckbfans.bit</span></div><p class="excerpt">Update, November 2026: CKB Service Runner is live, and so is its new home When I started this thread, the question was: what if CKB nodes could become a revenue-generating opportunity? Six weeks later there is running code, a public monitor and the first...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130">Let any wallet bind its Nervos DAO deposit on Metaforo</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 03:10:19 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">A note first: we have a proposal in the discussion stage (t/11089). This post is separate and long term. Nothing here needs to happen before or during that vote, and it is fine to look at it afterwards. Whether our proposal passes or not, we will keep...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 02:58:10 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @lestonEth (Jimleston), I’m glad to share that the Spark Program Committee has approved your Corven proposal for a grant of 520 USD. The committee recognizes the project’s value in lowering the barrier to entry for CKB and Fiber Network development. The...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-04 18:45:19 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Updated the 5 CrowdCell cards to the redeployed contracts (Oct 31): Update CrowdCell cards to the 2026-10-31 testnet deployment by alesfer001 · Pull Request #9 · gpBlockchain/ckb-contract-flow-html · GitHub All five come out as binary verified now, a clean...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-05 03:32:53 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/7">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @LusoCryptoLabs</strong><p>Thanks @phroi, and for pointing xjd and chenyukang at the note. Agreed: no lock rule stops a custodian, or a market off chain, from renting votes. Deposit-only removes the cheapest route, the one that needs no trust:...</p></article>
+<article class="timeline-row"><time>2026-11-05 03:19:22 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/6">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @phroi</strong><p>LusoCryptoLabs: That route also matters for voting, it lets a deposit’s weight change hands without a withdrawal Came to mind a couple times back then, completely forgot until this thread, way too busy with everything...</p></article>
+<article class="timeline-row"><time>2026-11-05 03:10:19 CST</time><strong><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130/1">Let any wallet bind its Nervos DAO deposit on Metaforo</a> · @LusoCryptoLabs</strong><p>A note first: we have a proposal in the discussion stage (t/11089). This post is separate and long term. Nothing here needs to happen before or during that vote, and it is fine to look at it afterwards. Whether our...</p></article>
+<article class="timeline-row"><time>2026-11-05 02:58:10 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/11">Spark Program Proposal: Corven cloud-native IDE</a> · @xingtianchunyan</strong><p>Hi @lestonEth (Jimleston), I’m glad to share that the Spark Program Committee has approved your Corven proposal for a grant of 520 USD. The committee recognizes the project’s value in lowering the barrier to entry for...</p></article>
+<article class="timeline-row"><time>2026-11-04 22:43:41 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/5">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @LusoCryptoLabs</strong><p>Thanks @phroi, Agreed on both. A sold claim is not composable, and a buyer has to take the whole deposit, since deposits cannot be split. That is why each buyer sets the largest deposit it will take, and why we called...</p></article>
+<article class="timeline-row"><time>2026-11-04 22:19:15 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/4">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @phroi</strong><p>Great idea @T_Silva, saw this by chance, feel free to tag me next time! Once iCKB was rejected as mean for voting in both Community DAO and Treasury, I very seriously considered developing something similar. My idea...</p></article>
+<article class="timeline-row"><time>2026-11-04 21:49:41 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/3">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @LusoCryptoLabs</strong><p>Thanks, that is the plan, and we tested the cancel path before answering. Price discovery. Quotes would be per deposit. The wallet would send the deposit’s out point to several buyers, each would answer with a price,...</p></article>
+<article class="timeline-row"><time>2026-11-04 21:31:42 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/2">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @Code3ks</strong><p>Interesting approach. I like that this creates an option for existing DAO depositors to access liquidity without introducing a new script or requiring them to migrate into iCKB. One question worth exploring is how the...</p></article>
+<article class="timeline-row"><time>2026-11-04 21:16:37 CST</time><strong><a href="https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125/1">Selling a Nervos DAO withdrawal: CKB now, no new script</a> · @LusoCryptoLabs</strong><p>A Nervos DAO deposit pays out at the end of the 180-epoch cycle in which its withdrawal request lands, with cycles counted from the deposit. Someone who needs their CKB early waits up to about 30 days. iCKB solves...</p></article>
+<article class="timeline-row"><time>2026-11-04 18:45:19 CST</time><strong><a href="https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014/5">CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts</a> · @Ayoub_Lesfer</strong><p>Updated the 5 CrowdCell cards to the redeployed contracts (Oct 31): Update CrowdCell cards to the 2026-10-31 testnet deployment by alesfer001 · Pull Request #9 · gpBlockchain/ckb-contract-flow-html · GitHub All five...</p></article>
+<article class="timeline-row"><time>2026-11-04 16:42:11 CST</time><strong><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/5">How to appeal a ban from the Nervos Nation Telegram?</a> · @psawyerberlin</strong><p>Thanks !</p></article>
+<article class="timeline-row"><time>2026-11-04 16:32:41 CST</time><strong><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/4">How to appeal a ban from the Nervos Nation Telegram?</a> · @Code3ks</strong><p>Can you help me do thesame please?.</p></article>
+<article class="timeline-row"><time>2026-11-04 16:27:33 CST</time><strong><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/3">How to appeal a ban from the Nervos Nation Telegram?</a> · @neon.bit</strong><p>One of the bots banned based on falsely flagging your post. I have rescinded it</p></article>
+<article class="timeline-row"><time>2026-11-04 16:26:33 CST</time><strong><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/2">How to appeal a ban from the Nervos Nation Telegram?</a> · @yixiu.ckbfans.bit</strong><p>也许 @neon.bit 可以给你提供帮助。</p></article>
+<article class="timeline-row"><time>2026-11-04 15:32:47 CST</time><strong><a href="https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119/1">How to appeal a ban from the Nervos Nation Telegram?</a> · @psawyerberlin</strong><p>Hi all, My account @PSBerlin can no longer access Telegram: View @NervosNation (“group is not accessible”), so I assume I was banned. I’ve been very active lately, so if that bothered someone, I apologize and I’m...</p></article>
+<article class="timeline-row"><time>2026-11-04 10:58:53 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/31">A Revenue Layer for CKB Nodes</a> · @yixiu.ckbfans.bit</strong><p>感谢 @psawyerberlin 提交 CKB Service Runner（CSR）的 PR 到 ckbdapps.com ！ 这正是我们希望 CKBdapps 成长的方式：建设者用一个小文件，把自己的项目放进目录。 CSR 让节点运营者能清楚看到节点的运行情况，后续还计划让闲置的节点算力带来收入，这对整个网络都是实实在在的贡献。谢谢你的建设和分享，也欢迎更多建设者把项目插进来：Add a project · CKBdapps</p></article>
+<article class="timeline-row"><time>2026-11-04 06:43:03 CST</time><strong><a href="https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/30">A Revenue Layer for CKB Nodes</a> · @psawyerberlin</strong><p>Update, November 2026: CKB Service Runner is live, and so is its new home When I started this thread, the question was: what if CKB nodes could become a revenue-generating opportunity? Six weeks later there is running...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

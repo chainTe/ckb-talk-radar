@@ -5,91 +5,56 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Tue, 03 Nov 2026 17:01:32 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 04 Nov 2026 19:32:53 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-11-04</title>
+    <title>CKB Talk Daily Brief - 2026-11-05</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-11-03:daily-brief</guid>
-    <pubDate>Tue, 03 Nov 2026 22:11:44 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛的主要动态集中在 CKBdapps 2.0 的目录改进和合作伙伴列表准确性，作者对“极简 awesome list 模式”和“联系 CKBA 核实”两项建议都作出正面回应[S01, S02, S03, S04, S05, S06]。FiberNuts 提案进入投票阶段，发起人号召有 DAO 存款的成员投赞成票[S07]。Cellula Wallet 与 Cellula on Fiber 继续获得关注，后者团队强调相关功能先在测试网跑通后再申请[S18, S21, S23]。技术侧，CKB-VM 基准、Tranfr 容量设计和 Spark Verify 评审都有新跟帖[S09, S10, S13, S15, S17, S26, S27]。 ## 重点话题 CKBdapps 2.0 的反馈从“能不能提供类似 awesome list 的极简模式”开始，yixiu 回复评估后应该可以实现[S01, S02]；随后 Ksa 追问合作伙伴列表是否仍有效，yixiu 解释列表来自三年前 CMC、X、Medium 和旧版官网等公开渠道，因未查到公开终止信息而不擅自删除，Ksa 建议联系 CKBA 核实，yixiu 表示值得一试[S03, S04, S05, S06]。 FiberNuts 提案已进入投票阶段，Code3ks 在帖中请有 DAO 存款的成员投 yes 以推动提案[S07]。 Tranfr 讨论聚焦 cell 容量与 UDT 存款流向：Hanssen 担心 args 中的 deadline 数据抬高最小容量、仅 UDT 交易会把 CKB...</description>
+    <guid>tag:ckb-talk-radar,2026-11-04:daily-brief</guid>
+    <pubDate>Wed, 04 Nov 2026 22:23:58 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛较集中的讨论是“出售 Nervos DAO 提现/存款”的方案：发帖人想解决现有 DAO 存款提前取用 CKB 需等待的问题，同时不引入新脚本、不要求迁移到 iCKB [S01, S02]。讨论中进一步谈到了按每笔存款向多个买家询价、取消路径已测试，以及买家必须整笔接手存款等机制 [S03, S05]。论坛还出现了让任意钱包在 Metaforo 绑定 DAO 存款的长期提案说明，Corven 云原生 IDE 获得 Spark Program 520 美元资助，CKB Contract Flow 也更新了 5 张 CrowdCell 卡片 [S07, S08, S09]。整体看，今天论坛不算冷清，DAO 流动性、工具资助、社区管理和节点服务都有新动态 [S01, S08, S10, S15]。 ## 重点话题 DAO 提现出售方案继续细化：该方案希望让现有 DAO 存款人获得流动性，且不要求迁移到 iCKB [S01, S02]。讨论中，钱包会向多个买家询价并展示最优报价，发帖人还表示取消路径已测试 [S03]。买家需整笔接手存款、不能拆分，因此每个买家会设置可接受的最大存款额 [S05]。phroi 也参与讨论，提到自己曾认真考虑类似方案 [S04]。 Metaforo 绑定 DAO 存款被作为独立长期工作提出：发帖人说明这不要求在当前讨论阶段提案投票前或投票期间发生，无论该提案是否通过都会继续推进 [S07]。 Corven 云原生 IDE 获得 Spark Program Committee 批准的 520 美元资助，委员会认可其降低...</description>
   </item>
   <item>
-    <title>CKBdapps 2.0：为 CKB 生态重新搭建的项目目录 (6 posts)</title>
-    <link>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082</link>
-    <guid>https://talk.nervos.org/t/ckbdapps-2-0-ckb/11082#recent-6</guid>
-    <pubDate>Tue, 03 Nov 2026 17:01:32 +0000</pubDate>
-    <description>提个想法，不一定靠谱： 是否有可能在这个 repo 中提供某种极简模式类似 awesome list 一样的东西？目前独立的网站和UI很酷，但对一小部分人来说（比如我），其实更想要的是类似 GitHub - aljazceru/awesome-nostr: nostr.net - awesome-nostr is a collection of projects and resources built on nostr to help developers and users find new things · GitHub 这样简单的东西就可以，一目了然，也有它的好处。我们可以有很酷的独立网站，但是否也可以顺便提供这样简洁明了的 aswsome list，用户也很容易提个 PR 请求收录自己的应用？ 谢谢 Retric 你的反馈，我们评估一下，应该是可以实现的。 Great work! The website looks fantastic. I just have one question: Is the partners list up to date, and are these partnerships still active today? 这些合作伙伴是3年前我们从多个公开的渠道收集的，这些渠道包括cmc、x、medium、以及旧版本的 Nervos 官方网站。 另一方面，我们没有查到有公开的信息表达与其中的某些已经不再是合作伙伴关系，因此ckbdapps里不会擅自作主将他们从列表里删除。 Great work, and I truly appreciate...</description>
+    <title>Selling a Nervos DAO withdrawal: CKB now, no new script (7 posts)</title>
+    <link>https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125</link>
+    <guid>https://talk.nervos.org/t/selling-a-nervos-dao-withdrawal-ckb-now-no-new-script/11125#recent-7</guid>
+    <pubDate>Wed, 04 Nov 2026 19:32:53 +0000</pubDate>
+    <description>A Nervos DAO deposit pays out at the end of the 180-epoch cycle in which its withdrawal request lands, with cycles counted from the deposit. Someone who needs their CKB early waits up to about 30 days. iCKB solves this for CKB deposited through iCKB, but an existing deposit cannot move into it. We want to build a third option in the Cellula wallet: sell the withdrawal. The depositor gets CKB now, and the buyer claims the deposit when it matures. Before we build it, we would like to hear where this breaks. How it works Withdrawal phase 1 turns a deposit cell into a withdrawing cell. The DAO script lets that withdrawing cell use any lock (dao.c v0.5.4 L332-L334). Since 2023, nodes require...</description>
   </item>
   <item>
-    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
-    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-1</guid>
-    <pubDate>Tue, 03 Nov 2026 16:15:57 +0000</pubDate>
-    <description>Thank you for the continued support, FiberNuts is now ready for voting, all members who have DAO deposit should kindly vote yes to help push the proposal forward. LINK TO VOTE: https://dao.ckb.community/thread/vot-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding-81525 Thank you</description>
+    <title>Let any wallet bind its Nervos DAO deposit on Metaforo (1 posts)</title>
+    <link>https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130</link>
+    <guid>https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 19:10:19 +0000</pubDate>
+    <description>A note first: we have a proposal in the discussion stage (t/11089). This post is separate and long term. Nothing here needs to happen before or during that vote, and it is fine to look at it afterwards. Whether our proposal passes or not, we will keep working on this. The problem To vote, Metaforo binds a Nervos DAO address through a Neuron-style message signature. In Metaforo’s web app the bind call sends only the message and the signature, and the server answers with a default single-key address. So only deposits under that lock can carry voting weight. What we found, read from the public Metaforo data and the explorer on 2026-11-04: Across the 176 voters of the 38 polls we read, all...</description>
   </item>
   <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Tue, 03 Nov 2026 15:48:29 +0000</pubDate>
-    <description>2026 November 3, Sixth Weekly Report I’ve run into a problem. I still haven’t been able to set up the data connection. I was faced with an unexpectedly high one-time payment to establish the connection, which I hadn’t anticipated. I was asked to make a one-time payment of $430. A sales representative told me that if I were to get a fiber-optic connection, I could pay that amount in monthly installments. However, there is a waiting period—the length of which cannot be predicted at this time—before this connection is physically installed. I will find a solution, though it will, at least temporarily, result in lower bandwidth. Next, we will attempt to establish a connection that does not...</description>
+    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 18:58:10 +0000</pubDate>
+    <description>Hi @lestonEth (Jimleston), I’m glad to share that the Spark Program Committee has approved your Corven proposal for a grant of 520 USD. The committee recognizes the project’s value in lowering the barrier to entry for CKB and Fiber Network development. The revised budget and approval-dependent timeline are also noted, and the committee appreciates the effort to keep costs focused on the essential logistics for the two physical sessions. Here are the next steps: Funding &amp; Wallet Address Total grant: 520 USD (approx. 445,205 CKB; $520 * 100% @0.001168 = 445,205 CKB) First installment (20%, 104 USD, 89,041 CKB ): will be disbursed shortly Please provide a CKB wallet address Remaining 80%...</description>
   </item>
   <item>
-    <title>Same lock script in Rust and in ckb-js-vm: 15k cycles vs 15M (3 posts)</title>
-    <link>https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115</link>
-    <guid>https://talk.nervos.org/t/same-lock-script-in-rust-and-in-ckb-js-vm-15k-cycles-vs-15m/11115#recent-3</guid>
-    <pubDate>Tue, 03 Nov 2026 14:36:25 +0000</pubDate>
-    <description>Interesting benchmark, and the reproducible results are valuable. However, I think the main conclusion about startup overhead needs stronger experimental evidence. The 14.3M-cycle early-rejection case does not necessarily isolate VM startup and bytecode loading. It may also include runtime initialization, argument parsing, bindings, and other execution costs. Consequently, subtracting this value from the accepted-spend cycles does not rigorously establish that application logic accounts for only 5% of the total, or that JavaScript logic is approximately 66× more expensive than Rust. Similarly, attributing the additional 0.36M cycles entirely to 1.8 KB of extra bytecode is not justified...</description>
+    <title>CKB Contract Flow: visual cell-transition explainers + on-chain tx decoder for 46 CKB contracts (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014</link>
+    <guid>https://talk.nervos.org/t/ckb-contract-flow-visual-cell-transition-explainers-on-chain-tx-decoder-for-46-ckb-contracts/11014#recent-1</guid>
+    <pubDate>Wed, 04 Nov 2026 10:45:19 +0000</pubDate>
+    <description>Updated the 5 CrowdCell cards to the redeployed contracts (Oct 31): Update CrowdCell cards to the 2026-10-31 testnet deployment by alesfer001 · Pull Request #9 · gpBlockchain/ckb-contract-flow-html · GitHub All five come out as binary verified now, a clean build reproduces the deployed hashes. Thanks for adding CrowdCell</description>
   </item>
   <item>
-    <title>An AMA with Drey, Clasp Creator and “Gone in 60ms” Hackathon Winner (1 posts)</title>
-    <link>https://talk.nervos.org/t/an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner/11118</link>
-    <guid>https://talk.nervos.org/t/an-ama-with-drey-clasp-creator-and-gone-in-60ms-hackathon-winner/11118#recent-1</guid>
-    <pubDate>Tue, 03 Nov 2026 13:22:20 +0000</pubDate>
-    <description>image1080×1320 175 KB Cheers everyone! We’re hosting another AMA! This time, we’ll be joined by Drey, a member of the Build on CKB Telegram group and the creator of Clasp, the overall winner of the “Gone in 60ms” Fiber Network Infrastructure Hackathon. Drey is a product and blockchain engineer who has been building in Web3 for three years. He joined the Nervos ecosystem around three months ago and has already made his mark with a project tackling wallet permissions and application access on Fiber. What is Clasp? Clasp helps users connect applications and AI agents to Fiber wallets while retaining control over what they’re allowed to do. It lets wallet owners: Grant specific permissions to...</description>
+    <title>How to appeal a ban from the Nervos Nation Telegram? (5 posts)</title>
+    <link>https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119</link>
+    <guid>https://talk.nervos.org/t/how-to-appeal-a-ban-from-the-nervos-nation-telegram/11119#recent-5</guid>
+    <pubDate>Wed, 04 Nov 2026 08:42:11 +0000</pubDate>
+    <description>Hi all, My account @PSBerlin can no longer access Telegram: View @NervosNation (“group is not accessible”), so I assume I was banned. I’ve been very active lately, so if that bothered someone, I apologize and I’m happy to tone it down. Could someone tell me who the group admins are, and whether there’s a way to ask for a review? Thanks, PSBerlin 也许 @neon.bit 可以给你提供帮助。 One of the bots banned based on falsely flagging your post. I have rescinded it Can you help me do thesame please?. Thanks !</description>
   </item>
   <item>
-    <title>Tranfr — Programmable Recovery for CKB (5 posts)</title>
-    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
-    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-5</guid>
-    <pubDate>Tue, 03 Nov 2026 12:21:59 +0000</pubDate>
-    <description>I am particularly concerned about the flow of cell capacity. In your current design, the args field might contain a significant amount of cell deadline data, which increases the minimum capacity required for a cell. However, for transactions involving only UDTs, the recipient could potentially claim the entire capacity without any restrictions. I would suggest reconsidering this aspect of the design. Especially for scenarios where the operator intends to transfer only UDTs, without any plan to transfer CKB. Thank you, I appreciate it. Good point on capacity. Right now the recipient takes the whole cell, so someone sending only UDTs would hand over the CKB deposit too. I see two fixes: (1)...</description>
-  </item>
-  <item>
-    <title>Cellula Wallet: a tap, and it's paid! (1 posts)</title>
-    <link>https://talk.nervos.org/t/cellula-wallet-a-tap-and-its-paid/11117</link>
-    <guid>https://talk.nervos.org/t/cellula-wallet-a-tap-and-its-paid/11117#recent-1</guid>
-    <pubDate>Tue, 03 Nov 2026 11:45:37 +0000</pubDate>
-    <description>01-hero1920×1080 190 KB Tap. Paid. Two seconds. And it can only get better. That is a 5 CKB tip leaving a Cellula Wallet and reaching a writer on the other side: 2.08 seconds from the tap to “Paid”. Nobody wrote down seed words to make that wallet. No node was running on that device. No block was waited for. Cellula Wallet is a CKB wallet that lives in your passkey, with Fiber built in. Here is what it brings, and what it opens up. Your passkey is the wallet Face or fingerprint, and the wallet exists. No 12 words on paper, no password to forget. New phone? Your passkey manager brings the same wallet back. Lost every device? Guardians you choose bring it back, after a waiting period in...</description>
-  </item>
-  <item>
-    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
-    <pubDate>Tue, 03 Nov 2026 11:09:47 +0000</pubDate>
-    <description>Hi @TinyuengKwan , 感谢你对委员会的认可，也很抱歉没有及时回复你！我相信社区中的朋友们都已看到你的努力，但结项评审仍在慎重进行中，还请你耐心等待。 祝好， 行天春彦</description>
-  </item>
-  <item>
-    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (7 posts)</title>
-    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
-    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-7</guid>
-    <pubDate>Tue, 03 Nov 2026 11:07:53 +0000</pubDate>
-    <description>Your past releases and activities show the significant effort poured into this mainnet-oriented product line. Best wishes! Honestly, this looks promising. Fiber needs more ways for regular users to actually use it, and having a wallet, merchant payments, and AI agent working together makes a lot of sense. What I like most is that the LSP isn’t limited to Cellula but can also help other projects build on Fiber. That’s a pretty important step for the ecosystem. Hope to see this go live on mainnet soon. Compared to dumb projects launched in the past that just siphoned off DAO funds, this is an excellent initiative to finally bringing some hi tech innovation and get Nervous a notch above the...</description>
-  </item>
-  <item>
-    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (2 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
-    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-2</guid>
-    <pubDate>Tue, 03 Nov 2026 04:24:17 +0000</pubDate>
-    <description>Hi @Akane! Sorry for the late reply. The committee has reviewed your demonstration video. I have a few questions of my own about the project in its current form: Who are the intended users of Spark Verify? Specifically, who will be writing the configuration files, who will be reading them, and who will be running the checks? Is the project currently designed to support more complex or rigorous verification scenarios? If so, could you share some examples? Regarding the example shown in the video, I’m still trying to understand what the configuration file adds for a reviewer. If I understand it correctly, it specifies a single expected output, but the other transaction details do not appear...</description>
-  </item>
-  <item>
-    <title>CKBadger: a local-first CKB-native explorer, and a vibe-coding experiment (2 posts)</title>
-    <link>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276</link>
-    <guid>https://talk.nervos.org/t/ckbadger-a-local-first-ckb-native-explorer-and-a-vibe-coding-experiment/10276#recent-2</guid>
-    <pubDate>Tue, 03 Nov 2026 01:44:43 +0000</pubDate>
-    <description>They’re cute badass! pretty cool animal. just realised there’s an actual badger emoji</description>
+    <title>A Revenue Layer for CKB Nodes (2 posts)</title>
+    <link>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734</link>
+    <guid>https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734#recent-2</guid>
+    <pubDate>Wed, 04 Nov 2026 02:58:53 +0000</pubDate>
+    <description>Update, November 2026: CKB Service Runner is live, and so is its new home When I started this thread, the question was: what if CKB nodes could become a revenue-generating opportunity? Six weeks later there is running code, a public monitor and the first nodes on mainnet. CSR Network Monitor What exists today CKB Service Runner (CSR) is an optional program that runs beside your CKB full node. It is not part of ckb and changes nothing in the protocol. A dashboard for your node. Sync state, tip, peers, CPU, RAM and disk on one page at 127.0.0.1, never exposed to the internet. Free, no CKB needed. Proof that it is a real full node. CSR proves the node’s identity with the node’s own P2P key....</description>
   </item>
 </channel>
 </rss>
