@@ -1,0 +1,734 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-11-05T22:31:45.375573+00:00",
+  "since": "2026-11-04T22:31:31.925243+00:00",
+  "until": "2026-11-05T22:31:31.925243+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 11133,
+      "title": "Web page www.nervos.org - Discussion for new pull request",
+      "slug": "web-page-www-nervos-org-discussion-for-new-pull-request",
+      "url": "https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133",
+      "created_at": "2026-11-05T21:37:45.202000+00:00",
+      "last_posted_at": "2026-11-05T21:45:54.617000+00:00",
+      "category_id": 74,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27207,
+          "post_number": 1,
+          "topic_id": 11133,
+          "topic_title": "Web page www.nervos.org - Discussion for new pull request",
+          "topic_slug": "web-page-www-nervos-org-discussion-for-new-pull-request",
+          "author": "psawyerberlin",
+          "created_at": "2026-11-05T21:37:45.272000+00:00",
+          "updated_at": "2026-11-05T21:41:11.878000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/1",
+          "content_text": "Goal\nnervos.org is often the first place newcomers, investors and developers look. This topic collects the community’s ideas for improving it.\nFor example, parts of the site still describe 2023: the “CKB Hardfork 2023” is listed as upcoming, Godwoken is recommended even though it was sunset, and the first halving is “expected around Nov 2023”.\nThe idea: collect the outdated content in one place, agree on the changes as a community, and turn them into a pull request, so the site reflects where CKB really is today.\nHow it would work\nProposed way forward:\nPropose: the community suggests and discusses changes here in this topic.\nBuild: after a few weeks, a developer (myself and/or others) turns the agreed changes into code and opens a pull request on nervos-official-website.\nMerge: a maintainer reviews and merges it, and the site is updated!\nMaintainers, please correct me if the process is different.\nIn other words, nobody is to blame for the outdated site… or rather, we all are! Which also means any of us can help fix it.\nWhat I’m asking for\nCheck the list below: anything missing, wrong, or no longer needed?\nHelp answer the open questions (Axon, UTXO Stack, Build Club / Grants).\nSuggest what belongs in In progress and Upcoming for 2026–2027.\nOne rule: please avoid content that goes out of date quickly (prices, exact dates, version numbers). The site should stay easy to maintain.\nOnce there’s agreement, I’m happy to help prepare the pull request. Feel free to comment!",
+          "content_html": "<h2><a name=\"p-27207-goal-1\" class=\"anchor\" href=\"#p-27207-goal-1\" aria-label=\"Heading link\"></a>Goal</h2>\n<p><a href=\"http://nervos.org\" rel=\"noopener nofollow ugc\">nervos.org</a> is often the first place newcomers, investors and developers look. This topic collects the community’s ideas for improving it.</p>\n<p>For example, parts of the site still describe 2023: the “CKB Hardfork 2023” is listed as <em>upcoming</em>, Godwoken is recommended even though it was sunset, and the first halving is “expected around Nov 2023”.</p>\n<p>The idea: <strong>collect the outdated content in one place, agree on the changes as a community, and turn them into a pull request</strong>, so the site reflects where CKB really is today.</p>\n<h2><a name=\"p-27207-how-it-would-work-2\" class=\"anchor\" href=\"#p-27207-how-it-would-work-2\" aria-label=\"Heading link\"></a>How it would work</h2>\n<p>Proposed way forward:</p>\n<ol>\n<li><strong>Propose:</strong> the community suggests and discusses changes here in this topic.</li>\n<li><strong>Build:</strong> after a few weeks, a developer (myself and/or others) turns the agreed changes into code and opens a pull request on <a href=\"https://github.com/nervosnetwork/nervos-official-website\" rel=\"noopener nofollow ugc\">nervos-official-website</a>.</li>\n<li><strong>Merge:</strong> a maintainer reviews and merges it, and the site is updated! <img src=\"https://talk.nervos.org/images/emoji/apple/white_check_mark.png?v=15\" title=\":white_check_mark:\" class=\"emoji\" alt=\":white_check_mark:\" loading=\"lazy\" width=\"20\" height=\"20\"></li>\n</ol>\n<p>Maintainers, please correct me if the process is different. <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<p>In other words, nobody is to blame for the outdated site… or rather, we all are! <img src=\"https://talk.nervos.org/images/emoji/apple/grinning_face_with_smiling_eyes.png?v=15\" title=\":grinning_face_with_smiling_eyes:\" class=\"emoji\" alt=\":grinning_face_with_smiling_eyes:\" loading=\"lazy\" width=\"20\" height=\"20\"> Which also means <strong>any of us can help fix it</strong>.</p>\n<h2><a name=\"p-27207-what-im-asking-for-3\" class=\"anchor\" href=\"#p-27207-what-im-asking-for-3\" aria-label=\"Heading link\"></a>What I’m asking for</h2>\n<ul>\n<li>Check the list below: anything missing, wrong, or no longer needed?</li>\n<li>Help answer the open questions (Axon, UTXO Stack, Build Club / Grants).</li>\n<li>Suggest what belongs in <strong>In progress</strong> and <strong>Upcoming</strong> for 2026–2027.</li>\n</ul>\n<p><strong>One rule:</strong> please avoid content that goes out of date quickly (prices, exact dates, version numbers). The site should stay easy to maintain.</p>\n<p>Once there’s agreement, I’m happy to help prepare the pull request. Feel free to comment! <img src=\"https://talk.nervos.org/images/emoji/apple/person_raising_hand.png?v=15\" title=\":person_raising_hand:\" class=\"emoji\" alt=\":person_raising_hand:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<hr>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27208,
+          "post_number": 2,
+          "topic_id": 11133,
+          "topic_title": "Web page www.nervos.org - Discussion for new pull request",
+          "topic_slug": "web-page-www-nervos-org-discussion-for-new-pull-request",
+          "author": "psawyerberlin",
+          "created_at": "2026-11-05T21:45:54.617000+00:00",
+          "updated_at": "2026-11-05T21:45:54.617000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/2",
+          "content_text": "Proposed changes\n1. Journey page (nervos.org/journey)\nContent last updated in July 2024.\nToday\nProposed change\n“CKB Hardfork 2023” under In progress and Upcoming\nMove to Achievements: Meepo hard fork (CKB-VM v2), live on mainnet since 1 July 2025 (docs)\n“CKB Fiber Testnet” under Upcoming\nMove to Achievements: Fiber Network on mainnet (dev log); link fiber.world instead of the old cfn-node repo\n“CKB Fiber (Lightning Network + CKB)” under In progress\nRemove (covered by the item above)\nHidden Lorem ipsum placeholder descriptions\nRemove\nAfter these moves, In progress and Upcoming keep only items the core teams confirm. If nothing is confirmed, hide the section rather than show old items.\n2. Foundation page\n“Start with Godwoken” (“the easiest way to launch a dApp on Nervos!”): remove. Godwoken and Force Bridge were sunset in 2025 (announcement).\n3. Mining page\n“The first CKB halving is expected at Epoch 8760 (around Nov 2023)” → “The first halving took place in Nov 2023 (epoch 8760). Halvings happen every 8,760 epochs, about every four years.” (docs)\n4. New links\nTwo useful community resources are missing from the site:\nResource\nWhat it is\nProposed place\nckbccc.com\nApp built on CCC, the CKB developer library maintained by CKB DevRel\nDevelopers → Developer Resources, next to CKB Docs\nCKB Pulse by LusoCryptoLabs\nLive view of who is building on CKB right now\nCommunity → Get Involved (or Developers)\nOpen questions\nThese need an answer from someone who knows before they become changes:\nAxon (home page, “Get Started”): “Launch your own Nervos sidechain with Axon” is one of three main calls to action. Is Axon still maintained? If not, what should replace it?\nUTXO Stack (journey, “Upcoming”): has it launched, is it still planned, or should it be removed?\nCKB Light Client (journey, “In progress”): “Light Client Soft Fork” is already under Achievements. Can “In progress” be removed?\nBuild Club / Grants Program (foundation page): are these still active? Should they point to the Community Fund DAO and the Spark Program instead?\nIn progress / Upcoming for 2026–2027: which items can the core teams confirm?\nYour input: anything missing, wrong, or better placed elsewhere? Please keep suggestions to content that stays valid for at least a year.",
+          "content_html": "<h2><a name=\"p-27208-proposed-changes-1\" class=\"anchor\" href=\"#p-27208-proposed-changes-1\" aria-label=\"Heading link\"></a>Proposed changes</h2>\n<h3><a name=\"p-27208-h-1-journey-page-nervosorgjourneyhttpswwwnervosorgjourney-2\" class=\"anchor\" href=\"#p-27208-h-1-journey-page-nervosorgjourneyhttpswwwnervosorgjourney-2\" aria-label=\"Heading link\"></a>1. Journey page (<a href=\"https://www.nervos.org/journey\" rel=\"noopener nofollow ugc\">nervos.org/journey</a>)</h3>\n<p>Content last updated in July 2024.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Today</th>\n<th>Proposed change</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>“CKB Hardfork 2023” under <strong>In progress</strong> and <strong>Upcoming</strong></td>\n<td>Move to <strong>Achievements</strong>: <em>Meepo hard fork (CKB-VM v2)</em>, live on mainnet since 1 July 2025 (<a href=\"https://docs.nervos.org/docs/history-and-hard-forks/ckb-hard-fork-history\" rel=\"noopener nofollow ugc\">docs</a>)</td>\n</tr>\n<tr>\n<td>“CKB Fiber Testnet” under <strong>Upcoming</strong></td>\n<td>Move to <strong>Achievements</strong>: <em>Fiber Network on mainnet</em> (<a href=\"https://talk.nervos.org/t/teamckb-dev-log-updated-sep-16-2026/8572\">dev log</a>); link <a href=\"https://www.fiber.world/\" rel=\"noopener nofollow ugc\">fiber.world</a> instead of the old <code>cfn-node</code> repo</td>\n</tr>\n<tr>\n<td>“CKB Fiber (Lightning Network + CKB)” under <strong>In progress</strong></td>\n<td>Remove (covered by the item above)</td>\n</tr>\n<tr>\n<td>Hidden <code>Lorem ipsum</code> placeholder descriptions</td>\n<td>Remove</td>\n</tr>\n</tbody>\n</table>\n</div><p>After these moves, <strong>In progress</strong> and <strong>Upcoming</strong> keep only items the core teams confirm. If nothing is confirmed, hide the section rather than show old items.</p>\n<h3><a name=\"p-27208-h-2-foundation-page-3\" class=\"anchor\" href=\"#p-27208-h-2-foundation-page-3\" aria-label=\"Heading link\"></a>2. Foundation page</h3>\n<ul>\n<li><strong>“Start with Godwoken”</strong> (“the easiest way to launch a dApp on Nervos!”): remove. Godwoken and Force Bridge were <strong>sunset in 2025</strong> (<a href=\"https://talk.nervos.org/t/sunset-of-force-bridge-and-godwoken/8789\">announcement</a>).</li>\n</ul>\n<h3><a name=\"p-27208-h-3-mining-page-4\" class=\"anchor\" href=\"#p-27208-h-3-mining-page-4\" aria-label=\"Heading link\"></a>3. Mining page</h3>\n<ul>\n<li>“The first CKB halving is expected at Epoch 8760 (around Nov 2023)” → <em>“The first halving took place in Nov 2023 (epoch 8760). Halvings happen every 8,760 epochs, about every four years.”</em> (<a href=\"https://docs.nervos.org/docs/mining/halving\" rel=\"noopener nofollow ugc\">docs</a>)</li>\n</ul>\n<h3><a name=\"p-27208-h-4-new-links-5\" class=\"anchor\" href=\"#p-27208-h-4-new-links-5\" aria-label=\"Heading link\"></a>4. New links</h3>\n<p>Two useful community resources are missing from the site:</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Resource</th>\n<th>What it is</th>\n<th>Proposed place</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"https://ckbccc.com/\" rel=\"noopener nofollow ugc\">ckbccc.com</a></td>\n<td>App built on <strong>CCC</strong>, the CKB developer library maintained by CKB DevRel</td>\n<td><strong>Developers → Developer Resources</strong>, next to CKB Docs</td>\n</tr>\n<tr>\n<td><a href=\"https://pulse-lab.lusocryptolabs.com/\" rel=\"noopener nofollow ugc\">CKB Pulse</a> by LusoCryptoLabs</td>\n<td>Live view of who is building on CKB right now</td>\n<td><strong>Community → Get Involved</strong> (or Developers)</td>\n</tr>\n</tbody>\n</table>\n</div><h2><a name=\"p-27208-open-questions-6\" class=\"anchor\" href=\"#p-27208-open-questions-6\" aria-label=\"Heading link\"></a>Open questions</h2>\n<p>These need an answer from someone who knows before they become changes:</p>\n<ol>\n<li><strong>Axon (home page, “Get Started”):</strong> “Launch your own Nervos sidechain with Axon” is one of three main calls to action. Is Axon still maintained? If not, what should replace it?</li>\n<li><strong>UTXO Stack (journey, “Upcoming”):</strong> has it launched, is it still planned, or should it be removed?</li>\n<li><strong>CKB Light Client (journey, “In progress”):</strong> “Light Client Soft Fork” is already under Achievements. Can “In progress” be removed?</li>\n<li><strong>Build Club / Grants Program (foundation page):</strong> are these still active? Should they point to the <strong>Community Fund DAO</strong> and the <strong>Spark Program</strong> instead?</li>\n<li><strong>In progress / Upcoming for 2026–2027:</strong> which items can the core teams confirm?</li>\n</ol>\n<hr>\n<p><strong>Your input:</strong> anything missing, wrong, or better placed elsewhere? Please keep suggestions to content that stays valid for at least a year. <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10317,
+      "title": "[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app",
+      "slug": "dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app",
+      "url": "https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317",
+      "created_at": "2026-05-26T11:02:03.495000+00:00",
+      "last_posted_at": "2026-11-05T21:03:19.848000+00:00",
+      "category_id": 65,
+      "tags": [
+        "fiber"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27206,
+          "post_number": 30,
+          "topic_id": 10317,
+          "topic_title": "[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app",
+          "topic_slug": "dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app",
+          "author": "ebubedev",
+          "created_at": "2026-11-05T21:03:19.848000+00:00",
+          "updated_at": "2026-11-05T21:03:19.848000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317/30",
+          "content_text": "Fiber Studio v1.1.3 — fnn 0.9.1 and a channel neighborhood\nHi everyone,\nFiber Studio v1.1.3 is out. Two things changed.\nThe bundled node is now official fnn 0.9.1. Same node, newer pin. This release fixes on-chain settlement when a channel is force-closed, and funding failures come back with a clearer reason. Existing 0.9.0 node data still works. Upstream notes: fnn v0.9.1.\nNetwork now shows your channel neighborhood instead of the gossip graph browser. Open Network and you get a map of your ready channels: your node, the peers you are connected to, and the public channels those peers have announced one step further. Scroll to zoom, drag to move, and click a public node to open one more step. A private channel stops at that peer, because nobody else can see it.\nScreenshot 2026-11-05 at 21.56.462174×1270 90.2 KB\nIf you already have the app, go to Settings → Updates and install v1.1.3. Fresh installs are on the website.",
+          "content_html": "<h2><a name=\"p-27206-fiber-studio-v113-fnn-091-and-a-channel-neighborhood-1\" class=\"anchor\" href=\"#p-27206-fiber-studio-v113-fnn-091-and-a-channel-neighborhood-1\" aria-label=\"Heading link\"></a>Fiber Studio v1.1.3 — fnn 0.9.1 and a channel neighborhood</h2>\n<p>Hi everyone,</p>\n<p>Fiber Studio <strong>v1.1.3</strong> is out. Two things changed.</p>\n<p><strong>The bundled node is now official fnn 0.9.1.</strong> Same node, newer pin. This release fixes on-chain settlement when a channel is force-closed, and funding failures come back with a clearer reason. Existing 0.9.0 node data still works. Upstream notes: <a href=\"https://github.com/nervosnetwork/fiber/releases/tag/v0.9.1\" rel=\"noopener nofollow ugc\">fnn v0.9.1</a>.</p>\n<p><strong>Network now shows your channel neighborhood instead of the gossip graph browser.</strong> Open Network and you get a map of your ready channels: your node, the peers you are connected to, and the public channels those peers have announced one step further. Scroll to zoom, drag to move, and click a public node to open one more step. A private channel stops at that peer, because nobody else can see it.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/9/98aaf5723a6abb14664d2393db234668646c19f3.jpeg\" data-download-href=\"https://talk.nervos.org/uploads/default/98aaf5723a6abb14664d2393db234668646c19f3\" title=\"Screenshot 2026-11-05 at 21.56.46\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/9/98aaf5723a6abb14664d2393db234668646c19f3_2_690x403.jpeg\" alt=\"Screenshot 2026-11-05 at 21.56.46\" data-base62-sha1=\"lMyQSU4c8WS7Wsv7pGvW71iaEbV\" width=\"690\" height=\"403\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/9/98aaf5723a6abb14664d2393db234668646c19f3_2_690x403.jpeg, https://talk.nervos.org/uploads/default/optimized/2X/9/98aaf5723a6abb14664d2393db234668646c19f3_2_1035x604.jpeg 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/9/98aaf5723a6abb14664d2393db234668646c19f3_2_1380x806.jpeg 2x\" data-dominant-color=\"0F1012\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Screenshot 2026-11-05 at 21.56.46</span><span class=\"informations\">2174×1270 90.2 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>If you already have the app, go to <strong>Settings → Updates</strong> and install v1.1.3. Fresh installs are on <a href=\"https://www.getfiberstudio.com/download\" rel=\"noopener nofollow ugc\">the website</a>.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11041,
+      "title": "Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments",
+      "slug": "spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments",
+      "url": "https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041",
+      "created_at": "2026-10-24T09:20:12.046000+00:00",
+      "last_posted_at": "2026-11-05T20:33:42.145000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Pending"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27192,
+          "post_number": 4,
+          "topic_id": 11041,
+          "topic_title": "Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments",
+          "topic_slug": "spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T09:13:59.812000+00:00",
+          "updated_at": "2026-11-05T09:13:59.812000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/4",
+          "content_text": "Hi @Timilehin_Olowu,\nI’m glad to share that the Spark Program Committee has approved your MeterNet proposal for a grant of 680 USD (paid in CKB).\nThe grant is approved under the following condition: the committee would like you to produce a more detailed report that includes a summary of user feedback — this is considered valuable and retainable learning for the ecosystem. The budget breakdown is 600 USD for technical work and 80 USD for user feedback collection and reporting.\nIf you accept the above conditions, here are the next steps:\nFunding & Wallet Address\nTotal grant: $680 * 100% @0.001171 = 580,700 CKB\nFirst installment (20%, 136 USD / 116,140 CKB): will be disbursed shortly\nPlease provide a CKB wallet address\nRemaining 80% follows a flexible model\nWeekly Sync\nText-based updates on this thread at a fixed time each week, with committee feedback.\nOr a brief live video call.\nPlease let us know your preference and a time that works for you.\nProposal Content Lock\nWe’ll lock the current version of your proposal post as the reference baseline for deliverable verification.\nCongratulations! We look forward to your first update. If you have any questions about the committee’s requirements, please feel free to contact us.\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/timilehin_olowu\">@Timilehin_Olowu</a>,</p>\n<p>I’m glad to share that the Spark Program Committee has approved your <strong>MeterNet</strong> proposal for a grant of <strong>680 USD</strong> (paid in CKB).</p>\n<p>The grant is approved under the following condition: the committee would like you to produce a more detailed report that includes a summary of user feedback — this is considered valuable and retainable learning for the ecosystem. The budget breakdown is <strong>600 USD for technical work</strong> and <strong>80 USD for user feedback collection and reporting</strong>.</p>\n<p>If you accept the above conditions, here are the next steps:</p>\n<ol>\n<li><strong>Funding &amp; Wallet Address</strong>\n<ul>\n<li>Total grant: $680 * 100% <span class=\"mention\">@0.001171</span> = <strong>580,700 CKB</strong></li>\n<li>First installment (20%, <strong>136 USD / 116,140 CKB</strong>): will be disbursed shortly</li>\n<li>Please provide a CKB wallet address</li>\n<li>Remaining 80% follows a flexible model</li>\n</ul>\n</li>\n<li><strong>Weekly Sync</strong>\n<ul>\n<li>Text-based updates on this thread at a fixed time each week, with committee feedback.</li>\n<li>Or a brief live video call.<br>\nPlease let us know your preference and a time that works for you.</li>\n</ul>\n</li>\n<li><strong>Proposal Content Lock</strong>\n<ul>\n<li>We’ll lock the current version of your proposal post as the reference baseline for deliverable verification.</li>\n</ul>\n</li>\n</ol>\n<p>Congratulations! We look forward to your first update. If you have any questions about the committee’s requirements, please feel free to contact us.</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27205,
+          "post_number": 5,
+          "topic_id": 11041,
+          "topic_title": "Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments",
+          "topic_slug": "spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments",
+          "author": "Timilehin_Olowu",
+          "created_at": "2026-11-05T20:33:42.145000+00:00",
+          "updated_at": "2026-11-05T20:33:42.145000+00:00",
+          "reply_to_post_number": 4,
+          "url": "https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/5",
+          "content_text": "Hi @xingtianchunyan, thank you to you and the Spark Program Committee for approving MeterNet. I accept the grant of 680 USD and the condition: the final report will include a summary of user feedback from the field pilot and from public web MVP users.\n1. Wallet address\nCKB address: ckb1qrgqep8saj8agswr30pls73hra28ry8jlnlc3ejzh3dl2ju7xxpjxqgqq8sn5ra9na278hc4mtx3pwsp5hd4qq0lnyp4huyl\n2. Weekly sync\nText updates on this thread work best for me, every Monday at 10:00 PM Lagos time (21:00 UTC).\n3. Content lock\nGood to lock the current version as the baseline.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a>, thank you to you and the Spark Program Committee for approving MeterNet. I accept the grant of 680 USD and the condition: the final report will include a summary of user feedback from the field pilot and from public web MVP users.</p>\n<p><strong>1. Wallet address</strong><br>\nCKB address: ckb1qrgqep8saj8agswr30pls73hra28ry8jlnlc3ejzh3dl2ju7xxpjxqgqq8sn5ra9na278hc4mtx3pwsp5hd4qq0lnyp4huyl</p>\n<p><strong>2. Weekly sync</strong><br>\nText updates on this thread work best for me, every Monday at 10:00 PM Lagos time (21:00 UTC).</p>\n<p><strong>3. Content lock</strong><br>\nGood to lock the current version as the baseline.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10998,
+      "title": "Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers",
+      "slug": "spark-program-rgb-resume-recover-interrupted-rgb-transfers",
+      "url": "https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998",
+      "created_at": "2026-10-15T17:07:59.331000+00:00",
+      "last_posted_at": "2026-11-05T19:33:18.531000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27204,
+          "post_number": 5,
+          "topic_id": 10998,
+          "topic_title": "Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers",
+          "topic_slug": "spark-program-rgb-resume-recover-interrupted-rgb-transfers",
+          "author": "Ticoworld",
+          "created_at": "2026-11-05T19:33:18.531000+00:00",
+          "updated_at": "2026-11-05T19:33:18.531000+00:00",
+          "reply_to_post_number": 4,
+          "url": "https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998/5",
+          "content_text": "Thanks, appreciate it!\nI’ve been discussing the recovery flow with Fung as well. We’re looking at a smaller integration example that builds on the existing RGB++ tooling rather than a separate recovery library.\nI’ll follow the upstream work and share the contribution on GitHub once the integration path is clear.",
+          "content_html": "<p>Thanks, appreciate it!</p>\n<p>I’ve been discussing the recovery flow with Fung as well. We’re looking at a smaller integration example that builds on the existing RGB++ tooling rather than a separate recovery library.</p>\n<p>I’ll follow the upstream work and share the contribution on GitHub once the integration path is clear.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11062,
+      "title": "Spark Program | Light dApp Kit",
+      "slug": "spark-program-light-dapp-kit",
+      "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062",
+      "created_at": "2026-10-28T21:36:42.394000+00:00",
+      "last_posted_at": "2026-11-05T18:31:21.674000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27201,
+          "post_number": 3,
+          "topic_id": 11062,
+          "topic_title": "Spark Program | Light dApp Kit",
+          "topic_slug": "spark-program-light-dapp-kit",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T18:31:21.674000+00:00",
+          "updated_at": "2026-11-05T18:31:21.674000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/3",
+          "content_text": "Hello, @Akane:\nThank you for taking the time to prepare and submit this proposal, and for your efforts on the browser light-client prototype.\nThe committee has completed its review. After careful discussion, we regret to inform you that the Light dApp Kit proposal will not be approved at this time.\nWe would like to be transparent about the reasons for this decision:\nDuplication of existing ecosystem infrastructure: The CKB ecosystem already has a mature, production-ready product—NervDAO (https://nervdao.com/)—that fully supports deposits into and withdrawals from Nervos DAO. Building another DAO-focused dApp toolkit would essentially duplicate functionality that already exists.\nLight-client tools already exist: CKB already provides an official browser-based WASM light client as a foundation, and the community has also built light-client projects on top of it.\n“Validated value”: The Spark Program is intended to support exploratory projects that can bring incremental value to the CKB ecosystem. Since this proposal duplicates existing work, it falls outside Spark’s scope for validation.\nWe appreciate your team’s efforts on the prototype and proposal. Please keep building, and feel free to reach out to us anytime!\nBest regards,\nxingtian\nOn behalf of the Spark Project Committee",
+          "content_html": "<p>Hello, <a class=\"mention\" href=\"/u/akane\">@Akane</a>:</p>\n<p>Thank you for taking the time to prepare and submit this proposal, and for your efforts on the browser light-client prototype.</p>\n<p>The committee has completed its review. After careful discussion, we regret to inform you that the Light dApp Kit proposal will not be approved at this time.</p>\n<p>We would like to be transparent about the reasons for this decision:</p>\n<ol>\n<li>\n<p><strong>Duplication of existing ecosystem infrastructure</strong>: The CKB ecosystem already has a mature, production-ready product—NervDAO (<a href=\"https://nervdao.com/\">https://nervdao.com/</a>)—that fully supports deposits into and withdrawals from Nervos DAO. Building another DAO-focused dApp toolkit would essentially duplicate functionality that already exists.</p>\n</li>\n<li>\n<p><strong>Light-client tools already exist</strong>: CKB already provides an official browser-based WASM light client as a foundation, and the community has also built light-client projects on top of it.</p>\n</li>\n<li>\n<p><strong>“Validated value”</strong>: The Spark Program is intended to support exploratory projects that can bring incremental value to the CKB ecosystem. Since this proposal duplicates existing work, it falls outside Spark’s scope for validation.</p>\n</li>\n</ol>\n<p>We appreciate your team’s efforts on the prototype and proposal. Please keep building, and feel free to reach out to us anytime!</p>\n<p>Best regards,<br>\nxingtian<br>\nOn behalf of the Spark Project Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11067,
+      "title": "Spark Program | CellFlow — Durable CCC Transaction Recovery PoC",
+      "slug": "spark-program-cellflow-durable-ccc-transaction-recovery-poc",
+      "url": "https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067",
+      "created_at": "2026-10-29T04:32:21.550000+00:00",
+      "last_posted_at": "2026-11-05T18:26:38.065000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27200,
+          "post_number": 6,
+          "topic_id": 11067,
+          "topic_title": "Spark Program | CellFlow — Durable CCC Transaction Recovery PoC",
+          "topic_slug": "spark-program-cellflow-durable-ccc-transaction-recovery-poc",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T18:26:38.065000+00:00",
+          "updated_at": "2026-11-05T18:26:38.065000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/6",
+          "content_text": "Hello @Dangbaty2004,\nThank you for taking the time to submit the CellFlow proposal and provide detailed technical documentation. The committee has completed its review. We regret to inform you that the CellFlow proposal has been rejected at this time.\nWe would like to explain the reasons for this decision transparently:\nThe problem described may not reflect an actual need in the current ecosystem: CCC already supports transaction construction and signing, and CKB RPC supports querying transaction status. For the scenario described (inferring a transaction’s outcome after losing the broadcast response), the committee found insufficient evidence that CKB developers commonly encounter this kind of recovery issue when using CCC workflows.\nThe proposed solution adds architectural complexity and fragility: Requiring applications to adopt a PostgreSQL-based persistent reconciliation layer (including controlled fault injection and settlement logic) would impose a significant operational burden for edge-case failures. The committee believes this would make the system more fragile overall, rather than less. This concern has also been reflected in previous reviews (see the DevLaunch Kit precedent, which involved a mismatch in the fundamental concept): proposals that address non-core issues by adding complexity tend not to receive support.\nWe appreciate your team’s efforts on the proposal. Keep building, and feel free to reach out anytime!\nBest regards,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hello <a class=\"mention\" href=\"/u/dangbaty2004\">@Dangbaty2004</a>,</p>\n<p>Thank you for taking the time to submit the CellFlow proposal and provide detailed technical documentation. The committee has completed its review. We regret to inform you that the CellFlow proposal has been rejected at this time.</p>\n<p>We would like to explain the reasons for this decision transparently:</p>\n<ol>\n<li>\n<p><strong>The problem described may not reflect an actual need in the current ecosystem</strong>: CCC already supports transaction construction and signing, and CKB RPC supports querying transaction status. For the scenario described (inferring a transaction’s outcome after losing the broadcast response), the committee found insufficient evidence that CKB developers commonly encounter this kind of recovery issue when using CCC workflows.</p>\n</li>\n<li>\n<p><strong>The proposed solution adds architectural complexity and fragility</strong>: Requiring applications to adopt a PostgreSQL-based persistent reconciliation layer (including controlled fault injection and settlement logic) would impose a significant operational burden for edge-case failures. The committee believes this would make the system more fragile overall, rather than less. This concern has also been reflected in previous reviews (see the DevLaunch Kit precedent, which involved a mismatch in the fundamental concept): proposals that address non-core issues by adding complexity tend not to receive support.</p>\n</li>\n</ol>\n<p>We appreciate your team’s efforts on the proposal.  Keep building, and feel free to reach out anytime!</p>\n<p>Best regards,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11079,
+      "title": "Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference",
+      "slug": "spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference",
+      "url": "https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079",
+      "created_at": "2026-10-31T23:49:28.077000+00:00",
+      "last_posted_at": "2026-11-05T18:25:07.948000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27199,
+          "post_number": 2,
+          "topic_id": 11079,
+          "topic_title": "Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference",
+          "topic_slug": "spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T18:25:07.948000+00:00",
+          "updated_at": "2026-11-05T18:25:07.948000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079/2",
+          "content_text": "Hi @vida,\nThank you for taking the time to submit the TapFiber proposal. The committee has completed its review and, after careful discussion, regrets to reject the TapFiber proposal at this time.\nWe want to be transparent about the reasoning behind this decision:\nRedundant with existing ecosystem work: The core concept of binding a Fiber payment intent to a merchant order and providing a verifiable payment receipt has already been implemented multiple times within the CKB ecosystem. Notably, Fiber Checkout—a Spark-funded and completed project—already provides a page-based payment solution for Fiber. The committee does not believe that rebuilding a similar payment-intent layer brings sufficient incremental value to justify further funding.\nOverlapping scope with previously rejected proposals: The committee previously rejected Fiber Pay Studio (2026-07-21) for the same reason—the direction was deemed too similar to Fiber Checkout. TapFiber, while adding NFC as a physical delivery method, does not fundamentally differentiate itself from the existing payment flow infrastructure. NFC and QR are merely transport mechanisms; the underlying payment-request → settlement → receipt logic remains largely duplicative.\nWe appreciate the work your team has put into TapFiber — the commitment to reproducible tests and failure reporting is noted and commendable.\nKeep building, and feel free to reach out anytime!\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/vida\">@vida</a>,</p>\n<p>Thank you for taking the time to submit the TapFiber proposal. The committee has completed its review and, after careful discussion, regrets to reject the TapFiber proposal at this time.</p>\n<p>We want to be transparent about the reasoning behind this decision:</p>\n<ol>\n<li><strong>Redundant with existing ecosystem work</strong>: The core concept of binding a Fiber payment intent to a merchant order and providing a verifiable payment receipt has already been implemented multiple times within the CKB ecosystem. Notably, <strong>Fiber Checkout</strong>—a Spark-funded and completed project—already provides a page-based payment solution for Fiber. The committee does not believe that rebuilding a similar payment-intent layer brings sufficient incremental value to justify further funding.</li>\n<li><strong>Overlapping scope with previously rejected proposals</strong>: The committee previously rejected Fiber Pay Studio (2026-07-21) for the same reason—the direction was deemed too similar to Fiber Checkout. TapFiber, while adding NFC as a physical delivery method, does not fundamentally differentiate itself from the existing payment flow infrastructure. NFC and QR are merely transport mechanisms; the underlying payment-request → settlement → receipt logic remains largely duplicative.</li>\n</ol>\n<p>We appreciate the work your team has put into TapFiber — the commitment to reproducible tests and failure reporting is noted and commendable.</p>\n<p>Keep building, and feel free to reach out anytime!</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11130,
+      "title": "Let any wallet bind its Nervos DAO deposit on Metaforo",
+      "slug": "let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo",
+      "url": "https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130",
+      "created_at": "2026-11-04T19:10:19.115000+00:00",
+      "last_posted_at": "2026-11-05T16:28:43.106000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27198,
+          "post_number": 2,
+          "topic_id": 11130,
+          "topic_title": "Let any wallet bind its Nervos DAO deposit on Metaforo",
+          "topic_slug": "let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-05T16:28:43.106000+00:00",
+          "updated_at": "2026-11-05T16:28:43.106000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130/2",
+          "content_text": "An update since the post. Ward is now on npm as `ckb-ward` 0.1.0, with a browser entry for wallets and the verifier for platforms.\nThe Cellula wallet signs Ward proofs on testnet. A site asks, and the wallet shows which site is asking and for which account. It refuses a proof meant for another site or another network. We tested it today through the wallet’s own screen, with a starter account, a guarded account and a real phone passkey. Ward’s verifier accepted each proof, and refused a replay and a changed signature byte.\nFor Metaforo this means one verifier covers JoyID, multisig, Omnilock and smart account deposits. Happy to help wire it in.\ngithub.com\nGitHub - LusoCryptoLabs/ckb-ward: Ward: lock proof for CKB. Prove control of any CKB...\nWard: lock proof for CKB. Prove control of any CKB lock with a proof transaction that can never land on chain.",
+          "content_html": "<p>An update since the post. Ward is now on npm as `ckb-ward` 0.1.0, with a browser entry for wallets and the verifier for platforms.</p>\n<p>The Cellula wallet signs Ward proofs on testnet. A site asks, and the wallet shows which site is asking and for which account. It refuses a proof meant for another site or another network. We tested it today through the wallet’s own screen, with a starter account, a guarded account and a real phone passkey. Ward’s verifier accepted each proof, and refused a replay and a changed signature byte.</p>\n<p>For Metaforo this means one verifier covers JoyID, multisig, Omnilock and smart account deposits. Happy to help wire it in.</p>\n<aside class=\"onebox githubrepo\" data-onebox-src=\"https://github.com/LusoCryptoLabs/ckb-ward\">\n  <header class=\"source\">\n\n      <a href=\"https://github.com/LusoCryptoLabs/ckb-ward\" target=\"_blank\" rel=\"noopener nofollow ugc\">github.com</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <div class=\"github-row\" data-github-private-repo=\"false\">\n  <span class=\"broken-image\" title=\"This image is broken\"><svg class=\"fa d-icon d-icon-link-slash svg-icon\" aria-hidden=\"true\"><use href=\"#link-slash\"></use></svg></span>\n\n  <h3><a href=\"https://github.com/LusoCryptoLabs/ckb-ward\" target=\"_blank\" rel=\"noopener nofollow ugc\">GitHub - LusoCryptoLabs/ckb-ward: Ward: lock proof for CKB. Prove control of any CKB...</a></h3>\n\n    <p><span class=\"github-repo-description\">Ward: lock proof for CKB. Prove control of any CKB lock with a proof transaction that can never land on chain.</span></p>\n</div>\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10598,
+      "title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+      "slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+      "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598",
+      "created_at": "2026-08-10T00:31:01.205000+00:00",
+      "last_posted_at": "2026-11-05T15:10:43.433000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27191,
+          "post_number": 20,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T09:02:46.094000+00:00",
+          "updated_at": "2026-11-05T09:02:46.094000+00:00",
+          "reply_to_post_number": 19,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/20",
+          "content_text": "Hi @Akane,\nThank you for taking the time to revise the proposal based on our earlier feedback.\nThe committee has completed its review and, after careful discussion, regrets to reject the Spark Verify proposal at this time.\nWe want to be transparent about the reasoning behind this decision:\nThe committee does not believe the project reduces the workload for developers and verifiers as claimed. The proposal describes a format for declaring observable results (committed/rejected transactions, cell states, balance changes, cycle usage) plus a runner to verify them on a local OffCKB devnet. However, the core problem — that verification instructions differ across projects and require manual judgment — is not meaningfully solved by introducing a new manifest format. A reviewer still needs to understand what the project claims to do, examine the verify.toml and accompanying scripts for correctness, and decide whether the assertions are adequate. In practice, the tool adds a layer of abstraction without removing the fundamental need for domain understanding and manual inspection. The committee’s question remains: who is the intended user, and does the tool actually save them time?\nThe manifest format risks becoming an additional maintenance burden rather than a labor-saving abstraction. Project authors would need to keep verify.toml in sync with their codebase as tool versions and setup details change. When a check fails, the author must debug whether the project, the toolchain, or the verify.toml itself is at fault. This is especially true given that OffCKB, CCC, and ckb-debugger are all actively iterating. The proposal pins versions, which is good, but even so, a failed run does not necessarily identify why it failed — which is precisely the “hard final acceptance step” the tool is meant to address.\nWe appreciate the work your team has put into Spark Verify. Keep building, and feel free to reach out anytime!\nBest,\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/akane\">@Akane</a>,</p>\n<p>Thank you for taking the time to revise the proposal based on our earlier feedback.</p>\n<p>The committee has completed its review and, after careful discussion, regrets to reject the Spark Verify proposal at this time.</p>\n<p>We want to be transparent about the reasoning behind this decision:</p>\n<ol>\n<li><strong>The committee does not believe the project reduces the workload for developers and verifiers as claimed.</strong> The proposal describes a format for declaring observable results (committed/rejected transactions, cell states, balance changes, cycle usage) plus a runner to verify them on a local OffCKB devnet. However, the core problem — that verification instructions differ across projects and require manual judgment — is not meaningfully solved by introducing a new manifest format. A reviewer still needs to understand what the project claims to do, examine the verify.toml and accompanying scripts for correctness, and decide whether the assertions are adequate. In practice, the tool adds a layer of abstraction without removing the fundamental need for domain understanding and manual inspection. The committee’s question remains: who is the intended user, and does the tool actually save them time?</li>\n<li><strong>The manifest format risks becoming an additional maintenance burden rather than a labor-saving abstraction.</strong> Project authors would need to keep verify.toml in sync with their codebase as tool versions and setup details change. When a check fails, the author must debug whether the project, the toolchain, or the verify.toml itself is at fault. This is especially true given that OffCKB, CCC, and ckb-debugger are all actively iterating. The proposal pins versions, which is good, but even so, a failed run does not necessarily identify <em>why</em> it failed — which is precisely the “hard final acceptance step” the tool is meant to address.</li>\n</ol>\n<p>We appreciate the work your team has put into Spark Verify. Keep building, and feel free to reach out anytime!</p>\n<p>Best,<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27197,
+          "post_number": 21,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "Akane",
+          "created_at": "2026-11-05T15:10:43.433000+00:00",
+          "updated_at": "2026-11-05T15:10:43.433000+00:00",
+          "reply_to_post_number": 20,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/21",
+          "content_text": "Hi @xingtianchunyan, thanks to you and the committee for reviewing the proposal.\nI understand the decision. Whether the tool saves more effort than it adds is something real usage needs to answer.\nI’ll continue CKB Verify independently. Its focus remains making declared acceptance checks easier to rerun and inspect, while reviewers still decide whether those checks are sufficient.\nCKB Verify is open source under the MIT license, and anyone is free to use or adapt it. The repository includes runnable examples and setup instructions for Linux x64:\nhttps://github.com/Akane-CN/spark-verify\nIf you try it, I’d appreciate feedback on what helped and what made the workflow harder. Issues and PRs are welcome.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a>, thanks to you and the committee for reviewing the proposal.</p>\n<p>I understand the decision. Whether the tool saves more effort than it adds is something real usage needs to answer.</p>\n<p>I’ll continue CKB Verify independently. Its focus remains making declared acceptance checks easier to rerun and inspect, while reviewers still decide whether those checks are sufficient.</p>\n<p>CKB Verify is open source under the MIT license, and anyone is free to use or adapt it. The repository includes runnable examples and setup instructions for Linux x64:</p>\n<p><a href=\"https://github.com/Akane-CN/spark-verify\" class=\"onebox\" target=\"_blank\" rel=\"noopener nofollow ugc\">https://github.com/Akane-CN/spark-verify</a></p>\n<p>If you try it, I’d appreciate feedback on what helped and what made the workflow harder. Issues and PRs are welcome.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10562,
+      "title": "Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike",
+      "slug": "spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike",
+      "url": "https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562",
+      "created_at": "2026-07-31T16:37:29.433000+00:00",
+      "last_posted_at": "2026-11-05T14:36:23.924000+00:00",
+      "category_id": 77,
+      "tags": [
+        "CKB-VM",
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27196,
+          "post_number": 32,
+          "topic_id": 10562,
+          "topic_title": "Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike",
+          "topic_slug": "spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike",
+          "author": "Hanssen",
+          "created_at": "2026-11-05T14:36:23.924000+00:00",
+          "updated_at": "2026-11-05T14:36:23.924000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/32",
+          "content_text": "Hi @TinyuengKwan!\nAI has reproduced the sail validation following the instruction in the repo. Judging by the report, I believe the project has indeed met the milestones planned in the proposal.\nAt the same time, thank you very much for the PR you submitted during the development process to improve the verifiability of CKB VM! We are happy to see that the outputs from the Spark Program continue to play a valuable role within the ecosystem.",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/tinyuengkwan\">@TinyuengKwan</a>!</p>\n<p><a href=\"https://github.com/TinyuengKwan/ckb-vm-sail-verify/issues/2#issuecomment-6607033188\">AI has reproduced the sail validation</a> following the instruction in the repo. Judging by the report, I believe the project has indeed met the milestones planned in the proposal.</p>\n<p>At the same time, thank you very much for <a href=\"https://github.com/nervosnetwork/ckb-vm/pull/545\">the PR</a> you submitted during the development process to improve the verifiability of CKB VM! We are happy to see that the outputs from the Spark Program continue to play a valuable role within the ecosystem.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10997,
+      "title": "[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐",
+      "slug": "spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm",
+      "url": "https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997",
+      "created_at": "2026-10-15T08:36:28.840000+00:00",
+      "last_posted_at": "2026-11-05T12:59:30.233000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27185,
+          "post_number": 8,
+          "topic_id": 10997,
+          "topic_title": "[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐",
+          "topic_slug": "spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T04:36:22.531000+00:00",
+          "updated_at": "2026-11-05T04:36:35.062000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/8",
+          "content_text": "Hi @Officeyutong ,\n我们已经到页面上去体验了，很有意思！\n但委员会发现目前虽然能连接钱包，却只有授权地址可以 mint 。委员会希望了解能否将mint的权限开放给所有用户？\n祝好，\n行天春彦\n谨代表星火计划委员会",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/officeyutong\">@Officeyutong</a> ,</p>\n<p>我们已经到页面上去体验了，很有意思！</p>\n<p>但委员会发现目前虽然能连接钱包，却只有授权地址可以 mint 。委员会希望了解能否将mint的权限开放给所有用户？</p>\n<p>祝好，<br>\n行天春彦<br>\n谨代表星火计划委员会</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27195,
+          "post_number": 9,
+          "topic_id": 10997,
+          "topic_title": "[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐",
+          "topic_slug": "spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm",
+          "author": "Officeyutong",
+          "created_at": "2026-11-05T12:59:30.233000+00:00",
+          "updated_at": "2026-11-05T12:59:30.233000+00:00",
+          "reply_to_post_number": 8,
+          "url": "https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/9",
+          "content_text": "现在已经开放了，记得清空一下网站缓存后重新看看",
+          "content_html": "<p>现在已经开放了，记得清空一下网站缓存后重新看看</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11132,
+      "title": "Noir-CKB: the private tally is live on CKB testnet, try it yourself",
+      "slug": "noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself",
+      "url": "https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132",
+      "created_at": "2026-11-05T12:49:11.526000+00:00",
+      "last_posted_at": "2026-11-05T12:49:11.614000+00:00",
+      "category_id": 69,
+      "tags": [
+        "zkp"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27194,
+          "post_number": 1,
+          "topic_id": 11132,
+          "topic_title": "Noir-CKB: the private tally is live on CKB testnet, try it yourself",
+          "topic_slug": "noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself",
+          "author": "xiaomao",
+          "created_at": "2026-11-05T12:49:11.614000+00:00",
+          "updated_at": "2026-11-05T12:49:11.614000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132/1",
+          "content_text": "GM,\nThis is a new chapter of noir-ckb, so a quick catch-up first. In my direction check (Direction check: should noir-ckb generate CKB Type Scripts from Noir circuits?) I asked whether noir-ckb should generate CKB Type Scripts from Noir circuits. In the follow-up (Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going) I shared what I decided, and since then I’ve posted updates there as the private tally took shape and its setup ceremony ran to the end.\nThe private tally is now deployed on testnet, and anyone can create their own. A three-minute recording of the full run:\nWhat the private tally is\nA CKB Cell that holds a hidden number. Only the holder of a secret key can add to it, and every addition is authorized by a zero-knowledge proof made on their own computer.\n- The Cell stores only a commitment: a fingerprint of the number, made with fresh randomness each time, so it reveals nothing about the value.\n- You can add any amount, including 0. A “cover update” looks exactly like a real one, so even “did anything change?” stays private.\n- There is no signature lock on the tally. The proof is the only authority.\nHow it works: the proof is bound to one exact transition\nA valid proof on its own is not enough. If the Type Script accepted any valid proof, someone could copy one from the mempool and use it on a different Cell. So the Type Script doesn’t trust the proof’s public values. It rebuilds them from the actual transaction:\n- the network,\n- the exact Cell being consumed,\n- the old and the new commitment,\n- the lock and capacity of the new Cell,\nand it hashes all of that into the proof’s public input. A proof is therefore valid for exactly one transition of exactly one Cell. Used anywhere else, it fails.\nBefore anything went on testnet, this was tested in CKB-VM with 49 attack cases (all rejected as expected): replaying a proof on another Cell or another network, swapping commitments, wrong or altered verification keys, malformed witnesses and more. 4 mutation tests then removed one safety check at a time to confirm the tests notice when it is missing.\nWhy there was a ceremony\nGroth16 needs a proving key made with secret randomness, and whoever kept that randomness could forge proofs. Because the proof is the only authority here, a key made by me alone would have meant trusting me completely.\nSo I ran a public phase 2 setup ceremony. Four people contributed, every key was verified, and the result was sealed with the hash of CKB mainnet block 20,870,000. Nobody can forge proofs as long as at least one contributor threw their randomness away. Thank you, truthixify, alienate, and Cecilia. The transcript is public and can be re-checked with one command: [ceremony folder](noir-ckb-verifier/ceremony/private-tally-v2 at main · wamimi/noir-ckb-verifier · GitHub).\nThe deployed verification key is that ceremony’s key, and the join tool checks this on your own machine before you use it.\nWhat it looks like on testnet\nI created a tally, added 7, then added 0.\nvalue_73024×198 16.7 KB\nupdate3018×112 32.7 KB\nvalue_03022×208 18.5 KB\nOne of these updates added 7, the other added nothing. On chain they have the same size and shape: one 33-byte commitment replaced by another, plus a proof. The ~117 million cycles are the Groth16 verification running in CKB-VM. The value 7 exists only in my private folder.\nStep\nTransaction\nDeploy (Type Script, ceremony verification key, guard lock)\n0x39ef90b8…47b1f9\nCreate at 0\n0x58d64623…6eca67\nAdd a hidden amount (7)\n0xa93b9ed5…1c4a73\nCover update (0)\n0xbc062ecc…66046c\nA second account then joined the same deployment with its own key and added a hidden amount, the same way you would.\nWhat it does not hide\nAnyone can see that a tally exists, when and how often it was updated, and which account paid the fee, and one tally’s updates are linkable to each other. What stays private is the value and every amount added.\nTry it\nIf you’re a developer, you can create your own hidden tally on this deployment and watch it happen on testnet. It costs about 262 testnet CKB (free from the faucet), there is nothing to deploy, and every proof is made on your machine.\nAfter installing git, Python, Node.js and rustup, it is two commands from inside the cloned repository:\n```bash\npython3 -B scripts/try-private-tally.py install\npython3 -B scripts/try-private-tally.py run\n```\n`install` lists everything it will set up and asks once. `run` rebuilds the proving setup from the ceremony key, checks the deployment, makes a testnet-only account, waits for your faucet payment, then creates your tally and lets you add hidden amounts. It shows every transaction and asks before signing and sending it; your password only ever goes to `ckb-cli`.\nGuide: noir-ckb-verifier/docs/try-the-private-tally.md at main · wamimi/noir-ckb-verifier · GitHub\nSupported: macOS on Apple silicon and Linux (x86_64, ARM64). The first run takes about 20–30 minutes, most of it downloading and compiling.\nWhat I’d love to hear\n1. Did it work on your machine? Where did you get stuck?\n2. What would you build with this, and what would you want a proof like this bound to?\nThe next step for noir-ckb is turning these examples into a toolkit you can install and use for your own Noir circuits, with the CKB binding generated for you. Your answers will shape it.",
+          "content_html": "<p>GM,<br>\nThis is a new chapter of noir-ckb, so a quick catch-up first. In my direction check (<a href=\"https://talk.nervos.org/t/10703\" class=\"inline-onebox\">Direction check: should noir-ckb generate CKB Type Scripts from Noir circuits?</a>) I asked whether noir-ckb should generate CKB Type Scripts from Noir circuits. In the follow-up (<a href=\"https://talk.nervos.org/t/noir-ckb-update-what-i-decided-after-the-direction-check-what-you-can-try-today-and-where-this-is-going/10968\" class=\"inline-onebox\">Noir-CKB update: what I decided after the direction check, what you can try today, and where this is going</a>) I shared what I decided, and since then I’ve posted updates there as the private tally took shape and its setup ceremony ran to the end.</p>\n<p>The private tally is now deployed on testnet, and anyone can create their own. A three-minute recording of the full run:</p>\n<div class=\"youtube-onebox lazy-video-container\" data-video-id=\"_JLl3eC-148\" data-video-title=\"noir-ckb private tally on CKB testnet\" data-video-start-time=\"\" data-provider-name=\"youtube\">\n  <a href=\"https://www.youtube.com/watch?v=_JLl3eC-148\" target=\"_blank\" class=\"video-thumbnail\" rel=\"noopener nofollow ugc\">\n    <img class=\"youtube-thumbnail\" src=\"https://talk.nervos.org/uploads/default/original/2X/7/7854f37a0a1adbe6ea236f24510ee3a218c8cb02.jpeg\" title=\"noir-ckb private tally on CKB testnet\" data-dominant-color=\"313940\" width=\"480\" height=\"360\">\n  </a>\n</div>\n\n<h2><a name=\"p-27194-what-the-private-tally-is-1\" class=\"anchor\" href=\"#p-27194-what-the-private-tally-is-1\" aria-label=\"Heading link\"></a>What the private tally is</h2>\n<p>A CKB Cell that holds a <strong>hidden number</strong>. Only the holder of a secret key can add to it, and every addition is authorized by a zero-knowledge proof made on their own computer.</p>\n<p>- The Cell stores only a <strong>commitment</strong>: a fingerprint of the number, made with fresh randomness each time, so it reveals nothing about the value.</p>\n<p>- You can add any amount, including <strong>0</strong>. A “cover update” looks exactly like a real one, so even “did anything change?” stays private.</p>\n<p>- There is <strong>no signature lock</strong> on the tally. The proof is the only authority.</p>\n<h2><a name=\"p-27194-how-it-works-the-proof-is-bound-to-one-exact-transition-2\" class=\"anchor\" href=\"#p-27194-how-it-works-the-proof-is-bound-to-one-exact-transition-2\" aria-label=\"Heading link\"></a>How it works: the proof is bound to one exact transition</h2>\n<p>A valid proof on its own is not enough. If the Type Script accepted any valid proof, someone could copy one from the mempool and use it on a different Cell. So the Type Script doesn’t trust the proof’s public values. It rebuilds them from the actual transaction:</p>\n<p>- the network,</p>\n<p>- the exact Cell being consumed,</p>\n<p>- the old and the new commitment,</p>\n<p>- the lock and capacity of the new Cell,</p>\n<p>and it hashes all of that into the proof’s public input. A proof is therefore valid for exactly one transition of exactly one Cell. Used anywhere else, it fails.</p>\n<p>Before anything went on testnet, this was tested in CKB-VM with <strong>49 attack cases</strong> (all rejected as expected): replaying a proof on another Cell or another network, swapping commitments, wrong or altered verification keys, malformed witnesses and more. <strong>4 mutation tests</strong> then removed one safety check at a time to confirm the tests notice when it is missing.</p>\n<h2><a name=\"p-27194-why-there-was-a-ceremony-3\" class=\"anchor\" href=\"#p-27194-why-there-was-a-ceremony-3\" aria-label=\"Heading link\"></a>Why there was a ceremony</h2>\n<p>Groth16 needs a proving key made with secret randomness, and whoever kept that randomness could forge proofs. Because the proof is the only authority here, a key made by me alone would have meant trusting me completely.</p>\n<p>So I ran a public phase 2 setup ceremony. Four people contributed, every key was verified, and the result was sealed with the hash of CKB mainnet block 20,870,000. Nobody can forge proofs as long as at least one contributor threw their randomness away. Thank you, truthixify, alienate, and Cecilia. The transcript is public and can be re-checked with one command: [ceremony folder](<a href=\"https://github.com/wamimi/noir-ckb-verifier/tree/main/ceremony/private-tally-v2\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">noir-ckb-verifier/ceremony/private-tally-v2 at main · wamimi/noir-ckb-verifier · GitHub</a>).</p>\n<p>The deployed verification key is that ceremony’s key, and the join tool checks this on your own machine before you use it.</p>\n<h2><a name=\"p-27194-what-it-looks-like-on-testnet-4\" class=\"anchor\" href=\"#p-27194-what-it-looks-like-on-testnet-4\" aria-label=\"Heading link\"></a>What it looks like on testnet</h2>\n<p>I created a tally, added <strong>7</strong>, then added <strong>0</strong>.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/b/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca.png\" data-download-href=\"https://talk.nervos.org/uploads/default/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca\" title=\"value_7\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/b/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca_2_690x45.png\" alt=\"value_7\" data-base62-sha1=\"qr8gRVCtWx96vaeviWjT7zWgMoW\" width=\"690\" height=\"45\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/b/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca_2_690x45.png, https://talk.nervos.org/uploads/default/optimized/2X/b/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca_2_1035x67.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/b/b949b7ce1030b8ee32eafeee316b3cdaec0c66ca_2_1380x90.png 2x\" data-dominant-color=\"1B1F24\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">value_7</span><span class=\"informations\">3024×198 16.7 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/b/bf05fd004648ac24e7faabf6218dc5e368cb554d.png\" data-download-href=\"https://talk.nervos.org/uploads/default/bf05fd004648ac24e7faabf6218dc5e368cb554d\" title=\"update\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/b/bf05fd004648ac24e7faabf6218dc5e368cb554d_2_690x25.png\" alt=\"update\" data-base62-sha1=\"rfS1ECURFTGChOkNp68KgRTpeJD\" width=\"690\" height=\"25\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/b/bf05fd004648ac24e7faabf6218dc5e368cb554d_2_690x25.png, https://talk.nervos.org/uploads/default/optimized/2X/b/bf05fd004648ac24e7faabf6218dc5e368cb554d_2_1035x37.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/b/bf05fd004648ac24e7faabf6218dc5e368cb554d_2_1380x50.png 2x\" data-dominant-color=\"272B31\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">update</span><span class=\"informations\">3018×112 32.7 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/9/990181254ea51cd2f759058d8f508b7f9f0c28a7.png\" data-download-href=\"https://talk.nervos.org/uploads/default/990181254ea51cd2f759058d8f508b7f9f0c28a7\" title=\"value_0\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/9/990181254ea51cd2f759058d8f508b7f9f0c28a7_2_690x47.png\" alt=\"value_0\" data-base62-sha1=\"lPyh86EqKdctI6oMnsnBEVg7AsD\" width=\"690\" height=\"47\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/9/990181254ea51cd2f759058d8f508b7f9f0c28a7_2_690x47.png, https://talk.nervos.org/uploads/default/optimized/2X/9/990181254ea51cd2f759058d8f508b7f9f0c28a7_2_1035x70.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/9/990181254ea51cd2f759058d8f508b7f9f0c28a7_2_1380x94.png 2x\" data-dominant-color=\"1B1F24\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">value_0</span><span class=\"informations\">3022×208 18.5 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>One of these updates added 7, the other added nothing. On chain they have the same size and shape: one 33-byte commitment replaced by another, plus a proof. The ~117 million cycles are the Groth16 verification running in CKB-VM. The value 7 exists only in my private folder.</p>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Step</th>\n<th>Transaction</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Deploy (Type Script, ceremony verification key, guard lock)</td>\n<td><a href=\"https://testnet.explorer.nervos.org/transaction/0x39ef90b8e6a882af3a658dc5c01cf17476e39907741541358d7155954547b1f9\" rel=\"noopener nofollow ugc\">0x39ef90b8…47b1f9</a></td>\n</tr>\n<tr>\n<td>Create at 0</td>\n<td><a href=\"https://testnet.explorer.nervos.org/transaction/0x58d646231e2dfc66f3cf2d07199ad6863e733489342b811c5473e223be6eca67\" rel=\"noopener nofollow ugc\">0x58d64623…6eca67</a></td>\n</tr>\n<tr>\n<td>Add a hidden amount (7)</td>\n<td><a href=\"https://testnet.explorer.nervos.org/transaction/0xa93b9ed57c45ca3a031b92b1e0bf68851796c2eb3aabdcab61a14383ca1c4a73\" rel=\"noopener nofollow ugc\">0xa93b9ed5…1c4a73</a></td>\n</tr>\n<tr>\n<td>Cover update (0)</td>\n<td><a href=\"https://testnet.explorer.nervos.org/transaction/0xbc062ecc84515e573a5c723f36b081733b8d95c71fb15ef7e414ee2ad766046c\" rel=\"noopener nofollow ugc\">0xbc062ecc…66046c</a></td>\n</tr>\n</tbody>\n</table>\n</div><p>A second account then joined the same deployment with its own key and added a hidden amount, the same way you would.</p>\n<h2><a name=\"p-27194-what-it-does-not-hide-5\" class=\"anchor\" href=\"#p-27194-what-it-does-not-hide-5\" aria-label=\"Heading link\"></a>What it does not hide</h2>\n<p>Anyone can see that a tally exists, when and how often it was updated, and which account paid the fee, and one tally’s updates are linkable to each other. What stays private is the value and every amount added.</p>\n<h2><a name=\"p-27194-try-it-6\" class=\"anchor\" href=\"#p-27194-try-it-6\" aria-label=\"Heading link\"></a>Try it</h2>\n<p>If you’re a developer, you can create your own hidden tally on this deployment and watch it happen on testnet. It costs about <strong>262 testnet CKB</strong> (free from the faucet), there is nothing to deploy, and every proof is made on your machine.</p>\n<p>After installing git, Python, Node.js and rustup, it is two commands from inside the cloned repository:</p>\n<p>```bash</p>\n<p>python3 -B scripts/try-private-tally.py install</p>\n<p>python3 -B scripts/try-private-tally.py run</p>\n<p>```</p>\n<p>`install` lists everything it will set up and asks once. `run` rebuilds the proving setup from the ceremony key, checks the deployment, makes a testnet-only account, waits for your faucet payment, then creates your tally and lets you add hidden amounts. It shows every transaction and asks before signing and sending it; your password only ever goes to `ckb-cli`.</p>\n<p>Guide: <a href=\"https://github.com/wamimi/noir-ckb-verifier/blob/main/docs/try-the-private-tally.md\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">noir-ckb-verifier/docs/try-the-private-tally.md at main · wamimi/noir-ckb-verifier · GitHub</a></p>\n<p>Supported: macOS on Apple silicon and Linux (x86_64, ARM64). The first run takes about 20–30 minutes, most of it downloading and compiling.</p>\n<h2><a name=\"p-27194-what-id-love-to-hear-7\" class=\"anchor\" href=\"#p-27194-what-id-love-to-hear-7\" aria-label=\"Heading link\"></a>What I’d love to hear</h2>\n<p>1. Did it work on your machine? Where did you get stuck?</p>\n<p>2. <strong>What would you build with this, and what would you want a proof like this bound to?</strong></p>\n<p>The next step for noir-ckb is turning these examples into a toolkit you can install and use for your own Noir circuits, with the CKB binding generated for you. Your answers will shape it.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10653,
+      "title": "Spark Program | NNCBN - Nervos Network Community Boot Nodes",
+      "slug": "spark-program-nncbn-nervos-network-community-boot-nodes",
+      "url": "https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653",
+      "created_at": "2026-08-23T11:57:53.677000+00:00",
+      "last_posted_at": "2026-11-05T11:11:33.093000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress",
+        "Node",
+        "Spark-Program",
+        "bootnode"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27193,
+          "post_number": 19,
+          "topic_id": 10653,
+          "topic_title": "Spark Program | NNCBN - Nervos Network Community Boot Nodes",
+          "topic_slug": "spark-program-nncbn-nervos-network-community-boot-nodes",
+          "author": "NNCBN",
+          "created_at": "2026-11-05T11:11:33.093000+00:00",
+          "updated_at": "2026-11-05T11:42:54.197000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/19",
+          "content_text": "IN PROGRESS until November 10\n2026 November, Seventh Weekly Report\nQubes has been updated to the latest version: Initial observations on data usage on-site. A dom0 update required 1,000 MB—it was actually a little over 500 MB—but when combined with the fedora-44-xfce update, about 1,200 MB were needed. Another small dom0 update today used about 80 MB of data.\nTime settings\nSince we’re setting up an Internet node, it’s important that the time is accurate! Once the device is in place, we’ll make sure the system settings are up to date.\nIn dom0 terminal\ntimedatectl status\nCompare the time listed under “Universal Time” with the actual UTC time. If the UTC time shown there is wrong:\nqubes-prefs clockvm\nThe ClockVM (usually sys-net) should be running and have network access. Than run:\nsudo qvm-sync-clock\nAfterwards set the system time zone:\nsudo timedatectl set-timezone Atlantic/\nFind valid names with timedatectl list-timezones\nThe terminal command timedatectl status must display the correct times.",
+          "content_html": "<p>IN PROGRESS until November 10</p>\n<p>2026 November, Seventh Weekly Report</p>\n<p>Qubes has been updated to the latest version: Initial observations on data usage on-site. A dom0 update required 1,000 MB—it was actually a little over 500 MB—but when combined with the fedora-44-xfce update, about 1,200 MB were needed. Another small dom0 update today used about 80 MB of data.</p>\n<p><strong>Time settings</strong></p>\n<p>Since we’re setting up an Internet node, it’s important that the time is accurate! Once the device is in place, we’ll make sure the system settings are up to date.</p>\n<p>In <strong>dom0</strong> terminal</p>\n<pre><code class=\"lang-auto\">timedatectl status\n</code></pre>\n<ul>\n<li>\n<p>Compare the time listed under “Universal Time” with the <a href=\"https://duckduckgo.com/?ia=web&amp;t=h_&amp;q=actual+UTC+time\" rel=\"noopener nofollow ugc\">actual UTC time</a>. If the UTC time shown there is wrong:</p>\n<pre><code class=\"lang-auto\">qubes-prefs clockvm \n</code></pre>\n</li>\n<li>\n<p>The ClockVM (usually sys-net) should be running and have network access. Than run:</p>\n</li>\n</ul>\n<pre><code class=\"lang-auto\">sudo qvm-sync-clock\n</code></pre>\n<p>Afterwards set the system time zone:</p>\n<pre><code class=\"lang-auto\">sudo timedatectl set-timezone Atlantic/\n</code></pre>\n<p>Find valid names with <code>timedatectl list-timezones</code></p>\n<p>The terminal command <strong>timedatectl status</strong> must display the correct times.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11015,
+      "title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+      "slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+      "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015",
+      "created_at": "2026-10-21T10:36:40.209000+00:00",
+      "last_posted_at": "2026-11-05T09:01:42.747000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27190,
+          "post_number": 10,
+          "topic_id": 11015,
+          "topic_title": "Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB",
+          "topic_slug": "spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T09:01:42.747000+00:00",
+          "updated_at": "2026-11-05T15:54:53.488000+00:00",
+          "reply_to_post_number": 9,
+          "url": "https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/10",
+          "content_text": "Hello, @NOrththebear,\nThank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regretfully decided to reject the Bees Network proposal at this time.\nWe would like to be transparent about the reasons for this decision:\nOutside the scope of Spark grants: In the committee’s assessment, the success of Bees Network depends heavily on bootstrapping network effects, providing ongoing incentives for node operations, and acquiring demand from AI agents. This type of project is long-term, operations-driven infrastructure and involves significant uncertainty.\nWe appreciate your team’s efforts on Bees Network—deploying an MVP on the Pudge testnet and clearly explaining how CKB’s Cell Model can be applied to reward accounting are both commendable. Keep building, and feel free to reach out anytime!\nBest，\nxingtian\nOn behalf of the Spark Project Committee",
+          "content_html": "<p>Hello, <a class=\"mention\" href=\"/u/norththebear\">@NOrththebear</a>,</p>\n<p>Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regretfully decided to reject the Bees Network proposal at this time.</p>\n<p>We would like to be transparent about the reasons for this decision:</p>\n<p><strong>Outside the scope of Spark grants</strong>: In the committee’s assessment, the success of Bees Network depends heavily on bootstrapping network effects, providing ongoing incentives for node operations, and acquiring demand from AI agents. This type of project is long-term, operations-driven infrastructure and involves significant uncertainty.</p>\n<p>We appreciate your team’s efforts on Bees Network—deploying an MVP on the Pudge testnet and clearly explaining how CKB’s Cell Model can be applied to reward accounting are both commendable. Keep building, and feel free to reach out anytime!</p>\n<p>Best，<br>\nxingtian<br>\nOn behalf of the Spark Project Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10789,
+      "title": "Spark Program | DAO Cycle Alerts: Telegram reminders before your Nervos DAO cycle ends",
+      "slug": "spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends",
+      "url": "https://talk.nervos.org/t/spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends/10789",
+      "created_at": "2026-09-27T15:04:49.300000+00:00",
+      "last_posted_at": "2026-11-05T08:56:21.706000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Pending",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27189,
+          "post_number": 5,
+          "topic_id": 10789,
+          "topic_title": "Spark Program | DAO Cycle Alerts: Telegram reminders before your Nervos DAO cycle ends",
+          "topic_slug": "spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T08:56:21.706000+00:00",
+          "updated_at": "2026-11-05T08:56:21.706000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends/10789/5",
+          "content_text": "Hi, @yukikawata,\nIt’s been a long time since we’ve received any updates from you. Hope everything is going well!\nI’d like to note that if we don’t receive your reply within a reasonable timeframe, the committee will consider the proposal abandoned and change its status from “Pending” to “Closed.”\nBest regards\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hi, <a class=\"mention\" href=\"/u/yukikawata\">@yukikawata</a>,</p>\n<p>It’s been a long time since we’ve received any updates from you. Hope everything is going well!</p>\n<p>I’d like to note that if we don’t receive your reply within a reasonable timeframe, the committee will consider the proposal abandoned and change its status from “Pending” to “Closed.”</p>\n<p>Best regards<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11068,
+      "title": "One Fiber LSP, 11,496 channels",
+      "slug": "one-fiber-lsp-11-496-channels",
+      "url": "https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068",
+      "created_at": "2026-10-29T14:08:16.165000+00:00",
+      "last_posted_at": "2026-11-05T08:24:29.963000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "fiber"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27188,
+          "post_number": 10,
+          "topic_id": 11068,
+          "topic_title": "One Fiber LSP, 11,496 channels",
+          "topic_slug": "one-fiber-lsp-11-496-channels",
+          "author": "chenyukang",
+          "created_at": "2026-11-05T08:24:29.963000+00:00",
+          "updated_at": "2026-11-05T08:24:29.963000+00:00",
+          "reply_to_post_number": 6,
+          "url": "https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068/10",
+          "content_text": "@quake @LusoCryptoLabs\nMaybe we should add upstream support for tenant-scoped business event subscriptions, reusing the internal store watcher where appropriate while keeping subscribe_store_changes restricted to trusted internal services.",
+          "content_html": "<p><a class=\"mention\" href=\"/u/quake\">@quake</a> <a class=\"mention\" href=\"/u/lusocryptolabs\">@LusoCryptoLabs</a></p>\n<p>Maybe we should add upstream support for tenant-scoped business event subscriptions, reusing the internal store watcher where appropriate while keeping <code>subscribe_store_changes</code> restricted to trusted internal services.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11089,
+      "title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+      "slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+      "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089",
+      "created_at": "2026-11-02T03:01:28.937000+00:00",
+      "last_posted_at": "2026-11-05T07:27:35.179000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB",
+        "Grant",
+        "Nervos-项目动态",
+        "dapp",
+        "fiber",
+        "lang-en",
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27184,
+          "post_number": 13,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "LusoCryptoLabs",
+          "created_at": "2026-11-05T01:25:13.801000+00:00",
+          "updated_at": "2026-11-05T01:25:13.801000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/13",
+          "content_text": "On the open point in the DAO summary: Fiber’s mainnet contract upgrade is already in progress. fiber-scripts #34, opened on 2026-11-02, upgrades the mainnet commitment lock to 0.7.0, which includes #30 and #31. Four signers have posted their signatures for the 3 of 5 deploy multisig. As of 2026-11-05 01:24 UTC it is not on chain yet. M1 still waits for it, and we will link the transaction here once it lands.\n关于 DAO 摘要中的待定事项：Fiber 主网合约升级已经在进行中。fiber-scripts #34 于 2026-11-02 创建，将主网的承诺锁升级到 0.7.0，其中包含 #30 和 #31。部署所用的 3/5 多签已有四位签名者提交了签名。截至 2026-11-05 01:24 UTC，尚未上链。M1 仍等待这次升级，上链后我们会在这里贴出交易链接。",
+          "content_html": "<p>On the open point in the DAO summary: Fiber’s mainnet contract upgrade is already in progress. <a href=\"https://github.com/nervosnetwork/fiber-scripts/pull/34\" rel=\"noopener nofollow ugc\">fiber-scripts #34</a>, opened on 2026-11-02, upgrades the mainnet commitment lock to 0.7.0, which includes <span class=\"hashtag-raw\">#30</span> and <span class=\"hashtag-raw\">#31</span>. Four signers have posted their signatures for the 3 of 5 deploy multisig. As of 2026-11-05 01:24 UTC it is not on chain yet. M1 still waits for it, and we will link the transaction here once it lands.</p>\n<p>关于 DAO 摘要中的待定事项：Fiber 主网合约升级已经在进行中。<a href=\"https://github.com/nervosnetwork/fiber-scripts/pull/34\" rel=\"noopener nofollow ugc\">fiber-scripts #34</a> 于 2026-11-02 创建，将主网的承诺锁升级到 0.7.0，其中包含 <span class=\"hashtag-raw\">#30</span> 和 <span class=\"hashtag-raw\">#31。部署所用的</span> 3/5 多签已有四位签名者提交了签名。截至 2026-11-05 01:24 UTC，尚未上链。M1 仍等待这次升级，上链后我们会在这里贴出交易链接。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27187,
+          "post_number": 14,
+          "topic_id": 11089,
+          "topic_title": "[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP",
+          "topic_slug": "dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp",
+          "author": "ArthurZhang",
+          "created_at": "2026-11-05T07:27:35.179000+00:00",
+          "updated_at": "2026-11-05T07:27:35.179000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/14",
+          "content_text": "Thanks for reaching out,\nmy suggestion would be, that before real funds enter, prioritise three additional acceptance runs:\na cross-LSP payment interrupted after the recipient’s credit is committed but before upstream completion, followed by a process crash and retry of the same invoice;\na partition carried through forced closure, testing both preimage claims and timeout refunds;\na wallet exit with the LSP, gateway and operator watchtower all unavailable, using only recovery material already held by the user and an independent CKB endpoint.",
+          "content_html": "<p>Thanks for reaching out,</p>\n<p>my suggestion would be, that before real funds enter,  prioritise three additional acceptance runs:</p>\n<ol>\n<li>\n<p>a cross-LSP payment interrupted after the recipient’s credit is committed but before upstream completion, followed by a process crash and retry of the same invoice;</p>\n</li>\n<li>\n<p>a partition carried through forced closure, testing both preimage claims and timeout refunds;</p>\n</li>\n<li>\n<p>a wallet exit with the LSP, gateway and operator watchtower all unavailable, using only recovery material already held by the user and an independent CKB endpoint.</p>\n</li>\n</ol>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10807,
+      "title": "Spark Program Proposal: Corven cloud-native IDE",
+      "slug": "spark-program-proposal-corven-cloud-native-ide",
+      "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807",
+      "created_at": "2026-10-06T06:37:49.619000+00:00",
+      "last_posted_at": "2026-11-05T05:37:09.321000+00:00",
+      "category_id": 77,
+      "tags": [
+        "CKB",
+        "Grant",
+        "In-Progress",
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27186,
+          "post_number": 13,
+          "topic_id": 10807,
+          "topic_title": "Spark Program Proposal: Corven cloud-native IDE",
+          "topic_slug": "spark-program-proposal-corven-cloud-native-ide",
+          "author": "xingtianchunyan",
+          "created_at": "2026-11-05T05:37:09.321000+00:00",
+          "updated_at": "2026-11-05T05:37:09.321000+00:00",
+          "reply_to_post_number": 12,
+          "url": "https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/13",
+          "content_text": "Hello, @lestonEth (Jimleston):\n20% of the down payment has been paid.\nTransaction hash: 0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751\nPlease confirm receipt.\nAdditionally, you mentioned that you’d prefer to provide weekly updates via brief live calls, but it seems you weren’t able to enter the specific times correctly.\nBest regards\nxingtian\nOn behalf of the Spark Program Committee",
+          "content_html": "<p>Hello, <a class=\"mention\" href=\"/u/lestoneth\">@lestonEth</a> (Jimleston):</p>\n<p>20% of the down payment has been paid.</p>\n<p>Transaction hash: <a href=\"https://explorer.nervos.org/en/transaction/0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751\">0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751</a></p>\n<p>Please confirm receipt.</p>\n<p>Additionally, you mentioned that you’d prefer to provide weekly updates via brief live calls, but it seems you weren’t able to enter the specific times correctly.</p>\n<p>Best regards<br>\nxingtian<br>\nOn behalf of the Spark Program Committee</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-05 06:31:31 CST - 2026-11-06 06:31:31 CST</span>
+          <span>生成时间 2026-11-06 06:31:45 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">18</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">23</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">13</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最集中的动静来自 Spark Program 的集中评审：MeterNet 获批 680 美元（以 CKB 支付）的 grant，但附带补充报告条件 <span class="citations">[<a href="#source-s04">S04</a>]</span>；同时 Light dApp Kit、CellFlow、TapFiber 和 Spark Verify 等提案被委员会拒绝 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>, <a href="#source-s11">S11</a>]</span>。官网改版讨论也有新进展，有人指出 Journey 页面内容停留在 2024 年 7 月，并把 2023 年硬分叉仍标为进行中或即将推出 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。此外，Fiber Studio v1.1.3 发布、Seedsong 开放 mint、Noir-CKB 测试网上线等产品动态也在今天出现 <span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s15">S15</a>, <a href="#source-s16">S16</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Spark Program：MeterNet 提案获 680 USD grant，条件是最终报告要包含现场试点和公开 Web MVP 的用户反馈总结；申请者已接受条件 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>]</span>。</li>
+<li>Spark Program 评审结果密集：Light dApp Kit、CellFlow、TapFiber、Spark Verify 均被拒 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>, <a href="#source-s11">S11</a>]</span>；Spark Verify 作者表示理解决定，会继续独立推进 CKB Verify <span class="citations">[<a href="#source-s12">S12</a>]</span>。</li>
+<li>官网更新：讨论提出 Journey 页面最后更新于 2024 年 7 月，建议把“CKB Hardfork 2023”从未完成或即将推出移到成就，并提到 Meepo 硬分叉自 2025 年 7 月 1 日已上主网 <span class="citations">[<a href="#source-s02">S02</a>]</span>；原帖也指出官网部分内容仍停留在 2023 年 <span class="citations">[<a href="#source-s01">S01</a>]</span>。</li>
+<li>Fiber 生态：Fiber Studio v1.1.3 发布，内置节点升级到官方 fnn 0.9.1，并修复通道强制关闭时的链上结算和资金失败问题 <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li>Seedsong 与 Noir-CKB：Seedsong 委员会反馈此前只有授权地址可 mint，作者回复已开放并提醒清缓存 <span class="citations">[<a href="#source-s14">S14</a>, <a href="#source-s15">S15</a>]</span>；Noir-CKB 的 private tally 已在 CKB 测试网上线，邀请用户试用 <span class="citations">[<a href="#source-s16">S16</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>官网 PR 讨论中的 Journey 页面更新建议是否会被采纳并实际合并，尤其是硬分叉状态和过时内容如何修改 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。</li>
+<li>Spark Program 本轮被拒的 Light dApp Kit、CellFlow、TapFiber、Spark Verify 后续是否调整重提；Spark Verify 已明确会独立推进 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>, <a href="#source-s11">S11</a>, <a href="#source-s12">S12</a>]</span>。</li>
+<li>MeterNet 获批后的最终报告能否按条件覆盖现场试点和 Web MVP 用户反馈，以及 Fiber Studio 的结算修复在真实使用中的表现 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>, <a href="#source-s03">S03</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/1">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">psawyerberlin · 2026-11-06 05:37:45 CST</div><div>Goal nervos.org is often the first place newcomers, investors and developers look. This topic collects the community’s ideas for improving it. For example, parts of the site still describe 2023: the “CKB Hardfork 2023” is listed as upcoming, Godwoken is recommended even though...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/2">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">psawyerberlin · 2026-11-06 05:45:54 CST</div><div>Proposed changes 1. Journey page (nervos.org/journey) Content last updated in July 2024. Today Proposed change “CKB Hardfork 2023” under In progress and Upcoming Move to Achievements: Meepo hard fork (CKB-VM v2), live on mainnet since 1 July 2025 (docs) “CKB Fiber Testnet”...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317/30">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a></div><div class="source-meta">ebubedev · 2026-11-06 05:03:19 CST</div><div>Fiber Studio v1.1.3 — fnn 0.9.1 and a channel neighborhood Hi everyone, Fiber Studio v1.1.3 is out. Two things changed. The bundled node is now official fnn 0.9.1. Same node, newer pin. This release fixes on-chain settlement when a channel is force-closed, and funding failures...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/4">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">xingtianchunyan · 2026-11-05 17:13:59 CST</div><div>Hi @Timilehin_Olowu, I’m glad to share that the Spark Program Committee has approved your MeterNet proposal for a grant of 680 USD (paid in CKB). The grant is approved under the following condition: the committee would like you to produce a more detailed report that includes a...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/5">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">Timilehin_Olowu · 2026-11-06 04:33:42 CST</div><div>Hi @xingtianchunyan, thank you to you and the Spark Program Committee for approving MeterNet. I accept the grant of 680 USD and the condition: the final report will include a summary of user feedback from the field pilot and from public web MVP users. 1. Wallet address CKB...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998/5">Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers</a></div><div class="source-meta">Ticoworld · 2026-11-06 03:33:18 CST</div><div>Thanks, appreciate it! I’ve been discussing the recovery flow with Fung as well. We’re looking at a smaller integration example that builds on the existing RGB++ tooling rather than a separate recovery library. I’ll follow the upstream work and share the contribution on GitHub...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/3">Spark Program | Light dApp Kit</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 02:31:21 CST</div><div>Hello, @Akane: Thank you for taking the time to prepare and submit this proposal, and for your efforts on the browser light-client prototype. The committee has completed its review. After careful discussion, we regret to inform you that the Light dApp Kit proposal will not be...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/6">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 02:26:38 CST</div><div>Hello @Dangbaty2004, Thank you for taking the time to submit the CellFlow proposal and provide detailed technical documentation. The committee has completed its review. We regret to inform you that the CellFlow proposal has been rejected at this time. We would like to explain...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079/2">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 02:25:07 CST</div><div>Hi @vida, Thank you for taking the time to submit the TapFiber proposal. The committee has completed its review and, after careful discussion, regrets to reject the TapFiber proposal at this time. We want to be transparent about the reasoning behind this decision: Redundant...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130/2">Let any wallet bind its Nervos DAO deposit on Metaforo</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-06 00:28:43 CST</div><div>An update since the post. Ward is now on npm as `ckb-ward` 0.1.0, with a browser entry for wallets and the verifier for platforms. The Cellula wallet signs Ward proofs on testnet. A site asks, and the wallet shows which site is asking and for which account. It refuses a proof...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/20">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></div><div class="source-meta">xingtianchunyan · 2026-11-05 17:02:46 CST</div><div>Hi @Akane, Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the Spark Verify proposal at this time. We want to be transparent about the reasoning behind...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/21">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></div><div class="source-meta">Akane · 2026-11-05 23:10:43 CST</div><div>Hi @xingtianchunyan, thanks to you and the committee for reviewing the proposal. I understand the decision. Whether the tool saves more effort than it adds is something real usage needs to answer. I’ll continue CKB Verify independently. Its focus remains making declared...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/32">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></div><div class="source-meta">Hanssen · 2026-11-05 22:36:23 CST</div><div>Hi @TinyuengKwan! AI has reproduced the sail validation following the instruction in the repo. Judging by the report, I believe the project has indeed met the milestones planned in the proposal. At the same time, thank you very much for the PR you submitted during the...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/8">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></div><div class="source-meta">xingtianchunyan · 2026-11-05 12:36:22 CST</div><div>Hi @Officeyutong , 我们已经到页面上去体验了，很有意思！ 但委员会发现目前虽然能连接钱包，却只有授权地址可以 mint 。委员会希望了解能否将mint的权限开放给所有用户？ 祝好， 行天春彦 谨代表星火计划委员会</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/9">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></div><div class="source-meta">Officeyutong · 2026-11-05 20:59:30 CST</div><div>现在已经开放了，记得清空一下网站缓存后重新看看</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132/1">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a></div><div class="source-meta">xiaomao · 2026-11-05 20:49:11 CST</div><div>GM, This is a new chapter of noir-ckb, so a quick catch-up first. In my direction check (Direction check: should noir-ckb generate CKB Type Scripts from Noir circuits?) I asked whether noir-ckb should generate CKB Type Scripts from Noir circuits. In the follow-up (Noir-CKB...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>13</strong></li><li><span>生态进展</span><strong>7</strong></li><li><span>其他</span><strong>3</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@xingtianchunyan</span><strong>9</strong></li><li><span>@psawyerberlin</span><strong>2</strong></li><li><span>@LusoCryptoLabs</span><strong>2</strong></li><li><span>@ebubedev</span><strong>1</strong></li><li><span>@Timilehin_Olowu</span><strong>1</strong></li><li><span>@Ticoworld</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>36</span></li><li>you<span>34</span></li><li>committee<span>27</span></li><li>time<span>19</span></li><li>has<span>18</span></li><li>one<span>17</span></li><li>spark<span>17</span></li><li>proof<span>17</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133">Web page www.nervos.org - Discussion for new pull request</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 05:45:54 CST</span><span>psawyerberlin</span></div><p class="excerpt">Goal nervos.org is often the first place newcomers, investors and developers look. This topic collects the community’s ideas for improving it. For example, parts of the site still describe 2023: the “CKB Hardfork 2023” is listed as upcoming, Godwoken is...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 04:33:42 CST</span><span>Timilehin_Olowu, xingtianchunyan</span></div><p class="excerpt">Hi @Timilehin_Olowu, I’m glad to share that the Spark Program Committee has approved your MeterNet proposal for a grant of 680 USD (paid in CKB). The grant is approved under the following condition: the committee would like you to produce a more detailed...</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 23:10:43 CST</span><span>Akane, xingtianchunyan</span></div><p class="excerpt">Hi @Akane, Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the Spark Verify proposal at this time. We want to be transparent about...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 20:59:30 CST</span><span>Officeyutong, xingtianchunyan</span></div><p class="excerpt">Hi @Officeyutong , 我们已经到页面上去体验了，很有意思！ 但委员会发现目前虽然能连接钱包，却只有授权地址可以 mint 。委员会希望了解能否将mint的权限开放给所有用户？ 祝好， 行天春彦 谨代表星火计划委员会 现在已经开放了，记得清空一下网站缓存后重新看看</p><div class="tag-row"><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 15:27:35 CST</span><span>ArthurZhang, LusoCryptoLabs</span></div><p class="excerpt">On the open point in the DAO summary: Fiber’s mainnet contract upgrade is already in progress. fiber-scripts #34, opened on 2026-11-02, upgrades the mainnet commitment lock to 0.7.0, which includes #30 and #31. Four signers have posted their signatures for...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Nervos-项目动态</span><span>dapp</span><span>fiber</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 05:03:19 CST</span><span>ebubedev</span></div><p class="excerpt">Fiber Studio v1.1.3 — fnn 0.9.1 and a channel neighborhood Hi everyone, Fiber Studio v1.1.3 is out. Two things changed. The bundled node is now official fnn 0.9.1. Same node, newer pin. This release fixes on-chain settlement when a channel is force-closed,...</p><div class="tag-row"><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998">Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 03:33:18 CST</span><span>Ticoworld</span></div><p class="excerpt">Thanks, appreciate it! I’ve been discussing the recovery flow with Fung as well. We’re looking at a smaller integration example that builds on the existing RGB++ tooling rather than a separate recovery library. I’ll follow the upstream work and share the...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062">Spark Program | Light dApp Kit</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 02:31:21 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello, @Akane: Thank you for taking the time to prepare and submit this proposal, and for your efforts on the browser light-client prototype. The committee has completed its review. After careful discussion, we regret to inform you that the Light dApp Kit...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 02:26:38 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello @Dangbaty2004, Thank you for taking the time to submit the CellFlow proposal and provide detailed technical documentation. The committee has completed its review. We regret to inform you that the CellFlow proposal has been rejected at this time. We...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 02:25:07 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @vida, Thank you for taking the time to submit the TapFiber proposal. The committee has completed its review and, after careful discussion, regrets to reject the TapFiber proposal at this time. We want to be transparent about the reasoning behind this...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130">Let any wallet bind its Nervos DAO deposit on Metaforo</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 00:28:43 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">An update since the post. Ward is now on npm as `ckb-ward` 0.1.0, with a browser entry for wallets and the verifier for platforms. The Cellula wallet signs Ward proofs on testnet. A site asks, and the wallet shows which site is asking and for which account....</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 22:36:23 CST</span><span>Hanssen</span></div><p class="excerpt">Hi @TinyuengKwan! AI has reproduced the sail validation following the instruction in the repo. Judging by the report, I believe the project has indeed met the milestones planned in the proposal. At the same time, thank you very much for the PR you submitted...</p><div class="tag-row"><span>CKB-VM</span><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 20:49:11 CST</span><span>xiaomao</span></div><p class="excerpt">GM, This is a new chapter of noir-ckb, so a quick catch-up first. In my direction check (Direction check: should noir-ckb generate CKB Type Scripts from Noir circuits?) I asked whether noir-ckb should generate CKB Type Scripts from Noir circuits. In the...</p><div class="tag-row"><span>zkp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 19:11:33 CST</span><span>NNCBN</span></div><p class="excerpt">IN PROGRESS until November 10 2026 November, Seventh Weekly Report Qubes has been updated to the latest version: Initial observations on data usage on-site. A dom0 update required 1,000 MB—it was actually a little over 500 MB—but when combined with the...</p><div class="tag-row"><span>In-Progress</span><span>Node</span><span>Spark-Program</span><span>bootnode</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 17:01:42 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello, @NOrththebear, Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regretfully decided to reject the Bees Network proposal at this time. We would...</p><div class="tag-row"><span>Rejection</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends/10789">Spark Program | DAO Cycle Alerts: Telegram reminders before your Nervos DAO cycle ends</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 16:56:21 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi, @yukikawata, It’s been a long time since we’ve received any updates from you. Hope everything is going well! I’d like to note that if we don’t receive your reply within a reasonable timeframe, the committee will consider the proposal abandoned and...</p><div class="tag-row"><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/one-fiber-lsp-11-496-channels/11068">One Fiber LSP, 11,496 channels</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 16:24:29 CST</span><span>chenyukang</span></div><p class="excerpt">@quake @LusoCryptoLabs Maybe we should add upstream support for tenant-scoped business event subscriptions, reusing the internal store watcher where appropriate while keeping subscribe_store_changes restricted to trusted internal services.</p><div class="tag-row"><span>CKB</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-05 13:37:09 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello, @lestonEth (Jimleston): 20% of the down payment has been paid. Transaction hash: 0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751 Please confirm receipt. Additionally, you mentioned that you’d prefer to provide weekly updates via...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>In-Progress</span><span>Spark-Program</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-06 05:45:54 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/2">Web page www.nervos.org - Discussion for new pull request</a> · @psawyerberlin</strong><p>Proposed changes 1. Journey page (nervos.org/journey) Content last updated in July 2024. Today Proposed change “CKB Hardfork 2023” under In progress and Upcoming Move to Achievements: Meepo hard fork (CKB-VM v2), live...</p></article>
+<article class="timeline-row"><time>2026-11-06 05:37:45 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/1">Web page www.nervos.org - Discussion for new pull request</a> · @psawyerberlin</strong><p>Goal nervos.org is often the first place newcomers, investors and developers look. This topic collects the community’s ideas for improving it. For example, parts of the site still describe 2023: the “CKB Hardfork...</p></article>
+<article class="timeline-row"><time>2026-11-06 05:03:19 CST</time><strong><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317/30">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a> · @ebubedev</strong><p>Fiber Studio v1.1.3 — fnn 0.9.1 and a channel neighborhood Hi everyone, Fiber Studio v1.1.3 is out. Two things changed. The bundled node is now official fnn 0.9.1. Same node, newer pin. This release fixes on-chain...</p></article>
+<article class="timeline-row"><time>2026-11-06 04:33:42 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/5">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a> · @Timilehin_Olowu</strong><p>Hi @xingtianchunyan, thank you to you and the Spark Program Committee for approving MeterNet. I accept the grant of 680 USD and the condition: the final report will include a summary of user feedback from the field...</p></article>
+<article class="timeline-row"><time>2026-11-06 03:33:18 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-rgb-resume-recover-interrupted-rgb-transfers/10998/5">Spark Program | RGB++ Resume — Recover Interrupted RGB++ Transfers</a> · @Ticoworld</strong><p>Thanks, appreciate it! I’ve been discussing the recovery flow with Fung as well. We’re looking at a smaller integration example that builds on the existing RGB++ tooling rather than a separate recovery library. I’ll...</p></article>
+<article class="timeline-row"><time>2026-11-06 02:31:21 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/3">Spark Program | Light dApp Kit</a> · @xingtianchunyan</strong><p>Hello, @Akane: Thank you for taking the time to prepare and submit this proposal, and for your efforts on the browser light-client prototype. The committee has completed its review. After careful discussion, we regret...</p></article>
+<article class="timeline-row"><time>2026-11-06 02:26:38 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/6">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a> · @xingtianchunyan</strong><p>Hello @Dangbaty2004, Thank you for taking the time to submit the CellFlow proposal and provide detailed technical documentation. The committee has completed its review. We regret to inform you that the CellFlow...</p></article>
+<article class="timeline-row"><time>2026-11-06 02:25:07 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-tapfiber-fiber-payment-intent-and-verifiable-receipt-reference/11079/2">Spark Program | TapFiber: Fiber Payment Intent and Verifiable Receipt Reference</a> · @xingtianchunyan</strong><p>Hi @vida, Thank you for taking the time to submit the TapFiber proposal. The committee has completed its review and, after careful discussion, regrets to reject the TapFiber proposal at this time. We want to be...</p></article>
+<article class="timeline-row"><time>2026-11-06 00:28:43 CST</time><strong><a href="https://talk.nervos.org/t/let-any-wallet-bind-its-nervos-dao-deposit-on-metaforo/11130/2">Let any wallet bind its Nervos DAO deposit on Metaforo</a> · @LusoCryptoLabs</strong><p>An update since the post. Ward is now on npm as `ckb-ward` 0.1.0, with a browser entry for wallets and the verifier for platforms. The Cellula wallet signs Ward proofs on testnet. A site asks, and the wallet shows...</p></article>
+<article class="timeline-row"><time>2026-11-05 23:10:43 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/21">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a> · @Akane</strong><p>Hi @xingtianchunyan, thanks to you and the committee for reviewing the proposal. I understand the decision. Whether the tool saves more effort than it adds is something real usage needs to answer. I’ll continue CKB...</p></article>
+<article class="timeline-row"><time>2026-11-05 22:36:23 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/32">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a> · @Hanssen</strong><p>Hi @TinyuengKwan! AI has reproduced the sail validation following the instruction in the repo. Judging by the report, I believe the project has indeed met the milestones planned in the proposal. At the same time,...</p></article>
+<article class="timeline-row"><time>2026-11-05 20:59:30 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997/9">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a> · @Officeyutong</strong><p>现在已经开放了，记得清空一下网站缓存后重新看看</p></article>
+<article class="timeline-row"><time>2026-11-05 20:49:11 CST</time><strong><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132/1">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a> · @xiaomao</strong><p>GM, This is a new chapter of noir-ckb, so a quick catch-up first. In my direction check (Direction check: should noir-ckb generate CKB Type Scripts from Noir circuits?) I asked whether noir-ckb should generate CKB...</p></article>
+<article class="timeline-row"><time>2026-11-05 19:11:33 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/19">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @NNCBN</strong><p>IN PROGRESS until November 10 2026 November, Seventh Weekly Report Qubes has been updated to the latest version: Initial observations on data usage on-site. A dom0 update required 1,000 MB—it was actually a little...</p></article>
+<article class="timeline-row"><time>2026-11-05 17:13:59 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/4">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a> · @xingtianchunyan</strong><p>Hi @Timilehin_Olowu, I’m glad to share that the Spark Program Committee has approved your MeterNet proposal for a grant of 680 USD (paid in CKB). The grant is approved under the following condition: the committee...</p></article>
+<article class="timeline-row"><time>2026-11-05 17:02:46 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/20">Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects</a> · @xingtianchunyan</strong><p>Hi @Akane, Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the Spark Verify proposal at this...</p></article>
+<article class="timeline-row"><time>2026-11-05 17:01:42 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/10">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @xingtianchunyan</strong><p>Hello, @NOrththebear, Thank you for taking the time to revise the proposal based on our earlier feedback. The committee has completed its review and, after careful discussion, regretfully decided to reject the Bees...</p></article>
+<article class="timeline-row"><time>2026-11-05 16:56:21 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-dao-cycle-alerts-telegram-reminders-before-your-nervos-dao-cycle-ends/10789/5">Spark Program | DAO Cycle Alerts: Telegram reminders before your Nervos DAO cycle ends</a> · @xingtianchunyan</strong><p>Hi, @yukikawata, It’s been a long time since we’ve received any updates from you. Hope everything is going well! I’d like to note that if we don’t receive your reply within a reasonable timeframe, the committee will...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
