@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-06 05:55:51 CST - 2026-11-07 05:55:51 CST</span>
+          <span>生成时间 2026-11-07 05:56:00 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">23</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>从论坛发帖看，今天的主线是 CKB 生态项目更新与 Spark Program 付款、评审同步推进，并非单一话题。<span class="citations">[<a href="#source-s03">S03</a>, <a href="#source-s15">S15</a>, <a href="#source-s20">S20</a>, <a href="#source-s23">S23</a>]</span> 同时，官网 PR 讨论出现明显分歧：一方认为不更新官网有原因，另一方认为全球官网和海外社媒长期不维护会损害开发者和资金进入。<span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span> 此外，Cellula on Fiber 披露了故障场景测试结果并报告 Fiber bug，CKBuilders 成员也发布或介绍了两个新项目。<span class="citations">[<a href="#source-s21">S21</a>, <a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span></p>
+<h2>重点话题</h2>
+<ul>
+<li>官网 PR 争论升温：silenceport 称“不更新官网是有原因的”，并称不要帮倒忙 <span class="citations">[<a href="#source-s08">S08</a>]</span>；Thinker 反驳把停更说成防监管是偷换概念，强调全球官网和海外社媒是面向全球开发者的基础服务 <span class="citations">[<a href="#source-s09">S09</a>]</span>；psawyerberlin 提出缩小范围、只做时间中性的内容移除清理 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+<li>QuotaCell 更新：作者称已从测试代币推进到可用的 CKB spending Pocket <span class="citations">[<a href="#source-s03">S03</a>]</span>；回应者认可关闭成本降到 134 CKB 是明显改进 <span class="citations">[<a href="#source-s04">S04</a>]</span>；随后讨论 keeper 钱包独立且保持小额可限制密钥泄露损害，但需要手动充值 <span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>]</span>。</li>
+<li>Cellula on Fiber 故障测试：团队称跑了支付中途切断、崩溃、重试三个场景且都通过，最终只支付一次、重试被拒绝 <span class="citations">[<a href="#source-s21">S21</a>]</span>；还发现并报告 Fiber 小 bug（#1724）<span class="citations">[<a href="#source-s21">S21</a>]</span>；ArthurZhang 表达赞赏 <span class="citations">[<a href="#source-s22">S22</a>]</span>。</li>
+<li>Spark Program 拨款与沟通流程：MeterNet 首期 20%（116,140 CKB）已发放 <span class="citations">[<a href="#source-s20">S20</a>]</span>；CKB-VM Sail Validation Sprint 最终 80%（963,856 CKB）已发放并祝贺完成 <span class="citations">[<a href="#source-s23">S23</a>]</span>；Corven 确认收到 20% 付款，并接受沟通合并到 Monthly Call、每周日发书面更新 <span class="citations">[<a href="#source-s17">S17</a>, <a href="#source-s18">S18</a>, <a href="#source-s19">S19</a>]</span>。</li>
+<li>新项目与测试网进展：CKBuilders 成员 Linet_Mugwanja 介绍 CadencePay 和 Message in a Cell 两个项目 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>；Noir-CKB 的 private tally 已在 CKB testnet 上线，讨论聚焦真实 ceremony、public inputs 重建防 replay 和链上投票 <span class="citations">[<a href="#source-s15">S15</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>官网 PR 是否按 psawyerberlin 的“只移除、时间中性清理”收窄范围，以及社区对全球官网和社媒维护的分歧能否形成可执行方案。<span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s10">S10</a>]</span></li>
+<li>QuotaCell 的 keeper 钱包安全与运维平衡：小额独立钱包限制泄露损害但带来手动充值负担，capped spending Pocket 能否解决值得看。<span class="citations">[<a href="#source-s04">S04</a>, <a href="#source-s05">S05</a>]</span></li>
+<li>Spark Program 中被拒或待推进提案的后续：CellFlow 作者表示理解委员会对缺乏生态需求和架构运营复杂性的担忧 <span class="citations">[<a href="#source-s06">S06</a>]</span>；Bees Network 被拒后，psawyerberlin 提到可能与自己的项目形成重叠合作 <span class="citations">[<a href="#source-s16">S16</a>]</span>；Corven 则进入按月沟通和每周书面更新节奏 <span class="citations">[<a href="#source-s18">S18</a>, <a href="#source-s19">S19</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/1">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a></div><div class="source-meta">Linet_Mugwanja · 2026-11-07 05:39:14 CST</div><div>Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The moment it felt real A friend tried it and sealed a message for...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137/1">CadencePay: recurring payments on CKB where the person paying stays in control</a></div><div class="source-meta">Linet_Mugwanja · 2026-11-07 04:28:53 CST</div><div>Hi everyone! I’m Linnette, a builder in the CKBuilders program, based in Nairobi. I’d love to introduce the project I built as my capstone. The problem Every subscription I’ve had could take more than I agreed to, or keep charging after I left. Creators here in Kenya deserve...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/8">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-11-06 23:37:21 CST</div><div>QuotaCell update: From test tokens to a working CKB spending Pocket When I first shared QuotaCell, I was trying to solve a simple problem. How do you let contributors, teammates or automated agents pay project expenses without giving them the main treasury key or approving...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/9">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-07 00:39:46 CST</div><div>Nice, getting the close down to 134 CKB is a big improvement. To your question, for CrowdCell’s keeper we went the separate wallet way but kept it small on purpose. The bot has its own key on the indexer server and the only thing it pays from that wallet is the finalize fee....</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/10">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-11-07 01:32:12 CST</div><div>Thanks @Ayoub_Lesfer, this is really useful. I hadn’t considered that side of it. You’re deliberately keeping the keeper wallet small to limit the damage if its key leaks, but that also means having to keep topping it up manually. I can see how a capped spending Pocket could...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/7">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></div><div class="source-meta">Dangbaty2004 · 2026-11-07 01:02:15 CST</div><div>Thank you for reviewing the CellFlow proposal and providing clear, constructive feedback. I understand the committee’s concerns regarding the lack of demonstrated ecosystem demand and the additional operational complexity introduced by the proposed architecture. I agree that...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/3">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">Thinker · 2026-11-06 12:49:19 CST</div><div>This is exactly the same issue I raised earlier about managing the @NervosNetwork account on X. People in the community don’t seem to care much about these details—most are currently focused solely on their own immediate tasks. Obviously, if you’re only here to seek grants,...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/4">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">silenceport · 2026-11-06 19:04:27 CST</div><div>image879×684 92.4 KB 不要帮倒忙,不更新官网是有原因的</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/5">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">Thinker · 2026-11-06 21:21:51 CST</div><div>Solana被叫停是因为在境内违法搞线下活动和广告推广，踩了监管红线。而更新全球官网和海外社媒（且均已屏蔽国内IP），是面向全球开发者与国际社区最基础的服务，这两者有可比性吗？ 任何一个合规的全球化公链，正确的做法都是遵守区域法律、做好合规隔离，而不是把面向全球的官网放任不管，任由它看起来像停更废弃的僵尸项目。 把维护缺失硬说成为了防监管的深谋远虑，这是典型的偷换概念。海外开发者和机构看项目的哪个不是第一眼去看看官网及社媒运营。如果门面像废墟，劝退的就是全球资金和开发者，这才是真正的帮倒忙。...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/6">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">psawyerberlin · 2026-11-06 23:02:35 CST</div><div>Thanks @silenceport and @Thinker, both points are fair, and I think they come from the same place: protecting the people behind CKB and the ecosystem itself. I’d like to suggest a narrower scope that respects both: A time-neutral cleanup, removal only. Remove content that is...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/20">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-06 15:50:16 CST</div><div>Great to see this moving. A community bootnode on the Brazil–Portugal cable, home-hosted and on Qubes OS, adds exactly the kind of diversity the network lacks. I’d like to suggest a connection with a project I’m building, the CKB Service Runner (CSR). It’s a small side...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/21">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-06 15:59:51 CST</div><div>(I have removed the post, which was intended for another topic. Sorry!)</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/22">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></div><div class="source-meta">NNCBN · 2026-11-06 17:09:54 CST</div><div>psawyerberlin: expect it to run in its own qube with local RPC access to the CKB qube However, this is currently outside the scope of what is planned here. In principle, I am personally extremely skeptical about running third-party software—especially unofficial software—on a...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/23">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></div><div class="source-meta">psawyerberlin · 2026-11-06 18:53:01 CST</div><div>Fair point, and I agree. A bootnode should run the minimum software needed for its purpose, and CSR isn’t meant for bootnodes. Bootnodes don’t need a dashboard or extra revenue; CSR is aimed at regular full-node operators who want something back for running a node. Your...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132/2">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a></div><div class="source-meta">psawyerberlin · 2026-11-06 18:30:03 CST</div><div>GM xiaomao, congrats on getting this live, and on running a real ceremony instead of asking us to trust one key. Rebuilding the public inputs from the transaction itself is a neat answer to replay. On your question 2: I’ve been thinking about on-chain voting on CKB, where...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/11">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></div><div class="source-meta">psawyerberlin · 2026-11-06 16:06:11 CST</div><div>Hi @NOrththebear, Sorry to see this one rejected. The MVP and the cell-based accounting are solid work. Reading the committee’s reason (bootstrapping node supply, ongoing incentives, demand), I think there’s a natural overlap with something I’m building, and maybe a way to...</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/14">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-11-06 14:12:41 CST</div><div>Hi @xingtianchunyan and the Spark Program Committee, Thank you for sending the first installment. I confirm I have received the 20% payment (transaction 0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751 ). Sorry about the missing time in my earlier message....</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/15">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 14:45:50 CST</div><div>Hi @lestonEth , I understand that you’d like to meet online every Friday afternoon. But I need to let you know about a recent change to our communication process: individual online calls have been consolidated into a Monthly Call, so we’re unable to schedule a recurring call...</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/16">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-11-06 15:50:37 CST</div><div>Hi @xingtianchunyan, Thanks for letting me know, and no problem at all. The Monthly Call works for me. I’ll keep posting my written update on this thread every Sunday, so the committee still has weekly progress between calls. Here are my details for the invitation: Email:...</div></li><li id="source-s20"><div><code>S20</code><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041/6">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 10:56:24 CST</div><div>Hi @Timilehin_Olowu, The first installment: 20% (116,140 CKB) has been disbursed. Please check your account. Transaction Hash : 0xad6faed70a9c97c21103991142ddc86fd26f60e671ec906ec326b0d0867b8c4c Best regards xingtian On behalf of the Spark Program Committee</div></li><li id="source-s21"><div><code>S21</code><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/15">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-06 08:49:59 CST</div><div>Thanks Arthur, good list. We ran all three, and all three passed. Payment cut off halfway, a crash, then a retry. The person paid once, the shop was paid once, and the retry was refused. We also found a small bug in Fiber and reported it: nervosnetwork/fiber#1724. Connection...</div></li><li id="source-s22"><div><code>S22</code><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/16">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></div><div class="source-meta">ArthurZhang · 2026-11-06 10:53:56 CST</div><div>Great，appreaciate your work here, rooting for you and the team.</div></li><li id="source-s23"><div><code>S23</code><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562/33">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></div><div class="source-meta">xingtianchunyan · 2026-11-06 10:04:46 CST</div><div>Hi @TinyuengKwan ， The final installment ：80% ，963,856 CKB as been disbursed. Please check your account. Transaction Hash : 0x3581b5e85a4582a4839097f1e049463a18ff86119180157836d3ab170da48b5a Congratulations on successfully completing the CKB-VM proposal! Thank you for your...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>16</strong></li><li><span>其他</span><strong>5</strong></li><li><span>生态进展</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@psawyerberlin</span><strong>6</strong></li><li><span>@xingtianchunyan</span><strong>3</strong></li><li><span>@Linet_Mugwanja</span><strong>2</strong></li><li><span>@Ticoworld</span><strong>2</strong></li><li><span>@Thinker</span><strong>2</strong></li><li><span>@lestonEth</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>50</span></li><li>you<span>35</span></li><li>can<span>19</span></li><li>csr<span>17</span></li><li>are<span>15</span></li><li>network<span>13</span></li><li>its<span>13</span></li><li>node<span>13</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133">Web page www.nervos.org - Discussion for new pull request</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 23:02:35 CST</span><span>Thinker, psawyerberlin, silenceport</span></div><p class="excerpt">This is exactly the same issue I raised earlier about managing the @NervosNetwork account on X. People in the community don’t seem to care much about these details—most are currently focused solely on their own immediate tasks. Obviously, if you’re only...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 18:53:01 CST</span><span>NNCBN, psawyerberlin</span></div><p class="excerpt">Great to see this moving. A community bootnode on the Brazil–Portugal cable, home-hosted and on Qubes OS, adds exactly the kind of diversity the network lacks. I’d like to suggest a connection with a project I’m building, the CKB Service Runner (CSR). It’s...</p><div class="tag-row"><span>In-Progress</span><span>Node</span><span>Spark-Program</span><span>bootnode</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 01:32:12 CST</span><span>Ayoub_Lesfer, Ticoworld</span></div><p class="excerpt">QuotaCell update: From test tokens to a working CKB spending Pocket When I first shared QuotaCell, I was trying to solve a simple problem. How do you let contributors, teammates or automated agents pay project expenses without giving them the main treasury...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 15:50:37 CST</span><span>lestonEth, xingtianchunyan</span></div><p class="excerpt">Hi @xingtianchunyan and the Spark Program Committee, Thank you for sending the first installment. I confirm I have received the 20% payment (transaction 0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751 ). Sorry about the missing time in my...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 10:53:56 CST</span><span>ArthurZhang, LusoCryptoLabs</span></div><p class="excerpt">Thanks Arthur, good list. We ran all three, and all three passed. Payment cut off halfway, a crash, then a retry. The person paid once, the shop was paid once, and the retry was refused. We also found a small bug in Fiber and reported it:...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Nervos-项目动态</span><span>dapp</span><span>fiber</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 05:39:14 CST</span><span>Linet_Mugwanja</span></div><p class="excerpt">Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The moment it felt real A friend tried it and...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>dapp</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137">CadencePay: recurring payments on CKB where the person paying stays in control</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 04:28:53 CST</span><span>Linet_Mugwanja</span></div><p class="excerpt">Hi everyone! I’m Linnette, a builder in the CKBuilders program, based in Nairobi. I’d love to introduce the project I built as my capstone. The problem Every subscription I’ve had could take more than I agreed to, or keep charging after I left. Creators...</p><div class="tag-row"><span>CKB</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 01:02:15 CST</span><span>Dangbaty2004</span></div><p class="excerpt">Thank you for reviewing the CellFlow proposal and providing clear, constructive feedback. I understand the committee’s concerns regarding the lack of demonstrated ecosystem demand and the additional operational complexity introduced by the proposed...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 18:30:03 CST</span><span>psawyerberlin</span></div><p class="excerpt">GM xiaomao, congrats on getting this live, and on running a real ceremony instead of asking us to trust one key. Rebuilding the public inputs from the transaction itself is a neat answer to replay. On your question 2: I’ve been thinking about on-chain...</p><div class="tag-row"><span>zkp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 16:06:11 CST</span><span>psawyerberlin</span></div><p class="excerpt">Hi @NOrththebear, Sorry to see this one rejected. The MVP and the cell-based accounting are solid work. Reading the committee’s reason (bootstrapping node supply, ongoing incentives, demand), I think there’s a natural overlap with something I’m building,...</p><div class="tag-row"><span>Rejection</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041">Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 10:56:24 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Timilehin_Olowu, The first installment: 20% (116,140 CKB) has been disbursed. Please check your account. Transaction Hash : 0xad6faed70a9c97c21103991142ddc86fd26f60e671ec906ec326b0d0867b8c4c Best regards xingtian On behalf of the Spark Program Committee</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562">Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-06 10:04:46 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @TinyuengKwan ， The final installment ：80% ，963,856 CKB as been disbursed. Please check your account. Transaction Hash : 0x3581b5e85a4582a4839097f1e049463a18ff86119180157836d3ab170da48b5a Congratulations on successfully completing the CKB-VM proposal!...</p><div class="tag-row"><span>CKB-VM</span><span>Completion</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-07 05:39:14 CST</time><strong><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/1">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a> · @Linet_Mugwanja</strong><p>Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The...</p></article>
+<article class="timeline-row"><time>2026-11-07 04:28:53 CST</time><strong><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137/1">CadencePay: recurring payments on CKB where the person paying stays in control</a> · @Linet_Mugwanja</strong><p>Hi everyone! I’m Linnette, a builder in the CKBuilders program, based in Nairobi. I’d love to introduce the project I built as my capstone. The problem Every subscription I’ve had could take more than I agreed to, or...</p></article>
+<article class="timeline-row"><time>2026-11-07 01:32:12 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/10">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>Thanks @Ayoub_Lesfer, this is really useful. I hadn’t considered that side of it. You’re deliberately keeping the keeper wallet small to limit the damage if its key leaks, but that also means having to keep topping it...</p></article>
+<article class="timeline-row"><time>2026-11-07 01:02:15 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067/7">Spark Program | CellFlow — Durable CCC Transaction Recovery PoC</a> · @Dangbaty2004</strong><p>Thank you for reviewing the CellFlow proposal and providing clear, constructive feedback. I understand the committee’s concerns regarding the lack of demonstrated ecosystem demand and the additional operational...</p></article>
+<article class="timeline-row"><time>2026-11-07 00:39:46 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/9">QuotaCell: Let your team spend without handing over the treasury</a> · @Ayoub_Lesfer</strong><p>Nice, getting the close down to 134 CKB is a big improvement. To your question, for CrowdCell’s keeper we went the separate wallet way but kept it small on purpose. The bot has its own key on the indexer server and...</p></article>
+<article class="timeline-row"><time>2026-11-06 23:37:21 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/8">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>QuotaCell update: From test tokens to a working CKB spending Pocket When I first shared QuotaCell, I was trying to solve a simple problem. How do you let contributors, teammates or automated agents pay project...</p></article>
+<article class="timeline-row"><time>2026-11-06 23:02:35 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/6">Web page www.nervos.org - Discussion for new pull request</a> · @psawyerberlin</strong><p>Thanks @silenceport and @Thinker, both points are fair, and I think they come from the same place: protecting the people behind CKB and the ecosystem itself. I’d like to suggest a narrower scope that respects both: A...</p></article>
+<article class="timeline-row"><time>2026-11-06 21:21:51 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/5">Web page www.nervos.org - Discussion for new pull request</a> · @Thinker</strong><p>Solana被叫停是因为在境内违法搞线下活动和广告推广，踩了监管红线。而更新全球官网和海外社媒（且均已屏蔽国内IP），是面向全球开发者与国际社区最基础的服务，这两者有可比性吗？ 任何一个合规的全球化公链，正确的做法都是遵守区域法律、做好合规隔离，而不是把面向全球的官网放任不管，任由它看起来像停更废弃的僵尸项目。...</p></article>
+<article class="timeline-row"><time>2026-11-06 19:04:27 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/4">Web page www.nervos.org - Discussion for new pull request</a> · @silenceport</strong><p>image879×684 92.4 KB 不要帮倒忙,不更新官网是有原因的</p></article>
+<article class="timeline-row"><time>2026-11-06 18:53:01 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/23">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @psawyerberlin</strong><p>Fair point, and I agree. A bootnode should run the minimum software needed for its purpose, and CSR isn’t meant for bootnodes. Bootnodes don’t need a dashboard or extra revenue; CSR is aimed at regular full-node...</p></article>
+<article class="timeline-row"><time>2026-11-06 18:30:03 CST</time><strong><a href="https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132/2">Noir-CKB: the private tally is live on CKB testnet, try it yourself</a> · @psawyerberlin</strong><p>GM xiaomao, congrats on getting this live, and on running a real ceremony instead of asking us to trust one key. Rebuilding the public inputs from the transaction itself is a neat answer to replay. On your question 2:...</p></article>
+<article class="timeline-row"><time>2026-11-06 17:09:54 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/22">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @NNCBN</strong><p>psawyerberlin: expect it to run in its own qube with local RPC access to the CKB qube However, this is currently outside the scope of what is planned here. In principle, I am personally extremely skeptical about...</p></article>
+<article class="timeline-row"><time>2026-11-06 16:06:11 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015/11">Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB</a> · @psawyerberlin</strong><p>Hi @NOrththebear, Sorry to see this one rejected. The MVP and the cell-based accounting are solid work. Reading the committee’s reason (bootstrapping node supply, ongoing incentives, demand), I think there’s a natural...</p></article>
+<article class="timeline-row"><time>2026-11-06 15:59:51 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/21">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @psawyerberlin</strong><p>(I have removed the post, which was intended for another topic. Sorry!)</p></article>
+<article class="timeline-row"><time>2026-11-06 15:50:37 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/16">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>Hi @xingtianchunyan, Thanks for letting me know, and no problem at all. The Monthly Call works for me. I’ll keep posting my written update on this thread every Sunday, so the committee still has weekly progress...</p></article>
+<article class="timeline-row"><time>2026-11-06 15:50:16 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/20">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @psawyerberlin</strong><p>Great to see this moving. A community bootnode on the Brazil–Portugal cable, home-hosted and on Qubes OS, adds exactly the kind of diversity the network lacks. I’d like to suggest a connection with a project I’m...</p></article>
+<article class="timeline-row"><time>2026-11-06 14:45:50 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/15">Spark Program Proposal: Corven cloud-native IDE</a> · @xingtianchunyan</strong><p>Hi @lestonEth , I understand that you’d like to meet online every Friday afternoon. But I need to let you know about a recent change to our communication process: individual online calls have been consolidated into a...</p></article>
+<article class="timeline-row"><time>2026-11-06 14:12:41 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/14">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>Hi @xingtianchunyan and the Spark Program Committee, Thank you for sending the first installment. I confirm I have received the 20% payment (transaction...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

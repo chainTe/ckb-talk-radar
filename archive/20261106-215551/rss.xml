@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Fri, 06 Nov 2026 21:39:14 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-07</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-06:daily-brief</guid>
+    <pubDate>Fri, 06 Nov 2026 21:56:00 +0000</pubDate>
+    <description>## 今日发生了什么 从论坛发帖看，今天的主线是 CKB 生态项目更新与 Spark Program 付款、评审同步推进，并非单一话题。[S03, S15, S20, S23] 同时，官网 PR 讨论出现明显分歧：一方认为不更新官网有原因，另一方认为全球官网和海外社媒长期不维护会损害开发者和资金进入。[S08, S09] 此外，Cellula on Fiber 披露了故障场景测试结果并报告 Fiber bug，CKBuilders 成员也发布或介绍了两个新项目。[S21, S01, S02] ## 重点话题 官网 PR 争论升温：silenceport 称“不更新官网是有原因的”，并称不要帮倒忙 [S08]；Thinker 反驳把停更说成防监管是偷换概念，强调全球官网和海外社媒是面向全球开发者的基础服务 [S09]；psawyerberlin 提出缩小范围、只做时间中性的内容移除清理 [S10]。 QuotaCell 更新：作者称已从测试代币推进到可用的 CKB spending Pocket [S03]；回应者认可关闭成本降到 134 CKB 是明显改进 [S04]；随后讨论 keeper 钱包独立且保持小额可限制密钥泄露损害，但需要手动充值 [S04, S05]。 Cellula on Fiber 故障测试：团队称跑了支付中途切断、崩溃、重试三个场景且都通过，最终只支付一次、重试被拒绝 [S21]；还发现并报告 Fiber 小 bug（#1724）[S21]；ArthurZhang 表达赞赏 [S22]。 Spark Program 拨款与沟通流程：MeterNet...</description>
+  </item>
+  <item>
+    <title>Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters (1 posts)</title>
+    <link>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138</link>
+    <guid>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 21:39:14 +0000</pubDate>
+    <description>Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The moment it felt real A friend tried it and sealed a message for me. When the countdown ended I opened it, and the letter and the CKB were mine. It was a small thing, but it felt like getting a real letter, from a blockchain. What it does You write a letter, add a photo or record a video or voice note, put some CKB in with it, and seal it until a date. On that day, the person you chose opens it, and the message and the CKB are theirs. It fits CKB naturally: storing data locks 1 CKB...</description>
+  </item>
+  <item>
+    <title>CadencePay: recurring payments on CKB where the person paying stays in control (1 posts)</title>
+    <link>https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137</link>
+    <guid>https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 20:28:53 +0000</pubDate>
+    <description>Hi everyone! I’m Linnette, a builder in the CKBuilders program, based in Nairobi. I’d love to introduce the project I built as my capstone. The problem Every subscription I’ve had could take more than I agreed to, or keep charging after I left. Creators here in Kenya deserve steady income without a platform taking a cut or sitting on their money. I wanted paying someone over time to feel like handing over cash, not handing over your wallet. What CadencePay does A member funds their own subscription cell, and one type script enforces the deal: the creator can collect exactly the agreed amount, at most once per period, always paid to them; the price, period and recipient can never change;...</description>
+  </item>
+  <item>
+    <title>QuotaCell: Let your team spend without handing over the treasury (3 posts)</title>
+    <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-3</guid>
+    <pubDate>Fri, 06 Nov 2026 17:32:12 +0000</pubDate>
+    <description>QuotaCell update: From test tokens to a working CKB spending Pocket When I first shared QuotaCell, I was trying to solve a simple problem. How do you let contributors, teammates or automated agents pay project expenses without giving them the main treasury key or approving every payment yourself? The first experiments showed that CKB could enforce spending limits directly on-chain. But they were still using synthetic test tokens and a preconfigured setup. The feedback from @Ayoub_Lesfer and @ArthurZhang raised important questions about payments happening simultaneously, uncertain transaction outcomes, and the 600 CKB that remained locked after closing a Pocket. I’ve spent the past week...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellFlow — Durable CCC Transaction Recovery PoC (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellflow-durable-ccc-transaction-recovery-poc/11067#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 17:02:15 +0000</pubDate>
+    <description>Thank you for reviewing the CellFlow proposal and providing clear, constructive feedback. I understand the committee’s concerns regarding the lack of demonstrated ecosystem demand and the additional operational complexity introduced by the proposed architecture. I agree that any recovery solution should complement CCC and CKB RPC rather than duplicate their existing capabilities or impose unnecessary infrastructure requirements. Moving forward, I will focus on validating the problem through concrete developer use cases and exploring a more lightweight, optional approach that better aligns with the current CKB ecosystem. Thank you again for your time and consideration. I appreciate the...</description>
+  </item>
+  <item>
+    <title>Web page www.nervos.org - Discussion for new pull request (4 posts)</title>
+    <link>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133</link>
+    <guid>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133#recent-4</guid>
+    <pubDate>Fri, 06 Nov 2026 15:02:35 +0000</pubDate>
+    <description>This is exactly the same issue I raised earlier about managing the @NervosNetwork account on X. People in the community don’t seem to care much about these details—most are currently focused solely on their own immediate tasks. Obviously, if you’re only here to seek grants, these broader ecosystem issues may have little to do with you. Once your project is delivered, your job is done. But if you want to build a long-term application for mainstream users, the overall health of the ecosystem is something you simply cannot ignore. Blockchains secure real financial assets. No user would risk storing their assets in an application built on a chain that looks abandoned and poorly...</description>
+  </item>
+  <item>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (4 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-4</guid>
+    <pubDate>Fri, 06 Nov 2026 10:53:01 +0000</pubDate>
+    <description>Great to see this moving. A community bootnode on the Brazil–Portugal cable, home-hosted and on Qubes OS, adds exactly the kind of diversity the network lacks. I’d like to suggest a connection with a project I’m building, the CKB Service Runner (CSR). It’s a small side application that runs beside a fully synced full node. I think both projects could benefit. What CSR could give NNCBN Independent, verifiable uptime evidence. The curated bootnode list needs ongoing proof that nodes stay reachable and synced. The CSR Network Monitor probes registered nodes for availability, sync state, version, node age and network diversity (ASN, region, country). It stores a weekly ranking in a cell on...</description>
+  </item>
+  <item>
+    <title>Noir-CKB: the private tally is live on CKB testnet, try it yourself (1 posts)</title>
+    <link>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132</link>
+    <guid>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 10:30:03 +0000</pubDate>
+    <description>GM xiaomao, congrats on getting this live, and on running a real ceremony instead of asking us to trust one key. Rebuilding the public inputs from the transaction itself is a neat answer to replay. On your question 2: I’ve been thinking about on-chain voting on CKB, where encrypted tallies have to stay hidden until disclosure. A proof bound to one ballot cell and one tally transition is the kind of thing that design space needs. Two loose thoughts, in case they’re useful: Fee payer: you list it as a remaining leak. Since the tally has no signature lock and the proof pins the new Cell’s lock and capacity, a third party could in principle relay the transaction without being able to alter...</description>
+  </item>
+  <item>
+    <title>Spark Program | Bees Network — Decentralized Observation Layer for AI Agents on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015</link>
+    <guid>https://talk.nervos.org/t/spark-program-bees-network-decentralized-observation-layer-for-ai-agents-on-ckb/11015#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 08:06:11 +0000</pubDate>
+    <description>Hi @NOrththebear, Sorry to see this one rejected. The MVP and the cell-based accounting are solid work. Reading the committee’s reason (bootstrapping node supply, ongoing incentives, demand), I think there’s a natural overlap with something I’m building, and maybe a way to share the hard part instead of each of us solving it alone. I’m working on CKB Service Runner (CSR), a side application that runs next to a fully synced CKB node and lets operators run jobs for tips. A public Network Monitor ranks runners by availability, age and network diversity (ASN, region, country). Each runner proves its node identity, and runtime registration is backed by a 10,000 CKB Nervos DAO deposit. Repo:...</description>
+  </item>
+  <item>
+    <title>Spark Program Proposal: Corven cloud-native IDE (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-3</guid>
+    <pubDate>Fri, 06 Nov 2026 07:50:37 +0000</pubDate>
+    <description>Hi @xingtianchunyan and the Spark Program Committee, Thank you for sending the first installment. I confirm I have received the 20% payment (transaction 0x1ad89f77bfa849bc6bffd670d3233693c567cbeaef9a5ebdef9269cee9474751 ). Sorry about the missing time in my earlier message. Here is the weekly sync schedule: Live call: every Friday at 2:00 PM EST Written update: every Sunday on this thread Does Friday at 2:00 PM EST work for the committee? If another time suits you better, I’m happy to adjust. Best, Jimleston Hi @lestonEth , I understand that you’d like to meet online every Friday afternoon. But I need to let you know about a recent change to our communication process: individual online...</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 02:56:24 +0000</pubDate>
+    <description>Hi @Timilehin_Olowu, The first installment: 20% (116,140 CKB) has been disbursed. Please check your account. Transaction Hash : 0xad6faed70a9c97c21103991142ddc86fd26f60e671ec906ec326b0d0867b8c4c Best regards xingtian On behalf of the Spark Program Committee</description>
+  </item>
+  <item>
+    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
+    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-2</guid>
+    <pubDate>Fri, 06 Nov 2026 02:53:56 +0000</pubDate>
+    <description>Thanks Arthur, good list. We ran all three, and all three passed. Payment cut off halfway, a crash, then a retry. The person paid once, the shop was paid once, and the retry was refused. We also found a small bug in Fiber and reported it: nervosnetwork/fiber#1724. Connection lost until the channel is closed. Every payment ended correctly, and the payer ended with exactly the right balance. Leaving with the LSP switched off. With only the recovery file, the wallet got all its money back. We also did the same exit from the wallet’s own recovery page, on the public testnet: all the money came back within three hours. One small payment was still in progress when the LSP went down. It comes...</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
+    <pubDate>Fri, 06 Nov 2026 02:04:46 +0000</pubDate>
+    <description>Hi @TinyuengKwan ， The final installment ：80% ，963,856 CKB as been disbursed. Please check your account. Transaction Hash : 0x3581b5e85a4582a4839097f1e049463a18ff86119180157836d3ab170da48b5a Congratulations on successfully completing the CKB-VM proposal! Thank you for your continued perseverance! Most importantly, may you always be in good health~~ Best， xingtian On behalf of the Spark Program Committee cc: @zz_tovarishch , @Hanssen , @yixiu.ckbfans.bit</description>
+  </item>
+</channel>
+</rss>
