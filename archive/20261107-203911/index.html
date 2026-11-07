@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-07 04:39:11 CST - 2026-11-08 04:39:11 CST</span>
+          <span>生成时间 2026-11-08 04:39:22 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">12</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">16</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">11</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的动静主要来自多个应用和工具项目的更新：CKBolt 发帖介绍并给出测试指南 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>，Twine 推出 testnet beta 并调整交易流程 <span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s07">S07</a>]</span>。QuotaCell 与 CSR 的集成讨论继续 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>，Kaze 也确认了首场 Unitour 的日期 <span class="citations">[<a href="#source-s04">S04</a>]</span>。另外，Rosen Bridge 的 CKB 集成讨论有回应 <span class="citations">[<a href="#source-s03">S03</a>]</span>，Spark 项目 ckb-adversary 也发布了介绍帖 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>CKBolt 由 TEX Labs 开发，是一个浏览器应用，探索 Bitcoin Lightning 与 Nervos CKB 上 Fiber Network 的互操作 <span class="citations">[<a href="#source-s05">S05</a>]</span>。帖子还提供了 Lightning 钱包设置指南，方便感兴趣的人尝试 Lightning 与 Fiber 的跨网络 swap <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li>Twine 发布 testnet beta，定位为非托管 desk，订单、加密聊天和交易动作走 Nostr，CKB 在双方控制的 Fiber 钱包间移动 <span class="citations">[<a href="#source-s09">S09</a>]</span>。更新中移除了 JIT inbound 路径，open_channel 不再属于交易，RPC token 也不再需要 channels 写权限 <span class="citations">[<a href="#source-s07">S07</a>]</span>。ArthurZhang 认为把通道管理移出 Twine 合理，能降低协调者所需权限，并让交易接口可被其他 Fiber 钱包使用 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li>QuotaCell 讨论中，psawyerberlin 解释 CSR 里每个 runner 有自己的小钱包，由运营者充值，runner 自付交易费，盈余可自动扫走 <span class="citations">[<a href="#source-s01">S01</a>]</span>。Ticoworld 回应称此前没把 CSR 视为 QuotaCell 的自动化侧，认为 CSR 定时任务加 QuotaCell 支出限制可能有助于解决 Ayoub 提到的 keeper-wallet 问题 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>Kaze X CKB Unitour Continuation Proposal 中，Dorex45 确认首场 Unitour 在 11 月 19 日举行，地面准备正与社区伙伴、HackFest 学生俱乐部和 Machakos University GDGOC 成员对齐 <span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>Rosen Bridge 的 CKB 集成讨论中，phroi 反驳“用户可完全信任自己密钥”的表述，称链上合约漏洞正是 Rosen 用标准合约要防的，并称 Rosen 团队审查计划除节点部分外都没问题 <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>跟进 Twine testnet beta 的实际交易反馈，尤其是移除 JIT inbound 后，买家无法接收时的处理体验 <span class="citations">[<a href="#source-s09">S09</a>, <a href="#source-s07">S07</a>]</span>。</li>
+<li>跟进 CKBolt 的 Lightning 与 Fiber swap 测试指南是否收到可用性反馈，以及跨网络 swap 是否被实际验证 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>。</li>
+<li>跟进 QuotaCell 与 CSR 的 keeper 方案如何落地，以及 CadencePay 中“每期需要有人触发并付手续费”的缺口是否被补上 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>, <a href="#source-s12">S12</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/11">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">psawyerberlin · 2026-11-07 23:09:49 CST</div><div>Thanks @Ticoworld, great project idea, it really tackles a practical use case. To your question: in CSR, each runner has its own small wallet that the operator funds once. It pays the runner’s transaction fees by itself, and any surplus can be swept automatically to the...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/12">QuotaCell: Let your team spend without handing over the treasury</a></div><div class="source-meta">Ticoworld · 2026-11-08 03:23:32 CST</div><div>Thanks @psawyerberlin , this is a really interesting connection. I hadn’t considered CSR as the automation side of QuotaCell. Combining its scheduled jobs with QuotaCell’s spending limits could be useful for the keeper-wallet problem Ayoub described. The part I’d like to...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/152">[DIS] CKB Integration for Rosen Bridge</a></div><div class="source-meta">phroi · 2026-11-08 01:56:16 CST</div><div>president_tin: unlike RGB++, where users can completely trust their own keys This phrase didn’t age so well: on-chain contract exploits are exactly what Rosen tries to prevent by using standard contracts! BTW Rosen Team reviewed our plan: all fine except the node part, they...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/30">[DIS] Kaze X CKB Unitour Continuation Proposal</a></div><div class="source-meta">Dorex45 · 2026-11-08 01:20:15 CST</div><div>Hello Team ,Confirmed Date For The 1st Unitour Is On 19th November,We will be running the First Unitour - Ground Preparation is in place aligning with community partners ,student club called HackFest &amp; Machakos University GDGOC Club members.</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144/1">CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB</a></div><div class="source-meta">longdevbf · 2026-11-08 00:43:05 CST</div><div>Hello Nervos community, We are excited to introduce CKBolt, a browser-based application developed by TEX Labs, exploring interoperability between Bitcoin’s Lightning Network and Fiber Network on Nervos CKB. Bitcoin’s Lightning Network is a Layer 2 payment network built on...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144/2">CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB</a></div><div class="source-meta">longdevbf · 2026-11-08 00:45:04 CST</div><div>Getting Started: Lightning Wallet Setup For anyone interested in trying the Bitcoin Lightning ↔ Fiber swap, we’ve also prepared a step-by-step guide to help you set up a Lightning wallet and get started with cross-network swaps. Setup Guide: CKBolt app - Testnet guide Feel...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/11">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a></div><div class="source-meta">ebubedev · 2026-11-07 22:37:24 CST</div><div>Pulling the JIT inbound path. On release, if the buyer could not receive, the daemon opened a private one-way channel from the Twine Fiber node and funded it. That is gone. open_channel is no longer part of a trade. The RPC token no longer needs write(&quot;channels&quot;) or...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/12">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a></div><div class="source-meta">ArthurZhang · 2026-11-08 00:33:56 CST</div><div>Sorry i have been busy elsewhere.Coming back to this after your latest update now. Moving channel management out of Twine makes sense to me. It keeps the trading interface usable by other Fiber wallets and reduces the permissions the coordinator needs. Good to see the earlier...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/twine-testnet-beta-help-test-buying-and-selling-ckb-without-an-exchange/11143/1">Twine testnet beta: help test buying and selling CKB without an exchange</a></div><div class="source-meta">ebubedev · 2026-11-07 20:34:48 CST</div><div>Twine is a non-custodial desk for buying and selling CKB with local money. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets the two people control. The local currency goes from one account to the other. Twine does not hold the...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142/1">Spark Program | ckb-adversary: generic attacks on real CKB transactions, before you deploy</a></div><div class="source-meta">T_Silva · 2026-11-07 10:57:39 CST</div><div>In my own words What it solves. Every CKB lock and type has to refuse the same handful of tricks: skim an output, ride a second cell along, swap a dep, reuse a proof. Most teams test that their script works, not that it refuses. ckb-adversary takes one real transaction your...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/erased/11141/1">Erased</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-07 10:54:24 CST</div><div>(topic deleted by author)</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137/2">CadencePay: recurring payments on CKB where the person paying stays in control</a></div><div class="source-meta">psawyerberlin · 2026-11-07 08:23:15 CST</div><div>Hi @Linet_Mugwanja, nice design! Anyone can trigger a collection, but the payout always goes to the creator. That leaves one gap: someone has to show up each period and pay the fee. CKB Service Runner (CSR) can be that keeper: Trigger: “every k blocks” or “at time”, proven via...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/1">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a></div><div class="source-meta">Linet_Mugwanja · 2026-11-07 05:39:14 CST</div><div>Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The moment it felt real A friend tried it and sealed a message for...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/2">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a></div><div class="source-meta">psawyerberlin · 2026-11-07 07:59:37 CST</div><div>Hi Linnette, Congratulations on Message in a Cell! Making the storage deposit part of the gift is a really nice touch. Sealing the message itself drand timelock encryption works great for this: Live example: ChronoVault Open-source code: github.com/psawyerberlin/ChronoVault...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317/31">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a></div><div class="source-meta">ebubedev · 2026-11-07 07:35:07 CST</div><div>Fiber Studio v1.1.4 — relays connect themselves Hi everyone, Fiber Studio v1.1.4 is out. This one is about getting onto the public network without extra setup. Official relays connect on their own. First-run setup no longer asks you to paste a public node. Pick testnet or...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/16">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">Jedi_dtechmaker · 2026-11-07 06:14:44 CST</div><div>Rivet Phase 1 Delivery Report Implementation and project acceptance testing for Rivet’s first grant milestone are complete and ready for community review. Milestone 1 delivers GitHub-first onboarding, optional JoyID wallet ownership verification, sponsored CoTA identity...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>14</strong></li><li><span>社区互动</span><strong>1</strong></li><li><span>其他</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@psawyerberlin</span><strong>3</strong></li><li><span>@ebubedev</span><strong>3</strong></li><li><span>@longdevbf</span><strong>2</strong></li><li><span>@Ticoworld</span><strong>1</strong></li><li><span>@phroi</span><strong>1</strong></li><li><span>@Dorex45</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>59</span></li><li>payment<span>53</span></li><li>fiber<span>50</span></li><li>can<span>46</span></li><li>transaction<span>42</span></li><li>one<span>37</span></li><li>you<span>34</span></li><li>are<span>34</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002">QuotaCell: Let your team spend without handing over the treasury</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-08 03:23:32 CST</span><span>Ticoworld, psawyerberlin</span></div><p class="excerpt">Thanks @Ticoworld, great project idea, it really tackles a practical use case. To your question: in CSR, each runner has its own small wallet that the operator funds once. It pays the runner’s transaction fees by itself, and any surplus can be swept...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144">CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-08 00:45:04 CST</span><span>longdevbf</span></div><p class="excerpt">Hello Nervos community, We are excited to introduce CKBolt, a browser-based application developed by TEX Labs, exploring interoperability between Bitcoin’s Lightning Network and Fiber Network on Nervos CKB. Bitcoin’s Lightning Network is a Layer 2 payment...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>appchain</span><span>fiber</span><span>lang-en</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-08 00:33:56 CST</span><span>ArthurZhang, ebubedev</span></div><p class="excerpt">Pulling the JIT inbound path. On release, if the buyer could not receive, the daemon opened a private one-way channel from the Twine Fiber node and funded it. That is gone. open_channel is no longer part of a trade. The RPC token no longer needs...</p><div class="tag-row"><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 07:59:37 CST</span><span>Linet_Mugwanja, psawyerberlin</span></div><p class="excerpt">Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The moment it felt real A friend tried it and...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>dapp</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756">[DIS] CKB Integration for Rosen Bridge</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-08 01:56:16 CST</span><span>phroi</span></div><p class="excerpt">president_tin: unlike RGB++, where users can completely trust their own keys This phrase didn’t age so well: on-chain contract exploits are exactly what Rosen tries to prevent by using standard contracts! BTW Rosen Team reviewed our plan: all fine except...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736">[DIS] Kaze X CKB Unitour Continuation Proposal</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-08 01:20:15 CST</span><span>Dorex45</span></div><p class="excerpt">Hello Team ,Confirmed Date For The 1st Unitour Is On 19th November,We will be running the First Unitour - Ground Preparation is in place aligning with community partners ,student club called HackFest &amp; Machakos University GDGOC Club members.</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span><span>Nervos-项目动态</span><span>appchain</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/twine-testnet-beta-help-test-buying-and-selling-ckb-without-an-exchange/11143">Twine testnet beta: help test buying and selling CKB without an exchange</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 20:34:48 CST</span><span>ebubedev</span></div><p class="excerpt">Twine is a non-custodial desk for buying and selling CKB with local money. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets the two people control. The local currency goes from one account to the other. Twine...</p><div class="tag-row"><span>CKB</span><span>fiber</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142">Spark Program | ckb-adversary: generic attacks on real CKB transactions, before you deploy</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 10:57:39 CST</span><span>T_Silva</span></div><p class="excerpt">In my own words What it solves. Every CKB lock and type has to refuse the same handful of tricks: skim an output, ride a second cell along, swap a dep, reuse a proof. Most teams test that their script works, not that it refuses. ckb-adversary takes one real...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/erased/11141">Erased</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 10:54:24 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">(topic deleted by author)</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137">CadencePay: recurring payments on CKB where the person paying stays in control</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 08:23:15 CST</span><span>psawyerberlin</span></div><p class="excerpt">Hi @Linet_Mugwanja, nice design! Anyone can trigger a collection, but the payout always goes to the creator. That leaves one gap: someone has to show up each period and pay the fee. CKB Service Runner (CSR) can be that keeper: Trigger: “every k blocks” or...</p><div class="tag-row"><span>CKB</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 07:35:07 CST</span><span>ebubedev</span></div><p class="excerpt">Fiber Studio v1.1.4 — relays connect themselves Hi everyone, Fiber Studio v1.1.4 is out. This one is about getting onto the public network without extra setup. Official relays connect on their own. First-run setup no longer asks you to paste a public node....</p><div class="tag-row"><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-07 06:14:44 CST</span><span>Jedi_dtechmaker</span></div><p class="excerpt">Rivet Phase 1 Delivery Report Implementation and project acceptance testing for Rivet’s first grant milestone are complete and ready for community review. Milestone 1 delivers GitHub-first onboarding, optional JoyID wallet ownership verification, sponsored...</p><div class="tag-row"><span>CKB</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-08 03:23:32 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/12">QuotaCell: Let your team spend without handing over the treasury</a> · @Ticoworld</strong><p>Thanks @psawyerberlin , this is a really interesting connection. I hadn’t considered CSR as the automation side of QuotaCell. Combining its scheduled jobs with QuotaCell’s spending limits could be useful for the...</p></article>
+<article class="timeline-row"><time>2026-11-08 01:56:16 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/152">[DIS] CKB Integration for Rosen Bridge</a> · @phroi</strong><p>president_tin: unlike RGB++, where users can completely trust their own keys This phrase didn’t age so well: on-chain contract exploits are exactly what Rosen tries to prevent by using standard contracts! BTW Rosen...</p></article>
+<article class="timeline-row"><time>2026-11-08 01:20:15 CST</time><strong><a href="https://talk.nervos.org/t/dis-kaze-x-ckb-unitour-continuation-proposal/10736/30">[DIS] Kaze X CKB Unitour Continuation Proposal</a> · @Dorex45</strong><p>Hello Team ,Confirmed Date For The 1st Unitour Is On 19th November,We will be running the First Unitour - Ground Preparation is in place aligning with community partners ,student club called HackFest &amp; Machakos...</p></article>
+<article class="timeline-row"><time>2026-11-08 00:45:04 CST</time><strong><a href="https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144/2">CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB</a> · @longdevbf</strong><p>Getting Started: Lightning Wallet Setup For anyone interested in trying the Bitcoin Lightning ↔ Fiber swap, we’ve also prepared a step-by-step guide to help you set up a Lightning wallet and get started with cross-...</p></article>
+<article class="timeline-row"><time>2026-11-08 00:43:05 CST</time><strong><a href="https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144/1">CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB</a> · @longdevbf</strong><p>Hello Nervos community, We are excited to introduce CKBolt, a browser-based application developed by TEX Labs, exploring interoperability between Bitcoin’s Lightning Network and Fiber Network on Nervos CKB. Bitcoin’s...</p></article>
+<article class="timeline-row"><time>2026-11-08 00:33:56 CST</time><strong><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/12">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a> · @ArthurZhang</strong><p>Sorry i have been busy elsewhere.Coming back to this after your latest update now. Moving channel management out of Twine makes sense to me. It keeps the trading interface usable by other Fiber wallets and reduces the...</p></article>
+<article class="timeline-row"><time>2026-11-07 23:09:49 CST</time><strong><a href="https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002/11">QuotaCell: Let your team spend without handing over the treasury</a> · @psawyerberlin</strong><p>Thanks @Ticoworld, great project idea, it really tackles a practical use case. To your question: in CSR, each runner has its own small wallet that the operator funds once. It pays the runner’s transaction fees by...</p></article>
+<article class="timeline-row"><time>2026-11-07 22:37:24 CST</time><strong><a href="https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/11">Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)</a> · @ebubedev</strong><p>Pulling the JIT inbound path. On release, if the buyer could not receive, the daemon opened a private one-way channel from the Twine Fiber node and funded it. That is gone. open_channel is no longer part of a trade....</p></article>
+<article class="timeline-row"><time>2026-11-07 20:34:48 CST</time><strong><a href="https://talk.nervos.org/t/twine-testnet-beta-help-test-buying-and-selling-ckb-without-an-exchange/11143/1">Twine testnet beta: help test buying and selling CKB without an exchange</a> · @ebubedev</strong><p>Twine is a non-custodial desk for buying and selling CKB with local money. Orders, encrypted chat, and trade actions go over Nostr. The CKB moves on Fiber, between wallets the two people control. The local currency...</p></article>
+<article class="timeline-row"><time>2026-11-07 10:57:39 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142/1">Spark Program | ckb-adversary: generic attacks on real CKB transactions, before you deploy</a> · @T_Silva</strong><p>In my own words What it solves. Every CKB lock and type has to refuse the same handful of tricks: skim an output, ride a second cell along, swap a dep, reuse a proof. Most teams test that their script works, not that...</p></article>
+<article class="timeline-row"><time>2026-11-07 10:54:24 CST</time><strong><a href="https://talk.nervos.org/t/erased/11141/1">Erased</a> · @LusoCryptoLabs</strong><p>(topic deleted by author)</p></article>
+<article class="timeline-row"><time>2026-11-07 08:23:15 CST</time><strong><a href="https://talk.nervos.org/t/cadencepay-recurring-payments-on-ckb-where-the-person-paying-stays-in-control/11137/2">CadencePay: recurring payments on CKB where the person paying stays in control</a> · @psawyerberlin</strong><p>Hi @Linet_Mugwanja, nice design! Anyone can trigger a collection, but the payout always goes to the creator. That leaves one gap: someone has to show up each period and pay the fee. CKB Service Runner (CSR) can be...</p></article>
+<article class="timeline-row"><time>2026-11-07 07:59:37 CST</time><strong><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/2">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a> · @psawyerberlin</strong><p>Hi Linnette, Congratulations on Message in a Cell! Making the storage deposit part of the gift is a really nice touch. Sealing the message itself drand timelock encryption works great for this: Live example:...</p></article>
+<article class="timeline-row"><time>2026-11-07 07:35:07 CST</time><strong><a href="https://talk.nervos.org/t/dis-fiber-desktop-v1-ground-up-rebuild-and-launch-fnn-desktop-app/10317/31">[DIS] Fiber Desktop v1 ground-up rebuild and launch — fnn desktop app</a> · @ebubedev</strong><p>Fiber Studio v1.1.4 — relays connect themselves Hi everyone, Fiber Studio v1.1.4 is out. This one is about getting onto the public network without extra setup. Official relays connect on their own. First-run setup no...</p></article>
+<article class="timeline-row"><time>2026-11-07 06:14:44 CST</time><strong><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/16">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a> · @Jedi_dtechmaker</strong><p>Rivet Phase 1 Delivery Report Implementation and project acceptance testing for Rivet’s first grant milestone are complete and ready for community review. Milestone 1 delivers GitHub-first onboarding, optional JoyID...</p></article>
+<article class="timeline-row"><time>2026-11-07 05:39:14 CST</time><strong><a href="https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138/1">Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters</a> · @Linet_Mugwanja</strong><p>Hi everyone! I’m Linnette from the CKBuilders program. After CadencePay ( CadencePay: recurring payments on CKB where the person paying stays in control ), here’s the other project I built: Message in a Cell. The...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
