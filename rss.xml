@@ -5,77 +5,119 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sun, 08 Nov 2026 20:19:38 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 21:56:24 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-11-09</title>
+    <title>CKB Talk Daily Brief - 2026-11-10</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-11-08:daily-brief</guid>
-    <pubDate>Sun, 08 Nov 2026 20:57:08 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛的动静主要来自开发者项目更新、资助提案和代码修复，而不是单一热点事件。[S01,S04,S05,S06,S10] 新帖里有 ILE Labs 的 ckb-msig 多签工具介绍，以及 CKB Escrow Security Test Kit 的资助申请。[S01,S04] Noir-CKB 私有 tally、Twine Fiber P2P PoC、QuotaCell 和 nervos.org 网站 PR 都有后续讨论或修改，隐私订单簿 appchain 也更新周报称继续修改论文。[S02,S03,S05,S08,S09,S10] 整体看，社区今天不算平静，但话题分散在多个开发项目上。[S01,S04,S05,S06,S08,S10] ## 重点话题 ILE Labs 在 Spark Program 下发帖介绍 ckb-msig，目标是从 ckb-cli、Neuron 和 CCC 检查并合并 CKB 多签签名。[S01] 帖子把多方共同组装和签名同一笔交易视为要解决的缺口，并提到当前 CKB 多签付款和合约升级的签名方式。[S01] devnash 发布 CKB Escrow Security Test Kit 提案，申请 2,000 USDI，计划 8 周内在 CKB Testnet 上做开源 Rust 测试框架和 escrow 脚本参考实现。[S04] 申请人为 Zuhudev 和 Charles。[S04] xiaomao 在 Noir-CKB 私有 tally 帖下回应投票设计，提到今年早些时候为 Buidl Guidl...</description>
+    <guid>tag:ckb-talk-radar,2026-11-10:daily-brief</guid>
+    <pubDate>Tue, 10 Nov 2026 00:32:23 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要动态是多个 CKB 项目在测试网、主网和社区提案上推进，而不是单一热点。[S03, S12, S19, S22] Noir-CKB 的私密计票测试继续收到上手反馈，QuotaCell 则围绕小型 DAO/社区国库的用法展开讨论，并在公开 demo 前收到风险检查建议。[S03, S04, S07, S08, S10] Fiber 相关进展包括 Cellula 的新主网 commitment lock 上线并开放投票，以及 Twine 对法币转账后路由失败的修复。[S19, S20, S13] 此外，Tranfr 发布完成报告，CKB-Up 提交 Spark 提案，Pocket Node 也更新了 M2 付款信息。[S22, S14, S25] ## 重点话题 **Noir-CKB 私密计票**：作者回应社区已有 VoteSecure，计划本周细读 v2.3 规范，并认可用阈值解密替代 drand 的方向。[S03] 有贡献者反馈两命令路径可用，但分步指南在没有 nargo 时会卡住；另有用户在 Ubuntu 24.04/WSL2 下成功跑通。[S04, S05] **QuotaCell 的 DAO 场景**：社区提议先把它做成小型 DAO/社区国库的简单工具，作者认同并说明可为日常开支设工作预算、让指定成员在额度内付款。[S07, S08] 公开 demo 前有人提醒检查多保护资金 Cell 或不支持匹配 Cell 时的发现路径，避免额外存款阻止 Pocket 打开或 owner 恢复。[S10] keeper...</description>
   </item>
   <item>
-    <title>Spark Program | ckb-msig: check and merge CKB multisig signatures from ckb-cli, Neuron and CCC (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-msig-check-and-merge-ckb-multisig-signatures-from-ckb-cli-neuron-and-ccc/11151</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-msig-check-and-merge-ckb-multisig-signatures-from-ckb-cli-neuron-and-ccc/11151#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 20:19:38 +0000</pubDate>
-    <description>In our own words At ILE Labs we build tools. One of them, still under construction and private, led us to this gap: several parties putting together and signing one transaction. When we looked at how CKB’s own multisig payouts and contract upgrades get signed today, we saw the same manual step: signatures pasted into PR comments or chat, checked by eye, then trimmed by hand to exactly the threshold before ckb-cli will send. Fiber’s v0.7.0 upgrade has had enough signatures since 2 November and still isn’t on chain. We had to find out whether the wallets’ formats could be reconciled, so we built a prototype: ckb-msig 0.0.1 checks all six real signatures on that upgrade offline, with no keys...</description>
-  </item>
-  <item>
-    <title>Noir-CKB: the private tally is live on CKB testnet, try it yourself (2 posts)</title>
-    <link>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132</link>
-    <guid>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132#recent-2</guid>
-    <pubDate>Sun, 08 Nov 2026 19:28:41 +0000</pubDate>
-    <description>Thanks for reading it this closely, and for the ideas. Voting is actually something I’ve spent a lot of time on. Earlier this year I built a ZK voting system for the Buidl Guidl challenge, and I wrote up everything that broke along the way: Anonymous Blockchain Voting is Impossible (I Was Wrong) The main thing I took from that was that the proof on its own doesn’t give you private voting. You need a commitment tree so people can prove they’re registered without saying which registration is theirs, a nullifier per election so nobody votes twice and you can’t follow the same voter across elections, and something like a paymaster, because the moment the voter’s own account pays the fee,...</description>
-  </item>
-  <item>
-    <title>CKB Escrow Security Test Kit (1 posts)</title>
+    <title>CKB Escrow Security Test Kit (2 posts)</title>
     <link>https://talk.nervos.org/t/ckb-escrow-security-test-kit/11150</link>
-    <guid>https://talk.nervos.org/t/ckb-escrow-security-test-kit/11150#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 18:57:59 +0000</pubDate>
-    <description>CKB Escrow Security Test Kit A Reusable Rust Testing Framework and Reference Implementation for CKB Escrow Scripts Applicant: Zuhudev and Charles Funding Requested: $2,000 USDI Estimated Duration: 8 Weeks Target Network: CKB Testnet Project Type: Open-source developer infrastructure and smart-contract security tooling Project Summary CKB Escrow Security Test Kit is an open-source developer resource designed to help CKB developers identify and prevent common transaction-level vulnerabilities in escrow scripts. The project will deliver a reusable Rust-based security test suite, a minimal reference escrow implementation, and documented adversarial transaction examples. Developers will be...</description>
+    <guid>https://talk.nervos.org/t/ckb-escrow-security-test-kit/11150#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 21:56:24 +0000</pubDate>
+    <description>Good scope: testing the transaction shape, not only the happy path. Your first phase leaves the since usage and serialization open, so here are five CKB-specific decisions I would settle in the week-1 spec, because each one changes what the tests have to check. I read the proposal and the CKB RFCs, then ran points 1 and 4 on a local CKB dev chain (ckb 0.210.0), and points 3 and 5 and the group case on a deliberately simple toy lock script of mine in ckb-testtool (so “naive” below means my toy, not your design). Point 2 is a design decision and was not run. Happy to share the scripts. Relative timeouts restart on every milestone. A relative since is measured from the block that committed...</description>
   </item>
   <item>
-    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (1 posts)</title>
-    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
-    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 18:38:19 +0000</pubDate>
-    <description>Thanks for going through the code carefully @ArthurZhang. Every point you raised was real. Here is what changed since 514c33a through 79788a8 (both directly from your notes and a few fixes around them): 1. Same hash algorithm on both legs Removed the hardcoded SHA-256 constant. Invoice parsing now reads hash_algorithm from /data/attrs, defaults to ckb_hash when omitted (matching Fiber v0.9.1), and rejects unknown or conflicting values. Before creating a hold, the daemon rejects unsupported algorithms on the buyer’s invoice, passes that invoice’s hash_algorithm to new_invoice for the hold, and verifies the created hold invoice matches it. Both replacement invoices and on_payout_status...</description>
+    <title>Noir-CKB: the private tally is live on CKB testnet, try it yourself (3 posts)</title>
+    <link>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132</link>
+    <guid>https://talk.nervos.org/t/noir-ckb-the-private-tally-is-live-on-ckb-testnet-try-it-yourself/11132#recent-3</guid>
+    <pubDate>Mon, 09 Nov 2026 21:21:10 +0000</pubDate>
+    <description>Hi Patrick, I didn’t know VoteSecure existed, and it’s really cool to find someone who’s been working on private voting on CKB this long. I’m going to read the v2.3 spec properly this week. Dropping drand for threshold decryption is the right call, I think. I hadn’t thought about the problem where the person generating the key could just look before the release round, and once you see it, you can’t really unsee it. Same with the live totals. Decrypting a running sum twice and getting the votes in between is the kind of leak I would have walked straight into. I did notice something about the batching that might bite you though. One Groth16 verification costs about 117M cycles in my tests,...</description>
   </item>
   <item>
-    <title>React Native hooks for Fiber Network payments (`@fiber-pay/react-native`) (1 posts)</title>
-    <link>https://talk.nervos.org/t/react-native-hooks-for-fiber-network-payments-fiber-pay-react-native/11147</link>
-    <guid>https://talk.nervos.org/t/react-native-hooks-for-fiber-network-payments-fiber-pay-react-native/11147#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 18:17:50 +0000</pubDate>
-    <description>Hi everyone! I’ve been working on @fiber-pay/react-native for my CKBuilders capstone and wanted to share where it stands. The idea came from looking at khie-mobile, a React Native wallet for CKB. It doesn’t support Fiber payments yet. fiber-pay already has React hooks, but those run a Fiber node in the browser through WASM and IndexedDB, so they don’t fit React Native. When I read through @fiber-pay/sdk, I found that its FiberRpcClient only needs fetch. That meant I could use the existing client and connect to a remote fnn node over JSON-RPC, instead of trying to run a node on the phone. The package has two hooks so far: useFiberNode({ url }) connects to the node and exposes its status...</description>
-  </item>
-  <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 15:23:23 +0000</pubDate>
-    <description>xingtianchunyan: Please confirm whether the CKB wallet address included in your proposal is the official address for receiving the funds. Plesse change the address to: ckb1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqvx3uktng4cvat879zw3e92w0uc6nqwttq6asuag</description>
-  </item>
-  <item>
-    <title>QuotaCell: Let your team spend without handing over the treasury (1 posts)</title>
+    <title>QuotaCell: Let your team spend without handing over the treasury (8 posts)</title>
     <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
-    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 12:33:23 +0000</pubDate>
-    <description>Ticoworld: QuotaCell delegate key, without needing access to the owner’s key? Thanks @Ticoworld, and sorry for the slow follow-up. I wanted to check this properly against how CSR actually works before answering. The honest answer: yes, technically, but it doesn’t add much. A CSR job can’t carry a key of its own. Every CSR runner signs its transactions with its own service key, and services never see that key. So the only way to use a QuotaCell delegate today would be to register one specific runner’s key as the delegate. The owner’s key would never be needed, but the refill would then depend on that single runner being online. That’s essentially what Ayoub already has with his keeper bot,...</description>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-8</guid>
+    <pubDate>Mon, 09 Nov 2026 20:40:15 +0000</pubDate>
+    <description>Thanks @psawyerberlin, that makes sense now. I see why tying QuotaCell to one runner would defeat the purpose of CSR. The keyless refill idea is interesting, especially with the keeper-wallet problem Ayoub mentioned. I hadn’t considered approaching it that way. I want to look into how the refill limits and cooldown could work safely before making changes to QuotaCell. For now, I’m working on getting the existing Pocket running with real wallets on Pudge. Once I’ve explored this further, I’ll reach out on Telegram so we can talk through a possible test. And thanks for sharing the video too, Really appreciate the feedback and support 是否可以尝试让 QuotaCell 先成为某些 DAO /...</description>
   </item>
   <item>
-    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
-    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 09:26:12 +0000</pubDate>
-    <description>周报 2026.11.8 继续上周的修改论文</description>
+    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (2 posts)</title>
+    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
+    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 20:32:04 +0000</pubDate>
+    <description>Great, the fixes are a clear improvement. Two areas I’d still check: If the route disappears after the bank transfer, fiat-sent can be rejected before recording the buyer’s report. Could you preserve that report and handle the routing failure separately? Could the timing calculations follow the actual incoming channel delay and the buyer invoice’s required lock time? The fixed claim margin assumes default channel settings, while the published deadlines assume the shortest invoice lock. That can leave less usable time than the seller and arbitrator windows suggest. These would be useful cases to test with real Fiber nodes. Good progress, and thanks for following the review through. Here is...</description>
   </item>
   <item>
-    <title>Web page www.nervos.org - Discussion for new pull request (1 posts)</title>
-    <link>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133</link>
-    <guid>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133#recent-1</guid>
-    <pubDate>Sun, 08 Nov 2026 00:13:11 +0000</pubDate>
-    <description>Thanks everyone for the feedback. I’ve submitted the changes as a pull request: Remove outdated information and keep nervos.org timeless by psawyerberlin · Pull Request #34 · nervosnetwork/nervos-official-website · GitHub What changes: Journey: the outdated In progress / Upcoming / Achievements lists are replaced by a short “Roadmap &amp; progress” note that points to this forum, so the page doesn’t go stale again Home: the Axon card (broken link) is removed Mining: the halving text no longer describes Nov 2023 as the future New links: CKB CCC on the Developers page, CKB Pulse on the Community page All languages updated Preview: https://nervos-official-website-git-fork-...</description>
+    <title>[Spark Proposal] CKB-Up: 1-Click Headless Automated Setup Script for ARM Devices &amp; VPS (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-proposal-ckb-up-1-click-headless-automated-setup-script-for-arm-devices-vps/11158</link>
+    <guid>https://talk.nervos.org/t/spark-proposal-ckb-up-1-click-headless-automated-setup-script-for-arm-devices-vps/11158#recent-1</guid>
+    <pubDate>Mon, 09 Nov 2026 16:45:24 +0000</pubDate>
+    <description>1. Project Name CKB-Up (Automated Setup Script &amp; Channel Backup Daemon) 2. Team / Individual Profile Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer Requested: $1,000 USD, paid 100% in CKB Duration: 4 weeks, 4 milestones · License: MIT Contact: Nervos Talk 3. Project Description Problem With initiatives like NNCBN (Nervos Network Community Boot Nodes) proving the importance of network operator diversity, expanding the count of community-hosted L1 nodes and Layer 2 Fiber Network Nodes (fnn) is critical to decentralizing state and liquidity. However, setting up a light-client node alongside a Fiber payment node on low-cost hardware (e.g., Raspberry Pi 4/5, RockPi, or...</description>
+  </item>
+  <item>
+    <title>CKBolt: Connecting Bitcoin Lightning and Fiber Network on Nervos CKB (3 posts)</title>
+    <link>https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144</link>
+    <guid>https://talk.nervos.org/t/ckbolt-connecting-bitcoin-lightning-and-fiber-network-on-nervos-ckb/11144#recent-3</guid>
+    <pubDate>Mon, 09 Nov 2026 15:33:41 +0000</pubDate>
+    <description>app 整体做得体验很完整，期待看到后续的进展！ RetricSu: nghiệm Thank you for your support, Retric Nice!!!</description>
+  </item>
+  <item>
+    <title>Living Passport: repair history for phones and laptops on CKB (testnet) (1 posts)</title>
+    <link>https://talk.nervos.org/t/living-passport-repair-history-for-phones-and-laptops-on-ckb-testnet/11155</link>
+    <guid>https://talk.nervos.org/t/living-passport-repair-history-for-phones-and-laptops-on-ckb-testnet/11155#recent-1</guid>
+    <pubDate>Mon, 09 Nov 2026 13:24:40 +0000</pubDate>
+    <description>Hi everyone I’m Anthony, building on the CKB Builder Track. For the last few weeks I’ve been working on Living Passport, a service history for phones and laptops that lives on CKB. The problem When you buy a used phone or laptop, you rely on what the seller tells you about repairs. Repair shops here mostly don’t keep records either, they rely on what the owner says. How it works Each device gets a passport, a cell on CKB with its history in the cell data The shop registers the device at intake from its own wallet, so the customer doesn’t need a wallet or a smartphone The shop records repairs and gives the customer a QR card. Anyone can scan it and see the history, no wallet needed The...</description>
+  </item>
+  <item>
+    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
+    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 13:01:03 +0000</pubDate>
+    <description>An update on the commitment lock, the open point from my 2026-11-05 note above. Fiber’s new mainnet commitment lock is live since 2026-11-09 (fiber-scripts #34): tx 0x4396de69818bd88b7fce64797ccec25d1294912d56846432f29fd192120992ee, output 0, data hash 0xaf248aab17849f9637434daff9b7d6f868951f8c209ab2de9bc18d2bc45d3cc1, same type id. Explorer: https://explorer.nervos.org/transaction/0x4396de69818bd88b7fce64797ccec25d1294912d56846432f29fd192120992ee That was the dependency M1 waited for, so it is cleared. 关于承诺锁的更新，即我在上面 2026-11-05 说明中提到的未决点。 Fiber 新的主网承诺锁已于 2026-11-09 上线（fiber-scripts #34）：交易 0x4396de69818bd88b7fce64797ccec25d1294912d56846432f29fd192120992ee，输出 0，data hash...</description>
+  </item>
+  <item>
+    <title>Tranfr — Programmable Recovery for CKB (2 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 12:38:42 +0000</pubDate>
+    <description>Update: capacity rule built, tested, and run on testnet @Hanssen thanks for the capacity feedback. I went with option 1 (branch on type script), with no new args. What changed On a recipient claim, if a Tranfr input carries a type script (e.g. a UDT), the owner-locked outputs must return at least that input’s capacity. Plain CKB cells are unchanged: the recipient takes everything. The owner path is untouched. The lock args stay at 72 bytes (full 32-byte hashes), so the minimum cell capacity is 113 CKB. I kept the full-length hashes for the larger collision margin. If you’d prefer 20-byte hashes to lower the occupation, say so and I’ll switch. Verification The Rust tests cover typed claims...</description>
+  </item>
+  <item>
+    <title>React Native hooks for Fiber Network payments (`@fiber-pay/react-native`) (2 posts)</title>
+    <link>https://talk.nervos.org/t/react-native-hooks-for-fiber-network-payments-fiber-pay-react-native/11147</link>
+    <guid>https://talk.nervos.org/t/react-native-hooks-for-fiber-network-payments-fiber-pay-react-native/11147#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 12:23:46 +0000</pubDate>
+    <description>我对 khie-mobile 也挺感兴趣，集成 fiber 是非常棒的想法！另外，之前 fiber-pay 这个工具一直缺失移动端相关的 library，很高兴看到您的 PR，我根据 fiber-pay 整体的设计对 PR 提了一些建议，如果有任何问题欢迎讨论 Nice progress. One quick suggestions: Could the hooks expose a payment hash that the wallet can persist, then resume checking the original node when the app returns? A timeout should remain ‘outcome unknown’ until the node confirms the result.</description>
+  </item>
+  <item>
+    <title>[DIS] Pocket Node for iOS: a self-custody CKB light client for Apple and Identity/Signer for CCC web apps (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583</link>
+    <guid>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583#recent-1</guid>
+    <pubDate>Mon, 09 Nov 2026 09:39:33 +0000</pubDate>
+    <description>M2 Payment $2500 /$0.0012 = 2,083,334 CKB https://explorer.nervos.org/transaction/0x0667f97660ee6fb049b804b5ba8f37f7a7f1b49bfaa5185281c417a5bb2ca9da</description>
+  </item>
+  <item>
+    <title>Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters (1 posts)</title>
+    <link>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138</link>
+    <guid>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138#recent-1</guid>
+    <pubDate>Mon, 09 Nov 2026 09:21:24 +0000</pubDate>
+    <description>Love the diversity of ideas in this community!</description>
+  </item>
+  <item>
+    <title>Ward: lock proof for CKB (3 posts)</title>
+    <link>https://talk.nervos.org/t/ward-lock-proof-for-ckb/11153</link>
+    <guid>https://talk.nervos.org/t/ward-lock-proof-for-ckb/11153#recent-3</guid>
+    <pubDate>Mon, 09 Nov 2026 09:19:58 +0000</pubDate>
+    <description>image1920×1080 357 KB On CKB a lock is a program, so “prove this wallet is mine” has no single answer. A secp256k1 key, a JoyID passkey, a multisig, Omnilock in one of its modes and a smart-account lock each prove control a different way, and a site that wants to check one has to write code for each. Ward gives them one answer. The wallet signs a transaction that can never be committed. The verifier rebuilds that transaction itself, reads the lock’s cell deps from the chain, and runs the lock in CKB-VM. Exit 0 means the wallet controls the lock. One verifier handles every lock that signs the transaction hash, and any wallet that can sign an ordinary transaction can sign the proof, with no...</description>
+  </item>
+  <item>
+    <title>Spark Program | Forecast Arena - A Pilot for Honest AI Benchmarks on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-forecast-arena-a-pilot-for-honest-ai-benchmarks-on-ckb/11154</link>
+    <guid>https://talk.nervos.org/t/spark-program-forecast-arena-a-pilot-for-honest-ai-benchmarks-on-ckb/11154#recent-1</guid>
+    <pubDate>Mon, 09 Nov 2026 08:41:45 +0000</pubDate>
+    <description>1. Project overview Forecast Arena is a pilot case for exploring how blockchain can help keep AI benchmarks honest. The project uses a small forecasting benchmark to test whether CKB can preserve an independently verifiable record of the announced trials, evaluation rules, predictions, outcomes, and scores. Two AI agents will commit sealed predictions, reveal them before observation begins, and receive scores calculated from public CKB evidence. A separate verification tool will allow reviewers to check the experiment even when the arena website or backend is unavailable. The central research question is: Can blockchain make changes, omissions, and misreporting in an AI benchmark harder...</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-2</guid>
+    <pubDate>Mon, 09 Nov 2026 07:10:13 +0000</pubDate>
+    <description>Thank you @xingtianchunyan Hi @xingtianchunyan and the Spark Program Committee, Here is the MeterNet update for Week 1 (2–8 November). Thank you for the first installment of 116,140 CKB, received on 6 November: 0xad6faed70a9c97c21103991142ddc86fd26f60e671ec906ec326b0d0867b8c4c What shipped All three Week 1 deliverables from the locked proposal are done. 1. FNN and meterd running on the public server FNN v0.9.1 is installed from the official release, pinned by checksum and unpatched. It runs as a system service, and its RPC is reachable only from the server itself. meterd runs next to it. The install script is in the repo: deploy/server/install-fnn.sh 2. meterd tests pass against a mocked...</description>
   </item>
 </channel>
 </rss>
