@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Tue, 10 Nov 2026 18:21:21 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-11</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-10:daily-brief</guid>
+    <pubDate>Tue, 10 Nov 2026 22:08:11 +0000</pubDate>
+    <description>## 今日发生了什么 今天 Nervos Talk 不算冷清，新帖覆盖兑换工具、字幕工具、资助申请和社区分享几个方向 [S01, S03, S04, S06]。CKB IDL 提案公布投票通过，并完成关闭后核验 [S05]。论坛还发布了 Fiber Forge 黑客松获奖者问答采访 [S02]。 ## 重点话题 CKB IDL 提案结果出炉：公布结果为通过，批准比例 59.11%，总投票权重 191,744,644 CKB，并用 CKB DAO Watchdog 和人工检查完成关闭后核验 [S05]。 Swap book 测试网上线：支持 CKB 直接与 USDC、ETH 或 Bitcoin 交易，不需要交易所账户、桥或包装代币，双方资产留在各自链上金库直到完成或退回 [S01]。 mBabel Cloud 发布介绍：这是 mBabel 的云端版本，主打无需自行部署、实时生成中英字幕，并降低 API 配置门槛、方便手机使用 [S03]。 Spark Program 出现新申请：CellGuard × CrowdCell 计划做真实交易策略集成试点，申请 500 美元等值 CKB，周期 4 周，MIT 开源 [S04]。 社区活动内容更新：论坛发布 Fiber Forge“Gone in 60s”获奖者问答采访，提到 3 名获奖者和 1 名总冠军 [S02]；另有成员回顾 BPSC 的 Nervos CKB 线上知识分享 [S06]。 ## 值得继续跟进 观察 Swap book 测试网是否获得实际试用反馈，以及无托管兑换流程在真实使用中的表现 [S01]。 跟进 CKB...</description>
+  </item>
+  <item>
+    <title>Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet) (1 posts)</title>
+    <link>https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164</link>
+    <guid>https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 18:21:21 +0000</pubDate>
+    <description>Hi everyone, We built a small order book where you trade CKB against USDC, ETH or Bitcoin directly with another person. There is no exchange account, no bridge and no wrapped token: each side’s coins wait in a vault on their own chain until the swap completes, or go back to their owner. It runs on testnet today, and we would like your eyes on it. Watch the video: Luso Crypto Labs on X: "Want CKB without a centralized exchange? You have USDC. I have CKB. Let's swap. No bridge, no wrapped tokens. Each side's coins wait in a vault on their own chain until the swap is done, or go back. USDC, ETH or Bitcoin. Testnet trial: https://t.co/m2UCbeLMRM" / X Try it Open swapbook.lusocryptolabs.com...</description>
+  </item>
+  <item>
+    <title>Question Time with 'The Fiber Forge' Hackathon Winner (Gone In 60s) (1 posts)</title>
+    <link>https://talk.nervos.org/t/question-time-with-the-fiber-forge-hackathon-winner-gone-in-60s/11163</link>
+    <guid>https://talk.nervos.org/t/question-time-with-the-fiber-forge-hackathon-winner-gone-in-60s/11163#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 11:00:56 +0000</pubDate>
+    <description>image1920×2347 1.09 MB Question Time with the ‘Gone in 60s’ hackathon Winner for Fiber Forge. Cheers everyone. Welcome to an interview with one of the hackathon winners for the Gone in 60s held by the Nervos Community Catalyst. There were 3 winners and one overall winner. One of the winning projects was called Fiber Forge. Fiber Forge (by Truthixify) is an open-source local development tool for the Nervos Fiber payment-channel network (Fiber is the Lightning-like L2 on CKB). It spins up a complete local Fiber network with one command, analogous to Polar for Lightning Network. It was built for the “Gone in 60ms” Fiber Network Infrastructure Hackathon (Category 2: Node, Routing &amp;...</description>
+  </item>
+  <item>
+    <title>mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松 (1 posts)</title>
+    <link>https://talk.nervos.org/t/mbabel-cloud/11162</link>
+    <guid>https://talk.nervos.org/t/mbabel-cloud/11162#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 09:15:01 +0000</pubDate>
+    <description>今年 CKCon 上，@zz_tovarishch 构建的 CKB mBabel 帮了很大的忙，也让很多人看到了实时双语字幕的价值。无论是线下会议还是线上会议，中文、英文交替发言时，有字幕在旁边，讨论会轻松很多。 不过，自己动手部署 mBabel 并配置 API 还是有些门槛。另外，还有一些朋友希望直接用手机，尤其是线下小组讨论时，拿起来就能用。 于是，我借助 AI 工具，做了一个云端版本：mBabel Cloud。希望把准备工作留在后台，让大家把时间用在交流上。 网址：https://mbabel.cloud/ iShot_2026-11-10_16.54.042928×1500 317 KB mBabel Cloud 能做什么？ 它是一个实时中英字幕与会议文字记录工具，无需自行部署或配置 API： 实时双语字幕：原文在上、译文在下，支持快译、说话人区分和时间码。 热词与翻译术语：内置了 500 多个热词和 380 多条翻译术语，让 Nervos 生态的专有名称得到更准确的识别和翻译。 分享字幕：把链接或二维码发给其他人，大家可以用自己的设备看字幕、调整字号。 保存与导出：会议文字可选择保存 3、7、30 天，或不保存；支持导出 Markdown、TXT，网站不保存音频。 电脑端适合在线会议，建议使用 Chrome 浏览器；手机端适合面对面交流、小组讨论，也可以作为字幕阅读屏（手机浏览器目前无法直接采集 Meet、Zoom 等会议 App 的内部声音，所以不适合在线会议）。 用钱包登录，用 CKB 购买时长 mBabel Cloud 集成了 CCC，支持...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 04:22:38 +0000</pubDate>
+    <description>Capture1898×870 61.9 KB Applicant: Dang Ba Ty GitHub: tydeptrai21042004 (Dang Ba Ty) · GitHub Discord: tyforwork Email: dangbaty.work@gmail.com Funding requested: $500 USD equivalent in CKB Duration: 4 weeks Open-source license: MIT Project links Repository: GitHub - tydeptrai21042004/CellGuard · GitHub Live demo: https://cellasagfas.vercel.app/ CKBuilder review: CellGuard: browser-based CKB transaction policy inspector and read-only Testnet auditor · Issue #48 · Nervos-Community-Catalyst/CKBuilder-projects · GitHub Completed real Testnet audit: CellGuard manually triggered chain audit · tydeptrai21042004/CellGuard@8968030 · GitHub Proposed application integration: GitHub -...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 04:13:35 +0000</pubDate>
+    <description>Based on the Metaforo tally at close, the outcome is Passed. Approval is 59.11%/51% with total voting weight 191,744,644/ 12,254,902 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks Metaforo-recorded voting weights against on-chain Nervos DAO deposit weights. In this run, all entries match. The CKB IDL proposal is confirmed as PASSED. Verification logs: ckb-dao-watchdog/Verification Logs - CKBIDL at main · kydchen/ckb-dao-watchdog · GitHub</description>
+  </item>
+  <item>
+    <title>Recap: BPSC Knowledge Sharing – Exploring Nervos CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/recap-bpsc-knowledge-sharing-exploring-nervos-ckb/11160</link>
+    <guid>https://talk.nervos.org/t/recap-bpsc-knowledge-sharing-exploring-nervos-ckb/11160#recent-1</guid>
+    <pubDate>Tue, 10 Nov 2026 03:11:55 +0000</pubDate>
+    <description>Overview Hi everyone, I recently organized and presented an online knowledge-sharing session on Nervos CKB at Blockchain Pioneer Student Club (BPSC), a student community of people who want to become Web3 builders. In this post I want to share how the session went, who joined, and why I think events like this matter for CKB. The session was called “Exploring Nervos CKB” and tried to answer one question: what makes CKB different? Instead of just listing features, I started from the problems blockchains are trying to solve and showed how CKB’s design responds to them. Attendance 30+ participants joined the session online. The audience was mainly made up of: University students, BPSC members...</description>
+  </item>
+</channel>
+</rss>
