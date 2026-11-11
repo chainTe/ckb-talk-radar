@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-11 07:16:46 CST - 2026-11-12 07:16:46 CST</span>
+          <span>生成时间 2026-11-12 07:16:57 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的主要动态是项目进展更新 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>]</span>：zk-Lock 的交互式前端已经上线 <span class="citations">[<a href="#source-s01">S01</a>]</span>；CrowdCell 宣布 M1 仪表盘和发现功能在测试网上线 <span class="citations">[<a href="#source-s05">S05</a>]</span>；ckbup 以早期版本公开征集反馈 <span class="citations">[<a href="#source-s03">S03</a>]</span>。此外，iCKB 合约审计复盘称约三分之一合约代码从未运行 <span class="citations">[<a href="#source-s07">S07</a>]</span>，官网更新讨论也在继续 <span class="citations">[<a href="#source-s08">S08</a>]</span>。整体看，今天的帖子以开发进展和项目状态更新为主 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>, <a href="#source-s07">S07</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>zk-Lock 前端上线：项目方称交互式前端已上线，约一分钟、无需钱包和安装，用户输入秘密词后由浏览器生成证明 <span class="citations">[<a href="#source-s01">S01</a>]</span>；社区成员祝贺交付，并提到 zk-lock-bound 是对 mempool proof-copy 问题的回应 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>CrowdCell 发布 M1 状态：CrowdCell 称 M1 已完成并在测试网 crowdcell.vercel.app 上线，包含钱包感知索引器端点和“My campaigns”等功能 <span class="citations">[<a href="#source-s05">S05</a>]</span>；CellGuard × CrowdCell 试点帖中，回复提到测试网部署文件与评审 pledge profile 的事项 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li>ckbup 早期安装器征集反馈：作者开始构建类似 rustup 的开源安装器和版本管理器，用于 CKB 命令行工具，并公开分享以获取实际搭机用户的反馈 <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li>iCKB 合约审计发现未运行代码：phroi 表示这次追踪链上代码哪些部分从未运行，结果发现每个合约约三分之一代码从未运行 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+<li>官网与生态更新：官网更新讨论中，发帖人感谢整理并称 Nervos 网站很多内容过时，列表与团队正在处理的内容接近 <span class="citations">[<a href="#source-s08">S08</a>]</span>；CKB 生态双周报 #28 汇总了基础设施与工具等进展，包括将 c-kzg-4844 移植到 CKB-VM <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>zk-Lock 前端已可用，后续可观察真实使用情况，以及 zk-lock-bound 对 proof-copy 防护的实际效果和安全边界 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。</li>
+<li>CrowdCell M1 已上线测试网，后续可跟进 CellGuard × CrowdCell 试点中的 pledge profile 评审与集成进展 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>]</span>。</li>
+<li>iCKB 审计发现约三分之一合约代码从未运行，后续值得关注这些未覆盖路径是否会补测试、补审计或调整上线策略 <span class="citations">[<a href="#source-s07">S07</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/26">Spark Program | zk-Lock for CKB</a></div><div class="source-meta">Mulandi_Cecilia · 2026-11-11 23:28:33 CST</div><div>Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute, with no wallet and nothing to install. You type a secret word, your browser produces the proof, and...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/27">Spark Program | zk-Lock for CKB</a></div><div class="source-meta">psawyerberlin · 2026-11-12 03:37:56 CST</div><div>Hi Cecilia, Congratulations on delivering zk-Lock! Going from a Groth16 verifier on CKB-VM to a reusable primitive with an SDK, a CLI, a reproducible circuit and a tutorial in a few weeks is impressive. And zk-lock-bound is a great answer to the mempool proof-copy problem....</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188/1">Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)</a></div><div class="source-meta">Steven_Hert · 2026-11-12 03:01:14 CST</div><div>I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything; I’m sharing it early to get feedback from people who actually set up CKB machines. Why Getting the...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/7">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">Code3ks · 2026-11-12 01:21:39 CST</div><div>Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/13">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-12 01:19:24 CST</div><div>[Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows which campaigns and pledges belong to the connected wallet. “My campaigns”...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/2">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-12 01:18:49 CST</div><div>Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in deployment/deployed-contracts-testnet.json (redeployed Oct 31), that’s what crowdcell.vercel.app runs. The...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225/5">iCKB Contracts Revisited: Old Code, New Audit</a></div><div class="source-meta">phroi · 2026-11-11 23:57:39 CST</div><div>Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So I traced it, instruction by instruction. About a third of each contract had never run. Most of that...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/8">Web page www.nervos.org - Discussion for new pull request</a></div><div class="source-meta">excitedsashimi · 2026-11-11 13:22:24 CST</div><div>Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A lot of Nervos site is out of date and your list lines up closely with what we’ve been working through....</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821/34">CKB Ecosystem Biweekly Update</a></div><div class="source-meta">zz_tovarishch · 2026-11-11 09:35:24 CST</div><div>image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev ported c-kzg-4844 to CKB-VM. Other works include...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>6</strong></li><li><span>生态进展</span><strong>1</strong></li><li><span>其他</span><strong>1</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@Ayoub_Lesfer</span><strong>2</strong></li><li><span>@psawyerberlin</span><strong>1</strong></li><li><span>@Steven_Hert</span><strong>1</strong></li><li><span>@Code3ks</span><strong>1</strong></li><li><span>@phroi</span><strong>1</strong></li><li><span>@Mulandi_Cecilia</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>50</span></li><li>you<span>16</span></li><li>testnet<span>10</span></li><li>fiber<span>10</span></li><li>one<span>9</span></li><li>every<span>9</span></li><li>campaign<span>9</span></li><li>has<span>9</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448">Spark Program | zk-Lock for CKB</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-12 03:37:56 CST</span><span>Mulandi_Cecilia, psawyerberlin</span></div><p class="excerpt">Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute, with no wallet and nothing to install. You type a secret word, your browser...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188">Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-12 03:01:14 CST</span><span>Steven_Hert</span></div><p class="excerpt">I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything; I’m sharing it early to get feedback from people who actually set up CKB...</p><div class="tag-row"><span>CKB</span><span>Infrastructure</span><span>dev-tool</span><span>fiber</span><span>rust</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-12 01:21:39 CST</span><span>Code3ks</span></div><p class="excerpt">Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-12 01:19:24 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">[Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows which campaigns and pledges belong to the connected wallet. “My campaigns”...</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-12 01:18:49 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in deployment/deployed-contracts-testnet.json (redeployed Oct 31), that’s what...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225">iCKB Contracts Revisited: Old Code, New Audit</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-11 23:57:39 CST</span><span>phroi</span></div><p class="excerpt">Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So I traced it, instruction by instruction. About a third of each contract had...</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133">Web page www.nervos.org - Discussion for new pull request</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-11 13:22:24 CST</span><span>excitedsashimi</span></div><p class="excerpt">Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A lot of Nervos site is out of date and your list lines up closely with what we’ve...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821">CKB Ecosystem Biweekly Update</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-11 09:35:24 CST</span><span>zz_tovarishch</span></div><p class="excerpt">image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev ported c-kzg-4844 to CKB-VM. Other...</p><div class="tag-row"><span>Ecosystem-Update</span><span>lang-en</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-12 03:37:56 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/27">Spark Program | zk-Lock for CKB</a> · @psawyerberlin</strong><p>Hi Cecilia, Congratulations on delivering zk-Lock! Going from a Groth16 verifier on CKB-VM to a reusable primitive with an SDK, a CLI, a reproducible circuit and a tutorial in a few weeks is impressive. And zk-lock-...</p></article>
+<article class="timeline-row"><time>2026-11-12 03:01:14 CST</time><strong><a href="https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188/1">Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)</a> · @Steven_Hert</strong><p>I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything; I’m sharing it early to get feedback...</p></article>
+<article class="timeline-row"><time>2026-11-12 01:21:39 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/7">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @Code3ks</strong><p>Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.</p></article>
+<article class="timeline-row"><time>2026-11-12 01:19:24 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/13">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>[Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows which campaigns and pledges belong to the...</p></article>
+<article class="timeline-row"><time>2026-11-12 01:18:49 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/2">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a> · @Ayoub_Lesfer</strong><p>Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in deployment/deployed-contracts-testnet.json...</p></article>
+<article class="timeline-row"><time>2026-11-11 23:57:39 CST</time><strong><a href="https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225/5">iCKB Contracts Revisited: Old Code, New Audit</a> · @phroi</strong><p>Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So I traced it, instruction by...</p></article>
+<article class="timeline-row"><time>2026-11-11 23:28:33 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/26">Spark Program | zk-Lock for CKB</a> · @Mulandi_Cecilia</strong><p>Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute, with no wallet and nothing to install....</p></article>
+<article class="timeline-row"><time>2026-11-11 13:22:24 CST</time><strong><a href="https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/8">Web page www.nervos.org - Discussion for new pull request</a> · @excitedsashimi</strong><p>Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A lot of Nervos site is out of date and your...</p></article>
+<article class="timeline-row"><time>2026-11-11 09:35:24 CST</time><strong><a href="https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821/34">CKB Ecosystem Biweekly Update</a> · @zz_tovarishch</strong><p>image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

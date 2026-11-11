@@ -1,55 +1,63 @@
 # Nervos Talk 社区简报
 
-- 统计窗口: 2026-11-10 06:08:06 CST 到 2026-11-11 06:08:06 CST
-- 生成时间: 2026-11-11 06:08:11 CST
-- 话题数: 6
-- 帖子数: 6
-- 作者数: 5
+- 统计窗口: 2026-11-11 07:16:46 CST 到 2026-11-12 07:16:46 CST
+- 生成时间: 2026-11-12 07:16:57 CST
+- 话题数: 8
+- 帖子数: 9
+- 作者数: 8
 - 总结模式: ai:openai-compatible
 
 ## 社区总结
 
 ## 今日发生了什么
 
-今天 Nervos Talk 不算冷清，新帖覆盖兑换工具、字幕工具、资助申请和社区分享几个方向 [S01, S03, S04, S06]。CKB IDL 提案公布投票通过，并完成关闭后核验 [S05]。论坛还发布了 Fiber Forge 黑客松获奖者问答采访 [S02]。
+今天论坛的主要动态是项目进展更新 [S01, S03, S05]：zk-Lock 的交互式前端已经上线 [S01]；CrowdCell 宣布 M1 仪表盘和发现功能在测试网上线 [S05]；ckbup 以早期版本公开征集反馈 [S03]。此外，iCKB 合约审计复盘称约三分之一合约代码从未运行 [S07]，官网更新讨论也在继续 [S08]。整体看，今天的帖子以开发进展和项目状态更新为主 [S01, S03, S05, S07]。
 
 ## 重点话题
 
-- CKB IDL 提案结果出炉：公布结果为通过，批准比例 59.11%，总投票权重 191,744,644 CKB，并用 CKB DAO Watchdog 和人工检查完成关闭后核验 [S05]。
-- Swap book 测试网上线：支持 CKB 直接与 USDC、ETH 或 Bitcoin 交易，不需要交易所账户、桥或包装代币，双方资产留在各自链上金库直到完成或退回 [S01]。
-- mBabel Cloud 发布介绍：这是 mBabel 的云端版本，主打无需自行部署、实时生成中英字幕，并降低 API 配置门槛、方便手机使用 [S03]。
-- Spark Program 出现新申请：CellGuard × CrowdCell 计划做真实交易策略集成试点，申请 500 美元等值 CKB，周期 4 周，MIT 开源 [S04]。
-- 社区活动内容更新：论坛发布 Fiber Forge“Gone in 60s”获奖者问答采访，提到 3 名获奖者和 1 名总冠军 [S02]；另有成员回顾 BPSC 的 Nervos CKB 线上知识分享 [S06]。
+- zk-Lock 前端上线：项目方称交互式前端已上线，约一分钟、无需钱包和安装，用户输入秘密词后由浏览器生成证明 [S01]；社区成员祝贺交付，并提到 zk-lock-bound 是对 mempool proof-copy 问题的回应 [S02]。
+- CrowdCell 发布 M1 状态：CrowdCell 称 M1 已完成并在测试网 crowdcell.vercel.app 上线，包含钱包感知索引器端点和“My campaigns”等功能 [S05]；CellGuard × CrowdCell 试点帖中，回复提到测试网部署文件与评审 pledge profile 的事项 [S06]。
+- ckbup 早期安装器征集反馈：作者开始构建类似 rustup 的开源安装器和版本管理器，用于 CKB 命令行工具，并公开分享以获取实际搭机用户的反馈 [S03]。
+- iCKB 合约审计发现未运行代码：phroi 表示这次追踪链上代码哪些部分从未运行，结果发现每个合约约三分之一代码从未运行 [S07]。
+- 官网与生态更新：官网更新讨论中，发帖人感谢整理并称 Nervos 网站很多内容过时，列表与团队正在处理的内容接近 [S08]；CKB 生态双周报 #28 汇总了基础设施与工具等进展，包括将 c-kzg-4844 移植到 CKB-VM [S09]。
 
 ## 值得继续跟进
 
-- 观察 Swap book 测试网是否获得实际试用反馈，以及无托管兑换流程在真实使用中的表现 [S01]。
-- 跟进 CKB IDL 提案通过后的后续落地，尤其是脚本接口描述和可发现性相关工作如何推进 [S05]。
-- 关注 Spark Program 中 CellGuard × CrowdCell 申请是否获批，以及 4 周试点能否产出可验证结果 [S04]。
+- zk-Lock 前端已可用，后续可观察真实使用情况，以及 zk-lock-bound 对 proof-copy 防护的实际效果和安全边界 [S01, S02]。
+- CrowdCell M1 已上线测试网，后续可跟进 CellGuard × CrowdCell 试点中的 pledge profile 评审与集成进展 [S05, S06]。
+- iCKB 审计发现约三分之一合约代码从未运行，后续值得关注这些未覆盖路径是否会补测试、补审计或调整上线策略 [S07]。
 
 ## 来源索引
 
-- `S01` [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164/1) | LusoCryptoLabs | 2026-11-11 02:21:21 CST | Hi everyone, We built a small order book where you trade CKB against USDC, ETH or Bitcoin directly with another person. There is no exchange account, no bridge and no wrapped token: each side’s coins wait in a vault on their own chain until the swap completes, or go back to...
-- `S02` [Question Time with 'The Fiber Forge' Hackathon Winner (Gone In 60s)](https://talk.nervos.org/t/question-time-with-the-fiber-forge-hackathon-winner-gone-in-60s/11163/1) | zz_tovarishch | 2026-11-10 19:00:56 CST | image1920×2347 1.09 MB Question Time with the ‘Gone in 60s’ hackathon Winner for Fiber Forge. Cheers everyone. Welcome to an interview with one of the hackathon winners for the Gone in 60s held by the Nervos Community Catalyst. There were 3 winners and one overall winner. One...
-- `S03` [mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松](https://talk.nervos.org/t/mbabel-cloud/11162/1) | JackyLHH | 2026-11-10 17:15:01 CST | 今年 CKCon 上，@zz_tovarishch 构建的 CKB mBabel 帮了很大的忙，也让很多人看到了实时双语字幕的价值。无论是线下会议还是线上会议，中文、英文交替发言时，有字幕在旁边，讨论会轻松很多。 不过，自己动手部署 mBabel 并配置 API 还是有些门槛。另外，还有一些朋友希望直接用手机，尤其是线下小组讨论时，拿起来就能用。 于是，我借助 AI 工具，做了一个云端版本：mBabel Cloud。希望把准备工作留在后台，让大家把时间用在交流上。 网址：https://mbabel.cloud/...
-- `S04` [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/1) | Dangbaty2004 | 2026-11-10 12:22:38 CST | Capture1898×870 61.9 KB Applicant: Dang Ba Ty GitHub: tydeptrai21042004 (Dang Ba Ty) · GitHub Discord: tyforwork Email: dangbaty.work@gmail.com Funding requested: $500 USD equivalent in CKB Duration: 4 weeks Open-source license: MIT Project links Repository: GitHub -...
-- `S05` [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/10) | zz_tovarishch | 2026-11-10 12:13:35 CST | Based on the Metaforo tally at close, the outcome is Passed. Approval is 59.11%/51% with total voting weight 191,744,644/ 12,254,902 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. The verification cross-checks...
-- `S06` [Recap: BPSC Knowledge Sharing – Exploring Nervos CKB](https://talk.nervos.org/t/recap-bpsc-knowledge-sharing-exploring-nervos-ckb/11160/1) | longdevbf | 2026-11-10 11:11:55 CST | Overview Hi everyone, I recently organized and presented an online knowledge-sharing session on Nervos CKB at Blockchain Pioneer Student Club (BPSC), a student community of people who want to become Web3 builders. In this post I want to share how the session went, who joined,...
+- `S01` [Spark Program | zk-Lock for CKB](https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/26) | Mulandi_Cecilia | 2026-11-11 23:28:33 CST | Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute, with no wallet and nothing to install. You type a secret word, your browser produces the proof, and...
+- `S02` [Spark Program | zk-Lock for CKB](https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/27) | psawyerberlin | 2026-11-12 03:37:56 CST | Hi Cecilia, Congratulations on delivering zk-Lock! Going from a Groth16 verifier on CKB-VM to a reusable primitive with an SDK, a CLI, a reproducible circuit and a tutorial in a few weeks is impressive. And zk-lock-bound is a great answer to the mempool proof-copy problem....
+- `S03` [Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)](https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188/1) | Steven_Hert | 2026-11-12 03:01:14 CST | I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything; I’m sharing it early to get feedback from people who actually set up CKB machines. Why Getting the...
+- `S04` [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/7) | Code3ks | 2026-11-12 01:21:39 CST | Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.
+- `S05` [[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品](https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/13) | Ayoub_Lesfer | 2026-11-12 01:19:24 CST | [Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows which campaigns and pledges belong to the connected wallet. “My campaigns”...
+- `S06` [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/2) | Ayoub_Lesfer | 2026-11-12 01:18:49 CST | Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in deployment/deployed-contracts-testnet.json (redeployed Oct 31), that’s what crowdcell.vercel.app runs. The...
+- `S07` [iCKB Contracts Revisited: Old Code, New Audit](https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225/5) | phroi | 2026-11-11 23:57:39 CST | Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So I traced it, instruction by instruction. About a third of each contract had never run. Most of that...
+- `S08` [Web page www.nervos.org - Discussion for new pull request](https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/8) | excitedsashimi | 2026-11-11 13:22:24 CST | Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A lot of Nervos site is out of date and your list lines up closely with what we’ve been working through....
+- `S09` [CKB Ecosystem Biweekly Update](https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821/34) | zz_tovarishch | 2026-11-11 09:35:24 CST | image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure & Tooling @CKBdev ported c-kzg-4844 to CKB-VM. Other works include...
 
 ## 活跃话题
 
-1. [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164) | 1 条近窗帖子 | 最新活动 2026-11-11 02:21:21 CST
-2. [Question Time with 'The Fiber Forge' Hackathon Winner (Gone In 60s)](https://talk.nervos.org/t/question-time-with-the-fiber-forge-hackathon-winner-gone-in-60s/11163) | 1 条近窗帖子 | 最新活动 2026-11-10 19:00:56 CST | tags: AMA
-3. [mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松](https://talk.nervos.org/t/mbabel-cloud/11162) | 1 条近窗帖子 | 最新活动 2026-11-10 17:15:01 CST
-4. [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161) | 1 条近窗帖子 | 最新活动 2026-11-10 12:22:38 CST
-5. [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031) | 1 条近窗帖子 | 最新活动 2026-11-10 12:13:35 CST | tags: CKB-IDL
-6. [Recap: BPSC Knowledge Sharing – Exploring Nervos CKB](https://talk.nervos.org/t/recap-bpsc-knowledge-sharing-exploring-nervos-ckb/11160) | 1 条近窗帖子 | 最新活动 2026-11-10 11:11:55 CST | tags: CKB, CKB-VM, Nervos-项目动态, appchain, fiber, lang-en
+1. [Spark Program | zk-Lock for CKB](https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448) | 2 条近窗帖子 | 最新活动 2026-11-12 03:37:56 CST | tags: In-Progress
+2. [Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)](https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188) | 1 条近窗帖子 | 最新活动 2026-11-12 03:01:14 CST | tags: CKB, Infrastructure, dev-tool, fiber, rust
+3. [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051) | 1 条近窗帖子 | 最新活动 2026-11-12 01:21:39 CST
+4. [[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品](https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937) | 1 条近窗帖子 | 最新活动 2026-11-12 01:19:24 CST | tags: lang-en
+5. [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161) | 1 条近窗帖子 | 最新活动 2026-11-12 01:18:49 CST
+6. [iCKB Contracts Revisited: Old Code, New Audit](https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225) | 1 条近窗帖子 | 最新活动 2026-11-11 23:57:39 CST | tags: lang-en
+7. [Web page www.nervos.org - Discussion for new pull request](https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133) | 1 条近窗帖子 | 最新活动 2026-11-11 13:22:24 CST
+8. [CKB Ecosystem Biweekly Update](https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821) | 1 条近窗帖子 | 最新活动 2026-11-11 09:35:24 CST | tags: Ecosystem-Update, lang-en
 
 ## 最近帖子摘录
 
-- 2026-11-11 02:21:21 CST | LusoCryptoLabs | [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164/1) | Hi everyone, We built a small order book where you trade CKB against USDC, ETH or Bitcoin directly with another person. There is no exchange account, no bridge and no wrapped...
-- 2026-11-10 19:00:56 CST | zz_tovarishch | [Question Time with 'The Fiber Forge' Hackathon Winner (Gone In 60s)](https://talk.nervos.org/t/question-time-with-the-fiber-forge-hackathon-winner-gone-in-60s/11163/1) | image1920×2347 1.09 MB Question Time with the ‘Gone in 60s’ hackathon Winner for Fiber Forge. Cheers everyone. Welcome to an interview with one of the hackathon winners for the...
-- 2026-11-10 17:15:01 CST | JackyLHH | [mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松](https://talk.nervos.org/t/mbabel-cloud/11162/1) | 今年 CKCon 上，@zz_tovarishch 构建的 CKB mBabel 帮了很大的忙，也让很多人看到了实时双语字幕的价值。无论是线下会议还是线上会议，中文、英文交替发言时，有字幕在旁边，讨论会轻松很多。 不过，自己动手部署 mBabel 并配置 API 还是有些门槛。另外，还有一些朋友希望直接用手机，尤其是线下小组讨论时，拿起来就能用。...
-- 2026-11-10 12:22:38 CST | Dangbaty2004 | [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/1) | Capture1898×870 61.9 KB Applicant: Dang Ba Ty GitHub: tydeptrai21042004 (Dang Ba Ty) · GitHub Discord: tyforwork Email: dangbaty.work@gmail.com Funding requested: $500 USD...
-- 2026-11-10 12:13:35 CST | zz_tovarishch | [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/10) | Based on the Metaforo tally at close, the outcome is Passed. Approval is 59.11%/51% with total voting weight 191,744,644/ 12,254,902 CKB. Post-close verification has been...
-- 2026-11-10 11:11:55 CST | longdevbf | [Recap: BPSC Knowledge Sharing – Exploring Nervos CKB](https://talk.nervos.org/t/recap-bpsc-knowledge-sharing-exploring-nervos-ckb/11160/1) | Overview Hi everyone, I recently organized and presented an online knowledge-sharing session on Nervos CKB at Blockchain Pioneer Student Club (BPSC), a student community of...
+- 2026-11-12 03:37:56 CST | psawyerberlin | [Spark Program | zk-Lock for CKB](https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/27) | Hi Cecilia, Congratulations on delivering zk-Lock! Going from a Groth16 verifier on CKB-VM to a reusable primitive with an SDK, a CLI, a reproducible circuit and a tutorial in a...
+- 2026-11-12 03:01:14 CST | Steven_Hert | [Ckbup: one installer for CKB command-line tools (early progress, feedback welcome)](https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188/1) | I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything;...
+- 2026-11-12 01:21:39 CST | Code3ks | [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/7) | Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.
+- 2026-11-12 01:19:24 CST | Ayoub_Lesfer | [[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品](https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/13) | [Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows...
+- 2026-11-12 01:18:49 CST | Ayoub_Lesfer | [Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot](https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/2) | Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in...
+- 2026-11-11 23:57:39 CST | phroi | [iCKB Contracts Revisited: Old Code, New Audit](https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225/5) | Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So...
+- 2026-11-11 23:28:33 CST | Mulandi_Cecilia | [Spark Program | zk-Lock for CKB](https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448/26) | Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute,...
+- 2026-11-11 13:22:24 CST | excitedsashimi | [Web page www.nervos.org - Discussion for new pull request](https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133/8) | Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A...
+- 2026-11-11 09:35:24 CST | zz_tovarishch | [CKB Ecosystem Biweekly Update](https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821/34) | image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the...

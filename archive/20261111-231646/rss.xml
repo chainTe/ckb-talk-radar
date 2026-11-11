@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Wed, 11 Nov 2026 19:37:56 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-12</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-11:daily-brief</guid>
+    <pubDate>Wed, 11 Nov 2026 23:16:57 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的主要动态是项目进展更新 [S01, S03, S05]：zk-Lock 的交互式前端已经上线 [S01]；CrowdCell 宣布 M1 仪表盘和发现功能在测试网上线 [S05]；ckbup 以早期版本公开征集反馈 [S03]。此外，iCKB 合约审计复盘称约三分之一合约代码从未运行 [S07]，官网更新讨论也在继续 [S08]。整体看，今天的帖子以开发进展和项目状态更新为主 [S01, S03, S05, S07]。 ## 重点话题 zk-Lock 前端上线：项目方称交互式前端已上线，约一分钟、无需钱包和安装，用户输入秘密词后由浏览器生成证明 [S01]；社区成员祝贺交付，并提到 zk-lock-bound 是对 mempool proof-copy 问题的回应 [S02]。 CrowdCell 发布 M1 状态：CrowdCell 称 M1 已完成并在测试网 crowdcell.vercel.app 上线，包含钱包感知索引器端点和“My campaigns”等功能 [S05]；CellGuard × CrowdCell 试点帖中，回复提到测试网部署文件与评审 pledge profile 的事项 [S06]。 ckbup 早期安装器征集反馈：作者开始构建类似 rustup 的开源安装器和版本管理器，用于 CKB 命令行工具，并公开分享以获取实际搭机用户的反馈 [S03]。 iCKB 合约审计发现未运行代码：phroi 表示这次追踪链上代码哪些部分从未运行，结果发现每个合约约三分之一代码从未运行 [S07]。...</description>
+  </item>
+  <item>
+    <title>Spark Program | zk-Lock for CKB (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448</link>
+    <guid>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448#recent-2</guid>
+    <pubDate>Wed, 11 Nov 2026 19:37:56 +0000</pubDate>
+    <description>Hi @xingtianchunyan and the committee, Thank you for your patience. The interactive frontend asked for in post #22 is live: https://zk-lock.vercel.app/ It takes about a minute, with no wallet and nothing to install. You type a secret word, your browser produces the proof, and that proof spends a real cell on Pudge. It uses the project’s own SDK and deployed contracts rather than being a separate mock, and a CKB node runs the deployed script against each proof so the verdict shown is the chain’s own. There is also a plain-English explainer with no code in it, covering what zk-Lock enables, what each use case gets you, and what is not true of it yet: zk-Lock/docs/explainer.md at main ·...</description>
+  </item>
+  <item>
+    <title>Ckbup: one installer for CKB command-line tools (early progress, feedback welcome) (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188</link>
+    <guid>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 19:01:14 +0000</pubDate>
+    <description>I’ve started building ckbup, a small open-source installer and version manager for CKB’s command-line tools, in the spirit of rustup. It’s free and I’m not asking for anything; I’m sharing it early to get feedback from people who actually set up CKB machines. Why Getting the CKB tools onto a machine still means a different route for each one: there’s no package-manager install for ckb-cli, only “manually downloading a .zip/.tar.gz from the Releases page” (ckb-cli#685); some tools ship no arm64 builds, so ARM users build from source, which “works but takes 20-30 min” (ckb-light-client#272, fiber#1186); cargo install ckb-cli fails on Windows (ckb-cli#660). When someone asked in the DevRel...</description>
+  </item>
+  <item>
+    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
+    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 17:21:39 +0000</pubDate>
+    <description>Gm @zz_tovarishch please can you update the metaforo success in this thread?. Thank you.</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 17:19:24 +0000</pubDate>
+    <description>[Status Update] M1: dashboards and discovery are live M1 is done and live on testnet at crowdcell.vercel.app. What shipped: Wallet-aware indexer endpoints, so the app knows which campaigns and pledges belong to the connected wallet. “My campaigns” (crowdcell.vercel.app/dashboard/campaigns): each campaign’s status, amount raised, backers, and the actions available right now. “My pledges” (crowdcell.vercel.app/dashboard/pledges): each pledge’s status and outcome, plus receipts and deposits you can reclaim. Reclaiming now only shows receipts your wallet actually holds and pays back to that wallet. Release and refund can be sent from the page without a wallet signature, since the pledge lock...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 17:18:49 +0000</pubDate>
+    <description>Hey Dang, nice to see this, and happy to review the pledge profile once you’ve pinned it. A few things that should save you time. The live deployment is the one in deployment/deployed-contracts-testnet.json (redeployed Oct 31), that’s what crowdcell.vercel.app runs. The fallback hashes in off-chain/indexer/src/index.ts are still the old ones, I’ll fix that, so don’t take them from there. Also the pledge tx the app sends isn’t TransactionBuilder.createPledge, it’s built in off-chain/frontend/src/app/campaigns/[id]/page.tsx: the campaign cell goes in, then campaign + pledge + receipt come out, with the campaign capacity and scripts unchanged and total pledged bumped by the pledge amount....</description>
+  </item>
+  <item>
+    <title>iCKB Contracts Revisited: Old Code, New Audit (1 posts)</title>
+    <link>https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225</link>
+    <guid>https://talk.nervos.org/t/ickb-contracts-revisited-old-code-new-audit/10225#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 15:57:39 +0000</pubDate>
+    <description>Last time I asked if the contracts accept something they shouldn’t. This time I asked what all those tests never even touched: which parts of the code on chain had never run? So I traced it, instruction by instruction. About a third of each contract had never run. Most of that can’t run at all, but a few corners can. Each one now has its own test. Same result: nothing new found!! Every reachable corner tested: the corners a transaction can reach now run in the tests. A close reading of the rest found nothing else that could change a result. The tools that built them too: every library compiled into the contracts got checked from its code. So did about 2,200 known bugs of the compiler that...</description>
+  </item>
+  <item>
+    <title>Web page www.nervos.org - Discussion for new pull request (1 posts)</title>
+    <link>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133</link>
+    <guid>https://talk.nervos.org/t/web-page-www-nervos-org-discussion-for-new-pull-request/11133#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 05:22:24 +0000</pubDate>
+    <description>Hi @psawyerberlin, thank you for pulling this together and thanks to @Thinker and @silenceport for the discussion. Really appreciate everyone taking the time to contribute. A lot of Nervos site is out of date and your list lines up closely with what we’ve been working through. The good news is we’re already on it as part of a bigger cleanup of the whole site. A lot of these issues show up in more than one place. Godwoken, for example, pops up on a few different pages, in the footer and in some old redirects. So rather than fixing it in one spot, we’re going through the entire site and updating everything together, in every language. Because of that, we’ll hold off on merging PR #34 as it...</description>
+  </item>
+  <item>
+    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
+    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
+    <pubDate>Wed, 11 Nov 2026 01:35:24 +0000</pubDate>
+    <description>image690×388 97.6 KB CKB Ecosystem Biweekly Update #28 Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev ported c-kzg-4844 to CKB-VM. Other works include testnet web for voting system, blob tree design and implementation, fixing bugs from bug bounty reports and preparing the release of CKB v0.211. @CKBDevrel added arbitrary ScriptId support for sighash-compatible locks to Cinnabar and continued CCC maintenance. @FiberDevs deployed the upgraded contracts to testnet, completed multiple rounds of testing and bug fixes. Channel V2 is ready for review; hosted LSP work...</description>
+  </item>
+</channel>
+</rss>
