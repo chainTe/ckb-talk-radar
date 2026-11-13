@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Fri, 13 Nov 2026 12:02:55 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-14</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-13:daily-brief</guid>
+    <pubDate>Fri, 13 Nov 2026 22:22:32 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的更新整体集中在进行中项目的阶段性回复上，没有出现全新的提案或争议帖，因此社区今天整体较平静。[S01, S02, S03, S04, S05] 最活跃的是 Twine 的 Fiber P2P 场外交易概念验证帖：作者先回应了手续费设计反馈，随后贴出了一段从 790605a 到 504c990 的改动说明。[S01, S02] 另外两个 Spark 相关项目也各有进展：Light dApp Kit 的作者接受了评审结论，并继续追问测试问题；Spark Verify 则发布了 v0.1.1 补丁版本。[S04, S05] 需要说明的是，可引用材料只覆盖 2026-11-13 00:47 至 12:02（UTC）之间的几条回复，无法据此确认完整 24 小时窗口内的全部动态。[S01, S02, S03, S04, S05] ## 重点话题 **Twine 手续费设计获得认可**：作者感谢 @ArthurZhang 的反馈，表示手续费（fee）的费率形状看起来合理，并承诺在 fee 功能落地时把这两点一并实现进去。[S01] **Twine 新增对 LSP 钱包发票的支持**：作者列出 790605a 到 504c990 之间的改动，核心是支持支付携带 trampoline 路由提示的买家发票，面向 Cellula 等 LSP 钱包；这类钱包会把 Fiber 的 TrampolineRouteHint 属性（attr 10，fiber#1623）写进发票，而 Fiber 到 0.10.0-rc3...</description>
+  </item>
+  <item>
+    <title>Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC) (2 posts)</title>
+    <link>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741</link>
+    <guid>https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741#recent-2</guid>
+    <pubDate>Fri, 13 Nov 2026 12:02:55 +0000</pubDate>
+    <description>Thanks @ArthurZhang — glad the fee shape looks sound. I’ll bake both of those in when fees land Here is what changed since 790605a through 504c990 Pay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets) Wallets behind an LSP put Fiber’s TrampolineRouteHint attribute (attr 10, fiber#1623) on their invoices. Fiber through 0.10.0-rc3 cannot parse that attribute, so parse_invoice / invoice-based send_payment refuse them. Twine now reads those invoices locally when Fiber reports an unknown attribute, then pays by fields with trampoline_hops (which Fiber already supports). Amount is required; the fee cap matches the usual max_fee_rate via max_fee_amount. The...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-1</guid>
+    <pubDate>Fri, 13 Nov 2026 09:47:52 +0000</pubDate>
+    <description>Thank you, Ser. And thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones</description>
+  </item>
+  <item>
+    <title>Spark Program | Light dApp Kit (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062</link>
+    <guid>https://talk.nervos.org/t/spark-program-light-dapp-kit/11062#recent-1</guid>
+    <pubDate>Fri, 13 Nov 2026 07:52:24 +0000</pubDate>
+    <description>Thanks @xingtianchunyan for the review and explanation. I understand the committee’s decision. Separately, could you help with the JoyID question in my earlier post? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the environment, blocking headless integration tests. JoyID’s feedback link was unavailable when I tried it. Is there a recommended channel or maintainer I could contact to report this and ask about a supported way to test JoyID connect/sign flows in CI?</description>
+  </item>
+  <item>
+    <title>Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598</link>
+    <guid>https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598#recent-1</guid>
+    <pubDate>Fri, 13 Nov 2026 00:47:06 +0000</pubDate>
+    <description>Hi all, a short update on CKB Verify. CKB Verify v0.1.1 is out, open source under the MIT license: GitHub Release ckb-verify v0.1.1 · Akane-CN/spark-verify ckb-verify v0.1.1 A patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same. If v0.1.0 works for you, nothing forces an upgrade. Release identity Fiel... It runs the transaction flows you declare in verify.toml on a fresh local devnet and checks every declared result: whether a transaction is committed or rejected (with the error code and the script group), its cycles, and the Cells and balances it leaves behind. It can deploy your own script binaries, run in CI through a reusable GitHub...</description>
+  </item>
+</channel>
+</rss>

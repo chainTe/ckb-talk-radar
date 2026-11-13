@@ -1,67 +1,57 @@
 # Nervos Talk 社区简报
 
-- 统计窗口: 2026-11-12 06:33:38 CST 到 2026-11-13 06:33:38 CST
-- 生成时间: 2026-11-13 06:33:43 CST
-- 话题数: 7
-- 帖子数: 13
-- 作者数: 7
+- 统计窗口: 2026-11-13 06:22:28 CST 到 2026-11-14 06:22:28 CST
+- 生成时间: 2026-11-14 06:22:32 CST
+- 话题数: 4
+- 帖子数: 5
+- 作者数: 3
 - 总结模式: ai:openai-compatible
 
 ## 社区总结
 
 ## 今日发生了什么
-今天论坛的主要动态集中在 CKB 原生 DeFi、论坛身份、测试网支付工具和提案投票上 [S02, S06, S09, S13]。CellScript 路线图第一部分已实现，v0.33-alpha1 正等待 Guopeng 团队验收审计 [S02]。LusoCryptoLabs 同时推进 Cellula Wallet 测试网隐私支付，并开源了 Swap book 的代码 [S09, S10]。此外，FiberNuts 提案在投票关闭后确认通过，TalkDID 也继续讨论把 did:ckb 绑定到 Nervos Talk [S13, S06]。
+
+今天论坛的更新整体集中在进行中项目的阶段性回复上，没有出现全新的提案或争议帖，因此社区今天整体较平静。[S01, S02, S03, S04, S05] 最活跃的是 Twine 的 Fiber P2P 场外交易概念验证帖：作者先回应了手续费设计反馈，随后贴出了一段从 790605a 到 504c990 的改动说明。[S01, S02] 另外两个 Spark 相关项目也各有进展：Light dApp Kit 的作者接受了评审结论，并继续追问测试问题；Spark Verify 则发布了 v0.1.1 补丁版本。[S04, S05] 需要说明的是，可引用材料只覆盖 2026-11-13 00:47 至 12:02（UTC）之间的几条回复，无法据此确认完整 24 小时窗口内的全部动态。[S01, S02, S03, S04, S05]
 
 ## 重点话题
-- CellScript 路线图更新：ArthurZhang 表示 Part 1 已实现，v0.33-alpha1 等待验收审计 [S02]。psawyerberlin 指出 Part 2 多项功能需要有人后续提交交易，包括托管订单结算、#72 到期和 #74 非托管订阅 [S03]。
-- 是否集成 CSR 的讨论：ArthurZhang 回应称不计划把 CSR 集成进 CellScript，理由是 keeper 协调和交易提交属于应用层，加入 CSR 专用支持会带来不必要的耦合和维护开销 [S05]。
-- TalkDID 提案：PANAGOT 提出开源 Discourse 插件和主题，把 did:ckb 绑定到 Talk，解决版主和读者无法直接验证链上身份的问题 [S06]。面对“解决什么真实问题”的追问，提案者解释当前 Talk 账号只是普通 Discourse 登录，无法密码学验证“我是某建设者/某钱包”的声明 [S07, S08]。
-- 测试网支付与交换：LusoCryptoLabs 称 Cellula Wallet 的隐私支付已在 CKB 测试网运行，帖子说明其隐藏与不隐藏的信息、成本和验证方式 [S09]。同一团队还更新 Swap book 代码已开源，采用 MIT 许可，包含 CKB HTLC 锁定、订单簿和做市商，仍处测试网 [S10]。
-- Twine 与 FiberNuts：ebubedev 请求 Fiber 社区关注协调者费用在 hold→payout 流程中不削弱托管的设计 [S11]。ArthurZhang 支持引入费用，认为运行 hub、维护流动性和处理争议都有真实成本 [S12]。FiberNuts 则根据 Metaforo 统计确认投票通过，赞成率 100%，总投票权重 184,949,817 CKB [S13]。
+
+- **Twine 手续费设计获得认可**：作者感谢 @ArthurZhang 的反馈，表示手续费（fee）的费率形状看起来合理，并承诺在 fee 功能落地时把这两点一并实现进去。[S01]
+
+- **Twine 新增对 LSP 钱包发票的支持**：作者列出 790605a 到 504c990 之间的改动，核心是支持支付携带 trampoline 路由提示的买家发票，面向 Cellula 等 LSP 钱包；这类钱包会把 Fiber 的 TrampolineRouteHint 属性（attr 10，fiber#1623）写进发票，而 Fiber 到 0.10.0-rc3 还无法处理。[S02]（该帖内容在原文中被截断，后续细节无法确认）[S02]。
+
+- **CKB IDL 提案继续推进**：作者感谢社区对 IDL 的支持，表示自己正在推进这项工作，并会在达成里程碑时发布更新。[S03]
+
+- **Light dApp Kit 作者接受评审结论并提出遗留问题**：Akane 感谢 @xingtianchunyan 的评审和解释，表示理解委员会的决定；同时请求对方帮忙回应自己上一条帖子里关于 JoyID 的疑问，即在测试网环境下用 Chrome 虚拟认证器创建 passkey 可以成功，但 JoyID 会拒绝。[S04]（原文在此处被截断，具体报错与原因不明）[S04]。
+
+- **Spark Verify 发布 CKB Verify v0.1.1**：该版本以 MIT 协议开源发布，是在 v0.1.0 之上的补丁版本，runner、manifest 规范和报告格式均保持不变。[S05]
 
 ## 值得继续跟进
-- CellScript v0.33-alpha1 的验收审计结果和 Part 2 落地方式值得关注，尤其是需要后续交易提交的功能如何在不耦合 CSR 的前提下实现 [S02, S03, S05]。
-- TalkDID 是否能真正让版主和读者在 Talk 上验证 did:ckb 身份，以及插件后续采用情况，仍需观察 [S06, S08]。
-- 测试网工具仍处测试网阶段，Cellula 隐私支付和 Swap book 的后续安全与可用性需要观察 [S09, S10]。Twine 的费用设计能否兼顾托管安全与运营可持续性值得跟进 [S11, S12]。FiberNuts 通过后的执行情况同样值得留意 [S13]。
+
+- **JoyID 与 passkey 的测试网兼容性问题**：目前只知道 Chrome 虚拟认证器创建 passkey 成功、JoyID 侧拒绝，具体原因和是否有回复尚不清楚，需等后续帖子。[S04]
+
+- **Twine 对 trampoline 路由的支持能否落地**：帖子明确指出 Fiber 到 0.10.0-rc3 还不支持该属性，这依赖 Fiber 侧的推进节奏。[S02]
+
+- **CKB IDL 的里程碑更新**：作者已承诺按里程碑发帖同步进展，可以观察后续是否有实质性交付。[S03]
 
 ## 来源索引
 
-- `S01` [A Revenue Layer for CKB Nodes](https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/32) | psawyerberlin | 2026-11-13 04:34:05 CST | Update and a request for native speakers (Chinese and Spanish) CKB Service Runner is live on mainnet and testnet, and there’s now a short “join” page for node runners in five languages: 中文: csr-monitor.chainsolution.net/join/zh/ Español: csr-monitor.chainsolution.net/join/es/...
-- `S02` [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/2) | ArthurZhang | 2026-11-12 12:13:41 CST | A quick roadmap update: Part 1 — Language and Runtime Foundations has now been implemented. CellScript v0.33-alpha1 is currently awaiting an acceptance audit by Guopeng’s team. I’ll share the results and any follow-up changes once the review is complete. Next up: Part 2 —...
-- `S03` [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/3) | psawyerberlin | 2026-11-12 19:20:33 CST | Congrats on landing Part 1, Arthur. One thing in the roadmap caught my eye as Part 2 starts: several features need someone to submit a transaction later. That covers escrowed orders settled against a pool, expiry under #72, the non-custodial subscriptions in #74, and the...
-- `S04` [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/4) | ArthurZhang | 2026-11-13 02:06:44 CST | (post deleted by author)
-- `S05` [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/5) | ArthurZhang | 2026-11-13 03:00:05 CST | Appreciate the suggestion, but I probably don’t plan to integrate CSR into CellScript. Keeper coordination and transaction submission belong at the application layer, and adding CSR-specific support would introduce unnecessary coupling and maintenance overhead, I would leave...
-- `S06` [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/1) | PANAGOT | 2026-11-12 17:48:16 CST | Problem: Nervos Talk accounts are ordinary Discourse logins. did:ckb exists elsewhere (Metaforo/DAO, Vellum, bbs.fans), but there is no Discourse × did:ckb plugin — mods cannot see on-chain identity on Talk without screenshots. Solution: Open-source Discourse plugin + Theme...
-- `S07` [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/2) | Ksa_1971 | 2026-11-12 22:00:03 CST | What real problem does this project solve, and what practical value does it bring to users?
-- `S08` [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/3) | PANAGOT | 2026-11-12 23:07:11 CST | Good question, the real problem is trust on Nervos Talk itself. Today a Talk account is just a normal Discourse login (email / password / Google). Someone can claim “I’m builder X / I’ve shipped Y / this wallet is mine,” but mods and readers cannot cryptographically check that...
-- `S09` [Private payments in Cellula Wallet, on testnet](https://talk.nervos.org/t/private-payments-in-cellula-wallet-on-testnet/11207/1) | LusoCryptoLabs | 2026-11-12 21:30:28 CST | Private payments on CKB1600×900 50.8 KB We have been building private payments into Cellula Wallet, and they now run on CKB testnet. This post covers what they hide, what they do not, what they cost and how we checked them. It describes what a user and the chain see, not the...
-- `S10` [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164/2) | LusoCryptoLabs | 2026-11-12 19:39:58 CST | An update: the swap book’s code is now open. GitHub - LusoCryptoLabs/ckb-htlc-swap: Atomic swaps between CKB and USDC, ETH or BTC: a hashlock lock on CKB, an order book and a market maker. Testnet. · GitHub (MIT licence) What is in it: the CKB lock that holds each side’s...
-- `S11` [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/16) | ebubedev | 2026-11-12 08:38:18 CST | Ask for Fiber eyes: coordinator fee on hold→payout without weakening escrow Quick status: the live sell path is already the buyer-minted preimage design. Buyer creates a payout invoice under H(S_b) on their node (Twine never sees S_b). Hub new_invoice with payment_hash =...
-- `S12` [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/17) | ArthurZhang | 2026-11-12 10:24:53 CST | I am in favor of introducing fees to make Twine financially sustainable. Running the hub, maintaining liquidity and handling disputes all come with real costs, and operators should have a viable incentive to keep the service running. The proposed fee structure looks sound to...
-- `S13` [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/8) | zz_tovarishch | 2026-11-12 08:44:58 CST | Based on the Metaforo tally at close, the outcome is Passed. Approval is 100% against the required 51%, with total voting weight of 184,949,817 CKB against the minimum 15,339,253 CKB. Post-close verification has been completed using CKB DAO Watchdog, together with a manual...
+- `S01` [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/18) | ebubedev | 2026-11-13 19:59:57 CST | Thanks @ArthurZhang — glad the fee shape looks sound. I’ll bake both of those in when fees land
+- `S02` [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/19) | ebubedev | 2026-11-13 20:02:55 CST | Here is what changed since 790605a through 504c990 Pay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets) Wallets behind an LSP put Fiber’s TrampolineRouteHint attribute (attr 10, fiber#1623) on their invoices. Fiber through 0.10.0-rc3 cannot...
+- `S03` [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/11) | OWK50GA | 2026-11-13 17:47:52 CST | Thank you, Ser. And thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones
+- `S04` [Spark Program | Light dApp Kit](https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/4) | Akane | 2026-11-13 15:52:24 CST | Thanks @xingtianchunyan for the review and explanation. I understand the committee’s decision. Separately, could you help with the JoyID question in my earlier post? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the...
+- `S05` [Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects](https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/22) | Akane | 2026-11-13 08:47:06 CST | Hi all, a short update on CKB Verify. CKB Verify v0.1.1 is out, open source under the MIT license: GitHub Release ckb-verify v0.1.1 · Akane-CN/spark-verify ckb-verify v0.1.1 A patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same....
 
 ## 活跃话题
 
-1. [A Revenue Layer for CKB Nodes](https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734) | 1 条近窗帖子 | 最新活动 2026-11-13 04:34:05 CST | tags: CKB, CKB-VM
-2. [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936) | 4 条近窗帖子 | 最新活动 2026-11-13 03:00:05 CST | tags: CKB, CellScript, DeFi
-3. [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206) | 3 条近窗帖子 | 最新活动 2026-11-12 23:07:11 CST | tags: Spark-Program
-4. [Private payments in Cellula Wallet, on testnet](https://talk.nervos.org/t/private-payments-in-cellula-wallet-on-testnet/11207) | 1 条近窗帖子 | 最新活动 2026-11-12 21:30:28 CST
-5. [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164) | 1 条近窗帖子 | 最新活动 2026-11-12 19:39:58 CST
-6. [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741) | 2 条近窗帖子 | 最新活动 2026-11-12 10:24:53 CST | tags: fiber
-7. [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051) | 1 条近窗帖子 | 最新活动 2026-11-12 08:44:58 CST
+1. [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741) | 2 条近窗帖子 | 最新活动 2026-11-13 20:02:55 CST | tags: fiber
+2. [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031) | 1 条近窗帖子 | 最新活动 2026-11-13 17:47:52 CST | tags: CKB-IDL
+3. [Spark Program | Light dApp Kit](https://talk.nervos.org/t/spark-program-light-dapp-kit/11062) | 1 条近窗帖子 | 最新活动 2026-11-13 15:52:24 CST | tags: Rejection
+4. [Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects](https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598) | 1 条近窗帖子 | 最新活动 2026-11-13 08:47:06 CST | tags: Rejection
 
 ## 最近帖子摘录
 
-- 2026-11-13 04:34:05 CST | psawyerberlin | [A Revenue Layer for CKB Nodes](https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/32) | Update and a request for native speakers (Chinese and Spanish) CKB Service Runner is live on mainnet and testnet, and there’s now a short “join” page for node runners in five...
-- 2026-11-13 03:00:05 CST | ArthurZhang | [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/5) | Appreciate the suggestion, but I probably don’t plan to integrate CSR into CellScript. Keeper coordination and transaction submission belong at the application layer, and adding...
-- 2026-11-13 02:06:44 CST | ArthurZhang | [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/4) | (post deleted by author)
-- 2026-11-12 23:07:11 CST | PANAGOT | [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/3) | Good question, the real problem is trust on Nervos Talk itself. Today a Talk account is just a normal Discourse login (email / password / Google). Someone can claim “I’m builder...
-- 2026-11-12 22:00:03 CST | Ksa_1971 | [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/2) | What real problem does this project solve, and what practical value does it bring to users?
-- 2026-11-12 21:30:28 CST | LusoCryptoLabs | [Private payments in Cellula Wallet, on testnet](https://talk.nervos.org/t/private-payments-in-cellula-wallet-on-testnet/11207/1) | Private payments on CKB1600×900 50.8 KB We have been building private payments into Cellula Wallet, and they now run on CKB testnet. This post covers what they hide, what they...
-- 2026-11-12 19:39:58 CST | LusoCryptoLabs | [Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)](https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164/2) | An update: the swap book’s code is now open. GitHub - LusoCryptoLabs/ckb-htlc-swap: Atomic swaps between CKB and USDC, ETH or BTC: a hashlock lock on CKB, an order book and a...
-- 2026-11-12 19:20:33 CST | psawyerberlin | [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/3) | Congrats on landing Part 1, Arthur. One thing in the roadmap caught my eye as Part 2 starts: several features need someone to submit a transaction later. That covers escrowed...
-- 2026-11-12 17:48:16 CST | PANAGOT | [Spark Program | TalkDID — Bind did:ckb to Nervos Talk](https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/1) | Problem: Nervos Talk accounts are ordinary Discourse logins. did:ckb exists elsewhere (Metaforo/DAO, Vellum, bbs.fans), but there is no Discourse × did:ckb plugin — mods cannot...
-- 2026-11-12 12:13:41 CST | ArthurZhang | [CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi](https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/2) | A quick roadmap update: Part 1 — Language and Runtime Foundations has now been implemented. CellScript v0.33-alpha1 is currently awaiting an acceptance audit by Guopeng’s team....
-- 2026-11-12 10:24:53 CST | ArthurZhang | [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/17) | I am in favor of introducing fees to make Twine financially sustainable. Running the hub, maintaining liquidity and handling disputes all come with real costs, and operators...
-- 2026-11-12 08:44:58 CST | zz_tovarishch | [[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding](https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/8) | Based on the Metaforo tally at close, the outcome is Passed. Approval is 100% against the required 51%, with total voting weight of 184,949,817 CKB against the minimum...
-- 2026-11-12 08:38:18 CST | ebubedev | [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/16) | Ask for Fiber eyes: coordinator fee on hold→payout without weakening escrow Quick status: the live sell path is already the buyer-minted preimage design. Buyer creates a payout...
+- 2026-11-13 20:02:55 CST | ebubedev | [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/19) | Here is what changed since 790605a through 504c990 Pay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets) Wallets behind an LSP put Fiber’s...
+- 2026-11-13 19:59:57 CST | ebubedev | [Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)](https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/18) | Thanks @ArthurZhang — glad the fee shape looks sound. I’ll bake both of those in when fees land
+- 2026-11-13 17:47:52 CST | OWK50GA | [[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts](https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/11) | Thank you, Ser. And thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones
+- 2026-11-13 15:52:24 CST | Akane | [Spark Program | Light dApp Kit](https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/4) | Thanks @xingtianchunyan for the review and explanation. I understand the committee’s decision. Separately, could you help with the JoyID question in my earlier post? In the...
+- 2026-11-13 08:47:06 CST | Akane | [Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects](https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/22) | Hi all, a short update on CKB Verify. CKB Verify v0.1.1 is out, open source under the MIT license: GitHub Release ckb-verify v0.1.1 · Akane-CN/spark-verify ckb-verify v0.1.1 A...

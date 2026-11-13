@@ -1,340 +1,164 @@
 {
   "base_url": "https://talk.nervos.org",
-  "generated_at": "2026-11-12T22:33:43.787908+00:00",
-  "since": "2026-11-11T22:33:38.319969+00:00",
-  "until": "2026-11-12T22:33:38.319969+00:00",
+  "generated_at": "2026-11-13T22:22:32.439205+00:00",
+  "since": "2026-11-12T22:22:28.123485+00:00",
+  "until": "2026-11-13T22:22:28.123485+00:00",
   "window_hours": 24,
   "topics": [
-    {
-      "topic_id": 10734,
-      "title": "A Revenue Layer for CKB Nodes",
-      "slug": "a-revenue-layer-for-ckb-nodes",
-      "url": "https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734",
-      "created_at": "2026-09-21T20:55:54.198000+00:00",
-      "last_posted_at": "2026-11-12T20:34:05.214000+00:00",
-      "category_id": 70,
-      "tags": [
-        "CKB",
-        "CKB-VM"
-      ],
-      "posters": [
-        "Original Poster, Most Recent Poster",
-        "Frequent Poster",
-        "Frequent Poster",
-        "Recent Poster",
-        "Recent Poster"
-      ],
-      "recent_posts": [
-        {
-          "post_id": 27399,
-          "post_number": 32,
-          "topic_id": 10734,
-          "topic_title": "A Revenue Layer for CKB Nodes",
-          "topic_slug": "a-revenue-layer-for-ckb-nodes",
-          "author": "psawyerberlin",
-          "created_at": "2026-11-12T20:34:05.214000+00:00",
-          "updated_at": "2026-11-12T20:36:09.952000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734/32",
-          "content_text": "Update and a request for native speakers (Chinese and Spanish)\nCKB Service Runner is live on mainnet and testnet, and there’s now a short “join” page for node runners in five languages:\n中文: csr-monitor.chainsolution.net/join/zh/\nEspañol: csr-monitor.chainsolution.net/join/es/\nEnglish: csr-monitor.chainsolution.net/join/\nFrançais : csr-monitor.chainsolution.net/join/fr/\nDeutsch : csr-monitor.chainsolution.net/join/de/\nI checked English, French and German myself, but not Chinese and Spanish. If you’re a native speaker and spot an awkward or wrong phrase, especially the technical terms (全节点, 服务运行时, 受托人联盟…), please reply here. Every correction helps.\nFor the record: this is a volunteer project. My motivation is the one that grew out of this thread: a truly decentralised runtime on CKB, where jobs that today need a bot on someone’s server, or a trusted federation, run on a ranked network of independent full nodes instead. As @Ayoub_Lesfer’s CrowdCell example showed, many apps need exactly that. I believe it can make CKB unique.\nThanks to everyone who shaped the idea here!\nPSBerlin",
-          "content_html": "<p><strong>Update and a request for native speakers (Chinese and Spanish)</strong> <img src=\"https://talk.nervos.org/images/emoji/apple/folded_hands.png?v=15\" title=\":folded_hands:\" class=\"emoji\" alt=\":folded_hands:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>\n<p>CKB Service Runner is live on mainnet and testnet, and there’s now a short “join” page for node runners in five languages:</p>\n<ul>\n<li>中文: <a href=\"https://csr-monitor.chainsolution.net/join/zh/\" rel=\"noopener nofollow ugc\">csr-monitor.chainsolution.net/join/zh/</a></li>\n<li>Español: <a href=\"https://csr-monitor.chainsolution.net/join/es/\" rel=\"noopener nofollow ugc\">csr-monitor.chainsolution.net/join/es/</a></li>\n<li>English: <a href=\"https://csr-monitor.chainsolution.net/join/\" rel=\"noopener nofollow ugc\">csr-monitor.chainsolution.net/join/</a></li>\n<li>Français : <a href=\"https://csr-monitor.chainsolution.net/join/fr/\" rel=\"noopener nofollow ugc\">csr-monitor.chainsolution.net/join/fr/</a></li>\n<li>Deutsch : <a href=\"https://csr-monitor.chainsolution.net/join/de/\" rel=\"noopener nofollow ugc\">csr-monitor.chainsolution.net/join/de/</a></li>\n</ul>\n<p>I checked English, French and German myself, but not Chinese and Spanish. If you’re a native speaker and spot an awkward or wrong phrase, especially the technical terms (全节点, 服务运行时, 受托人联盟…), please reply here. Every correction helps.</p>\n<p>For the record: this is a volunteer project. My motivation is the one that grew out of this thread: a truly <strong>decentralised runtime on CKB</strong>, where jobs that today need a bot on someone’s server, or a trusted federation, run on a ranked network of independent full nodes instead. As <a class=\"mention\" href=\"/u/ayoub_lesfer\">@Ayoub_Lesfer</a>’s CrowdCell example showed, many apps need exactly that. I believe it can make CKB unique.</p>\n<p>Thanks to everyone who shaped the idea here!<br>\nPSBerlin</p>",
-          "like_count": 0,
-          "quote_count": 0
-        }
-      ]
-    },
-    {
-      "topic_id": 10936,
-      "title": "CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi",
-      "slug": "cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi",
-      "url": "https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936",
-      "created_at": "2026-10-11T16:19:27.856000+00:00",
-      "last_posted_at": "2026-11-12T19:00:05.914000+00:00",
-      "category_id": 69,
-      "tags": [
-        "CKB",
-        "CellScript",
-        "DeFi"
-      ],
-      "posters": [
-        "Original Poster, Most Recent Poster",
-        "Recent Poster"
-      ],
-      "recent_posts": [
-        {
-          "post_id": 27389,
-          "post_number": 2,
-          "topic_id": 10936,
-          "topic_title": "CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi",
-          "topic_slug": "cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi",
-          "author": "ArthurZhang",
-          "created_at": "2026-11-12T04:13:41.699000+00:00",
-          "updated_at": "2026-11-12T04:13:41.699000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/2",
-          "content_text": "A quick roadmap update:\nPart 1 — Language and Runtime Foundations has now been implemented.\nCellScript v0.33-alpha1 is currently awaiting an acceptance audit by Guopeng’s team. I’ll share the results and any follow-up changes once the review is complete.\nNext up: Part 2 — Basic Pools, Orders and Settlement.",
-          "content_html": "<p>A quick roadmap update:</p>\n<p><strong>Part 1 — Language and Runtime Foundations</strong> has now been implemented.</p>\n<p>CellScript v0.33-alpha1 is currently awaiting an acceptance audit by Guopeng’s team. I’ll share the results and any follow-up changes once the review is complete.</p>\n<p>Next up: <strong>Part 2 — Basic Pools, Orders and Settlement.</strong></p>",
-          "like_count": 0,
-          "quote_count": 0
-        },
-        {
-          "post_id": 27392,
-          "post_number": 3,
-          "topic_id": 10936,
-          "topic_title": "CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi",
-          "topic_slug": "cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi",
-          "author": "psawyerberlin",
-          "created_at": "2026-11-12T11:20:33.012000+00:00",
-          "updated_at": "2026-11-12T11:20:33.012000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/3",
-          "content_text": "Congrats on landing Part 1, Arthur. One thing in the roadmap caught my eye as Part 2 starts: several features need someone to submit a transaction later. That covers escrowed orders settled against a pool, expiry under #72, the non-custodial subscriptions in #74, and the signed intents in #76. As you say, a wallet timeout isn’t an on-chain expiry, and today that “someone” is usually a project’s own bot.\nThat’s the gap I’m working on with CKB Service Runner (CSR). An app posts a paid job cell. Registered runners, staked through a referenced Nervos DAO deposit, run an on-chain RISC-V service that reads the chain through host calls and returns a tx skeleton. Triggers can be at block/epoch/time, every k blocks (fits subscriptions) or when a cell is spent. They’re proven through since, and the job lock pays the tip only to a registered runner.\nIt might be worth a CellScript helper that emits a CSR job next to an order or subscription cell. That would keep “who executes this” explicit in the SDK, the same way you’re keeping enforceability explicit.\nHonest status: runtime and contracts are testnet-only, mainnet paid services stay off until a service gate (history + runner diversity) is met, and audit fixes are in progress. It’s trust-minimised, not trustless. Happy to try a testnet integration if it’s useful.\nThread: A Revenue Layer for CKB Nodes\nCode: CKB Service Runner · GitHub\nWeb: https://csr-monitor.chainsolution.net",
-          "content_html": "<p>Congrats on landing Part 1, Arthur. One thing in the roadmap caught my eye as Part 2 starts: several features need <em>someone</em> to submit a transaction later. That covers escrowed orders settled against a pool, expiry under <span class=\"hashtag-raw\">#72</span>, the non-custodial subscriptions in <span class=\"hashtag-raw\">#74</span>, and the signed intents in <span class=\"hashtag-raw\">#76</span>. As you say, a wallet timeout isn’t an on-chain expiry, and today that “someone” is usually a project’s own bot.</p>\n<p>That’s the gap I’m working on with CKB Service Runner (CSR). An app posts a paid job cell. Registered runners, staked through a referenced Nervos DAO deposit, run an on-chain RISC-V service that reads the chain through host calls and returns a tx skeleton. Triggers can be at block/epoch/time, every k blocks (fits subscriptions) or when a cell is spent. They’re proven through <code>since</code>, and the job lock pays the tip only to a registered runner.</p>\n<p>It might be worth a CellScript helper that emits a CSR job next to an order or subscription cell. That would keep “who executes this” explicit in the SDK, the same way you’re keeping enforceability explicit.</p>\n<p>Honest status: runtime and contracts are testnet-only, mainnet paid services stay off until a service gate (history + runner diversity) is met, and audit fixes are in progress. It’s trust-minimised, not trustless. Happy to try a testnet integration if it’s useful.</p>\n<p>Thread: <a href=\"https://talk.nervos.org/t/a-revenue-layer-for-ckb-nodes/10734\" class=\"inline-onebox\">A Revenue Layer for CKB Nodes</a><br>\nCode: <a href=\"https://github.com/ckb-service-runner\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">CKB Service Runner · GitHub</a><br>\nWeb: <a href=\"https://csr-monitor.chainsolution.net\" rel=\"noopener nofollow ugc\">https://csr-monitor.chainsolution.net</a></p>",
-          "like_count": 0,
-          "quote_count": 0
-        },
-        {
-          "post_id": 27397,
-          "post_number": 4,
-          "topic_id": 10936,
-          "topic_title": "CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi",
-          "topic_slug": "cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi",
-          "author": "ArthurZhang",
-          "created_at": "2026-11-12T18:06:44.375000+00:00",
-          "updated_at": "2026-11-12T18:59:50.332000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/4",
-          "content_text": "(post deleted by author)",
-          "content_html": "<p>(post deleted by author)</p>",
-          "like_count": 0,
-          "quote_count": 0
-        },
-        {
-          "post_id": 27398,
-          "post_number": 5,
-          "topic_id": 10936,
-          "topic_title": "CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi",
-          "topic_slug": "cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi",
-          "author": "ArthurZhang",
-          "created_at": "2026-11-12T19:00:05.914000+00:00",
-          "updated_at": "2026-11-12T19:00:05.914000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936/5",
-          "content_text": "Appreciate the suggestion, but I probably don’t plan to integrate CSR into CellScript.\nKeeper coordination and transaction submission belong at the application layer, and adding CSR-specific support would introduce unnecessary coupling and maintenance overhead, I would leave such integrations to independent adapters.",
-          "content_html": "<p>Appreciate the suggestion, but I probably don’t plan to integrate CSR into CellScript.</p>\n<p>Keeper coordination and transaction submission belong at the application layer, and adding CSR-specific support would introduce unnecessary coupling and maintenance overhead, I would leave such integrations to independent adapters.</p>",
-          "like_count": 0,
-          "quote_count": 0
-        }
-      ]
-    },
-    {
-      "topic_id": 11206,
-      "title": "Spark Program | TalkDID — Bind did:ckb to Nervos Talk",
-      "slug": "spark-program-talkdid-bind-did-ckb-to-nervos-talk",
-      "url": "https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206",
-      "created_at": "2026-11-12T09:48:16.131000+00:00",
-      "last_posted_at": "2026-11-12T15:07:11.166000+00:00",
-      "category_id": 77,
-      "tags": [
-        "Spark-Program"
-      ],
-      "posters": [
-        "Original Poster, Most Recent Poster",
-        "Recent Poster"
-      ],
-      "recent_posts": [
-        {
-          "post_id": 27391,
-          "post_number": 1,
-          "topic_id": 11206,
-          "topic_title": "Spark Program | TalkDID — Bind did:ckb to Nervos Talk",
-          "topic_slug": "spark-program-talkdid-bind-did-ckb-to-nervos-talk",
-          "author": "PANAGOT",
-          "created_at": "2026-11-12T09:48:16.211000+00:00",
-          "updated_at": "2026-11-12T10:08:39.720000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/1",
-          "content_text": "Problem: Nervos Talk accounts are ordinary Discourse logins. did:ckb exists elsewhere (Metaforo/DAO, Vellum, bbs.fans), but there is no Discourse × did:ckb plugin — mods cannot see on-chain identity on Talk without screenshots.\nSolution: Open-source Discourse plugin + Theme Component (MIT after funding). User connects CCC → signs a short nonce → plugin verifies → stores bind on UserCustomField → badge on profile/posts.\nNon-goals: production Talk install (admin gate); DAO votes; Fiber tips; another DID tutorial.\nWhy Spark / CKB: Committee already redirected a prior DID ask toward Discourse + CKB DID. App-layer, Talk-native, OSS.\nAsk: $500 (CKB equiv.)\nM1 $250 (week 1): plugin scaffold, challenge/sign/verify, UserCustomField, tests, public repo + Docker Dev README\nM2 $250 (week 2): badge UI, unlink/re-link, verify GIF + checklist, MIT, Spark update post\nHow to verify:\nLive CCC testnet path demo: talkdid-ckb-j9kz.vercel.app\nExample:\nTalkDID verify\nforum:talkdid-demo\nuser:talk-builder\nnetwork:testnet\nnonce:a9ae84d1cc8327a59289690bcfa2052f\nissued:2026-11-12T09:56:39.918Z\nexp:2026-11-12T10:06:39.920Z\nCurrently forum doesn’t allow me to post any images and links.",
-          "content_html": "<p><strong>Problem</strong>: Nervos Talk accounts are ordinary Discourse logins. <code>did:ckb</code> exists elsewhere (Metaforo/DAO, Vellum, bbs.fans), but there is no Discourse × did:ckb plugin — mods cannot see on-chain identity on Talk without screenshots.</p>\n<p><strong>Solution</strong>: Open-source Discourse plugin + Theme Component (MIT after funding). User connects CCC → signs a short nonce → plugin verifies → stores bind on <code>UserCustomField</code> → badge on profile/posts.<br>\nNon-goals: production Talk install (admin gate); DAO votes; Fiber tips; another DID tutorial.</p>\n<p><strong>Why Spark / CKB</strong>: Committee already redirected a prior DID ask toward Discourse + CKB DID. App-layer, Talk-native, OSS.</p>\n<p><strong>Ask</strong>: $500 (CKB equiv.)</p>\n<ul>\n<li>M1 $250 (week 1): plugin scaffold, challenge/sign/verify, UserCustomField, tests, public repo + Docker Dev README</li>\n<li>M2 $250 (week 2): badge UI, unlink/re-link, verify GIF + checklist, MIT, Spark update post</li>\n</ul>\n<p><strong>How to verify</strong>:</p>\n<ol>\n<li>Live CCC testnet path demo:  talkdid-ckb-j9kz.vercel.app</li>\n</ol>\n<p><strong>Example</strong>:</p>\n<p>TalkDID verify<br>\nforum:talkdid-demo<br>\nuser:talk-builder<br>\nnetwork:testnet<br>\nnonce:a9ae84d1cc8327a59289690bcfa2052f<br>\nissued:2026-11-12T09:56:39.918Z<br>\nexp:2026-11-12T10:06:39.920Z</p>\n<p>Currently forum doesn’t allow me to post any images and links.</p>",
-          "like_count": 0,
-          "quote_count": 0
-        },
-        {
-          "post_id": 27395,
-          "post_number": 2,
-          "topic_id": 11206,
-          "topic_title": "Spark Program | TalkDID — Bind did:ckb to Nervos Talk",
-          "topic_slug": "spark-program-talkdid-bind-did-ckb-to-nervos-talk",
-          "author": "Ksa_1971",
-          "created_at": "2026-11-12T14:00:03.924000+00:00",
-          "updated_at": "2026-11-12T14:00:03.924000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/2",
-          "content_text": "What real problem does this project solve, and what practical value does it bring to users?",
-          "content_html": "<p>What real problem does this project solve, and what practical value does it bring to users?</p>",
-          "like_count": 0,
-          "quote_count": 0
-        },
-        {
-          "post_id": 27396,
-          "post_number": 3,
-          "topic_id": 11206,
-          "topic_title": "Spark Program | TalkDID — Bind did:ckb to Nervos Talk",
-          "topic_slug": "spark-program-talkdid-bind-did-ckb-to-nervos-talk",
-          "author": "PANAGOT",
-          "created_at": "2026-11-12T15:07:11.166000+00:00",
-          "updated_at": "2026-11-12T15:07:11.166000+00:00",
-          "reply_to_post_number": 2,
-          "url": "https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206/3",
-          "content_text": "Good question, the real problem is trust on Nervos Talk itself.\nToday a Talk account is just a normal Discourse login (email / password / Google). Someone can claim “I’m builder X / I’ve shipped Y / this wallet is mine,” but mods and readers cannot cryptographically check that on the forum. They rely on screenshots, Discord DMs, or “trust me.”\ndid:ckb already shows up in apps like bbs.fans and the CCF DAO Web5 stack, and tooling like Vellum can create/resolve DIDs but Nervos Talk itself is still a normal Discourse login with no on-profile bind, which is where Spark proposals and community debate actually happens\nPractical value for users here\nProposers / builders | prove wallet / did:ckb control on your Talk profile and posts without leaving screenshots in every thread.\nMods / reviewers | See a verified badge next to the username when deciding whether an ask is from a real CKB identity, not a fresh sockpuppet.\nReaders | “is this the same person as on Discord?” noise; identity travels with the post..",
-          "content_html": "<p>Good question, the real problem is trust on Nervos Talk itself.</p>\n<p>Today a Talk account is just a normal Discourse login (email / password / Google). Someone can claim “I’m builder X / I’ve shipped Y / this wallet is mine,” but mods and readers cannot cryptographically check that on the forum. They rely on screenshots, Discord DMs, or “trust me.”</p>\n<p>did:ckb already shows up in apps like bbs.fans and the CCF DAO Web5 stack, and tooling like Vellum can create/resolve DIDs but Nervos Talk itself is still a normal Discourse login with no on-profile bind, which is where Spark proposals and community debate actually happens</p>\n<p><strong>Practical value for users here</strong></p>\n<p><strong>Proposers</strong> / <strong>builders |</strong> prove wallet / did:ckb control on your Talk profile and posts without leaving screenshots in every thread.<br>\n<strong>Mods / reviewers</strong> | See a verified badge next to the username when deciding whether an ask is from a real CKB identity, not a fresh sockpuppet.<br>\n<strong>Readers</strong> | “is this the same person as on Discord?” noise; identity travels with the post..</p>",
-          "like_count": 0,
-          "quote_count": 0
-        }
-      ]
-    },
-    {
-      "topic_id": 11207,
-      "title": "Private payments in Cellula Wallet, on testnet",
-      "slug": "private-payments-in-cellula-wallet-on-testnet",
-      "url": "https://talk.nervos.org/t/private-payments-in-cellula-wallet-on-testnet/11207",
-      "created_at": "2026-11-12T13:30:28.244000+00:00",
-      "last_posted_at": "2026-11-12T13:30:28.315000+00:00",
-      "category_id": 70,
-      "tags": [],
-      "posters": [
-        "Original Poster, Most Recent Poster"
-      ],
-      "recent_posts": [
-        {
-          "post_id": 27394,
-          "post_number": 1,
-          "topic_id": 11207,
-          "topic_title": "Private payments in Cellula Wallet, on testnet",
-          "topic_slug": "private-payments-in-cellula-wallet-on-testnet",
-          "author": "LusoCryptoLabs",
-          "created_at": "2026-11-12T13:30:28.315000+00:00",
-          "updated_at": "2026-11-12T13:30:28.315000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/private-payments-in-cellula-wallet-on-testnet/11207/1",
-          "content_text": "Private payments on CKB1600×900 50.8 KB\nWe have been building private payments into Cellula Wallet, and they now run on CKB testnet. This post covers what they hide, what they do not, what they cost and how we checked them. It describes what a user and the chain see, not the internals.\nWhat stays private\nOn CKB every payment is public. Inputs name the cells they spend, locks show who held them, and capacity is the amount. A private payment in Cellula takes three things off that record:\nWho paid. Nothing in the payment points to the payer’s cells or signature. It hides among the other payments in its group.\nWho was paid. Each payment goes to a new one-time key, and only the receiver’s view key recognises it.\nHow much. Amounts are hidden, and the contract still checks that every payment balances.\nThese rules are enforced by a contract on chain, not by a server.\nHow it is used\nCKB goes from your wallet into a hidden balance, moves privately inside it, and comes out to any address. There are two ways to be paid privately:\na private address, from one Cellula wallet to another;\na fresh ckt1 address that any CKB wallet can pay. The wallet then moves that payment into the hidden balance.\nA view key lets someone else, an accountant for example, see what came in without being able to spend it.\nThree moves, one shared hidden balance1600×900 67 KB\nGroups of 16\nA payment hides among the others in its group. A group holds 16 payments, and once it is full each of them can be spent.\nHidden among 161600×900 60 KB\nThe wallet draws the group as a circle of 16 places, so you can see the wait and the reason for it.\nThe waiting group in the wallet390×844 33.6 KB\nIf you do not want to wait, you can pay the empty places yourself. The payment is then ready at once, but it hides among fewer people.\nPay the empty places, or wait for free1600×900 74.1 KB\nThe wallet shows this before you confirm, along with what leaves your wallet, what comes back and what it costs.\nUse it now in the wallet390×844 40 KB\nCosts\nThere is a flat privacy fee of 12.25 CKB per note on testnet. It is the same for any amount, so it says nothing about the amount. A payment with change makes two notes. Each place holds 268 CKB while its group fills, and when the group closes 255.75 of it comes back to your hidden balance.\nMeasured and checked\nThe proof for a payment is made on the device that holds the keys. It takes about 25 ms in a desktop browser and 58 ms on an Android phone.\nWe sent 25 payments at the same moment on testnet. All of them went through, at about 9.5 a minute, and the slowest took under three minutes.\nEvery guard in the contract has a test that fails when that guard is switched off (56 of 56). An adversarial engine bent about 20,000 transactions against the contract and found nothing. On testnet, the node refused a note spent twice.\nWhat still shows\nWhat goes into the hidden balance and what comes out: the amount and the address.\nThat a payment happened, when, and which group it spent from.\nA group filled mostly by one person hides them among few.\nThe node that receives a transaction sees an IP address.\nSo this is private, not anonymous, and it is only as private as the pool is busy.\nWhat is hidden, and what still shows1600×900 62.1 KB\nTry it\nIt runs on CKB testnet, in the Private tab of Cellula Wallet. Questions and reviews are welcome in this thread.",
-          "content_html": "<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/b/b43c11da2c2442cee6dc4cf7e335ec412ea444c2.png\" data-download-href=\"https://talk.nervos.org/uploads/default/b43c11da2c2442cee6dc4cf7e335ec412ea444c2\" title=\"Private payments on CKB\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/b/b43c11da2c2442cee6dc4cf7e335ec412ea444c2_2_690x388.png\" alt=\"Private payments on CKB\" data-base62-sha1=\"pIqDTAUyYPUPa4Hew1XKjEisbDA\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/b/b43c11da2c2442cee6dc4cf7e335ec412ea444c2_2_690x388.png, https://talk.nervos.org/uploads/default/optimized/2X/b/b43c11da2c2442cee6dc4cf7e335ec412ea444c2_2_1035x582.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/b/b43c11da2c2442cee6dc4cf7e335ec412ea444c2_2_1380x776.png 2x\" data-dominant-color=\"1E1C19\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Private payments on CKB</span><span class=\"informations\">1600×900 50.8 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>We have been building private payments into Cellula Wallet, and they now run on CKB testnet. This post covers what they hide, what they do not, what they cost and how we checked them. It describes what a user and the chain see, not the internals.</p>\n<h2><a name=\"p-27394-what-stays-private-1\" class=\"anchor\" href=\"#p-27394-what-stays-private-1\" aria-label=\"Heading link\"></a>What stays private</h2>\n<p>On CKB every payment is public. Inputs name the cells they spend, locks show who held them, and capacity is the amount. A private payment in Cellula takes three things off that record:</p>\n<ul>\n<li><strong>Who paid.</strong> Nothing in the payment points to the payer’s cells or signature. It hides among the other payments in its group.</li>\n<li><strong>Who was paid.</strong> Each payment goes to a new one-time key, and only the receiver’s view key recognises it.</li>\n<li><strong>How much.</strong> Amounts are hidden, and the contract still checks that every payment balances.</li>\n</ul>\n<p>These rules are enforced by a contract on chain, not by a server.</p>\n<h2><a name=\"p-27394-how-it-is-used-2\" class=\"anchor\" href=\"#p-27394-how-it-is-used-2\" aria-label=\"Heading link\"></a>How it is used</h2>\n<p>CKB goes from your wallet into a hidden balance, moves privately inside it, and comes out to any address. There are two ways to be paid privately:</p>\n<ul>\n<li>a private address, from one Cellula wallet to another;</li>\n<li>a fresh ckt1 address that any CKB wallet can pay. The wallet then moves that payment into the hidden balance.</li>\n</ul>\n<p>A view key lets someone else, an accountant for example, see what came in without being able to spend it.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/d/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53.png\" data-download-href=\"https://talk.nervos.org/uploads/default/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53\" title=\"Three moves, one shared hidden balance\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53_2_690x388.png\" alt=\"Three moves, one shared hidden balance\" data-base62-sha1=\"uDw6gH2bxFALGunxufUzjZSKJcD\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53_2_690x388.png, https://talk.nervos.org/uploads/default/optimized/2X/d/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53_2_1035x582.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/d/d6b8cba314a7d514f6fba55f19d9b80f4e44ac53_2_1380x776.png 2x\" data-dominant-color=\"211F1C\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Three moves, one shared hidden balance</span><span class=\"informations\">1600×900 67 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-27394-groups-of-16-3\" class=\"anchor\" href=\"#p-27394-groups-of-16-3\" aria-label=\"Heading link\"></a>Groups of 16</h2>\n<p>A payment hides among the others in its group. A group holds 16 payments, and once it is full each of them can be spent.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/6/657a4f68264023cf06d3d9c3b6de2aadcf045755.png\" data-download-href=\"https://talk.nervos.org/uploads/default/657a4f68264023cf06d3d9c3b6de2aadcf045755\" title=\"Hidden among 16\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/6/657a4f68264023cf06d3d9c3b6de2aadcf045755_2_690x388.png\" alt=\"Hidden among 16\" data-base62-sha1=\"etIgUVsksp22IZELDsW5MyV0tkV\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/6/657a4f68264023cf06d3d9c3b6de2aadcf045755_2_690x388.png, https://talk.nervos.org/uploads/default/optimized/2X/6/657a4f68264023cf06d3d9c3b6de2aadcf045755_2_1035x582.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/6/657a4f68264023cf06d3d9c3b6de2aadcf045755_2_1380x776.png 2x\" data-dominant-color=\"1B1915\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Hidden among 16</span><span class=\"informations\">1600×900 60 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>The wallet draws the group as a circle of 16 places, so you can see the wait and the reason for it.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/b/bbc93b6da073c49b86def299f71c84c8a1b52d5b.png\" data-download-href=\"https://talk.nervos.org/uploads/default/bbc93b6da073c49b86def299f71c84c8a1b52d5b\" title=\"The waiting group in the wallet\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/b/bbc93b6da073c49b86def299f71c84c8a1b52d5b_2_231x500.png\" alt=\"The waiting group in the wallet\" data-base62-sha1=\"qNeql7mzcnRNivpnsackFt1xGNJ\" width=\"231\" height=\"500\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/b/bbc93b6da073c49b86def299f71c84c8a1b52d5b_2_231x500.png, https://talk.nervos.org/uploads/default/optimized/2X/b/bbc93b6da073c49b86def299f71c84c8a1b52d5b_2_346x750.png 1.5x, https://talk.nervos.org/uploads/default/original/2X/b/bbc93b6da073c49b86def299f71c84c8a1b52d5b.png 2x\" data-dominant-color=\"1B1914\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">The waiting group in the wallet</span><span class=\"informations\">390×844 33.6 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>If you do not want to wait, you can pay the empty places yourself. The payment is then ready at once, but it hides among fewer people.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/d/d596983c7e6260cae4e1a32206e897c5aa2cf148.png\" data-download-href=\"https://talk.nervos.org/uploads/default/d596983c7e6260cae4e1a32206e897c5aa2cf148\" title=\"Pay the empty places, or wait for free\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d596983c7e6260cae4e1a32206e897c5aa2cf148_2_690x388.png\" alt=\"Pay the empty places, or wait for free\" data-base62-sha1=\"utulCNUDGcQvjBRuaCExlDVLD2U\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d596983c7e6260cae4e1a32206e897c5aa2cf148_2_690x388.png, https://talk.nervos.org/uploads/default/optimized/2X/d/d596983c7e6260cae4e1a32206e897c5aa2cf148_2_1035x582.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/d/d596983c7e6260cae4e1a32206e897c5aa2cf148_2_1380x776.png 2x\" data-dominant-color=\"211E1B\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Pay the empty places, or wait for free</span><span class=\"informations\">1600×900 74.1 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<p>The wallet shows this before you confirm, along with what leaves your wallet, what comes back and what it costs.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/8/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420.png\" data-download-href=\"https://talk.nervos.org/uploads/default/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420\" title=\"Use it now in the wallet\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/8/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420_2_231x500.png\" alt=\"Use it now in the wallet\" data-base62-sha1=\"jWm54nVQ93FE6FjoSfiOPApuSL6\" width=\"231\" height=\"500\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/8/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420_2_231x500.png, https://talk.nervos.org/uploads/default/optimized/2X/8/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420_2_346x750.png 1.5x, https://talk.nervos.org/uploads/default/original/2X/8/8bc20866b66223a3bc3a6a2e0bafdbf2826f7420.png 2x\" data-dominant-color=\"2B2B1E\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">Use it now in the wallet</span><span class=\"informations\">390×844 40 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-27394-costs-4\" class=\"anchor\" href=\"#p-27394-costs-4\" aria-label=\"Heading link\"></a>Costs</h2>\n<p>There is a flat privacy fee of 12.25 CKB per note on testnet. It is the same for any amount, so it says nothing about the amount. A payment with change makes two notes. Each place holds 268 CKB while its group fills, and when the group closes 255.75 of it comes back to your hidden balance.</p>\n<h2><a name=\"p-27394-measured-and-checked-5\" class=\"anchor\" href=\"#p-27394-measured-and-checked-5\" aria-label=\"Heading link\"></a>Measured and checked</h2>\n<ul>\n<li>The proof for a payment is made on the device that holds the keys. It takes about 25 ms in a desktop browser and 58 ms on an Android phone.</li>\n<li>We sent 25 payments at the same moment on testnet. All of them went through, at about 9.5 a minute, and the slowest took under three minutes.</li>\n<li>Every guard in the contract has a test that fails when that guard is switched off (56 of 56). An adversarial engine bent about 20,000 transactions against the contract and found nothing. On testnet, the node refused a note spent twice.</li>\n</ul>\n<h2><a name=\"p-27394-what-still-shows-6\" class=\"anchor\" href=\"#p-27394-what-still-shows-6\" aria-label=\"Heading link\"></a>What still shows</h2>\n<ul>\n<li>What goes into the hidden balance and what comes out: the amount and the address.</li>\n<li>That a payment happened, when, and which group it spent from.</li>\n<li>A group filled mostly by one person hides them among few.</li>\n<li>The node that receives a transaction sees an IP address.</li>\n</ul>\n<p>So this is private, not anonymous, and it is only as private as the pool is busy.</p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/4/4a3183d2eff261bc35d148388fb2d4e3ac37d244.png\" data-download-href=\"https://talk.nervos.org/uploads/default/4a3183d2eff261bc35d148388fb2d4e3ac37d244\" title=\"What is hidden, and what still shows\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/4/4a3183d2eff261bc35d148388fb2d4e3ac37d244_2_690x388.png\" alt=\"What is hidden, and what still shows\" data-base62-sha1=\"aAlpV5xjvinr21fLmfjFsxbT0ZC\" width=\"690\" height=\"388\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/4/4a3183d2eff261bc35d148388fb2d4e3ac37d244_2_690x388.png, https://talk.nervos.org/uploads/default/optimized/2X/4/4a3183d2eff261bc35d148388fb2d4e3ac37d244_2_1035x582.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/4/4a3183d2eff261bc35d148388fb2d4e3ac37d244_2_1380x776.png 2x\" data-dominant-color=\"25221F\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">What is hidden, and what still shows</span><span class=\"informations\">1600×900 62.1 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n<h2><a name=\"p-27394-try-it-7\" class=\"anchor\" href=\"#p-27394-try-it-7\" aria-label=\"Heading link\"></a>Try it</h2>\n<p>It runs on CKB testnet, in the Private tab of <a href=\"https://wallet.testnet.cellula.id\" rel=\"noopener nofollow ugc\">Cellula Wallet</a>. Questions and reviews are welcome in this thread.</p>",
-          "like_count": 0,
-          "quote_count": 0
-        }
-      ]
-    },
-    {
-      "topic_id": 11164,
-      "title": "Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)",
-      "slug": "swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet",
-      "url": "https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164",
-      "created_at": "2026-11-10T18:21:21.136000+00:00",
-      "last_posted_at": "2026-11-12T11:39:58.756000+00:00",
-      "category_id": 70,
-      "tags": [],
-      "posters": [
-        "Original Poster, Most Recent Poster"
-      ],
-      "recent_posts": [
-        {
-          "post_id": 27393,
-          "post_number": 2,
-          "topic_id": 11164,
-          "topic_title": "Swap book: trade CKB for USDC, ETH or Bitcoin with no custodian (testnet)",
-          "topic_slug": "swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet",
-          "author": "LusoCryptoLabs",
-          "created_at": "2026-11-12T11:39:58.756000+00:00",
-          "updated_at": "2026-11-12T11:39:58.756000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/swap-book-trade-ckb-for-usdc-eth-or-bitcoin-with-no-custodian-testnet/11164/2",
-          "content_text": "An update: the swap book’s code is now open.\nGitHub - LusoCryptoLabs/ckb-htlc-swap: Atomic swaps between CKB and USDC, ETH or BTC: a hashlock lock on CKB, an order book and a market maker. Testnet. · GitHub (MIT licence)\nWhat is in it:\nthe CKB lock that holds each side’s coins, with its tests and a build anyone can reproduce\nthe order book (server and page) and the market maker that keeps it stocked\nthe scripts that run a swap from end to end on testnet\nWe opened it so the builders here have more to work with. Take the lock, the book or the maker, and use whatever helps.\nOn security. This is a prototype running on testnet. Nothing in it guarantees the safety of funds. If you build on it, review every part that touches money yourself and test it against your own case. Our review notes are a starting point, never an audit.\nWhy a book and not another protocol. We think Nervos needs users before it needs more infrastructure. So we built something a person can open and use today, and now we are sharing the pieces under it.\nQuestions and pull requests are welcome.",
-          "content_html": "<p>An update: the swap book’s code is now open.</p>\n<p><a href=\"https://github.com/LusoCryptoLabs/ckb-htlc-swap\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - LusoCryptoLabs/ckb-htlc-swap: Atomic swaps between CKB and USDC, ETH or BTC: a hashlock lock on CKB, an order book and a market maker. Testnet. · GitHub</a> (MIT licence)</p>\n<p>What is in it:</p>\n<ul>\n<li>the CKB lock that holds each side’s coins, with its tests and a build anyone can reproduce</li>\n<li>the order book (server and page) and the market maker that keeps it stocked</li>\n<li>the scripts that run a swap from end to end on testnet</li>\n</ul>\n<p>We opened it so the builders here have more to work with. Take the lock, the book or the maker, and use whatever helps.</p>\n<p><strong>On security.</strong> This is a prototype running on testnet. Nothing in it guarantees the safety of funds. If you build on it, review every part that touches money yourself and test it against your own case. Our review notes are a starting point, never an audit.</p>\n<p><strong>Why a book and not another protocol.</strong> We think Nervos needs users before it needs more infrastructure. So we built something a person can open and use today, and now we are sharing the pieces under it.</p>\n<p>Questions and pull requests are welcome.</p>",
-          "like_count": 0,
-          "quote_count": 0
-        }
-      ]
-    },
     {
       "topic_id": 10741,
       "title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
       "slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
       "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741",
       "created_at": "2026-09-23T04:49:23.049000+00:00",
-      "last_posted_at": "2026-11-12T02:24:53.252000+00:00",
+      "last_posted_at": "2026-11-13T12:02:55.764000+00:00",
       "category_id": 70,
       "tags": [
         "fiber"
       ],
       "posters": [
-        "Original Poster",
+        "Original Poster, Most Recent Poster",
         "Recent Poster",
-        "Most Recent Poster"
+        "Recent Poster"
       ],
       "recent_posts": [
         {
-          "post_id": 27386,
-          "post_number": 16,
+          "post_id": 27404,
+          "post_number": 18,
           "topic_id": 10741,
           "topic_title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
           "topic_slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
           "author": "ebubedev",
-          "created_at": "2026-11-12T00:38:18.451000+00:00",
-          "updated_at": "2026-11-12T00:38:18.451000+00:00",
-          "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/16",
-          "content_text": "Ask for Fiber eyes: coordinator fee on hold→payout without weakening escrow\nQuick status: the live sell path is already the buyer-minted preimage design.\nBuyer creates a payout invoice under H(S_b) on their node (Twine never sees S_b).\nHub new_invoice with payment_hash = H(S_b) and no payment_preimage → hold.\nSeller pays that hold → status Received; inbound TLC stays held until RPC settle.\nHub send_payment on the buyer invoice (same hash) → learns preimage → settle_invoice / SettleReceivedHoldTlcSet.\nFiat never touches Twine. Cancel is refused once the hold is Received/Paid.\nToday payout_invoice_ok forces buyer invoice amount == trade.shannons (hold amount). Fees are still 0%.\nI want a per-successful-settle coordinator fee, ideally with incidence on both sides, without:\nminting/storing S_b early,\na second lock that can strand the trade,\nmaking the hub able to settle before the buyer is paid,\ndepending on fiat custody (fiat stays bank).\nWhy a fee at all: I need a sustainable way to keep a public Twine daemon/hub online — server, Fiber node liquidity ops, monitoring, and ongoing maintenance. Twine stays open-source and self-hostable; anyone can run a coordinator and set their own fee (including 0%). This is not a protocol rent on CKB. It’s operator upkeep for the node people choose to trade through.\nDesign I’m leaning toward\nTreat the fee as the balance delta on the hub after a successful round-trip:\nHold invoice amount = H (what seller locks)\nBuyer payout invoice amount = P where P < H (same payment_hash, different node, different amount)\nOn success: hub pays P, settles hold for H, keeps H - P in channel balance as the fee\nFor “both sides pay in CKB”:\nH = principal + seller_fee\nP = principal - buyer_fee\nfee = H - P\nExample: principal 100, 0.5% each → hold 100.5, buyer invoice 99.5, fee 1.0.\nIf the fee should leave the hub node, only after settle would I do a best-effort second send_payment under a new payment hash to an operator invoice. Trade settle must not depend on that hop.\nQuestions for people who know Fiber well\nAmount asymmetry under one hash\nFiber treats payment_hash as unique per node, and hold fulfillment checks TLC amount against that node’s invoice (FinalIncorrectTlcAmount if underpaid).\nIs it explicitly supported / safe for:\nhub hold invoice = H\nbuyer invoice (other node) = P < H\nsame payment_hash / hash algorithm\nthen send_payment(P) → store preimage → settle_invoice on the hold of H?\nIs the fee already “collected” as liquidity?\nAfter settle, does the hub simply end +(H - P) (minus routing fees on the payout hop)?\nIf the operator is the hub, is a second fee payment unnecessary — i.e. is channel-balance accrual the idiomatic fee sink?\nOrdering / auto-settle\nSuccessful send_payment inserts the preimage locally and can trigger hold settlement. Any footgun if P != H (watchtower preimage registration, SettleReceivedHoldTlcSet, force-close claims)?\nOver-lock (H > principal)\nAny reason not to make the hold larger than the “trade principal” so the seller’s fee is real CKB, not only a fiat UI adjustment? Capacity / TLC / UX issues I should expect?\nWhat to avoid\nWhich of these is a bad idea on Fiber?\nseparate seller fee invoice required before/with the hold\ntrying to bind fee + hold to the same payment_hash on the hub (I assume InvoiceAlreadyExists)\nrequiring the fee hop to succeed before marking the trade settled\nany pattern that lets the hub settle the hold without a successful buyer payout\nI care most about the fee path that stays compatible with hold-invoice escrow and does not compromise non-custodial guarantees.\nRefs: twine, Fiber hold/settle_invoice behavior as in current fnn (we’re on the 0.9.1 line in deploy).\nCC: @ArthurZhang @quake @RetricSu and others…",
-          "content_html": "<p><strong>Ask for Fiber eyes: coordinator fee on hold→payout without weakening escrow</strong></p>\n<p>Quick status: the live sell path is already the buyer-minted preimage design.</p>\n<ol>\n<li>Buyer creates a payout invoice under <code>H(S_b)</code> on <strong>their</strong> node (Twine never sees <code>S_b</code>).</li>\n<li>Hub <code>new_invoice</code> with <code>payment_hash = H(S_b)</code> and <strong>no</strong> <code>payment_preimage</code> → hold.</li>\n<li>Seller pays that hold → status <code>Received</code>; inbound TLC stays held until RPC settle.</li>\n<li>Hub <code>send_payment</code> on the buyer invoice (same hash) → learns preimage → <code>settle_invoice</code> / <code>SettleReceivedHoldTlcSet</code>.</li>\n<li>Fiat never touches Twine. Cancel is refused once the hold is <code>Received</code>/<code>Paid</code>.</li>\n</ol>\n<p>Today <code>payout_invoice_ok</code> forces buyer invoice amount == <code>trade.shannons</code> (hold amount). Fees are still 0%.</p>\n<p>I want a <strong>per-successful-settle coordinator fee</strong>, ideally with incidence on <strong>both</strong> sides, without:</p>\n<ul>\n<li>minting/storing <code>S_b</code> early,</li>\n<li>a second lock that can strand the trade,</li>\n<li>making the hub able to settle before the buyer is paid,</li>\n<li>depending on fiat custody (fiat stays bank).</li>\n</ul>\n<p>Why a fee at all: I need a sustainable way to keep a public Twine daemon/hub online — server, Fiber node liquidity ops, monitoring, and ongoing maintenance. Twine stays open-source and self-hostable; anyone can run a coordinator and set their own fee (including 0%). This is not a protocol rent on CKB. It’s operator upkeep for the node people choose to trade through.</p>\n<h3><a name=\"p-27386-design-im-leaning-toward-1\" class=\"anchor\" href=\"#p-27386-design-im-leaning-toward-1\" aria-label=\"Heading link\"></a>Design I’m leaning toward</h3>\n<p>Treat the fee as the <strong>balance delta on the hub after a successful round-trip</strong>:</p>\n<ul>\n<li>Hold invoice amount = <code>H</code> (what seller locks)</li>\n<li>Buyer payout invoice amount = <code>P</code> where <code>P &lt; H</code> (same <code>payment_hash</code>, different node, different amount)</li>\n<li>On success: hub pays <code>P</code>, settles hold for <code>H</code>, keeps <code>H - P</code> in channel balance as the fee</li>\n</ul>\n<p>For “both sides pay in CKB”:</p>\n<ul>\n<li><code>H = principal + seller_fee</code></li>\n<li><code>P = principal - buyer_fee</code></li>\n<li>fee = <code>H - P</code></li>\n</ul>\n<p>Example: principal 100, 0.5% each → hold <strong>100.5</strong>, buyer invoice <strong>99.5</strong>, fee <strong>1.0</strong>.</p>\n<p>If the fee should leave the hub node, only after settle would I do a best-effort second <code>send_payment</code> under a new payment hash to an operator invoice. Trade settle must not depend on that hop.</p>\n<h3><a name=\"p-27386-questions-for-people-who-know-fiber-well-2\" class=\"anchor\" href=\"#p-27386-questions-for-people-who-know-fiber-well-2\" aria-label=\"Heading link\"></a>Questions for people who know Fiber well</h3>\n<ol>\n<li>\n<p><strong>Amount asymmetry under one hash</strong><br>\nFiber treats <code>payment_hash</code> as unique per node, and hold fulfillment checks TLC amount against <em>that node’s</em> invoice (<code>FinalIncorrectTlcAmount</code> if underpaid).<br>\nIs it explicitly supported / safe for:</p>\n<ul>\n<li>hub hold invoice = <code>H</code></li>\n<li>buyer invoice (other node) = <code>P &lt; H</code></li>\n<li>same <code>payment_hash</code> / hash algorithm<br>\nthen <code>send_payment(P)</code> → store preimage → <code>settle_invoice</code> on the hold of <code>H</code>?</li>\n</ul>\n</li>\n<li>\n<p><strong>Is the fee already “collected” as liquidity?</strong><br>\nAfter settle, does the hub simply end <code>+(H - P)</code> (minus routing fees on the payout hop)?<br>\nIf the operator <em>is</em> the hub, is a second fee payment unnecessary — i.e. is channel-balance accrual the idiomatic fee sink?</p>\n</li>\n<li>\n<p><strong>Ordering / auto-settle</strong><br>\nSuccessful <code>send_payment</code> inserts the preimage locally and can trigger hold settlement. Any footgun if <code>P != H</code> (watchtower preimage registration, <code>SettleReceivedHoldTlcSet</code>, force-close claims)?</p>\n</li>\n<li>\n<p><strong>Over-lock (<code>H &gt; principal</code>)</strong><br>\nAny reason not to make the hold larger than the “trade principal” so the seller’s fee is real CKB, not only a fiat UI adjustment? Capacity / TLC / UX issues I should expect?</p>\n</li>\n<li>\n<p><strong>What to avoid</strong><br>\nWhich of these is a bad idea on Fiber?</p>\n<ul>\n<li>separate seller fee invoice required before/with the hold</li>\n<li>trying to bind fee + hold to the same <code>payment_hash</code> on the hub (I assume <code>InvoiceAlreadyExists</code>)</li>\n<li>requiring the fee hop to succeed before marking the trade settled</li>\n<li>any pattern that lets the hub settle the hold without a successful buyer payout</li>\n</ul>\n</li>\n</ol>\n<p>I care most about the fee path that stays compatible with hold-invoice escrow and does not compromise non-custodial guarantees.</p>\n<p>Refs: <a href=\"https://github.com/chukwuma619/twine\" rel=\"noopener nofollow ugc\">twine</a>, Fiber hold/<code>settle_invoice</code> behavior as in current <code>fnn</code> (we’re on the 0.9.1 line in deploy).</p>\n<p>CC: <a class=\"mention\" href=\"/u/arthurzhang\">@ArthurZhang</a> <a class=\"mention\" href=\"/u/quake\">@quake</a> <a class=\"mention\" href=\"/u/retricsu\">@RetricSu</a> and others…</p>",
+          "created_at": "2026-11-13T11:59:57.216000+00:00",
+          "updated_at": "2026-11-13T11:59:57.216000+00:00",
+          "reply_to_post_number": 17,
+          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/18",
+          "content_text": "Thanks @ArthurZhang — glad the fee shape looks sound.\nI’ll bake both of those in when fees land",
+          "content_html": "<p>Thanks <a class=\"mention\" href=\"/u/arthurzhang\">@ArthurZhang</a> — glad the fee shape looks sound.</p>\n<p>I’ll bake both of those in when fees land</p>",
           "like_count": 0,
           "quote_count": 0
         },
         {
-          "post_id": 27388,
-          "post_number": 17,
+          "post_id": 27405,
+          "post_number": 19,
           "topic_id": 10741,
           "topic_title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
           "topic_slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
-          "author": "ArthurZhang",
-          "created_at": "2026-11-12T02:24:53.252000+00:00",
-          "updated_at": "2026-11-12T02:24:53.252000+00:00",
+          "author": "ebubedev",
+          "created_at": "2026-11-13T12:02:55.764000+00:00",
+          "updated_at": "2026-11-13T12:02:55.764000+00:00",
           "reply_to_post_number": null,
-          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/17",
-          "content_text": "I am in favor of introducing fees to make Twine financially sustainable. Running the hub, maintaining liquidity and handling disputes all come with real costs, and operators should have a viable incentive to keep the service running.\nThe proposed fee structure looks sound to me.\nTwo suggestions:\nPlease lock in the fee terms at trade creation, including the gross hold amount, net payout and rounding rules, so retries cannot change what either party agreed to.\nConsider accounting for actual routing costs separately from the service fee, and ensure the hub has sufficient outbound liquidity.",
-          "content_html": "<p>I am in favor of introducing fees to make Twine financially sustainable. Running the hub, maintaining liquidity and handling disputes all come with real costs, and operators should have a viable incentive to keep the service running.</p>\n<p>The proposed fee structure looks sound to me.</p>\n<p>Two suggestions:</p>\n<ul>\n<li>\n<p><strong>Please lock in the fee terms at trade creation</strong>, including the gross hold amount, net payout and rounding rules, so <strong>retries cannot change what either party agreed to.</strong></p>\n</li>\n<li>\n<p>Consider <strong>accounting for actual routing costs</strong> <strong>separately</strong> from the service fee, and ensure the hub has sufficient outbound liquidity.</p>\n</li>\n</ul>",
+          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/19",
+          "content_text": "Here is what changed since 790605a through 504c990\nPay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets)\nWallets behind an LSP put Fiber’s TrampolineRouteHint attribute (attr 10, fiber#1623) on their invoices. Fiber through 0.10.0-rc3 cannot parse that attribute, so parse_invoice / invoice-based send_payment refuse them.\nTwine now reads those invoices locally when Fiber reports an unknown attribute, then pays by fields with trampoline_hops (which Fiber already supports). Amount is required; the fee cap matches the usual max_fee_rate via max_fee_amount.\nThe trampoline segment’s lock budget is counted into payout deadlines (TRAMPOLINE_SLACK_MS, measured on testnet for a 24h Cellula final: ~46.9h needed from a desk one hop from the trampoline’s peer).\nPlain invoices keep the order’s 48h hold. Trampoline payouts mint and clock a 68h hold so a 24h final still leaves about 11h for fiat.\nCellula’s copy button / QR give https://<wallet>/pay#<invoice>. Twine takes the invoice after # before parse or pay; a Cellula→Cellula trade given the pay link settled on testnet.\nThe local decoder (hint.rs) is temporary and can go once Fiber past 0.10.0-rc3 parses attr 10.\nKeep trade deadlines at the hold’s own length\nA seller paying over many hops can deliver the hold with a TLC that lasts far longer than the hold asked for (132h measured on testnet for a 48h hold).\nDeadlines previously followed that TLC, so a failed trade kept the seller’s CKB locked for days and buyer invoices had to stay payable for ~100h.\nClocks now end at min(TLC expiry, locked_at + hold). The TLC stays claimable until its real expiry; ending earlier is always safe for refund timing.",
+          "content_html": "<p>Here is what changed since <code>790605a</code> through <code>504c990</code></p>\n<ol>\n<li>Pay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets)</li>\n</ol>\n<ul>\n<li>Wallets behind an LSP put Fiber’s <code>TrampolineRouteHint</code> attribute (attr 10, <a href=\"https://github.com/nervosnetwork/fiber/pull/1623\" rel=\"noopener nofollow ugc\">fiber#1623</a>) on their invoices. Fiber through <code>0.10.0-rc3</code> cannot parse that attribute, so <code>parse_invoice</code> / invoice-based <code>send_payment</code> refuse them.</li>\n<li>Twine now reads those invoices locally when Fiber reports an unknown attribute, then pays by fields with <code>trampoline_hops</code> (which Fiber already supports). Amount is required; the fee cap matches the usual <code>max_fee_rate</code> via <code>max_fee_amount</code>.</li>\n<li>The trampoline segment’s lock budget is counted into payout deadlines (<code>TRAMPOLINE_SLACK_MS</code>, measured on testnet for a 24h Cellula final: ~46.9h needed from a desk one hop from the trampoline’s peer).</li>\n<li>Plain invoices keep the order’s 48h hold. Trampoline payouts mint and clock a <strong>68h</strong> hold so a 24h final still leaves about 11h for fiat.</li>\n<li>Cellula’s copy button / QR give <code>https://&lt;wallet&gt;/pay#&lt;invoice&gt;</code>. Twine takes the invoice after <code>#</code> before parse or pay; a Cellula→Cellula trade given the pay link settled on testnet.</li>\n<li>The local decoder (<code>hint.rs</code>) is temporary and can go once Fiber past <code>0.10.0-rc3</code> parses attr 10.</li>\n</ul>\n<ol start=\"2\">\n<li>Keep trade deadlines at the hold’s own length</li>\n</ol>\n<ul>\n<li>A seller paying over many hops can deliver the hold with a TLC that lasts far longer than the hold asked for (132h measured on testnet for a 48h hold).</li>\n<li>Deadlines previously followed that TLC, so a failed trade kept the seller’s CKB locked for days and buyer invoices had to stay payable for ~100h.</li>\n<li>Clocks now end at <code>min(TLC expiry, locked_at + hold)</code>. The TLC stays claimable until its real expiry; ending earlier is always safe for refund timing.</li>\n</ul>",
           "like_count": 0,
           "quote_count": 0
         }
       ]
     },
     {
-      "topic_id": 11051,
-      "title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
-      "slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
-      "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051",
-      "created_at": "2026-10-26T14:46:54.713000+00:00",
-      "last_posted_at": "2026-11-12T00:44:58.116000+00:00",
+      "topic_id": 11031,
+      "title": "[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts",
+      "slug": "dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts",
+      "url": "https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031",
+      "created_at": "2026-10-23T07:41:30.545000+00:00",
+      "last_posted_at": "2026-11-13T09:47:52.077000+00:00",
       "category_id": 65,
-      "tags": [],
+      "tags": [
+        "CKB-IDL"
+      ],
       "posters": [
-        "Original Poster",
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
         "Frequent Poster",
         "Recent Poster",
-        "Most Recent Poster"
+        "Recent Poster"
       ],
       "recent_posts": [
         {
-          "post_id": 27387,
-          "post_number": 8,
-          "topic_id": 11051,
-          "topic_title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
-          "topic_slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
-          "author": "zz_tovarishch",
-          "created_at": "2026-11-12T00:44:58.116000+00:00",
-          "updated_at": "2026-11-12T00:44:58.116000+00:00",
-          "reply_to_post_number": 7,
-          "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/8",
-          "content_text": "Based on the Metaforo tally at close, the outcome is Passed. Approval is 100% against the required 51%, with total voting weight of 184,949,817 CKB against the minimum 15,339,253 CKB.\nPost-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. Sixteen of the eighteen voters matched directly. The two flagged discrepancies were explained by withdrawals after the votes were cast: PSB withdrew 60,000 CKB after the last recorded vote in this poll, and Code3ks initiated withdrawal of 102,000 CKB after the poll closed. Both recorded weights were backed by DAO deposits when the votes were cast. These checks found no evidence of inflated or double-counted voting weight.\nThe FiberNuts proposal is confirmed as PASSED.\nVerification logs: ckb-dao-watchdog/Verification Logs - FiberNuts at main · kydchen/ckb-dao-watchdog · GitHub",
-          "content_html": "<p>Based on the Metaforo tally at close, the outcome is Passed. Approval is 100% against the required 51%, with total voting weight of 184,949,817 CKB against the minimum 15,339,253 CKB.</p>\n<p>Post-close verification has been completed using CKB DAO Watchdog, together with a manual sanity check. Sixteen of the eighteen voters matched directly. The two flagged discrepancies were explained by withdrawals after the votes were cast: PSB withdrew 60,000 CKB after the last recorded vote in this poll, and Code3ks initiated withdrawal of 102,000 CKB after the poll closed. Both recorded weights were backed by DAO deposits when the votes were cast. These checks found no evidence of inflated or double-counted voting weight.</p>\n<p>The FiberNuts proposal is confirmed as <strong>PASSED</strong>.</p>\n<p>Verification logs: <a href=\"https://github.com/kydchen/ckb-dao-watchdog/tree/main/Verification%20Logs%20-%20FiberNuts\" class=\"inline-onebox\">ckb-dao-watchdog/Verification Logs - FiberNuts at main · kydchen/ckb-dao-watchdog · GitHub</a></p>",
+          "post_id": 27402,
+          "post_number": 11,
+          "topic_id": 11031,
+          "topic_title": "[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts",
+          "topic_slug": "dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts",
+          "author": "OWK50GA",
+          "created_at": "2026-11-13T09:47:52.077000+00:00",
+          "updated_at": "2026-11-13T09:47:52.077000+00:00",
+          "reply_to_post_number": 10,
+          "url": "https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/11",
+          "content_text": "Thank you, Ser.\nAnd thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones",
+          "content_html": "<p>Thank you, Ser.<br>\nAnd thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11062,
+      "title": "Spark Program | Light dApp Kit",
+      "slug": "spark-program-light-dapp-kit",
+      "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062",
+      "created_at": "2026-10-28T21:36:42.394000+00:00",
+      "last_posted_at": "2026-11-13T07:52:24.647000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27401,
+          "post_number": 4,
+          "topic_id": 11062,
+          "topic_title": "Spark Program | Light dApp Kit",
+          "topic_slug": "spark-program-light-dapp-kit",
+          "author": "Akane",
+          "created_at": "2026-11-13T07:52:24.647000+00:00",
+          "updated_at": "2026-11-13T07:52:24.647000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/4",
+          "content_text": "Thanks @xingtianchunyan for the review and explanation. I understand the committee’s decision.\nSeparately, could you help with the JoyID question in my earlier post? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the environment, blocking headless integration tests.\nJoyID’s feedback link was unavailable when I tried it. Is there a recommended channel or maintainer I could contact to report this and ask about a supported way to test JoyID connect/sign flows in CI?",
+          "content_html": "<p>Thanks <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a> for the review and explanation. I understand the committee’s decision.</p>\n<p>Separately, could you help with the JoyID question in my <a href=\"https://talk.nervos.org/t/11062/2\">earlier post</a>? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the environment, blocking headless integration tests.</p>\n<p>JoyID’s feedback link was unavailable when I tried it. Is there a recommended channel or maintainer I could contact to report this and ask about a supported way to test JoyID connect/sign flows in CI?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10598,
+      "title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+      "slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+      "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598",
+      "created_at": "2026-08-10T00:31:01.205000+00:00",
+      "last_posted_at": "2026-11-13T00:47:06.887000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27400,
+          "post_number": 22,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "Akane",
+          "created_at": "2026-11-13T00:47:06.887000+00:00",
+          "updated_at": "2026-11-13T00:47:06.887000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/22",
+          "content_text": "Hi all, a short update on CKB Verify.\nCKB Verify v0.1.1 is out, open source under the MIT license:\nGitHub\nRelease ckb-verify v0.1.1 · Akane-CN/spark-verify\nckb-verify v0.1.1\nA patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same. If v0.1.0 works for you, nothing forces an upgrade.\nRelease identity\nFiel...\nIt runs the transaction flows you declare in verify.toml on a fresh local devnet and checks every declared result: whether a transaction is committed or rejected (with the error code and the script group), its cycles, and the Cells and balances it leaves behind. It can deploy your own script binaries, run in CI through a reusable GitHub workflow, and show each run in a local console.\nThe release page has the install steps (Linux x64, Bun 1.2.19).\nFeedback is very welcome. If you try it, please open an issue and tell me what worked and what got in the way.",
+          "content_html": "<p>Hi all, a short update on CKB Verify.</p>\n<p>CKB Verify v0.1.1 is out, open source under the MIT license:</p><aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\">\n  <header class=\"source\">\n      <img src=\"https://talk.nervos.org/uploads/default/original/2X/b/bad3e5f9ad67c1ddf145107ce7032ac1d7b22563.svg\" class=\"site-icon\" alt=\"\" data-dominant-color=\"\" width=\"32\" height=\"32\">\n\n      <a href=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\" target=\"_blank\" rel=\"noopener nofollow ugc\">GitHub</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <div class=\"aspect-image\" style=\"--aspect-ratio:690/344;\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d2e4355b945aef133a0f6e5d73c1122bec9cb673_2_690x345.png\" class=\"thumbnail\" alt=\"\" data-dominant-color=\"EDEFF2\" width=\"690\" height=\"345\"></div>\n\n<h3><a href=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\" target=\"_blank\" rel=\"noopener nofollow ugc\">Release ckb-verify v0.1.1 · Akane-CN/spark-verify</a></h3>\n\n  <p>ckb-verify v0.1.1\nA patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same. If v0.1.0 works for you, nothing forces an upgrade.\nRelease identity\n\n\n\nFiel...</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>It runs the transaction flows you declare in verify.toml on a fresh local devnet and checks every declared result: whether a transaction is committed or rejected (with the error code and the script group), its cycles, and the Cells and balances it leaves behind. It can deploy your own script binaries, run in CI through a reusable GitHub workflow, and show each run in a local console.</p>\n<p>The release page has the install steps (Linux x64, Bun 1.2.19).</p>\n<p>Feedback is very welcome. If you try it, please open an issue and tell me what worked and what got in the way.</p>",
           "like_count": 0,
           "quote_count": 0
         }

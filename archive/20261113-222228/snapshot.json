@@ -1,0 +1,168 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-11-13T22:22:32.439205+00:00",
+  "since": "2026-11-12T22:22:28.123485+00:00",
+  "until": "2026-11-13T22:22:28.123485+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 10741,
+      "title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
+      "slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
+      "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741",
+      "created_at": "2026-09-23T04:49:23.049000+00:00",
+      "last_posted_at": "2026-11-13T12:02:55.764000+00:00",
+      "category_id": 70,
+      "tags": [
+        "fiber"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27404,
+          "post_number": 18,
+          "topic_id": 10741,
+          "topic_title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
+          "topic_slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
+          "author": "ebubedev",
+          "created_at": "2026-11-13T11:59:57.216000+00:00",
+          "updated_at": "2026-11-13T11:59:57.216000+00:00",
+          "reply_to_post_number": 17,
+          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/18",
+          "content_text": "Thanks @ArthurZhang — glad the fee shape looks sound.\nI’ll bake both of those in when fees land",
+          "content_html": "<p>Thanks <a class=\"mention\" href=\"/u/arthurzhang\">@ArthurZhang</a> — glad the fee shape looks sound.</p>\n<p>I’ll bake both of those in when fees land</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27405,
+          "post_number": 19,
+          "topic_id": 10741,
+          "topic_title": "Twine: Buy and Sell CKB Without Depositing on an Exchange (Fiber P2P PoC)",
+          "topic_slug": "twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc",
+          "author": "ebubedev",
+          "created_at": "2026-11-13T12:02:55.764000+00:00",
+          "updated_at": "2026-11-13T12:02:55.764000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/twine-buy-and-sell-ckb-without-depositing-on-an-exchange-fiber-p2p-poc/10741/19",
+          "content_text": "Here is what changed since 790605a through 504c990\nPay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets)\nWallets behind an LSP put Fiber’s TrampolineRouteHint attribute (attr 10, fiber#1623) on their invoices. Fiber through 0.10.0-rc3 cannot parse that attribute, so parse_invoice / invoice-based send_payment refuse them.\nTwine now reads those invoices locally when Fiber reports an unknown attribute, then pays by fields with trampoline_hops (which Fiber already supports). Amount is required; the fee cap matches the usual max_fee_rate via max_fee_amount.\nThe trampoline segment’s lock budget is counted into payout deadlines (TRAMPOLINE_SLACK_MS, measured on testnet for a 24h Cellula final: ~46.9h needed from a desk one hop from the trampoline’s peer).\nPlain invoices keep the order’s 48h hold. Trampoline payouts mint and clock a 68h hold so a 24h final still leaves about 11h for fiat.\nCellula’s copy button / QR give https://<wallet>/pay#<invoice>. Twine takes the invoice after # before parse or pay; a Cellula→Cellula trade given the pay link settled on testnet.\nThe local decoder (hint.rs) is temporary and can go once Fiber past 0.10.0-rc3 parses attr 10.\nKeep trade deadlines at the hold’s own length\nA seller paying over many hops can deliver the hold with a TLC that lasts far longer than the hold asked for (132h measured on testnet for a 48h hold).\nDeadlines previously followed that TLC, so a failed trade kept the seller’s CKB locked for days and buyer invoices had to stay payable for ~100h.\nClocks now end at min(TLC expiry, locked_at + hold). The TLC stays claimable until its real expiry; ending earlier is always safe for refund timing.",
+          "content_html": "<p>Here is what changed since <code>790605a</code> through <code>504c990</code></p>\n<ol>\n<li>Pay buyer invoices that carry a trampoline route hint (Cellula and other LSP wallets)</li>\n</ol>\n<ul>\n<li>Wallets behind an LSP put Fiber’s <code>TrampolineRouteHint</code> attribute (attr 10, <a href=\"https://github.com/nervosnetwork/fiber/pull/1623\" rel=\"noopener nofollow ugc\">fiber#1623</a>) on their invoices. Fiber through <code>0.10.0-rc3</code> cannot parse that attribute, so <code>parse_invoice</code> / invoice-based <code>send_payment</code> refuse them.</li>\n<li>Twine now reads those invoices locally when Fiber reports an unknown attribute, then pays by fields with <code>trampoline_hops</code> (which Fiber already supports). Amount is required; the fee cap matches the usual <code>max_fee_rate</code> via <code>max_fee_amount</code>.</li>\n<li>The trampoline segment’s lock budget is counted into payout deadlines (<code>TRAMPOLINE_SLACK_MS</code>, measured on testnet for a 24h Cellula final: ~46.9h needed from a desk one hop from the trampoline’s peer).</li>\n<li>Plain invoices keep the order’s 48h hold. Trampoline payouts mint and clock a <strong>68h</strong> hold so a 24h final still leaves about 11h for fiat.</li>\n<li>Cellula’s copy button / QR give <code>https://&lt;wallet&gt;/pay#&lt;invoice&gt;</code>. Twine takes the invoice after <code>#</code> before parse or pay; a Cellula→Cellula trade given the pay link settled on testnet.</li>\n<li>The local decoder (<code>hint.rs</code>) is temporary and can go once Fiber past <code>0.10.0-rc3</code> parses attr 10.</li>\n</ul>\n<ol start=\"2\">\n<li>Keep trade deadlines at the hold’s own length</li>\n</ol>\n<ul>\n<li>A seller paying over many hops can deliver the hold with a TLC that lasts far longer than the hold asked for (132h measured on testnet for a 48h hold).</li>\n<li>Deadlines previously followed that TLC, so a failed trade kept the seller’s CKB locked for days and buyer invoices had to stay payable for ~100h.</li>\n<li>Clocks now end at <code>min(TLC expiry, locked_at + hold)</code>. The TLC stays claimable until its real expiry; ending earlier is always safe for refund timing.</li>\n</ul>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11031,
+      "title": "[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts",
+      "slug": "dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts",
+      "url": "https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031",
+      "created_at": "2026-10-23T07:41:30.545000+00:00",
+      "last_posted_at": "2026-11-13T09:47:52.077000+00:00",
+      "category_id": 65,
+      "tags": [
+        "CKB-IDL"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27402,
+          "post_number": 11,
+          "topic_id": 11031,
+          "topic_title": "[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts",
+          "topic_slug": "dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts",
+          "author": "OWK50GA",
+          "created_at": "2026-11-13T09:47:52.077000+00:00",
+          "updated_at": "2026-11-13T09:47:52.077000+00:00",
+          "reply_to_post_number": 10,
+          "url": "https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031/11",
+          "content_text": "Thank you, Ser.\nAnd thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones",
+          "content_html": "<p>Thank you, Ser.<br>\nAnd thanks to everyone who supported IDL. I am working on it, and will drop updates as I hit the milestones</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11062,
+      "title": "Spark Program | Light dApp Kit",
+      "slug": "spark-program-light-dapp-kit",
+      "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062",
+      "created_at": "2026-10-28T21:36:42.394000+00:00",
+      "last_posted_at": "2026-11-13T07:52:24.647000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27401,
+          "post_number": 4,
+          "topic_id": 11062,
+          "topic_title": "Spark Program | Light dApp Kit",
+          "topic_slug": "spark-program-light-dapp-kit",
+          "author": "Akane",
+          "created_at": "2026-11-13T07:52:24.647000+00:00",
+          "updated_at": "2026-11-13T07:52:24.647000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/spark-program-light-dapp-kit/11062/4",
+          "content_text": "Thanks @xingtianchunyan for the review and explanation. I understand the committee’s decision.\nSeparately, could you help with the JoyID question in my earlier post? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the environment, blocking headless integration tests.\nJoyID’s feedback link was unavailable when I tried it. Is there a recommended channel or maintainer I could contact to report this and ask about a supported way to test JoyID connect/sign flows in CI?",
+          "content_html": "<p>Thanks <a class=\"mention\" href=\"/u/xingtianchunyan\">@xingtianchunyan</a> for the review and explanation. I understand the committee’s decision.</p>\n<p>Separately, could you help with the JoyID question in my <a href=\"https://talk.nervos.org/t/11062/2\">earlier post</a>? In the testnet setup, passkey creation succeeds with Chrome’s virtual authenticator, but JoyID rejects the environment, blocking headless integration tests.</p>\n<p>JoyID’s feedback link was unavailable when I tried it. Is there a recommended channel or maintainer I could contact to report this and ask about a supported way to test JoyID connect/sign flows in CI?</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10598,
+      "title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+      "slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+      "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598",
+      "created_at": "2026-08-10T00:31:01.205000+00:00",
+      "last_posted_at": "2026-11-13T00:47:06.887000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Rejection"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27400,
+          "post_number": 22,
+          "topic_id": 10598,
+          "topic_title": "Spark Program | Spark Verify - Reproducible Acceptance Checks for CKB Projects",
+          "topic_slug": "spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects",
+          "author": "Akane",
+          "created_at": "2026-11-13T00:47:06.887000+00:00",
+          "updated_at": "2026-11-13T00:47:06.887000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-spark-verify-reproducible-acceptance-checks-for-ckb-projects/10598/22",
+          "content_text": "Hi all, a short update on CKB Verify.\nCKB Verify v0.1.1 is out, open source under the MIT license:\nGitHub\nRelease ckb-verify v0.1.1 · Akane-CN/spark-verify\nckb-verify v0.1.1\nA patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same. If v0.1.0 works for you, nothing forces an upgrade.\nRelease identity\nFiel...\nIt runs the transaction flows you declare in verify.toml on a fresh local devnet and checks every declared result: whether a transaction is committed or rejected (with the error code and the script group), its cycles, and the Cells and balances it leaves behind. It can deploy your own script binaries, run in CI through a reusable GitHub workflow, and show each run in a local console.\nThe release page has the install steps (Linux x64, Bun 1.2.19).\nFeedback is very welcome. If you try it, please open an issue and tell me what worked and what got in the way.",
+          "content_html": "<p>Hi all, a short update on CKB Verify.</p>\n<p>CKB Verify v0.1.1 is out, open source under the MIT license:</p><aside class=\"onebox allowlistedgeneric\" data-onebox-src=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\">\n  <header class=\"source\">\n      <img src=\"https://talk.nervos.org/uploads/default/original/2X/b/bad3e5f9ad67c1ddf145107ce7032ac1d7b22563.svg\" class=\"site-icon\" alt=\"\" data-dominant-color=\"\" width=\"32\" height=\"32\">\n\n      <a href=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\" target=\"_blank\" rel=\"noopener nofollow ugc\">GitHub</a>\n  </header>\n\n  <article class=\"onebox-body\">\n    <div class=\"aspect-image\" style=\"--aspect-ratio:690/344;\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/d/d2e4355b945aef133a0f6e5d73c1122bec9cb673_2_690x345.png\" class=\"thumbnail\" alt=\"\" data-dominant-color=\"EDEFF2\" width=\"690\" height=\"345\"></div>\n\n<h3><a href=\"https://github.com/Akane-CN/spark-verify/releases/tag/v0.1.1\" target=\"_blank\" rel=\"noopener nofollow ugc\">Release ckb-verify v0.1.1 · Akane-CN/spark-verify</a></h3>\n\n  <p>ckb-verify v0.1.1\nA patch release on top of v0.1.0. The runner, the manifest specs, and the report formats are the same. If v0.1.0 works for you, nothing forces an upgrade.\nRelease identity\n\n\n\nFiel...</p>\n\n\n  </article>\n\n  <div class=\"onebox-metadata\">\n    \n    \n  </div>\n\n  <div style=\"clear: both\"></div>\n</aside>\n\n<p>It runs the transaction flows you declare in verify.toml on a fresh local devnet and checks every declared result: whether a transaction is committed or rejected (with the error code and the script group), its cycles, and the Cells and balances it leaves behind. It can deploy your own script binaries, run in CI through a reusable GitHub workflow, and show each run in a local console.</p>\n<p>The release page has the install steps (Linux x64, Bun 1.2.19).</p>\n<p>Feedback is very welcome. If you try it, please open an issue and tell me what worked and what got in the way.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
