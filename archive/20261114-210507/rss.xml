@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sat, 14 Nov 2026 17:06:34 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-15</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-14:daily-brief</guid>
+    <pubDate>Sat, 14 Nov 2026 21:05:14 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛最集中的动态是 Spark Program 下出现三则新项目/申请帖：ServiceSeal 计划在 CKB 上做预付费公用事业通行证并在拉各斯充电亭试点 [S01]；secnev 要做 CKB 原生风险观测站 [S02]；TITANHOLD CKB Pay 计划做开源 CKB 结账模块 [S06]。同时，开发者工具和测试网也有进展：ckbup 已能安装五个 CKB 命令行工具 [S04]；CKB IDL 的 Milestone 0 基础报告进入草案审阅 [S05]；Twine 测试网 beta 更新了与 Fiber Studio 和 Cellula Wallet 的配合 [S07]。FiberNuts 讨论中有人询问初始资金支付时间并表示准备开工 [S03]。 ## 重点话题 Spark Program 下出现 ServiceSeal 提案，申请 900 美元、周期 6 周，目标是在 CKB 上做预付费公用事业通行证，并在拉各斯充电亭试点 [S01]。 secnev 提出 CKB 原生风险观测站，面向 CKB 稳定币、金库、xUDT/RGB++ 代币和钱包，把 live cells、脚本、池子和协议状态转成可解释风险评分 [S02]。 TITANHOLD CKB Pay 计划做一个开源 CKB 结账模块，让 TITANHOLD 客户订单可以通过 CKB 网络支付 [S06]。 ckbup 更新称现在可安装五个工具，覆盖 ckb、fnn、ckb-light-client、ckb-debugger 和 ckb-cli [S04]。 Twine...</description>
+  </item>
+  <item>
+    <title>Spark Program | ServiceSeal: Prepaid Utility Passes on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215</link>
+    <guid>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 17:06:34 +0000</pubDate>
+    <description>Spark Program | ServiceSeal: Prepaid Utility Passes on CKB, Piloted at a Charging Kiosk in Lagos Applicant: Hardik Azmi (GitHub: DegenerateAlchemist (Yugi) · GitHub ) Funding requested: $900 USD Timeline: 6 weeks Category: CKB Application / Retail Utility &amp; State Primitives Repository: GitHub - DegenerateAlchemist/service-seal · GitHub 1. Summary Where I stay in Lagos, Nigeria power is terrible so people rely on neighbourhood charging kiosks to keep their phones, lamps and power banks working. Regular customers usually pay upfront for a few charges instead of paying every single time they drop a phone off I own one of these charging kiosks though I don’t run it myself daily, I have...</description>
+  </item>
+  <item>
+    <title>Spark Program | secnev — CKB-native risk observatory (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-secnev-ckb-native-risk-observatory/11213</link>
+    <guid>https://talk.nervos.org/t/spark-program-secnev-ckb-native-risk-observatory/11213#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 16:19:28 +0000</pubDate>
+    <description>1. Project overview Project name: secnev One sentence: secnev is an open, CKB-native risk observatory that turns live cells, scripts, pools and protocol state into explainable risk scores for CKB stablecoins, vaults, xUDT/RGB++ tokens and wallets. Positioning: risk intelligence infrastructure + public dashboard + free API + developer tooling. What already exists: a working MVP on CKB mainnet, 10 assets, real cell-level data, live RUSD/USDI market price and liquidity, iCKB exchange rate/backing, organic holder concentration, wallet exposure, real dCKB transaction replay, alerts, dashboard, API and Vercel deployment. What Spark adds: the two missing halves that turn the MVP into a complete...</description>
+  </item>
+  <item>
+    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
+    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 12:52:53 +0000</pubDate>
+    <description>Thank you @zz_tovarishch for updating it, when would the initial funding be paid? . I am all set and ready to commence work.</description>
+  </item>
+  <item>
+    <title>Ckbup: one installer for CKB command-line tools (early progress, feedback welcome) (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188</link>
+    <guid>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 08:14:57 +0000</pubDate>
+    <description>Update: ckbup now installs five tools. The second step is merged. ckbup install now covers ckb, fnn and ckb-light-client as well as ckb-debugger and ckb-cli. cargo install --git https://github.com/steven3002/ckbup ckbup install ckb ckbup install fnn ckbup install ckb-light-client What changed: The right build for your machine. Each project names its release files differently, and ckbup reads each scheme. For fnn and ckb-light-client it prefers the portable builds: their standard Linux builds need glibc 2.39 and 2.38, while the portable ones run on glibc 2.34. --portable asks for the portable build where a project publishes one. ckb’s release notes recommend it if you see “illegal...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 03:58:59 +0000</pubDate>
+    <description>CKB IDL — Milestone 0 Foundation Report Status: Draft for publication. Foundation deliverables are available for review; final close-out items are listed below. Milestone 0 establishes the development and delivery foundation for the CKB Script Registry and the broader CKB IDL lifecycle. The registry repository, public roadmap, confirmed ecosystem release plan, local development environment, CI, contribution and security policies, and MIT license are now published. This milestone builds on the existing IDL 0.1.0 specification and released Rust crates. Those earlier releases are the baseline, not newly delivered M0 work. Project proposal Public roadmap and issue board Registry repository...</description>
+  </item>
+  <item>
+    <title>Spark Program | TITANHOLD CKB Pay (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211</link>
+    <guid>https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 03:08:21 +0000</pubDate>
+    <description>1. Project Overview Project name: TITANHOLD CKB Pay One-line summary: A planned, open-source CKB checkout module so TITANHOLD client orders (taken by the Amanda assistant or the client Telegram bot) can be paid on the CKB network. Type: payment / checkout integration (library + small demo service), not a new L1, not a token, not a live production rail. 2. Team Profile Core member: Hennadii Kovalenko (Gena) — solo technical founder, builder and applicant. Background: Self-taught programmer since 2004. Solo founder of TITANHOLD LLC (Wyoming, USA; organized 14 October 2026). Builds a studio and platform for small businesses: websites, bots, and AI agents. Amanda is the platform’s AI...</description>
+  </item>
+  <item>
+    <title>Twine testnet beta: help test buying and selling CKB without an exchange (1 posts)</title>
+    <link>https://talk.nervos.org/t/twine-testnet-beta-help-test-buying-and-selling-ckb-without-an-exchange/11143</link>
+    <guid>https://talk.nervos.org/t/twine-testnet-beta-help-test-buying-and-selling-ckb-without-an-exchange/11143#recent-1</guid>
+    <pubDate>Sat, 14 Nov 2026 01:24:00 +0000</pubDate>
+    <description>Update. Twine works with Fiber Studio and Cellula Wallet. Fiber Studio is the desktop app. It runs the official Fiber node on your computer. Cellula Wallet is the other one, in the browser and on Android. It pays over Fiber, and you do not run a node for it. The trade is the same. The buyer makes a Fiber invoice in Fiber Studio or Cellula Wallet and pastes it into Twine. The secret stays in that wallet. The seller pays the hold invoice from their own copy of either wallet. After that, the coins cannot be pulled back early. On release, Twine pays the buyer’s invoice. The CKB arrives in the wallet that made it. The local money still goes from one account to the other. Twine does not hold...</description>
+  </item>
+</channel>
+</rss>
