@@ -5,49 +5,84 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Sun, 15 Nov 2026 19:10:34 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 22:32:09 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-11-16</title>
+    <title>CKB Talk Daily Brief - 2026-11-17</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-11-15:daily-brief</guid>
-    <pubDate>Sun, 15 Nov 2026 21:28:02 +0000</pubDate>
-    <description>## 今日发生了什么 今天 Nervos Talk 有多条项目周报和技术进展更新，涉及 Spark Program、CKB 客户端与后量子锁等方向[S01, S02, S03, S04, S05]。Corven 发布 Spark Program 第二周进度报告，称总体按计划推进但有一项变更[S01]。Seedsong 报告在测试中发现 ckb-light-client 的 bug，同时称 M3 大部分功能已完成[S03]。ShareCut 介绍了基于 Fiber 测试网的小店推荐返佣方案[S04]；隐私订单簿应用链项目称已开始开发与以太坊的跨链桥[S02]；另有团队展示了仅限测试网的 ML-DSA 后量子锁原型[S05]。 ## 重点话题 Corven 的 Spark Program 第二周进度报告称项目总体按计划推进，但有一项变更，帖子摘要没有说明变更细节[S01]。 Seedsong 在测试中发现 ckb-light-client 的 bug，并称 M3 大部分功能已完成；帖子提到一个 storage 修复 PR 用于防止历史回放复活已花费 cells，但修复是否合入未说明[S03]。 ShareCut 在 Spark Program 下发帖介绍面向拉各斯小店的 Fiber 测试网推荐返佣方案，推荐人通过个人链接或二维码跟踪，并由 Fiber 支付返佣[S04]。 基于 CKB L1 的去中心化隐私订单簿应用链发布周报，称继续论文修改并开始开发 invisibook 与以太坊之间的跨链桥[S02]。 有团队构建了基于 ML-DSA 的 CKB...</description>
-  </item>
-  <item>
-    <title>Spark Program Proposal: Corven cloud-native IDE (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
-    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-1</guid>
-    <pubDate>Sun, 15 Nov 2026 19:10:34 +0000</pubDate>
-    <description>Corven Spark Program: Week 2 Progress Report Project: Corven, a browser-based IDE for building on CKB and Fiber Network Reporting period: Week 2 (9–15 November 2026) Reported: 15 November 2026 Project website: https://corvanide.space/ Status: On track, with one change to the session order (section 4) 1. Overview Week 2 was the first full week after the committee’s approval. I used it to stabilize the platform and secure the infrastructure the remaining community sessions depend on. The work fell into two areas: Renewing the hosting service so the public deployment stays online for the project period. Preparing a stable version of Corven for the in-person sessions. 2. Activities Completed...</description>
-  </item>
-  <item>
-    <title>[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1 (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015</link>
-    <guid>https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015#recent-1</guid>
-    <pubDate>Sun, 15 Nov 2026 13:51:45 +0000</pubDate>
-    <description>周报 2026.11.15 继续上周的论文修改 开始开发 invisibook ↔ eth 跨链桥功能</description>
-  </item>
-  <item>
-    <title>[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐 (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997</link>
-    <guid>https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997#recent-1</guid>
-    <pubDate>Sun, 15 Nov 2026 12:16:37 +0000</pubDate>
-    <description>I have found a bug in ckb-light-client when testing SeedSong. Currently most features of M3 have been finished. After this PR fix(storage): prevent historical replay from resurrecting spent cells by Officeyutong · Pull Request #308 · nervosnetwork/ckb-light-client · GitHub was merged, I can publish next version of seedsong</description>
-  </item>
-  <item>
-    <title>Spark Program | ShareCut: referral payouts for small shops over Fiber (testnet) (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218</link>
-    <guid>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218#recent-1</guid>
-    <pubDate>Sun, 15 Nov 2026 09:19:31 +0000</pubDate>
-    <description>1. Project Overview Small shops in Lagos get most new customers by word of mouth, but they rarely track it or pay the people who bring customers in. ShareCut gives each promoter a personal link or QR code. When a customer they referred pays through Fiber, the promoter’s agreed cut is paid automatically and both payments appear on a public receipts page. ShareCut builds on an existing Fiber checkout and adds three things: referral attribution, an automatic payout service, and public receipts. It runs on testnet only, takes 6 weeks, and ends with a pilot in at least 2 real shops. 2. Team Profile Name: Abdul (solo applicant) Location: Lagos, Nigeria (student at the University of Lagos)...</description>
+    <guid>tag:ckb-talk-radar,2026-11-17:daily-brief</guid>
+    <pubDate>Tue, 17 Nov 2026 00:38:24 +0000</pubDate>
+    <description>## 今日发生了什么 按这批帖子看，今天论坛有多条项目更新，整体不算平静 [S03, S06, S11]。CrowdCell 把 keeper 从索引器 API 中拆出，已有社区成员在测试网节点上把第二个 keeper 跑成 systemd 服务 [S03, S04]。Pocket Node for iOS 的 M3 已把同步、发送和交易历史带到可用钱包阶段，并称实现已合并到公开仓库 [S06]。Fiber LSP 则提出把常在线通道运行放到服务器、把通道签名留在钱包，引发社区回应 [S11, S12]。 ## 重点话题 CrowdCell 的 keeper 已从索引器 API 拆出，可独立运行，只需测试网密钥和 RPC 配置；随后有社区成员反馈第二个 keeper 已在测试网节点上以 systemd 服务运行 [S03, S04]。 Pocket Node for iOS 的 M3 已支持同步、发送和查看交易历史，作者称实现已合并进公开仓库，并提到主网发送能力 [S06]。 Fiber LSP 帖子讨论把始终在线的通道运行放到服务器、把通道签名保留在钱包，以缓解移动客户端难以长期在线的问题；有回复称这解决了移动开发者的真实痛点，并提到自己也在做不同方向的 Fiber LSP [S11, S12]。 Ward 的验证器从仅 Node 扩展到浏览器，自 ckb-ward 0.5.0 起通过 ckb-vm-js 把 CKB 交易验证器和 CKB-VM 编译到 WebAssembly，并以 ckbVmJs() 作为 lock runner [S09]。 MeterNet 宣布...</description>
   </item>
   <item>
     <title>A second post-quantum lock for CKB? ML-DSA beside SPHINCS+, checked and measured (1 posts)</title>
     <link>https://talk.nervos.org/t/a-second-post-quantum-lock-for-ckb-ml-dsa-beside-sphincs-checked-and-measured/11217</link>
     <guid>https://talk.nervos.org/t/a-second-post-quantum-lock-for-ckb-ml-dsa-beside-sphincs-checked-and-measured/11217#recent-1</guid>
-    <pubDate>Sun, 15 Nov 2026 04:26:22 +0000</pubDate>
-    <description>What each signature rests on, and what that safety costs1600×900 80.3 KB This is a study and a prototype, on testnet only, with code that is days old. In short CKB has one lock today built to resist a quantum computer: SPHINCS+. We built a second one, on ML-DSA, another finished NIST standard. At the same security level it costs about a third as much on chain, and it signs in milliseconds where SPHINCS+ takes about a second. The price is trust: ML-DSA leans on newer maths than SPHINCS+. It is not safer, and SPHINCS+ stays the careful choice for savings. We are asking two things: try to break it, and tell us whether CKB wants a second lock at all. The details a reviewer needs are folded...</description>
+    <pubDate>Mon, 16 Nov 2026 22:32:09 +0000</pubDate>
+    <description>Cool to see new deployments of MLDSA. Did you need to change much from my deployment?</description>
+  </item>
+  <item>
+    <title>Message in a Cell: seal a letter, a photo or a video with CKB until a day that matters (1 posts)</title>
+    <link>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138</link>
+    <guid>https://talk.nervos.org/t/message-in-a-cell-seal-a-letter-a-photo-or-a-video-with-ckb-until-a-day-that-matters/11138#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 22:01:20 +0000</pubDate>
+    <description>Hi Linnette, I wanted to follow up on Message in a Cell. I keep coming back to it. The idea of the storage cost being part of the gift is lovely, and so is a letter that just shows up on the day it matters. Your friend’s “like getting a real letter” says it all. Some news on my side: CRT (CKB Revocable Timelock), which I mentioned in my reply, is now live on testnet: crt.chainsolution.net CRT — CKB Revocable Timelock Timelock encryption with a working cancel button, built on Nervos CKB and CKB Service Runner. Encrypt to a date; keep the right to say no. The first thing I built on top of it is a dead-man-switch: dead-man-switch.chainsolution.net Dead man's switch — a letter that opens only...</description>
+  </item>
+  <item>
+    <title>[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品 (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937</link>
+    <guid>https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937#recent-2</guid>
+    <pubDate>Mon, 16 Nov 2026 17:56:26 +0000</pubDate>
+    <description>@psawyerberlin the keeper is split out now, it runs on its own without the indexer API: CrowdCell/off-chain/indexer/KEEPER.md at main · alesfer001/CrowdCell · GitHub. You just need a fresh testnet key with some faucet CKB for fees, CKB_NETWORK=testnet and an RPC url. Still up for running a second one? And how’s the CSR finalize-job PR going? Hi @Ayoub_Lesfer, Great work on the keeper split, KEEPER.md was easy to follow. The second keeper is running now on my testnet node, as a systemd service so it survives restarts: ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqgxttnjzva3pge58vskzma04cu3gvt4ycqwydtph It indexes all 16 campaigns from the chain on its own and is idle for now,...</description>
+  </item>
+  <item>
+    <title>Dead Man's Switch — a letter that opens only if you stop checking in (testnet) (1 posts)</title>
+    <link>https://talk.nervos.org/t/dead-mans-switch-a-letter-that-opens-only-if-you-stop-checking-in-testnet/11225</link>
+    <guid>https://talk.nervos.org/t/dead-mans-switch-a-letter-that-opens-only-if-you-stop-checking-in-testnet/11225#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 17:28:26 +0000</pubDate>
+    <description>Email drafts and paper envelopes both have the same flaw — somebody has to find them, and somebody can read them early. Dead Man’s Switch is a letter that opens only if you stop checking in. You write it, you name who receives it, and you pick how often you’ll confirm you’re still here. Every check-in pushes the deadline back. Miss it, and the letter goes out. Change your mind, and you cancel — and from that moment nobody can ever read it, including me. Try it on testnet: https://dead-man-switch.chainsolution.net (EN / FR / DE) How it works The letter is encrypted in your browser. It is never stored on chain and I never see it. What’s on chain is a cell you own, holding a deadline....</description>
+  </item>
+  <item>
+    <title>[DIS] Pocket Node for iOS: a self-custody CKB light client for Apple and Identity/Signer for CCC web apps (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583</link>
+    <guid>https://talk.nervos.org/t/dis-pocket-node-for-ios-a-self-custody-ckb-light-client-for-apple-and-identity-signer-for-ccc-web-apps/10583#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 15:43:10 +0000</pubDate>
+    <description>Pocket Node for iOS: M3 send, sync and activity are now on main M3 brings the iPhone app from wallet setup and receiving to a usable CKB wallet: syncing, sending, and viewing transaction history. The implementation is merged into the public repository, and mainnet send and receive have been verified on a physical iPhone 14 Pro. TestFlight distribution remains the final outstanding item. What was delivered Sync and balance: Home now shows the wallet balance, sync progress and sync-mode selection. Android and iOS use the same shared sync engine, with wallet-specific progress and persistent storage. Send: address validation, cell selection, fee calculation, transaction review, on-device...</description>
+  </item>
+  <item>
+    <title>Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 14:13:56 +0000</pubDate>
+    <description>Thanks @Ayoub_Lesfer, this is really helpful! I’ll use deployment/deployed-contracts-testnet.json as the source for the current script identities and inspect the pledge flow in off-chain/frontend/src/app/campaigns/[id]/page.tsx, rather than relying on TransactionBuilder.createPledge or the outdated indexer fallbacks. I’ll place the CellGuard check after completeFeeBy and before signer.sendTransaction, ensuring it runs again whenever the transaction is rebuilt during a retry. The initial policy will focus on preserving the campaign cell’s capacity and scripts, verifying the pledged amount update, and checking the corresponding pledge and receipt outputs. I’ll also coordinate with Tung to...</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 11:11:51 +0000</pubDate>
+    <description>MeterNet: M2 and M3 delivered Repo: GitHub - Timi16/meternet: An open-source hotspot box (any Linux laptop or Raspberry Pi) that sells Wi-Fi per megabyte and keeps each phone online only while small Fiber payments keep arriving. · GitHub · Tag: v0.1 · CKB testnet only M2: public web MVP (live) Live on CKB testnet: the Meter and the Board. Wallet: your browser runs the official fiber-js 0.9.1 node, connects to the MeterNet FNN (v0.9.1) over wss, and opens a private one-way channel. Metering: the page pays for each 2 MB of a test download or video (2 MB HLS segments). The gateway serves only MeterNet’s own test content and is not an open proxy. Board: payment hashes, bytes and cut times for...</description>
+  </item>
+  <item>
+    <title>Ward: lock proof for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/ward-lock-proof-for-ckb/11153</link>
+    <guid>https://talk.nervos.org/t/ward-lock-proof-for-ckb/11153#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 09:38:09 +0000</pubDate>
+    <description>An update to the last reply, where I said the verifier is Node only: since ckb-ward 0.5.0 it also runs in the browser. Hanssen pointed us to ckb-vm-js, which compiles CKB’s own transaction verifier and CKB-VM to WebAssembly. Ward now takes it as a lock runner, ckbVmJs(), through a new ckb-ward/browser entry. A site can check a proof inside the visitor’s page, reading only a public RPC, with no server of its own. Measured on 2026-11-16: every saved proof (16 locks, 3 of them on mainnet) gives the same result as the node’s own script VM, and the same cycles when accepted. In Chromium the lock runs in 16 to 57 ms; a whole check, with the chain reads, takes 1 to 2 s. ckb-vm-js is early and...</description>
+  </item>
+  <item>
+    <title>CLASP UPDATE (1 posts)</title>
+    <link>https://talk.nervos.org/t/clasp-update/11222</link>
+    <guid>https://talk.nervos.org/t/clasp-update/11222#recent-1</guid>
+    <pubDate>Mon, 16 Nov 2026 09:31:27 +0000</pubDate>
+    <description>Hey everyone, I’m Drey, creator of Clasp, the permission layer for Fiber wallets that took first place in the Wallet &amp; Payment UX Infrastructure category at Gone in 60ms and was named overall winner. A couple of days ago I did an AMA on r/NervosNetwork and talked about what comes next. Rather than come back here with a plan, we built the first part of it. This post covers what people asked, what’s now live, and what’s still missing. The problem, briefly If an app wants to make Fiber payments for you today, it needs access to your node’s RPC. That gives it everything, for as long as the credential lives. You can’t say “this app can spend up to 5 CKB over the next hour and nothing else.”...</description>
+  </item>
+  <item>
+    <title>Fiber LSP: Running Channels on the Server, Signing in the Wallet (2 posts)</title>
+    <link>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220</link>
+    <guid>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220#recent-2</guid>
+    <pubDate>Mon, 16 Nov 2026 06:53:33 +0000</pubDate>
+    <description>We have tried to port a full Fiber node to different types of clients, and even connect it to CKB Light Client. In practice, however, clients have difficulty staying online all the time: an application may exit unexpectedly, the system may stop or suspend background processes, or the network may disconnect suddenly. Brief disconnections are especially common when a phone switches between Wi-Fi and mobile networks. Fiber uses payment channels to send and receive payments. Once a local node loses its network connection, it can no longer exchange messages with other nodes. New payments cannot be sent or received normally, and pending payments may time out and fail. Even if a user has already...</description>
   </item>
 </channel>
 </rss>
