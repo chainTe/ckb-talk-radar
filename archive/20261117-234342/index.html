@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-17 07:43:42 CST - 2026-11-18 07:43:42 CST</span>
+          <span>生成时间 2026-11-18 07:44:05 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">32</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">57</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">26</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最热闹的是 Spark Program 的集中评审：委员会对 MoniMkt、TITANHOLD CKB Pay、secnev、CellGuard × CrowdCell 等项目给出了拒绝或不批准意见 <span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s09">S09</a>, <a href="#source-s15">S15</a>, <a href="#source-s19">S19</a>]</span>。Fiber RGB++ Swap 的关停通知出现预算金额和验收范围表述错误，委员会公开纠正并道歉，申请人也作出回应 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。社区项目方面，Cellula on Fiber 的投票结果公布为高票通过，Twine 继续收集反馈并修改提案，Turnmark 则在测试网推进预测市场 <span class="citations">[<a href="#source-s17">S17</a>, <a href="#source-s04">S04</a>, <a href="#source-s11">S11</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>Spark 评审集中出结果：MoniMkt 被委员会表示暂不接受 <span class="citations">[<a href="#source-s02">S02</a>]</span>；TITANHOLD CKB Pay 被遗憾告知未通过 <span class="citations">[<a href="#source-s09">S09</a>]</span>；secnev 被拒绝 <span class="citations">[<a href="#source-s15">S15</a>]</span>；CellGuard × CrowdCell 也未获批准 <span class="citations">[<a href="#source-s19">S19</a>]</span>。</li>
+<li>Fiber RGB++ Swap 出现通知纠错：委员会承认调整后的获批预算是等值 500 美元 CKB，而非通知中写的 1,000 美元，并为表述疏漏道歉 <span class="citations">[<a href="#source-s07">S07</a>]</span>；委员会同时认为排除 RGB++ 集成后，仅有报价广播和发现功能不足以完成项目 <span class="citations">[<a href="#source-s07">S07</a>]</span>；申请人 Carl 回应称 9 月交付是按他理解达成的工作，并非缩减替代 <span class="citations">[<a href="#source-s08">S08</a>]</span>。</li>
+<li>Cellula on Fiber 投票结果公布：Metaforo 记录 113,857,181 CKB 赞成、16 名投票者、零反对，超过 51% 门槛和最低参与要求 <span class="citations">[<a href="#source-s17">S17</a>]</span>；提案方也在帖中感谢投票和反馈 <span class="citations">[<a href="#source-s18">S18</a>]</span>。</li>
+<li>Twine 继续完善非托管 P2P 方案：项目称已在测试网进行交易，卖家在自己的钱包中锁定 CKB <span class="citations">[<a href="#source-s04">S04</a>]</span>；作者根据反馈修改提案，解释新买家没有入站 CKB 时守护进程不会开通道或注资 <span class="citations">[<a href="#source-s05">S05</a>]</span>；社区成员建议把争议密钥以 k-of-n 方式拆分到独立节点，以降低 hub 单点信任 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li>Turnmark 在 Nervos 测试网上线短周期涨跌预测市场：提供 BTC/USDT 的 5 分钟和 15 分钟轮次，用户需在参与前把测试 CKB 存入 UP 或 DOWN <span class="citations">[<a href="#source-s11">S11</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>MoniMkt 被拒后，申请人继续询问范围问题，并表示希望重建前端 <span class="citations">[<a href="#source-s03">S03</a>]</span>；TITANHOLD 则询问通过 Community Fund DAO 申请的最佳方式 <span class="citations">[<a href="#source-s10">S10</a>]</span>。</li>
+<li>Twine 的争议解决仍存在 hub 单点信任风险，社区已提出 k-of-n 拆分争议密钥的建议，后续要看提案是否继续调整 <span class="citations">[<a href="#source-s06">S06</a>, <a href="#source-s05">S05</a>]</span>。</li>
+<li>Fiber RGB++ Swap 在预算和验收范围纠错后，双方是否就 9 月交付与后续验收达成一致，仍值得观察 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/spark-program-easyo-non-custodial-pay-to-qr-bridge-on-ckb/11252/1">Spark Program | EasyO: Non-Custodial Pay-to-QR Bridge on CKB</a></div><div class="source-meta">Owais · 2026-11-18 07:28:53 CST</div><div>Team / Individual Profile Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer Requested: $2,000 USD, paid 100% in CKB Duration: 8 weeks, 4 milestones · License: MIT Contact: Nervos Talk 1. Overview EasyO is a non-custodial crypto-to-fiat QR payment bridge...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/spark-program-monimkt-hardening-and-beta-for-a-native-ckb-lending-market/11152/2">Spark Program | MoniMkt: Hardening and Beta for a Native CKB Lending Market</a></div><div class="source-meta">xingtianchunyan · 2026-11-18 00:02:52 CST</div><div>Hello, @NOrththebear: The committee has completed its review and, after careful discussion, regretfully decided not to accept the MoniMkt proposal at this time. We want to be candid about the reasons for this decision: Outside Spark’s scope of support: This proposal primarily...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/spark-program-monimkt-hardening-and-beta-for-a-native-ckb-lending-market/11152/3">Spark Program | MoniMkt: Hardening and Beta for a Native CKB Lending Market</a></div><div class="source-meta">NOrththebear · 2026-11-18 05:33:41 CST</div><div>Hi xingtian, appreciate the careful and candid review. One more scope question, and I will keep it concrete. I built the current MoniMkt frontend. It works, but it is not the UX I want to put in front of users. I would like to rebuild it: better information architecture,...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/1">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">ebubedev · 2026-11-17 12:51:04 CST</div><div>2. Summary CKB is still hard to buy or sell for local money. An exchange asks the seller to deposit the coins first. An identity check turns people away. Twine is the other path, and it already trades on testnet. Two people trade directly. The seller locks CKB in their own...</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/2">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">ebubedev · 2026-11-18 01:00:44 CST</div><div>@T_Silva sent this in a DM, so the thread never had it. I am edited the proposal to answer it. This is the feedback, and what I changed. A new buyer has no inbound CKB. The daemon does not open or fund a channel. An earlier build did open a one-way channel from the hub at...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/3">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">psawyerberlin · 2026-11-18 05:03:23 CST</div><div>Nice work, ebubedev. Using Fiber hold invoices without a custom script is a clean design. One idea on the solver: today the hub operator is a single point of trust (and arguably control) for disputes. Have you considered splitting the dispute key k-of-n across independent node...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487/32">Spark Program | Fiber RGB++ Swap</a></div><div class="source-meta">xingtianchunyan · 2026-11-18 00:03:40 CST</div><div>Hi @Carl ， 重新核对帖子后，我需要先纠正此前关停通知中的错误：本项目调整后的获批预算是等值 500 美元的 CKB，通知仍写成 1,000 美元，并沿用了原方案中包含 RGB++ 集成的部分表述。这是我在整理和发布通知时的疏漏，对此向你道歉。 关于验收范围，委员会当时对 #18 调整意见的理解是：排除 RGB++ 协议集成，保留包括基本 Swap 执行能力在内的核心开发。因此，委员会认为仅有报价广播和发现功能，还不足以完成本次项目。 但我也看到，你在 #20...</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487/33">Spark Program | Fiber RGB++ Swap</a></div><div class="source-meta">Carl · 2026-11-18 04:40:38 CST</div><div>Hi @xingtianchunyan, CKB Committee Thank you for taking your time to review this. I’d like to explain one thing gently. My September delivery wasn’t a reduced substitute for the agreed work, it was the work I understood us to have agreed. I wrote that understanding down in #20...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211/2">Spark Program | TITANHOLD CKB Pay</a></div><div class="source-meta">xingtianchunyan · 2026-11-18 01:19:10 CST</div><div>Hello @hennadii, Thank you for taking the time to prepare and submit the TITANHOLD CKB Pay proposal, and for providing a detailed introduction to the TITANHOLD platform and the background of the Amanda assistant. The committee has completed its review. We regret to inform you...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211/3">Spark Program | TITANHOLD CKB Pay</a></div><div class="source-meta">hennadii · 2026-11-18 04:39:25 CST</div><div>Thank you, xingtian and the Spark committee, for reviewing our application and for the clear feedback. Understood that Spark focuses on public-good projects for the CKB ecosystem. Two quick questions: Community Fund DAO: what is the best way to apply there with TITANHOLD CKB...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11250/1">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a></div><div class="source-meta">Adokiye_Destiny · 2026-11-18 04:23:26 CST</div><div>Turnmark lets you take a position on a simple question: will an asset’s price finish higher or lower over a fixed round? We have BTC/USDT rounds running on Nervos testnet at two durations: 5 minutes and 15 minutes. You deposit test CKB into UP or DOWN before participation...</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11249/1">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a></div><div class="source-meta">Adokiye_Destiny · 2026-11-18 03:53:02 CST</div><div>(topic deleted by author)</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/4">Asset Price Oracle on Nervos Network</a></div><div class="source-meta">Adokiye_Destiny · 2026-11-18 03:26:05 CST</div><div>Thank you—your freshness question exposes a gap in how I explained the integration. Comparing a price timestamp with an arbitrary header dep does not prevent an old price being paired with an old header. Our reference consumer binds the header to the block that created the...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/5">Asset Price Oracle on Nervos Network</a></div><div class="source-meta">Adokiye_Destiny · 2026-11-18 03:27:05 CST</div><div>Thank you—yes, the publishers already check proposal timestamps against their own clocks before signing. They reject ticks outside a configured signing window, and separately enforce when the proposer’s slot opens. A far-future proposal from a faulty leader should therefore be...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/spark-program-secnev-ckb-native-risk-observatory/11213/2">Spark Program | secnev — CKB-native risk observatory</a></div><div class="source-meta">xingtianchunyan · 2026-11-18 01:54:15 CST</div><div>Hi @TolgaYazan, Thank you for taking the time to prepare and submit the proposal, and for documenting the existing MVP in detail. The committee has completed its review and, after careful discussion, regrets to reject the secnev proposal at this time. We want to be candid...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/25">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></div><div class="source-meta">NNCBN · 2026-11-18 00:38:43 CST</div><div>2026 November 17, Eighth Weekly Report Recognition is the first step toward improvement. Decentralization does not automatically guarantee reliability and stability. This became clearly evident when we encountered several practical obstacles during the implementation of a...</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/19">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></div><div class="source-meta">zz_tovarishch · 2026-11-17 10:06:32 CST</div><div>The Cellula on Fiber proposal poll closed on November 16 at 23:59:59 UTC. Metaforo records 113,857,181 CKB in Yes votes from 16 voters, with no No votes. Approval is 100% against the required 51%, and participation exceeds the 59,100,000 CKB minimum. Post-close verification...</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/20">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-18 00:30:41 CST</div><div>Thank you. The vote closed with 113,857,181 CKB voting yes and none against. Thank you to everyone who voted, and to everyone who read the proposal, asked a hard question or pushed back in this thread. Each of those made the plan better. Thank you also to @zz_tovarishch for...</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/4">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></div><div class="source-meta">xingtianchunyan · 2026-11-18 00:14:32 CST</div><div>Hello, @Dangbaty2004， Thank you for taking the time to prepare and submit this proposal, and for providing detailed documentation. The committee has completed its review and, unfortunately, has decided not to approve the CellGuard × CrowdCell proposal at this time. We want to...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>31</strong></li><li><span>其他</span><strong>13</strong></li><li><span>生态进展</span><strong>9</strong></li><li><span>社区互动</span><strong>3</strong></li><li><span>市场与传播</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@xingtianchunyan</span><strong>9</strong></li><li><span>@ding99bt</span><strong>7</strong></li><li><span>@zz_tovarishch</span><strong>5</strong></li><li><span>@Adokiye_Destiny</span><strong>4</strong></li><li><span>@LusoCryptoLabs</span><strong>4</strong></li><li><span>@psawyerberlin</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>258</span></li><li>can<span>107</span></li><li>are<span>105</span></li><li>hub<span>103</span></li><li>testnet<span>100</span></li><li>fiber<span>93</span></li><li>public<span>77</span></li><li>one<span>76</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/a-second-post-quantum-lock-for-ckb-ml-dsa-beside-sphincs-checked-and-measured/11217">A second post-quantum lock for CKB? ML-DSA beside SPHINCS+, checked and measured</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 14:30:37 CST</span><span>LusoCryptoLabs, ding99bt, xjd</span></div><p class="excerpt">SHRINCS: 324-byte stateful post-quantum signatures Applications &amp; Ecosystem A previous quantum resistant lock script was implemented using SPHINCS+, but its signature is quite large (from 8K to 50K). On a blockchain, storage is precious, and large...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-talkdid-bind-did-ckb-to-nervos-talk/11206">Spark Program | TalkDID — Bind did:ckb to Nervos Talk</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 22:16:17 CST</span><span>PANAGOT, ding99bt, xingtianchunyan, zz_tovarishch</span></div><p class="excerpt">PANAGOT: Currently forum doesn’t allow me to post any images and links. 您好，您已经是L1 Basic 用户，已经可以正常发送链接和图片 Why is your problems with proposal ? It’s too short.</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644">Tranfr — Programmable Recovery for CKB</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 20:41:39 CST</span><span>Hanssen, SalmanDev</span></div><p class="excerpt">Hi @xingtianchunyan any update on this? thanks Hi @SalmanDev! A review from my AI finds a possible security issue in the current on-chain script code (Tranfr #1). I think you’ll want to take a look.</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-lifeboat-see-what-an-address-owns-on-ckb-and-get-it-out-when-the-app-is-gone/11239">Spark Program | Lifeboat: see what an address owns on CKB, and get it out when the app is gone</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 18:16:06 CST</span><span>ding99bt, dltoan1307</span></div><p class="excerpt">1. Project Overview Name: Lifeboat One line: a static web app that scans a CKB address (or an old MetaMask address) and, where the holder can act alone, builds the exit transaction for assets whose wallet, bridge or app is gone. Problem it solves: Wallets,...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span><span>Spark-Program</span><span>appchain</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 05:03:23 CST</span><span>ebubedev, psawyerberlin</span></div><p class="excerpt">2. Summary CKB is still hard to buy or sell for local money. An exchange asks the seller to deposit the coins first. An identity check turns people away. Twine is the other path, and it already trades on testnet. Two people trade directly. The seller locks...</p><div class="tag-row"><span>CKB</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 10:05:32 CST</span><span>Code3ks, zz_tovarishch</span></div><p class="excerpt">Gm @zz_tovarishch , checking in based on my previous question about initial payment. Looking forward to get a feedback. Thank you 您好，community fund dao 委员会目前目前正在就初始付款进行多签过程中 一旦他们完成多签，我会及时通知您 感谢您的耐心和理解</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-monimkt-hardening-and-beta-for-a-native-ckb-lending-market/11152">Spark Program | MoniMkt: Hardening and Beta for a Native CKB Lending Market</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 05:33:41 CST</span><span>NOrththebear, xingtianchunyan</span></div><p class="excerpt">Hello, @NOrththebear: The committee has completed its review and, after careful discussion, regretfully decided not to accept the MoniMkt proposal at this time. We want to be candid about the reasons for this decision: Outside Spark’s scope of support: This...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487">Spark Program | Fiber RGB++ Swap</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 04:40:38 CST</span><span>Carl, xingtianchunyan</span></div><p class="excerpt">Hi @Carl ， 重新核对帖子后，我需要先纠正此前关停通知中的错误：本项目调整后的获批预算是等值 500 美元的 CKB，通知仍写成 1,000 美元，并沿用了原方案中包含 RGB++ 集成的部分表述。这是我在整理和发布通知时的疏漏，对此向你道歉。 关于验收范围，委员会当时对 #18 调整意见的理解是：排除 RGB++ 协议集成，保留包括基本 Swap 执行能力在内的核心开发。因此，委员会认为仅有报价广播和发现功能，还不足以完成本次项目。 但我也看到，你在 #20...</p><div class="tag-row"><span>Closure</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211">Spark Program | TITANHOLD CKB Pay</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 04:39:25 CST</span><span>hennadii, xingtianchunyan</span></div><p class="excerpt">Hello @hennadii, Thank you for taking the time to prepare and submit the TITANHOLD CKB Pay proposal, and for providing a detailed introduction to the TITANHOLD platform and the background of the Amanda assistant. The committee has completed its review. We...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800">Asset Price Oracle on Nervos Network</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 03:27:05 CST</span><span>Adokiye_Destiny</span></div><p class="excerpt">Thank you—your freshness question exposes a gap in how I explained the integration. Comparing a price timestamp with an arbitrary header dep does not prevent an old price being paired with an old header. Our reference consumer binds the header to the block...</p><div class="tag-row"><span>CKB</span><span>DeFi</span><span>Oracle</span><span>dapp</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 00:30:41 CST</span><span>LusoCryptoLabs, zz_tovarishch</span></div><p class="excerpt">The Cellula on Fiber proposal poll closed on November 16 at 23:59:59 UTC. Metaforo records 113,857,181 CKB in Yes votes from 16 voters, with no No votes. Approval is 100% against the required 51%, and participation exceeds the 59,100,000 CKB minimum. Post-...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>Nervos-项目动态</span><span>dapp</span><span>fiber</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218">Spark Program | ShareCut: referral payouts for small shops over Fiber (testnet)</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 17:58:16 CST</span><span>abdul, ding99bt</span></div><p class="excerpt">nice works Thanks</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613">[DIS] Vellum: Reputation Extension on did:ckb</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 14:54:30 CST</span><span>ding99bt, zz_tovarishch</span></div><p class="excerpt">M2 Payment 1,750 /0.0009 = 1,944,445 CKB https://explorer.nervos.org/transaction/0x9895440207d47230b87fe7861fd747ef017a75adbc26aa098f0e037f87366833 good jobs</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448">Spark Program | zk-Lock for CKB</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 14:43:04 CST</span><span>Mulandi_Cecilia, psawyerberlin</span></div><p class="excerpt">Hello @psawyerberlin Thank you, and congratulations on getting CRT live. Yes, I would love to collaborate. The pieces I see that already fit: seal a zk-Lock preimage as the CRT payload, and neither side needs a new script. The heir proves knowledge of the...</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-easyo-non-custodial-pay-to-qr-bridge-on-ckb/11252">Spark Program | EasyO: Non-Custodial Pay-to-QR Bridge on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 07:28:53 CST</span><span>Owais</span></div><p class="excerpt">Team / Individual Profile Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer Requested: $2,000 USD, paid 100% in CKB Duration: 8 weeks, 4 milestones · License: MIT Contact: Nervos Talk 1. Overview EasyO is a non-custodial crypto-to-fiat...</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11250">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 04:23:26 CST</span><span>Adokiye_Destiny</span></div><p class="excerpt">Turnmark lets you take a position on a simple question: will an asset’s price finish higher or lower over a fixed round? We have BTC/USDT rounds running on Nervos testnet at two durations: 5 minutes and 15 minutes. You deposit test CKB into UP or DOWN...</p><div class="tag-row"><span>DeFi</span><span>Oracle</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11249">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 03:53:02 CST</span><span>Adokiye_Destiny</span></div><p class="excerpt">(topic deleted by author)</p><div class="tag-row"><span>DeFi</span><span>Oracle</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-secnev-ckb-native-risk-observatory/11213">Spark Program | secnev — CKB-native risk observatory</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 01:54:15 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @TolgaYazan, Thank you for taking the time to prepare and submit the proposal, and for documenting the existing MVP in detail. The committee has completed its review and, after careful discussion, regrets to reject the secnev proposal at this time. We...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 00:38:43 CST</span><span>NNCBN</span></div><p class="excerpt">2026 November 17, Eighth Weekly Report Recognition is the first step toward improvement. Decentralization does not automatically guarantee reliability and stability. This became clearly evident when we encountered several practical obstacles during the...</p><div class="tag-row"><span>In-Progress</span><span>Node</span><span>Spark-Program</span><span>bootnode</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 00:14:32 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hello, @Dangbaty2004， Thank you for taking the time to prepare and submit this proposal, and for providing detailed documentation. The committee has completed its review and, unfortunately, has decided not to approve the CellGuard × CrowdCell proposal at...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-18 00:14:06 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Thanks a lot, nice to see it running as a service already. I’ll put up a short campaign on testnet and run the two-keeper test against yours, results will go here. Safe travels, no rush on the CSR job.</p><div class="tag-row"><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-msig-check-and-merge-ckb-multisig-signatures-from-ckb-cli-neuron-and-ccc/11151">Spark Program | ckb-msig: check and merge CKB multisig signatures from ckb-cli, Neuron and CCC</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 23:52:56 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @ILE_LABS, Thank you for taking the time to prepare and submit the ckb-msig proposal, and for the thoughtful revision based on our earlier feedback. The committee has completed its review and, after careful discussion, regrets to reject the ckb-msig...</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-forecast-arena-a-pilot-for-honest-ai-benchmarks-on-ckb/11154">Spark Program | Forecast Arena - A Pilot for Honest AI Benchmarks on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 23:47:30 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @WuodOdhis, Thank you for taking the time to prepare and submit the Forecast Arena proposal. We appreciate the thought you have put into exploring how CKB can contribute to AI benchmark integrity. The committee has completed its review and, after careful...</p><div class="tag-row"><span>Rejection</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-proposal-ckb-up-1-click-headless-automated-setup-script-for-arm-devices-vps/11158">[Spark Proposal] CKB-Up: 1-Click Headless Automated Setup Script for ARM Devices &amp; VPS</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 23:47:01 CST</span><span>xingtianchunyan</span></div><p class="excerpt">Hi @Owais, Thank you for taking the time to prepare and submit the proposal for CKB-Up. The committee has completed its review, and after careful deliberation, we regret to inform you that the CKB-Up project has been declined this time. We want to be...</p><div class="tag-row"><span>Rejection</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dao-spark/11247">Dao提案和spark项目</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 22:51:53 CST</span><span>hao_zhang</span></div><p class="excerpt">ckb这么多DAO提案和spark申请，有统计过使用情况吗？</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246">Community Fund DAO voting in numbers</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 22:35:26 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">Since 2023, 178 people have voted in the Community Fund DAO, about 1% of the 16,610 Nervos DAO depositors. We wanted to understand why more holders do not take part, and found one reason that can be fixed: 1,132 depositors can only vote if they move their...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/what-recent-mainnet-transactions-cost-in-cycles-script-by-script/11245">What recent mainnet transactions cost in cycles, script by script</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 22:24:44 CST</span><span>tun_tunn03</span></div><p class="excerpt">I replayed recent CKB mainnet transactions in ckb-debugger, one run per script group, to see where the cycles go. Every transaction is checked against the node: the groups have to add up exactly to the cycles the node recorded for it, or the transaction is...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-q3-2026-ai/11077">Spark Program Q3 2026：不要用AI攻击自己</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 21:04:38 CST</span><span>NNCBN</span></div><p class="excerpt">文中提到了非常關鍵的要點，而且是我們所處領域中的根本性問題。畢竟，否則我們其實也能在五分鐘內架設一台每月五美元的VPS。但那並非我們的本色，也非我們所追求的，甚至可說是完全相反的。很高興看到我的觀點在許多方面都獲得了共鳴。然而，更令人遺憾的是，這篇文章在十七天內僅獲得了十二個「心」的點讚。繼續加油！</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-x-near-intents-building-a-cross-chain-bridge-and-multichain-swap-gateway/11244">[DIS] CKB × NEAR Intents: Building a Cross-Chain Bridge and Multichain Swap Gateway</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 20:20:03 CST</span><span>asondev</span></div><p class="excerpt">[DIS] CKB × NEAR Intents: Building a Cross-Chain Bridge and Multichain Swap Gateway Funding Requested: 7,000 USDT equivalent Estimated Duration: 8 weeks Applicant / Team: FoundationLab GitHub: ckbswap 1. Executive Summary This project proposes building a...</p><div class="tag-row"><span>CKB</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-seedsspark-program-seedsong-on-chain-generative-music-with-spore-dob-and-light-client-wasmong-spore-dob-light-client-wasm/10997">[Spark Program] SeedsSpark Program | Seedsong: On-Chain Generative Music with Spore DOB and light-client-wasmong 种子唱片：基于 Spore DOB 与 light-client-wasm 的链上生成音乐</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 17:41:29 CST</span><span>Officeyutong</span></div><p class="excerpt">目前可以在 https://seedsong-ui.officeyutong.workers.dev/ 提前体验light client 相关的功能。但由于目前light client相关BUG修复的PR还没有合并，所以现在使用的是随仓库分发的light client wasm。可以暂时标记M3完成。</p><div class="tag-row"><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-idl-interface-description-language-and-discoverability-for-ckb-scripts/11031">[DIS] CKB IDL: Interface Description Language and Discoverability for CKB Scripts</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 14:53:30 CST</span><span>zz_tovarishch</span></div><p class="excerpt">upfront payment 500/0.0009 = 555,556 CKB https://explorer.nervos.org/transaction/0x31f50710725997fc2077c9b28e315c9388a55f9daa9b724988ee2edb7da01319</p><div class="tag-row"><span>CKB-IDL</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/notice-fiber-node-runners-please-upgrade-to-v0-10-1/11226">[NOTICE] Fiber node runners: Please upgrade to v0.10.1</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-17 08:49:40 CST</span><span>FiberDevs</span></div><p class="excerpt">Hi friends! If you’re still running version 0.9.x, please UPDATE to v0.10.1 soon. The 0.10 version updates how nodes communicate, so 0.9.x and 0.10.x nodes can NOT open new channels with each other. If you’re planning to open a new channel, check that your...</p><div class="tag-row"><span>fiber</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-18 07:28:53 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-easyo-non-custodial-pay-to-qr-bridge-on-ckb/11252/1">Spark Program | EasyO: Non-Custodial Pay-to-QR Bridge on CKB</a> · @Owais</strong><p>Team / Individual Profile Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer Requested: $2,000 USD, paid 100% in CKB Duration: 8 weeks, 4 milestones · License: MIT Contact: Nervos Talk 1. Overview...</p></article>
+<article class="timeline-row"><time>2026-11-18 05:33:41 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-monimkt-hardening-and-beta-for-a-native-ckb-lending-market/11152/3">Spark Program | MoniMkt: Hardening and Beta for a Native CKB Lending Market</a> · @NOrththebear</strong><p>Hi xingtian, appreciate the careful and candid review. One more scope question, and I will keep it concrete. I built the current MoniMkt frontend. It works, but it is not the UX I want to put in front of users. I...</p></article>
+<article class="timeline-row"><time>2026-11-18 05:03:23 CST</time><strong><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/3">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a> · @psawyerberlin</strong><p>Nice work, ebubedev. Using Fiber hold invoices without a custom script is a clean design. One idea on the solver: today the hub operator is a single point of trust (and arguably control) for disputes. Have you...</p></article>
+<article class="timeline-row"><time>2026-11-18 04:40:38 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487/33">Spark Program | Fiber RGB++ Swap</a> · @Carl</strong><p>Hi @xingtianchunyan, CKB Committee Thank you for taking your time to review this. I’d like to explain one thing gently. My September delivery wasn’t a reduced substitute for the agreed work, it was the work I...</p></article>
+<article class="timeline-row"><time>2026-11-18 04:39:25 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211/3">Spark Program | TITANHOLD CKB Pay</a> · @hennadii</strong><p>Thank you, xingtian and the Spark committee, for reviewing our application and for the clear feedback. Understood that Spark focuses on public-good projects for the CKB ecosystem. Two quick questions: Community Fund...</p></article>
+<article class="timeline-row"><time>2026-11-18 04:23:26 CST</time><strong><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11250/1">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a> · @Adokiye_Destiny</strong><p>Turnmark lets you take a position on a simple question: will an asset’s price finish higher or lower over a fixed round? We have BTC/USDT rounds running on Nervos testnet at two durations: 5 minutes and 15 minutes....</p></article>
+<article class="timeline-row"><time>2026-11-18 03:53:02 CST</time><strong><a href="https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11249/1">Turnmark: short-round Up/Down prediction markets on CKB, live on testnet</a> · @Adokiye_Destiny</strong><p>(topic deleted by author)</p></article>
+<article class="timeline-row"><time>2026-11-18 03:27:05 CST</time><strong><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/5">Asset Price Oracle on Nervos Network</a> · @Adokiye_Destiny</strong><p>Thank you—yes, the publishers already check proposal timestamps against their own clocks before signing. They reject ticks outside a configured signing window, and separately enforce when the proposer’s slot opens. A...</p></article>
+<article class="timeline-row"><time>2026-11-18 03:26:05 CST</time><strong><a href="https://talk.nervos.org/t/asset-price-oracle-on-nervos-network/10800/4">Asset Price Oracle on Nervos Network</a> · @Adokiye_Destiny</strong><p>Thank you—your freshness question exposes a gap in how I explained the integration. Comparing a price timestamp with an arbitrary header dep does not prevent an old price being paired with an old header. Our reference...</p></article>
+<article class="timeline-row"><time>2026-11-18 01:54:15 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-secnev-ckb-native-risk-observatory/11213/2">Spark Program | secnev — CKB-native risk observatory</a> · @xingtianchunyan</strong><p>Hi @TolgaYazan, Thank you for taking the time to prepare and submit the proposal, and for documenting the existing MVP in detail. The committee has completed its review and, after careful discussion, regrets to reject...</p></article>
+<article class="timeline-row"><time>2026-11-18 01:19:10 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-titanhold-ckb-pay/11211/2">Spark Program | TITANHOLD CKB Pay</a> · @xingtianchunyan</strong><p>Hello @hennadii, Thank you for taking the time to prepare and submit the TITANHOLD CKB Pay proposal, and for providing a detailed introduction to the TITANHOLD platform and the background of the Amanda assistant. The...</p></article>
+<article class="timeline-row"><time>2026-11-18 01:00:44 CST</time><strong><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/2">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a> · @ebubedev</strong><p>@T_Silva sent this in a DM, so the thread never had it. I am edited the proposal to answer it. This is the feedback, and what I changed. A new buyer has no inbound CKB. The daemon does not open or fund a channel. An...</p></article>
+<article class="timeline-row"><time>2026-11-18 00:38:43 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653/25">Spark Program | NNCBN - Nervos Network Community Boot Nodes</a> · @NNCBN</strong><p>2026 November 17, Eighth Weekly Report Recognition is the first step toward improvement. Decentralization does not automatically guarantee reliability and stability. This became clearly evident when we encountered...</p></article>
+<article class="timeline-row"><time>2026-11-18 00:30:41 CST</time><strong><a href="https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089/20">[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP</a> · @LusoCryptoLabs</strong><p>Thank you. The vote closed with 113,857,181 CKB voting yes and none against. Thank you to everyone who voted, and to everyone who read the proposal, asked a hard question or pushed back in this thread. Each of those...</p></article>
+<article class="timeline-row"><time>2026-11-18 00:14:32 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/4">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a> · @xingtianchunyan</strong><p>Hello, @Dangbaty2004， Thank you for taking the time to prepare and submit this proposal, and for providing detailed documentation. The committee has completed its review and, unfortunately, has decided not to approve...</p></article>
+<article class="timeline-row"><time>2026-11-18 00:14:06 CST</time><strong><a href="https://talk.nervos.org/t/dis-crowdcell-from-testnet-demo-to-a-crowdfunding-product-on-ckb-crowdcell-ckb/10937/16">[DIS] CrowdCell: From Testnet Demo to a Crowdfunding Product on CKB | CrowdCell：把 CKB 测试网上的免信任众筹做成产品</a> · @Ayoub_Lesfer</strong><p>Thanks a lot, nice to see it running as a service already. I’ll put up a short campaign on testnet and run the two-keeper test against yours, results will go here. Safe travels, no rush on the CSR job.</p></article>
+<article class="timeline-row"><time>2026-11-18 00:03:40 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-fiber-rgb-swap/10487/32">Spark Program | Fiber RGB++ Swap</a> · @xingtianchunyan</strong><p>Hi @Carl ， 重新核对帖子后，我需要先纠正此前关停通知中的错误：本项目调整后的获批预算是等值 500 美元的 CKB，通知仍写成 1,000 美元，并沿用了原方案中包含 RGB++ 集成的部分表述。这是我在整理和发布通知时的疏漏，对此向你道歉。 关于验收范围，委员会当时对 #18 调整意见的理解是：排除 RGB++ 协议集成，保留包括基本 Swap...</p></article>
+<article class="timeline-row"><time>2026-11-18 00:02:52 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-monimkt-hardening-and-beta-for-a-native-ckb-lending-market/11152/2">Spark Program | MoniMkt: Hardening and Beta for a Native CKB Lending Market</a> · @xingtianchunyan</strong><p>Hello, @NOrththebear: The committee has completed its review and, after careful discussion, regretfully decided not to accept the MoniMkt proposal at this time. We want to be candid about the reasons for this...</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
