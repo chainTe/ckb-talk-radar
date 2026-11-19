@@ -5,182 +5,154 @@
   <link>https://chainte.github.io/ckb-talk-radar/</link>
   <description>Daily Nervos Talk community briefing and latest active topics.</description>
   <language>zh-cn</language>
-  <lastBuildDate>Wed, 18 Nov 2026 21:11:57 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 22:35:44 +0000</lastBuildDate>
   <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title>CKB Talk Daily Brief - 2026-11-19</title>
+    <title>CKB Talk Daily Brief - 2026-11-20</title>
     <link>https://chainte.github.io/ckb-talk-radar/</link>
-    <guid>tag:ckb-talk-radar,2026-11-18:daily-brief</guid>
-    <pubDate>Wed, 18 Nov 2026 23:15:42 +0000</pubDate>
-    <description>## 今日发生了什么 今天论坛的主要动静集中在 Spark Program 的提案审阅和新提案发布上 [S07, S14, S15, S16, S02, S06]。委员会对 ckb-adversary、CKB Escrow Security Test Kit、ShareCut、ServiceSeal 给出 Pending/邀请修改反馈，ckb-adversary 作者也回应了攻击范围问题 [S07, S08, S14, S15, S16]。开发者侧，ckbup 更新到可列出、切换和删除版本 [S01]；Fiber Claim Cell 澄清通道流动性不由 grant 出资 [S11, S12, S13]；MeterNet 申请人表示自担硬件费用继续试点 [S09, S10]。 ## 重点话题 Spark Program 审阅反馈集中：ckb-adversary、CKB Escrow Security Test Kit、ShareCut、ServiceSeal 都被标为 Pending/邀请修改，而不是直接拒绝 [S07, S14, S15, S16]；ckb-adversary 作者回应称，攻击改变的是每笔交易都有的字段（如 outputs、since、witnesses 等），不是脚本逻辑，因此同一套攻击可跑在任何 lock 或 type 上 [S08]。 新提案方面，CKB ClearSign 提出 TypeScript 库和 CCC signer 包装器，在签名前独立验证交易输入并用白话解释交易 [S02]；Will On-Chain 申请 1000 美元、为期 4...</description>
+    <guid>tag:ckb-talk-radar,2026-11-19:daily-brief</guid>
+    <pubDate>Thu, 19 Nov 2026 23:24:00 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛最集中的动静来自资助相关讨论：Spark 出现两个新申请，而已批准的 Corven 项目因拨款折算金额引发争议 [S01, S02, S20, S22]。同时，社区围绕 DAO 提案公平性和投票参与度继续讨论，有人担心多账户操纵投票，也有人分析投票率低的原因 [S07, S23]。另外，Rosen Bridge 集成被追问半年后的进展，Twine 相关讨论则延伸到社区资助应如何避免利益交换 [S05, S12, S14]。 ## 重点话题 **Spark 新增两个申请**：CapKey 申请 720 美元、为期 5 周，做面向浏览器 dApp 和 AI agent 的限额子密钥 covenant [S01]；CKB Script Bench 则提出用 24 个 CKB 链上脚本任务测试 AI 生成的 lock/type script 能否编译并抵御恶意交易 [S02]。 **Corven 拨款出现汇率折算争议**：申请人催办活动额度后，Spark 方面补发了 25,685 CKB，并说明 Spark 的标准口径不是按每次发放当日汇率重新折算，审批后到实际支出期间的 CKB 价格波动由申请人承担 [S20, S21]。申请人随后表示两次发放收到时分别约值 49 美元和 22.13 美元，与批准金额存在差异，希望了解原因 [S22]。 **DAO 公平性与投票参与度成为讨论焦点**：有用户担心用多个账户点赞、投票可能推动提案并通过盗取 DAO 资金 [S07]；社区成员回应称技术上可能，但需要有足够 CKB...</description>
   </item>
   <item>
-    <title>Ckbup: one installer for CKB command-line tools (early progress, feedback welcome) (1 posts)</title>
-    <link>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188</link>
-    <guid>https://talk.nervos.org/t/ckbup-one-installer-for-ckb-command-line-tools-early-progress-feedback-welcome/11188#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 21:11:57 +0000</pubDate>
-    <description>Update: ckbup can now list, switch and remove versions. The third step is merged. You can see what’s installed, switch between versions and remove the ones you don’t need. cargo install --git https://github.com/steven3002/ckbup ckbup list # every tool, its installed versions and the active one ckbup list --available # the newest stable releases, with notes for your machine ckbup use fnn@v0.9.1 # switch to another installed version ckbup remove fnn@v0.10.1 # remove one you no longer need ckbup list on my machine: ckb v0.210.0 (active) ckb-cli v2.0.0 (active) ckb-debugger v1.1.1 (active) fnn v0.10.1 (active) ckb-light-client v0.5.4 (active) What changed: list shows all five tools, with...</description>
+    <title>Spark Program | CapKey: Spend-Capped Sub-Key Covenants for Browser dApps and AI Agents (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-capkey-spend-capped-sub-key-covenants-for-browser-dapps-and-ai-agents/11271</link>
+    <guid>https://talk.nervos.org/t/spark-program-capkey-spend-capped-sub-key-covenants-for-browser-dapps-and-ai-agents/11271#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 22:35:44 +0000</pubDate>
+    <description>Project Name: CapKey Applicant: Terry Jn. (TeeYml on GitHub) Funding Requested: $720 (paid in CKB, payout address provided upon approval) Duration: 5 Weeks License: MIT Contact: Nervos Talk direct message Ecosystem Alignment: AI Machine Payments, Browser Self-Custody Sessions (BSS) Applicant Profile Terry Jn. (TeeYml on GitHub) is an independent full-stack and web3 engineer with experience building smart contracts, transaction serialization pipelines and developer tooling across UTXO and account-based ecosystems. GitHub: https://github.com/TeeYml Repository: https://github.com/TeeYml/capkey 1. Executive Summary CapKey is an on-chain covenant vault protocol and client SDK for Nervos CKB...</description>
   </item>
   <item>
-    <title>Spark Program | CKB ClearSign: verify before you sign (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-clearsign-verify-before-you-sign/11259</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-clearsign-verify-before-you-sign/11259#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 20:19:08 +0000</pubDate>
-    <description>1. Project CKB ClearSign: a TypeScript library + CCC signer wrapper that independently verifies a transaction’s inputs and explains it in plain language before the user signs. Repo: github.com/RaceeyXo/ckb-clearsign (MIT) 2. Applicant RaceeyXo: software engineer (full-stack Web3, AI engineering). GitHub: RaceeyXo. 3. Problem A CKB transaction only references its inputs by out point (txHash:index). The capacity, lock, type and data of those cells come from an indexer/RPC, and CCC trusts that answer. A lying, compromised or MITM’d RPC can make a wallet show “fee 0.0001 CKB” while the user actually signs something very different. As discussed in the October DevRel AMA, CCC deliberately...</description>
+    <title>Spark Program | CKB Script Bench: How Well Do AI Models Write CKB Scripts? (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-script-bench-how-well-do-ai-models-write-ckb-scripts/11269</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-script-bench-how-well-do-ai-models-write-ckb-scripts/11269#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 22:35:38 +0000</pubDate>
+    <description>1. Project Overview Project name: CKB Script Bench One-sentence summary: An open, re-runnable test set of 24 CKB on-chain script tasks that measures whether AI-written lock and type scripts compile against the current ckb-std and hold up against malicious transactions, and whether CKB’s official AI resources fix the failures. A pilot on 3 tasks already found that the main failure is outdated or invented API use, not unsafe logic. Project type: open-source benchmark (task set + hidden security tests + runner) and a public report, run in ckb-testtool / ckb-debugger. No chain deployment needed. Funding requested: $980, paid in CKB Duration: 6 weeks CKB Script Bench is a measurement, not...</description>
   </item>
   <item>
-    <title>[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware (1 posts)</title>
-    <link>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258</link>
-    <guid>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 19:03:55 +0000</pubDate>
-    <description>If you have used a Bitcoin hardware wallet, the flow is familiar. A watch-only app builds a transaction. It hands it to a small device as a QR code or a file. The device shows the amount and the destination. You approve. The signed transaction goes back to the app, which broadcasts it. The machine that holds the key never talks to the internet. Bitcoin calls that container a PSBT (Partially Signed Bitcoin Transaction). The devices have names you may know: Coldcard, SeedSigner, Specter DIY. They do not share one design. They share one rule: the key lives on a device that cannot reach the network, and the device shows you what you are signing. CKB has the same need and no open equivalent....</description>
+    <title>CKB Pulse today: a new look, lessons from real fixes, and CKB inside your tools (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268</link>
+    <guid>https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 22:26:36 +0000</pubDate>
+    <description>CKB Pulse started six weeks ago as one page that shows who is building on CKB, live. It has grown into something larger: a place where the work of every CKB builder is seen, credited, and turned into lessons the next builder can use. This post is what it does today. VIDEO: Luso Crypto Labs on X: "Who's building on CKB right now? CKB Pulse shows it, live. And every fix a builder ships becomes a lesson for the next one: 198 so far, each linked to its commit. In your AI agent and on your pull requests. Free and open source. https://t.co/ICccqV4x2Q" / X CKB Pulse, the live view1800×1125 249 KB CKB Pulse CKB Pulse Pulse shows the public work of the CKB ecosystem as it happens, from GitHub:...</description>
   </item>
   <item>
-    <title>Community Fund DAO voting in numbers (1 posts)</title>
-    <link>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246</link>
-    <guid>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 18:53:33 +0000</pubDate>
-    <description>Really interesting topic and definitely an important one for Nervos. Personally, I think the problem isn’t necessarily that people don’t care about voting. A lot of CKB holders probably don’t even know these votes are happening, or how to participate. Maybe we should focus more on making voting easier and giving proposals more visibility. Even a simple notification when a new vote is open could make a difference. Thanks for bringing this up, I think it’s something the community really needs to discuss more.</description>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 22:04:40 +0000</pubDate>
+    <description>@Hanssen Fixed, please check GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub</description>
   </item>
   <item>
-    <title>Spark Program | Forecast Arena - A Pilot for Honest AI Benchmarks on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-forecast-arena-a-pilot-for-honest-ai-benchmarks-on-ckb/11154</link>
-    <guid>https://talk.nervos.org/t/spark-program-forecast-arena-a-pilot-for-honest-ai-benchmarks-on-ckb/11154#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 18:50:10 +0000</pubDate>
-    <description>Hi xingtian, Thank you for the detailed review. Both points are fair, and I would rather answer them honestly than defend the draft. On audience: I described the problem but never named who would use the result. The truth is that I have not validated demand. My assumption was that evaluation operators, benchmark researchers, and funders of AI evaluations would value a cheaper way to check a published benchmark record. That is an assumption I can test outside a grant, for example by asking a few evaluators which parts of their process most need independent verification. On the path to the goal: The proposal implied a broader claim than the pilot can support. The defensible version is...</description>
+    <title>[DIS] CKB Integration for Rosen Bridge (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756#recent-2</guid>
+    <pubDate>Thu, 19 Nov 2026 20:21:57 +0000</pubDate>
+    <description>Hey @Fai !! Let’s continue here from the DAO thread. DAO提案公平性疑问？ I’m really curious about how this massive project is doing after more than half a year? Short version: the Rosen Team reviewed our design and found it sufficient, except for where Watchers and Guards read chain data. The integration is on hold on that point. The full design is public in our tracker. While reviewing the Rosen code I also filed over 20 issues upstream. The blocker: in their latest review they asked for at least three reliable public endpoints per network instead of requiring operators to run their own CKB nodes. This raised a red flag for me, which I shared in Nervos Nation and in the Rosen chat: each Guard...</description>
   </item>
   <item>
-    <title>Spark Program | Will On-Chain: Tamper-Evident, Private Digital Wills on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-will-on-chain-tamper-evident-private-digital-wills-on-ckb/11257</link>
-    <guid>https://talk.nervos.org/t/spark-program-will-on-chain-tamper-evident-private-digital-wills-on-ckb/11257#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 18:34:59 +0000</pubDate>
-    <description>Applicant: Fizan (GitHub: Fizan324926) Requested grant: $1,000 USD (equivalent in CKB at the official approval price snapshot) Duration: 4 weeks Disbursement: 20% (200)onapproval,80%(800) on completion and reproducible verification License: MIT OR Apache-2.0 Making will accessible, transparent, and verifiable through CKB technology 1. Summary Will On-Chain is an open-source testnet app for sealing, updating and releasing a digital last will, using CKB as a tamper-evident, versioned registry. The will is encrypted in the browser and the key is split among chosen guardians, so the chain, the app and the developer cannot read it. The chain holds the ciphertext (or its hash), a timestamp, a...</description>
+    <title>DAO提案公平性疑问？ (8 posts)</title>
+    <link>https://talk.nervos.org/t/dao/11261</link>
+    <guid>https://talk.nervos.org/t/dao/11261#recent-8</guid>
+    <pubDate>Thu, 19 Nov 2026 18:34:41 +0000</pubDate>
+    <description>假设，我有50个账户，其中一些账户买了一些金额的ckb，锁定后具备投票资格，那么是否可以发起一个提案，用其中一些账户点赞，再投票，然后盗取DAO资金？，如果50个账户是我的50个朋友呢？或者其他可能性。，那么是不是DAO可以被以这样的方式随意推动提案成功并盗取资金？ Yeah, it’s possible, but they also have to have enough CKB to win the vote. There’s enough community members here, some of which have very high amounts of CKB who would probably step in an make it hard for any obvious scams or manipulation. There’s also been a few times already where there’s been obvious manipulation of the proposal liking system by sockpuppets and ‘friends’ which have been stopped. But it’s definitely an situation that we need to be aware of. 您好 Hao_zhang, 非常感谢您关于女巫攻击的担忧 对于 Nervos Talk 点赞环节，如果对于任何一次投票结果存在顾虑，欢迎公开或者私信联系我或者委员会成员，我将会针对反馈进行核查...</description>
   </item>
   <item>
-    <title>Spark Program | ckb-adversary: generic attacks on real CKB transactions, before you deploy (2 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-adversary-generic-attacks-on-real-ckb-transactions-before-you-deploy/11142#recent-2</guid>
-    <pubDate>Wed, 18 Nov 2026 16:28:18 +0000</pubDate>
-    <description>Hi @T_Silva, Thank you for your continued interest in the Spark Program and for submitting the ckb-adversary proposal. After review by the Spark Program committee, your proposal’s status is Pending. This is not a rejection, but an invitation to revise your proposal. The committee recognizes the value of the project concept: a general-purpose attack replay tool for CKB scripts could make a meaningful contribution to developers’ security practices, particularly in light of RGB++ events. Generality and Ease of Use Across a Broader Ecosystem: The committee is curious because security tools of this kind are typically developed specifically for individual projects. How does ckb-adversary...</description>
-  </item>
-  <item>
-    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (2 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
-    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-2</guid>
-    <pubDate>Wed, 18 Nov 2026 15:19:37 +0000</pubDate>
-    <description>Hi @Timilehin_Olowu， 热烈祝贺你目前取得的出色进展，同时感谢你的耐心等待。委员会已经审阅了你目前实现的内容，大家对你的工程严谨度和执行速度印象非常深刻。 请继续保持这种超棒的势头！看到真实、可验证的 Fiber 支付在按 MB 计费的 Wi-Fi 场景中端到端跑通，真的让人非常振奋! 关于你第一周提到的硬件费用问题（用于外部测试的第二台热点设备和移动流量费，总计约 100 美元）： 经过委员会内部讨论，我们确认硬件成本不包含在本次资助范围内。因为在 MeterNet 项目中，这部分额外硬件仅起到单次实地测试的作用，并不属于本次资助的核心交付物范围。 开发继续加油！ 祝好， xingtian 谨代表 Spark Program 委员会 Hi @xingtianchunyan, Thank you, and thanks to the committee for the review and the kind words. Understood on the hardware: I’ll cover the second hotspot and mobile data myself, so the field pilot goes ahead as planned. With M2 (public web MVP, v0.1) and M3 (hotspot box and failure lab, 18/18 runs) delivered, could you let me know how the remaining 80% is released...</description>
-  </item>
-  <item>
-    <title>[DIS] Fiber Claim Cell: Async Receive and On-Chain Claims for Fiber LSPs (3 posts)</title>
-    <link>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254</link>
-    <guid>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254#recent-3</guid>
-    <pubDate>Wed, 18 Nov 2026 14:14:52 +0000</pubDate>
-    <description>Following up on my earlier reply in the Fiber LSP discussion, I’m excited to share Fiber Claim Cell! Since then, I’ve narrowed the project from a full LSP service to an on-chain claim module for existing LSPs and wallets. The focus is receiving a Fiber payment without a usable channel, with the recipient coming online later to claim it on CKB within a defined claim window. I’d love feedback from the Fiber team and LSP operators on how this could complement the hosted LSP work already under way. Summary This proposal adds an on-chain claim option for receivers with no usable Fiber channel, without the LSP taking custody of the receiver’s funds. Optional stablecoin support also covers...</description>
-  </item>
-  <item>
-    <title>Spark Program | CKB Escrow Security Test Kit (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-escrow-security-test-kit/11150</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-escrow-security-test-kit/11150#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 14:03:28 +0000</pubDate>
-    <description>Hi @devnash, Thank you for your continued interest in the Spark Program and for submitting the CKB Escrow Security Test Kit proposal. After review by the Spark Program committee, your proposal’s status is Pending. This is not a rejection, but an invitation to revise your proposal. The committee recognizes the value of the project concept: a reusable security testing framework for CKB escrow scripts could make a meaningful contribution to developers’ security practices. Generality and Ease of Use Across a Broader Ecosystem: Consistent with the ckb-adversary proposal, which is also a security tool, the committee is interested in two questions. How does the ckb-escrow-security-test-kit...</description>
-  </item>
-  <item>
-    <title>Spark Program | ShareCut: referral payouts for small shops over Fiber (testnet) (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218</link>
-    <guid>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 14:01:10 +0000</pubDate>
-    <description>Hi @abdul, Thank you for your continued interest in the Spark Program and for submitting the ShareCut proposal. After review by the Spark Program committee, your proposal’s status is Pending. This is not a rejection, but an invitation to revise your proposal. Two questions the committee is concerned about: Clarify the expected outcomes of the rollout: The proposal mentions piloting the program at at least two brick-and-mortar shops, but does not specify what results or tangible progress would count as success. Please provide concrete expectations for the pilot, such as the number of promoters per shop, the number of referred customers or payment transactions you expect to generate, and...</description>
-  </item>
-  <item>
-    <title>Spark Program | ServiceSeal: Prepaid Utility Passes on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215</link>
-    <guid>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 13:58:54 +0000</pubDate>
-    <description>Hi @hardik, Thank you for continuing to follow the Spark Program and for submitting the ServiceSeal proposal. After review by the Spark Program committee, your proposal’s status is pending. This is not a rejection, but an invitation to revise your proposal. The committee recognizes the project’s real-world value: bringing usage tracking for prepaid services into CKB in an actual retail setting is an interesting application of state primitives. The committee has two specific concerns about the current design: As described in the proposal, the device that updates the Cell state is controlled by the store clerk. What happens if the clerk fails to record a deduction after a customer uses the...</description>
-  </item>
-  <item>
-    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
-    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 13:38:55 +0000</pubDate>
-    <description>Hi @NNCBN，很高兴看到你有了自己的尝试和进展，如果后续你还有相关问题，你可以试着咨询社区资深成员 @xjd 。</description>
-  </item>
-  <item>
-    <title>Spark Program | zk-Lock for CKB (2 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448</link>
-    <guid>https://talk.nervos.org/t/spark-program-zk-lock-for-ckb/10448#recent-2</guid>
-    <pubDate>Wed, 18 Nov 2026 12:24:09 +0000</pubDate>
-    <description>你好 @Mulandi_Cecilia ， 最后一期款项：80%，867,472 CKB 已拨付完毕。请查收您的账户。 交易哈希：0x4bbe71affee4b0c32fd2afc99cc0266d9bbbeef0358e2a07d255de3732befef2 恭喜您成功完成 zk-lock 提案！ 感谢您一直以来的坚持不懈！ 最重要的是，也祝您身体健康 ~ ~ 此致， xingtian 谨代表 Spark Program 委员会 Hello @xingtianchunyan, I confirm receipt. I’m grateful to the committee for the support and patience throughout. It has been a pleasure to do this work. Building something is a brutal way to find out which parts of your knowledge were only vocabulary. I’ve learnt a lot, and the primitive has evolved so much. The work continues even after this proposal. Kind regards Cecilia Mulandi</description>
-  </item>
-  <item>
-    <title>Spark Program Proposal: Corven cloud-native IDE (3 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
-    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-3</guid>
-    <pubDate>Wed, 18 Nov 2026 11:07:17 +0000</pubDate>
-    <description>Reminder: Corven community session in Thika is tomorrow (19 November) Hi Spark community, A quick reminder that the Corven testing session is tomorrow, 19 November 2026, at the MKU Innovation Hub, Thika. Time: 4:00 PM to 7:00 PM EAT Second installment request I kindly request the release of the second installment so I can cover the session logistics and keep the hosting running for the sessions. Thank you Hi @lestonEth， 很高兴看到你的第 2 周进度报告，委员会已经审阅了你的最新进展。 随着明天（11 月 19 日）Thika 线下场筹备工作的收尾以及后续 Nairobi 场的规划，委员会想针对汇报和验收材料做一个温馨提醒： 因为当前提案的核心交付物和执行计划均以活动为主，因此请记得，无论已完成或接下来的活动，都以提供照片、视频等相关交付物为主要汇报材料和验收材料。 另外，委员会已经根据你在提案中写明的内罗毕活动预算 65USD 批准了第二笔资助，共 55,651 CKB。交易哈希：...</description>
-  </item>
-  <item>
-    <title>[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber (8 posts)</title>
+    <title>[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber (3 posts)</title>
     <link>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228</link>
-    <guid>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228#recent-8</guid>
-    <pubDate>Wed, 18 Nov 2026 11:04:02 +0000</pubDate>
-    <description>我想问些你们可能不喜欢听的话： 一个商业应用项目就没有自己商业模式吗，那你启动它的目的是什么？它给CKB带来什么重大协议或商业模式上的突破，它一下就要拿去CKB总市值的1/3000的资金？ 如果你来这里初衷只是为了申请资金，而不是想真正做出自己商业项目；如果社区的共识沦为点赞维系的利益交换和商业互捧，都来做好人。那么劣币驱逐良币只是时间问题，最后整个生态都会为此买单，没有人是赢家。 【CKB解决了链上公地悲剧，依然没解决链下的公地悲剧】 1. Does a commercial project have no business model, and why start it? It has one. A coordinator fee, 0.5% on each side, taken in CKB only when a trade settles. It is not charged today. After the first year of the public hub, that fee is how the operator pays for the server and provide liquidity. Anyone who runs a hub sets their own rate, including 0%. I started it so someone can buy or sell CKB for local money without sending the coins to an exchange. The seller’s CKB...</description>
+    <guid>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228#recent-3</guid>
+    <pubDate>Thu, 19 Nov 2026 16:48:35 +0000</pubDate>
+    <description>(post deleted by author) 解释下，我并非特意针对此项目。 其实我更想强调的是这里： Fai: 如果你来这里初衷只是为了申请资金，而不是想真正做出自己商业项目；如果社区的共识沦为点赞维系的利益交换和商业互捧，都来做好人。那么劣币驱逐良币只是时间问题，最后整个生态都会为此买单，没有人是赢家。 我觉得大家应该共同维护社区，而非为只关心自己切身利益。我也感觉应该迎来更多人来参与讨论，而非利益需求者相互达成。 有必要的话，可以缓一缓，找出一种更有效的助资途径。 Understood, and I completely agree with that principle—the Community Fund should support builders who are genuinely committed to growing the ecosystem, not quick grant-chasing or hollow consensus. Just to share a bit of context on my commitment here: I’ve been actively building on Nervos CKB for close to a year now. Beyond Fiber Studio (which I continue to maintain after completing its grant), I’ve built and open-sourced tools like Fiber CCH Hub,...</description>
   </item>
   <item>
-    <title>Spark Program | CKB-VM Sail Validation Sprint：可复现的 RISC-V 语义差分工具、Lean 4 证明与 Rocq/Coq 兼容性 Spike (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-vm-sail-validation-sprint-risc-v-lean-4-rocq-coq-spike/10562#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 10:53:04 +0000</pubDate>
-    <description>CKB-VM Sail Validation Sprint 项目结项报告 1. 结项评价 / Final Evaluation 结项日期 / Completion Date：2026年11月5日 1.1 评价摘要 / Evaluation Summary CKB-VM Sail Validation Sprint 是一项面向 CKB-VM 维护者的验证工具项目：以 Sail RISC-V 模型为独立参考，对固定版本解释器的指令执行逐步“对答案”，保存首个差异及可重放记录，并探索生产 Rust 代码与规范之间的机器检查证明。项目完成了严格差分工具、ADD 的条件性 Lean 4 证明、Rocq/Coq 兼容性探索，以及附带固定工具和证据的公开发布。 1.2 主要成果 / Key Achievements 交付可逐步定位差异的运行时工具。 最终公开结果覆盖 ADD 13例、ADDI 10例、BEQ 10例，共33个案例、398个提交步，双方结果全部一致；每例可单独重放。对记录轨迹注入6类差异共194次，均被识别并定位。该数字反映比较器对指定变异的检测结果，不是发现了194个 CKB-VM 漏洞。 完成与生产执行路径关联的条件性 ADD 证明。 Lean 4 定理连接生产 Rust 入口与 Sail 生成定义，覆盖 ADD 寄存器效果、x0 写入抑制和 PC 更新；另有从同一32位原始指令编码出发的解码对应定理。两者经过 kernel 检查，不依赖 sorryAx，但仍依赖明确的外部声明、工具链和状态前提。...</description>
-  </item>
-  <item>
-    <title>Spark Program | CKAutomata: Protocol Hardening, User Onboarding and Testnet Beta (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckautomata-protocol-hardening-user-onboarding-and-testnet-beta/11255</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckautomata-protocol-hardening-user-onboarding-and-testnet-beta/11255#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 10:44:37 +0000</pubDate>
-    <description>Spark Program | CKAutomata: Protocol Hardening, User Onboarding and Testnet Beta 1. Project Overview Project name: CKAutomata One-line summary: An eight-week improvement and beta program for CKAutomata covering protocol hardening, simpler user onboarding, and structured user testing for CKB payment automation. Positioning: CKAutomata is an open-source, non-custodial payment-automation application built for the CKB Cell Model. Funding requested: USD 2,000 equivalent in CKB. Duration: Eight weeks, starting after approval. CKAutomata supports three payment-automation services: DAO Harvest: Collect earned Nervos DAO compensation and place the user’s exact original amount into a new DAO...</description>
-  </item>
-  <item>
-    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (2 posts)</title>
-    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
-    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-2</guid>
-    <pubDate>Wed, 18 Nov 2026 10:28:58 +0000</pubDate>
-    <description>Payment 1 $3,458.48/$0.00086 = 4,021,489 CKB https://explorer.nervos.org/transaction/0x83c2d43e2b3b40b77c5393139de386ceb3fdcf79335aba0148022f6e7c23e3e4 This is confirmed. Thank you.</description>
-  </item>
-  <item>
-    <title>Spark Program | SkillPass Care — Transferable Warranty Pilot for Second-Hand Products on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-skillpass-care-transferable-warranty-pilot-for-second-hand-products-on-ckb/11253</link>
-    <guid>https://talk.nervos.org/t/spark-program-skillpass-care-transferable-warranty-pilot-for-second-hand-products-on-ckb/11253#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 03:50:33 +0000</pubDate>
-    <description>Capture1751×850 63.1 KB Applicant: Dang Ba Ty (@Dangbaty2004) GitHub: tydeptrai21042004 Discord: tyforwork Email: dangbaty.work@gmail.com Funding requested: $500 USD, payable in equivalent CKB Estimated duration: 4 weeks Project category: CKB dApp / Product MVP / Early User Validation Target network: CKB Pudge Testnet Project links: SkillPass protocol: GitHub - tydeptrai21042004/ckb-skill · GitHub SkillPass Care application: GitHub - tydeptrai21042004/SkillPass-Care · GitHub SkillPass demo: https://ckb-skill.vercel.app/ SkillPass Care demo: https://skill-pass-care-api.vercel.app/ CKBuilder technical review: SkillPass: portable service rights on CKB with SkillPass Care as a second-hand...</description>
+    <title>[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258</link>
+    <guid>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258#recent-2</guid>
+    <pubDate>Thu, 19 Nov 2026 16:47:54 +0000</pubDate>
+    <description>您好，DAO提案需要发布在 DAOs &amp; Funding &gt; CKB Community Fund DAO 已经将您的帖子转移到正确的位置 WuodOdhis: A watch-only app builds a transaction. It hands it to a small device as a QR code or a file. The device shows the amount and the destination. You approve. The signed transaction goes back to the app, which broadcasts it. The machine that holds the key never talks to the internet. very interesting proposal, glad to see the thought and all the references, want to add that Neuron supports this offline signing workflow! Really enjoyed reading your articles, happy to see this proposal, wishing you the best!</description>
   </item>
   <item>
     <title>Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot (1 posts)</title>
     <link>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161</link>
     <guid>https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 03:41:15 +0000</pubDate>
-    <description>Hello @xingtianchunyan and the Spark Program Committee, Thank you for reviewing the CellGuard × CrowdCell proposal and clarifying the program’s scope. I understand the decision and will continue the CellGuard integration work independently through the CKBuilder process. For a potential future Spark application, I am considering a more product-oriented direction: SkillPass Care, a CKB-based transferable warranty application for second-hand products. The underlying SkillPass protocol has already demonstrated issuance, ownership transfer, and authorization on CKB Testnet. A new proposal would focus exclusively on work that has not yet been completed: integrating real Testnet ownership into...</description>
+    <pubDate>Thu, 19 Nov 2026 16:22:26 +0000</pubDate>
+    <description>@Dangbaty2004 sorry it didn’t go through on Spark, still keen to have CellGuard hooked into the pledge flow, ping me when there’s a PR and I’ll go through it</description>
   </item>
   <item>
-    <title>[NOTICE] Fiber v0.10.1 documentation is live (1 posts)</title>
-    <link>https://talk.nervos.org/t/notice-fiber-v0-10-1-documentation-is-live/11226</link>
-    <guid>https://talk.nervos.org/t/notice-fiber-v0-10-1-documentation-is-live/11226#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 01:58:11 +0000</pubDate>
-    <description>Fiber v0.10.1 documentation is live. If you’re running a node, check the upgrade notice first. You need to stop your node and back up your full data directory before upgrading due to channel compatibility. Backup guide: https://fiber.world/docs/operate/backup Run a node (v0.10.1): https://fiber.world/docs/quick-start/run-a-node/rust For those building apps, all interactive tutorials and starters are updated. Explore the docs: https://fiber.world/docs/</description>
+    <title>[DIS] Vellum: Reputation Extension on did:ckb (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
+    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 16:21:57 +0000</pubDate>
+    <description>Question for anyone thinking about reputation on CKB, since CrowdCell is about to start issuing crowdcell.campaign-funded.v1 claims through Vellum. Right now a funded-campaign badge is easy to fake: create a campaign, back it from your own wallet (or from as many fresh wallets as you like), hit the goal, get the money back on payout, and you’ve got the badge for a few tx fees. Something like “at least one backer who isn’t the creator” doesn’t fix it, since new wallets are free. One idea is for the claim to carry the facts instead of a yes/no, and let readers and apps decide what they’re worth: number of distinct backer wallets, total raised, and how old the backer wallets were when they...</description>
   </item>
   <item>
-    <title>Spark Program | ckb-msig: check and merge CKB multisig signatures from ckb-cli, Neuron and CCC (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-ckb-msig-check-and-merge-ckb-multisig-signatures-from-ckb-cli-neuron-and-ccc/11151</link>
-    <guid>https://talk.nervos.org/t/spark-program-ckb-msig-check-and-merge-ckb-multisig-signatures-from-ckb-cli-neuron-and-ccc/11151#recent-1</guid>
-    <pubDate>Wed, 18 Nov 2026 00:33:43 +0000</pubDate>
-    <description>Hi @xingtianchunyan, Thank you for the clear and detailed feedback, and for taking the time to review ckb-msig. Both points make sense to us. The prototype made signatures easier to check and convert, but it left the real pain where it was: someone still has to collect every signature and forward it. A shared standard would remove the need for a tool in the middle. We’d like to take up the direction you suggested. Before we write anything, we’re studying the existing work, including CoBuild, so that what we propose builds on it rather than competing with it. We’ll come back with a new application for a unified multisig signature format that ckb-cli, Neuron and CCC can all read and add...</description>
+    <title>Spark Program Proposal: Corven cloud-native IDE (3 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807</link>
+    <guid>https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807#recent-3</guid>
+    <pubDate>Thu, 19 Nov 2026 15:17:00 +0000</pubDate>
+    <description>Hi @xingtianchunyan, Could you please urgently address the issue regarding the approved amount, as highlighted in the previous response? The event is scheduled to begin in just a few hours, so your prompt attention and resolution would be greatly appreciated. Thank you. Hi @lestonEth , 已经根据 Thika 活动需要的额度补发了 25,685 CKB（等于提案通过时的 30USD）。 交易哈希： 0xb4802fd6435f42fe2a283642b6254a354390eaa2146ca80bd5e31a044f8c9437 对于你提出的汇率问题，我需要向你申明： Spark 的标准口径不是“每次发放按当日汇率重新折算 CKB”。审批通过后至实际支出期间，CKB 价格波动导致的购买力变化风险由提案申请人/团队自行承担，这是CKB生态相关grants的惯例。 当前周期 Spark 资助仅支持100% 以 CKB 形式发放。在项目审批通过时点以当时参考汇率折算并确定该项目的 CKB 总额，并在对外决议/公告中公示。后续发放以约定的 CKB 数额为基准执行，不随每次发放当日价格重新折算。 预祝 Thika 活动一切顺利。 xingtian On behalf of the Spark...</description>
   </item>
   <item>
-    <title>Spark Program | EasyO: Non-Custodial Pay-to-QR Bridge on CKB (1 posts)</title>
-    <link>https://talk.nervos.org/t/spark-program-easyo-non-custodial-pay-to-qr-bridge-on-ckb/11252</link>
-    <guid>https://talk.nervos.org/t/spark-program-easyo-non-custodial-pay-to-qr-bridge-on-ckb/11252#recent-1</guid>
-    <pubDate>Tue, 17 Nov 2026 23:28:53 +0000</pubDate>
-    <description>Team / Individual Profile Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer Requested: $2,000 USD, paid 100% in CKB Duration: 8 weeks, 4 milestones · License: MIT Contact: Nervos Talk 1. Overview EasyO is a non-custodial crypto-to-fiat QR payment bridge that lets users spend Nervos CKB stablecoins (xUDT assets) directly at everyday physical merchants across 10 emerging markets, including India (UPI), Brazil (PIX), Indonesia (QRIS), Vietnam (VietQR), Thailand (PromptPay), and the Philippines (QR Ph). It enables users to pay through existing merchant QR codes directly from a CKB wallet, while merchants receive settlement in their local fiat currency. No crypto...</description>
+    <title>Community Fund DAO voting in numbers (4 posts)</title>
+    <link>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246</link>
+    <guid>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246#recent-4</guid>
+    <pubDate>Thu, 19 Nov 2026 12:56:08 +0000</pubDate>
+    <description>大概分析下我了解到投票少的原因，可能由主到次（不完全） 1.社区缺失讨论气氛：除了资助和技术贴，其他问题都很少有人回应，这里缺少志同道合及讨论环境，从而不关心社区。 2.投票有些麻烦：存入DAO是投票前提，但存入DAO的人是短期不想动的人，不想因为投票而降低安全而触网。 3.改变不了什么：在1的环境下，感觉自己的一点点票改变不了什么结果（第1条能好转，这里也许会有变化）。 4.CKB价格跌去太多：相对自己总资产来说占比很低，对社区不再关心。 5.我只要我的：自己利益和生态利益没有捆绑，生态发展起来了 对我更好，生态没有起来，我已经拿到我该拿到的了，我很忙。 Has CKB published a series of guides on how to use CKB’s platforms? I think it would be easier if holders had guidance and what the benefits of joining the platform were. I think that will solve this problem as well as future liquidity. longdevbf您好，您可以在这里找到目前DAO的规则 CKB Community Fund DAO Rules and Process CKB Community Fund DAO Source: CKB Community Fund DAO Rules and Process Scope of Governance The CKB...</description>
+  </item>
+  <item>
+    <title>Spark Program | ServiceSeal: Prepaid Utility Passes on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215</link>
+    <guid>https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 12:47:58 +0000</pubDate>
+    <description>Thanks @xingtianchunyan I’ve revised the proposal- every debit now requires the customer’s pass signature alongside the kiosk terminal signature inside the Type Script (so the attendant cannot deduct units when the customer is not present) and Section 4 now covers unrecorded deductions and the drop-off workflow. The kiosk pilot and budget stay the same. Changes are in sections 1, 4, 5, 6, 7 and 9</description>
+  </item>
+  <item>
+    <title>mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松 (1 posts)</title>
+    <link>https://talk.nervos.org/t/mbabel-cloud/11162</link>
+    <guid>https://talk.nervos.org/t/mbabel-cloud/11162#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 11:46:34 +0000</pubDate>
+    <description>Updates Log · Nov 19, 2026 Added caption support for Chinese ↔ Vietnamese and English ↔ Vietnamese. Made Fast (Low Latency) the default segmentation mode for all users. Updated the shared vocabulary for all users, including hotwords, correction rules, and translation terms. Hotwords apply to Chinese–English meetings, while corrections and translation terms cover all three language pairs. Switched to CCC’s native wallet picker, enabled camera access for Khie QR scanning, and moved sign-out to the profile menu. Improved visibility of success, error, and warning prompts across the site. Special thanks to @Hanssen and @zz_tovarishch for their valuable feedback. Here are 50 new redeem codes....</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB script regression fixtures: reproducible tests for review findings (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-script-regression-fixtures-reproducible-tests-for-review-findings/11264</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-script-regression-fixtures-reproducible-tests-for-review-findings/11264#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 10:45:02 +0000</pubDate>
+    <description>Applicant: it44 · GitHub: agentcontrolmap/ckb-script-fixtures (public repo; links will follow in a reply once the forum allows them) · Contact: replies in this thread Funding requested: $600 USD equivalent, paid in USDI · Duration: 4 weeks · License: MIT 1. What this is Open-source test fixtures (Rust, ckb-testtool, runnable with cargo test) that turn review findings about CKB scripts into executable, reproducible checks: a “naive” version that accepts the bad transaction and a “hardened” version that rejects it, so a maintainer sees the issue and the fix in one run. Not a scanner, not an audit, not a new security framework. 2. Existing work (not requested for funding) Escrow review, five...</description>
+  </item>
+  <item>
+    <title>CKB Mixer(混币器)——Tornado Cash on CKb (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-mixer-tornado-cash-on-ckb/11263</link>
+    <guid>https://talk.nervos.org/t/ckb-mixer-tornado-cash-on-ckb/11263#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 09:14:04 +0000</pubDate>
+    <description>过去一段时间用AI做了一个小项目，现在整条链路已经在 CKB 公共测试网上跑通了，发出来给有兴趣的人看。 一句话：用 Groth16 + Poseidon Merkle 树在 CKB 上实现了「存款 → 零知识证明 → 匿名取款」，所有验证逻辑写在真实的 CKB-VM 脚本里，能上链、能取钱；另外做了一个存款意向 + 聚合者的 v2，以及一个浏览器里就能用的网页 demo。 代码：https://github.com/tianlitao/ckb-mixer 线上 demo（仅测试网）：https://ckb-mixer.nervosscan.com/ 为什么这件事在 CKB 上值得单独做一遍 Tornado Cash 在 EVM 上靠合约存储「这张 commitment 已经用过了」，CKB 的 cell 模型没有便宜的链上 map。但反过来，CKB 给了两个在 EVM 上不可能的结构性好处： 链上不需要存 Merkle 树。 池子 cell 里只有 1,640 字节状态：30 个历史根、20 层 frontier、nullifier 集合的根。树由脚本按 frontier 增量维护，存款时约 20 次 Poseidon。 取款交易不需要任何签名。 收款地址和手续费被电路绑进证明，交易只有 1 个输入（池子 cell）、2 个输出。没有中继者也能上链，也没人能把收款人换成自己——这一点在 EVM 上必须靠 relayer 合约配合才成立。 代价也很 CKB：所有池子共用一个 cell，任何存款/取款都得花它。Tornado 的每笔交易独立、可并行；这里是个单点。这正是...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya) (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 05:01:33 +0000</pubDate>
+    <description>Lead and community links FidelCoder – Blockchain Educator &amp; Developer FidelCoder is a distinguished blockchain expert and community leader in Africa, renowned for designing scalable decentralized systems. As an educator, he excels at demystifying complex blockchain concepts, guiding learners through building protocols and decentralized applications (DApps) with clarity and precision. His hands-on approach and deep technical knowledge make him a pivotal force in equipping participants with the skills to innovate on CKB Productathon, amplifying the program’s technical impact. X: gr3ffoduol.eth (@GriffinOduol) / X LinkedIn: https://www.linkedin.com/in/griffins-oduol-a138b11b4/ GitHub:...</description>
+  </item>
+  <item>
+    <title>CellScript - A DSL for Cell-Based Contracts (1 posts)</title>
+    <link>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193</link>
+    <guid>https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 03:22:56 +0000</pubDate>
+    <description>CellScript 0.33: Bounded Runtime Data and Stronger Artifact Checks CellScript 0.33.0 is now released following two alpha releases. My previous update covered 0.31’s work on executable size, argument decoding, and stack usage. The main work in 0.33 moves further into the language: bounded temporary collections, structured data, and checks that connect source-level operations to the generated artifact. The stable release also fixes all four findings reported by an independent security review of the changes from 0.31.0 to 0.33.0-alpha.2. Bounded temporary collections Contracts can now use bounded temporary Vec, OrderedMap, and OrderedSet workspaces. These collections have explicit resource...</description>
+  </item>
+  <item>
+    <title>RFC draft: Lock Proof, proving control of a CKB lock (1 posts)</title>
+    <link>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260</link>
+    <guid>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 01:55:11 +0000</pubDate>
+    <description>We would like feedback on an RFC draft before opening it in nervosnetwork/rfcs. It came up in the review of ckb-devrel/ccc#641. What it does. A site asks a wallet to prove it controls a lock. The wallet signs a transaction that can never be committed: one input at an out point no transaction can create, one output under the lock holding the site’s message. The site rebuilds that transaction, resolves the input itself and runs the lock in CKB-VM. If the lock accepts, the key controls the lock. It is BIP-322 adapted to CKB. Why. A verifier for one signature scheme cannot check a passkey lock, a multisig, an Omnilock in a foreign chain’s mode or a smart account. Running the lock checks all...</description>
+  </item>
+  <item>
+    <title>Spark Program | ShareCut: referral payouts for small shops over Fiber (testnet) (2 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218</link>
+    <guid>https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218#recent-2</guid>
+    <pubDate>Wed, 18 Nov 2026 23:48:14 +0000</pubDate>
+    <description>Hi @xingtian, thanks for the feedback. I’ve revised the proposal: Pilot outcomes: added four pre-registered hypotheses with pass/fail thresholds and a rule for continuing or stopping: payouts happen exactly once promoters still get paid when their browser was offline logging a sale fits a real shop counter promoters actually bring customers (at least 20 referred sales and 6 of 10 promoters with a sale in 14 days) A public web demo anyone can try also goes live in week 2. Budget: removed development time. It now lists only direct costs, $113 in total: the VPS, QR and print materials for the pilot shops, mobile data for participants, and airtime for feedback interviews. Testnet fees are $0...</description>
   </item>
 </channel>
 </rss>

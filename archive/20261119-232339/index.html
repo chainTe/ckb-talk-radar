@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-19 07:23:39 CST - 2026-11-20 07:23:39 CST</span>
+          <span>生成时间 2026-11-20 07:24:00 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">20</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">37</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">24</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最集中的动静来自资助相关讨论：Spark 出现两个新申请，而已批准的 Corven 项目因拨款折算金额引发争议 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>, <a href="#source-s20">S20</a>, <a href="#source-s22">S22</a>]</span>。同时，社区围绕 DAO 提案公平性和投票参与度继续讨论，有人担心多账户操纵投票，也有人分析投票率低的原因 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s23">S23</a>]</span>。另外，Rosen Bridge 集成被追问半年后的进展，Twine 相关讨论则延伸到社区资助应如何避免利益交换 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s12">S12</a>, <a href="#source-s14">S14</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li><strong>Spark 新增两个申请</strong>：CapKey 申请 720 美元、为期 5 周，做面向浏览器 dApp 和 AI agent 的限额子密钥 covenant <span class="citations">[<a href="#source-s01">S01</a>]</span>；CKB Script Bench 则提出用 24 个 CKB 链上脚本任务测试 AI 生成的 lock/type script 能否编译并抵御恶意交易 <span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>Corven 拨款出现汇率折算争议</strong>：申请人催办活动额度后，Spark 方面补发了 25,685 CKB，并说明 Spark 的标准口径不是按每次发放当日汇率重新折算，审批后到实际支出期间的 CKB 价格波动由申请人承担 <span class="citations">[<a href="#source-s20">S20</a>, <a href="#source-s21">S21</a>]</span>。申请人随后表示两次发放收到时分别约值 49 美元和 22.13 美元，与批准金额存在差异，希望了解原因 <span class="citations">[<a href="#source-s22">S22</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>DAO 公平性与投票参与度成为讨论焦点</strong>：有用户担心用多个账户点赞、投票可能推动提案并通过盗取 DAO 资金 <span class="citations">[<a href="#source-s07">S07</a>]</span>；社区成员回应称技术上可能，但需要有足够 CKB 才能赢下投票，且社区大户可能介入阻止明显操纵 <span class="citations">[<a href="#source-s08">S08</a>]</span>。官方方面表示可公开或私信反馈核查，并给出 2026 年前十个月 Nervos DAO 余额从 71.66 亿 CKB 增至 81.24 亿 CKB 的数据 <span class="citations">[<a href="#source-s09">S09</a>]</span>。讨论还延伸到提案金额是否因“不容易刺激神经”而更容易通过，以及 DAO 项目和 Spark 项目的使用率与 ROI 问题 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s11">S11</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>投票率低的原因被集中分析</strong>：有用户列出主要原因，包括社区缺少讨论气氛、投票需先存入 DAO 较麻烦、感觉个人票数改变不了结果、CKB 价格下跌导致关注度下降等 <span class="citations">[<a href="#source-s23">S23</a>]</span>。有人追问是否有 CKB 平台使用指南，认为清晰的指引和参与收益说明有助于解决问题 <span class="citations">[<a href="#source-s24">S24</a>]</span>；也有人建议在新投票开启时发出通知，以触达不常打开论坛的人 <span class="citations">[<a href="#source-s26">S26</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>Rosen Bridge 集成被追问进展，Twine 讨论转向资助伦理</strong>：Rosen Bridge 帖子中，phroi 表示 Rosen 团队审查设计后认为足够，但对 Watchers 和 Guards 读链的部分仍有保留 <span class="citations">[<a href="#source-s05">S05</a>]</span>；社区成员对其拒绝在安全信心不足时上线表示认可 <span class="citations">[<a href="#source-s06">S06</a>]</span>。另一用户则追问这个“巨无霸项目”半年多后的进展，为什么没看到进展汇报 <span class="citations">[<a href="#source-s12">S12</a>]</span>。Twine 帖子中，Fai 解释自己并非针对该项目，而是担心社区共识沦为点赞维系的利益交换和商业互捧，并建议必要时缓一缓、寻找更有效的资助途径 <span class="citations">[<a href="#source-s14">S14</a>]</span>；申请人回应认同这一原则，并说明自己的投入背景 <span class="citations">[<a href="#source-s15">S15</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li><strong>Corven 拨款争议后续</strong>：两次发放按收到时汇率折算都低于批准金额，申请人已公开提出疑问，后续 Spark 方面是否会给出更统一的解释或调整发放口径，值得观察 <span class="citations">[<a href="#source-s21">S21</a>, <a href="#source-s22">S22</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>Rosen Bridge 的进展透明度</strong>：项目被追问半年多无进展汇报，后续是否公开说明当前状态、Watchers 和 Guards 读链问题如何解决，会影响社区对大额资助项目的信任 <span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s12">S12</a>]</span>。</li>
+</ul>
+<ul>
+<li><strong>DAO 投票机制与参与度</strong>：女巫攻击担忧、提案金额门槛、投票通知和使用指南等建议都已出现，后续是否有机制层面的回应或改进，是治理讨论能否落地的关键 <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s23">S23</a>, <a href="#source-s26">S26</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/spark-program-capkey-spend-capped-sub-key-covenants-for-browser-dapps-and-ai-agents/11271/1">Spark Program | CapKey: Spend-Capped Sub-Key Covenants for Browser dApps and AI Agents</a></div><div class="source-meta">teeyml · 2026-11-20 06:35:44 CST</div><div>Project Name: CapKey Applicant: Terry Jn. (TeeYml on GitHub) Funding Requested: $720 (paid in CKB, payout address provided upon approval) Duration: 5 Weeks License: MIT Contact: Nervos Talk direct message Ecosystem Alignment: AI Machine Payments, Browser Self-Custody Sessions...</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/spark-program-ckb-script-bench-how-well-do-ai-models-write-ckb-scripts/11269/1">Spark Program | CKB Script Bench: How Well Do AI Models Write CKB Scripts?</a></div><div class="source-meta">Shobiye_Abdulazeem · 2026-11-20 06:35:38 CST</div><div>1. Project Overview Project name: CKB Script Bench One-sentence summary: An open, re-runnable test set of 24 CKB on-chain script tasks that measures whether AI-written lock and type scripts compile against the current ckb-std and hold up against malicious transactions, and...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268/1">CKB Pulse today: a new look, lessons from real fixes, and CKB inside your tools</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-20 06:26:36 CST</div><div>CKB Pulse started six weeks ago as one page that shows who is building on CKB, live. It has grown into something larger: a place where the work of every CKB builder is seen, credited, and turned into lessons the next builder can use. This post is what it does today. VIDEO:...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/35">Tranfr — Programmable Recovery for CKB</a></div><div class="source-meta">SalmanDev · 2026-11-20 06:04:40 CST</div><div>@Hanssen Fixed, please check GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/153">[DIS] CKB Integration for Rosen Bridge</a></div><div class="source-meta">phroi · 2026-11-20 02:29:09 CST</div><div>Hey @Fai !! Let’s continue here from the DAO thread. DAO提案公平性疑问？ I’m really curious about how this massive project is doing after more than half a year? Short version: the Rosen Team reviewed our design and found it sufficient, except for where Watchers and Guards read chain...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/154">[DIS] CKB Integration for Rosen Bridge</a></div><div class="source-meta">Ksa_1971 · 2026-11-20 04:21:57 CST</div><div>Refusing to launch an integration without confidence in its security is far better than rushing a release that puts users’ funds at risk. Thank you, Phroi, for everything you’ve contributed and continue to contribute. We trust you.</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/dao/11261/1">DAO提案公平性疑问？</a></div><div class="source-meta">hao_zhang · 2026-11-19 11:17:43 CST</div><div>假设，我有50个账户，其中一些账户买了一些金额的ckb，锁定后具备投票资格，那么是否可以发起一个提案，用其中一些账户点赞，再投票，然后盗取DAO资金？，如果50个账户是我的50个朋友呢？或者其他可能性。，那么是不是DAO可以被以这样的方式随意推动提案成功并盗取资金？</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/dao/11261/2">DAO提案公平性疑问？</a></div><div class="source-meta">Yeti · 2026-11-19 15:34:27 CST</div><div>Yeah, it’s possible, but they also have to have enough CKB to win the vote. There’s enough community members here, some of which have very high amounts of CKB who would probably step in an make it hard for any obvious scams or manipulation. There’s also been a few times...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/dao/11261/3">DAO提案公平性疑问？</a></div><div class="source-meta">zz_tovarishch · 2026-11-19 18:15:53 CST</div><div>您好 Hao_zhang, 非常感谢您关于女巫攻击的担忧 对于 Nervos Talk 点赞环节，如果对于任何一次投票结果存在顾虑，欢迎公开或者私信联系我或者委员会成员，我将会针对反馈进行核查 对于Metaforo的投票，正如 @Yeti 所说，因为社区有足够多的成员持有CKB，明显的操纵行为也难以实现。如图所示 image1779×1146 164 KB image1800×1260 174 KB 2026 年前十个月，Nervos DAO 余额从年初的 71.66 亿 CKB 增至 10 月末的 81.24 亿，增加...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/dao/11261/4">DAO提案公平性疑问？</a></div><div class="source-meta">hao_zhang · 2026-11-19 20:50:14 CST</div><div>辛苦了，这么多数据，有时候，又何止这个担忧，唉，ckb目前还是处于恶性循环，人们真的有足够积极性参与dao项目的讨论和投票吗？，大量的dao项目和spark项目是做好了，有统计过使用情况吗？，为ckb带来了多少收益呢，也就是ROI ，从另外一个角度讲，这些数据也可以作为你们反馈给外界。</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/dao/11261/5">DAO提案公平性疑问？</a></div><div class="source-meta">hao_zhang · 2026-11-19 20:52:27 CST</div><div>还有，有没有一种可能，提案的很多人发现 基本上这个金额就好像不容易刺激到人们的神经，提案比较容易通过？</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/dao/11261/6">DAO提案公平性疑问？</a></div><div class="source-meta">Fai · 2026-11-19 23:01:23 CST</div><div>我很想知道像这个巨无霸项目，多半年过去了情况如何？为什么没看到过它的进展汇报，那些为此项目活跃在社区的人，现在怎么都看不到呢 [DIS] CKB Integration for Rosen Bridge CKB Community Fund DAO [DIS] CKB Integration for Rosen Bridge This proposal has been posted for voting. Summary This proposal is submitted to the Community Fund DAO to request...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/12">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">hao_zhang · 2026-11-19 13:54:02 CST</div><div>(post deleted by author)</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/13">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">Fai · 2026-11-19 23:34:17 CST</div><div>解释下，我并非特意针对此项目。 其实我更想强调的是这里： Fai: 如果你来这里初衷只是为了申请资金，而不是想真正做出自己商业项目；如果社区的共识沦为点赞维系的利益交换和商业互捧，都来做好人。那么劣币驱逐良币只是时间问题，最后整个生态都会为此买单，没有人是赢家。 我觉得大家应该共同维护社区，而非为只关心自己切身利益。我也感觉应该迎来更多人来参与讨论，而非利益需求者相互达成。 有必要的话，可以缓一缓，找出一种更有效的助资途径。</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/14">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></div><div class="source-meta">ebubedev · 2026-11-20 00:48:35 CST</div><div>Understood, and I completely agree with that principle—the Community Fund should support builders who are genuinely committed to growing the ecosystem, not quick grant-chasing or hollow consensus. Just to share a bit of context on my commitment here: I’ve been actively...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/2">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a></div><div class="source-meta">zz_tovarishch · 2026-11-19 09:14:30 CST</div><div>您好，DAO提案需要发布在 DAOs &amp; Funding &gt; CKB Community Fund DAO 已经将您的帖子转移到正确的位置</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/3">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a></div><div class="source-meta">matt_ckb · 2026-11-20 00:47:54 CST</div><div>WuodOdhis: A watch-only app builds a transaction. It hands it to a small device as a QR code or a file. The device shows the amount and the destination. You approve. The signed transaction goes back to the app, which broadcasts it. The machine that holds the key never talks to...</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/6">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-20 00:22:26 CST</div><div>@Dangbaty2004 sorry it didn’t go through on Spark, still keen to have CellGuard hooked into the pledge flow, ping me when there’s a PR and I’ll go through it</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/23">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-20 00:21:57 CST</div><div>Question for anyone thinking about reputation on CKB, since CrowdCell is about to start issuing crowdcell.campaign-funded.v1 claims through Vellum. Right now a funded-campaign badge is easy to fake: create a campaign, back it from your own wallet (or from as many fresh wallets...</div></li><li id="source-s20"><div><code>S20</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/21">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-11-19 14:56:11 CST</div><div>Hi @xingtianchunyan, Could you please urgently address the issue regarding the approved amount, as highlighted in the previous response? The event is scheduled to begin in just a few hours, so your prompt attention and resolution would be greatly appreciated. Thank you.</div></li><li id="source-s21"><div><code>S21</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/22">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">xingtianchunyan · 2026-11-19 19:38:44 CST</div><div>Hi @lestonEth , 已经根据 Thika 活动需要的额度补发了 25,685 CKB（等于提案通过时的 30USD）。 交易哈希： 0xb4802fd6435f42fe2a283642b6254a354390eaa2146ca80bd5e31a044f8c9437 对于你提出的汇率问题，我需要向你申明： Spark 的标准口径不是“每次发放按当日汇率重新折算 CKB”。审批通过后至实际支出期间，CKB 价格波动导致的购买力变化风险由提案申请人/团队自行承担，这是CKB生态相关grants的惯例。 当前周期 Spark 资助仅支持100%...</div></li><li id="source-s22"><div><code>S22</code><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/23">Spark Program Proposal: Corven cloud-native IDE</a></div><div class="source-meta">lestonEth · 2026-11-19 23:17:00 CST</div><div>Hello @xingtianchunyan and the Spark Program committee, I’ve received both disbursements so far, but there is a discrepancy I’d like to understand. What I received First disbursement: 55,651 CKB (≈ $49.00 at the time of receipt) Second disbursement: 25,685 CKB (≈ $22.13 at the...</div></li><li id="source-s23"><div><code>S23</code><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246/3">Community Fund DAO voting in numbers</a></div><div class="source-meta">Thinker · 2026-11-19 12:46:13 CST</div><div>大概分析下我了解到投票少的原因，可能由主到次（不完全） 1.社区缺失讨论气氛：除了资助和技术贴，其他问题都很少有人回应，这里缺少志同道合及讨论环境，从而不关心社区。 2.投票有些麻烦：存入DAO是投票前提，但存入DAO的人是短期不想动的人，不想因为投票而降低安全而触网。 3.改变不了什么：在1的环境下，感觉自己的一点点票改变不了什么结果（第1条能好转，这里也许会有变化）。 4.CKB价格跌去太多：相对自己总资产来说占比很低，对社区不再关心。 5.我只要我的：自己利益和生态利益没有捆绑，生态发展起来了...</div></li><li id="source-s24"><div><code>S24</code><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246/4">Community Fund DAO voting in numbers</a></div><div class="source-meta">longdevbf · 2026-11-19 12:57:53 CST</div><div>Has CKB published a series of guides on how to use CKB’s platforms? I think it would be easier if holders had guidance and what the benefits of joining the platform were. I think that will solve this problem as well as future liquidity.</div></li><li id="source-s25"><div><code>S25</code><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246/5">Community Fund DAO voting in numbers</a></div><div class="source-meta">zz_tovarishch · 2026-11-19 18:20:18 CST</div><div>longdevbf您好，您可以在这里找到目前DAO的规则 CKB Community Fund DAO Rules and Process CKB Community Fund DAO Source: CKB Community Fund DAO Rules and Process Scope of Governance The CKB Community Fund DAO is a community fund initiated by the Nervos community and jointly contributed by the...</div></li><li id="source-s26"><div><code>S26</code><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246/6">Community Fund DAO voting in numbers</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-19 20:56:08 CST</div><div>@Ophiuchus, a notice when a new vote opens sounds like a good first step. It would also reach people who never open the forum. @Thinker, thank you, these are the reasons the chain cannot show. The poll above may tell us which of them weigh most. @zz_tovarishch, thank you for...</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>22</strong></li><li><span>生态进展</span><strong>6</strong></li><li><span>其他</span><strong>6</strong></li><li><span>社区互动</span><strong>3</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@zz_tovarishch</span><strong>4</strong></li><li><span>@hao_zhang</span><strong>4</strong></li><li><span>@LusoCryptoLabs</span><strong>3</strong></li><li><span>@phroi</span><strong>2</strong></li><li><span>@Ayoub_Lesfer</span><strong>2</strong></li><li><span>@Fai</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>198</span></li><li>lock<span>116</span></li><li>one<span>92</span></li><li>are<span>74</span></li><li>cell<span>66</span></li><li>can<span>61</span></li><li>every<span>59</span></li><li>transaction<span>55</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dao/11261">DAO提案公平性疑问？</a></h3><span class="count-pill">8 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 02:34:41 CST</span><span>Fai, Yeti, hao_zhang, phroi, zz_tovarishch</span></div><p class="excerpt">假设，我有50个账户，其中一些账户买了一些金额的ckb，锁定后具备投票资格，那么是否可以发起一个提案，用其中一些账户点赞，再投票，然后盗取DAO资金？，如果50个账户是我的50个朋友呢？或者其他可能性。，那么是不是DAO可以被以这样的方式随意推动提案成功并盗取资金？ Yeah, it’s possible, but they also have to have enough CKB to win the vote. There’s enough community members here, some of...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246">Community Fund DAO voting in numbers</a></h3><span class="count-pill">4 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 20:56:08 CST</span><span>LusoCryptoLabs, Thinker, longdevbf, zz_tovarishch</span></div><p class="excerpt">大概分析下我了解到投票少的原因，可能由主到次（不完全） 1.社区缺失讨论气氛：除了资助和技术贴，其他问题都很少有人回应，这里缺少志同道合及讨论环境，从而不关心社区。 2.投票有些麻烦：存入DAO是投票前提，但存入DAO的人是短期不想动的人，不想因为投票而降低安全而触网。 3.改变不了什么：在1的环境下，感觉自己的一点点票改变不了什么结果（第1条能好转，这里也许会有变化）。 4.CKB价格跌去太多：相对自己总资产来说占比很低，对社区不再关心。 5.我只要我的：自己利益和生态利益没有捆绑，生态发展起来了...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 00:48:35 CST</span><span>Fai, ebubedev, hao_zhang</span></div><p class="excerpt">(post deleted by author) 解释下，我并非特意针对此项目。 其实我更想强调的是这里： Fai: 如果你来这里初衷只是为了申请资金，而不是想真正做出自己商业项目；如果社区的共识沦为点赞维系的利益交换和商业互捧，都来做好人。那么劣币驱逐良币只是时间问题，最后整个生态都会为此买单，没有人是赢家。 我觉得大家应该共同维护社区，而非为只关心自己切身利益。我也感觉应该迎来更多人来参与讨论，而非利益需求者相互达成。 有必要的话，可以缓一缓，找出一种更有效的助资途径。</p><div class="tag-row"><span>CKB</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807">Spark Program Proposal: Corven cloud-native IDE</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 23:17:00 CST</span><span>lestonEth, xingtianchunyan</span></div><p class="excerpt">Hi @xingtianchunyan, Could you please urgently address the issue regarding the approved amount, as highlighted in the previous response? The event is scheduled to begin in just a few hours, so your prompt attention and resolution would be greatly...</p><div class="tag-row"><span>CKB</span><span>Grant</span><span>In-Progress</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756">[DIS] CKB Integration for Rosen Bridge</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 04:21:57 CST</span><span>Ksa_1971, phroi</span></div><p class="excerpt">Hey @Fai !! Let’s continue here from the DAO thread. DAO提案公平性疑问？ I’m really curious about how this massive project is doing after more than half a year? Short version: the Rosen Team reviewed our design and found it sufficient, except for where Watchers and...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 00:47:54 CST</span><span>matt_ckb, zz_tovarishch</span></div><p class="excerpt">您好，DAO提案需要发布在 DAOs &amp; Funding &gt; CKB Community Fund DAO 已经将您的帖子转移到正确的位置 WuodOdhis: A watch-only app builds a transaction. It hands it to a small device as a QR code or a file. The device shows the amount and the destination. You approve. The signed...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-sharecut-referral-payouts-for-small-shops-over-fiber-testnet/11218">Spark Program | ShareCut: referral payouts for small shops over Fiber (testnet)</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 07:48:14 CST</span><span>abdul</span></div><p class="excerpt">Hi @xingtian, thanks for the feedback. I’ve revised the proposal: Pilot outcomes: added four pre-registered hypotheses with pass/fail thresholds and a rule for continuing or stopping: payouts happen exactly once promoters still get paid when their browser...</p><div class="tag-row"><span>Pending</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-capkey-spend-capped-sub-key-covenants-for-browser-dapps-and-ai-agents/11271">Spark Program | CapKey: Spend-Capped Sub-Key Covenants for Browser dApps and AI Agents</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 06:35:44 CST</span><span>teeyml</span></div><p class="excerpt">Project Name: CapKey Applicant: Terry Jn. (TeeYml on GitHub) Funding Requested: $720 (paid in CKB, payout address provided upon approval) Duration: 5 Weeks License: MIT Contact: Nervos Talk direct message Ecosystem Alignment: AI Machine Payments, Browser...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-script-bench-how-well-do-ai-models-write-ckb-scripts/11269">Spark Program | CKB Script Bench: How Well Do AI Models Write CKB Scripts?</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 06:35:38 CST</span><span>Shobiye_Abdulazeem</span></div><p class="excerpt">1. Project Overview Project name: CKB Script Bench One-sentence summary: An open, re-runnable test set of 24 CKB on-chain script tasks that measures whether AI-written lock and type scripts compile against the current ckb-std and hold up against malicious...</p><div class="tag-row"><span>CKB</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268">CKB Pulse today: a new look, lessons from real fixes, and CKB inside your tools</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 06:26:36 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">CKB Pulse started six weeks ago as one page that shows who is building on CKB, live. It has grown into something larger: a place where the work of every CKB builder is seen, credited, and turned into lessons the next builder can use. This post is what it...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644">Tranfr — Programmable Recovery for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 06:04:40 CST</span><span>SalmanDev</span></div><p class="excerpt">@Hanssen Fixed, please check GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 00:22:26 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">@Dangbaty2004 sorry it didn’t go through on Spark, still keen to have CellGuard hooked into the pledge flow, ping me when there’s a PR and I’ll go through it</p><div class="tag-row"><span>Rejection</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613">[DIS] Vellum: Reputation Extension on did:ckb</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-20 00:21:57 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Question for anyone thinking about reputation on CKB, since CrowdCell is about to start issuing crowdcell.campaign-funded.v1 claims through Vellum. Right now a funded-campaign badge is easy to fake: create a campaign, back it from your own wallet (or from...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-serviceseal-prepaid-utility-passes-on-ckb/11215">Spark Program | ServiceSeal: Prepaid Utility Passes on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 20:47:58 CST</span><span>hardik</span></div><p class="excerpt">Thanks @xingtianchunyan I’ve revised the proposal- every debit now requires the customer’s pass signature alongside the kiosk terminal signature inside the Type Script (so the attendant cannot deduct units when the customer is not present) and Section 4 now...</p><div class="tag-row"><span>CKB</span><span>Pending</span><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/mbabel-cloud/11162">mBabel Cloud：无需部署，实时生成中英字幕，让双语会议沟通更轻松</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 19:46:34 CST</span><span>JackyLHH</span></div><p class="excerpt">Updates Log · Nov 19, 2026 Added caption support for Chinese ↔ Vietnamese and English ↔ Vietnamese. Made Fast (Low Latency) the default segmentation mode for all users. Updated the shared vocabulary for all users, including hotwords, correction rules, and...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-ckb-script-regression-fixtures-reproducible-tests-for-review-findings/11264">Spark Program | CKB script regression fixtures: reproducible tests for review findings</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 18:45:02 CST</span><span>it44</span></div><p class="excerpt">Applicant: it44 · GitHub: agentcontrolmap/ckb-script-fixtures (public repo; links will follow in a reply once the forum allows them) · Contact: replies in this thread Funding requested: $600 USD equivalent, paid in USDI · Duration: 4 weeks · License: MIT 1....</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-mixer-tornado-cash-on-ckb/11263">CKB Mixer(混币器)——Tornado Cash on CKb</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 17:14:04 CST</span><span>tianlitao</span></div><p class="excerpt">过去一段时间用AI做了一个小项目，现在整条链路已经在 CKB 公共测试网上跑通了，发出来给有兴趣的人看。 一句话：用 Groth16 + Poseidon Merkle 树在 CKB 上实现了「存款 → 零知识证明 → 匿名取款」，所有验证逻辑写在真实的 CKB-VM 脚本里，能上链、能取钱；另外做了一个存款意向 + 聚合者的 v2，以及一个浏览器里就能用的网页 demo。 代码：https://github.com/tianlitao/ckb-mixer 线上 demo（仅测试网）：https://ckb-...</p><div class="tag-row"><span>dapp</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262">[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 13:01:33 CST</span><span>Fidelcoder</span></div><p class="excerpt">Lead and community links FidelCoder – Blockchain Educator &amp; Developer FidelCoder is a distinguished blockchain expert and community leader in Africa, renowned for designing scalable decentralized systems. As an educator, he excels at demystifying complex...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/cellscript-a-dsl-for-cell-based-contracts/10193">CellScript - A DSL for Cell-Based Contracts</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 11:22:56 CST</span><span>ArthurZhang</span></div><p class="excerpt">CellScript 0.33: Bounded Runtime Data and Stronger Artifact Checks CellScript 0.33.0 is now released following two alpha releases. My previous update covered 0.31’s work on executable size, argument decoding, and stack usage. The main work in 0.33 moves...</p><div class="tag-row"><span>CKB-VM</span><span>CellScript</span><span>DSL</span><span>lang-en</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260">RFC draft: Lock Proof, proving control of a CKB lock</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-19 09:55:11 CST</span><span>LusoCryptoLabs</span></div><p class="excerpt">We would like feedback on an RFC draft before opening it in nervosnetwork/rfcs. It came up in the review of ckb-devrel/ccc#641. What it does. A site asks a wallet to prove it controls a lock. The wallet signs a transaction that can never be committed: one...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-20 06:35:44 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-capkey-spend-capped-sub-key-covenants-for-browser-dapps-and-ai-agents/11271/1">Spark Program | CapKey: Spend-Capped Sub-Key Covenants for Browser dApps and AI Agents</a> · @teeyml</strong><p>Project Name: CapKey Applicant: Terry Jn. (TeeYml on GitHub) Funding Requested: $720 (paid in CKB, payout address provided upon approval) Duration: 5 Weeks License: MIT Contact: Nervos Talk direct message Ecosystem...</p></article>
+<article class="timeline-row"><time>2026-11-20 06:35:38 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-ckb-script-bench-how-well-do-ai-models-write-ckb-scripts/11269/1">Spark Program | CKB Script Bench: How Well Do AI Models Write CKB Scripts?</a> · @Shobiye_Abdulazeem</strong><p>1. Project Overview Project name: CKB Script Bench One-sentence summary: An open, re-runnable test set of 24 CKB on-chain script tasks that measures whether AI-written lock and type scripts compile against the current...</p></article>
+<article class="timeline-row"><time>2026-11-20 06:26:36 CST</time><strong><a href="https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268/1">CKB Pulse today: a new look, lessons from real fixes, and CKB inside your tools</a> · @LusoCryptoLabs</strong><p>CKB Pulse started six weeks ago as one page that shows who is building on CKB, live. It has grown into something larger: a place where the work of every CKB builder is seen, credited, and turned into lessons the next...</p></article>
+<article class="timeline-row"><time>2026-11-20 06:04:40 CST</time><strong><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/35">Tranfr — Programmable Recovery for CKB</a> · @SalmanDev</strong><p>@Hanssen Fixed, please check GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub</p></article>
+<article class="timeline-row"><time>2026-11-20 04:21:57 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/154">[DIS] CKB Integration for Rosen Bridge</a> · @Ksa_1971</strong><p>Refusing to launch an integration without confidence in its security is far better than rushing a release that puts users’ funds at risk. Thank you, Phroi, for everything you’ve contributed and continue to contribute....</p></article>
+<article class="timeline-row"><time>2026-11-20 02:34:41 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/8">DAO提案公平性疑问？</a> · @phroi</strong><p>Fai: I’m really curious about how this massive project is doing after more than half a year? Hey @Fai, I answered your comment in the Rosen integration thread, feel free to follow up over there!! TLDR: as reported in...</p></article>
+<article class="timeline-row"><time>2026-11-20 02:29:09 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-integration-for-rosen-bridge/9756/153">[DIS] CKB Integration for Rosen Bridge</a> · @phroi</strong><p>Hey @Fai !! Let’s continue here from the DAO thread. DAO提案公平性疑问？ I’m really curious about how this massive project is doing after more than half a year? Short version: the Rosen Team reviewed our design and found it...</p></article>
+<article class="timeline-row"><time>2026-11-20 00:48:35 CST</time><strong><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/14">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a> · @ebubedev</strong><p>Understood, and I completely agree with that principle—the Community Fund should support builders who are genuinely committed to growing the ecosystem, not quick grant-chasing or hollow consensus. Just to share a bit...</p></article>
+<article class="timeline-row"><time>2026-11-20 00:47:54 CST</time><strong><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/3">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a> · @matt_ckb</strong><p>WuodOdhis: A watch-only app builds a transaction. It hands it to a small device as a QR code or a file. The device shows the amount and the destination. You approve. The signed transaction goes back to the app, which...</p></article>
+<article class="timeline-row"><time>2026-11-20 00:22:26 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellguard-x-crowdcell-real-transaction-policy-integration-pilot/11161/6">Spark Program | CellGuard × CrowdCell — Real Transaction Policy Integration Pilot</a> · @Ayoub_Lesfer</strong><p>@Dangbaty2004 sorry it didn’t go through on Spark, still keen to have CellGuard hooked into the pledge flow, ping me when there’s a PR and I’ll go through it</p></article>
+<article class="timeline-row"><time>2026-11-20 00:21:57 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/23">[DIS] Vellum: Reputation Extension on did:ckb</a> · @Ayoub_Lesfer</strong><p>Question for anyone thinking about reputation on CKB, since CrowdCell is about to start issuing crowdcell.campaign-funded.v1 claims through Vellum. Right now a funded-campaign badge is easy to fake: create a campaign,...</p></article>
+<article class="timeline-row"><time>2026-11-20 00:13:33 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/7">DAO提案公平性疑问？</a> · @zz_tovarishch</strong><p>Hi Fai Fai: 只看到投出的钱，而DAO项目后续有人在跟踪吗？ 按照目前Community Fund DAO的规则，资助类提案如果有申请initial fund，那么在投票通过后，会由委员会进行打款。而后续里程碑支付则是按照项目提交Milestone 报告，依照以下规则，由社区进行审阅、提出问题。 CKB Community Fund DAO Rules and Process...</p></article>
+<article class="timeline-row"><time>2026-11-19 23:34:17 CST</time><strong><a href="https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228/13">[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber</a> · @Fai</strong><p>解释下，我并非特意针对此项目。 其实我更想强调的是这里： Fai: 如果你来这里初衷只是为了申请资金，而不是想真正做出自己商业项目；如果社区的共识沦为点赞维系的利益交换和商业互捧，都来做好人。那么劣币驱逐良币只是时间问题，最后整个生态都会为此买单，没有人是赢家。 我觉得大家应该共同维护社区，而非为只关心自己切身利益。我也感觉应该迎来更多人来参与讨论，而非利益需求者相互达成。 有必要的话，可以缓一缓，找出一种更有效的助资途径。</p></article>
+<article class="timeline-row"><time>2026-11-19 23:17:00 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-proposal-corven-cloud-native-ide/10807/23">Spark Program Proposal: Corven cloud-native IDE</a> · @lestonEth</strong><p>Hello @xingtianchunyan and the Spark Program committee, I’ve received both disbursements so far, but there is a discrepancy I’d like to understand. What I received First disbursement: 55,651 CKB (≈ $49.00 at the time...</p></article>
+<article class="timeline-row"><time>2026-11-19 23:01:23 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/6">DAO提案公平性疑问？</a> · @Fai</strong><p>我很想知道像这个巨无霸项目，多半年过去了情况如何？为什么没看到过它的进展汇报，那些为此项目活跃在社区的人，现在怎么都看不到呢 [DIS] CKB Integration for Rosen Bridge CKB Community Fund DAO [DIS] CKB Integration for Rosen Bridge This proposal has been posted for voting. Summary...</p></article>
+<article class="timeline-row"><time>2026-11-19 20:56:08 CST</time><strong><a href="https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246/6">Community Fund DAO voting in numbers</a> · @LusoCryptoLabs</strong><p>@Ophiuchus, a notice when a new vote opens sounds like a good first step. It would also reach people who never open the forum. @Thinker, thank you, these are the reasons the chain cannot show. The poll above may tell...</p></article>
+<article class="timeline-row"><time>2026-11-19 20:52:27 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/5">DAO提案公平性疑问？</a> · @hao_zhang</strong><p>还有，有没有一种可能，提案的很多人发现 基本上这个金额就好像不容易刺激到人们的神经，提案比较容易通过？</p></article>
+<article class="timeline-row"><time>2026-11-19 20:50:14 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/4">DAO提案公平性疑问？</a> · @hao_zhang</strong><p>辛苦了，这么多数据，有时候，又何止这个担忧，唉，ckb目前还是处于恶性循环，人们真的有足够积极性参与dao项目的讨论和投票吗？，大量的dao项目和spark项目是做好了，有统计过使用情况吗？，为ckb带来了多少收益呢，也就是ROI ，从另外一个角度讲，这些数据也可以作为你们反馈给外界。</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
