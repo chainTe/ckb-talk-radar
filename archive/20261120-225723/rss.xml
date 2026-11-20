@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Fri, 20 Nov 2026 21:05:46 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-21</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-20:daily-brief</guid>
+    <pubDate>Fri, 20 Nov 2026 22:57:34 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛的一条主线是 DAO 提案公平性争论继续，围绕 Rosen Bridge 的资助效果和后续问责展开 [S03, S04, S05, S06]。同时有多项开发、隐私、签名相关提案更新：Sigsheet 发布首个规范草案征求意见 [S01]，Unlinked for CKB 申请 1,000 美元做 Tor 路由 RPC 与浏览器隐私扩展 [S02]，QuotaCell 称已在公共 Pudge 上运行 [S07]。Twine 的 P2P 运营与合规问题 [S16, S17, S18, S19, S20, S21]、CKB Pulse 能否展示使用数据也成为讨论点 [S22, S23, S24, S25]。 ## 重点话题 DAO 提案公平性：Fai 以 Rosen Bridge 为例称桥建好后没有产生有益事情，只有 DAO 资金划给开发者，并追问投赞成票者责任 [S03]；asondev 称太多 CKB DAO 资助项目建成后被悄悄放弃，还有团队把同一项目包装成新提案反复要钱 [S04]；matt_ckb 提到内部网络和老成员支持的现象 [S05]，并回应不应把站外嘲讽的负面情绪带进论坛 [S06]。 签名标准化：Sigsheet 首个草案希望让签名者用 ckb-cli、Neuron 或 CCC 应用签署同一笔 CKB 多签交易，并在实现前收集反馈 [S01]；KeyMe 讨论中强调 PSCT 是开放容器而非钱包专用格式，v1 聚焦硬件和 PSCT，v2 再探索与 Neuron 的路径 [S28, S29]。 Twine：团队提出面向真正需要...</description>
+  </item>
+  <item>
+    <title>Sigsheet: one file for signing CKB multisig transactions across ckb-cli, Neuron and CCC apps (first spec draft, feedback wanted) (1 posts)</title>
+    <link>https://talk.nervos.org/t/sigsheet-one-file-for-signing-ckb-multisig-transactions-across-ckb-cli-neuron-and-ccc-apps-first-spec-draft-feedback-wanted/11298</link>
+    <guid>https://talk.nervos.org/t/sigsheet-one-file-for-signing-ckb-multisig-transactions-across-ckb-cli-neuron-and-ccc-apps-first-spec-draft-feedback-wanted/11298#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 21:05:46 +0000</pubDate>
+    <description>Hi everyone, We’ve published the first draft of Sigsheet, an open file format for signing a CKB multisig transaction. Each signer uses the wallet they already have: ckb-cli, Neuron, or an app built on CCC. We’d like your feedback before we write the implementations. The problem A CKB multisig transaction is usually signed by several people, often with different tools. Today two things get in the way. Partial signatures don’t travel between tools. ckb-cli, Neuron, CCC and ckb-sdk each hold a partly signed multisig transaction in a different way. The incompatibility between ckb-cli’s tx file and Neuron was reported in 2024 (ckb-cli#584, neuron#3048). In our tests with ckb-cli 2.0.0, Neuron...</description>
+  </item>
+  <item>
+    <title>Unlinked for CKB: Tor-Routed RPC and Browser Privacy Extension (1 posts)</title>
+    <link>https://talk.nervos.org/t/unlinked-for-ckb-tor-routed-rpc-and-browser-privacy-extension/11297</link>
+    <guid>https://talk.nervos.org/t/unlinked-for-ckb-tor-routed-rpc-and-browser-privacy-extension/11297#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 18:53:24 +0000</pubDate>
+    <description>Funding requested: $1,000 Project duration: 6 weeks Category: Developer Tools / Privacy Target ecosystem: Nervos CKB License: Open source Applicant: Owais (GitHub: owaisdotcom) · Full Stack Software Engineer 1. Project Overview Unlinked for CKB is an open-source browser extension prototype designed to improve privacy when interacting with Nervos CKB decentralized applications. It adapts the anon-rpc architecture and browser-based Tor client (tor-js, based on Arti compiled to WebAssembly) to the CKB ecosystem. The goal is to let users route supported CKB RPC requests through Tor directly from their browser, without requiring them to install or operate a separate native Tor daemon. The...</description>
+  </item>
+  <item>
+    <title>DAO提案公平性疑问？ (4 posts)</title>
+    <link>https://talk.nervos.org/t/dao/11261</link>
+    <guid>https://talk.nervos.org/t/dao/11261#recent-4</guid>
+    <pubDate>Fri, 20 Nov 2026 18:51:36 +0000</pubDate>
+    <description>Rosen项目是社区DAO很好的一次教训，当时不少社区成员都猜到了结局，最终却还是没能拦住，它也伤害了社区的元气： [DIS] CKB Integration for Rosen Bridge 随着这个桥的完成，当我们发现，桥建好了，什么都没有发生，没有什么有益的事情在ckb上面因为rosen bridge这个桥的建立而产生，唯一真实发生的就是，ckb的dao资金真实划拨给了那几位开发者，那么投赞成票里面哪一位应该对此负责？ [DIS] CKB Integration for Rosen Bridge 我感受到一种害怕，多数立场者，利益是一致的，他们的投票可以很容易的决定投票的走向，比如对于这个提案，我恶意的猜测，国外友人他们都是认识的，并且熟悉的，他们不需要对于这个提案的失败负责，毕竟大家是一起投票的 [DIS] CKB Integration for Rosen Bridge 如果这样的提案能够通过，我觉得我对ckb不会再抱有任何期待，我实在想不通连接了两个完全没有人的社区的一个桥梁，这个桥梁的建设能够值这么多ckb，“这真是一笔好生意”，也许应该建造，但绝对不是现在，如果通过后，我会抛售我持有的所有ckb，并且退出所有关于ckb的相关频道。 它曾是当时争议最大的DAO提案之一。尽管遭遇了大量社区成员的明确反对，但它仍靠着熟人圈子和部分元老的站台强行过关。结果呢？一些人失望而走，项目最终烂尾，DAO也白白损失了宝贵的国库资金，这是一个三败俱伤的教训。 不希望看到这种类似熟人互助/利益交换的剧本在现在的DAO项目中重演，你们觉得呢？ @phroi @matt_ckb...</description>
+  </item>
+  <item>
+    <title>QuotaCell: Let your team spend without handing over the treasury (1 posts)</title>
+    <link>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002</link>
+    <guid>https://talk.nervos.org/t/quotacell-let-your-team-spend-without-handing-over-the-treasury/11002#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 17:12:51 +0000</pubDate>
+    <description>QuotaCell update: Off localhost and running on public Pudge In my November 6 update, QuotaCell could finally complete a spending and recovery cycle through a browser. But everything was still running on a local CKB chain with disposable signers. I said real wallets and public Pudge testing were next. Well, we’ve made that jump. QuotaCell is now live as a public Pudge testnet beta. Website: https://quotacell.netlify.app App: QuotaCell — Shared spending, owner control GitHub: GitHub - Ticoworld/QuotaCell: Experimental native CKB policy for shared delegated spending, with verifier and isolated-node evidence. · GitHub 01_hero_live_desktop1920×1200 303 KB Getting here wasn’t as simple as...</description>
+  </item>
+  <item>
+    <title>RFC draft: Lock Proof, proving control of a CKB lock (4 posts)</title>
+    <link>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260</link>
+    <guid>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260#recent-4</guid>
+    <pubDate>Fri, 20 Nov 2026 16:11:53 +0000</pubDate>
+    <description>hi team, Awesome work! Will you consider providing toolings for rust backend? Thank you. Not yet: the reference code is TypeScript, and the only Rust is ward-vm, which runs a proof’s lock and is not published. We would be glad to help a Rust version: the draft describes the proof, and the signed proofs in the repo are JSON files a port can be checked against. What are you building? That tells us which part a Rust version should cover first. LusoCryptoLabs: What are you building? That tells us which part a Rust version should cover first. It’s just a Rust backend im building so it will be beneficial to have an equivalent of the “npm ckb-ward” as a Rust crate, to handle the backend side of...</description>
+  </item>
+  <item>
+    <title>How can we change username? (3 posts)</title>
+    <link>https://talk.nervos.org/t/how-can-we-change-username/11276</link>
+    <guid>https://talk.nervos.org/t/how-can-we-change-username/11276#recent-3</guid>
+    <pubDate>Fri, 20 Nov 2026 15:26:22 +0000</pubDate>
+    <description>Hi everyone, First post! How can we change username here? 请点击您右上角的头像，选择profile，然后选择Preference，即可修改您的username等信息 image1984×1062 200 KB Best, hello @zz_tovarishch , Thank you but my profile doesn’t seems to allow for that. No pen by the username jaja weird. Screenshot 2026-11-20 at 10.23.27 PM1490×970 94.8 KB</description>
+  </item>
+  <item>
+    <title>Spark Program | MoniMkt: CKB Lending Validation Toolkit and Product Field Test (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-monimkt-ckb-lending-validation-toolkit-and-product-field-test/11277</link>
+    <guid>https://talk.nervos.org/t/spark-program-monimkt-ckb-lending-validation-toolkit-and-product-field-test/11277#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 14:33:52 +0000</pubDate>
+    <description>1. Project Overview Project name: MoniMkt One-line summary: A reusable CKB lending validation toolkit, field-tested with real users against the MoniMkt testnet product. Positioning: The primary deliverable is a standalone, reusable validation toolkit for cell-based lending markets on CKB. MoniMkt is the first reference fixture and field test, not the product being funded. This directly follows the committee’s suggestion to focus on a testing suite or validation tool without broader market operations. MoniMkt is the CKB equivalent of what Compound built for Ethereum: a pooled lending market where users supply, borrow, repay, and withdraw against collateral. The difference is that MoniMkt...</description>
+  </item>
+  <item>
+    <title>[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber (7 posts)</title>
+    <link>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228</link>
+    <guid>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228#recent-7</guid>
+    <pubDate>Fri, 20 Nov 2026 14:24:28 +0000</pubDate>
+    <description>请告诉我你对他运营，或者如何让大量用户使用，有什么想法和计划，不然总不能构建完成之后就放着吧 Our operational and user-growth plan focuses on removing Fiber onboarding friction and targeting communities that actively need P2P ramps: 1. Targeting Markets Where P2P Is a Necessity Instead of competing with centralized exchanges where they are already convenient, our primary rollout targets regions where CEXs are restricted, banking rails are fragmented, or strict KYC blocks everyday users from buying CKB. In these markets, non-custodial P2P via mobile money, local bank transfers, and cash solves an immediate, real-world problem. 2. Removing Onboarding Friction (LSP + Mobile Wallets) The biggest barrier to using Fiber today is channel...</description>
+  </item>
+  <item>
+    <title>CKB Pulse today: a new look, lessons from real fixes, and CKB inside your tools (4 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268</link>
+    <guid>https://talk.nervos.org/t/ckb-pulse-today-a-new-look-lessons-from-real-fixes-and-ckb-inside-your-tools/11268#recent-4</guid>
+    <pubDate>Fri, 20 Nov 2026 12:46:37 +0000</pubDate>
+    <description>能够统计，构建好的项目的使用情况吗？，用户画像？ 目前不能。Pulse 展示的是谁在建设，而不是谁在使用，链上使用数据不在其中。你最想看到哪些项目的使用情况？ 所有dao和spark已申请的使用情况 Could we add a feature that compares Nervos activities vs other blockchains on Github?</description>
+  </item>
+  <item>
+    <title>Spark Program | CKB Escrow Security Test Kit (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-escrow-security-test-kit/11150</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-escrow-security-test-kit/11150#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 10:20:11 +0000</pubDate>
+    <description>Hi @xingtianchunyan, How the kit achieves generality. Three layers; only the middle one is per project. Generic mutation engine. Starts from any transaction the target script accepts and changes Cell Model fields every script sees: output capacity, lock args or type; extra inputs or outputs; cell deps and dep groups; header deps; since (absolute or relative, and its metric); hash_type; witness bytes; occupied capacity; fee. Nothing depends on the source language or on escrow logic. Small target descriptor. A TOML/JSON file declaring where the semantics live: which lock args hold participants, refund recipient and deadline; the cell-data layout; legal transitions; and invariants such as...</description>
+  </item>
+  <item>
+    <title>[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258</link>
+    <guid>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258#recent-3</guid>
+    <pubDate>Fri, 20 Nov 2026 08:09:10 +0000</pubDate>
+    <description>Pretty cool. Glad to see a new approach to open transaction signing and standardization. Thanks for the kind words, and for reading the Reflections series. You’re right that Neuron supports offline signing, including offline multisig; it’s an important precedent. v1 stays focused on the hardware and PSCT; v2 will explore potential pathways with Neuron. Appreciate the support. Thanks, glad it resonates. The standardization is the part I care about most: PSCT is deliberately an open container, not a wallet-specific format, so independent tools can build, inspect and sign the same transaction. Appreciate the kind words.</description>
+  </item>
+  <item>
+    <title>Spark Program | Lifeboat: see what an address owns on CKB, and get it out when the app is gone (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-lifeboat-see-what-an-address-owns-on-ckb-and-get-it-out-when-the-app-is-gone/11239</link>
+    <guid>https://talk.nervos.org/t/spark-program-lifeboat-see-what-an-address-owns-on-ckb-and-get-it-out-when-the-app-is-gone/11239#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 06:40:02 +0000</pubDate>
+    <description>A second question I expect, about safety: should a third-party tool be building exit transactions for other people’s assets at all? For a product that is gone, there is nobody else left to do it. The original team has stopped, so the real choice is between a public, reviewable tool and each holder piecing together raw transactions alone. Lifeboat is built to keep that risk small: It never holds keys or funds. The holder signs in their own wallet. Every transaction is shown in full before signing, and each output is checked against the locks the connected wallet controls, so anything going to an address that is not theirs is flagged. In this grant, signing happens on testnet only. Mainnet...</description>
+  </item>
+  <item>
+    <title>[DIS] Cellula on Fiber: a wallet, a checkout and an AI agent on a public mainnet LSP (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089</link>
+    <guid>https://talk.nervos.org/t/dis-cellula-on-fiber-a-wallet-a-checkout-and-an-ai-agent-on-a-public-mainnet-lsp/11089#recent-3</guid>
+    <pubDate>Fri, 20 Nov 2026 02:37:23 +0000</pubDate>
+    <description>Servers ordered on 20 November: two KVM 8 machines, paid for 24 months up front, to 20 November 2028. They cost US$1,247.52 (US$623.76 each) plus 23% VAT, US$1,534.44 in total. Setup starts now. Roadmap and status: https://roadmap.cellula.id A step is ticked there only when a script can check it. The others are marked as declared by us. 11 月 20 日已订购服务器：两台 KVM 8，预付 24 个月，至 2028 年 11 月 20 日。费用 1,247.52 美元（每台 623.76 美元），另加 23% 增值税，合计 1,534.44 美元。部署现在开始。 路线图和状态：https://roadmap.cellula.id 只有脚本能够核实的步骤才会打勾，其余步骤标为“由我们声明”。 你是telmo吗？ LusoCryptoLabs 是团队共用的账号。是的，我是使用这个账号在论坛发帖的人之一。</description>
+  </item>
+  <item>
+    <title>C-KZG-4844 on CKB-VM &amp; Blob tree (1 posts)</title>
+    <link>https://talk.nervos.org/t/c-kzg-4844-on-ckb-vm-blob-tree/11273</link>
+    <guid>https://talk.nervos.org/t/c-kzg-4844-on-ckb-vm-blob-tree/11273#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 00:55:32 +0000</pubDate>
+    <description>Port c-kzg-4844 to CKB-VM; see EIP-4844 for more details. We also introduce a blob tree built on c-kzg-4844. We already have SMT, but SMT proofs are quite large, especially when proving multiple elements at once. So we propose a new solution: the blob tree. At its core, it is a two-level path tree built on c-kzg-4844 with Shplonk. It commits to as many as 16,777,216 (4096×4096) elements in a tree of just two levels. Whether you query one element or many, the proof reduces to a single KZG verification call. github.com GitHub - XuJiandong/c-kzg-4844: A minimal implementation of the Polynomial... port-riscv A minimal implementation of the Polynomial Commitments API for EIP-4844 and EIP-7594,...</description>
+  </item>
+  <item>
+    <title>Tranfr — Programmable Recovery for CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644</link>
+    <guid>https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644#recent-1</guid>
+    <pubDate>Fri, 20 Nov 2026 00:15:10 +0000</pubDate>
+    <description>Hi @SalmanDev！我检查了目前的 Tranfr 网页 Demo，看起来目前的操作逻辑依然要求用户为生成的地址注资？另外，我请 AI 独立审核发现了一些阻碍目前流程的问题，也请检查。 salmansarwarr/Tranfr #1 #2 #3 #4 #5 #6</description>
+  </item>
+  <item>
+    <title>[DIS] Vellum: Reputation Extension on did:ckb (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
+    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-1</guid>
+    <pubDate>Thu, 19 Nov 2026 23:45:06 +0000</pubDate>
+    <description>Good point @Ayoub_Lesfer The current v1 claim only proves that a campaign reached its goal and finalized. It does not award reputation points and total pledged is already included. Wallet count and age can still be gamed but we can add distinct backer count, creator-funded amount and funding concentration in v2 so consumers have better context.</description>
+  </item>
+</channel>
+</rss>
