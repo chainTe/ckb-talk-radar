@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Sat, 21 Nov 2026 19:15:23 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-22</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-21:daily-brief</guid>
+    <pubDate>Sat, 21 Nov 2026 22:00:21 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛最直接的进展是 Vellum 与 Rivet 在帖中对接 Testnet 集成意向 [S01, S02]，同时 Rivet 宣布第二个 grant milestone 的 CKB Testnet 实现与验收测试完成 [S05]。治理方面，DAO 提案公平性讨论继续围绕某桥的社区基金拨款、投票结果和是否启动展开 [S10, S12, S14, S15]。技术讨论中，Lock Proof RFC 澄清“支持所有 lock”的实现思路并补充 Rust crate [S07, S08, S09]，KeyMe 则收到关于 PSCT v0 多签交易和自定义脚本验证的提问 [S06]。其他更新包括 FiberNuts 初始资金已确认到账 [S16, S17]，Productathon 帖收到支持性回复 [S04]，以及用户名修改请求由 Mod 处理完成 [S18, S19, S20]。 ## 重点话题 **Vellum × Rivet 集成意向**：Jedi_dtechmaker 提出将 Vellum 接入 Rivet，让开发者绑定 did:ckb 并在 Rivet passport 旁展示已验证声明，询问 SDK/API 是否支持及是否可做小规模 Testnet 集成 [S01]；truthixify 回复同意并约 Telegram 私聊细节 [S02]。同帖中 Ayoub_Lesfer 表示 v1 只说明活动达标并完成总额，愿意按现状开启并把判断留给读者，其索引器已从收据历史重建支持者 [S03]。 **Rivet M2 交付完成**：Rivet...</description>
+  </item>
+  <item>
+    <title>[DIS] Vellum: Reputation Extension on did:ckb (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613</link>
+    <guid>https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613#recent-3</guid>
+    <pubDate>Sat, 21 Nov 2026 19:15:23 +0000</pubDate>
+    <description>Hi @truthixify , I’m thinking of integrating Vellum into Rivet. Developers could link their did:ckb and display their verified claims alongside their Rivet passport. Does your current SDK/API support this, and would you be open to a small Testnet integration? Yes! Let’s do this. Send me a DM on telegram so we can discuss the details. Makes sense, thanks. Since v1 only says the campaign hit its goal and finalized, with the total, I’m fine turning it on as is and leaving the judgement to whoever reads the claim. Our indexer already rebuilds backers from the receipt history, so distinct backer count and how much came from the creator’s own wallet would be easy for us to fill in once v2 is...</description>
+  </item>
+  <item>
+    <title>[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya) (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262#recent-1</guid>
+    <pubDate>Sat, 21 Nov 2026 17:35:54 +0000</pubDate>
+    <description>LFG I totally love every bit of this</description>
+  </item>
+  <item>
+    <title>[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739</link>
+    <guid>https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739#recent-1</guid>
+    <pubDate>Sat, 21 Nov 2026 16:17:27 +0000</pubDate>
+    <description>Rivet Milestone 2: CLI Restore Tooling and Hardening Delivery update · November 21, 2026 · CKB Testnet Implementation and project acceptance testing for Rivet’s second grant milestone are complete. Milestone 2 delivers a published cross-platform CLI, independent Exact Restore, Attribution Restore with signed commit mappings, separate mapping commitments on CKB Testnet, stronger backup commitments, and improvements to transaction recovery, backup-job coordination, and Auto Sync reliability. The current published preview is cli-v0.1.0-rc.4. It includes the unchanged-backup waiting fix and works with the deployed server’s duplicate-snapshot protection. The custom-domain configuration is also...</description>
+  </item>
+  <item>
+    <title>[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258</link>
+    <guid>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258#recent-1</guid>
+    <pubDate>Sat, 21 Nov 2026 14:30:18 +0000</pubDate>
+    <description>Very promising initiative, just two questions with PSCT v0, one, combine() only merges signatures for an identical transaction. How would we support actual multi-party transaction construction? two,can we have an extensible way to verify custom script semantics and signing policies, rather than hard-coding everything into a registry in the future?</description>
+  </item>
+  <item>
+    <title>RFC draft: Lock Proof, proving control of a CKB lock (3 posts)</title>
+    <link>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260</link>
+    <guid>https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260#recent-3</guid>
+    <pubDate>Sat, 21 Nov 2026 14:04:26 +0000</pubDate>
+    <description>LusoCryptoLabs: Which locks does your backend need to accept? of course this is wallet binding we’re talking about so ideally all locks getting supported is very beneficial and that’s why I asked. Unless it can be used for something else i’m not aware yet? All locks is what it is built for. The verifier runs the lock itself in CKB-VM, so one code path covers every lock that signs the transaction hash; the only lock-specific check refuses Omnilock in administrator mode. A port has no lock to start from, and it would be checked against the 17 signed proofs in tests/vectors (section 13 of the spec says how each was signed). Not covered: relative or not-yet-matured time conditions, locks...</description>
+  </item>
+  <item>
+    <title>DAO提案公平性疑问？ (11 posts)</title>
+    <link>https://talk.nervos.org/t/dao/11261</link>
+    <guid>https://talk.nervos.org/t/dao/11261#recent-11</guid>
+    <pubDate>Sat, 21 Nov 2026 10:21:10 +0000</pubDate>
+    <description>Fai: And the result? Some people left in disappointment, the project ultimately fell apart, and the DAO wasted precious treasury funds — a lesson that left everyone worse off. Hey @Fai, the integration is on hold, not abandoned: I covered the details in the Rosen thread. The DAO paid only the first milestone: $15k for the technical assessment and development plan, public in the tracker. The other $50k comes only with the testbed and mainnet releases: no release, no payment. The work since then caught a bridge risk before any CKB user funds were exposed. About that risk: each Guard (the operators who jointly sign bridge payouts) trusts one data source for deposits, by default a public RPC....</description>
+  </item>
+  <item>
+    <title>[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051</link>
+    <guid>https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051#recent-2</guid>
+    <pubDate>Sat, 21 Nov 2026 09:49:00 +0000</pubDate>
+    <description>https://explorer.nervos.org/transaction/0x64b4ddd95cad37fea62f7cd23d70ffda007fba8ae06a54d3df5a3babc0050ce7 Initial funding $1,500/$0.0009 = 1,666,667 CKB Thank you, payment received. Next, I would give an update regarding M1 progress.</description>
+  </item>
+  <item>
+    <title>How can we change username? (3 posts)</title>
+    <link>https://talk.nervos.org/t/how-can-we-change-username/11276</link>
+    <guid>https://talk.nervos.org/t/how-can-we-change-username/11276#recent-3</guid>
+    <pubDate>Sat, 21 Nov 2026 05:42:23 +0000</pubDate>
+    <description>我查询了一下Nervos Talk底层的Discourse文档 Discourse – 25 Jun 18 Understanding Discourse Trust Levels The user trust system is a fundamental cornerstone of Discourse. Trust levels are a way of… 似乎修改用户名的权限确实不在各个Level的授权中 所以，如果您想修改您的用户名，或者可以告诉我（作为Mod），我来帮您修改 image1092×1334 74.1 KB zz_tovarishch: So, if you would like to change your username, you can let me know (as a Mod) and I can help you change it awesome. Could you help me change it to just “tea”? I think it’s available @zz_tovarishch username change affected now. Thank you!</description>
+  </item>
+</channel>
+</rss>

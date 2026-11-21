@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-21 06:00:14 CST - 2026-11-22 06:00:14 CST</span>
+          <span>生成时间 2026-11-22 06:00:21 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">8</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">25</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">14</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛最直接的进展是 Vellum 与 Rivet 在帖中对接 Testnet 集成意向 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>，同时 Rivet 宣布第二个 grant milestone 的 CKB Testnet 实现与验收测试完成 <span class="citations">[<a href="#source-s05">S05</a>]</span>。治理方面，DAO 提案公平性讨论继续围绕某桥的社区基金拨款、投票结果和是否启动展开 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>, <a href="#source-s14">S14</a>, <a href="#source-s15">S15</a>]</span>。技术讨论中，Lock Proof RFC 澄清“支持所有 lock”的实现思路并补充 Rust crate <span class="citations">[<a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>，KeyMe 则收到关于 PSCT v0 多签交易和自定义脚本验证的提问 <span class="citations">[<a href="#source-s06">S06</a>]</span>。其他更新包括 FiberNuts 初始资金已确认到账 <span class="citations">[<a href="#source-s16">S16</a>, <a href="#source-s17">S17</a>]</span>，Productathon 帖收到支持性回复 <span class="citations">[<a href="#source-s04">S04</a>]</span>，以及用户名修改请求由 Mod 处理完成 <span class="citations">[<a href="#source-s18">S18</a>, <a href="#source-s19">S19</a>, <a href="#source-s20">S20</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li><strong>Vellum × Rivet 集成意向</strong>：Jedi_dtechmaker 提出将 Vellum 接入 Rivet，让开发者绑定 did:ckb 并在 Rivet passport 旁展示已验证声明，询问 SDK/API 是否支持及是否可做小规模 Testnet 集成 <span class="citations">[<a href="#source-s01">S01</a>]</span>；truthixify 回复同意并约 Telegram 私聊细节 <span class="citations">[<a href="#source-s02">S02</a>]</span>。同帖中 Ayoub_Lesfer 表示 v1 只说明活动达标并完成总额，愿意按现状开启并把判断留给读者，其索引器已从收据历史重建支持者 <span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li><strong>Rivet M2 交付完成</strong>：Rivet 第二个 grant milestone 的 CKB Testnet 实现和项目验收测试已完成，交付已发布的跨平台 CLI、独立 Exact Restore 等 <span class="citations">[<a href="#source-s05">S05</a>]</span>。</li>
+<li><strong>KeyMe 收到 PSCT v0 关键问题</strong>：ArthurZhang 问 combine() 只合并同一交易的签名时如何支持真正的多参与方交易构建，以及能否用可扩展方式验证自定义脚本语义和签名 <span class="citations">[<a href="#source-s06">S06</a>]</span>。</li>
+<li><strong>Lock Proof RFC 澄清“所有 lock”边界</strong>：讨论者询问后端需要接受哪些 lock，并认为钱包绑定场景最好支持所有 lock <span class="citations">[<a href="#source-s07">S07</a>]</span>；作者回应称就是为所有 lock 构建，验证器在 CKB-VM 中运行 lock 本身，一条代码路径覆盖所有签署交易哈希的 lock，唯一 lock-specific 检查会拒绝 Omnilock 管理员模式 <span class="citations">[<a href="#source-s08">S08</a>]</span>；作者还补充 Rust crate 位于 ckb-ward 的 rust/，覆盖 npm 包后端侧的消息、钱包模板、verify 和 DAO snapshot helpers <span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li><strong>DAO 提案公平性争论延续</strong>：phroi 表示相关集成是暂停而非放弃，并称 15k 里程碑以 CKB 支付、为 6,313,131 CKB（按当前价格约 5k 美元），社区投票中 64% 权重赞成 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s12">S12</a>]</span>。hao_zhang 让 phroi 回顾对话并看桥的最终结果 <span class="citations">[<a href="#source-s13">S13</a>]</span>；phroi 则让反对者看投票者名单，并反问是否应照常启动、把用户资金置于风险中 <span class="citations">[<a href="#source-s14">S14</a>]</span>；asondev 强调质疑社区基金运作本身就是参与治理，相关问题应可在论坛提出 <span class="citations">[<a href="#source-s15">S15</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li><strong>Vellum × Rivet 的 Testnet 集成能否落地</strong>：双方已同意私聊细节，后续可观察是否出现公开的 SDK/API 对接说明或测试网集成结果 <span class="citations">[<a href="#source-s01">S01</a>, <a href="#source-s02">S02</a>]</span>。</li>
+<li><strong>DAO 拨款争议对桥项目启动的影响</strong>：讨论中一方称集成暂停而非放弃，另一方持续追问是否照常启动及用户资金风险，后续需看项目方是否给出明确上线或暂停决定 <span class="citations">[<a href="#source-s10">S10</a>, <a href="#source-s14">S14</a>]</span>。</li>
+<li><strong>Lock Proof 的“全 lock”支持边界</strong>：作者称验证器可覆盖所有签署交易哈希的 lock，但会拒绝 Omnilock 管理员模式，后续可关注该限制及 Rust crate 的实际测试情况 <span class="citations">[<a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/25">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">Jedi_dtechmaker · 2026-11-21 12:33:36 CST</div><div>Hi @truthixify , I’m thinking of integrating Vellum into Rivet. Developers could link their did:ckb and display their verified claims alongside their Rivet passport. Does your current SDK/API support this, and would you be open to a small Testnet integration?</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/26">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">truthixify · 2026-11-21 12:48:23 CST</div><div>Yes! Let’s do this. Send me a DM on telegram so we can discuss the details.</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/27">[DIS] Vellum: Reputation Extension on did:ckb</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-22 03:15:23 CST</div><div>Makes sense, thanks. Since v1 only says the campaign hit its goal and finalized, with the total, I’m fine turning it on as is and leaving the judgement to whoever reads the claim. Our indexer already rebuilds backers from the receipt history, so distinct backer count and how...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262/2">[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya)</a></div><div class="source-meta">Dorex45 · 2026-11-22 01:35:54 CST</div><div>LFG I totally love every bit of this</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/17">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></div><div class="source-meta">Jedi_dtechmaker · 2026-11-22 00:17:27 CST</div><div>Rivet Milestone 2: CLI Restore Tooling and Hardening Delivery update · November 21, 2026 · CKB Testnet Implementation and project acceptance testing for Rivet’s second grant milestone are complete. Milestone 2 delivers a published cross-platform CLI, independent Exact Restore,...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/7">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a></div><div class="source-meta">ArthurZhang · 2026-11-21 22:30:18 CST</div><div>Very promising initiative, just two questions with PSCT v0, one, combine() only merges signatures for an identical transaction. How would we support actual multi-party transaction construction? two,can we have an extensible way to verify custom script semantics and signing...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/6">RFC draft: Lock Proof, proving control of a CKB lock</a></div><div class="source-meta">tea · 2026-11-21 11:05:26 CST</div><div>LusoCryptoLabs: Which locks does your backend need to accept? of course this is wallet binding we’re talking about so ideally all locks getting supported is very beneficial and that’s why I asked. Unless it can be used for something else i’m not aware yet?</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/7">RFC draft: Lock Proof, proving control of a CKB lock</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-21 20:39:03 CST</div><div>All locks is what it is built for. The verifier runs the lock itself in CKB-VM, so one code path covers every lock that signs the transaction hash; the only lock-specific check refuses Omnilock in administrator mode. A port has no lock to start from, and it would be checked...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/8">RFC draft: Lock Proof, proving control of a CKB lock</a></div><div class="source-meta">LusoCryptoLabs · 2026-11-21 22:04:26 CST</div><div>The Rust crate is in the repo: rust/ in ckb-ward. It covers the backend side of the npm package: the message, the template for the wallet, verify, and the DAO snapshot helpers. The lock runs in process with ckb-script, the node’s own crate, so it handles every lock that signs...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/dao/11261/13">DAO提案公平性疑问？</a></div><div class="source-meta">phroi · 2026-11-21 06:59:22 CST</div><div>Fai: And the result? Some people left in disappointment, the project ultimately fell apart, and the DAO wasted precious treasury funds — a lesson that left everyone worse off. Hey @Fai, the integration is on hold, not abandoned: I covered the details in the Rosen thread. The...</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/dao/11261/14">DAO提案公平性疑问？</a></div><div class="source-meta">hao_zhang · 2026-11-21 07:06:53 CST</div><div>15000美金还少吗？</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/dao/11261/15">DAO提案公平性疑问？</a></div><div class="source-meta">phroi · 2026-11-21 07:17:38 CST</div><div>hao_zhang: Is $15,000 not enough? Hey @hao_zhang, it was paid in CKB: the $15k milestone is 6,313,131 CKB, about $5k at the current price. We asked for these amounts in the proposal. The community voted on it: 64% of the voting weight was in favor. If you thought it was too...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/dao/11261/16">DAO提案公平性疑问？</a></div><div class="source-meta">hao_zhang · 2026-11-21 07:52:12 CST</div><div>1.回顾我对话，2.我们看最后结果吧，这座桥会怎么样</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/dao/11261/17">DAO提案公平性疑问？</a></div><div class="source-meta">phroi · 2026-11-21 08:01:39 CST</div><div>hao_zhang: Review my conversation Review who voted: I was surprised to see so many well-known community members back the bridge with their own CKB. hao_zhang: Let’s look at the final result — what will happen to this bridge? Should I launch it anyway, putting user funds at...</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/dao/11261/18">DAO提案公平性疑问？</a></div><div class="source-meta">asondev · 2026-11-21 08:03:39 CST</div><div>Questioning how the Community Fund operates is part of participating in governance. You can disagree with the tone of posts on X, but that leaves the questions I raised about the DAO unanswered. People should be able to raise those questions here without first having to prove...</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/13">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">zz_tovarishch · 2026-11-21 14:44:16 CST</div><div>https://explorer.nervos.org/transaction/0x64b4ddd95cad37fea62f7cd23d70ffda007fba8ae06a54d3df5a3babc0050ce7 Initial funding $1,500/$0.0009 = 1,666,667 CKB</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/14">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">Code3ks · 2026-11-21 17:49:00 CST</div><div>Thank you, payment received. Next, I would give an update regarding M1 progress.</div></li><li id="source-s18"><div><code>S18</code><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/4">How can we change username?</a></div><div class="source-meta">zz_tovarishch · 2026-11-21 11:41:23 CST</div><div>我查询了一下Nervos Talk底层的Discourse文档 Discourse – 25 Jun 18 Understanding Discourse Trust Levels The user trust system is a fundamental cornerstone of Discourse. Trust levels are a way of… 似乎修改用户名的权限确实不在各个Level的授权中 所以，如果您想修改您的用户名，或者可以告诉我（作为Mod），我来帮您修改 image1092×1334 74.1 KB</div></li><li id="source-s19"><div><code>S19</code><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/5">How can we change username?</a></div><div class="source-meta">tea · 2026-11-21 12:29:05 CST</div><div>zz_tovarishch: So, if you would like to change your username, you can let me know (as a Mod) and I can help you change it awesome. Could you help me change it to just “tea”? I think it’s available</div></li><li id="source-s20"><div><code>S20</code><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/6">How can we change username?</a></div><div class="source-meta">tea · 2026-11-21 13:42:23 CST</div><div>@zz_tovarishch username change affected now. Thank you!</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>11</strong></li><li><span>其他</span><strong>10</strong></li><li><span>生态进展</span><strong>3</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@phroi</span><strong>4</strong></li><li><span>@tea</span><strong>3</strong></li><li><span>@hao_zhang</span><strong>3</strong></li><li><span>@matt_ckb</span><strong>2</strong></li><li><span>@Jedi_dtechmaker</span><strong>2</strong></li><li><span>@LusoCryptoLabs</span><strong>2</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>31</span></li><li>rivet<span>26</span></li><li>backup<span>24</span></li><li>are<span>20</span></li><li>transaction<span>20</span></li><li>recovery<span>20</span></li><li>checks<span>20</span></li><li>mapping<span>18</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dao/11261">DAO提案公平性疑问？</a></h3><span class="count-pill">11 posts</span></header><div class="meta-line"><span>Latest 2026-11-21 18:21:10 CST</span><span>Fai, asondev, hao_zhang, matt_ckb, phroi</span></div><p class="excerpt">Fai: And the result? Some people left in disappointment, the project ultimately fell apart, and the DAO wasted precious treasury funds — a lesson that left everyone worse off. Hey @Fai, the integration is on hold, not abandoned: I covered the details in the...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613">[DIS] Vellum: Reputation Extension on did:ckb</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-22 03:15:23 CST</span><span>Ayoub_Lesfer, Jedi_dtechmaker, truthixify</span></div><p class="excerpt">Hi @truthixify , I’m thinking of integrating Vellum into Rivet. Developers could link their did:ckb and display their verified claims alongside their Rivet passport. Does your current SDK/API support this, and would you be open to a small Testnet...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260">RFC draft: Lock Proof, proving control of a CKB lock</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-21 22:04:26 CST</span><span>LusoCryptoLabs, tea</span></div><p class="excerpt">LusoCryptoLabs: Which locks does your backend need to accept? of course this is wallet binding we’re talking about so ideally all locks getting supported is very beneficial and that’s why I asked. Unless it can be used for something else i’m not aware yet?...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/how-can-we-change-username/11276">How can we change username?</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-21 13:42:23 CST</span><span>tea, zz_tovarishch</span></div><p class="excerpt">我查询了一下Nervos Talk底层的Discourse文档 Discourse – 25 Jun 18 Understanding Discourse Trust Levels The user trust system is a fundamental cornerstone of Discourse. Trust levels are a way of… 似乎修改用户名的权限确实不在各个Level的授权中 所以，如果您想修改您的用户名，或者可以告诉我（作为Mod），我来帮您修改...</p><div class="tag-row"><span>lang-es</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-21 17:49:00 CST</span><span>Code3ks, zz_tovarishch</span></div><p class="excerpt">https://explorer.nervos.org/transaction/0x64b4ddd95cad37fea62f7cd23d70ffda007fba8ae06a54d3df5a3babc0050ce7 Initial funding $1,500/$0.0009 = 1,666,667 CKB Thank you, payment received. Next, I would give an update regarding M1 progress.</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262">[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-22 01:35:54 CST</span><span>Dorex45</span></div><p class="excerpt">LFG I totally love every bit of this</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>Grant</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-22 00:17:27 CST</span><span>Jedi_dtechmaker</span></div><p class="excerpt">Rivet Milestone 2: CLI Restore Tooling and Hardening Delivery update · November 21, 2026 · CKB Testnet Implementation and project acceptance testing for Rivet’s second grant milestone are complete. Milestone 2 delivers a published cross-platform CLI,...</p><div class="tag-row"><span>CKB</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-21 22:30:18 CST</span><span>ArthurZhang</span></div><p class="excerpt">Very promising initiative, just two questions with PSCT v0, one, combine() only merges signatures for an identical transaction. How would we support actual multi-party transaction construction? two,can we have an extensible way to verify custom script...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-22 03:15:23 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/27">[DIS] Vellum: Reputation Extension on did:ckb</a> · @Ayoub_Lesfer</strong><p>Makes sense, thanks. Since v1 only says the campaign hit its goal and finalized, with the total, I’m fine turning it on as is and leaving the judgement to whoever reads the claim. Our indexer already rebuilds backers...</p></article>
+<article class="timeline-row"><time>2026-11-22 01:36:15 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/23">DAO提案公平性疑问？</a> · @matt_ckb</strong><p></p></article>
+<article class="timeline-row"><time>2026-11-22 01:35:54 CST</time><strong><a href="https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262/2">[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya)</a> · @Dorex45</strong><p>LFG I totally love every bit of this</p></article>
+<article class="timeline-row"><time>2026-11-22 00:17:27 CST</time><strong><a href="https://talk.nervos.org/t/dis-rivet-decentralized-github-backup-timestamping-and-restore-on-ckb/10739/17">[DIS] RIVET: Decentralized GitHub Backup, Timestamping and Restore on CKB</a> · @Jedi_dtechmaker</strong><p>Rivet Milestone 2: CLI Restore Tooling and Hardening Delivery update · November 21, 2026 · CKB Testnet Implementation and project acceptance testing for Rivet’s second grant milestone are complete. Milestone 2...</p></article>
+<article class="timeline-row"><time>2026-11-21 22:30:18 CST</time><strong><a href="https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/7">[DIS] KeyMe — CKB&#x27;s PSBT: Open Air-Gapped Signing and the First DIY Hardware</a> · @ArthurZhang</strong><p>Very promising initiative, just two questions with PSCT v0, one, combine() only merges signatures for an identical transaction. How would we support actual multi-party transaction construction? two,can we have an...</p></article>
+<article class="timeline-row"><time>2026-11-21 22:04:26 CST</time><strong><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/8">RFC draft: Lock Proof, proving control of a CKB lock</a> · @LusoCryptoLabs</strong><p>The Rust crate is in the repo: rust/ in ckb-ward. It covers the backend side of the npm package: the message, the template for the wallet, verify, and the DAO snapshot helpers. The lock runs in process with ckb-...</p></article>
+<article class="timeline-row"><time>2026-11-21 20:39:03 CST</time><strong><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/7">RFC draft: Lock Proof, proving control of a CKB lock</a> · @LusoCryptoLabs</strong><p>All locks is what it is built for. The verifier runs the lock itself in CKB-VM, so one code path covers every lock that signs the transaction hash; the only lock-specific check refuses Omnilock in administrator mode....</p></article>
+<article class="timeline-row"><time>2026-11-21 18:21:10 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/22">DAO提案公平性疑问？</a> · @Fai</strong><p>phroi: Love &amp; Peace 你的签名是 “Love &amp; Peace” ，希望你能和平，也希望社区和平！ 说下我的看法： 我之所以最近出现在这里，是感觉社区有些问题（目的性太强，缺乏社区精神）；之所以提出来Rosen项目，是不希望现在重蹈覆辙；之所以对某些助资有质疑，是因为长时间没看到有所成果。所以 相信他们也是这样的。...</p></article>
+<article class="timeline-row"><time>2026-11-21 17:49:00 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/14">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @Code3ks</strong><p>Thank you, payment received. Next, I would give an update regarding M1 progress.</p></article>
+<article class="timeline-row"><time>2026-11-21 15:53:17 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/21">DAO提案公平性疑问？</a> · @phroi</strong><p>hao_zhang: Ensuring user funds are safe and that bridge ultimately having no users are not contradictory I guess this is not really about Rosen, is it? [DIS] Infinity Wallet Nervos Integration How about this: if the...</p></article>
+<article class="timeline-row"><time>2026-11-21 14:44:16 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/13">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @zz_tovarishch</strong><p>https://explorer.nervos.org/transaction/0x64b4ddd95cad37fea62f7cd23d70ffda007fba8ae06a54d3df5a3babc0050ce7 Initial funding $1,500/$0.0009 = 1,666,667 CKB</p></article>
+<article class="timeline-row"><time>2026-11-21 13:42:23 CST</time><strong><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/6">How can we change username?</a> · @tea</strong><p>@zz_tovarishch username change affected now. Thank you!</p></article>
+<article class="timeline-row"><time>2026-11-21 12:48:23 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/26">[DIS] Vellum: Reputation Extension on did:ckb</a> · @truthixify</strong><p>Yes! Let’s do this. Send me a DM on telegram so we can discuss the details.</p></article>
+<article class="timeline-row"><time>2026-11-21 12:33:36 CST</time><strong><a href="https://talk.nervos.org/t/dis-vellum-reputation-extension-on-did-ckb/10613/25">[DIS] Vellum: Reputation Extension on did:ckb</a> · @Jedi_dtechmaker</strong><p>Hi @truthixify , I’m thinking of integrating Vellum into Rivet. Developers could link their did:ckb and display their verified claims alongside their Rivet passport. Does your current SDK/API support this, and would...</p></article>
+<article class="timeline-row"><time>2026-11-21 12:29:05 CST</time><strong><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/5">How can we change username?</a> · @tea</strong><p>zz_tovarishch: So, if you would like to change your username, you can let me know (as a Mod) and I can help you change it awesome. Could you help me change it to just “tea”? I think it’s available</p></article>
+<article class="timeline-row"><time>2026-11-21 11:41:23 CST</time><strong><a href="https://talk.nervos.org/t/how-can-we-change-username/11276/4">How can we change username?</a> · @zz_tovarishch</strong><p>我查询了一下Nervos Talk底层的Discourse文档 Discourse – 25 Jun 18 Understanding Discourse Trust Levels The user trust system is a fundamental cornerstone of Discourse. Trust levels are a way of… 似乎修改用户名的权限确实不在各个Level的授权中...</p></article>
+<article class="timeline-row"><time>2026-11-21 11:05:26 CST</time><strong><a href="https://talk.nervos.org/t/rfc-draft-lock-proof-proving-control-of-a-ckb-lock/11260/6">RFC draft: Lock Proof, proving control of a CKB lock</a> · @tea</strong><p>LusoCryptoLabs: Which locks does your backend need to accept? of course this is wallet binding we’re talking about so ideally all locks getting supported is very beneficial and that’s why I asked. Unless it can be...</p></article>
+<article class="timeline-row"><time>2026-11-21 11:00:29 CST</time><strong><a href="https://talk.nervos.org/t/dao/11261/20">DAO提案公平性疑问？</a> · @matt_ckb</strong><p>asondev: good place to start is making project outcomes easier to review and funding decisions easier to scrutinize The next step would be creating a metarule proposal regarding this</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>
