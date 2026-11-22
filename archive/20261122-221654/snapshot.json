@@ -1,0 +1,201 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-11-22T22:17:00.915568+00:00",
+  "since": "2026-11-21T22:16:54.738114+00:00",
+  "until": "2026-11-22T22:16:54.738114+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 11258,
+      "title": "[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware",
+      "slug": "dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware",
+      "url": "https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258",
+      "created_at": "2026-11-18T19:03:55.522000+00:00",
+      "last_posted_at": "2026-11-22T16:35:26.772000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27698,
+          "post_number": 8,
+          "topic_id": 11258,
+          "topic_title": "[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware",
+          "topic_slug": "dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware",
+          "author": "Han_Solo",
+          "created_at": "2026-11-22T13:13:16.827000+00:00",
+          "updated_at": "2026-11-22T13:13:16.827000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/8",
+          "content_text": "WuodOdhis:\nI am well versed in the hardware side of this build — board-level design, power, displays, scanners and embedded debugging\nDo you have previous examples of hardware projects that you have worked on?",
+          "content_html": "<aside class=\"quote no-group\" data-username=\"WuodOdhis\" data-post=\"1\" data-topic=\"11258\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/wuododhis/48/11098_2.png\" class=\"avatar\"> WuodOdhis:</div>\n<blockquote>\n<p>I am well versed in the hardware side of this build — board-level design, power, displays, scanners and embedded debugging</p>\n</blockquote>\n</aside>\n<p>Do you have previous examples of hardware projects that you have worked on?</p>",
+          "like_count": 0,
+          "quote_count": 1
+        },
+        {
+          "post_id": 27705,
+          "post_number": 9,
+          "topic_id": 11258,
+          "topic_title": "[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware",
+          "topic_slug": "dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware",
+          "author": "WuodOdhis",
+          "created_at": "2026-11-22T16:35:26.772000+00:00",
+          "updated_at": "2026-11-22T16:35:26.772000+00:00",
+          "reply_to_post_number": 7,
+          "url": "https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258/9",
+          "content_text": "Thanks. Both are the right questions, and both land in v1 territory. v0 is deliberately narrow.\ncombine() is the co-signing primitive, not the construction protocol. It merges per-group signatures on the same transaction (tx_hash); if the transaction changes, the signature is invalid, and that is the point. Multi-party construction happens before signing: a coordinator (or an OTX-style builder) collects inputs and intents and produces one final RawTransaction; each party verifies that same PSCT and signs it. The 2022 CKB Open Transaction work is the natural construction layer, it defined partial transactions and allowed modifications; PSCT is the final signing layer. A v1 bridge would be: OTX/pre-signing template → final PSCT → combine. The final signature always binds the final bytes; nobody can add an input after another party signed without invalidating their signature. That is a feature, not a gap.\nThe v0 registry is hard-coded on purpose:** the signer has to understand a script before it can display it; unknown means refuse. The v1 path is to make the registry a signed data manifest, not a code plugin. Entries would carry the code hash, an IDL/descriptor hash, a policy type, test vectors and audit status. The signer verifies the code hash and the manifest signature, then uses a small, deterministic policy schema — multisig, timelock, DAO-like, etc to render fields and assertions. CKB IDL is the right building block for the data description. New policy instances are data; new policy types require a firmware update and tests. A sandboxed WASM verifier is possible later, but it enlarges the trusted base and needs a trusted signer. We should not run arbitrary Lua/JS on the device, that is the 2021 Lua path we dropped.\nSo in short: construction happens before PSCT, and extensibility comes from signed descriptors plus a small fixed policy interpreter, not from arbitrary scripts on the signer. The refusal default stays.",
+          "content_html": "<p>Thanks. Both are the right questions, and both land in v1 territory. v0 is deliberately narrow.</p>\n<ol>\n<li>\n<p><code>combine()</code> is the co-signing primitive, not the construction protocol. It merges per-group signatures on the same transaction (<code>tx_hash</code>); if the transaction changes, the signature is invalid, and that is the point. Multi-party construction happens before signing: a coordinator (or an OTX-style builder) collects inputs and intents and produces one final <code>RawTransaction</code>; each party verifies that same PSCT and signs it. The 2022 CKB Open Transaction work is the natural construction layer, it defined partial transactions and allowed modifications; PSCT is the final signing layer. A v1 bridge would be: OTX/pre-signing template → final PSCT → combine. The final signature always binds the final bytes; nobody can add an input after another party signed without invalidating their signature. That is a feature, not a gap.</p>\n</li>\n<li>\n<p>The v0 registry is hard-coded on purpose:** the signer has to understand a script before it can display it; unknown means refuse. The v1 path is to make the registry a <strong>signed data manifest</strong>, not a code plugin. Entries would carry the code hash, an IDL/descriptor hash, a policy type, test vectors and audit status. The signer verifies the code hash and the manifest signature, then uses a small, deterministic policy schema — multisig, timelock, DAO-like, etc to render fields and assertions. CKB IDL is the right building block for the data description. New policy instances are data; new policy types require a firmware update and tests. A sandboxed WASM verifier is possible later, but it enlarges the trusted base and needs a trusted signer. We should not run arbitrary Lua/JS on the device, that is the 2021 Lua path we dropped.</p>\n</li>\n</ol>\n<p>So in short: construction happens before PSCT, and extensibility comes from signed descriptors plus a small fixed policy interpreter, not from arbitrary scripts on the signer. The refusal default stays.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11250,
+      "title": "Turnmark: short-round Up/Down prediction markets on CKB, live on testnet",
+      "slug": "turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet",
+      "url": "https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11250",
+      "created_at": "2026-11-17T20:23:26.178000+00:00",
+      "last_posted_at": "2026-11-22T16:17:13.990000+00:00",
+      "category_id": 70,
+      "tags": [
+        "DeFi",
+        "Oracle"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27703,
+          "post_number": 2,
+          "topic_id": 11250,
+          "topic_title": "Turnmark: short-round Up/Down prediction markets on CKB, live on testnet",
+          "topic_slug": "turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet",
+          "author": "RikoKurnia",
+          "created_at": "2026-11-22T16:17:13.990000+00:00",
+          "updated_at": "2026-11-22T16:17:13.990000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/turnmark-short-round-up-down-prediction-markets-on-ckb-live-on-testnet/11250/2",
+          "content_text": "its cool",
+          "content_html": "<p>its cool</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10015,
+      "title": "[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1",
+      "slug": "dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1",
+      "url": "https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015",
+      "created_at": "2026-02-28T04:17:08.724000+00:00",
+      "last_posted_at": "2026-11-22T12:29:09.310000+00:00",
+      "category_id": 65,
+      "tags": [
+        "appchain"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27697,
+          "post_number": 54,
+          "topic_id": 10015,
+          "topic_title": "[DIS] Decentralized privacy order-book appchain based on CKB L1 - 2026.phase-1",
+          "topic_slug": "dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1",
+          "author": "Lawliet_Chan",
+          "created_at": "2026-11-22T12:29:09.310000+00:00",
+          "updated_at": "2026-11-22T12:29:21.484000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-decentralized-privacy-order-book-appchain-based-on-ckb-l1-2026-phase-1/10015/54",
+          "content_text": "周报\n2026.11.22\n继续上周Invisibook论文\n整理invisibook共识 proof of buy的论文材料准备： Proof of Buy（PoB）论文构思：L2 抗审查动机、共识安全目标与研究路线（通用 L1） - Google Docs",
+          "content_html": "<p>周报</p>\n<p>2026.11.22</p>\n<ul>\n<li>继续上周Invisibook论文</li>\n<li>整理invisibook共识 proof of buy的论文材料准备： <a href=\"https://docs.google.com/document/d/18ZSJ9sKqZ7ebvmrnC1jaSc3va_ngkDs3IQJHYTnkZIM/edit?usp=sharing\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">Proof of Buy（PoB）论文构思：L2 抗审查动机、共识安全目标与研究路线（通用 L1） - Google Docs</a></li>\n</ul>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 10644,
+      "title": "Tranfr — Programmable Recovery for CKB",
+      "slug": "tranfr-programmable-recovery-for-ckb",
+      "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644",
+      "created_at": "2026-08-18T14:04:43.486000+00:00",
+      "last_posted_at": "2026-11-22T11:40:29.705000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27696,
+          "post_number": 37,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-11-22T11:40:29.705000+00:00",
+          "updated_at": "2026-11-22T11:40:29.705000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/37",
+          "content_text": "Hi @Hanssen the issues are fixed, please check GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub",
+          "content_html": "<p>Hi <a class=\"mention\" href=\"/u/hanssen\">@Hanssen</a> the issues are fixed, please check <a href=\"https://github.com/salmansarwarr/Tranfr\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - salmansarwarr/Tranfr: Tranfr - Programmable Asset Continuity for web3. Inactivity recovery for self-custody. · GitHub</a></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11300,
+      "title": "Spark Program | FiberVPN: Pay-Per-Hour WireGuard Tunnels over Fiber",
+      "slug": "spark-program-fibervpn-pay-per-hour-wireguard-tunnels-over-fiber",
+      "url": "https://talk.nervos.org/t/spark-program-fibervpn-pay-per-hour-wireguard-tunnels-over-fiber/11300",
+      "created_at": "2026-11-22T11:13:29.316000+00:00",
+      "last_posted_at": "2026-11-22T11:13:29.401000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27694,
+          "post_number": 1,
+          "topic_id": 11300,
+          "topic_title": "Spark Program | FiberVPN: Pay-Per-Hour WireGuard Tunnels over Fiber",
+          "topic_slug": "spark-program-fibervpn-pay-per-hour-wireguard-tunnels-over-fiber",
+          "author": "akanjacson",
+          "created_at": "2026-11-22T11:13:29.401000+00:00",
+          "updated_at": "2026-11-22T11:13:29.401000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-fibervpn-pay-per-hour-wireguard-tunnels-over-fiber/11300/1",
+          "content_text": "Project: FiberVPN\nApplicant: Akan Theodore (kd-designs on GitHub: GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub )\nFunding requested: $750 USD equivalent in CKB (payout address shared on approval)\nTimeline: 5 weeks\nContact: Nervos Talk DM\nWhat FiberVPN Is\nFiberVPN is a self-hosted WireGuard exit gateway and browser checkout that sells encrypted VPN tunnels by the hour or by the megabyte over Nervos Fiber Network.\nYou open the web page, pick a tier (1 hour / 500 MB or 24 hours / 5 GB), pay a Fiber invoice and get a WireGuard QR code and .conf file immediately. You scan it into the official WireGuard app on your phone or laptop, route traffic through the exit node and get disconnected cleanly as soon as the paid time or byte quota hits zero\nWhy Build This\nMost commercial VPNs force users into $10+/month subscriptions, email signups or credit card billing just to get encrypted internet on airport, hotel or cafe Wi-Fi for an afternoon. On Bitcoin Lightning, LNVPN showed that pay-as-you-go WireGuard tunnels are one of the few micropayment apps people actually return to use.\nFiberVPN brings that same pattern to Fiber without accounts or custodial logins:\nThe browser generates the WireGuard keypair locally and persists it in localStorage so refreshing the tab while waiting for payment never orphans a paid tunnel.\nThe backend validates the Curve25519 public key, creates a Fiber invoice via fnn (new_invoice) and allocates a tunnel IP only after get_invoice reports Paid.\nEvery 10 seconds, the quota daemon checks wg show wg0 transfer and tears down any peer whose paid duration or byte limit is reached, recycling its IP back into the /24 pool.\nHow it sits next to other Fiber projects: MeterNet meters local router Wi-Fi per megabyte via openNDS captive-portal rules, while Fiber Paid HTTP gates single HTTP requests behind payment headers. Neither gives a remote user an OS-level encrypted WireGuard tunnel they can turn on from anywhere using the standard WireGuard app.\nHow It Works\nBrowser generates WireGuard keypair locally (saved in localStorage)\n-> sends publicKey + tier to FiberVPN gateway\n-> gateway validates Curve25519 key, calls fnn new_invoice and returns invoice\nUser pays invoice (~1s via Fiber wallet or @nervosnetwork/fiber-js WASM)\n-> gateway sees Paid via get_invoice\n-> allocates IP from /24 pool -> runs `wg set wg0 peer <pubkey> allowed-ips <ip>/32`\n-> browser injects local PrivateKey and renders WireGuard QR / .conf\nQuota daemon (every 10s, backed by SQLite)\n-> reads `wg show wg0 transfer`\n-> on expiry or rx+tx >= maxBytes, runs `wg set wg0 peer <pubkey> remove` and recycles IP\nThe HTTP server runs unprivileged (not as root), scoped via CAP_NET_ADMIN / sudoers strictly to wg set wg0 and wg show wg0 transfer with execFile and zero shell interpolation. During the public testnet trial, nftables forwarding on wg0 blocks outbound SMTP (25, 465, 587) and BitTorrent while leaving standard web, SSH and DNS ports (80, 443, 53) open so testers cannot get the VPS flagged for spam.\nFor reviewers who do not run a local fnn node, Week 2 puts a public testnet web MVP online with a built-in @nervosnetwork/fiber-js browser WASM flow alongside the raw invoice QR. You fund from the testnet faucet, pay a 15 min / 50 MB test tier right in your browser, scan the WireGuard QR on your phone or laptop and confirm your public IP switches to the exit node and cuts off at expiry.\nApplicant Background\nI’m Akan Theodore (kd-designs), an independent full-stack developer working mostly with TypeScript, Node.js services and Linux networking. I haven’t run a public fnn node before, so Week 1 tackles live Pudge testnet channel opening and wg set peer provisioning on a Linux VPS up front before building the browser UI on top of it.\nWhat Already Exists vs. What the Grant Funds\nAn initial v0.1.0 core is already written in TypeScript ( GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub ) and runs locally today:\nCurve25519 base64 key validation rejecting malformed or shell-injected keys (src/wireguard.ts)\n/24 IP pool allocator (IpPoolAllocator), .conf builder and WgCliAdapter using execFile('wg', ...)\nFnnRpcClient wired to FNN’s new_invoice and get_invoice JSON-RPC schema plus an in-memory mock (src/fiber-rpc.ts)\nVpnManager with post-payment IP allocation, concurrent activation locking, duplicate-active-key protection and automatic time/byte quota cutoffs (src/manager.ts)\n8 passing unit tests (npm test) and a local simulation (npm run demo)\nWhat this grant funds (5 weeks):\nLive Linux + WireGuard + fnn gateway: Provisioning wg0 NAT/forwarding, nftables port filtering and a funded Pudge testnet fnn node on a public Linux VPS.\nPublic browser MVP (Week 2): Hosted testnet page with client-side Curve25519 keygen (localStorage-backed), @nervosnetwork/fiber-js WASM checkout alongside raw invoice QRs and WireGuard QR rendering.\nSQLite persistence & restart reconciliation (Week 3): Persisting sessions and byte checkpoints in SQLite so daemon restarts clean up peers that expired offline and never reset wg byte counters.\n14-day public testnet trial & verifier (Weeks 4-5): Opening the testnet exit node to Nervos Talk testers for two weeks, publishing a standalone status/verification CLI (npx fibervpn status <payment_hash>), recording an unedited mobile WireGuard demo video and posting the closing report with testnet payment hashes and honest latency/failure notes.\nDeliverables & Timeline\nWeek 1: Live wg0 + fnn testnet node: Linux VPS running WireGuard wg0, nftables rules and a funded Pudge testnet fnn node; first real invoice-to-peer-add test passed\nWeek 2: Public testnet web MVP: Hosted demo URL posted on this thread with browser @nervosnetwork/fiber-js + QR checkout, WireGuard QR generation and live peer status board.\nWeek 3: Persistence & quota cutoff suite: SQLite session recovery across restarts and live cutoff tests for both time expiry and byte-cap exhaustion.\nWeeks 4-5: 14-day community trial, CLI & wrap-up: Two weeks of public testnet usage, verification CLI published, unedited mobile WireGuard cutoff video recorded and closing report posted.\nBudget: $750 USD in CKB\nPriced by milestone (no VPS hardware or hosting fees billed separately):\nWeek 1 ($150): Linux VPS wg0 setup, nftables rules and testnet fnn channel liquidity\nWeek 2 ($200): Public testnet web MVP, client-side keygen, WASM checkout and WireGuard QR UI\nWeek 3 ($200): SQLite persistence, restart reconciliation and automated quota cutoff tests\nWeeks 4-5 ($200): 14-day public trial, verification CLI, walkthrough video and closing report\nHow Anyone Can Verify\nRight now (local repo): Clone GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub , run npm install && npm test && npm run demo to verify the 8 tests, key validation, concurrency guard and quota cutoff simulation.\nFrom Week 2: Open the live testnet URL, pay a testnet Fiber invoice via the browser WASM flow (or your own Fiber node), scan the WireGuard QR in the official WireGuard app, check ifconfig.me before and after connecting and watch traffic stop at expiry.\nAt completion: Run npx fibervpn status <payment_hash> against our public logs and watch the unedited phone-to-WireGuard walkthrough video.\nMaintenance\nFor 6 months after completion, I will keep fibervpn updated against fnn JSON-RPC changes and answer setup issues on GitHub within 48 hours.",
+          "content_html": "<h1><a name=\"p-27694-h-1\" class=\"anchor\" href=\"#p-27694-h-1\" aria-label=\"Heading link\"></a></h1>\n<p><strong>Project:</strong> FiberVPN<br>\n<strong>Applicant:</strong> Akan Theodore (<code>kd-designs</code> on GitHub: <a href=\"https://github.com/kd-designs/fibervpn\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub</a> )<br>\n<strong>Funding requested:</strong> $750 USD equivalent in CKB (payout address shared on approval)<br>\n<strong>Timeline:</strong> 5 weeks<br>\n<strong>Contact:</strong> Nervos Talk DM</p>\n<hr>\n<h3><a name=\"p-27694-what-fibervpn-is-2\" class=\"anchor\" href=\"#p-27694-what-fibervpn-is-2\" aria-label=\"Heading link\"></a>What FiberVPN Is</h3>\n<p>FiberVPN is a self-hosted WireGuard exit gateway and browser checkout that sells encrypted VPN tunnels by the hour or by the megabyte over Nervos Fiber Network.</p>\n<p>You open the web page, pick a tier (<code>1 hour / 500 MB</code> or <code>24 hours / 5 GB</code>), pay a Fiber invoice and get a WireGuard QR code and <code>.conf</code> file immediately. You scan it into the official WireGuard app on your phone or laptop, route traffic through the exit node and get disconnected cleanly as soon as the paid time or byte quota hits zero</p>\n<h3><a name=\"p-27694-why-build-this-3\" class=\"anchor\" href=\"#p-27694-why-build-this-3\" aria-label=\"Heading link\"></a>Why Build This</h3>\n<p>Most commercial VPNs force users into $10+/month subscriptions, email signups or credit card billing just to get encrypted internet on airport, hotel or cafe Wi-Fi for an afternoon. On Bitcoin Lightning, <strong>LNVPN</strong> showed that pay-as-you-go WireGuard tunnels are one of the few micropayment apps people actually return to use.</p>\n<p>FiberVPN brings that same pattern to Fiber without accounts or custodial logins:</p>\n<ul>\n<li>The browser generates the WireGuard keypair locally and persists it in <code>localStorage</code> so refreshing the tab while waiting for payment never orphans a paid tunnel.</li>\n<li>The backend validates the Curve25519 public key, creates a Fiber invoice via <code>fnn</code> (<code>new_invoice</code>) and allocates a tunnel IP only after <code>get_invoice</code> reports <code>Paid</code>.</li>\n<li>Every 10 seconds, the quota daemon checks <code>wg show wg0 transfer</code> and tears down any peer whose paid duration or byte limit is reached, recycling its IP back into the <code>/24</code> pool.</li>\n</ul>\n<p><em>How it sits next to other Fiber projects:</em> <code>MeterNet</code> meters local router Wi-Fi per megabyte via <code>openNDS</code> captive-portal rules, while <code>Fiber Paid HTTP</code> gates single HTTP requests behind payment headers. Neither gives a remote user an OS-level encrypted WireGuard tunnel they can turn on from anywhere using the standard WireGuard app.</p>\n<h3><a name=\"p-27694-how-it-works-4\" class=\"anchor\" href=\"#p-27694-how-it-works-4\" aria-label=\"Heading link\"></a>How It Works</h3>\n<pre><code class=\"lang-plaintext\">Browser generates WireGuard keypair locally (saved in localStorage)\n  -&gt; sends publicKey + tier to FiberVPN gateway\n  -&gt; gateway validates Curve25519 key, calls fnn new_invoice and returns invoice\n\nUser pays invoice (~1s via Fiber wallet or @nervosnetwork/fiber-js WASM)\n  -&gt; gateway sees Paid via get_invoice\n  -&gt; allocates IP from /24 pool -&gt; runs `wg set wg0 peer &lt;pubkey&gt; allowed-ips &lt;ip&gt;/32`\n  -&gt; browser injects local PrivateKey and renders WireGuard QR / .conf\n\nQuota daemon (every 10s, backed by SQLite)\n  -&gt; reads `wg show wg0 transfer`\n  -&gt; on expiry or rx+tx &gt;= maxBytes, runs `wg set wg0 peer &lt;pubkey&gt; remove` and recycles IP\n</code></pre>\n<p>The HTTP server runs unprivileged (not as <code>root</code>), scoped via <code>CAP_NET_ADMIN</code> / <code>sudoers</code> strictly to <code>wg set wg0</code> and <code>wg show wg0 transfer</code> with <code>execFile</code> and zero shell interpolation. During the public testnet trial, <code>nftables</code> forwarding on <code>wg0</code> blocks outbound SMTP (<code>25, 465, 587</code>) and BitTorrent while leaving standard web, SSH and DNS ports (<code>80, 443, 53</code>) open so testers cannot get the VPS flagged for spam.</p>\n<p>For reviewers who do not run a local <code>fnn</code> node, <strong>Week 2 puts a public testnet web MVP online</strong> with a built-in <code>@nervosnetwork/fiber-js</code> browser WASM flow alongside the raw invoice QR. You fund from the testnet faucet, pay a <code>15 min / 50 MB</code> test tier right in your browser, scan the WireGuard QR on your phone or laptop and confirm your public IP switches to the exit node and cuts off at expiry.</p>\n<h3><a name=\"p-27694-applicant-background-5\" class=\"anchor\" href=\"#p-27694-applicant-background-5\" aria-label=\"Heading link\"></a>Applicant Background</h3>\n<p>I’m Akan Theodore (<code>kd-designs</code>), an independent full-stack developer working mostly with TypeScript, Node.js services and Linux networking. I haven’t run a public <code>fnn</code> node before, so Week 1 tackles live Pudge testnet channel opening and <code>wg set</code> peer provisioning on a Linux VPS up front before building the browser UI on top of it.</p>\n<h3><a name=\"p-27694-what-already-exists-vs-what-the-grant-funds-6\" class=\"anchor\" href=\"#p-27694-what-already-exists-vs-what-the-grant-funds-6\" aria-label=\"Heading link\"></a>What Already Exists vs. What the Grant Funds</h3>\n<p>An initial <code>v0.1.0</code> core is already written in TypeScript ( <a href=\"http://github.com/kd-designs/fibervpn\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub</a> ) and runs locally today:</p>\n<ul>\n<li>Curve25519 base64 key validation rejecting malformed or shell-injected keys (<code>src/wireguard.ts</code>)</li>\n<li><code>/24</code> IP pool allocator (<code>IpPoolAllocator</code>), <code>.conf</code> builder and <code>WgCliAdapter</code> using <code>execFile('wg', ...)</code></li>\n<li><code>FnnRpcClient</code> wired to FNN’s <code>new_invoice</code> and <code>get_invoice</code> JSON-RPC schema plus an in-memory mock (<code>src/fiber-rpc.ts</code>)</li>\n<li><code>VpnManager</code> with post-payment IP allocation, concurrent activation locking, duplicate-active-key protection and automatic time/byte quota cutoffs (<code>src/manager.ts</code>)</li>\n<li>8 passing unit tests (<code>npm test</code>) and a local simulation (<code>npm run demo</code>)</li>\n</ul>\n<p><strong>What this grant funds (5 weeks):</strong></p>\n<ul>\n<li><strong>Live Linux + WireGuard + <code>fnn</code> gateway:</strong> Provisioning <code>wg0</code> NAT/forwarding, <code>nftables</code> port filtering and a funded Pudge testnet <code>fnn</code> node on a public Linux VPS.</li>\n<li><strong>Public browser MVP (Week 2):</strong> Hosted testnet page with client-side Curve25519 keygen (<code>localStorage</code>-backed), <code>@nervosnetwork/fiber-js</code> WASM checkout alongside raw invoice QRs and WireGuard QR rendering.</li>\n<li><strong>SQLite persistence &amp; restart reconciliation (Week 3):</strong> Persisting sessions and byte checkpoints in SQLite so daemon restarts clean up peers that expired offline and never reset <code>wg</code> byte counters.</li>\n<li><strong>14-day public testnet trial &amp; verifier (Weeks 4-5):</strong> Opening the testnet exit node to Nervos Talk testers for two weeks, publishing a standalone status/verification CLI (<code>npx fibervpn status &lt;payment_hash&gt;</code>), recording an unedited mobile WireGuard demo video and posting the closing report with testnet payment hashes and honest latency/failure notes.</li>\n</ul>\n<h3><a name=\"p-27694-deliverables-timeline-7\" class=\"anchor\" href=\"#p-27694-deliverables-timeline-7\" aria-label=\"Heading link\"></a>Deliverables &amp; Timeline</h3>\n<ul>\n<li><strong>Week 1: Live <code>wg0</code> + <code>fnn</code> testnet node:</strong> Linux VPS running WireGuard <code>wg0</code>, <code>nftables</code> rules and a funded Pudge testnet <code>fnn</code> node; first real invoice-to-peer-add test passed</li>\n<li><strong>Week 2: Public testnet web MVP:</strong> Hosted demo URL posted on this thread with browser <code>@nervosnetwork/fiber-js</code> + QR checkout, WireGuard QR generation and live peer status board.</li>\n<li><strong>Week 3: Persistence &amp; quota cutoff suite:</strong> SQLite session recovery across restarts and live cutoff tests for both time expiry and byte-cap exhaustion.</li>\n<li><strong>Weeks 4-5: 14-day community trial, CLI &amp; wrap-up:</strong> Two weeks of public testnet usage, verification CLI published, unedited mobile WireGuard cutoff video recorded and closing report posted.</li>\n</ul>\n<h3><a name=\"p-27694-budget-750-usd-in-ckb-8\" class=\"anchor\" href=\"#p-27694-budget-750-usd-in-ckb-8\" aria-label=\"Heading link\"></a>Budget: $750 USD in CKB</h3>\n<p>Priced by milestone (no VPS hardware or hosting fees billed separately):</p>\n<ul>\n<li><strong>Week 1 ($150):</strong> Linux VPS <code>wg0</code> setup, <code>nftables</code> rules and testnet <code>fnn</code> channel liquidity</li>\n<li><strong>Week 2 ($200):</strong> Public testnet web MVP, client-side keygen, WASM checkout and WireGuard QR UI</li>\n<li><strong>Week 3 ($200):</strong> SQLite persistence, restart reconciliation and automated quota cutoff tests</li>\n<li><strong>Weeks 4-5 ($200):</strong> 14-day public trial, verification CLI, walkthrough video and closing report</li>\n</ul>\n<h3><a name=\"p-27694-how-anyone-can-verify-9\" class=\"anchor\" href=\"#p-27694-how-anyone-can-verify-9\" aria-label=\"Heading link\"></a>How Anyone Can Verify</h3>\n<ol>\n<li><strong>Right now (local repo):</strong> Clone <a href=\"http://github.com/kd-designs/fibervpn\" class=\"inline-onebox\" rel=\"noopener nofollow ugc\">GitHub - kd-designs/fibervpn: Pay-per-hour and pay-per-MB WireGuard VPN exit gateway powered by Nervos Fiber Network · GitHub</a> , run <code>npm install &amp;&amp; npm test &amp;&amp; npm run demo</code> to verify the 8 tests, key validation, concurrency guard and quota cutoff simulation.</li>\n<li><strong>From Week 2:</strong> Open the live testnet URL, pay a testnet Fiber invoice via the browser WASM flow (or your own Fiber node), scan the WireGuard QR in the official WireGuard app, check <code>ifconfig.me</code> before and after connecting and watch traffic stop at expiry.</li>\n<li><strong>At completion:</strong> Run <code>npx fibervpn status &lt;payment_hash&gt;</code> against our public logs and watch the unedited phone-to-WireGuard walkthrough video.</li>\n</ol>\n<h3><a name=\"p-27694-maintenance-10\" class=\"anchor\" href=\"#p-27694-maintenance-10\" aria-label=\"Heading link\"></a>Maintenance</h3>\n<p>For 6 months after completion, I will keep <code>fibervpn</code> updated against <code>fnn</code> JSON-RPC changes and answer setup issues on GitHub within 48 hours.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
