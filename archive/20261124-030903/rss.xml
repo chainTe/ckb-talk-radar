@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Tue, 24 Nov 2026 02:54:45 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-24</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-24:daily-brief</guid>
+    <pubDate>Tue, 24 Nov 2026 03:09:14 +0000</pubDate>
+    <description>## 今日发生了什么 今天论坛技术开发内容很密集，集中出现了 CKBHash、Lock Value 关系和 UTXO 转账设计模式三篇开发指南 [S04, S05, S06]。CellScript 路线图 Part 2 完成 bounded validation，ReuseLoop 测试网原型和 Noir CKB 问答也同时出现 [S09, S08, S07]。治理侧，CKB Productathon（Kisumu）提案遭到身份、关联和资助记录方面的质疑，有人要求 Community Fund DAO 暂缓决定 [S12, S13]。线下推广方面，CKB x Kaze Unitour Phase 2 的 Machakos 大学活动帖子报告 180 多名学生参与、95 个新钱包 [S10]。 ## 重点话题 CKB 生态双周报 #29 发布，提到浏览器轻客户端修复合并和 OffCKB 等基础设施与工具进展 [S01]；同一时间段还有三篇开发指南，分别讲 CKBHash 与高级 lock 设计 [S04]、CKB lock value 关系 [S05]、以及 Cell Model 下因状态租金而复杂的七种 UTXO 转账模式 [S06]。 CellScript 路线图 Part 2 在 0.36 开发线上完成 bounded validation，示例覆盖恒定乘积池、LP 存取和托管订单部分成交等 [S09]；ReuseLoop 在 CKB Testnet 记录可复用包装的授权状态变化 [S08]。 Noir CKB 作为连接 Noir 零知识证明语言与 CKB...</description>
+  </item>
+  <item>
+    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
+    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 02:54:45 +0000</pubDate>
+    <description>CKB Ecosystem Biweekly Update #29 image690×388 97 KB Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev merged browser light-client fixes, added an OffCKB plugin host, improved explorer indexing and peer discovery, and made DAO treasury voting tools accessible for local testing. More: CKB Dev Log 2026-11-11 @CKBDevrel fixed CCC’s JoyID signature verification and improved Cinnabar’s contract templates. @FiberDevs shipped v0.10.1 with V2 P2P messaging. Pls back up node full data directory before upgrading. Existing V1 channels still work, but nodes on v0.9.x and v0.10.x can’t...</description>
+  </item>
+  <item>
+    <title>Crossfire Loop: You Are the Bottleneck (2 posts)</title>
+    <link>https://talk.nervos.org/t/crossfire-loop-you-are-the-bottleneck/11358</link>
+    <guid>https://talk.nervos.org/t/crossfire-loop-you-are-the-bottleneck/11358#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 02:23:47 +0000</pubDate>
+    <description>How we do agentic engineering at Sōnami has evolved over the last few months. We wanted to share the “Crossfire Loop”, a method proven to yield the most favorable results for us. Crossfire Loop: You Are the Bottleneck Software engineering used to operate at a slower pace. Difficult architectural decisions were followed by an extended period of implementation and testing. AI is taking over the implementation and testing. Now the job of a software engineer is only the difficult parts, condensed into a non-stop, mentally taxing stream. You are the bottleneck. Human intellect is still required for any serious engineering task, and it is the scarcest resource. Scaling means minimizing human...</description>
+  </item>
+  <item>
+    <title>Using the CKBHash Function in CKB Development (1 posts)</title>
+    <link>https://talk.nervos.org/t/using-the-ckbhash-function-in-ckb-development/11362</link>
+    <guid>https://talk.nervos.org/t/using-the-ckbhash-function-in-ckb-development/11362#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 01:50:17 +0000</pubDate>
+    <description>CKBHash is a term you might see within the various CKB libraries, and for basic usage it’s abstracted away for you. For more advanced lock design you need to understand what it is and where it is commonly applied. We put together a quick guide to explain how these conventions work. Using the CKBHash Function in CKB Development When building smart contracts on CKB you are free to use any cryptographic function that you wish to use. However, many of the system scripts and within the commonly used libraries rely on Blake2b. In this post we describe some of the specific CKB conventions on how to use it properly with the existing foundations. In most cases, you will rely on libraries that...</description>
+  </item>
+  <item>
+    <title>Understanding CKB Lock Value Relationships (1 posts)</title>
+    <link>https://talk.nervos.org/t/understanding-ckb-lock-value-relationships/11361</link>
+    <guid>https://talk.nervos.org/t/understanding-ckb-lock-value-relationships/11361#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 01:41:18 +0000</pubDate>
+    <description>When you work with the CKB Cell Model, there are a lot of different lock values and the terminology can be confusing at first. Even for a seasoned developer, how all these values fit together is often overlooked. This is why we are sharing this guide to explain it in simple terms. Understanding CKB Lock Value Relationships In CKB smart contract development, it is important to understand how different lock-related values connect to each other. These values form a chain of cryptographic relationships that are used throughout smart contract development for purposes such as ownership verification, address generation, and cross-referencing between different scripts. The Value Derivation Chain...</description>
+  </item>
+  <item>
+    <title>Design Patterns: UTXO Transfers Using the Cell Model (1 posts)</title>
+    <link>https://talk.nervos.org/t/design-patterns-utxo-transfers-using-the-cell-model/11360</link>
+    <guid>https://talk.nervos.org/t/design-patterns-utxo-transfers-using-the-cell-model/11360#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 01:21:21 +0000</pubDate>
+    <description>How to transfer assets with the Cell Model is a surprisingly complex subject because of the state rent requirements. We wanted to share a guide on seven patterns (both current and future) that developers should understand. Design Patterns: UTXO Transfers Using the Cell Model This document explores different patterns for transferring digital assets between two parties using the Nervos CKB Cell Model. While focused on the CKB blockchain, these patterns may also apply to other UTXO blockchains that implement state rent. State rent is essential because it ensures sustainable network economics and prevents out of control cost spirals. However, it introduces unique challenges that require...</description>
+  </item>
+  <item>
+    <title>CKBA Presents: Question Time with Xiaomao and Noir CKB (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckba-presents-question-time-with-xiaomao-and-noir-ckb/11359</link>
+    <guid>https://talk.nervos.org/t/ckba-presents-question-time-with-xiaomao-and-noir-ckb/11359#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 00:46:41 +0000</pubDate>
+    <description>Question Time Xiaomao noir1920×1080 710 KB Noir CKB is a developer toolchain that connects the Noir programming language (for writing zero-knowledge proofs) with the Nervos CKB blockchain. In simple terms: Imagine you want to keep a secret number (like a private score or balance) stored on a blockchain, where only you should be able to update it, without ever revealing the number itself. Noir CKB is an experimental way to write private logic in the relatively friendly Noir language, and safely enforce it on CKB. The Private Tally is the current live demo, you can try on testnet if you want to experiment. Noir is a programming language made for zero-knowledge (ZK) proofs. ZK proofs let you...</description>
+  </item>
+  <item>
+    <title>ReuseLoop: Tracking reusable packaging lifecycles on CKB Testnet (1 posts)</title>
+    <link>https://talk.nervos.org/t/reuseloop-tracking-reusable-packaging-lifecycles-on-ckb-testnet/11356</link>
+    <guid>https://talk.nervos.org/t/reuseloop-tracking-reusable-packaging-lifecycles-on-ckb-testnet/11356#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 00:37:29 +0000</pubDate>
+    <description>What happens to a reusable package as it moves through borrowing, return, and reuse—and what can CKB actually verify about that journey? ReuseLoop is a CKB Testnet prototype that records an item’s administrator-authorized state changes: AVAILABLE → BORROWED → RETURNED → AVAILABLE. CKB records application state and authorized transitions. Physical handoffs, returns, cleaning, and inspections happen off-chain and are not proven by the chain. Workflow overview The diagram separates the current read-only walkthrough from the lifecycle modeled by the prototype. flowchart TD subgraph Demo["Current walkthrough: read-only"] Item["Existing CKB Testnet item"] --&gt; Read["ReuseLoop reads item state...</description>
+  </item>
+  <item>
+    <title>CellScript Roadmap: Expanding the Frontier of CKB-Native DeFi (1 posts)</title>
+    <link>https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936</link>
+    <guid>https://talk.nervos.org/t/cellscript-roadmap-expanding-the-frontier-of-ckb-native-defi/10936#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 00:07:51 +0000</pubDate>
+    <description>Part 2 Completion Part 2 of the roadmap, Basic Pools, Orders and Settlement, has completed bounded validation on the CellScript 0.36 development line. The examples now cover constant-product pools, LP deposits and redemptions, escrowed orders with partial fills and cancellation, atomic order-to-pool settlement, shared payments, and two-pool routing. The acceptance runs replayed 282 archived transactions and committed 60 transactions on a pinned local CKB node. Finance packages · Acceptance record What does writing a swap look like? Start by describing which Cells the transaction spends and what must replace them. A swap spends the current pool state, the two reserve Cells tied to it, and...</description>
+  </item>
+  <item>
+    <title>CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355</link>
+    <guid>https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 21:17:34 +0000</pubDate>
+    <description>Phase 2 of the CKB x Kaze Unitour began on Thursday, 19 November at Machakos University, and the turnout exceeded what we planned for. More than 180 students joined us for three hours of hands-on learning, and 95 of them left with a brand new self-custodial wallet on Kaze. 17954612245561392×928 170 KB Why we run the Unitour Most students in Kenya have heard of Bitcoin, but very few have actually held their own keys. The Unitour exists to close that gap. We take Bitcoin and CKB education directly to campuses, and we make sure everyone leaves having done something real rather than just listened. What we covered The session ran from 14:00 to 17:00 and followed the same flow we use on every...</description>
+  </item>
+  <item>
+    <title>CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11354</link>
+    <guid>https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11354#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 21:08:52 +0000</pubDate>
+    <description>(topic deleted by author)</description>
+  </item>
+  <item>
+    <title>[DIS] CKB Productathon: Ship on CKB (Kisumu, Kenya) (2 posts)</title>
+    <link>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262</link>
+    <guid>https://talk.nervos.org/t/dis-ckb-productathon-ship-on-ckb-kisumu-kenya/11262#recent-2</guid>
+    <pubDate>Mon, 23 Nov 2026 16:23:53 +0000</pubDate>
+    <description>gm @neon.bit @zz_tovarishch and everyone. I urge the Community Fund DAO to pause its decision on this proposal until the applicant’s identity, affiliations, grant history and event claims have been independently verified. The concern is the combination of records: an Arbitrum grant case in which Questbook identified the NexusPay/UmojaVerse team in connection with impersonation; public records identifying Griffins Oduol alias (FidelCoder) as a NexusPay/UmojaVerse co-founder; an ETHSafari grant application that names Oduol alias (FidelCoder) and links his personal accounts; and a CKB application making substantial reach claims without providing underlying attendance records. Taken together,...</description>
+  </item>
+  <item>
+    <title>[DIS] Fiber Claim Cell: Async Receive and On-Chain Claims for Fiber LSPs (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254</link>
+    <guid>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 14:17:35 +0000</pubDate>
+    <description>I’d love to hear from more of the Fiber community! The goal of Fiber Claim Cell is straightforward: give existing LSPs an on-chain claim option when a receiver has no usable channel, rather than build another LSP service. The prototype flow has run on testnet; real-wallet validation, safety hardening and an independent audit are still part of the proposed work. If this is something you’d like to see built, please like this post to show your support. If you build a wallet or run an LSP, which receiving scenario would make this useful to you? Questions and concerns are just as welcome. I’d rather address them now, while the scope is still open for discussion.</description>
+  </item>
+  <item>
+    <title>Spark Program | ckb-whitehat (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-ckb-whitehat/11346</link>
+    <guid>https://talk.nervos.org/t/spark-program-ckb-whitehat/11346#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 14:10:29 +0000</pubDate>
+    <description>ckb-whitehat — Spark Program application Status: ready to run (tool shipped at v0.4.2). The repository (https://github.com/nghiadang391/ckb-whitehat) already exists under my GitHub account (nghiadang391) and holds two completed pilots plus a working Go CLI release (v0.4.2, CI green). This application funds the first systematic whitehat verification of three more CKB-DAO-funded CKB/Fiber money products, plus three net-new forward deliverables on the tool itself. Code for each new target lands in this repo week by week, with its FINDINGS.md, its deterministic PoC suite, and its patch packs. License: MIT. Title: Spark Program | ckb-whitehat: deterministic whitehat verification of CKB/Fiber...</description>
+  </item>
+  <item>
+    <title>[DIS] KeyMe — CKB's PSBT: Open Air-Gapped Signing and the First DIY Hardware (3 posts)</title>
+    <link>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258</link>
+    <guid>https://talk.nervos.org/t/dis-keyme-ckbs-psbt-open-air-gapped-signing-and-the-first-diy-hardware/11258#recent-3</guid>
+    <pubDate>Mon, 23 Nov 2026 13:48:50 +0000</pubDate>
+    <description>Hi @WuodOdhis it seems like you missed my question here. Do you have previous examples of hardware projects that you have worked on? (post deleted by author) WuodOdhis: Hardware lead I am not doing the hardware half alone. moshte (@xmoshte) is the hardware lead and a long-time friend and collaborator. His public hardware portfolio includes: Revolv-47 — Altium design files for a BLDC electronic speed controller with USB-C PD and power electronics. Chavi-21 — USB-C PD 1S–4S battery charging and power source module. Nielo — Raspberry Pi Compute Module 5 carrier board. CBC — KiCad design files for the Chord Board Controller, with ZMK firmware. Semgdaq — PCB manufacturing files, firmware and...</description>
+  </item>
+  <item>
+    <title>Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫 (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-cellcat-ckb/11308</link>
+    <guid>https://talk.nervos.org/t/spark-program-cellcat-ckb/11308#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 08:15:26 +0000</pubDate>
+    <description>( English below ) 这是什么？为什么要做在 CKB 上？ CellCat 是一个跑在 CKB 上的全链上基因猫小游戏，玩法很简单：领养 → 配对产蛋 → 等出块孵化 → 挂单交易 / 熔猫。 选 CKB 带来的特性： 猫有真地板价：每只猫都是一个真实的 Cell，喂食就是往里存 CKB；不想玩了随时“熔猫”，Cell 里的 CKB 全退回钱包。 不存图，链上算基因：每只猫只存 32 字节 DNA（显性+隐性基因），繁殖先产蛋、到指定块高取区块头做随机源，链上重算 DNA 防作弊。 无托管原子交易：用 sale-lock 挂单，买家付够 CKB 直接换锁成交，卖家随时撤单，不需要把猫转给平台托管。 零门槛：接入 JoyID，不用装插件背助记词，打开网页就能玩。 目前已经做完的部分（本地 Devnet 已跑通） 4 个 Rust 合约（cat-type、egg-type、sale-lock、config-type）：纯手写字节布局和 ckb_std::syscalls，避开了 riscv64imac 原子指令的坑。 跨端基因库：Rust（no_std）和前端 JS 逐字节一致，有 82 条自动化校验向量。 合约测试：ckb-testtool 写了 20 多个正常和异常用例（防改 DNA、冷却、次数上限、繁育费、区块头、挂单少付/错付等），已全过。 移动端网页：猫舍、繁育、集市、明信片生成和基础社交交互在本地 devnet 上已经能玩。 图片1440×2802 387 KB 开发规划 第 1...</description>
+  </item>
+  <item>
+    <title>Spark Program | MeterNet: Pay-per-MB Wi-Fi Hotspots Metered by Fiber Payments (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041</link>
+    <guid>https://talk.nervos.org/t/spark-program-meternet-pay-per-mb-wi-fi-hotspots-metered-by-fiber-payments/11041#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 06:45:31 +0000</pubDate>
+    <description>Hi @xingtianchunyan Thank you Following your review of M1–M3 (the public MVP, the hotspot box, the 117-test suite, and the 6×3 failure lab at 18/18, with verify.mjs recomputing every cut from the logs), the 14-day field pilot starts today and runs to Dec 6. I need the second installment to carry the pilot through. Could the committee release 40% (232,280 CKB) now, against the completed M1–M3 deliverables? The final 40% (232,280 CKB, including the $80 for user feedback and reporting) would follow once the final report and feedback summary are accepted. If you’d prefer a different split or timing, I’m happy to follow it.</description>
+  </item>
+  <item>
+    <title>Godwoken Withdrawals Now Available — Force Bridge Compensation Portal Coming Soon (1 posts)</title>
+    <link>https://talk.nervos.org/t/godwoken-withdrawals-now-available-force-bridge-compensation-portal-coming-soon/11307</link>
+    <guid>https://talk.nervos.org/t/godwoken-withdrawals-now-available-force-bridge-compensation-portal-coming-soon/11307#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 06:44:55 +0000</pubDate>
+    <description>Hi community, Godwoken withdrawals are now available for members who have already submitted a withdrawal request through https://www.magickbase.com/force-bridge-form. You can now visit the https://refund.godwoken.io/ to complete your Godwoken withdrawal. New withdrawal requests will be handled in the next batch. You can continue to submit requests through the same form. The Force Bridge Compensation Portal for withdrawals back to Ethereum and BSC will open soon. Thank you for your patience and support.</description>
+  </item>
+  <item>
+    <title>Fiber LSP: Running Channels on the Server, Signing in the Wallet (1 posts)</title>
+    <link>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220</link>
+    <guid>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 03:38:47 +0000</pubDate>
+    <description>Following up on my earlier note, @joii2020: the proposal is now live — Fiber Claim Cell! I’ve narrowed it to one piece existing LSPs could reuse: an on-chain claim option for receivers without a usable channel. The goal is to complement hosted LSP delivery, not build another public LSP. The prototype flow has run on CKB testnet; real-wallet validation, security hardening and an independent audit are still part of the proposed work. I’d love your take on where this would fit in the hosted delivery flow. If other wallet developers or LSP operators see a use for it, please share your use case or support in the proposal thread — that would really help shape the funding discussion.</description>
+  </item>
+  <item>
+    <title>CKBA Membership Process (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckba-membership-process/10340</link>
+    <guid>https://talk.nervos.org/t/ckba-membership-process/10340#recent-1</guid>
+    <pubDate>Mon, 23 Nov 2026 03:25:44 +0000</pubDate>
+    <description>Contributing Member applications for the 2026 Q4 GA CKBA accepts Contributing Member applications year-round. To have your application considered at the December General Assembly, please submit the Contributing Member application form by 30 November 2026 (AoE). Applications received after the cutoff will be considered at the following GA.</description>
+  </item>
+</channel>
+</rss>
