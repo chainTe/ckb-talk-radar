@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>CKB Talk Radar Daily Brief</title>
+  <link>https://chainte.github.io/ckb-talk-radar/</link>
+  <description>Daily Nervos Talk community briefing and latest active topics.</description>
+  <language>zh-cn</language>
+  <lastBuildDate>Wed, 25 Nov 2026 00:55:00 +0000</lastBuildDate>
+  <atom:link href="https://chainte.github.io/ckb-talk-radar/rss.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>CKB Talk Daily Brief - 2026-11-25</title>
+    <link>https://chainte.github.io/ckb-talk-radar/</link>
+    <guid>tag:ckb-talk-radar,2026-11-25:daily-brief</guid>
+    <pubDate>Wed, 25 Nov 2026 01:15:08 +0000</pubDate>
+    <description>## 今日发生了什么 过去 24 小时，论坛的主要动静在治理和项目进展：Twine 提案讨论结果公布后，社区成员追问最后一天出现的新账号点赞，发起人表示已用论坛管理员数据审查。[S01] 同时，Oracell 的 Phase 1 MVP 和 3D 赛车项目 Crowns 都在测试网上线，向社区征集反馈。[S02, S03] 围绕 Community Fund DAO 的投票参与、资助项目履约和提案价值，论坛继续有集中讨论。[S05, S06, S18] 另外，NNCBN 周报提示节点分布比预期更集中，Fiber Claim Cell 与多篇 CKB 开发指南也有新回复。[S04, S08, S09, S10, S11, S12, S14, S16] ## 重点话题 Twine 提案讨论结果公布后，社区成员对最后一天点赞的几个新账号提出疑问。[S01] 发起人表示已用论坛管理员数据审查，并提到其中三个点赞账号的情况。[S01] 材料没有给出审查结论。[S01] Oracell 的 Phase 1 MVP 已在 Pudge 测试网上线，定位为面向 CKB Cell Model 的无争用 witness oracle，并征集反馈。[S02] Crowns 也在测试网上线，是实时 3D 赛车游戏，玩家押 CKB、由链决定胜负，开发者邀请社区试玩。[S03] NNCBN 第九周周报称，当前节点分布比预期更集中：47 个 peer 中有 20 个（42.55%）来自 Amazon。[S04] DAO...</description>
+  </item>
+  <item>
+    <title>[DIS] Twine — Non-Custodial P2P for Nervos CKB on Nostr and Fiber (1 posts)</title>
+    <link>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228</link>
+    <guid>https://talk.nervos.org/t/dis-twine-non-custodial-p2p-for-nervos-ckb-on-nostr-and-fiber/11228#recent-1</guid>
+    <pubDate>Wed, 25 Nov 2026 00:55:00 +0000</pubDate>
+    <description>About half an hour after the discussion-phase result was announced (Nov 24, 18:21 UTC+8), a community member asked about several new accounts that liked this proposal on the final day of the window. I reviewed the likes with forum admin data. Three of the liking accounts were registered from one network address within five hours, and each liked within 81 seconds of registering. Nothing in the data links them to the proposal author. Under the practice of t/7707 and t/10453, their likes would be removed, which would leave 29 of the announced 32, one short of the threshold. The concern was raised after the result was announced, and the t/10453 review treats a proposal whose window closed...</description>
+  </item>
+  <item>
+    <title>Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome) (1 posts)</title>
+    <link>https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368</link>
+    <guid>https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 22:03:43 +0000</pubDate>
+    <description>Hi everyone, I’ve been working on Oracell, a contention-free oracle infrastructure built natively for Nervos CKB’s Cell Model as part of the CKB Builder Track (Week 11–12). Following initial architecture discussions, Phase 1 (MVP) is now live on Pudge Testnet (rikokurnia/oracell on GitHub, live app at oracell [dot] vercel [dot] app), and I’d love to gather technical feedback from the wider CKB community before moving into Phase 2. The Problem We’re Solving Traditional push-based oracles map poorly onto CKB’s Extended UTXO (Cell) architecture: Cell Contention: Updating a single shared price cell destroys its previous OutPoint, causing concurrent DeFi liquidations or swaps referencing that...</description>
+  </item>
+  <item>
+    <title>Crowns: a live 3D car race on CKB where the chain is the referee (1 posts)</title>
+    <link>https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367</link>
+    <guid>https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 16:04:46 +0000</pubDate>
+    <description>Hi everyone I’m Chioma, a builder in the CKBuilders program. I’ve been building Crowns, a real-time 3D car race where players put CKB on the line and the chain decides who won. It’s live on testnet, and I’d love for you to race it and tell me what you think. Play: https://keepers-relay.vercel.app (testnet) Code: GitHub - Kaylahray/keepers_relay: Crowns: live 3D car races on Nervos CKB. 2–5 players race 3 laps for a shared pot; each phone signs its own moves, and the chain replays the whole race before paying the winner. Rust rules on CKB-VM and in WebAssembly, Spore trophies, testnet. · GitHub Build thread: Crowns: a live multiplayer skill game where CKB-VM replays every run · Issue #45 ·...</description>
+  </item>
+  <item>
+    <title>Spark Program | NNCBN - Nervos Network Community Boot Nodes (1 posts)</title>
+    <link>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653</link>
+    <guid>https://talk.nervos.org/t/spark-program-nncbn-nervos-network-community-boot-nodes/10653#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 12:11:18 +0000</pubDate>
+    <description>2026 November 24, Ninth Weekly Report We currently collect the connected CKB-Node-Peer-pings to get a finegrained sense of whats really running the Network, and that i can say, that the situation seems more centralized than expected. Out of 47 Peers: 20 (42.55%) Amazon, 5 (10.64%) Google, 5 (10.64%) Microsoft, 3 (6.38%) Alibaba, 3 (6.38%) OVH, 2 LG DACOM KIDC, 1 Contabo 1 DigitalOcean So far we have added 14 nodes to our current whitelist. These are included even if some are hosted by cloud providers, as long as they are the only ones in their country. Examples are the ones we added to the whitelist from the very beginning: Santiago (South America) and Cape Town (South Africa). These are...</description>
+  </item>
+  <item>
+    <title>Community Fund DAO voting in numbers (2 posts)</title>
+    <link>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246</link>
+    <guid>https://talk.nervos.org/t/community-fund-dao-voting-in-numbers/11246#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 11:21:42 +0000</pubDate>
+    <description>1信息获取渠道应该是一个很大的问题，渠道太过分散，关注Dao的X账户的人很少，在talk论坛中注册并定期查看信息的更少。 2无法用移动终端进行投票也是一个关键问题。登录桌面钱包等待信息更新，再跳转几个网站，操作很麻烦。 3相关提案与社区成员的利益关系不大，且很多提案技术性较强，很多成员觉得通过与不通过都没有关系，除了个别资金量大或者争议性大的项目，倾向于不投票，让其他人决定。 4已通过Dao资助项目的履约情况以及后续的持续运营也是一个非常大的因素。Nervos上太多项目开发完以后就被束之高阁，被开发者放弃了。现在缺少真正一个从Dao资助出来一个成功的案例，尤其是Dao里面很多宣传或者活动，很难让人信服能产生什么长期有效的效果。</description>
+  </item>
+  <item>
+    <title>[DIS] Fiber Claim Cell: Async Receive and On-Chain Claims for Fiber LSPs (5 posts)</title>
+    <link>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254</link>
+    <guid>https://talk.nervos.org/t/dis-fiber-claim-cell-async-receive-and-on-chain-claims-for-fiber-lsps/11254#recent-5</guid>
+    <pubDate>Tue, 24 Nov 2026 11:10:13 +0000</pubDate>
+    <description>你们都是temlo团队的？ Nope, @hao_zhang, I’m with Random Walk. This one’s a personal proposal though. We built Fiber Link, but getting people to use it was tough without enough inbound liquidity. Losing stablecoin support on mainnet didn’t help either. Now that people are building LSPs to tackle the liquidity problem, I thought I’d jump in and help out too. BTW, our team is against the Rosen Bridge proposal too. We think it’s a pretty low priority right now. 靠代码可带不来流动性，流动性为什么需要ckb出钱？ I’m not sure I follow, I didn’t ask for liquidity funding Hi @Akane, thanks for narrowing this down to a module that existing LSPs can adopt. One detail stood out to me: the refund path checks no signature and can...</description>
+  </item>
+  <item>
+    <title>Design Patterns: UTXO Transfers Using the Cell Model (2 posts)</title>
+    <link>https://talk.nervos.org/t/design-patterns-utxo-transfers-using-the-cell-model/11360</link>
+    <guid>https://talk.nervos.org/t/design-patterns-utxo-transfers-using-the-cell-model/11360#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 09:20:15 +0000</pubDate>
+    <description>How to transfer assets with the Cell Model is a surprisingly complex subject because of the state rent requirements. We wanted to share a guide on seven patterns (both current and future) that developers should understand. Design Patterns: UTXO Transfers Using the Cell Model This document explores different patterns for transferring digital assets between two parties using the Nervos CKB Cell Model. While focused on the CKB blockchain, these patterns may also apply to other UTXO blockchains that implement state rent. State rent is essential because it ensures sustainable network economics and prevents out of control cost spirals. However, it introduces unique challenges that require...</description>
+  </item>
+  <item>
+    <title>Understanding CKB Lock Value Relationships (2 posts)</title>
+    <link>https://talk.nervos.org/t/understanding-ckb-lock-value-relationships/11361</link>
+    <guid>https://talk.nervos.org/t/understanding-ckb-lock-value-relationships/11361#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 09:19:54 +0000</pubDate>
+    <description>When you work with the CKB Cell Model, there are a lot of different lock values and the terminology can be confusing at first. Even for a seasoned developer, how all these values fit together is often overlooked. This is why we are sharing this guide to explain it in simple terms. Understanding CKB Lock Value Relationships In CKB smart contract development, it is important to understand how different lock-related values connect to each other. These values form a chain of cryptographic relationships that are used throughout smart contract development for purposes such as ownership verification, address generation, and cross-referencing between different scripts. The Value Derivation Chain...</description>
+  </item>
+  <item>
+    <title>Using the CKBHash Function in CKB Development (2 posts)</title>
+    <link>https://talk.nervos.org/t/using-the-ckbhash-function-in-ckb-development/11362</link>
+    <guid>https://talk.nervos.org/t/using-the-ckbhash-function-in-ckb-development/11362#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 09:19:33 +0000</pubDate>
+    <description>CKBHash is a term you might see within the various CKB libraries, and for basic usage it’s abstracted away for you. For more advanced lock design you need to understand what it is and where it is commonly applied. We put together a quick guide to explain how these conventions work. Using the CKBHash Function in CKB Development When building smart contracts on CKB you are free to use any cryptographic function that you wish to use. However, many of the system scripts and within the commonly used libraries rely on Blake2b. In this post we describe some of the specific CKB conventions on how to use it properly with the existing foundations. In most cases, you will rely on libraries that...</description>
+  </item>
+  <item>
+    <title>Dao提案的价值 (1 posts)</title>
+    <link>https://talk.nervos.org/t/dao/11365</link>
+    <guid>https://talk.nervos.org/t/dao/11365#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 09:05:17 +0000</pubDate>
+    <description>随着AI开发的发展，构建代码工作量的价值到底怎么衡量的，dao的这些提案，除了没有人用以外，代码开发的工作量本身真的值他们提案想要的那些钱吗？</description>
+  </item>
+  <item>
+    <title>Fiber LSP: Running Channels on the Server, Signing in the Wallet (1 posts)</title>
+    <link>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220</link>
+    <guid>https://talk.nervos.org/t/fiber-lsp-running-channels-on-the-server-signing-in-the-wallet/11220#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 08:31:02 +0000</pubDate>
+    <description>Thank you for your support. I will take the time to read through the proposal carefully.</description>
+  </item>
+  <item>
+    <title>Crossfire Loop: You Are the Bottleneck (2 posts)</title>
+    <link>https://talk.nervos.org/t/crossfire-loop-you-are-the-bottleneck/11358</link>
+    <guid>https://talk.nervos.org/t/crossfire-loop-you-are-the-bottleneck/11358#recent-2</guid>
+    <pubDate>Tue, 24 Nov 2026 05:21:01 +0000</pubDate>
+    <description>Great write up. New Google Models are hitting the useful realm now too. Probably worth checking Argon/Neon in the mix. Yes, I’ll likely give the Google models another look soon. Also hoping that Grok 4.8 makes a better impression than 4.7, since it isn’t keeping up with Opus and Sol.</description>
+  </item>
+  <item>
+    <title>CKB Ecosystem Biweekly Update (1 posts)</title>
+    <link>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821</link>
+    <guid>https://talk.nervos.org/t/ckb-ecosystem-biweekly-update/9821#recent-1</guid>
+    <pubDate>Tue, 24 Nov 2026 02:54:45 +0000</pubDate>
+    <description>CKB Ecosystem Biweekly Update #29 image690×388 97 KB Welcome to the latest CKB Ecosystem Biweekly Update. Here’s a quick summary of key dev and ecosystem progress from the past two weeks. Infrastructure &amp; Tooling @CKBdev merged browser light-client fixes, added an OffCKB plugin host, improved explorer indexing and peer discovery, and made DAO treasury voting tools accessible for local testing. More: CKB Dev Log 2026-11-11 @CKBDevrel fixed CCC’s JoyID signature verification and improved Cinnabar’s contract templates. @FiberDevs shipped v0.10.1 with V2 P2P messaging. Pls back up node full data directory before upgrading. Existing V1 channels still work, but nodes on v0.9.x and v0.10.x can’t...</description>
+  </item>
+</channel>
+</rss>
