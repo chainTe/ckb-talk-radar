@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CKB Talk Radar Daily Brief</title>
+  <link rel="canonical" href="https://chainte.github.io/ckb-talk-radar/">
+  <link rel="alternate" type="application/rss+xml" title="CKB Talk Radar RSS" href="https://chainte.github.io/ckb-talk-radar/rss.xml">
+  <meta name="description" content="Nervos Talk 最近 24 小时社区日报、活跃话题和 RSS 订阅。">
+  <style>
+    :root {
+      --bg: #f2eee6;
+      --paper: rgba(255, 251, 244, 0.78);
+      --ink: #1b160f;
+      --muted: #6a5d4b;
+      --accent: #b84d1a;
+      --accent-soft: rgba(184, 77, 26, 0.14);
+      --line: rgba(27, 22, 15, 0.12);
+      --shadow: 0 28px 60px rgba(71, 47, 22, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 77, 26, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(33, 119, 101, 0.15), transparent 25%),
+        linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(27, 22, 15, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 22, 15, 0.03) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.38), transparent 78%);
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .hero-panel, .side-panel, .section {
+      background: var(--paper);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+    .hero-panel {
+      padding: 34px;
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-panel::after {
+      content: "Daily Brief";
+      position: absolute;
+      right: -12px;
+      bottom: 6px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(52px, 10vw, 120px);
+      color: rgba(27, 22, 15, 0.06);
+      letter-spacing: -0.06em;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: currentColor;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: clamp(44px, 5vw, 76px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 8ch;
+    }
+    .lede {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .hero-meta span {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .side-panel {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .stat-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .stat-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+    }
+    .stat-value {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+    }
+    .feed-box {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #1d3d38, #28554c 62%, #17312c);
+      color: #f6f0e5;
+      padding: 18px 20px;
+    }
+    .feed-box p {
+      margin: 0 0 14px;
+      line-height: 1.6;
+      color: rgba(246, 240, 229, 0.78);
+    }
+    .feed-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .feed-links a {
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .section {
+      padding: 24px;
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .section-header span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary-panel {
+      line-height: 1.72;
+      color: #2f281f;
+    }
+    .summary-panel h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+    }
+    .summary-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel ol {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-panel p {
+      margin: 0 0 10px;
+    }
+    .summary-panel code {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(27, 22, 15, 0.08);
+      font-size: 0.95em;
+    }
+    .summary-panel .citations {
+      font-size: 0.92em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .summary-panel .citations a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .source-index {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .source-index h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .source-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .source-list li {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .source-list code {
+      font-size: 12px;
+      margin-right: 6px;
+    }
+    .source-meta {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .topic-list {
+      display: grid;
+      gap: 14px;
+    }
+    .topic-card {
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.58));
+      display: grid;
+      gap: 10px;
+    }
+    .topic-card header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+    .topic-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+    .count-pill {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .excerpt {
+      margin: 0;
+      color: #463a2c;
+      line-height: 1.68;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-row span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 61, 56, 0.08);
+      color: #28554c;
+      font-size: 12px;
+    }
+    .side-stack {
+      display: grid;
+      gap: 20px;
+    }
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .mini-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #43372a;
+    }
+    .mini-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .mini-list span {
+      color: var(--muted);
+    }
+    .mini-list strong {
+      font-size: 14px;
+    }
+    .keyword-cloud {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .keyword-cloud li {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(184, 77, 26, 0.08);
+      color: #6b2c11;
+      font-size: 13px;
+    }
+    .keyword-cloud span {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(184, 77, 26, 0.14);
+      font-size: 11px;
+    }
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+    .timeline-row {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+    }
+    .timeline-row time {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .timeline-row strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .timeline-row p {
+      margin: 0;
+      color: #473c2f;
+      line-height: 1.66;
+    }
+    .footer {
+      padding: 20px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .hero, .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 12px;
+      }
+      .hero-panel, .side-panel, .section {
+        border-radius: 24px;
+      }
+      .hero-panel {
+        padding: 24px;
+      }
+      .stat-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <article class="hero-panel">
+        <div class="eyebrow">CKB Talk Radar</div>
+        <h1>Daily community pulse.</h1>
+        <p class="lede">把 Nervos Talk 最近 24 小时的讨论浓缩成一页日报。左手看 AI 总结，右手看主题热度、关键词和作者活跃度，底部顺手订阅 RSS。</p>
+        <div class="hero-meta">
+          <span>统计窗口 2026-11-27 08:20:30 CST - 2026-11-28 08:20:30 CST</span>
+          <span>生成时间 2026-11-28 08:20:36 CST</span>
+          <span>总结模式 ai:openai-compatible</span>
+        </div>
+      </article>
+      <aside class="side-panel">
+        <div class="stat-grid">
+          <article class="stat-card"><span class="stat-label">Active Topics</span><strong class="stat-value">9</strong></article>
+<article class="stat-card"><span class="stat-label">Posts</span><strong class="stat-value">17</strong></article>
+<article class="stat-card"><span class="stat-label">Authors</span><strong class="stat-value">14</strong></article>
+<article class="stat-card"><span class="stat-label">Window</span><strong class="stat-value">24h</strong></article>
+        </div>
+        <section class="feed-box">
+          <p>稳定入口已经写到 <code>outputs/latest/</code>。本地服务启动后，首页会指向这份最新日报，RSS 也会同步刷新。</p>
+          <div class="feed-links">
+            <a href="./rss.xml">订阅 RSS</a>
+            <a href="./history/">历史归档</a>
+            <a href="./report.md">查看 Markdown</a>
+            <a href="./snapshot.json">查看 JSON</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <article class="section">
+        <div class="section-header">
+          <h2>今天发生了什么</h2>
+          <span>ai:openai-compatible</span>
+        </div>
+        <div class="summary-panel">
+          <h2>今日发生了什么</h2>
+<p>今天论坛的主要动静集中在 CKB Community Fund DAO 治理讨论的连续回复上，围绕投票权重、存款时长和参与加成出现了明显分歧<span class="citations">[<a href="#source-s05">S05</a>, <a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>, <a href="#source-s09">S09</a>]</span>。项目进展方面，Oracell 说明了过期 campaign 的 finalize 与退款机制，FiberNuts 发布了 M1 结算可靠性与退款报告<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>]</span>。此外，Fiber Network Hackathon 注册已在 CKBoost 上线，CellCat 申请下也有人建议改用 Spore 并接入 ccc connector<span class="citations">[<a href="#source-s11">S11</a>, <a href="#source-s13">S13</a>]</span>。整体看，今天以已有话题的回复和进展更新为主<span class="citations">[<a href="#source-s02">S02</a>, <a href="#source-s03">S03</a>, <a href="#source-s05">S05</a>, <a href="#source-s11">S11</a>, <a href="#source-s13">S13</a>]</span>。</p>
+<h2>重点话题</h2>
+<ul>
+<li>DAO 治理讨论持续升温：JackyLHH 主张把 Nervos DAO 存款时长按 1～3 倍纳入计票，并给持续投票账户加成<span class="citations">[<a href="#source-s05">S05</a>]</span>；CDEX 反对，认为这像是在提案被巨鲸阻挡后改规则稀释巨鲸影响，主张降低治理参与门槛，而不是让投票权更便宜<span class="citations">[<a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>]</span>；JackyLHH 随后承认乘数过激，建议把组合乘数上限设为 2 倍<span class="citations">[<a href="#source-s08">S08</a>]</span>；9527 则把焦点放在 DAO 的信任与博弈问题上<span class="citations">[<a href="#source-s09">S09</a>]</span>。</li>
+<li>Oracell 解释过期 campaign 处理方式：发帖方表示截止时间过后任何人可 finalize，campaign lock 只检查交易的 since 是否超过截止区块<span class="citations">[<a href="#source-s02">S02</a>]</span>。发帖方还表示其 keeper 每周期 finalize 过期 campaign 并释放或退款，且相关逻辑拆分后任何人都能运行<span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>FiberNuts 发布 M1 报告：帖子给出 M1 结算可靠性与退款报告，源码对应 commit aeb88ae<span class="citations">[<a href="#source-s03">S03</a>]</span>。报告称 M1 让进出 Fiber 结算在中断下可恢复，并且不把超时当作失败处理<span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+<li>Crowns 引出应用类项目资助讨论：发帖者称自己只进入页面、没有试玩，也不清楚项目情况<span class="citations">[<a href="#source-s04">S04</a>]</span>。但其建议社区资助适当关注应用类项目，尤其是社区自行完成的优质项目，可用可行的间接方式帮其度过冷启动期<span class="citations">[<a href="#source-s04">S04</a>]</span>。他还强调应用类项目必须有盈利模式，不能依赖社区资助存活，资助更希望是赞助或提供流动性，而不是资助未成型的应用方案文档<span class="citations">[<a href="#source-s04">S04</a>]</span>。</li>
+<li>Hackathon 与 CellCat 技术建议：Hackathon 注册已在 CKBoost 上线，项目提交和接收重要更新都需要注册，未来一周会有不同主题的分享给 builder 热身<span class="citations">[<a href="#source-s11">S11</a>]</span>。CellCat 讨论中，yixiu 建议考虑使用现有 Spore 协议，而不是自建 cat-type、egg-type，因为生态对 Spore NFT 的适配最好，新标准会带来钱包、ccc、交易市场、资产管理器、浏览器等兼容适配工作<span class="citations">[<a href="#source-s13">S13</a>]</span>。</li>
+</ul>
+<h2>值得继续跟进</h2>
+<ul>
+<li>DAO 治理方案是否会从“存款时长乘数 + 持续参与加成”收敛到 2 倍组合上限，以及反对者关于“稀释巨鲸影响”和“降低参与门槛”的意见是否会被吸收，值得继续看<span class="citations">[<a href="#source-s06">S06</a>, <a href="#source-s07">S07</a>, <a href="#source-s08">S08</a>]</span>。</li>
+<li>Oracell 的 keeper 模式后续能否真正做到任何人可运行、可验证，尤其是过期 campaign 的 finalize 和释放/退款流程是否稳定，需要观察<span class="citations">[<a href="#source-s02">S02</a>]</span>。</li>
+<li>FiberNuts M1 报告之后的实际结算可靠性与退款表现值得跟进，因为当前信息主要来自项目方自述的 M1 结果<span class="citations">[<a href="#source-s03">S03</a>]</span>。</li>
+</ul>
+          <div class="source-index">
+            <h3>来源索引</h3>
+            <ul class="source-list"><li id="source-s01"><div><code>S01</code><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/43">Tranfr — Programmable Recovery for CKB</a></div><div class="source-meta">SalmanDev · 2026-11-28 06:52:57 CST</div><div>(post deleted by author)</div></li><li id="source-s02"><div><code>S02</code><a href="https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368/4">Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome)</a></div><div class="source-meta">Ayoub_Lesfer · 2026-11-28 00:31:41 CST</div><div>Yeah, once the deadline passes anyone can finalize, the campaign lock only checks that the tx’s since is past the deadline block. We run a keeper that finalizes expired campaigns and then releases or refunds the pledges every cycle, and it’s split out so anyone can run their...</div></li><li id="source-s03"><div><code>S03</code><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/15">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></div><div class="source-meta">Code3ks · 2026-11-27 22:22:13 CST</div><div>M1 settlement reliability and refund report Source release: m1-settlement-reliability, commit aeb88ae Outcome M1 makes incoming and outgoing Fiber settlement recoverable across interruption without treating a timeout as failure, dispatching a second payment, delivering a...</div></li><li id="source-s04"><div><code>S04</code><a href="https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367/7">Crowns: a live 3D car race on CKB where the chain is the referee</a></div><div class="source-meta">Thinker · 2026-11-27 18:34:25 CST</div><div>上贴发的有些匆忙，中间有几处错误（已修改）。也感谢 @zz_tovarishch 的解释。 这个游戏我只进入页面，但并没有去试玩（因为我不是游戏爱好者）。我也并不清楚项目情况。 只是看到社区资助项目多数在工具端，建议可以适当关注下应用类项目，尤其是社区自行完成的优质项目，可以用可行的间接方式的帮其度下冷启动期。 当然应用类项目必须要有自己的盈利模式，而不是去依赖社区的资助存活。资助模式更希望是以赞助/提供流动性等方面的参与，并不是对还未成型的应用方案文档来资助。</div></li><li id="source-s05"><div><code>S05</code><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/12">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></div><div class="source-meta">JackyLHH · 2026-11-27 10:24:29 CST</div><div>谢谢 @yixiu.ckbfans.bit 发起这个讨论，我个人非常认可你提到的不太担心第一阶段的点赞数量，更希望看到有更多社区成员参与讨论。 关于第二阶段的投票，我还是赞成把 Nervos DAO 的存款时长纳入计票。每笔存款单独算，时间系数可以设为 1～3 倍。存款不超过 12 个月，按 1 倍算。之后每多存满 1 个月，系数加 0.1，存满 32 个月就达到 3 倍上限。 我个人还有两个建议： 给持续参与投票的账户加成。 参与系数从 1.00 起算，账户每在 Metaforo 上对一项 CKB Community Fund DAO...</div></li><li id="source-s06"><div><code>S06</code><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/13">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></div><div class="source-meta">CDEX · 2026-11-27 14:39:32 CST</div><div>I don’t like this idea. It feels like some proposals have been blocked by whales, and because we really want them to pass, we are now considering changing the rules to dilute the influence of whales. We should be lowering the barriers to governance participation and enabling...</div></li><li id="source-s07"><div><code>S07</code><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/14">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></div><div class="source-meta">CDEX · 2026-11-27 14:42:38 CST</div><div>We should make governance more accessible, not make voting power cheaper</div></li><li id="source-s08"><div><code>S08</code><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/15">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></div><div class="source-meta">JackyLHH · 2026-11-27 15:46:05 CST</div><div>CDEX: We should make governance more accessible, not make voting power cheaper I love this input. Looking back, the multipliers I suggested were too aggressive. Together, they could give someone up to 9× their base voting power. A 2× cap on the combined multiplier seems like a...</div></li><li id="source-s09"><div><code>S09</code><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/16">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></div><div class="source-meta">9527 · 2026-11-27 16:38:54 CST</div><div>十分同意“用金钱投票是短视的”。比特币用工作量证明通过数学方式解决信任问题，Dao治理的难点是怎么制造信任，去中心化治理需要从公共基金中提取资金，天然存在很强的博弈性，加之信息不透明，很容易出现现在很多人对Dao提案人不信任的情况。 我不懂博弈论，不知道有没有大神能从博弈论的角度来缓解信任问题呢。我这边有一些可能不完善的想法:...</div></li><li id="source-s10"><div><code>S10</code><a href="https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/8">Show Me the Use Case: Fiber Network Product Hackathon announcement!</a></div><div class="source-meta">3m1n3nc3 · 2026-11-27 08:38:12 CST</div><div>Impressive</div></li><li id="source-s11"><div><code>S11</code><a href="https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/9">Show Me the Use Case: Fiber Network Product Hackathon announcement!</a></div><div class="source-meta">neon.bit · 2026-11-27 16:35:34 CST</div><div>Registrations are now live on CKBoost! Registration is required for project submission and to receive important updates. Over the coming week, we’ll have presentations on different topics related to the hackathon to get builders warmed up!</div></li><li id="source-s12"><div><code>S12</code><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/2">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a></div><div class="source-meta">joii2020 · 2026-11-27 11:11:15 CST</div><div>I’m thinking that the highest difficulty of many games requires one life to complete the game. Can this be accomplished through the characteristics of CKB Cell? Players spend money to mint a CKB Cell to play the game. Saving the game progress is a transaction for this Cell. If...</div></li><li id="source-s13"><div><code>S13</code><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/3">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a></div><div class="source-meta">yixiu.ckbfans.bit · 2026-11-27 12:31:57 CST</div><div>Hi, Enzo, CellCat 是一个蛮有意思的项目，我认为它完全有可能走向我们的社区用户。不过我们留意到你在CellCat里自己做了cat-type, egg-type，不知你能否考虑使用现有的spore协议来实现，原因是生态里目前对nft的适配方面，对spore的支持是最好的。若新开发一套nft type标准，会带来较多的适配工作，比如钱包、ccc、交易市场、资产管理器、浏览器等都需要做一遍兼容性适配，这会带来一些挑战。 另外， 你的开发计划里提到 接通 JoyID（Testnet）。是否有考虑直接接 @ckb-ccc/connector-...</div></li><li id="source-s14"><div><code>S14</code><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/4">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a></div><div class="source-meta">matt.eth · 2026-11-27 16:30:52 CST</div><div>考古了这条帖子 Nervos 的未来和 CKB 价格展望 - #4 by cool007zqw 当初你对 ckb 熊市时的价格预测是很有眼光的，请问现在你对 ckb 看法有什么变化吗？</div></li><li id="source-s15"><div><code>S15</code><a href="https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/6">What Else Could a Cell Become ? [1]</a></div><div class="source-meta">ArthurZhang · 2026-11-27 13:37:38 CST</div><div>(post deleted by author)</div></li><li id="source-s16"><div><code>S16</code><a href="https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/7">What Else Could a Cell Become ? [1]</a></div><div class="source-meta">ArthurZhang · 2026-11-27 13:38:24 CST</div><div>ArthurZhang: Check the two repos out: “CKB Metatype v0.1.1” (GitHub - a19q3/ckb-metatype: Experimental CKB Metatype SDK and RISC-V dispatcher · GitHub) “QuotaCell Metatype Experiment” (GitHub - a19q3/quotacell-metatype-experiment: Reproducible CKB comparison of QuotaCell...</div></li><li id="source-s17"><div><code>S17</code><a href="https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355/2">CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets</a></div><div class="source-meta">scott · 2026-11-27 10:20:19 CST</div><div>A big thank you to Machakos University for organising such an amazing event and providing a platform for learning, networking, sharing ideas and growth. Special appreciation to all the incredible speakers who took their time to share their knowledge, experiences and insights....</div></li></ul>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <section class="section">
+          <div class="section-header">
+            <h2>Theme Split</h2>
+            <span>topic intent</span>
+          </div>
+          <ul class="mini-list"><li><span>技术开发</span><strong>10</strong></li><li><span>其他</span><strong>6</strong></li><li><span>社区互动</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Top Authors</h2>
+            <span>recent participants</span>
+          </div>
+          <ul class="mini-list"><li><span>@JackyLHH</span><strong>2</strong></li><li><span>@CDEX</span><strong>2</strong></li><li><span>@ArthurZhang</span><strong>2</strong></li><li><span>@SalmanDev</span><strong>1</strong></li><li><span>@Ayoub_Lesfer</span><strong>1</strong></li><li><span>@Code3ks</span><strong>1</strong></li></ul>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Keywords</h2>
+            <span>conversation texture</span>
+          </div>
+          <ul class="keyword-cloud"><li>ckb<span>20</span></li><li>mint<span>14</span></li><li>npm<span>13</span></li><li>fiber<span>12</span></li><li>wallet<span>11</span></li><li>recovery<span>11</span></li><li>tests<span>11</span></li><li>prefix<span>10</span></li></ul>
+        </section>
+      </aside>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Active Topics</h2>
+        <span>sorted by recent post volume</span>
+      </div>
+      <div class="topic-list"><article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a></h3><span class="count-pill">5 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 16:38:54 CST</span><span>9527, CDEX, JackyLHH</span></div><p class="excerpt">谢谢 @yixiu.ckbfans.bit 发起这个讨论，我个人非常认可你提到的不太担心第一阶段的点赞数量，更希望看到有更多社区成员参与讨论。 关于第二阶段的投票，我还是赞成把 Nervos DAO 的存款时长纳入计票。每笔存款单独算，时间系数可以设为 1～3 倍。存款不超过 12 个月，按 1 倍算。之后每多存满 1 个月，系数加 0.1，存满 32 个月就达到 3 倍上限。 我个人还有两个建议： 给持续参与投票的账户加成。 参与系数从 1.00 起算，账户每在 Metaforo 上对一项 CKB...</p><div class="tag-row"><span>lang-zh</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a></h3><span class="count-pill">3 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 16:30:52 CST</span><span>joii2020, matt.eth, yixiu.ckbfans.bit</span></div><p class="excerpt">I’m thinking that the highest difficulty of many games requires one life to complete the game. Can this be accomplished through the characteristics of CKB Cell? Players spend money to mint a CKB Cell to play the game. Saving the game progress is a...</p><div class="tag-row"><span>Spark-Program</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371">Show Me the Use Case: Fiber Network Product Hackathon announcement!</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 16:35:34 CST</span><span>3m1n3nc3, neon.bit</span></div><p class="excerpt">Impressive Registrations are now live on CKBoost! Registration is required for project submission and to receive important updates. Over the coming week, we’ll have presentations on different topics related to the hackathon to get builders warmed up!</p><div class="tag-row"><span>Hackathon</span><span>fiber</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370">What Else Could a Cell Become ? [1]</a></h3><span class="count-pill">2 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 13:38:24 CST</span><span>ArthurZhang</span></div><p class="excerpt">(post deleted by author) ArthurZhang: Check the two repos out: “CKB Metatype v0.1.1” (GitHub - a19q3/ckb-metatype: Experimental CKB Metatype SDK and RISC-V dispatcher · GitHub) “QuotaCell Metatype Experiment” (GitHub - a19q3/quotacell-metatype-experiment:...</p><div class="tag-row"><span>Cell</span><span>cell-model</span><span>layer2</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644">Tranfr — Programmable Recovery for CKB</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-28 06:52:57 CST</span><span>SalmanDev</span></div><p class="excerpt">(post deleted by author)</p><div class="tag-row"><span>In-Progress</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368">Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome)</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-28 00:31:41 CST</span><span>Ayoub_Lesfer</span></div><p class="excerpt">Yeah, once the deadline passes anyone can finalize, the campaign lock only checks that the tx’s since is past the deadline block. We run a keeper that finalizes expired campaigns and then releases or refunds the pledges every cycle, and it’s split out so...</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 22:22:13 CST</span><span>Code3ks</span></div><p class="excerpt">M1 settlement reliability and refund report Source release: m1-settlement-reliability, commit aeb88ae Outcome M1 makes incoming and outgoing Fiber settlement recoverable across interruption without treating a timeout as failure, dispatching a second...</p><div class="tag-row"><span>untagged</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367">Crowns: a live 3D car race on CKB where the chain is the referee</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 18:34:25 CST</span><span>Thinker</span></div><p class="excerpt">上贴发的有些匆忙，中间有几处错误（已修改）。也感谢 @zz_tovarishch 的解释。 这个游戏我只进入页面，但并没有去试玩（因为我不是游戏爱好者）。我也并不清楚项目情况。 只是看到社区资助项目多数在工具端，建议可以适当关注下应用类项目，尤其是社区自行完成的优质项目，可以用可行的间接方式的帮其度下冷启动期。 当然应用类项目必须要有自己的盈利模式，而不是去依赖社区的资助存活。资助模式更希望是以赞助/提供流动性等方面的参与，并不是对还未成型的应用方案文档来资助。</p><div class="tag-row"><span>CKB</span><span>CKB-VM</span><span>dapp</span><span>game</span><span>lang-en</span><span>testnet</span></div></article>
+<article class="topic-card"><header><h3><a href="https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355">CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets</a></h3><span class="count-pill">1 posts</span></header><div class="meta-line"><span>Latest 2026-11-27 10:20:19 CST</span><span>scott</span></div><p class="excerpt">A big thank you to Machakos University for organising such an amazing event and providing a platform for learning, networking, sharing ideas and growth. Special appreciation to all the incredible speakers who took their time to share their knowledge,...</p><div class="tag-row"><span>untagged</span></div></article></div>
+    </section>
+
+    <section class="section" style="margin-top:20px;">
+      <div class="section-header">
+        <h2>Recent Timeline</h2>
+        <span>latest 18 posts</span>
+      </div>
+      <div class="timeline"><article class="timeline-row"><time>2026-11-28 06:52:57 CST</time><strong><a href="https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/43">Tranfr — Programmable Recovery for CKB</a> · @SalmanDev</strong><p>(post deleted by author)</p></article>
+<article class="timeline-row"><time>2026-11-28 00:31:41 CST</time><strong><a href="https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368/4">Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome)</a> · @Ayoub_Lesfer</strong><p>Yeah, once the deadline passes anyone can finalize, the campaign lock only checks that the tx’s since is past the deadline block. We run a keeper that finalizes expired campaigns and then releases or refunds the...</p></article>
+<article class="timeline-row"><time>2026-11-27 22:22:13 CST</time><strong><a href="https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/15">[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding</a> · @Code3ks</strong><p>M1 settlement reliability and refund report Source release: m1-settlement-reliability, commit aeb88ae Outcome M1 makes incoming and outgoing Fiber settlement recoverable across interruption without treating a timeout...</p></article>
+<article class="timeline-row"><time>2026-11-27 18:34:25 CST</time><strong><a href="https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367/7">Crowns: a live 3D car race on CKB where the chain is the referee</a> · @Thinker</strong><p>上贴发的有些匆忙，中间有几处错误（已修改）。也感谢 @zz_tovarishch 的解释。 这个游戏我只进入页面，但并没有去试玩（因为我不是游戏爱好者）。我也并不清楚项目情况。 只是看到社区资助项目多数在工具端，建议可以适当关注下应用类项目，尤其是社区自行完成的优质项目，可以用可行的间接方式的帮其度下冷启动期。...</p></article>
+<article class="timeline-row"><time>2026-11-27 16:38:54 CST</time><strong><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/16">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a> · @9527</strong><p>十分同意“用金钱投票是短视的”。比特币用工作量证明通过数学方式解决信任问题，Dao治理的难点是怎么制造信任，去中心化治理需要从公共基金中提取资金，天然存在很强的博弈性，加之信息不透明，很容易出现现在很多人对Dao提案人不信任的情况。 我不懂博弈论，不知道有没有大神能从博弈论的角度来缓解信任问题呢。我这边有一些可能不完善的想法:...</p></article>
+<article class="timeline-row"><time>2026-11-27 16:35:34 CST</time><strong><a href="https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/9">Show Me the Use Case: Fiber Network Product Hackathon announcement!</a> · @neon.bit</strong><p>Registrations are now live on CKBoost! Registration is required for project submission and to receive important updates. Over the coming week, we’ll have presentations on different topics related to the hackathon to...</p></article>
+<article class="timeline-row"><time>2026-11-27 16:30:52 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/4">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a> · @matt.eth</strong><p>考古了这条帖子 Nervos 的未来和 CKB 价格展望 - #4 by cool007zqw 当初你对 ckb 熊市时的价格预测是很有眼光的，请问现在你对 ckb 看法有什么变化吗？</p></article>
+<article class="timeline-row"><time>2026-11-27 15:46:05 CST</time><strong><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/15">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a> · @JackyLHH</strong><p>CDEX: We should make governance more accessible, not make voting power cheaper I love this input. Looking back, the multipliers I suggested were too aggressive. Together, they could give someone up to 9× their base...</p></article>
+<article class="timeline-row"><time>2026-11-27 14:42:38 CST</time><strong><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/14">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a> · @CDEX</strong><p>We should make governance more accessible, not make voting power cheaper</p></article>
+<article class="timeline-row"><time>2026-11-27 14:39:32 CST</time><strong><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/13">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a> · @CDEX</strong><p>I don’t like this idea. It feels like some proposals have been blocked by whales, and because we really want them to pass, we are now considering changing the rules to dilute the influence of whales. We should be...</p></article>
+<article class="timeline-row"><time>2026-11-27 13:38:24 CST</time><strong><a href="https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/7">What Else Could a Cell Become ? [1]</a> · @ArthurZhang</strong><p>ArthurZhang: Check the two repos out: “CKB Metatype v0.1.1” (GitHub - a19q3/ckb-metatype: Experimental CKB Metatype SDK and RISC-V dispatcher · GitHub) “QuotaCell Metatype Experiment” (GitHub - a19q3/quotacell-...</p></article>
+<article class="timeline-row"><time>2026-11-27 13:37:38 CST</time><strong><a href="https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/6">What Else Could a Cell Become ? [1]</a> · @ArthurZhang</strong><p>(post deleted by author)</p></article>
+<article class="timeline-row"><time>2026-11-27 12:31:57 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/3">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a> · @yixiu.ckbfans.bit</strong><p>Hi, Enzo, CellCat 是一个蛮有意思的项目，我认为它完全有可能走向我们的社区用户。不过我们留意到你在CellCat里自己做了cat-type, egg-type，不知你能否考虑使用现有的spore协议来实现，原因是生态里目前对nft的适配方面，对spore的支持是最好的。若新开发一套nft type标准，会带来较多的适配工作，比如钱包、ccc、交易市场、资产管理器、浏览器等都需要做一遍兼容性适配，这会带来一些挑战。...</p></article>
+<article class="timeline-row"><time>2026-11-27 11:11:15 CST</time><strong><a href="https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/2">Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫</a> · @joii2020</strong><p>I’m thinking that the highest difficulty of many games requires one life to complete the game. Can this be accomplished through the characteristics of CKB Cell? Players spend money to mint a CKB Cell to play the game....</p></article>
+<article class="timeline-row"><time>2026-11-27 10:24:29 CST</time><strong><a href="https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/12">Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议</a> · @JackyLHH</strong><p>谢谢 @yixiu.ckbfans.bit 发起这个讨论，我个人非常认可你提到的不太担心第一阶段的点赞数量，更希望看到有更多社区成员参与讨论。 关于第二阶段的投票，我还是赞成把 Nervos DAO 的存款时长纳入计票。每笔存款单独算，时间系数可以设为 1～3 倍。存款不超过 12 个月，按 1 倍算。之后每多存满 1 个月，系数加 0.1，存满 32 个月就达到 3 倍上限。 我个人还有两个建议： 给持续参与投票的账户加成。...</p></article>
+<article class="timeline-row"><time>2026-11-27 10:20:19 CST</time><strong><a href="https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355/2">CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets</a> · @scott</strong><p>A big thank you to Machakos University for organising such an amazing event and providing a platform for learning, networking, sharing ideas and growth. Special appreciation to all the incredible speakers who took...</p></article>
+<article class="timeline-row"><time>2026-11-27 08:38:12 CST</time><strong><a href="https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/8">Show Me the Use Case: Fiber Network Product Hackathon announcement!</a> · @3m1n3nc3</strong><p>Impressive</p></article></div>
+    </section>
+
+    <footer class="footer">
+      Built from Discourse JSON endpoints on https://talk.nervos.org.
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,464 @@
+{
+  "base_url": "https://talk.nervos.org",
+  "generated_at": "2026-11-28T00:20:36.448599+00:00",
+  "since": "2026-11-27T00:20:30.315206+00:00",
+  "until": "2026-11-28T00:20:30.315206+00:00",
+  "window_hours": 24,
+  "topics": [
+    {
+      "topic_id": 10644,
+      "title": "Tranfr — Programmable Recovery for CKB",
+      "slug": "tranfr-programmable-recovery-for-ckb",
+      "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644",
+      "created_at": "2026-08-18T14:04:43.486000+00:00",
+      "last_posted_at": "2026-11-27T22:52:57.752000+00:00",
+      "category_id": 77,
+      "tags": [
+        "In-Progress"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27905,
+          "post_number": 43,
+          "topic_id": 10644,
+          "topic_title": "Tranfr — Programmable Recovery for CKB",
+          "topic_slug": "tranfr-programmable-recovery-for-ckb",
+          "author": "SalmanDev",
+          "created_at": "2026-11-27T22:52:57.752000+00:00",
+          "updated_at": "2026-11-27T23:15:33.404000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/tranfr-programmable-recovery-for-ckb/10644/43",
+          "content_text": "(post deleted by author)",
+          "content_html": "<p>(post deleted by author)</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11368,
+      "title": "Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome)",
+      "slug": "oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome",
+      "url": "https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368",
+      "created_at": "2026-11-24T22:03:43.522000+00:00",
+      "last_posted_at": "2026-11-27T16:31:41.233000+00:00",
+      "category_id": 69,
+      "tags": [
+        "CKB",
+        "CKB-VM"
+      ],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27904,
+          "post_number": 4,
+          "topic_id": 11368,
+          "topic_title": "Oracell: Contention-Free Witness Oracle for Nervos CKB (Phase 1 MVP Live on Pudge — Feedback Welcome)",
+          "topic_slug": "oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome",
+          "author": "Ayoub_Lesfer",
+          "created_at": "2026-11-27T16:31:41.233000+00:00",
+          "updated_at": "2026-11-27T16:31:41.233000+00:00",
+          "reply_to_post_number": 3,
+          "url": "https://talk.nervos.org/t/oracell-contention-free-witness-oracle-for-nervos-ckb-phase-1-mvp-live-on-pudge-feedback-welcome/11368/4",
+          "content_text": "Yeah, once the deadline passes anyone can finalize, the campaign lock only checks that the tx’s since is past the deadline block. We run a keeper that finalizes expired campaigns and then releases or refunds the pledges every cycle, and it’s split out so anyone can run their own, psawyerberlin already runs a second one on his node. The gap you’d expect is still there though, a pledge can land between the deadline and the finalize tx, so closing that window is on our list. Makes sense to put the co-signer on chain for L1, otherwise the SDK check is just a suggestion.",
+          "content_html": "<p>Yeah, once the deadline passes anyone can finalize, the campaign lock only checks that the tx’s since is past the deadline block. We run a keeper that finalizes expired campaigns and then releases or refunds the pledges every cycle, and it’s split out so anyone can run their own, psawyerberlin already runs a second one on his node. The gap you’d expect is still there though, a pledge can land between the deadline and the finalize tx, so closing that window is on our list. Makes sense to put the co-signer on chain for L1, otherwise the SDK check is just a suggestion.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11051,
+      "title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
+      "slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
+      "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051",
+      "created_at": "2026-10-26T14:46:54.713000+00:00",
+      "last_posted_at": "2026-11-27T14:22:13.111000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27903,
+          "post_number": 15,
+          "topic_id": 11051,
+          "topic_title": "[DIS] FiberNuts: Reliable Cashu-over-Fiber Payments with Hosted-LSP Onboarding",
+          "topic_slug": "dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding",
+          "author": "Code3ks",
+          "created_at": "2026-11-27T14:22:13.111000+00:00",
+          "updated_at": "2026-11-27T14:22:13.111000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/dis-fibernuts-reliable-cashu-over-fiber-payments-with-hosted-lsp-onboarding/11051/15",
+          "content_text": "M1 settlement reliability and refund report\nSource release: m1-settlement-reliability,\ncommit aeb88ae\nOutcome\nM1 makes incoming and outgoing Fiber settlement recoverable across interruption without treating a\ntimeout as failure, dispatching a second payment, delivering a second credit event, or crediting both\nsides of a vendor-settlement/refund race. It also moves the supported direct-settlement pair to Fiber\nv0.10.1 and CDK v0.18.3, exposes honest wallet recovery states, and makes failure and redaction\ncoverage reproducible.\nThis report distinguishes deterministic CI, opt-in devnet evidence, and public-deployment claims.\nOrdinary CI does not contact a Fiber node or perform an economic operation.\nDelivered work\nArea\nIssue\nPull request\nResult\nDurable settlement journal\n#6\n#34\nScoped, versioned journal with fail-closed migration and recovery\nIncoming recovery\n#7\n#35\nRestored invoice watches and at-most-once credit events\nOutgoing recovery\n#8\n#36\nDelayed terminal reconciliation without duplicate dispatch\nRPC isolation\n#9\n#37\nRequest deadlines, bounded concurrency, backoff, and aggregate metrics\nWallet recovery\n#10\n#38\nPending/recoverable states and persisted settlement provenance\nVendor refund race\n#11\n#39\nNUT-11 attendee refund with one winning mint swap\nStable compatibility\n#12\n#33\nFiber v0.10.1 and CDK v0.18.3 migration and devnet evidence\nFault injection and redaction\n#13\n#40\nFailure-class manifest and public-output redaction gates\nThe wallet now restores mint, unit, network, and asset provenance with affected operations. Payment\nreviews separate Cashu proof fees from the Fiber route-fee reserve, while mint availability remains\nseparate from custody, policy, liquidity, and solvency claims.\nThe machine-readable settlement evidence manifest\nmaps 16 deterministic scenarios and seven redaction checks to source selectors and exact\nreproduction commands.\nReproduce the release checks\nPrerequisites are Git, a rustup-managed Rust 1.88 or newer, Node.js 24, npm, Protocol Buffers,\nand an environment supported by Playwright. From a clean checkout of the published tag:\ngit clone https://github.com/code3ks/fibernuts.git\ncd fibernuts\ngit checkout m1-settlement-reliability\nrustup component add rustfmt clippy\nnpm --prefix wallet ci\nnpm --prefix relay ci\nnpm --prefix market ci\nnpm --prefix wallet exec -- playwright install --with-deps chrome\nnpm --prefix market exec -- playwright install --with-deps chrome\nmake ci\nThe Playwright commands install Chrome and its system dependencies; on Linux they may request\nelevated privileges for system packages.\nExpected result: the evidence validator, Rust format/lint/test/build checks, wallet tests and browser\nchecks, relay tests, and market tests and browser checks all exit successfully. The evidence summary\nmust report 16 deterministic scenarios, all 16 required failure classes, seven redaction checks,\nall nine secret classes, all five public sinks, and three separately named opt-in live scenarios.\nActual result on 2026-11-27: passed. make ci exited successfully with all 16 declared failure\nclasses and all redaction classes covered; 125 Rust tests, 40 wallet unit tests, 21 wallet browser\ntests, six relay tests, 35 market unit tests, and 24 market browser tests passed. Three live-devnet\ntests remained explicitly ignored by ordinary CI, as required.\nThe exact tagged commit passed the final\nCI run and\nRust CI run on main.\nAcceptance scenarios\nThese commands isolate the four milestone-critical behaviors. Each must exit successfully.\nPending outgoing recovery\ncargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment a_timed_out_dispatch_is_reconciled_and_never_sent_twice -- --exact\ncargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment delayed_outgoing_success_is_announced_once_after_restart_with_actual_fee -- --exact\nExpected and actual behavior: the durable payment hash is reconciled without another dispatch, and\na delayed success emits once using the original principal plus Fiber’s authoritative actual fee.\nIncoming recovery\ncargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment an_invoice_paid_while_the_processor_is_down_is_restored_on_start -- --exact\nExpected and actual behavior: restart restores the invoice/hash binding and emits one credit event\nonly after Fiber reports Paid.\nIsolated RPC timeout\ncargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment a_stalled_rpc_reaches_its_deadline_without_blocking_other_reconciliation -- --exact\nExpected and actual behavior: the stalled request reaches its deadline while another settlement\nrecord continues to reconcile.\nVendor settlement/refund race\nnpm --prefix market test -- --run src/domain/market-runtime.test.ts -t \"allows only one balance credit when refund and vendor settlement race\"\nExpected and actual behavior: the mint’s first accepted swap is the only balance credit. The losing\npath records spent or recoverable state without adding value.\nVerification environment\nComponent\nVersion used for the M1 verification run\nHost\nmacOS 15.8.1, arm64\nRust\nrustc 1.94.1, cargo 1.94.1; workspace minimum 1.88\nNode.js\n24.13.0\nnpm\n11.6.2\nProtocol Buffers\nlibprotoc 34.1\ncargo-audit\n0.22.2\nFiber protocol target\nv0.10.1, commit d9b6bbd74faf5b168244e3ddea5b6762a04e0a71\nCDK protocol target\nv0.18.3, commit b2035a3525c98b22226926bdc20fa128a1351ae5\nThe Fiber/CDK pins, image digests, migration rules, and stable devnet cycle are recorded in the\ncompatibility matrix.\nOn 2026-11-22, that disposable three-node devnet passed all three opt-in adapter tests and a\nstock-mint cycle that issued 200 units, cashed out 100 units with a one-unit realized fee, and\nretained 99 spendable units. That is stable-pair devnet evidence, not public-testnet RUSD, reserve,\nsolvency, or production-availability evidence.\nSecurity advisory check\nThe M1 dependency set was checked with:\nnpm --prefix wallet audit --audit-level=high\nnpm --prefix market audit --audit-level=high\nnpm --prefix relay audit --audit-level=high\nnpm --prefix faucet audit --audit-level=high\ncargo audit --file mint/Cargo.lock\ncargo audit --file mint/Cargo.lock --ignore RUSTSEC-2026-0459\nEach npm audit exited successfully and reported zero vulnerabilities. No known critical or\nhigh-severity Rust advisory remains. The unignored Rust audit exits nonzero for one disclosed local\ninformation-disclosure advisory,\nRUSTSEC-2026-0459, in bundled SQLite through\nrusqlite 0.39.0 and libsqlite3-sys 0.37.0. The second Rust command ignores only that disclosed\nadvisory and exits successfully while still reporting the unmaintained transitive chrono and\npaste warnings.\nThe SQLite issue requires the processor to open a database and sibling WAL file written by a\nless-trusted local party. Operators must keep the journal directory private to the processor and\nrestore only from trusted operator-controlled backups; journal restore validation rejects corrupt\nor incompatible input. Moving to the patched rusqlite 0.41 line requires raising the workspace\nminimum from Rust 1.88 to 1.89. That compatibility update remains follow-up dependency work.\nKnown limitations and unresolved nonblocking work\nCDK 0.18.3 does not acknowledge a payment-event stream item after the mint database commits it.\nPull status checks remain the authoritative idempotent recovery path.\nBackground incoming polling is bounded by the configured grace period. The durable record remains\navailable for an explicit status check and is never converted to failure by elapsed time.\nFiber may report a paid historical payment without a preimage. Paid state remains authoritative;\na missing optional payment proof is not failure.\nBrowser proofs and operation recovery use local browser storage. This is neither a secure vault\nnor a guaranteed backup, and multi-tab compare-and-swap remains future hardening.\nThe stable live cycle used a local dev UDT. It does not establish that the public reference\ndeployment has migrated, is solvent, or has sufficient directional RUSD liquidity.\nFiberNuts has not received a formal third-party security audit and is not presented as a\nproduction mint endorsement.\nThe disclosed SQLite advisory and the two unmaintained transitive crates remain nonblocking\ndependency work; none is represented as resolved by the M1 tag.\nHosted-LSP onboarding, browser-funded channels, reusable package publication, and controlled\nmainnet validation belong to later milestones.\nIncidents and findings\nNo known user-value loss occurred during M1, and no mainnet value was used. Implementation findings\nresolved during M1 included repeat-dispatch and migration hardening, wallet dependency updates,\ncredential-bearing mint URL rejection, diagnostic identity redaction, and stronger evidence-command\nand screenshot-surface validation. No fixture or mocked result is reported as a live Fiber\nsettlement.\nWhat comes next\nM2 focuses on public-testnet hosted-LSP onboarding. A user will connect a supported CKB wallet,\nreview and approve the required RUSD funding and CKB capacity, and reach a usable hosted Fiber\nchannel without operating a local FNN node. The work includes client signing, exact funding and fee\nreview, durable channel lifecycle recovery, hosted add-cash and cash-out flows, and failure and\ninteroperability testing.",
+          "content_html": "<h1><a name=\"p-27903-m1-settlement-reliability-and-refund-report-1\" class=\"anchor\" href=\"#p-27903-m1-settlement-reliability-and-refund-report-1\" aria-label=\"Heading link\"></a>M1 settlement reliability and refund report</h1>\n<p>Source release: <a href=\"https://github.com/code3ks/fibernuts/releases/tag/m1-settlement-reliability\" rel=\"noopener nofollow ugc\"><code>m1-settlement-reliability</code></a>,<br>\ncommit <a href=\"https://github.com/code3ks/fibernuts/commit/aeb88ae7670c1f20d6af973707933390784c301d\" rel=\"noopener nofollow ugc\"><code>aeb88ae</code></a></p>\n<h2><a name=\"p-27903-outcome-2\" class=\"anchor\" href=\"#p-27903-outcome-2\" aria-label=\"Heading link\"></a>Outcome</h2>\n<p>M1 makes incoming and outgoing Fiber settlement recoverable across interruption without treating a<br>\ntimeout as failure, dispatching a second payment, delivering a second credit event, or crediting both<br>\nsides of a vendor-settlement/refund race. It also moves the supported direct-settlement pair to Fiber<br>\n<code>v0.10.1</code> and CDK <code>v0.18.3</code>, exposes honest wallet recovery states, and makes failure and redaction<br>\ncoverage reproducible.</p>\n<p>This report distinguishes deterministic CI, opt-in devnet evidence, and public-deployment claims.<br>\nOrdinary CI does not contact a Fiber node or perform an economic operation.</p>\n<h2><a name=\"p-27903-delivered-work-3\" class=\"anchor\" href=\"#p-27903-delivered-work-3\" aria-label=\"Heading link\"></a>Delivered work</h2>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Area</th>\n<th>Issue</th>\n<th>Pull request</th>\n<th>Result</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Durable settlement journal</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/6\" rel=\"noopener nofollow ugc\">#6</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/34\" rel=\"noopener nofollow ugc\">#34</a></td>\n<td>Scoped, versioned journal with fail-closed migration and recovery</td>\n</tr>\n<tr>\n<td>Incoming recovery</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/7\" rel=\"noopener nofollow ugc\">#7</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/35\" rel=\"noopener nofollow ugc\">#35</a></td>\n<td>Restored invoice watches and at-most-once credit events</td>\n</tr>\n<tr>\n<td>Outgoing recovery</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/8\" rel=\"noopener nofollow ugc\">#8</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/36\" rel=\"noopener nofollow ugc\">#36</a></td>\n<td>Delayed terminal reconciliation without duplicate dispatch</td>\n</tr>\n<tr>\n<td>RPC isolation</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/9\" rel=\"noopener nofollow ugc\">#9</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/37\" rel=\"noopener nofollow ugc\">#37</a></td>\n<td>Request deadlines, bounded concurrency, backoff, and aggregate metrics</td>\n</tr>\n<tr>\n<td>Wallet recovery</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/10\" rel=\"noopener nofollow ugc\">#10</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/38\" rel=\"noopener nofollow ugc\">#38</a></td>\n<td>Pending/recoverable states and persisted settlement provenance</td>\n</tr>\n<tr>\n<td>Vendor refund race</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/11\" rel=\"noopener nofollow ugc\">#11</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/39\" rel=\"noopener nofollow ugc\">#39</a></td>\n<td>NUT-11 attendee refund with one winning mint swap</td>\n</tr>\n<tr>\n<td>Stable compatibility</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/12\" rel=\"noopener nofollow ugc\">#12</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/33\" rel=\"noopener nofollow ugc\">#33</a></td>\n<td>Fiber <code>v0.10.1</code> and CDK <code>v0.18.3</code> migration and devnet evidence</td>\n</tr>\n<tr>\n<td>Fault injection and redaction</td>\n<td><a href=\"https://github.com/code3ks/fibernuts/issues/13\" rel=\"noopener nofollow ugc\">#13</a></td>\n<td><a href=\"https://github.com/code3ks/fibernuts/pull/40\" rel=\"noopener nofollow ugc\">#40</a></td>\n<td>Failure-class manifest and public-output redaction gates</td>\n</tr>\n</tbody>\n</table>\n</div><p>The wallet now restores mint, unit, network, and asset provenance with affected operations. Payment<br>\nreviews separate Cashu proof fees from the Fiber route-fee reserve, while mint availability remains<br>\nseparate from custody, policy, liquidity, and solvency claims.</p>\n<p>The machine-readable <a href=\"https://github.com/code3ks/fibernuts/blob/m1-settlement-reliability/docs/evidence/settlement-reliability.json\" rel=\"noopener nofollow ugc\">settlement evidence manifest</a><br>\nmaps 16 deterministic scenarios and seven redaction checks to source selectors and exact<br>\nreproduction commands.</p>\n<h2><a name=\"p-27903-reproduce-the-release-checks-4\" class=\"anchor\" href=\"#p-27903-reproduce-the-release-checks-4\" aria-label=\"Heading link\"></a>Reproduce the release checks</h2>\n<p>Prerequisites are Git, a rustup-managed Rust <code>1.88</code> or newer, Node.js <code>24</code>, npm, Protocol Buffers,<br>\nand an environment supported by Playwright. From a clean checkout of the published tag:</p>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">git clone https://github.com/code3ks/fibernuts.git\ncd fibernuts\ngit checkout m1-settlement-reliability\n\nrustup component add rustfmt clippy\nnpm --prefix wallet ci\nnpm --prefix relay ci\nnpm --prefix market ci\nnpm --prefix wallet exec -- playwright install --with-deps chrome\nnpm --prefix market exec -- playwright install --with-deps chrome\n\nmake ci\n</code></pre>\n<p>The Playwright commands install Chrome and its system dependencies; on Linux they may request<br>\nelevated privileges for system packages.</p>\n<p>Expected result: the evidence validator, Rust format/lint/test/build checks, wallet tests and browser<br>\nchecks, relay tests, and market tests and browser checks all exit successfully. The evidence summary<br>\nmust report 16 deterministic scenarios, all 16 required failure classes, seven redaction checks,<br>\nall nine secret classes, all five public sinks, and three separately named opt-in live scenarios.</p>\n<p>Actual result on 2026-11-27: passed. <code>make ci</code> exited successfully with all 16 declared failure<br>\nclasses and all redaction classes covered; 125 Rust tests, 40 wallet unit tests, 21 wallet browser<br>\ntests, six relay tests, 35 market unit tests, and 24 market browser tests passed. Three live-devnet<br>\ntests remained explicitly ignored by ordinary CI, as required.</p>\n<p>The exact tagged commit passed the final<br>\n<a href=\"https://github.com/code3ks/fibernuts/actions/runs/45968529992\" rel=\"noopener nofollow ugc\">CI run</a> and<br>\n<a href=\"https://github.com/code3ks/fibernuts/actions/runs/45968529869\" rel=\"noopener nofollow ugc\">Rust CI run</a> on <code>main</code>.</p>\n<h2><a name=\"p-27903-acceptance-scenarios-5\" class=\"anchor\" href=\"#p-27903-acceptance-scenarios-5\" aria-label=\"Heading link\"></a>Acceptance scenarios</h2>\n<p>These commands isolate the four milestone-critical behaviors. Each must exit successfully.</p>\n<h3><a name=\"p-27903-pending-outgoing-recovery-6\" class=\"anchor\" href=\"#p-27903-pending-outgoing-recovery-6\" aria-label=\"Heading link\"></a>Pending outgoing recovery</h3>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">cargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment a_timed_out_dispatch_is_reconciled_and_never_sent_twice -- --exact\ncargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment delayed_outgoing_success_is_announced_once_after_restart_with_actual_fee -- --exact\n</code></pre>\n<p>Expected and actual behavior: the durable payment hash is reconciled without another dispatch, and<br>\na delayed success emits once using the original principal plus Fiber’s authoritative actual fee.</p>\n<h3><a name=\"p-27903-incoming-recovery-7\" class=\"anchor\" href=\"#p-27903-incoming-recovery-7\" aria-label=\"Heading link\"></a>Incoming recovery</h3>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">cargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment an_invoice_paid_while_the_processor_is_down_is_restored_on_start -- --exact\n</code></pre>\n<p>Expected and actual behavior: restart restores the invoice/hash binding and emits one credit event<br>\nonly after Fiber reports <code>Paid</code>.</p>\n<h3><a name=\"p-27903-isolated-rpc-timeout-8\" class=\"anchor\" href=\"#p-27903-isolated-rpc-timeout-8\" aria-label=\"Heading link\"></a>Isolated RPC timeout</h3>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">cargo test --manifest-path mint/Cargo.toml -p cdk-fiber --test mint_payment a_stalled_rpc_reaches_its_deadline_without_blocking_other_reconciliation -- --exact\n</code></pre>\n<p>Expected and actual behavior: the stalled request reaches its deadline while another settlement<br>\nrecord continues to reconcile.</p>\n<h3><a name=\"p-27903-vendor-settlementrefund-race-9\" class=\"anchor\" href=\"#p-27903-vendor-settlementrefund-race-9\" aria-label=\"Heading link\"></a>Vendor settlement/refund race</h3>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">npm --prefix market test -- --run src/domain/market-runtime.test.ts -t \"allows only one balance credit when refund and vendor settlement race\"\n</code></pre>\n<p>Expected and actual behavior: the mint’s first accepted swap is the only balance credit. The losing<br>\npath records spent or recoverable state without adding value.</p>\n<h2><a name=\"p-27903-verification-environment-10\" class=\"anchor\" href=\"#p-27903-verification-environment-10\" aria-label=\"Heading link\"></a>Verification environment</h2>\n<div class=\"md-table\">\n<table>\n<thead>\n<tr>\n<th>Component</th>\n<th>Version used for the M1 verification run</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Host</td>\n<td>macOS <code>15.8.1</code>, arm64</td>\n</tr>\n<tr>\n<td>Rust</td>\n<td><code>rustc 1.94.1</code>, <code>cargo 1.94.1</code>; workspace minimum <code>1.88</code></td>\n</tr>\n<tr>\n<td>Node.js</td>\n<td><code>24.13.0</code></td>\n</tr>\n<tr>\n<td>npm</td>\n<td><code>11.6.2</code></td>\n</tr>\n<tr>\n<td>Protocol Buffers</td>\n<td><code>libprotoc 34.1</code></td>\n</tr>\n<tr>\n<td>cargo-audit</td>\n<td><code>0.22.2</code></td>\n</tr>\n<tr>\n<td>Fiber protocol target</td>\n<td><code>v0.10.1</code>, commit <code>d9b6bbd74faf5b168244e3ddea5b6762a04e0a71</code></td>\n</tr>\n<tr>\n<td>CDK protocol target</td>\n<td><code>v0.18.3</code>, commit <code>b2035a3525c98b22226926bdc20fa128a1351ae5</code></td>\n</tr>\n</tbody>\n</table>\n</div><p>The Fiber/CDK pins, image digests, migration rules, and stable devnet cycle are recorded in the<br>\n<a href=\"https://github.com/code3ks/fibernuts/blob/m1-settlement-reliability/docs/compatibility.md\" rel=\"noopener nofollow ugc\">compatibility matrix</a>.<br>\nOn 2026-11-22, that disposable three-node devnet passed all three opt-in adapter tests and a<br>\nstock-mint cycle that issued 200 units, cashed out 100 units with a one-unit realized fee, and<br>\nretained 99 spendable units. That is stable-pair devnet evidence, not public-testnet RUSD, reserve,<br>\nsolvency, or production-availability evidence.</p>\n<h2><a name=\"p-27903-security-advisory-check-11\" class=\"anchor\" href=\"#p-27903-security-advisory-check-11\" aria-label=\"Heading link\"></a>Security advisory check</h2>\n<p>The M1 dependency set was checked with:</p>\n<pre data-code-wrap=\"sh\"><code class=\"lang-sh\">npm --prefix wallet audit --audit-level=high\nnpm --prefix market audit --audit-level=high\nnpm --prefix relay audit --audit-level=high\nnpm --prefix faucet audit --audit-level=high\ncargo audit --file mint/Cargo.lock\ncargo audit --file mint/Cargo.lock --ignore RUSTSEC-2026-0459\n</code></pre>\n<p>Each npm audit exited successfully and reported zero vulnerabilities. No known critical or<br>\nhigh-severity Rust advisory remains. The unignored Rust audit exits nonzero for one disclosed local<br>\ninformation-disclosure advisory,<br>\n<a href=\"https://rustsec.org/advisories/RUSTSEC-2026-0459\" rel=\"noopener nofollow ugc\"><code>RUSTSEC-2026-0459</code></a>, in bundled SQLite through<br>\n<code>rusqlite 0.39.0</code> and <code>libsqlite3-sys 0.37.0</code>. The second Rust command ignores only that disclosed<br>\nadvisory and exits successfully while still reporting the unmaintained transitive <code>chrono</code> and<br>\n<code>paste</code> warnings.</p>\n<p>The SQLite issue requires the processor to open a database and sibling WAL file written by a<br>\nless-trusted local party. Operators must keep the journal directory private to the processor and<br>\nrestore only from trusted operator-controlled backups; journal restore validation rejects corrupt<br>\nor incompatible input. Moving to the patched <code>rusqlite 0.41</code> line requires raising the workspace<br>\nminimum from Rust 1.88 to 1.89. That compatibility update remains follow-up dependency work.</p>\n<h2><a name=\"p-27903-known-limitations-and-unresolved-nonblocking-work-12\" class=\"anchor\" href=\"#p-27903-known-limitations-and-unresolved-nonblocking-work-12\" aria-label=\"Heading link\"></a>Known limitations and unresolved nonblocking work</h2>\n<ul>\n<li>CDK <code>0.18.3</code> does not acknowledge a payment-event stream item after the mint database commits it.<br>\nPull status checks remain the authoritative idempotent recovery path.</li>\n<li>Background incoming polling is bounded by the configured grace period. The durable record remains<br>\navailable for an explicit status check and is never converted to failure by elapsed time.</li>\n<li>Fiber may report a paid historical payment without a preimage. Paid state remains authoritative;<br>\na missing optional payment proof is not failure.</li>\n<li>Browser proofs and operation recovery use local browser storage. This is neither a secure vault<br>\nnor a guaranteed backup, and multi-tab compare-and-swap remains future hardening.</li>\n<li>The stable live cycle used a local dev UDT. It does not establish that the public reference<br>\ndeployment has migrated, is solvent, or has sufficient directional RUSD liquidity.</li>\n<li>FiberNuts has not received a formal third-party security audit and is not presented as a<br>\nproduction mint endorsement.</li>\n<li>The disclosed SQLite advisory and the two unmaintained transitive crates remain nonblocking<br>\ndependency work; none is represented as resolved by the M1 tag.</li>\n<li>Hosted-LSP onboarding, browser-funded channels, reusable package publication, and controlled<br>\nmainnet validation belong to later milestones.</li>\n</ul>\n<h2><a name=\"p-27903-incidents-and-findings-13\" class=\"anchor\" href=\"#p-27903-incidents-and-findings-13\" aria-label=\"Heading link\"></a>Incidents and findings</h2>\n<p>No known user-value loss occurred during M1, and no mainnet value was used. Implementation findings<br>\nresolved during M1 included repeat-dispatch and migration hardening, wallet dependency updates,<br>\ncredential-bearing mint URL rejection, diagnostic identity redaction, and stronger evidence-command<br>\nand screenshot-surface validation. No fixture or mocked result is reported as a live Fiber<br>\nsettlement.</p>\n<h2><a name=\"p-27903-what-comes-next-14\" class=\"anchor\" href=\"#p-27903-what-comes-next-14\" aria-label=\"Heading link\"></a>What comes next</h2>\n<p>M2 focuses on public-testnet hosted-LSP onboarding. A user will connect a supported CKB wallet,<br>\nreview and approve the required RUSD funding and CKB capacity, and reach a usable hosted Fiber<br>\nchannel without operating a local FNN node. The work includes client signing, exact funding and fee<br>\nreview, durable channel lifecycle recovery, hosted add-cash and cash-out flows, and failure and<br>\ninteroperability testing.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11367,
+      "title": "Crowns: a live 3D car race on CKB where the chain is the referee",
+      "slug": "crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee",
+      "url": "https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367",
+      "created_at": "2026-11-24T16:04:46.506000+00:00",
+      "last_posted_at": "2026-11-27T10:34:25.193000+00:00",
+      "category_id": 70,
+      "tags": [
+        "CKB",
+        "CKB-VM",
+        "dapp",
+        "game",
+        "lang-en",
+        "testnet"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27902,
+          "post_number": 7,
+          "topic_id": 11367,
+          "topic_title": "Crowns: a live 3D car race on CKB where the chain is the referee",
+          "topic_slug": "crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee",
+          "author": "Thinker",
+          "created_at": "2026-11-27T10:34:25.193000+00:00",
+          "updated_at": "2026-11-27T10:34:25.193000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/crowns-a-live-3d-car-race-on-ckb-where-the-chain-is-the-referee/11367/7",
+          "content_text": "上贴发的有些匆忙，中间有几处错误（已修改）。也感谢 @zz_tovarishch 的解释。\n这个游戏我只进入页面，但并没有去试玩（因为我不是游戏爱好者）。我也并不清楚项目情况。\n只是看到社区资助项目多数在工具端，建议可以适当关注下应用类项目，尤其是社区自行完成的优质项目，可以用可行的间接方式的帮其度下冷启动期。\n当然应用类项目必须要有自己的盈利模式，而不是去依赖社区的资助存活。资助模式更希望是以赞助/提供流动性等方面的参与，并不是对还未成型的应用方案文档来资助。",
+          "content_html": "<p>上贴发的有些匆忙，中间有几处错误（已修改）。也感谢 <a class=\"mention\" href=\"/u/zz_tovarishch\">@zz_tovarishch</a> 的解释。</p>\n<p>这个游戏我只进入页面，但并没有去试玩（因为我不是游戏爱好者）。我也并不清楚项目情况。</p>\n<p>只是看到社区资助项目多数在工具端，建议可以适当关注下应用类项目，尤其是社区自行完成的优质项目，可以用可行的间接方式的帮其度下冷启动期。</p>\n<p><strong>当然应用类项目必须要有自己的盈利模式，而不是去依赖社区的资助存活。资助模式更希望是以赞助/提供流动性等方面的参与，并不是对还未成型的应用方案文档来资助。</strong></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11376,
+      "title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+      "slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+      "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376",
+      "created_at": "2026-11-26T13:22:06.042000+00:00",
+      "last_posted_at": "2026-11-27T08:38:54.723000+00:00",
+      "category_id": 65,
+      "tags": [
+        "lang-zh"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27891,
+          "post_number": 12,
+          "topic_id": 11376,
+          "topic_title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+          "topic_slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+          "author": "JackyLHH",
+          "created_at": "2026-11-27T02:24:29.912000+00:00",
+          "updated_at": "2026-11-27T06:59:05.408000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/12",
+          "content_text": "谢谢 @yixiu.ckbfans.bit 发起这个讨论，我个人非常认可你提到的不太担心第一阶段的点赞数量，更希望看到有更多社区成员参与讨论。\n关于第二阶段的投票，我还是赞成把 Nervos DAO 的存款时长纳入计票。每笔存款单独算，时间系数可以设为 1～3 倍。存款不超过 12 个月，按 1 倍算。之后每多存满 1 个月，系数加 0.1，存满 32 个月就达到 3 倍上限。\n我个人还有两个建议：\n给持续参与投票的账户加成。 参与系数从 1.00 起算，账户每在 Metaforo 上对一项 CKB Community Fund DAO 提案投过有效票，系数就加 0.05（上限为 1，即超过 20 次投票后权重不再增加）。同一项提案只记一次。比如，A 和 B 都在 Nervos DAO 存了 10 万 CKB，其他条件也一样。A 第一次投票，参与系数是 1.00。B 第 5 次投票，之前的 4 次各加了 0.05，所以此次投票的参与系数就是 1.20。给每次参与一点小小的积累，希望能让更多社区成员愿意投出自己的一票。\nCKBA 贡献会员的投票权重再乘以 1.5。 CKBA 常年开放贡献会员申请，申请经审核后，由 GA 大会投票决定是否接纳。这项加成既是对他们贡献的肯定，也是鼓励他们继续积极参与 Nervos 生态。\n附：截止到今天，一共有 16 位贡献会员：\niShot_2026-11-27_10.03.241966×352 32.7 KB\n举个例子，一位 CKBA 贡献会员在 Nervos DAO 存了 10 万 CKB，已经存满 18 个月，这次是他/她第 6 次投票。把三项系数乘起来，投票权重相当于 30 万 CKB。\n10 万 CKB × 1.6（时间系数）× 1.25（参与系数）× 1.5（贡献会员）＝ 30 万 CKB 等值票权\n这些参数只是方便举例，具体怎么定，还是要大家一起深入讨论。 计时也可以改用链上的 Epoch，180 个 Epoch 大约是 30 天。比如，存满 2,160 个 Epoch（约一年）后，每再存满 180 个 Epoch，时间系数就加 0.1，到 5,760 个 Epoch 达到 3 倍上限。\n最后建议开发一个新的投票平台来替代 Metaforo。新平台可以集成 CCC，接入更多钱包，并自动验证对应的 Nervos DAO 存款。这样，更多用户就能直接用自己熟悉的钱包投票。",
+          "content_html": "<p>谢谢 <a class=\"mention\" href=\"/u/yixiu.ckbfans.bit\">@yixiu.ckbfans.bit</a>  发起这个讨论，我个人非常认可你提到的<strong>不太担心第一阶段的点赞数量，更希望看到有更多社区成员参与讨论。</strong></p>\n<p>关于第二阶段的投票，我还是赞成<strong>把 Nervos DAO 的存款时长纳入计票</strong>。每笔存款单独算，时间系数可以设为 <strong>1～3 倍</strong>。存款不超过 12 个月，按 1 倍算。之后每多存满 1 个月，系数加 0.1，存满 32 个月就达到 3 倍上限。</p>\n<p>我个人还有两个建议：</p>\n<ol>\n<li>\n<p><strong>给持续参与投票的账户加成。</strong> 参与系数从 1.00 起算，账户每在 Metaforo 上对一项 CKB Community Fund DAO 提案投过有效票，系数就加 0.05（上限为 1，即超过 20 次投票后权重不再增加）。同一项提案只记一次。比如，A 和 B 都在 Nervos DAO 存了 10 万 CKB，其他条件也一样。A 第一次投票，参与系数是 <strong>1.00</strong>。B 第 5 次投票，之前的 4 次各加了 0.05，所以此次投票的参与系数就是 <strong>1.20</strong>。给每次参与一点小小的积累，希望能让更多社区成员愿意投出自己的一票。</p>\n</li>\n<li>\n<p><strong>CKBA 贡献会员的投票权重再乘以 1.5。</strong> CKBA 常年开放贡献会员申请，申请经审核后，由 GA 大会投票决定是否接纳。这项加成既是对他们贡献的肯定，也是鼓励他们继续积极参与 Nervos 生态。</p>\n<p><em>附：截止到今天，一共有 16 位贡献会员：</em></p>\n<p><div class=\"lightbox-wrapper\"><a class=\"lightbox\" href=\"https://talk.nervos.org/uploads/default/original/2X/0/015f6de28cced89f6370276e811cee1b8eaa27ee.png\" data-download-href=\"https://talk.nervos.org/uploads/default/015f6de28cced89f6370276e811cee1b8eaa27ee\" title=\"iShot_2026-11-27_10.03.24\"><img src=\"https://talk.nervos.org/uploads/default/optimized/2X/0/015f6de28cced89f6370276e811cee1b8eaa27ee_2_690x123.png\" alt=\"iShot_2026-11-27_10.03.24\" data-base62-sha1=\"c8VT1KzqUEMfHtM2UCfJHx9hLw\" width=\"690\" height=\"123\" srcset=\"https://talk.nervos.org/uploads/default/optimized/2X/0/015f6de28cced89f6370276e811cee1b8eaa27ee_2_690x123.png, https://talk.nervos.org/uploads/default/optimized/2X/0/015f6de28cced89f6370276e811cee1b8eaa27ee_2_1035x184.png 1.5x, https://talk.nervos.org/uploads/default/optimized/2X/0/015f6de28cced89f6370276e811cee1b8eaa27ee_2_1380x246.png 2x\" data-dominant-color=\"161616\"><div class=\"meta\"><svg class=\"fa d-icon d-icon-far-image svg-icon\" aria-hidden=\"true\"><use href=\"#far-image\"></use></svg><span class=\"filename\">iShot_2026-11-27_10.03.24</span><span class=\"informations\">1966×352 32.7 KB</span><svg class=\"fa d-icon d-icon-discourse-expand svg-icon\" aria-hidden=\"true\"><use href=\"#discourse-expand\"></use></svg></div></a></div></p>\n</li>\n</ol>\n<p>举个例子，一位 CKBA 贡献会员在 Nervos DAO 存了 <strong>10 万 CKB</strong>，已经存满 <strong>18 个月</strong>，这次是他/她第 <strong>6 次</strong>投票。把三项系数乘起来，投票权重相当于 <strong>30 万 CKB</strong>。</p>\n<blockquote>\n<p>10 万 CKB × 1.6（时间系数）× 1.25（参与系数）× 1.5（贡献会员）＝ 30 万 CKB 等值票权</p>\n</blockquote>\n<p><strong>这些参数只是方便举例，具体怎么定，还是要大家一起深入讨论。</strong> 计时也可以改用链上的 Epoch，180 个 Epoch 大约是 30 天。比如，存满 2,160 个 Epoch（约一年）后，每再存满 180 个 Epoch，时间系数就加 0.1，到 5,760 个 Epoch 达到 3 倍上限。</p>\n<p>最后建议<strong>开发一个新的投票平台来替代 Metaforo</strong>。新平台可以集成 CCC，接入更多钱包，并自动验证对应的 Nervos DAO 存款。这样，更多用户就能直接用自己熟悉的钱包投票。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27896,
+          "post_number": 13,
+          "topic_id": 11376,
+          "topic_title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+          "topic_slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+          "author": "CDEX",
+          "created_at": "2026-11-27T06:39:32.229000+00:00",
+          "updated_at": "2026-11-27T06:39:32.229000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/13",
+          "content_text": "I don’t like this idea.\nIt feels like some proposals have been blocked by whales, and because we really want them to pass, we are now considering changing the rules to dilute the influence of whales.\nWe should be lowering the barriers to governance participation and enabling more wallets in, rather than raising those barriers and giving long-standing participants disproportionately greater influence.\nI believe we should focus on making CKB more attractive so that more people are willing to acquire CKB specifically for participation, rather than pushing proposals through to create an artificial sense of community activity.\nThis would better align the incentives of proposal authors and voters, instead of putting them in opposition to each other.\nTo me, this idea seems to favor those who are unwilling to acquire CKB, but not encourage more people to become economically invested in the ecosystem.",
+          "content_html": "<p>I don’t like this idea.</p>\n<p>It feels like some proposals have been blocked by whales, and because we really want them to pass, we are now considering changing the rules to dilute the influence of whales.</p>\n<p>We should be lowering the barriers to governance participation and enabling more wallets in, rather than raising those barriers and giving long-standing participants disproportionately greater influence.</p>\n<p>I believe we should focus on making CKB more attractive so that more people are willing to acquire CKB specifically for participation, rather than pushing proposals through to create an artificial sense of community activity.</p>\n<p>This would better align the incentives of proposal authors and voters, instead of putting them in opposition to each other.</p>\n<p>To me, this idea seems to favor those who are unwilling to acquire CKB, but not encourage more people to become economically invested in the ecosystem.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27897,
+          "post_number": 14,
+          "topic_id": 11376,
+          "topic_title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+          "topic_slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+          "author": "CDEX",
+          "created_at": "2026-11-27T06:42:38.164000+00:00",
+          "updated_at": "2026-11-27T06:42:38.164000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/14",
+          "content_text": "We should make governance more accessible, not make voting power cheaper",
+          "content_html": "<p>We should make governance more accessible, not make voting power cheaper</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27898,
+          "post_number": 15,
+          "topic_id": 11376,
+          "topic_title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+          "topic_slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+          "author": "JackyLHH",
+          "created_at": "2026-11-27T07:46:05.646000+00:00",
+          "updated_at": "2026-11-27T07:51:55.257000+00:00",
+          "reply_to_post_number": 14,
+          "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/15",
+          "content_text": "CDEX:\nWe should make governance more accessible, not make voting power cheaper\nI love this input.\nLooking back, the multipliers I suggested were too aggressive. Together, they could give someone up to 9× their base voting power. A 2× cap on the combined multiplier seems like a more reasonable starting point if we decide to revisit the formula.\nChanging the CKB Community Fund DAO’s meta-rules is difficult and takes time, and should be done step by step. Supporting more wallets (including CCC) is a good first step. From there, we could explore building a more user-friendly alternative to Metaforo. Once we’ve made it easier to participate, we can revisit how voting power is calculated and even discuss whether to add vote delegation.",
+          "content_html": "<aside class=\"quote no-group\" data-username=\"CDEX\" data-post=\"14\" data-topic=\"11376\" data-full=\"true\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/cdex/48/9685_2.png\" class=\"avatar\"> CDEX:</div>\n<blockquote>\n<p>We should make governance more accessible, not make voting power cheaper</p>\n</blockquote>\n</aside>\n<p>I love this input.</p>\n<p>Looking back, the multipliers I suggested were too aggressive. Together, they could give someone up to 9× their base voting power. A 2× cap on the combined multiplier seems like a more reasonable starting point if we decide to revisit the formula.</p>\n<p>Changing the CKB Community Fund DAO’s meta-rules is difficult and takes time, and should be done step by step. Supporting more wallets (including CCC) is a good first step. From there, we could explore building a more user-friendly alternative to Metaforo. Once we’ve made it easier to participate, we can revisit how voting power is calculated and even discuss whether to add vote delegation.</p>",
+          "like_count": 0,
+          "quote_count": 1
+        },
+        {
+          "post_id": 27901,
+          "post_number": 16,
+          "topic_id": 11376,
+          "topic_title": "Discussion: Improving the Fairness and Resilience of CKB Community Fund DAO Governance |关于 CKB Community Fund DAO 治理机制的一些思考与改进建议",
+          "topic_slug": "discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao",
+          "author": "9527",
+          "created_at": "2026-11-27T08:38:54.723000+00:00",
+          "updated_at": "2026-11-27T08:38:54.723000+00:00",
+          "reply_to_post_number": 10,
+          "url": "https://talk.nervos.org/t/discussion-improving-the-fairness-and-resilience-of-ckb-community-fund-dao-governance-ckb-community-fund-dao/11376/16",
+          "content_text": "十分同意“用金钱投票是短视的”。比特币用工作量证明通过数学方式解决信任问题，Dao治理的难点是怎么制造信任，去中心化治理需要从公共基金中提取资金，天然存在很强的博弈性，加之信息不透明，很容易出现现在很多人对Dao提案人不信任的情况。\n我不懂博弈论，不知道有没有大神能从博弈论的角度来缓解信任问题呢。我这边有一些可能不完善的想法: 1引入Ai工具对提案人的profile进行初步审查，并提供初步的评级，使得社区成员可以很便捷的进行初步的评估。2引入一个咨询委员会，协助进行评估。3现在只有提案阶段的治理，引入结案阶段的治理方案。4不知道之前Dao那个声誉系统是否可以集成。",
+          "content_html": "<p>十分同意“用金钱投票是短视的”。比特币用工作量证明通过数学方式解决信任问题，Dao治理的难点是怎么制造信任，去中心化治理需要从公共基金中提取资金，天然存在很强的博弈性，加之信息不透明，很容易出现现在很多人对Dao提案人不信任的情况。</p>\n<p>我不懂博弈论，不知道有没有大神能从博弈论的角度来缓解信任问题呢。我这边有一些可能不完善的想法: 1引入Ai工具对提案人的profile进行初步审查，并提供初步的评级，使得社区成员可以很便捷的进行初步的评估。2引入一个咨询委员会，协助进行评估。3现在只有提案阶段的治理，引入结案阶段的治理方案。4不知道之前Dao那个声誉系统是否可以集成。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11371,
+      "title": "Show Me the Use Case: Fiber Network Product Hackathon announcement!",
+      "slug": "show-me-the-use-case-fiber-network-product-hackathon-announcement",
+      "url": "https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371",
+      "created_at": "2026-11-26T09:15:33.760000+00:00",
+      "last_posted_at": "2026-11-27T08:35:34.886000+00:00",
+      "category_id": 68,
+      "tags": [
+        "Hackathon",
+        "fiber"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Frequent Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27888,
+          "post_number": 8,
+          "topic_id": 11371,
+          "topic_title": "Show Me the Use Case: Fiber Network Product Hackathon announcement!",
+          "topic_slug": "show-me-the-use-case-fiber-network-product-hackathon-announcement",
+          "author": "3m1n3nc3",
+          "created_at": "2026-11-27T00:38:12.322000+00:00",
+          "updated_at": "2026-11-27T00:38:12.322000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/8",
+          "content_text": "Impressive",
+          "content_html": "<p>Impressive</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27900,
+          "post_number": 9,
+          "topic_id": 11371,
+          "topic_title": "Show Me the Use Case: Fiber Network Product Hackathon announcement!",
+          "topic_slug": "show-me-the-use-case-fiber-network-product-hackathon-announcement",
+          "author": "neon.bit",
+          "created_at": "2026-11-27T08:35:34.886000+00:00",
+          "updated_at": "2026-11-27T08:35:34.886000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/show-me-the-use-case-fiber-network-product-hackathon-announcement/11371/9",
+          "content_text": "Registrations are now live on CKBoost! Registration is required for project submission and to receive important updates.\nOver the coming week, we’ll have presentations on different topics related to the hackathon to get builders warmed up!",
+          "content_html": "<p>Registrations are now live on <a href=\"https://ckboost.netlify.app/campaign/0x279c0e333974713deec12ddb210bb787ae07ae54b884cbc141d26fe9f03ca450\" rel=\"noopener nofollow ugc\">CKBoost</a>! Registration is required for project submission and to receive important updates.</p>\n<p>Over the coming week, we’ll have presentations on different topics related to the hackathon to get builders warmed up!</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11308,
+      "title": "Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫",
+      "slug": "spark-program-cellcat-ckb",
+      "url": "https://talk.nervos.org/t/spark-program-cellcat-ckb/11308",
+      "created_at": "2026-11-23T08:15:25.967000+00:00",
+      "last_posted_at": "2026-11-27T08:30:52.561000+00:00",
+      "category_id": 77,
+      "tags": [
+        "Spark-Program"
+      ],
+      "posters": [
+        "Original Poster",
+        "Frequent Poster",
+        "Recent Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27892,
+          "post_number": 2,
+          "topic_id": 11308,
+          "topic_title": "Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫",
+          "topic_slug": "spark-program-cellcat-ckb",
+          "author": "joii2020",
+          "created_at": "2026-11-27T03:11:15.801000+00:00",
+          "updated_at": "2026-11-27T03:11:15.801000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/2",
+          "content_text": "I’m thinking that the highest difficulty of many games requires one life to complete the game. Can this be accomplished through the characteristics of CKB Cell?\nPlayers spend money to mint a CKB Cell to play the game. Saving the game progress is a transaction for this Cell. If the game over, the Cell is permanently locked.",
+          "content_html": "<p>I’m thinking that the highest difficulty of many games requires one life to complete the game. Can this be accomplished through the characteristics of CKB Cell?<br>\nPlayers spend money to mint a CKB Cell to play the game. Saving the game progress is a transaction for this Cell. If the game over, the Cell is permanently locked.</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27893,
+          "post_number": 3,
+          "topic_id": 11308,
+          "topic_title": "Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫",
+          "topic_slug": "spark-program-cellcat-ckb",
+          "author": "yixiu.ckbfans.bit",
+          "created_at": "2026-11-27T04:31:57.719000+00:00",
+          "updated_at": "2026-11-27T04:31:57.719000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/3",
+          "content_text": "Hi, Enzo, CellCat 是一个蛮有意思的项目，我认为它完全有可能走向我们的社区用户。不过我们留意到你在CellCat里自己做了cat-type, egg-type，不知你能否考虑使用现有的spore协议来实现，原因是生态里目前对nft的适配方面，对spore的支持是最好的。若新开发一套nft type标准，会带来较多的适配工作，比如钱包、ccc、交易市场、资产管理器、浏览器等都需要做一遍兼容性适配，这会带来一些挑战。\n另外， 你的开发计划里提到 接通 JoyID（Testnet）。是否有考虑直接接 @ckb-ccc/connector-react （以下简称ccc），通过几行代码，就可以对接上生态里支持的所有钱包，你只需要关注自己的业务即可。 我们也为ccc专门做了一套用于AI 访问和使用ccc相关模块的skills，详情在这里：配置你的 AI 工具 。",
+          "content_html": "<p>Hi, Enzo, CellCat 是一个蛮有意思的项目，我认为它完全有可能走向我们的社区用户。不过我们留意到你在CellCat里自己做了<code>cat-type</code>, <code>egg-type</code>，不知你能否考虑使用现有的spore协议来实现，原因是生态里目前对nft的适配方面，对spore的支持是最好的。若新开发一套nft type标准，会带来较多的适配工作，比如钱包、ccc、交易市场、资产管理器、浏览器等都需要做一遍兼容性适配，这会带来一些挑战。</p>\n<p>另外， 你的开发计划里提到 接通 <strong>JoyID（Testnet）</strong>。是否有考虑直接接 <strong><a href=\"https://www.npmjs.com/package/@ckb-ccc/connector-react\">@ckb-ccc/connector-react</a></strong> （以下简称ccc），通过几行代码，就可以<strong>对接上生态里支持的所有钱包</strong>，你只需要关注自己的业务即可。 我们也为ccc专门做了一套用于AI 访问和使用ccc相关模块的skills，详情在这里：<a href=\"https://docs.ckbccc.com/zh/docs/ai-resources/set-up-ai-tools\" class=\"inline-onebox\">配置你的 AI 工具</a> 。</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27899,
+          "post_number": 4,
+          "topic_id": 11308,
+          "topic_title": "Spark Program 申请 | CellCat（暖暖猫舍）：能熔回 CKB 的链上基因猫",
+          "topic_slug": "spark-program-cellcat-ckb",
+          "author": "matt.eth",
+          "created_at": "2026-11-27T08:30:52.561000+00:00",
+          "updated_at": "2026-11-27T08:30:52.561000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/spark-program-cellcat-ckb/11308/4",
+          "content_text": "考古了这条帖子 Nervos 的未来和 CKB 价格展望 - #4 by cool007zqw\n当初你对 ckb 熊市时的价格预测是很有眼光的，请问现在你对 ckb 看法有什么变化吗？",
+          "content_html": "<p>考古了这条帖子 <a href=\"https://talk.nervos.org/t/nervos-ckb/8881/4\" class=\"inline-onebox\">Nervos 的未来和 CKB 价格展望 - #4 by cool007zqw</a><br>\n当初你对 ckb 熊市时的价格预测是很有眼光的，请问现在你对 ckb 看法有什么变化吗？</p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    },
+    {
+      "topic_id": 11370,
+      "title": "What Else Could a Cell Become ? [1]",
+      "slug": "what-else-could-a-cell-become-1",
+      "url": "https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370",
+      "created_at": "2026-11-26T09:10:10.297000+00:00",
+      "last_posted_at": "2026-11-27T05:38:24.208000+00:00",
+      "category_id": 69,
+      "tags": [
+        "Cell",
+        "cell-model",
+        "layer2"
+      ],
+      "posters": [
+        "Original Poster, Most Recent Poster",
+        "Recent Poster",
+        "Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27894,
+          "post_number": 6,
+          "topic_id": 11370,
+          "topic_title": "What Else Could a Cell Become ? [1]",
+          "topic_slug": "what-else-could-a-cell-become-1",
+          "author": "ArthurZhang",
+          "created_at": "2026-11-27T05:37:38.036000+00:00",
+          "updated_at": "2026-11-27T05:38:29.086000+00:00",
+          "reply_to_post_number": 5,
+          "url": "https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/6",
+          "content_text": "(post deleted by author)",
+          "content_html": "<p>(post deleted by author)</p>",
+          "like_count": 0,
+          "quote_count": 0
+        },
+        {
+          "post_id": 27895,
+          "post_number": 7,
+          "topic_id": 11370,
+          "topic_title": "What Else Could a Cell Become ? [1]",
+          "topic_slug": "what-else-could-a-cell-become-1",
+          "author": "ArthurZhang",
+          "created_at": "2026-11-27T05:38:24.208000+00:00",
+          "updated_at": "2026-11-27T05:38:24.208000+00:00",
+          "reply_to_post_number": 5,
+          "url": "https://talk.nervos.org/t/what-else-could-a-cell-become-1/11370/7",
+          "content_text": "ArthurZhang:\nCheck the two repos out:\n“CKB Metatype v0.1.1” (GitHub - a19q3/ckb-metatype: Experimental CKB Metatype SDK and RISC-V dispatcher · GitHub)\n“QuotaCell Metatype Experiment” (GitHub - a19q3/quotacell-metatype-experiment: Reproducible CKB comparison of QuotaCell policy retirement and owner recovery · GitHub)\nCheers! The Metatype implementation is already at a stage where you can experiment with it on CKB. Do have a play and see what you can break!",
+          "content_html": "<aside class=\"quote no-group quote-modified\" data-username=\"ArthurZhang\" data-post=\"3\" data-topic=\"11370\">\n<div class=\"title\">\n<div class=\"quote-controls\"></div>\n<img alt=\"\" width=\"24\" height=\"24\" src=\"https://talk.nervos.org/user_avatar/talk.nervos.org/arthurzhang/48/11070_2.png\" class=\"avatar\"> ArthurZhang:</div>\n<blockquote>\n<p>Check the two repos out:</p>\n<ul>\n<li>“CKB Metatype v0.1.1” (<a href=\"https://github.com/a19q3/ckb-metatype\" class=\"inline-onebox\">GitHub - a19q3/ckb-metatype: Experimental CKB Metatype SDK and RISC-V dispatcher · GitHub</a>)</li>\n<li>“QuotaCell Metatype Experiment” (<a href=\"https://github.com/a19q3/quotacell-metatype-experiment\" class=\"inline-onebox\">GitHub - a19q3/quotacell-metatype-experiment: Reproducible CKB comparison of QuotaCell policy retirement and owner recovery · GitHub</a>)</li>\n</ul>\n</blockquote>\n</aside>\n<p>Cheers! The Metatype implementation is already at a stage where you can experiment with it on CKB. Do have a play and see what you can break! <img src=\"https://talk.nervos.org/images/emoji/apple/grinning_face_with_smiling_eyes.png?v=15\" title=\":grinning_face_with_smiling_eyes:\" class=\"emoji\" alt=\":grinning_face_with_smiling_eyes:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 1
+        }
+      ]
+    },
+    {
+      "topic_id": 11355,
+      "title": "CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets",
+      "slug": "ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets",
+      "url": "https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355",
+      "created_at": "2026-11-23T21:17:34.813000+00:00",
+      "last_posted_at": "2026-11-27T02:20:19.881000+00:00",
+      "category_id": 65,
+      "tags": [],
+      "posters": [
+        "Original Poster",
+        "Most Recent Poster"
+      ],
+      "recent_posts": [
+        {
+          "post_id": 27889,
+          "post_number": 2,
+          "topic_id": 11355,
+          "topic_title": "CKB x Kaze Unitour Phase 2 Kicks Off at Machakos University: 180+ Students, 95 New Wallets",
+          "topic_slug": "ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets",
+          "author": "scott",
+          "created_at": "2026-11-27T02:20:19.881000+00:00",
+          "updated_at": "2026-11-27T02:20:19.881000+00:00",
+          "reply_to_post_number": null,
+          "url": "https://talk.nervos.org/t/ckb-x-kaze-unitour-phase-2-kicks-off-at-machakos-university-180-students-95-new-wallets/11355/2",
+          "content_text": "A big thank you to Machakos University for organising such an amazing event and providing a platform for learning, networking, sharing ideas and growth.\nSpecial appreciation to all the incredible speakers who took their time to share their knowledge, experiences and insights. Your contributions made the event truly inspiring and worthwhile. We appreciate every bit of wisdom shared.\nIt was an absolute pleasure being part of this experience, and we hope this spirit of collaboration and knowledge-sharing continues.\nOne small request though: How about bringing the next edition to Kenyatta University (KU)? We’d be more than happy to welcome you and host the next chapter of this amazing experience!\nThank you once again, Machakos University. You made it memorable.",
+          "content_html": "<p>A big thank you to Machakos University for organising such an amazing event and providing a platform for learning, networking, sharing ideas and growth.</p>\n<p>Special appreciation to all the incredible speakers who took their time to share their knowledge, experiences and insights. Your contributions made the event truly inspiring and worthwhile. We appreciate every bit of wisdom shared.</p>\n<p>It was an absolute pleasure being part of this experience, and we hope this spirit of collaboration and knowledge-sharing continues.</p>\n<p>One small request though: How about bringing the next edition to Kenyatta University (KU)? We’d be more than happy to welcome you and host the next chapter of this amazing experience!</p>\n<p>Thank you once again, Machakos University. You made it memorable. <img src=\"https://talk.nervos.org/images/emoji/apple/clap.png?v=15\" title=\":clap:\" class=\"emoji\" alt=\":clap:\" loading=\"lazy\" width=\"20\" height=\"20\"><img src=\"https://talk.nervos.org/images/emoji/apple/fire.png?v=15\" title=\":fire:\" class=\"emoji\" alt=\":fire:\" loading=\"lazy\" width=\"20\" height=\"20\"></p>",
+          "like_count": 0,
+          "quote_count": 0
+        }
+      ]
+    }
+  ]
+}
